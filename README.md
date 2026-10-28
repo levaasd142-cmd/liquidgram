@@ -1,3 +1,9 @@
+# Liquidgram 💧
+
+> Unofficial fork of Telegram Web A with an iOS 26-style **Liquid Glass** design, ghost mode, anti-delete and edit history. See [LIQUIDGRAM.md](LIQUIDGRAM.md) (in Russian) for features and build instructions.
+
+---
+
 # Telegram Web A
 
 This project won the first prize 🥇 at [Telegram Lightweight Client Contest](https://contest.com/javascript-web-3) and now is an official Telegram client available to anyone at [web.telegram.org/a](https://web.telegram.org/a).

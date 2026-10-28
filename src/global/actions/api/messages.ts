@@ -1737,20 +1737,27 @@ addActionHandler('markMessageListRead', (global, actions, payload): ActionReturn
 const pendingMediaReadIdsByChat = new Map<string, Set<number>>();
 
 addActionHandler('markMessagesRead', async (global, actions, payload): Promise<void> => {
-  const { chatId, messageIds } = payload;
+  const { chatId } = payload;
+  let { messageIds } = payload;
   const chat = selectChat(global, chatId);
   if (!chat) {
     return;
   }
 
+  // Ghost mode plays voice and round video messages without reporting them as listened
   if (selectIsGhostFeatureActive(global, 'shouldHideMediaPlayback')) {
-    messageIds.forEach((id) => {
-      const message = selectChatMessage(global, chatId, id);
-      if (!message || hasMessageTtl(message)) return;
+    const playedIds = messageIds.filter((id) => {
+      const content = selectChatMessage(global, chatId, id)?.content;
+      return Boolean(content?.voice || content?.video?.isRound);
+    });
+
+    playedIds.forEach((id) => {
+      if (hasMessageTtl(selectChatMessage(global, chatId, id)!)) return;
       global = updateChatMessage(global, chatId, id, { isMediaUnread: false });
     });
     setGlobal(global);
-    return;
+
+    messageIds = messageIds.filter((id) => !playedIds.includes(id));
   }
 
   const pendingIds = pendingMediaReadIdsByChat.get(chatId) || new Set<number>();
@@ -2352,8 +2359,9 @@ async function loadViewportMessages<T extends GlobalState>(
   const localMessages = chatId === SERVICE_NOTIFICATIONS_USER_ID
     ? global.serviceNotifications.filter(({ isDeleted }) => !isDeleted).map(({ message }) => message)
     : typingDraftMessages;
+  const isLatestSlice = !offsetId || (direction === LoadMoreDirection.Forwards && messages.length < sliceSize);
   const preservedMessages = selectLiquidSettings(global).isAntiDeleteEnabled
-    ? selectLiquidDeletedMessagesForSlice(global, chatId, threadId, messages, !offsetId)
+    ? selectLiquidDeletedMessagesForSlice(global, chatId, threadId, messages, isLatestSlice)
     : [];
   const allMessages = ([] as ApiMessage[]).concat(messages, localMessages, preservedMessages);
   const byId = buildCollectionByKey(allMessages, 'id');

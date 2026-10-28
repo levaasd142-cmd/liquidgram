@@ -246,7 +246,9 @@ const MessageMeta = ({
           </span>
         ) : `${lang('MessageMetaEdited')} `)}
         {message.isVideoProcessingPending && !shouldShowPrimaryEditedDate && `${lang('MessageMetaApproximate')} `}
-        {date}
+        {shouldShowPrimaryEditedDate && onEditHistoryClick ? (
+          <span className="message-edit-history" onClick={handleEditHistoryClick}>{date}</span>
+        ) : date}
       </span>
       {outgoingStatus && (
         <MessageOutgoingStatus status={outgoingStatus} />

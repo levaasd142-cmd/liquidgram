@@ -68,6 +68,7 @@ import StickerSetModal from '../common/StickerSetModal.async';
 import UnreadCount from '../common/UnreadCounter';
 import Wallpaper from '../common/Wallpaper';
 import LeftColumn from '../left/LeftColumn';
+import LiquidTabBar from '../left/LiquidTabBar';
 import MediaViewer from '../mediaViewer/MediaViewer.async';
 import ReactionPicker from '../middle/message/reactions/ReactionPicker.async';
 import MessageListHistoryHandler from '../middle/MessageListHistoryHandler';
@@ -634,6 +635,7 @@ const Main = ({
       )}
       <FoldersSidebar isMobile={isMobile} isActive={isFoldersSidebarShown} />
       <LeftColumn ref={leftColumnRef} isFoldersSidebarShown={isFoldersSidebarShown} />
+      <LiquidTabBar isMobile={isMobile} />
       <MiddleColumn
         leftColumnRef={leftColumnRef}
         isMobile={isMobile}
