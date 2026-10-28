@@ -11,6 +11,7 @@ import type {
 import type { RequiredGlobalActions } from '../../index';
 import type { ActionReturnType, GlobalState } from '../../types';
 
+import { rejectStoredApiCredentials } from '../../../util/apiCredentials';
 import { getCurrentTabId } from '../../../util/establishMultitabRole';
 import { getShippingError, shouldClosePaymentModal } from '../../../util/getReadableErrorText';
 import { retryLocalization } from '../../../util/localization';
@@ -61,6 +62,11 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
 
     case 'updateConnectionState':
       onUpdateConnectionState(global, actions, update);
+      break;
+
+    case 'updateApiCredentialsInvalid':
+      rejectStoredApiCredentials();
+      actions.signOut({ forceInitApi: true });
       break;
 
     case 'updateSession':

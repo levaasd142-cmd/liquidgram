@@ -49,6 +49,7 @@ import styles from './App.module.scss';
 
 type StateProps = {
   authState: GlobalState['auth']['state'];
+  isApiCredentialsRequired?: boolean;
   isScreenLocked?: boolean;
   hasPasscode?: boolean;
   inactiveReason?: 'auth' | 'otherClient';
@@ -72,6 +73,7 @@ const ACTIVE_PAGE_TITLE = IS_TAURI ? PAGE_TITLE_TAURI : PAGE_TITLE;
 
 const App = ({
   authState,
+  isApiCredentialsRequired,
   isScreenLocked,
   hasPasscode,
   inactiveReason,
@@ -152,6 +154,9 @@ const App = ({
   } else if (isScreenLocked) {
     page = 'lock';
     activeKey = AppScreens.lock;
+  } else if (isApiCredentialsRequired) {
+    page = 'authPhoneNumber';
+    activeKey = AppScreens.auth;
   } else if (authState) {
     switch (authState) {
       case 'authorizationStateWaitPhoneNumber':
@@ -293,6 +298,7 @@ export default withGlobal(
 
     return {
       authState,
+      isApiCredentialsRequired: global.auth.isApiCredentialsRequired,
       isScreenLocked: global.passcode?.isScreenLocked,
       hasPasscode: global.passcode?.hasPasscode,
       inactiveReason: selectTabState(global).inactiveReason,

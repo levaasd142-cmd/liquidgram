@@ -114,6 +114,10 @@ export type ApiUpdateConnectionState = {
   connectionState: ApiUpdateConnectionStateType;
 };
 
+export type ApiUpdateApiCredentialsInvalid = {
+  '@type': 'updateApiCredentialsInvalid';
+};
+
 export type ApiUpdateCurrentUser = {
   '@type': 'updateCurrentUser';
   currentUser: ApiUser;
@@ -449,6 +453,7 @@ export type ApiUpdateDeleteMessages = {
   '@type': 'deleteMessages';
   ids: number[];
   chatId?: string;
+  isOwnDeletion?: true;
 };
 
 export type ApiUpdateDeleteScheduledMessages = {
@@ -1036,6 +1041,7 @@ export type ApiUpdateWebPage = {
 export type ApiUpdate = (
   ApiUpdateReady | ApiUpdateSession | ApiUpdateWebAuthTokenFailed | ApiUpdateRequestUserUpdate |
   ApiUpdateAuthorizationState | ApiUpdateAuthorizationError | ApiUpdateConnectionState | ApiUpdateCurrentUser |
+  ApiUpdateApiCredentialsInvalid |
   ApiUpdateChat | ApiUpdateChatTypingStatus | ApiUpdateChatFullInfo | ApiUpdatePinnedChatIds |
   ApiUpdateChatMembers | ApiUpdateChatParticipantRank | ApiUpdateChatJoin | ApiUpdateChatLeave
   | ApiUpdateChatPinned | ApiUpdatePinnedMessageIds |

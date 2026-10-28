@@ -8,7 +8,7 @@ import type {
   ApiUserFullInfo,
 } from '../../types';
 
-import { wrapError } from '../helpers/misc';
+import { isApiCredentialsError, wrapError } from '../helpers/misc';
 import { sendApiUpdate } from '../updates/apiUpdateEmitter';
 
 const authController: {
@@ -85,6 +85,11 @@ export function onRequestQrCode(qrCode: { token: Uint8Array; expires: number }) 
 }
 
 export function onAuthError(err: Error) {
+  if (isApiCredentialsError(err)) {
+    sendApiUpdate({ '@type': 'updateApiCredentialsInvalid' });
+    return;
+  }
+
   if (err instanceof UserAlreadyAuthorizedError) {
     sendApiUpdate({
       '@type': 'updateUserAlreadyAuthorized',

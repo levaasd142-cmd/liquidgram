@@ -6,7 +6,7 @@ import { LeftColumnContent, SettingsScreens } from '../../../types';
 import { requestMutation } from '../../../lib/fasterdom/fasterdom';
 import { IS_IOS } from '../../../util/browser/windowEnvironment';
 import { disableDebugConsole, initDebugConsole } from '../../../util/debugConsole';
-import { getCurrentTabId } from '../../../util/establishMultitabRole';
+import { getAllMultitabTokens, getCurrentTabId } from '../../../util/establishMultitabRole';
 import { loadAndChangeLanguage, setTimeFormat } from '../../../util/localization';
 import { applyPerformanceSettings } from '../../../util/perfomanceSettings';
 import switchTheme from '../../../util/switchTheme';
@@ -111,10 +111,13 @@ addCallback((global: GlobalState) => {
     updateShouldEnableDebugLog();
   }
 
-  if (sharedSettings.ghostMode !== oldSharedSettings.ghostMode) {
+  // Only the master tab owns the connection; online means at least one tab is focused
+  if (sharedSettings.ghostMode !== oldSharedSettings.ghostMode
+    && selectTabState(global, getCurrentTabId()).isMasterTab) {
     const isOffline = selectIsGhostFeatureActive(global, 'shouldStayOffline');
     if (isOffline !== selectIsGhostFeatureActive(oldGlobal, 'shouldStayOffline')) {
-      getActions().updateIsOnline({ isOnline: !isOffline && document.hasFocus() });
+      const blurredTabsCount = Object.values(global.byTabId).filter(({ isBlurred }) => isBlurred).length;
+      getActions().updateIsOnline({ isOnline: !isOffline && blurredTabsCount !== getAllMultitabTokens().length });
     }
   }
 });

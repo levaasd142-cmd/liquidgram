@@ -20,14 +20,19 @@ export function selectMessageEditHistory<T extends GlobalState>(global: T, chatI
 
 // Picks preserved messages located inside the id range of a loaded history slice
 export function selectLiquidDeletedMessagesForSlice<T extends GlobalState>(
-  global: T, chatId: string, threadId: ThreadId, sliceMessages: ApiMessage[], isLatestSlice: boolean,
+  global: T,
+  chatId: string,
+  threadId: ThreadId,
+  sliceMessages: ApiMessage[],
+  isLatestSlice: boolean,
+  isOldestSlice: boolean,
 ): ApiMessage[] {
   const byId = global.liquid?.deletedMessagesByChatId[chatId];
-  if (!byId || !sliceMessages.length) return [];
+  if (!byId) return [];
 
   const sliceIds = sliceMessages.map(({ id }) => id);
-  const minId = Math.min(...sliceIds);
-  const maxId = isLatestSlice ? Infinity : Math.max(...sliceIds);
+  const minId = isOldestSlice || !sliceIds.length ? 0 : Math.min(...sliceIds);
+  const maxId = isLatestSlice || !sliceIds.length ? Infinity : Math.max(...sliceIds);
 
   return Object.values(byId).filter((message) => (
     message.id >= minId && message.id <= maxId

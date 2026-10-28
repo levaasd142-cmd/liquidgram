@@ -46,6 +46,7 @@ import {
 } from '../helpers/localDb';
 import {
   buildApiError,
+  isApiCredentialsError,
   isResponseUpdate, log,
 } from '../helpers/misc';
 import localDb, { clearLocalDb, type InlineBotRepairInfo, type RepairInfo } from '../localDb';
@@ -165,6 +166,11 @@ export async function init(initialArgs: ApiInitialArgs, onConnected?: NoneToVoid
     } catch (err: any) {
       // eslint-disable-next-line no-console
       console.error(err);
+
+      if (isApiCredentialsError(err)) {
+        sendApiUpdate({ '@type': 'updateApiCredentialsInvalid' });
+        return;
+      }
 
       if (err.message !== 'Disconnect' && err.message !== 'Cannot send requests while disconnected') {
         sendApiUpdate({

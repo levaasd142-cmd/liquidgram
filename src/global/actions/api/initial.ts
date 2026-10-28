@@ -7,7 +7,7 @@ import {
   MEDIA_CACHE_NAME_AVATARS,
   MEDIA_PROGRESSIVE_CACHE_NAME,
 } from '../../../config';
-import { getApiCredentials } from '../../../util/apiCredentials';
+import { getApiCredentials, waitForStoredApiCredentials } from '../../../util/apiCredentials';
 import { updateAppBadge } from '../../../util/appBadge';
 import { MAIN_IDB_STORE } from '../../../util/browser/idb';
 import { toCredentialRequestOptions } from '../../../util/browser/passkeys';
@@ -46,7 +46,7 @@ import {
 } from '../../../api/gramjs';
 import { removeGlobalFromCache, removeSharedStateFromCache } from '../../cache';
 import {
-  addActionHandler, getGlobal, setGlobal,
+  addActionHandler, getActions, getGlobal, setGlobal,
 } from '../../index';
 import {
   updateManagementProgress,
@@ -80,7 +80,10 @@ addActionHandler('initApi', async (global, actions): Promise<void> => {
       setGlobal(global);
       global = getGlobal();
     }
-    if (!credentials) return;
+    if (!credentials) {
+      waitForStoredApiCredentials(() => getActions().initApi());
+      return;
+    }
     const request = getPendingWebLogin();
     const token = hasStoredSession() ? undefined : request?.token;
     // Clearing the token marks it as dispatched so `interruptWebLogin()` rejects interrupted logins and prevents replay

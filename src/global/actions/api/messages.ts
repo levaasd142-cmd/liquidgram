@@ -67,7 +67,6 @@ import { parseTranslationCacheKey } from '../../../util/keys/translationKey';
 import { getTranslationFn, type RegularLangFnParameters } from '../../../util/localization';
 import { formatStarsAsText } from '../../../util/localization/format';
 import { debounce, onTickEnd, rafPromise } from '../../../util/schedulers';
-import { rememberSelfDeletedMessages } from '../../../util/selfDeletedMessages';
 import { getServerTime } from '../../../util/serverTime';
 import { callApi, cancelApiProgress } from '../../../api/gramjs';
 import {
@@ -96,7 +95,6 @@ import { scheduleEphemeralExpiration } from '../../intervals';
 import {
   addChatMessagesById,
   clearMessageSummary,
-  deleteChatMessages,
   deleteSponsoredMessage,
   removeLiquidDeletedMessages,
   removeOutlyingList,
@@ -1310,8 +1308,9 @@ addActionHandler('deleteMessages', (global, actions, payload): ActionReturnType 
   const preservedIds = messageIds.filter((id) => selectChatMessage(global, chatId, id)?.deletedDate);
   if (preservedIds.length) {
     global = removeLiquidDeletedMessages(global, chatId, preservedIds);
-    global = deleteChatMessages(global, chatId, preservedIds);
     setGlobal(global);
+    const updateChatId = isChatChannel(chat) || isChatSuperGroup(chat) ? chatId : undefined;
+    deleteMessages(getGlobal(), updateChatId, preservedIds, actions);
     global = getGlobal();
   }
 
@@ -1329,7 +1328,6 @@ addActionHandler('deleteMessages', (global, actions, payload): ActionReturnType 
     return;
   }
 
-  rememberSelfDeletedMessages(chatId, messageIdsToDelete);
   void callApi('deleteMessages', { chat, messageIds: messageIdsToDelete, shouldDeleteForAll });
 
   const editingId = selectEditingId(global, chatId, threadId);
@@ -1746,9 +1744,10 @@ addActionHandler('markMessagesRead', async (global, actions, payload): Promise<v
 
   // Ghost mode plays voice and round video messages without reporting them as listened
   if (selectIsGhostFeatureActive(global, 'shouldHideMediaPlayback')) {
+    // Own messages are marked read only to clear reactions and mentions, which other users do not see
     const playedIds = messageIds.filter((id) => {
-      const content = selectChatMessage(global, chatId, id)?.content;
-      return Boolean(content?.voice || content?.video?.isRound);
+      const message = selectChatMessage(global, chatId, id);
+      return Boolean(message && !message.isOutgoing && (message.content.voice || message.content.video?.isRound));
     });
 
     playedIds.forEach((id) => {
@@ -2360,8 +2359,9 @@ async function loadViewportMessages<T extends GlobalState>(
     ? global.serviceNotifications.filter(({ isDeleted }) => !isDeleted).map(({ message }) => message)
     : typingDraftMessages;
   const isLatestSlice = !offsetId || (direction === LoadMoreDirection.Forwards && messages.length < sliceSize);
+  const isOldestSlice = direction === LoadMoreDirection.Backwards && messages.length < sliceSize;
   const preservedMessages = selectLiquidSettings(global).isAntiDeleteEnabled
-    ? selectLiquidDeletedMessagesForSlice(global, chatId, threadId, messages, isLatestSlice)
+    ? selectLiquidDeletedMessagesForSlice(global, chatId, threadId, messages, isLatestSlice, isOldestSlice)
     : [];
   const allMessages = ([] as ApiMessage[]).concat(messages, localMessages, preservedMessages);
   const byId = buildCollectionByKey(allMessages, 'id');

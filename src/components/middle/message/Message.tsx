@@ -1162,6 +1162,12 @@ const Message = ({
     );
   }
 
+  function renderEditHistory() {
+    if (!isEditHistoryShown || !editHistory) return undefined;
+
+    return <MessageEditHistory versions={editHistory} />;
+  }
+
   function renderMessageTextAnimation() {
     if (textMessage?.content.richMessage) {
       return undefined;
@@ -1538,12 +1544,18 @@ const Message = ({
                 {hasFactCheck && (
                   <FactCheck factCheck={factCheck} isToggleDisabled={isInSelectMode} />
                 )}
-                {isEditHistoryShown && editHistory && <MessageEditHistory versions={editHistory} />}
+                {renderEditHistory()}
                 {metaPosition === 'in-text' && renderReactionsAndMeta()}
               </div>
             )}
             {renderWebPage()}
           </>
+        )}
+
+        {!hasText && isEditHistoryShown && editHistory && (
+          <div className="text-content clearfix" dir="auto">
+            {renderEditHistory()}
+          </div>
         )}
 
         {invoice && !invoice.extendedMedia && (
@@ -1591,6 +1603,7 @@ const Message = ({
           <div className={textContentClass} dir="auto">
             {renderMessageText()}
             {isNewTextPending && renderMessageTextAnimation()}
+            {renderEditHistory()}
             {!hasContentAfterText && isMetaInText && renderReactionsAndMeta()}
           </div>
         )}

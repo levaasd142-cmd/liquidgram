@@ -23,7 +23,6 @@ import { getMessageKey, isLocalMessageId } from '../../../util/keys/messageKey';
 import { buildSearchResultKey } from '../../../util/keys/searchResultKey';
 import { notifyAboutMessage } from '../../../util/notifications';
 import { onTickEnd } from '../../../util/schedulers';
-import { consumeSelfDeletedMessage } from '../../../util/selfDeletedMessages';
 import { getServerTime } from '../../../util/serverTime';
 import { callApi } from '../../../api/gramjs';
 import {
@@ -80,7 +79,7 @@ import {
 } from '../../reducers';
 import { appendShufflePlaylist, removeTrackFromShuffle } from '../../reducers/audioPlayer';
 import { removeMessagesFromGlobalSearchResults } from '../../reducers/globalSearch';
-import { addLiquidDeletedMessages, addLiquidEditVersion } from '../../reducers/liquid';
+import { addLiquidDeletedMessages, addLiquidEditVersion, clearLiquidChat } from '../../reducers/liquid';
 import { addUnreadPollVotes } from '../../reducers/polls';
 import { addUnreadReactions, removeUnreadReactions } from '../../reducers/reactions';
 import { updateTabState } from '../../reducers/tabs';
@@ -999,9 +998,9 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
     }
 
     case 'deleteMessages': {
-      const { ids, chatId } = update;
+      const { ids, chatId, isOwnDeletion } = update;
 
-      const idsToDelete = selectLiquidSettings(global).isAntiDeleteEnabled
+      const idsToDelete = !isOwnDeletion && selectLiquidSettings(global).isAntiDeleteEnabled
         ? preserveMessagesDeletedByOthers(global, chatId, ids)
         : ids;
       if (!idsToDelete.length) break;
@@ -1049,6 +1048,10 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
 
     case 'deleteHistory': {
       const { chatId } = update;
+      // Clearing history is always requested by the user, so preserved copies go away too
+      global = clearLiquidChat(global, chatId);
+      setGlobal(global);
+
       const chatMessages = global.messages.byChatId[chatId];
       if (chatId === SERVICE_NOTIFICATIONS_USER_ID) {
         global = {
@@ -1827,7 +1830,7 @@ function preserveMessagesDeletedByOthers<T extends GlobalState>(
     // Repeated deletion updates must not remove an already preserved message
     if (message?.deletedDate) return;
 
-    if (!message || !canPreserveDeletedMessage(message) || consumeSelfDeletedMessage(message.chatId, id)) {
+    if (!message || !canPreserveDeletedMessage(message)) {
       idsToDelete.push(id);
       return;
     }
@@ -1846,8 +1849,9 @@ function preserveMessagesDeletedByOthers<T extends GlobalState>(
   return idsToDelete;
 }
 
+// Auto-deleting and self-destructing messages expire by design rather than being removed by someone
 function canPreserveDeletedMessage(message: ApiMessage) {
-  return !message.isOutgoing && !message.isTypingDraft
+  return !message.isOutgoing && !message.isTypingDraft && !message.ttlPeriod
     && !isActionMessage(message) && !isMessageLocal(message) && !hasMessageTtl(message);
 }
 

@@ -1,7 +1,7 @@
 import { memo, useState } from '../../lib/teact/teact';
 import { getActions } from '../../global';
 
-import { checkApiCredentials, storeApiCredentials } from '../../util/apiCredentials';
+import { checkApiCredentials, getAreApiCredentialsRejected, storeApiCredentials } from '../../util/apiCredentials';
 
 import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
@@ -19,7 +19,7 @@ const AuthApiCredentials = () => {
 
   const [apiId, setApiId] = useState('');
   const [apiHash, setApiHash] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(getAreApiCredentialsRejected);
 
   const handleApiIdChange = useLastCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setApiId(e.target.value.trim());

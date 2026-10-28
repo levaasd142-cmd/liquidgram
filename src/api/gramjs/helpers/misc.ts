@@ -25,6 +25,7 @@ const LOG_SUFFIX = {
   'UNEXPECTED RESPONSE': '#D1191C',
 };
 const SERIALIZE_BYTES_CHUNK_SIZE = 0x8000;
+const API_CREDENTIALS_ERRORS = new Set(['API_ID_INVALID', 'API_ID_PUBLISHED_FLOOD']);
 
 const ERROR_KEYS: Record<string, RegularLangKey> = {
   PHONE_NUMBER_INVALID: 'ErrorPhoneNumberInvalid',
@@ -124,6 +125,10 @@ export function buildApiError(error: Error): Pick<ApiError, 'message' | 'code' |
   return {
     message: error.message,
   };
+}
+
+export function isApiCredentialsError(error: unknown) {
+  return error instanceof errors.RPCError && API_CREDENTIALS_ERRORS.has(error.errorMessage);
 }
 
 export function wrapError<T extends Error>(error: T): WrappedError<T> {

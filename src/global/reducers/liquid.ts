@@ -44,6 +44,24 @@ export function removeLiquidDeletedMessages<T extends GlobalState>(global: T, ch
   };
 }
 
+export function clearLiquidChat<T extends GlobalState>(global: T, chatId: string): T {
+  const { liquid } = global;
+  if (!liquid || (!liquid.deletedMessagesByChatId[chatId] && !liquid.editHistoryByChatId[chatId])) return global;
+
+  const deletedMessagesByChatId = { ...liquid.deletedMessagesByChatId };
+  const editHistoryByChatId = { ...liquid.editHistoryByChatId };
+  delete deletedMessagesByChatId[chatId];
+  delete editHistoryByChatId[chatId];
+
+  return {
+    ...global,
+    liquid: {
+      deletedMessagesByChatId,
+      editHistoryByChatId,
+    },
+  };
+}
+
 export function addLiquidEditVersion<T extends GlobalState>(
   global: T, chatId: string, messageId: number, version: LiquidEditVersion,
 ): T {

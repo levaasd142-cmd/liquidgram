@@ -220,6 +220,7 @@ function LeftColumn({
         case SettingsScreens.Language:
         case SettingsScreens.Stickers:
         case SettingsScreens.Experimental:
+        case SettingsScreens.Liquidgram:
           openSettingsScreen({ screen: SettingsScreens.Main });
           return;
 

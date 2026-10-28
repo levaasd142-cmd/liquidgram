@@ -1462,6 +1462,7 @@ export async function deleteMessages({
     '@type': 'deleteMessages',
     ids: messageIds,
     ...(isChannel && { chatId: chat.id }),
+    isOwnDeletion: true,
   });
 }
 

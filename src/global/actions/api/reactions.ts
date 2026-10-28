@@ -56,6 +56,7 @@ import {
   selectPerformanceSettingsValue,
   selectTabState,
 } from '../../selectors';
+import { selectIsGhostFeatureActive } from '../../selectors/sharedState';
 import { selectThreadReadState } from '../../selectors/threads';
 
 const INTERACTION_RANDOM_OFFSET = 40;
@@ -168,7 +169,8 @@ addActionHandler('sendEmojiInteraction', (global, actions, payload): ActionRetur
 
   const chat = selectChat(global, chatId);
 
-  if (!chat || !emoji || selectIsChatWithSelf(global, chatId)) {
+  if (!chat || !emoji || selectIsChatWithSelf(global, chatId)
+    || selectIsGhostFeatureActive(global, 'shouldHideTyping')) {
     return;
   }
 
@@ -474,7 +476,7 @@ addActionHandler('sendWatchingEmojiInteraction', (global, actions, payload): Act
     return undefined;
   }
 
-  if (global.connectionState === 'connectionStateReady') {
+  if (global.connectionState === 'connectionStateReady' && !selectIsGhostFeatureActive(global, 'shouldHideTyping')) {
     callApi('sendWatchingEmojiInteraction', { chat, emoticon });
   }
 
