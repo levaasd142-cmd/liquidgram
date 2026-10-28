@@ -99,6 +99,13 @@ html.liquid-glass {
     background: transparent;
   }
 
+  .TabList {
+    background: var(--lg-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-backdrop);
+    backdrop-filter: var(--lg-backdrop);
+  }
+
   /* Round floating controls */
   .middle-column-footer .Button.round.secondary:not(.main-button) {
     background: var(--lg-material);
