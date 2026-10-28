@@ -144,7 +144,8 @@ html.liquid-glass {
   }
 
   /* Menus, modals and toasts */
-  .Menu .bubble {
+  .Menu:not(.with-reactions) .bubble,
+  .MessageContextMenu_items {
     border-radius: 1.25rem;
     background: var(--lg-panel-material);
     box-shadow: var(--lg-shadow);
