@@ -1824,6 +1824,9 @@ function preserveMessagesDeletedByOthers<T extends GlobalState>(
   ids.forEach((id) => {
     const messageChatId = chatId || selectCommonBoxChatId(global, id);
     const message = messageChatId ? selectChatMessage(global, messageChatId, id) : undefined;
+    // Repeated deletion updates must not remove an already preserved message
+    if (message?.deletedDate) return;
+
     if (!message || !canPreserveDeletedMessage(message) || consumeSelfDeletedMessage(message.chatId, id)) {
       idsToDelete.push(id);
       return;
@@ -1844,7 +1847,7 @@ function preserveMessagesDeletedByOthers<T extends GlobalState>(
 }
 
 function canPreserveDeletedMessage(message: ApiMessage) {
-  return !message.isOutgoing && !message.deletedDate && !message.isTypingDraft
+  return !message.isOutgoing && !message.isTypingDraft
     && !isActionMessage(message) && !isMessageLocal(message) && !hasMessageTtl(message);
 }
 
