@@ -26,7 +26,7 @@ import starIconPath from '../../assets/icons/star/star.webp';
 import lockPreviewPath from '../../assets/lock.png';
 import monkeyPath from '../../assets/monkey.svg';
 import spoilerMaskPath from '../../assets/spoilers/mask.svg';
-import telegramLogoPath from '../../assets/telegram-logo.svg';
+import liquidgramLogoPath from '../../assets/liquidgram-logo.svg';
 import pausePreviewPath from '../../assets/tgs-previews/Pause.svg';
 import playPreviewPath from '../../assets/tgs-previews/Play.svg';
 
@@ -100,7 +100,7 @@ const preloadTasks = {
   ]),
   authPhoneNumber: () => Promise.all([
     preloadFonts(),
-    preloadImage(telegramLogoPath),
+    preloadImage(liquidgramLogoPath),
   ]),
   authCode: () => preloadImage(monkeyPath),
   authPassword: () => preloadImage(monkeyPath),

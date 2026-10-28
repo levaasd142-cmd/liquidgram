@@ -1,0 +1,247 @@
+/* Liquid Glass material inspired by iOS 26. Enabled with `html.liquid-glass`; `--lg-intensity` (0–1) comes from settings. */
+/* The file avoids Sass-only syntax so the same rules work as native nested CSS. */
+
+html.liquid-glass {
+  --lg-intensity: 0.6;
+  --lg-fill: calc(80% - 52% * var(--lg-intensity));
+  --lg-panel-fill: calc(90% - 42% * var(--lg-intensity));
+  --lg-blur: calc(3px + 9px * var(--lg-intensity));
+  --lg-panel-blur: calc(14px + 22px * var(--lg-intensity));
+  --lg-saturate: calc(130% + 70% * var(--lg-intensity));
+  --lg-rim-top: rgba(255, 255, 255, 0.95);
+  --lg-rim-side: rgba(255, 255, 255, 0.5);
+  --lg-rim-bottom: rgba(255, 255, 255, 0.35);
+  --lg-edge: rgba(255, 255, 255, 0.4);
+  --lg-glow: rgba(255, 255, 255, 0.35);
+  --lg-drop: 0 0.625rem 1.875rem -0.625rem rgba(24, 30, 60, 0.28), 0 0.125rem 0.375rem -0.0625rem rgba(24, 30, 60, 0.12);
+  --lg-sheen: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(255, 255, 255, 0.1) 42%,
+    rgba(255, 255, 255, 0) 58%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  --lg-tint: color-mix(in srgb, var(--color-background) var(--lg-fill), transparent);
+  --lg-panel-tint: color-mix(in srgb, var(--color-background) var(--lg-panel-fill), transparent);
+  --lg-material: var(--lg-sheen), linear-gradient(var(--lg-tint), var(--lg-tint));
+  --lg-panel-material: var(--lg-sheen), linear-gradient(var(--lg-panel-tint), var(--lg-panel-tint));
+  --lg-backdrop: blur(var(--lg-blur)) saturate(var(--lg-saturate));
+  --lg-panel-backdrop: blur(var(--lg-panel-blur)) saturate(var(--lg-saturate));
+  --lg-shadow:
+    inset 0 1px 0.5px var(--lg-rim-top),
+    inset 0 -1px 0.5px var(--lg-rim-bottom),
+    inset 1px 0 0.5px var(--lg-rim-side),
+    inset -1px 0 0.5px var(--lg-rim-side),
+    inset 0 0 0 0.5px var(--lg-edge),
+    inset 0 0 1.125rem var(--lg-glow),
+    var(--lg-drop);
+  --lg-accent-material:
+    radial-gradient(120% 90% at 30% 15%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(160deg, color-mix(in srgb, var(--color-primary) 78%, white), var(--color-primary));
+
+  /* Panels */
+  #LeftColumn,
+  #RightColumn {
+    background: var(--lg-panel-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-panel-backdrop);
+    backdrop-filter: var(--lg-panel-backdrop);
+  }
+
+  #LeftColumn-main,
+  #LeftColumn .left-header,
+  #LeftColumn .chat-list,
+  #LeftColumn .ChatListPanes,
+  #RightColumn .RightHeader,
+  #RightColumn > .Transition {
+    background: transparent;
+  }
+
+  #LeftColumn .SearchInput {
+    background: color-mix(in srgb, var(--color-background) 32%, transparent);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+      0 0 0 0.5px rgba(255, 255, 255, 0.5);
+  }
+
+  #LeftColumn .ListItem.Chat .ListItem-button {
+    border-radius: 1.25rem;
+    background: transparent;
+  }
+
+  #LeftColumn .ListItem.Chat:not(.selected) .ListItem-button:hover {
+    background: color-mix(in srgb, var(--color-background) 45%, transparent);
+  }
+
+  #LeftColumn .ListItem.Chat.selected .ListItem-button {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 55%),
+      var(--color-chat-active);
+    box-shadow:
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0.5px rgba(255, 255, 255, 0.2),
+      0 0.5rem 1.25rem -0.5rem color-mix(in srgb, var(--color-primary) 70%, transparent);
+  }
+
+  /* Floating header, panes and composer */
+  .MiddleHeader,
+  .MiddleHeaderPanesIsland,
+  .Composer.is-chat-composer,
+  .MessageSelectToolbar-inner {
+    background: var(--lg-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-backdrop);
+    backdrop-filter: var(--lg-backdrop);
+  }
+
+  .MiddleHeader .header-tools {
+    background: transparent;
+  }
+
+  /* Round floating controls */
+  .middle-column-footer .Button.round.secondary:not(.main-button) {
+    background: var(--lg-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-backdrop);
+    backdrop-filter: var(--lg-backdrop);
+  }
+
+  .Composer .Button.main-button,
+  #LeftColumn .NewChatButton .Button {
+    background: var(--lg-accent-material);
+    box-shadow:
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.75),
+      inset 0 -1px 0.5px rgba(255, 255, 255, 0.25),
+      0 0.5rem 1.25rem -0.375rem color-mix(in srgb, var(--color-primary) 75%, transparent);
+  }
+
+  /* Service chips */
+  .sticky-date > span,
+  .ActionMessage .action-message-content {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-background) 38%, transparent);
+    box-shadow:
+      inset 0 1px 0.5px var(--lg-rim-top),
+      inset 0 -1px 0.5px var(--lg-rim-bottom),
+      0 0.25rem 0.75rem -0.25rem rgba(24, 30, 60, 0.25);
+    -webkit-backdrop-filter: blur(0.75rem) saturate(180%);
+    backdrop-filter: blur(0.75rem) saturate(180%);
+  }
+
+  /* Bubbles stay solid for legibility and only get a soft rim */
+  .Message .message-content.has-solid-background {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      0 1px 0.125rem rgba(16, 24, 40, 0.12);
+  }
+
+  /* Menus, modals and toasts */
+  .Menu .bubble {
+    border-radius: 1.25rem;
+    background: var(--lg-panel-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-panel-backdrop);
+    backdrop-filter: var(--lg-panel-backdrop);
+  }
+
+  .Modal .modal-dialog {
+    background: var(--lg-panel-material);
+    box-shadow: var(--lg-shadow);
+    -webkit-backdrop-filter: var(--lg-panel-backdrop);
+    backdrop-filter: var(--lg-panel-backdrop);
+  }
+
+  .Notification {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%),
+      rgba(20, 22, 30, 0.62);
+    box-shadow:
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.35),
+      0 0.75rem 2rem -0.75rem rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(1.25rem) saturate(180%);
+    backdrop-filter: blur(1.25rem) saturate(180%);
+  }
+}
+
+/* Lavender outgoing bubbles match the default glass wallpaper. Theme colors are inline styles, hence `!important` */
+/* stylelint-disable declaration-no-important */
+html.liquid-glass:not(.theme-dark) {
+  --color-background-own: #e6e1ff !important;
+  --color-background-own-selected: #d4ccff !important;
+  --color-background-own-apple: #e6e1ff !important;
+  --color-message-meta-own: #6a5bd6 !important;
+  --color-accent-own: #6a5bd6 !important;
+  --color-accent-own-rgb: 106, 91, 214 !important;
+  --color-code-own: #5a4bc4 !important;
+  --color-reply-own-hover: #dbd4ff !important;
+  --color-reply-own-active: #cfc6ff !important;
+  --color-reply-own-hover-apple: #dbd4ff !important;
+  --color-reply-own-active-apple: #cfc6ff !important;
+  --color-message-reaction-own: #d6ceff !important;
+  --color-message-reaction-hover-own: #c9bfff !important;
+  --color-voice-transcribe-button-own: #d6ceff !important;
+}
+
+/* stylelint-enable declaration-no-important */
+
+html.liquid-glass.theme-dark {
+  --lg-rim-top: rgba(255, 255, 255, 0.32);
+  --lg-rim-side: rgba(255, 255, 255, 0.14);
+  --lg-rim-bottom: rgba(255, 255, 255, 0.08);
+  --lg-edge: rgba(255, 255, 255, 0.12);
+  --lg-glow: rgba(255, 255, 255, 0.06);
+  --lg-drop: 0 0.75rem 2rem -0.625rem rgba(0, 0, 0, 0.55), 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
+  --lg-sheen: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+
+  .Message .message-content.has-solid-background {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 1px 0.125rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Lens refraction along the rims (Chromium) */
+html.liquid-glass.liquid-refraction {
+  .MiddleHeader,
+  .Composer.is-chat-composer {
+    backdrop-filter: url("#lg-refract-pill") var(--lg-backdrop);
+  }
+
+  .middle-column-footer .Button.round.secondary:not(.main-button) {
+    backdrop-filter: url("#lg-refract-round") var(--lg-backdrop);
+  }
+
+  #LeftColumn,
+  #RightColumn {
+    backdrop-filter: url("#lg-refract-panel") var(--lg-panel-backdrop);
+  }
+}
+
+/* Streamer mode hides personal data until hovered */
+html.liquid-streamer {
+  #LeftColumn .ListItem.Chat .Avatar,
+  #LeftColumn .ListItem.Chat .fullName,
+  #LeftColumn .ListItem.Chat .last-message,
+  .MiddleHeader .ChatInfo,
+  .Message .message-content,
+  .Message .Avatar {
+    filter: blur(0.375rem);
+    transition: filter 0.2s ease;
+  }
+
+  #LeftColumn .ListItem.Chat:hover .Avatar,
+  #LeftColumn .ListItem.Chat:hover .fullName,
+  #LeftColumn .ListItem.Chat:hover .last-message,
+  .MiddleHeader .ChatInfo:hover,
+  .Message:hover .message-content,
+  .Message:hover .Avatar {
+    filter: none;
+  }
+}

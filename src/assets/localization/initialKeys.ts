@@ -37,6 +37,12 @@ const INITIAL_KEYS: LangKey[] = [
   'ErrorFloodTime',
   'ErrorUnexpected',
   'ErrorUnexpectedMessage',
+  'LiquidApiDescription',
+  'LiquidApiId',
+  'LiquidApiHash',
+  'LiquidApiContinue',
+  'LiquidApiInvalid',
+  'LiquidApiGetKeys',
 ];
 
 export default INITIAL_KEYS;

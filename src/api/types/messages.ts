@@ -843,6 +843,7 @@ export interface ApiMessage {
   summaryLanguageCode?: string;
   fromRank?: string;
 
+  deletedDate?: number; // Local field
   isTypingDraft?: boolean; // Local field
   typingDraft?: {
     canStop?: true;

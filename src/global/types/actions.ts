@@ -132,7 +132,7 @@ import type { ClipboardTextFormat, MessageCopyRequest } from '../../types/messag
 import type { WebApp, WebAppOutboundEvent } from '../../types/webapp';
 import type { RegularLangFnParameters } from '../../util/localization';
 import type { DownloadableMedia } from '../helpers';
-import type { SharedState } from './sharedState';
+import type { GhostModeSettings, LiquidSettings, SharedState } from './sharedState';
 import type { AiEditorContent, ReactionDeletionContext, TabState } from './tabState';
 
 export type WithTabId = { tabId?: number };
@@ -221,6 +221,9 @@ export interface ActionPayloads {
   // settings
   setSettingOption: Partial<AccountSettings> | undefined;
   setSharedSettingOption: Partial<SharedState['settings']> | undefined;
+  setLiquidSettingOption: Partial<LiquidSettings>;
+  setGhostModeOption: Partial<GhostModeSettings>;
+  markAllChatsRead: undefined;
   updatePerformanceSettings: Partial<PerformanceType>;
   loadPasswordInfo: undefined;
   clearTwoFaError: undefined;

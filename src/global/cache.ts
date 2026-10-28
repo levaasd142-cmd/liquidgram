@@ -571,6 +571,7 @@ function reduceGlobal<T extends GlobalState>(global: T) {
     chatFolders: reduceChatFolders(global),
     groupCalls: reduceGroupCalls(global),
     wallet: reduceWallet(global),
+    liquid: reduceLiquid(global),
     reactions: {
       ...pick(global.reactions, [
         'defaultTags',
@@ -920,6 +921,24 @@ function reduceMessages<T extends GlobalState>(global: T): GlobalState['messages
     webPageById: pickTruthy(global.messages.webPageById, webPageIdsToSave),
     sponsoredByChatId: {},
     playbackByChatId: {},
+  };
+}
+
+function reduceLiquid<T extends GlobalState>(global: T): GlobalState['liquid'] {
+  if (!global.liquid) return undefined;
+
+  const deletedMessagesByChatId = Object.entries(global.liquid.deletedMessagesByChatId)
+    .reduce((acc, [chatId, byId]) => {
+      acc[chatId] = Object.values(byId).reduce((chatAcc, message) => {
+        chatAcc[message.id] = omitLocalMedia(message);
+        return chatAcc;
+      }, {} as Record<number, ApiMessage>);
+      return acc;
+    }, {} as Record<string, Record<number, ApiMessage>>);
+
+  return {
+    ...global.liquid,
+    deletedMessagesByChatId,
   };
 }
 

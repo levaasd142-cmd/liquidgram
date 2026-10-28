@@ -40,5 +40,11 @@ export default {
   "ErrorPhoneBanned": "This phone number is banned",
   "ErrorFloodTime": "Too many attempts, please try again in {time}",
   "ErrorUnexpected": "Unexpected error",
-  "ErrorUnexpectedMessage": "Unexpected error: {error}"
+  "ErrorUnexpectedMessage": "Unexpected error: {error}",
+  "LiquidApiDescription": "Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org → API development tools.",
+  "LiquidApiId": "API ID",
+  "LiquidApiHash": "API hash",
+  "LiquidApiContinue": "Continue",
+  "LiquidApiInvalid": "Check your API ID and API hash",
+  "LiquidApiGetKeys": "Get keys at my.telegram.org"
 } as Record<LangKey, LangPackStringValue>;

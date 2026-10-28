@@ -9,7 +9,7 @@ import type { AnimationLevel } from '../../../types';
 import { ALL_FOLDER_ID } from '../../../config';
 import { selectTabState } from '../../../global/selectors';
 import { selectCurrentLimit } from '../../../global/selectors/limits';
-import { selectSharedSettings } from '../../../global/selectors/sharedState';
+import { selectLiquidSettings, selectSharedSettings } from '../../../global/selectors/sharedState';
 import { IS_TOUCH_ENV } from '../../../util/browser/windowEnvironment';
 import buildClassName from '../../../util/buildClassName';
 import captureEscKeyListener from '../../../util/captureEscKeyListener';
@@ -331,7 +331,7 @@ export default memo(withGlobal<OwnProps>(
       maxFolderInvites: selectCurrentLimit(global, 'chatlistInvites'),
       maxChatLists: selectCurrentLimit(global, 'chatlistJoined'),
       archiveSettings,
-      isStoryRibbonShown,
+      isStoryRibbonShown: isStoryRibbonShown && !selectLiquidSettings(global).shouldHideStories,
     };
   },
 )(ChatFolders));

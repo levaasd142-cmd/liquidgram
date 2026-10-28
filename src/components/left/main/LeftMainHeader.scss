@@ -131,6 +131,23 @@
     margin-left: 0.5rem;
   }
 
+  .ghost-mode-button {
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+
+    &.active {
+      color: var(--color-white);
+      background: linear-gradient(160deg, #8b7dff, #5b4bd8);
+      box-shadow:
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.6),
+        0 0.25rem 0.75rem -0.125rem rgba(91, 75, 216, 0.55);
+
+      &:hover {
+        background: linear-gradient(160deg, #9a8dff, #6656e0);
+      }
+    }
+  }
+
   .StatusButton {
     .emoji-status-effect {
       top: 50%;

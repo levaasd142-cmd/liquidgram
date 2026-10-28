@@ -12,6 +12,7 @@ import useCurrentOrPrev from '../../hooks/useCurrentOrPrev';
 import useHistoryBack from '../../hooks/useHistoryBack';
 
 import Transition from '../ui/Transition';
+import AuthApiCredentials from './AuthApiCredentials';
 import AuthCode from './AuthCode.async';
 import AuthPassword from './AuthPassword.async';
 import AuthPhoneNumber from './AuthPhoneNumber';
@@ -20,12 +21,16 @@ import AuthRegister from './AuthRegister.async';
 
 import './Auth.scss';
 
+const API_CREDENTIALS_SCREEN_KEY = 5;
+
 type StateProps = {
   authState: GlobalState['auth']['state'];
+  isApiCredentialsRequired?: boolean;
 };
 
 const Auth = ({
   authState,
+  isApiCredentialsRequired,
 }: StateProps) => {
   const {
     returnToAuthPhoneNumber, goToAuthQrCode,
@@ -54,6 +59,10 @@ const Auth = ({
   );
 
   function getScreen() {
+    if (isApiCredentialsRequired) {
+      return <AuthApiCredentials />;
+    }
+
     switch (renderingAuthState) {
       case 'authorizationStateWaitCode':
         return <AuthCode />;
@@ -71,6 +80,10 @@ const Auth = ({
   }
 
   function getActiveKey() {
+    if (isApiCredentialsRequired) {
+      return API_CREDENTIALS_SCREEN_KEY;
+    }
+
     switch (renderingAuthState) {
       case 'authorizationStateWaitCode':
         return 0;
@@ -103,6 +116,7 @@ export default memo(withGlobal(
   (global): Complete<StateProps> => {
     return {
       authState: global.auth.state,
+      isApiCredentialsRequired: global.auth.isApiCredentialsRequired,
     };
   },
 )(Auth));

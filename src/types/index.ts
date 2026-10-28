@@ -311,6 +311,7 @@ export enum SettingsScreens {
   DoNotTranslate,
   FoldersShare,
   Passkeys,
+  Liquidgram,
 }
 
 export type StickerSetOrReactionsSetOrRecent = Pick<ApiStickerSet, (
@@ -763,6 +764,11 @@ export interface ServiceNotification {
   message: ApiMessage;
   isUnread?: boolean;
   isDeleted?: boolean;
+}
+
+export interface LiquidEditVersion {
+  date: number;
+  text?: ApiFormattedText;
 }
 
 export interface TopicsInfo {

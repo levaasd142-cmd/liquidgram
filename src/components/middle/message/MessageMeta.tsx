@@ -38,11 +38,13 @@ type OwnProps = {
   withFullDate?: boolean;
   isMessagePrimaryEditedDateEnabled: boolean;
   effectEmoji?: string;
+  withSeconds?: boolean;
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   onTranslationClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   onEffectClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   renderQuickReactionButton?: () => TeactNode | undefined;
   onOpenThread: NoneToVoidFunction;
+  onEditHistoryClick?: NoneToVoidFunction;
   paidMessageStars?: number;
 };
 
@@ -62,8 +64,10 @@ const MessageMeta = ({
   onTranslationClick,
   onEffectClick,
   onOpenThread,
+  onEditHistoryClick,
   paidMessageStars,
   isMessagePrimaryEditedDateEnabled,
+  withSeconds,
 }: OwnProps) => {
   const { showNotification } = getActions();
 
@@ -84,6 +88,11 @@ const MessageMeta = ({
   function handleOpenThread(e: React.MouseEvent) {
     e.stopPropagation();
     onOpenThread();
+  }
+
+  function handleEditHistoryClick(e: React.MouseEvent) {
+    e.stopPropagation();
+    onEditHistoryClick!();
   }
 
   const repeatPeriodText = useMemo(() => {
@@ -143,7 +152,7 @@ const MessageMeta = ({
       return formatEditedDate(lang, message.date, message.editDate!, withFullDate, message.isVideoProcessingPending);
     }
 
-    const time = formatDateTime(lang, secondsToDate(message.date), { time: 'short' });
+    const time = formatDateTime(lang, secondsToDate(message.date), { time: withSeconds ? 'long' : 'short' });
     const baseDate = !withFullDate
       ? time
       : formatCompactTimestamp(lang, secondsToDate(message.forwardInfo?.date || message.date), { withTime: true });
@@ -155,8 +164,13 @@ const MessageMeta = ({
     return baseDate;
   }, [
     lang, message.date, message.editDate, message.forwardInfo?.date, message.isVideoProcessingPending,
-    repeatPeriodText, shouldShowPrimaryEditedDate, withFullDate,
+    repeatPeriodText, shouldShowPrimaryEditedDate, withFullDate, withSeconds,
   ]);
+
+  const deletedTitle = useMemo(() => {
+    if (!message.deletedDate) return undefined;
+    return formatDateTime(lang, secondsToDate(message.deletedDate), { date: 'short', time: 'long' });
+  }, [lang, message.deletedDate]);
 
   const fullClassName = buildClassName(
     'MessageMeta',
@@ -198,6 +212,12 @@ const MessageMeta = ({
       {isPinned && (
         <Icon name="pin-filled" className="message-pinned" />
       )}
+      {Boolean(message.deletedDate) && (
+        <span className="message-deleted" title={deletedTitle}>
+          <Icon name="delete" />
+          {lang('LiquidMessageDeleted')}
+        </span>
+      )}
       {signature && (
         <span className="message-signature">{renderText(signature)}</span>
       )}
@@ -220,7 +240,11 @@ const MessageMeta = ({
             <span className="message-imported" onClick={handleImportedClick}>{lang('MessageMetaImported')}</span>
           </>
         )}
-        {message.isEdited && !shouldShowPrimaryEditedDate && `${lang('MessageMetaEdited')} `}
+        {message.isEdited && !shouldShowPrimaryEditedDate && (onEditHistoryClick ? (
+          <span className="message-edit-history" onClick={handleEditHistoryClick}>
+            {lang('MessageMetaEdited')}
+          </span>
+        ) : `${lang('MessageMetaEdited')} `)}
         {message.isVideoProcessingPending && !shouldShowPrimaryEditedDate && `${lang('MessageMetaApproximate')} `}
         {date}
       </span>

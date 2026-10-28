@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect } from '../lib/teact/teact';
 import { withGlobal } from '../global';
 
-import type { GlobalState } from '../global/types';
+import type { GlobalState, LiquidSettings } from '../global/types';
 import type { ThemeKey } from '../types';
 import type { UiLoaderPage } from './common/UiLoader';
 
@@ -12,10 +12,12 @@ import { forceMutation } from '../lib/fasterdom/stricterdom.ts';
 import {
   selectActionMessageBg, selectTabState, selectTheme, selectThemeValues,
 } from '../global/selectors';
+import { selectLiquidSettings } from '../global/selectors/sharedState';
 import { IS_TAURI } from '../util/browser/globalEnvironment';
 import { IS_INSTALL_PROMPT_SUPPORTED, PLATFORM_ENV } from '../util/browser/windowEnvironment';
 import buildClassName from '../util/buildClassName';
 import { setupBeforeInstallPrompt } from '../util/installPrompt';
+import { applyLiquidSettings } from '../util/liquidGlass';
 import { ACCOUNT_SLOT, getAccountSlotUrl, getFirstLoggedInAccountSlot } from '../util/multiaccount';
 import { hasLegacyEncryptedSession } from '../util/passcode';
 import { getInitialLocationHash, getPendingWebLogin } from '../util/routing';
@@ -55,6 +57,7 @@ type StateProps = {
   theme: ThemeKey;
   customBackgroundColor?: string;
   actionMessageBg?: string;
+  liquidSettings: LiquidSettings;
 };
 
 enum AppScreens {
@@ -77,6 +80,7 @@ const App = ({
   theme,
   customBackgroundColor,
   actionMessageBg,
+  liquidSettings,
 }: StateProps) => {
   const lang = useLang();
 
@@ -241,6 +245,10 @@ const App = ({
   }, [theme, customBackgroundColor]);
 
   useLayoutEffect(() => {
+    applyLiquidSettings(liquidSettings);
+  }, [liquidSettings]);
+
+  useLayoutEffect(() => {
     // Fall back to the theme default when the tint is unset (e.g. a photo wallpaper without a
     // thumbnail), so service chips don't keep the previous wallpaper's tint.
     document.body.style.setProperty(
@@ -293,6 +301,7 @@ export default withGlobal(
       customBackgroundColor: getWallpaperBaseColor(theme, themeValues || {}),
       isTestServer: global.config?.isTestServer,
       actionMessageBg: selectActionMessageBg(global),
+      liquidSettings: selectLiquidSettings(global),
     };
   },
 )(App);

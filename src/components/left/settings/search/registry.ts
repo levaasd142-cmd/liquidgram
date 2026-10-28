@@ -52,6 +52,14 @@ const PRIVACY_VISIBILITY_SCREENS = [
 
 export const SETTINGS_SEARCH_SECTIONS: SettingsSearchSection[] = [
   {
+    screen: SettingsScreens.Liquidgram,
+    parent: SettingsScreens.Main,
+    titleKey: 'LiquidSettingsTitle',
+    keywordsKey: 'LiquidSettingsKeywords',
+    icon: 'eye-crossed',
+    iconBg: 'purple',
+  },
+  {
     screen: SettingsScreens.EditProfile,
     parent: SettingsScreens.Main,
     titleKey: 'SettingsInformation',
@@ -342,6 +350,13 @@ export const SETTINGS_SEARCH_ENTRIES: SettingsSearchEntry[] = [
     'SettingsPerformanceAutoplayVideo',
   ]),
   ...buildEntries(SettingsScreens.Performance, ['SettingsPerformanceThanos'], { requires: 'isSnapEffectSupported' }),
+
+  ...buildEntries(SettingsScreens.Liquidgram, [
+    'LiquidGlass', 'LiquidRefraction', 'LiquidGlassIntensity', 'LiquidGhostMode', 'LiquidGhostReadReceipts',
+    'LiquidGhostTyping', 'LiquidGhostOffline', 'LiquidGhostStories', 'LiquidGhostMedia', 'LiquidGhostReadOnSend',
+    'LiquidAntiDelete', 'LiquidEditHistory', 'LiquidShowSeconds', 'LiquidStreamerMode', 'LiquidShowIds',
+    'LiquidHideStories', 'LiquidMarkAllRead',
+  ]),
 
   ...buildEntries(SettingsScreens.Stickers, ['SuggestStickers', 'InstalledStickersDynamicPackOrder']),
   ...buildEntries(SettingsScreens.Stickers, ['ChooseStickerMyStickerSets'], { requires: 'areStickerSetsLoaded' }),

@@ -20,7 +20,9 @@ import {
 import { replaceSettings, updateSharedSettings, updateThemeSettings } from '../../reducers';
 import { updateTabState } from '../../reducers/tabs';
 import { selectCanAnimateInterface, selectChatFolder, selectTabState } from '../../selectors';
-import { selectSharedSettings } from '../../selectors/sharedState';
+import {
+  selectGhostModeSettings, selectIsGhostFeatureActive, selectLiquidSettings, selectSharedSettings,
+} from '../../selectors/sharedState';
 
 const MAX_RECENTLY_FOUND_SETTINGS = 5;
 
@@ -108,6 +110,13 @@ addCallback((global: GlobalState) => {
   if (sharedSettings.shouldCollectDebugLogs !== oldSharedSettings.shouldCollectDebugLogs) {
     updateShouldEnableDebugLog();
   }
+
+  if (sharedSettings.ghostMode !== oldSharedSettings.ghostMode) {
+    const isOffline = selectIsGhostFeatureActive(global, 'shouldStayOffline');
+    if (isOffline !== selectIsGhostFeatureActive(oldGlobal, 'shouldStayOffline')) {
+      getActions().updateIsOnline({ isOnline: !isOffline && document.hasFocus() });
+    }
+  }
 });
 
 addActionHandler('updateShouldEnableDebugLog', (global): ActionReturnType => {
@@ -133,6 +142,24 @@ addActionHandler('setSettingOption', (global, actions, payload): ActionReturnTyp
 
 addActionHandler('setSharedSettingOption', (global, actions, payload): ActionReturnType => {
   return updateSharedSettings(global, payload);
+});
+
+addActionHandler('setLiquidSettingOption', (global, actions, payload): ActionReturnType => {
+  return updateSharedSettings(global, {
+    liquid: {
+      ...selectLiquidSettings(global),
+      ...payload,
+    },
+  });
+});
+
+addActionHandler('setGhostModeOption', (global, actions, payload): ActionReturnType => {
+  return updateSharedSettings(global, {
+    ghostMode: {
+      ...selectGhostModeSettings(global),
+      ...payload,
+    },
+  });
 });
 
 addActionHandler('updatePerformanceSettings', (global, actions, payload): ActionReturnType => {

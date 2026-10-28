@@ -8,7 +8,7 @@ import { buildColorFromHex, buildDenseTint, getPatternColor } from './colors';
 import int2hex from './int2hex';
 
 const DEFAULT_PATTERN_INTENSITY = 50;
-const DEFAULT_LIGHT_ACTION_MESSAGE_BG = '#4A8E3A8C';
+const DEFAULT_LIGHT_ACTION_MESSAGE_BG = '#6A5BD68C';
 const DEFAULT_DARK_ACTION_MESSAGE_BG = '#48576166';
 const ACTION_MESSAGE_BG_ALPHA = 0.85;
 // The user slider scales the wallpaper's own intensity: 100 keeps it as is, 0 hides the pattern
@@ -61,9 +61,10 @@ export const DEFAULT_DARK_WALLPAPER: DefaultWallpaper = {
   intensity: -DEFAULT_PATTERN_INTENSITY,
 };
 
+// Pastel gradient that lets the Liquid Glass surfaces pick up color
 export const DEFAULT_LIGHT_WALLPAPER: DefaultWallpaper = {
-  colors: ['#bdcd8c', '#8eba89', '#83b28f', '#c5d3b0'],
-  patternColor: getWallpaperPatternColor('#bdcd8c'),
+  colors: ['#8fc3ff', '#c3a6ff', '#ffa8d2', '#ffd9a8'],
+  patternColor: getWallpaperPatternColor('#8fc3ff'),
   intensity: DEFAULT_PATTERN_INTENSITY,
 };
 

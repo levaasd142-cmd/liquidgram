@@ -34,8 +34,10 @@
   }
 
   #logo {
-    background: url("../../assets/telegram-logo.svg") center no-repeat;
+    border-radius: 1.75rem;
+    background: url("../../assets/liquidgram-logo.svg") center no-repeat;
     background-size: 100%;
+    box-shadow: 0 1rem 2.5rem -1rem rgba(91, 75, 216, 0.6);
   }
 
   h1 {
@@ -77,6 +79,7 @@
   }
 }
 
+#auth-api-credentials-form,
 #auth-registration-form,
 #auth-phone-number-form,
 #auth-code-form,
@@ -176,9 +179,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    border-radius: 50%;
-
-    background-color: var(--color-telegram-blue);
+    border-radius: 0.875rem;
+    box-shadow: 0 0 0 0.25rem white;
   }
 
   .qr-container {

@@ -38,6 +38,7 @@ import { mapValues, omit, unique } from '../iteratees';
 import { replaceInStringsWithTeact } from '../replaceWithTeact';
 import { fastRaf } from '../schedulers';
 import { resetDateFormatCache } from './dateFormat';
+import { LIQUID_STRINGS } from './liquidStrings';
 
 import Deferred from '../Deferred';
 import LimitedMap from '../primitives/LimitedMap';
@@ -488,6 +489,7 @@ function getString(langKey: LangKey, count: number) {
   if (langPackStringValue && isDeletedLangString(langPackStringValue)) langPackStringValue = undefined;
   langPackStringValue ??= !shouldForceFallback ? baseLangPack?.strings[langKey] : undefined;
   if (langPackStringValue && isDeletedLangString(langPackStringValue)) langPackStringValue = undefined;
+  langPackStringValue ??= language ? LIQUID_STRINGS[language.langCode]?.[langKey] : undefined;
   const shouldUseFallback = langPackStringValue === undefined;
 
   if (shouldUseFallback && !fallbackLangPack) {

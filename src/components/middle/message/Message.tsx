@@ -36,6 +36,7 @@ import type {
   FocusDirection,
   IAlbum,
   IDocumentGroup,
+  LiquidEditVersion,
   MessageListType,
   ScrollTargetPosition,
   TextSummary,
@@ -129,7 +130,8 @@ import {
   selectMessageLastPlaybackTimestamp,
   selectMessageTimestampableDuration,
 } from '../../../global/selectors/media';
-import { selectSharedSettings } from '../../../global/selectors/sharedState';
+import { selectMessageEditHistory } from '../../../global/selectors/liquid';
+import { selectLiquidSettings, selectSharedSettings } from '../../../global/selectors/sharedState';
 import { selectThreadInfo, selectThreadReadState } from '../../../global/selectors/threads';
 import { IS_TAURI } from '../../../util/browser/globalEnvironment';
 import { IS_ANDROID, IS_TRANSLATION_SUPPORTED } from '../../../util/browser/windowEnvironment';
@@ -203,6 +205,7 @@ import Invoice from './Invoice';
 import InvoiceMediaPreview from './InvoiceMediaPreview';
 import Location from './Location';
 import MessageAppendix from './MessageAppendix';
+import MessageEditHistory from './MessageEditHistory';
 import MessageEffect from './MessageEffect';
 import MessageMeta from './MessageMeta';
 import MessagePhoneCall from './MessagePhoneCall';
@@ -302,6 +305,8 @@ type StateProps = {
   isPinnedList?: boolean;
   isPinned?: boolean;
   isMessagePrimaryEditedDateEnabled: boolean;
+  editHistory?: LiquidEditVersion[];
+  shouldShowSeconds?: boolean;
   canAutoLoadMedia?: boolean;
   canAutoPlayMedia?: boolean;
   hasLinkedChat?: boolean;
@@ -440,6 +445,8 @@ const Message = ({
   isPinnedList,
   isPinned,
   isMessagePrimaryEditedDateEnabled,
+  editHistory,
+  shouldShowSeconds,
   isDownloading,
   canAutoLoadMedia,
   canAutoPlayMedia,
@@ -524,6 +531,7 @@ const Message = ({
   const [shouldPlayEffect, requestEffect, hideEffect] = useFlag();
   const [shouldPlayDiceEffect, requestDiceEffect, hideDiceEffect] = useFlag();
   const [isDeclineDialogOpen, openDeclineDialog, closeDeclineDialog] = useFlag();
+  const [isEditHistoryShown, setIsEditHistoryShown] = useState(false);
   const [isShowingSummary, showSummary, hideSummary] = useFlag();
   const [declineReason, setDeclineReason] = useState('');
   const { isMobile, isTouchScreen } = useAppLayout();
@@ -844,6 +852,7 @@ const Message = ({
     (hasActiveReactions || shouldPlayEffect) && 'has-active-effect',
     isStoryMention && 'is-story-mention',
     guestChatViaId && 'has-guest-avatar',
+    Boolean(message.deletedDate) && 'is-preserved-deleted',
   );
 
   const text = textMessage && getMessageContent(textMessage).text;
@@ -1167,6 +1176,10 @@ const Message = ({
     );
   }
 
+  const toggleEditHistory = useLastCallback(() => {
+    setIsEditHistoryShown((isShown) => !isShown);
+  });
+
   const renderQuickReactionButton = useCallback(() => {
     if (!defaultReaction) return undefined;
 
@@ -1215,6 +1228,8 @@ const Message = ({
         onEffectClick={handleEffectClick}
         onTranslationClick={handleTranslationClick}
         onOpenThread={handleOpenThread}
+        onEditHistoryClick={editHistory ? toggleEditHistory : undefined}
+        withSeconds={shouldShowSeconds}
         paidMessageStars={paidMessageStarsInMeta}
       />
     );
@@ -1523,6 +1538,7 @@ const Message = ({
                 {hasFactCheck && (
                   <FactCheck factCheck={factCheck} isToggleDisabled={isInSelectMode} />
                 )}
+                {isEditHistoryShown && editHistory && <MessageEditHistory versions={editHistory} />}
                 {metaPosition === 'in-text' && renderReactionsAndMeta()}
               </div>
             )}
@@ -2334,6 +2350,8 @@ export default memo(withGlobal<OwnProps>(
       isPinnedList: messageListType === 'pinned',
       isPinned,
       isMessagePrimaryEditedDateEnabled: Boolean(global.appConfig.isMessagePrimaryEditedDateEnabled),
+      editHistory: selectMessageEditHistory(global, chatId, message.id),
+      shouldShowSeconds: selectLiquidSettings(global).shouldShowSeconds,
       canAutoLoadMedia: selectCanAutoLoadMedia(global, message),
       canAutoPlayMedia: selectCanAutoPlayMedia(global, message),
       autoLoadFileMaxSizeMb: global.settings.byKey.autoLoadFileMaxSizeMb,

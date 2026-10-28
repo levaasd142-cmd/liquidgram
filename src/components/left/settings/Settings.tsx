@@ -35,6 +35,7 @@ import SettingsGeneralBackground from './SettingsGeneralBackground';
 import SettingsGeneralBackgroundColor from './SettingsGeneralBackgroundColor';
 import SettingsHeader from './SettingsHeader';
 import SettingsLanguage from './SettingsLanguage';
+import SettingsLiquidgram from './SettingsLiquidgram';
 import SettingsMain from './SettingsMain';
 import SettingsNotifications from './SettingsNotifications';
 import SettingsPasskeys from './SettingsPasskeys';
@@ -370,6 +371,10 @@ const Settings = ({
       case SettingsScreens.Experimental:
         return (
           <SettingsExperimental isActive={isScreenActive} onReset={handleReset} />
+        );
+      case SettingsScreens.Liquidgram:
+        return (
+          <SettingsLiquidgram isActive={isScreenActive} onReset={handleReset} />
         );
       case SettingsScreens.GeneralChatBackground:
         return (

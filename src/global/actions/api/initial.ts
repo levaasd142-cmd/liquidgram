@@ -7,6 +7,7 @@ import {
   MEDIA_CACHE_NAME_AVATARS,
   MEDIA_PROGRESSIVE_CACHE_NAME,
 } from '../../../config';
+import { getApiCredentials } from '../../../util/apiCredentials';
 import { updateAppBadge } from '../../../util/appBadge';
 import { MAIN_IDB_STORE } from '../../../util/browser/idb';
 import { toCredentialRequestOptions } from '../../../util/browser/passkeys';
@@ -72,6 +73,14 @@ addActionHandler('initApi', async (global, actions): Promise<void> => {
     global = getGlobal();
     if (global.passcode.isScreenLocked || checkSessionLocked()
       || !selectTabState(global, getCurrentTabId()).isMasterTab) return;
+
+    const credentials = getApiCredentials();
+    if (Boolean(global.auth.isApiCredentialsRequired) !== !credentials) {
+      global = updateAuth(global, { isApiCredentialsRequired: credentials ? undefined : true });
+      setGlobal(global);
+      global = getGlobal();
+    }
+    if (!credentials) return;
     const request = getPendingWebLogin();
     const token = hasStoredSession() ? undefined : request?.token;
     // Clearing the token marks it as dispatched so `interruptWebLogin()` rejects interrupted logins and prevents replay
@@ -95,6 +104,8 @@ addActionHandler('initApi', async (global, actions): Promise<void> => {
       .filter(Boolean);
 
     void initApi(actions.apiUpdate, {
+      apiId: credentials.apiId,
+      apiHash: credentials.apiHash,
       userAgent: navigator.userAgent,
       platform: PLATFORM_ENV,
       sessionData: loadStoredSession(),

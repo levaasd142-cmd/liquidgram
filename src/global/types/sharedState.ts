@@ -38,4 +38,28 @@ export interface SharedSettings {
   shouldWarnAboutFiles?: boolean;
   shouldSkipBrowserCloseConfirmation: boolean;
   shouldKeepLockScreenBackground: boolean;
+  liquid?: LiquidSettings;
+  ghostMode?: GhostModeSettings;
+}
+
+export interface LiquidSettings {
+  isGlassEnabled: boolean;
+  isRefractionEnabled: boolean;
+  glassIntensity: number;
+  isAntiDeleteEnabled: boolean;
+  isEditHistoryEnabled: boolean;
+  isStreamerModeEnabled: boolean;
+  shouldShowIds: boolean;
+  shouldShowSeconds: boolean;
+  shouldHideStories: boolean;
+}
+
+export interface GhostModeSettings {
+  isEnabled: boolean;
+  shouldHideReadReceipts: boolean;
+  shouldHideTyping: boolean;
+  shouldStayOffline: boolean;
+  shouldHideStoryViews: boolean;
+  shouldHideMediaPlayback: boolean;
+  shouldReadOnSend: boolean;
 }

@@ -58,7 +58,7 @@ import {
   isUserBot,
 } from '../../helpers';
 import {
-  addActionHandler, getActions, getGlobal, setGlobal,
+  addActionHandler, getActions, getGlobal, getPromiseActions, setGlobal,
 } from '../../index';
 import {
   addChatListIds,
@@ -123,6 +123,7 @@ import {
   selectCurrentChat,
   selectCurrentMessageList,
   selectIsChatPinned,
+  selectIsChatUnread,
   selectIsChatWithSelf,
   selectIsCurrentUserFrozen,
   selectLastServiceNotification,
@@ -149,6 +150,7 @@ import {
 } from '../../selectors/threads';
 
 const TOP_CHAT_MESSAGES_PRELOAD_INTERVAL = 100;
+const MARK_ALL_READ_INTERVAL = 150;
 const INFINITE_LOOP_MARKER = 100;
 
 const CHATLIST_LIMIT_ERROR_LIST = new Set([
@@ -1594,6 +1596,22 @@ addActionHandler('markChatMessagesRead', async (global, actions, payload): Promi
   if (chatReadState?.hasUnreadMark) {
     actions.markChatRead({ id });
   }
+});
+
+addActionHandler('markAllChatsRead', async (global, actions): Promise<void> => {
+  const chatIds = (getOrderedIds(ALL_FOLDER_ID) || [])
+    .concat(getOrderedIds(ARCHIVED_FOLDER_ID) || [])
+    .filter((id) => selectIsChatUnread(global, id));
+
+  for (const id of chatIds) {
+    await getPromiseActions().markChatMessagesRead({ id });
+    await pause(MARK_ALL_READ_INTERVAL);
+  }
+
+  actions.showNotification({
+    message: { key: 'LiquidMarkAllReadDone' },
+    tabId: getCurrentTabId(),
+  });
 });
 
 addActionHandler('markChatRead', (global, actions, payload): ActionReturnType => {

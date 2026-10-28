@@ -30,6 +30,7 @@ import {
   selectPeer, selectPeerStories, selectPeerStory,
   selectPinnedStories, selectTabState,
 } from '../../selectors';
+import { selectIsGhostFeatureActive } from '../../selectors/sharedState';
 import { selectActiveStoriesCollectionId } from '../../selectors/stories';
 
 const INFINITE_LOOP_MARKER = 100;
@@ -165,12 +166,20 @@ addActionHandler('viewStory', async (global, actions, payload): Promise<void> =>
 
   const serverTime = getServerTime();
 
-  if (story.expireDate < serverTime && story.isInProfile) {
+  const isAnonymous = selectIsGhostFeatureActive(global, 'shouldHideStoryViews');
+
+  if (story.expireDate < serverTime && story.isInProfile && !isAnonymous) {
     void callApi('viewStory', { peer, storyId });
   }
 
   const isUnread = (global.stories.byPeerId[peerId].lastReadId || 0) < story.id;
   if (!isUnread) {
+    return;
+  }
+
+  if (isAnonymous) {
+    global = updateLastReadStoryForPeer(global, peerId, storyId);
+    setGlobal(global);
     return;
   }
 

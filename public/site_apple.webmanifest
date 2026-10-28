@@ -1,7 +1,7 @@
 {
-    "name": "Telegram Web",
-    "short_name": "Telegram Web",
-    "description": "Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.",
+    "name": "Liquidgram",
+    "short_name": "Liquidgram",
+    "description": "Liquidgram — an unofficial Telegram client with Liquid Glass design, ghost mode and anti-delete.",
     "start_url": "./",
     "gcm_sender_id": "122867383838",
     "icons": [
@@ -36,13 +36,13 @@
         "url": "url",
         "files": [
           {
-            "name": "files",
+            "name": "Liquidgram",
             "accept": "*/*"
           }
         ]
       }
     },
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#8b6cff",
+    "background_color": "#b9b4f5",
     "display": "standalone"
 }

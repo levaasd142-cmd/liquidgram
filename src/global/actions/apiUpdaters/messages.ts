@@ -23,6 +23,7 @@ import { getMessageKey, isLocalMessageId } from '../../../util/keys/messageKey';
 import { buildSearchResultKey } from '../../../util/keys/searchResultKey';
 import { notifyAboutMessage } from '../../../util/notifications';
 import { onTickEnd } from '../../../util/schedulers';
+import { consumeSelfDeletedMessage } from '../../../util/selfDeletedMessages';
 import { getServerTime } from '../../../util/serverTime';
 import { callApi } from '../../../api/gramjs';
 import {
@@ -33,6 +34,7 @@ import {
   getMessageContent,
   getMessageText,
   groupMessageIdsByThreadId,
+  hasMessageTtl,
   isActionMessage,
   isDeletedUser,
   isMessageLocal,
@@ -78,6 +80,7 @@ import {
 } from '../../reducers';
 import { appendShufflePlaylist, removeTrackFromShuffle } from '../../reducers/audioPlayer';
 import { removeMessagesFromGlobalSearchResults } from '../../reducers/globalSearch';
+import { addLiquidDeletedMessages, addLiquidEditVersion } from '../../reducers/liquid';
 import { addUnreadPollVotes } from '../../reducers/polls';
 import { addUnreadReactions, removeUnreadReactions } from '../../reducers/reactions';
 import { updateTabState } from '../../reducers/tabs';
@@ -120,6 +123,7 @@ import {
 import {
   selectIsPlaylistFullyLoaded, selectPlaybackSource, selectPlaylistKeys,
 } from '../../selectors/audioPlayer';
+import { selectLiquidSettings } from '../../selectors/sharedState';
 import {
   selectSavedDialogIdFromMessage,
   selectThread,
@@ -667,6 +671,14 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
         global = clearMessageSummary(global, chatId, id);
       }
 
+      const isServerEdit = message.editDate !== undefined && message.editDate !== currentMessage.editDate;
+      if (hasContentChanged && isServerEdit && selectLiquidSettings(global).isEditHistoryEnabled) {
+        global = addLiquidEditVersion(global, chatId, id, {
+          date: currentMessage.editDate || currentMessage.date,
+          text: currentMessage.content.text,
+        });
+      }
+
       global = updateWithLocalMedia(global, chatId, id, false, message);
 
       setGlobal(global);
@@ -989,7 +1001,12 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
     case 'deleteMessages': {
       const { ids, chatId } = update;
 
-      deleteMessages(global, chatId, ids, actions);
+      const idsToDelete = selectLiquidSettings(global).isAntiDeleteEnabled
+        ? preserveMessagesDeletedByOthers(global, chatId, ids)
+        : ids;
+      if (!idsToDelete.length) break;
+
+      deleteMessages(getGlobal(), chatId, idsToDelete, actions);
       break;
     }
 
@@ -1794,6 +1811,41 @@ export function deleteMessages<T extends GlobalState>(
   unique(chatIdsToUpdate).forEach((id) => {
     actions.requestChatUpdate({ chatId: id });
   });
+}
+
+// Keeps messages deleted by other users visible with a mark and returns ids that still need deletion
+function preserveMessagesDeletedByOthers<T extends GlobalState>(
+  global: T, chatId: string | undefined, ids: number[],
+) {
+  const deletedDate = getServerTime();
+  const idsToDelete: number[] = [];
+  const preservedByChatId: Record<string, ApiMessage[]> = {};
+
+  ids.forEach((id) => {
+    const messageChatId = chatId || selectCommonBoxChatId(global, id);
+    const message = messageChatId ? selectChatMessage(global, messageChatId, id) : undefined;
+    if (!message || !canPreserveDeletedMessage(message) || consumeSelfDeletedMessage(message.chatId, id)) {
+      idsToDelete.push(id);
+      return;
+    }
+
+    const preservedMessage = { ...message, deletedDate };
+    global = updateChatMessage(global, message.chatId, id, { deletedDate });
+    preservedByChatId[message.chatId] = (preservedByChatId[message.chatId] || []).concat(preservedMessage);
+  });
+
+  Object.entries(preservedByChatId).forEach(([messageChatId, messages]) => {
+    global = addLiquidDeletedMessages(global, messageChatId, messages);
+  });
+
+  setGlobal(global);
+
+  return idsToDelete;
+}
+
+function canPreserveDeletedMessage(message: ApiMessage) {
+  return !message.isOutgoing && !message.deletedDate && !message.isTypingDraft
+    && !isActionMessage(message) && !isMessageLocal(message) && !hasMessageTtl(message);
 }
 
 function deleteChatMessagesWithAnimation<T extends GlobalState>(global: T, chatId: string, ids: number[]) {

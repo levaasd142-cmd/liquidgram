@@ -101,6 +101,18 @@ const SettingsMain = ({
       <div className={styles.menuSection}>
         <Island>
           <ListItem
+            icon="eye-crossed"
+            iconBg="purple"
+            multiline
+            narrow
+            onClick={() => openSettingsScreen({ screen: SettingsScreens.Liquidgram })}
+          >
+            <span className="title">{lang('LiquidSettingsTitle')}</span>
+            <span className="subtitle">{lang('LiquidSettingsDesc')}</span>
+          </ListItem>
+        </Island>
+        <Island>
+          <ListItem
             icon="account-filled"
             iconBg="blue"
             multiline

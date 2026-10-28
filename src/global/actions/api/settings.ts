@@ -36,7 +36,7 @@ import {
   selectLanguageCode,
   selectTabState, selectUser,
 } from '../../selectors';
-import { selectSharedSettings } from '../../selectors/sharedState';
+import { selectIsGhostFeatureActive, selectSharedSettings } from '../../selectors/sharedState';
 
 let languageSelectionRequestId = 0;
 let languageModalRequestId = 0;
@@ -691,7 +691,8 @@ addActionHandler('setPrivacySettings', async (global, actions, payload): Promise
 
 addActionHandler('updateIsOnline', (global, actions, payload): ActionReturnType => {
   if (global.connectionState !== 'connectionStateReady') return;
-  callApi('updateIsOnline', payload.isOnline);
+  const isOnline = payload.isOnline && !selectIsGhostFeatureActive(global, 'shouldStayOffline');
+  callApi('updateIsOnline', isOnline);
 });
 
 addActionHandler('loadContentSettings', async (global): Promise<void> => {

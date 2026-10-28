@@ -16,6 +16,8 @@ import type { ApiStarsSubscriptionPricing } from './stars';
 import type { ApiUser } from './users';
 
 export interface ApiInitialArgs {
+  apiId: number;
+  apiHash: string;
   userAgent: string;
   platform?: string;
   sessionData?: ApiSessionData;

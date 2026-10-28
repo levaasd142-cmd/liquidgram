@@ -67,12 +67,14 @@ import { parseTranslationCacheKey } from '../../../util/keys/translationKey';
 import { getTranslationFn, type RegularLangFnParameters } from '../../../util/localization';
 import { formatStarsAsText } from '../../../util/localization/format';
 import { debounce, onTickEnd, rafPromise } from '../../../util/schedulers';
+import { rememberSelfDeletedMessages } from '../../../util/selfDeletedMessages';
 import { getServerTime } from '../../../util/serverTime';
 import { callApi, cancelApiProgress } from '../../../api/gramjs';
 import {
   getIsSavedDialog,
   getUserFullName,
   groupMessageIdsByThreadId,
+  hasMessageTtl,
   isChatChannel,
   isChatSuperGroup,
   isDeletedUser,
@@ -94,7 +96,9 @@ import { scheduleEphemeralExpiration } from '../../intervals';
 import {
   addChatMessagesById,
   clearMessageSummary,
+  deleteChatMessages,
   deleteSponsoredMessage,
+  removeLiquidDeletedMessages,
   removeOutlyingList,
   removeRequestedMessageTranslation,
   removeUnreadMentions,
@@ -182,6 +186,8 @@ import {
   selectWebPage,
 } from '../../selectors';
 import { makeTrackKeyFromItem, selectPlaybackMedia } from '../../selectors/audioPlayer';
+import { selectLiquidDeletedMessagesForSlice } from '../../selectors/liquid';
+import { selectIsGhostFeatureActive, selectLiquidSettings } from '../../selectors/sharedState';
 import {
   selectDraft,
   selectEditingId,
@@ -612,6 +618,12 @@ addActionHandler('sendMessage', async (global, actions, payload): Promise<void> 
   const threadInfo = selectThreadInfo(global, chatId!, threadId!);
   const lastMessageId = threadId === MAIN_THREAD_ID
     ? selectChatLastMessageId(global, chatId!) : threadInfo?.lastMessageId;
+
+  // Ghost mode keeps chats unread on the server until the user replies
+  if (selectIsGhostFeatureActive(global, 'shouldHideReadReceipts')
+    && selectIsGhostFeatureActive(global, 'shouldReadOnSend') && !isStoryReply) {
+    void callApi('markMessageListRead', { chat, threadId: threadId!, maxId: lastMessageId });
+  }
 
   const messagePriceInStars = await getPeerStarsForMessage(global, chatId!);
 
@@ -1293,17 +1305,31 @@ addActionHandler('deleteMessages', (global, actions, payload): ActionReturnType 
   }
   const { chatId, threadId } = messageList;
   const chat = selectChat(global, chatId)!;
-  const messageIdsToDelete = messageIds.filter((id) => {
+
+  // Messages preserved by anti-delete no longer exist on the server
+  const preservedIds = messageIds.filter((id) => selectChatMessage(global, chatId, id)?.deletedDate);
+  if (preservedIds.length) {
+    global = removeLiquidDeletedMessages(global, chatId, preservedIds);
+    global = deleteChatMessages(global, chatId, preservedIds);
+    setGlobal(global);
+    global = getGlobal();
+  }
+
+  const remainingIds = messageIds.filter((id) => !preservedIds.includes(id));
+  if (!remainingIds.length) return;
+
+  const messageIdsToDelete = remainingIds.filter((id) => {
     const message = selectChatMessage(global, chatId, id);
     return message && !isMessageLocal(message);
   });
 
   // Only local messages
-  if (!messageIdsToDelete.length && messageIds.length) {
-    deleteMessages(global, isChatChannel(chat) || isChatSuperGroup(chat) ? chatId : undefined, messageIds, actions);
+  if (!messageIdsToDelete.length) {
+    deleteMessages(global, isChatChannel(chat) || isChatSuperGroup(chat) ? chatId : undefined, remainingIds, actions);
     return;
   }
 
+  rememberSelfDeletedMessages(chatId, messageIdsToDelete);
   void callApi('deleteMessages', { chat, messageIds: messageIdsToDelete, shouldDeleteForAll });
 
   const editingId = selectEditingId(global, chatId, threadId);
@@ -1630,6 +1656,7 @@ addActionHandler('sendMessageAction', async (global, actions, payload): Promise<
   const { action, chatId, threadId } = payload;
   if (global.connectionState !== 'connectionStateReady') return;
   if (selectIsChatWithSelf(global, chatId)) return;
+  if (selectIsGhostFeatureActive(global, 'shouldHideTyping')) return;
 
   const chat = selectChat(global, chatId)!;
   if (!chat || chat.isMonoforum) return;
@@ -1668,11 +1695,13 @@ addActionHandler('markMessageListRead', (global, actions, payload): ActionReturn
     return undefined;
   }
 
-  runDebouncedForMarkRead(() => {
-    void callApi('markMessageListRead', {
-      chat, threadId, maxId,
+  if (!selectIsGhostFeatureActive(global, 'shouldHideReadReceipts')) {
+    runDebouncedForMarkRead(() => {
+      void callApi('markMessageListRead', {
+        chat, threadId, maxId,
+      });
     });
-  });
+  }
 
   if (chatId === SERVICE_NOTIFICATIONS_USER_ID) {
     global = {
@@ -1711,6 +1740,16 @@ addActionHandler('markMessagesRead', async (global, actions, payload): Promise<v
   const { chatId, messageIds } = payload;
   const chat = selectChat(global, chatId);
   if (!chat) {
+    return;
+  }
+
+  if (selectIsGhostFeatureActive(global, 'shouldHideMediaPlayback')) {
+    messageIds.forEach((id) => {
+      const message = selectChatMessage(global, chatId, id);
+      if (!message || hasMessageTtl(message)) return;
+      global = updateChatMessage(global, chatId, id, { isMediaUnread: false });
+    });
+    setGlobal(global);
     return;
   }
 
@@ -2313,7 +2352,10 @@ async function loadViewportMessages<T extends GlobalState>(
   const localMessages = chatId === SERVICE_NOTIFICATIONS_USER_ID
     ? global.serviceNotifications.filter(({ isDeleted }) => !isDeleted).map(({ message }) => message)
     : typingDraftMessages;
-  const allMessages = ([] as ApiMessage[]).concat(messages, localMessages);
+  const preservedMessages = selectLiquidSettings(global).isAntiDeleteEnabled
+    ? selectLiquidDeletedMessagesForSlice(global, chatId, threadId, messages, !offsetId)
+    : [];
+  const allMessages = ([] as ApiMessage[]).concat(messages, localMessages, preservedMessages);
   const byId = buildCollectionByKey(allMessages, 'id');
   const ids = Object.keys(byId).map(Number);
 

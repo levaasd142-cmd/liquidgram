@@ -15,7 +15,9 @@ import {
   selectTabState,
   selectTheme,
 } from '../../../global/selectors';
-import { selectSharedSettings } from '../../../global/selectors/sharedState';
+import {
+  selectGhostModeSettings, selectLiquidSettings, selectSharedSettings,
+} from '../../../global/selectors/sharedState';
 import { IS_TAURI } from '../../../util/browser/globalEnvironment';
 import { IS_APP, IS_MAC_OS } from '../../../util/browser/windowEnvironment';
 import buildClassName from '../../../util/buildClassName';
@@ -64,6 +66,8 @@ type StateProps = {
   hasPasscode?: boolean;
   canSetPasscode?: boolean;
   isForumPanelOpen?: boolean;
+  isGhostModeEnabled?: boolean;
+  shouldHideStories?: boolean;
 } & Pick<GlobalState, 'connectionState' | 'isSyncing' | 'isFetchingDifference'>;
 
 const CLEAR_DATE_SEARCH_PARAM = { date: undefined };
@@ -95,9 +99,13 @@ const LeftMainHeader = ({
   isForumPanelOpen,
   onSearchQuery,
   onReset,
+  isGhostModeEnabled,
+  shouldHideStories,
 }: OwnProps & StateProps) => {
   const {
     setGlobalSearchDate,
+    setGhostModeOption,
+    showNotification,
     setSharedSettingOption,
     setGlobalSearchChatId,
     lockScreen,
@@ -211,7 +219,17 @@ const LeftMainHeader = ({
     ? lang('SearchFriends')
     : lang('Search');
 
-  const withStoryToggler = !isSearchFocused && !selectedSearchDate && !globalSearchChatId && !areContactsVisible;
+  const withStoryToggler = !isSearchFocused && !selectedSearchDate && !globalSearchChatId && !areContactsVisible
+    && !shouldHideStories;
+
+  const handleGhostModeToggle = useLastCallback(() => {
+    const isEnabled = !isGhostModeEnabled;
+    setGhostModeOption({ isEnabled });
+    showNotification({
+      message: { key: isEnabled ? 'LiquidGhostEnabled' : 'LiquidGhostDisabled' },
+      icon: isEnabled ? 'eye-crossed' : 'eye',
+    });
+  });
 
   const searchContent = useMemo(() => {
     return (
@@ -284,6 +302,18 @@ const LeftMainHeader = ({
             canShow={withStoryToggler}
           />
         </SearchInput>
+        {hasMenu && (
+          <Button
+            round
+            ripple={!isMobile}
+            size="smaller"
+            color="translucent"
+            ariaLabel={lang('LiquidGhostMode')}
+            className={buildClassName('ghost-mode-button', isGhostModeEnabled && 'active')}
+            iconName={isGhostModeEnabled ? 'eye-crossed' : 'eye'}
+            onClick={handleGhostModeToggle}
+          />
+        )}
         {isCurrentUserPremium && <StatusButton />}
         {hasPasscode && (
           <Button
@@ -342,6 +372,8 @@ export default memo(withGlobal<OwnProps>(
       hasPasscode: Boolean(global.passcode.hasPasscode),
       canSetPasscode: selectCanSetPasscode(global),
       isForumPanelOpen,
+      isGhostModeEnabled: selectGhostModeSettings(global).isEnabled,
+      shouldHideStories: selectLiquidSettings(global).shouldHideStories,
     };
   },
 )(LeftMainHeader));

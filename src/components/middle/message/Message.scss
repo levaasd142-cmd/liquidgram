@@ -283,6 +283,10 @@
     visibility: hidden;
   }
 
+  &.is-preserved-deleted .message-content {
+    box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--color-error) 55%, transparent);
+  }
+
   &.is-story-mention {
     --background-color: var(--pattern-color);
 

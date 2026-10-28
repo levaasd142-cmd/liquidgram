@@ -78,6 +78,7 @@ import type {
   ChatListType,
   ChatTranslatedMessages,
   EmojiKeywords,
+  LiquidEditVersion,
   OrderMode,
   RepeatMode,
   ServiceNotification,
@@ -195,6 +196,7 @@ export type GlobalState = {
 
     hasWebAuthTokenFailed?: true;
     hasWebAuthTokenPasswordRequired?: true;
+    isApiCredentialsRequired?: true;
   };
   countryList: {
     phoneCodes: ApiCountryCode[];
@@ -502,6 +504,11 @@ export type GlobalState = {
 
   byTabId: Record<number, TabState>;
   sharedState: SharedState;
+
+  liquid?: {
+    deletedMessagesByChatId: Record<string, Record<number, ApiMessage>>;
+    editHistoryByChatId: Record<string, Record<number, LiquidEditVersion[]>>;
+  };
 
   archiveSettings: {
     isMinimized: boolean;

@@ -40,6 +40,7 @@ import {
   selectUser,
   selectUserFullInfo,
 } from '../../../global/selectors';
+import { selectLiquidSettings } from '../../../global/selectors/sharedState';
 import { VTT_PROFILE_NOTE_COLLAPSE, VTT_PROFILE_NOTE_EXPAND } from '../../../util/animations/viewTransitionTypes';
 import buildClassName from '../../../util/buildClassName';
 import { copyTextToClipboard } from '../../../util/clipboard';
@@ -102,6 +103,7 @@ type StateProps = {
   botVerification?: ApiBotVerification;
   botManager?: ApiUser;
   canViewSubscribers?: boolean;
+  shouldShowIds?: boolean;
 };
 
 const DEFAULT_MAP_CONFIG = {
@@ -137,6 +139,7 @@ const ChatExtra = ({
   style,
   isInSettings,
   canViewSubscribers,
+  shouldShowIds,
 }: OwnProps & StateProps) => {
   const {
     showNotification,
@@ -455,6 +458,19 @@ const ChatExtra = ({
           </ListItem>
         )}
         {activeUsernames && renderUsernames(activeUsernames)}
+        {shouldShowIds && peerId && (
+          <ListItem
+            icon="info"
+            iconBg="purple"
+            multiline
+            narrow
+            ripple
+            onClick={() => copy(peerId, 'LiquidIdCopied')}
+          >
+            <span className="title">{peerId}</span>
+            <span className="subtitle">{lang('LiquidPeerId')}</span>
+          </ListItem>
+        )}
         {description && Boolean(description.length) && (
           <ListItem
             icon="info-filled"
@@ -751,6 +767,7 @@ export default memo(withGlobal<OwnProps>(
       botVerification,
       botManager,
       canViewSubscribers,
+      shouldShowIds: selectLiquidSettings(global).shouldShowIds,
     };
   },
 )(ChatExtra));

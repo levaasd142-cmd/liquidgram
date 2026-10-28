@@ -174,6 +174,8 @@ const SettingsHeader = ({
         return <h3>{lang('Stickers')}</h3>;
       case SettingsScreens.Experimental:
         return <h3>{lang('SettingsExperimental')}</h3>;
+      case SettingsScreens.Liquidgram:
+        return <h3>{lang('LiquidSettingsTitle')}</h3>;
 
       case SettingsScreens.GeneralChatBackground:
         return <h3>{lang('ChatBackground')}</h3>;
