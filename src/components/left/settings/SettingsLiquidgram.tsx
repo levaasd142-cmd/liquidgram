@@ -91,7 +91,6 @@ const SettingsLiquidgram = ({
           label={lang('LiquidGlassIntensity')}
           min={0}
           max={100}
-          step={5}
           value={liquid.glassIntensity}
           disabled={!liquid.isGlassEnabled}
           renderValue={(value) => `${value}%`}
