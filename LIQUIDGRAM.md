@@ -61,16 +61,27 @@ npx serve dist
 
 Режим разработки с автообновлением: `npm run dev` → <http://localhost:1234>.
 
+## Расширение для браузера
+
+```bash
+npm run build:extension
+```
+
+Готовое расширение для Chrome, Edge, Яндекс Браузера, Brave и Opera появится в папке `dist-extension/`. Установка: `chrome://extensions` → «Режим разработчика» → «Загрузить распакованное расширение» → папка `dist-extension`. Иконка расширения открывает Liquidgram во вкладке или в боковой панели.
+
+Поле `key` в `extension/manifest.json` закрепляет ID расширения, поэтому после обновления или переноса папки вход и настройки сохраняются.
+
 ## Где что в коде
 
 | Фича | Файлы |
 | --- | --- |
-| Liquid Glass | `src/styles/_liquidGlass.scss`, `src/util/liquidGlass.ts`, `src/components/left/LiquidTabBar.tsx` |
+| Liquid Glass | `src/styles/_liquidGlass.scss`, `src/util/liquidGlass.tsx`, `src/components/left/LiquidTabBar.tsx` |
 | Настройки | `src/components/left/settings/SettingsLiquidgram.tsx`, `src/global/selectors/sharedState.ts` |
 | Режим призрака | `src/global/actions/api/messages.ts`, `stories.ts`, `settings.ts` |
 | Антиудаление и правки | `src/global/actions/apiUpdaters/messages.ts`, `src/global/reducers/liquid.ts`, `src/components/middle/message/MessageEditHistory.tsx` |
 | Ключи API на экране входа | `src/components/auth/AuthApiCredentials.tsx`, `src/util/apiCredentials.ts` |
 | Русские строки | `src/util/localization/liquidStrings.ts` |
+| Расширение для браузера | `extension/`, `dev/buildExtension.mjs` |
 
 ## Важно
 
