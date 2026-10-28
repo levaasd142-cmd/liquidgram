@@ -11,6 +11,7 @@
     "build:dev": "vite build --mode development",
     "build:staging": "cross-env APP_ENV=staging npm run build:dev",
     "build:production": "cross-env APP_ENV=production vite build",
+    "build:extension": "npm run build:production && node ./dev/buildExtension.mjs",
     "build:stats": "cross-env BUNDLE_STATS=1 vite build",
     "build:stats:visualizer": "cross-env BUNDLE_STATS_VISUALIZER=1 vite build",
     "web:release:production": "npm i && npm run build:production && git add -A && git commit -a -m '[Build]' --no-verify && git push",

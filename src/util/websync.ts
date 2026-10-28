@@ -27,8 +27,11 @@ const saveSync = (authed: boolean) => {
 
 let lastTimeout: number | undefined;
 
+// Liquidgram is not served from web.telegram.org, so t.me has no web session to sync with
+const IS_WEBSYNC_DISABLED = true;
+
 export const forceWebsync = (authed: boolean) => {
-  if (IS_TAURI) return undefined;
+  if (IS_TAURI || IS_WEBSYNC_DISABLED) return undefined;
   const currentTs = getTs();
 
   const { canRedirect, ts } = JSON.parse(localStorage.getItem(WEBSYNC_KEY) || '{}');
@@ -76,7 +79,7 @@ export function stopWebsync() {
 }
 
 export function startWebsync() {
-  if (DEBUG || IS_TAURI) {
+  if (DEBUG || IS_TAURI || IS_WEBSYNC_DISABLED) {
     return;
   }
 

@@ -6,6 +6,7 @@
   ],
   "ignoreFiles": [
     "dist/**/*.css",
+    "dist-extension/**/*.css",
     "src/styles/icons.{scss,css}"
   ],
   "plugins": [

@@ -34,6 +34,9 @@ export default defineConfig(
     'src/lib/fastBlur.js',
     'src/types/language.d.ts',
     'dist/',
+    'dist-extension/',
+    // Plain browser-extension scripts rely on the `chrome` API, which the TypeScript projects do not include
+    'extension/',
     'public/',
     'deploy/update_version.js',
     'tauri/target/',
