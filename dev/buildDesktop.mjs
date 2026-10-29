@@ -10,6 +10,9 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 
+// Zip entries store local wall-clock times, so the build runs in UTC to give the same archive in every time zone
+process.env.TZ = 'UTC';
+
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DESKTOP_DIR = join(ROOT, 'desktop');
 const LAUNCHER_DIR = join(DESKTOP_DIR, 'launcher');
@@ -177,11 +180,7 @@ function getSourceTime() {
     throw new Error(`SOURCE_DATE_EPOCH must be a number of seconds, not ${epoch}`);
   }
 
-  // Zip entries keep a local wall-clock time, so the UTC fields go in as they are and the time zone of the
-  // build does not matter
-  const date = new Date(Number(epoch) * MS_IN_SECOND);
-  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
-    date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+  return new Date(Number(epoch) * MS_IN_SECOND);
 }
 
 function readCommitTime() {

@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"slices"
 	"testing"
+	"time"
 )
 
 func TestLoadConfigWithByteOrderMark(t *testing.T) {
@@ -92,5 +93,39 @@ func TestSaveConfig(t *testing.T) {
 	}
 	if !slices.Equal(names, []string{configFileName}) {
 		t.Errorf("data folder holds %q, want only %s", names, configFileName)
+	}
+}
+
+func TestFindLastServedPort(t *testing.T) {
+	dataDir := t.TempDir()
+	if port := findLastServedPort(dataDir); port != 0 {
+		t.Errorf("empty data folder gave port %d, want 0", port)
+	}
+
+	start := time.Now().Add(-time.Hour)
+	files := []struct {
+		name string
+		age  time.Duration
+	}{
+		{name: "launcher-47819.token", age: 30 * time.Minute},
+		{name: "launcher-43819.token", age: 10 * time.Minute},
+		// Newer, but not a launcher port or not a token file name
+		{name: "launcher-80.token", age: 0},
+		{name: "launcher-abc.token", age: 0},
+		{name: "launcher-39819.token.tmp", age: 0},
+	}
+	for _, file := range files {
+		path := filepath.Join(dataDir, file.name)
+		if err := os.WriteFile(path, []byte("token"), 0o600); err != nil {
+			t.Fatal(err)
+		}
+		modTime := start.Add(time.Hour - file.age)
+		if err := os.Chtimes(path, modTime, modTime); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	if port := findLastServedPort(dataDir); port != 43819 {
+		t.Errorf("found port %d, want 43819 from the newest token file", port)
 	}
 }

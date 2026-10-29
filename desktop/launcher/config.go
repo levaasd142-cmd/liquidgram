@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"time"
 )
 
 const (
@@ -26,6 +27,8 @@ const (
 	tokenBytes             = 32
 	minConfigPort          = 1024
 	maxConfigPort          = 65535
+	launchTokenFileFormat  = "launcher-%d.token"
+	launchTokenFileGlob    = "launcher-*.token"
 )
 
 // Older versions of Notepad start UTF-8 files with this prefix
@@ -96,7 +99,31 @@ func readLaunchToken(dataDir string, port int) string {
 }
 
 func getTokenPath(dataDir string, port int) string {
-	return filepath.Join(dataDir, fmt.Sprintf("launcher-%d.token", port))
+	return filepath.Join(dataDir, fmt.Sprintf(launchTokenFileFormat, port))
+}
+
+// Every serving run writes the launch token file of its port, so when config.json is missing or
+// unreadable, the newest one points to the origin that holds the user's data
+func findLastServedPort(dataDir string) int {
+	paths, err := filepath.Glob(filepath.Join(dataDir, launchTokenFileGlob))
+	if err != nil {
+		return 0
+	}
+
+	lastPort := 0
+	var lastTime time.Time
+	for _, path := range paths {
+		var port int
+		if _, err := fmt.Sscanf(filepath.Base(path), launchTokenFileFormat, &port); err != nil {
+			continue
+		}
+		info, err := os.Stat(path)
+		if err != nil || port < minConfigPort || port > maxConfigPort || !info.ModTime().After(lastTime) {
+			continue
+		}
+		lastPort, lastTime = port, info.ModTime()
+	}
+	return lastPort
 }
 
 func setupLog(path string) (closeLog func()) {

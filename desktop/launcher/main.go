@@ -106,7 +106,13 @@ func run() int {
 	cfg, isConfigUnreadable := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
-	listener, port, isSavedPortOfOtherAccount, err := acquirePort(cfg.Port, instanceID, dataDir)
+	// The port of the last run keeps a missing or damaged config.json from moving the user's data to another origin
+	expectedPort := cfg.Port
+	if expectedPort == 0 {
+		expectedPort = findLastServedPort(dataDir)
+	}
+
+	listener, port, isSavedPortOfOtherAccount, err := acquirePort(expectedPort, instanceID, dataDir)
 	var handoff *handoffError
 	if errors.As(err, &handoff) {
 		log.Printf("The running instance on port %d opened a window (build %s)", port, handoff.build)
@@ -128,17 +134,17 @@ func run() int {
 	}
 
 	// The first port stays preferred for good because the app data belongs to its origin. An unreadable
-	// config may hold the port of the user's data, so it moves aside and this run saves nothing.
-	savedPort := cfg.Port
+	// config may hold the port of the user's data, so it moves aside and this run saves nothing, and a
+	// run on a spare port saves nothing either.
 	var keptConfigPath string
 	switch {
 	case isConfigUnreadable:
 		keptConfigPath = moveConfigAside(dataDir)
-	case savedPort == 0:
+	case expectedPort != 0 && expectedPort != port:
+		log.Printf("Port %d is unavailable, using port %d for this run", expectedPort, port)
+	case cfg.Port == 0:
 		cfg.Port = port
 		saveConfig(dataDir, cfg)
-	case savedPort != port:
-		log.Printf("Saved port %d is unavailable, using port %d for this run", savedPort, port)
 	}
 
 	// Without the saved token second launches cannot open more windows
@@ -201,12 +207,12 @@ func run() int {
 	if keptConfigPath != "" {
 		showWarning(fmt.Sprintf(messageUnreadableConfig, keptConfigPath, keptConfigPath))
 	}
-	if savedPort != 0 && savedPort != port {
+	if expectedPort != 0 && expectedPort != port {
 		message := messageSparePort
 		if isSavedPortOfOtherAccount {
 			message = messageOtherAccount
 		}
-		showWarning(fmt.Sprintf(message, savedPort, savedPort))
+		showWarning(fmt.Sprintf(message, expectedPort, expectedPort))
 	}
 	if isSavedBrowserMissing {
 		showWarning(fmt.Sprintf(messageBrowserMissing, cfg.Browser, browser.id))
