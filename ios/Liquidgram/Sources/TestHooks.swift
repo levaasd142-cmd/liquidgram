@@ -25,7 +25,8 @@ enum TestHooks {
   static let userScriptEnvironmentKey = "LIQUIDGRAM_TEST_USER_SCRIPT"
   /// Launch environment: base64 UTF-8 body of an async JavaScript function that returns a string. The app runs it
   /// once the page is ready and shows the result as the accessibility value of `selfTestResultIdentifier`. The
-  /// function gets `migrationOutcome`, what `LegacyDataMigration` did at this launch, or an empty string.
+  /// function gets `migrationOutcome`, what `LegacyDataMigration` did at this launch, or an empty string; while the
+  /// data of version 1 moves, the self-test waits for it.
   static let selfTestEnvironmentKey = "LIQUIDGRAM_TEST_SELFTEST_SCRIPT"
   static let selfTestResultIdentifier = "liquidgram.selftest.result"
 
@@ -41,6 +42,8 @@ enum TestHooks {
   private static let defaultFakeAuthenticationDelay: TimeInterval = 0.3
   private static var hasRunSelfTest = false
   private static var migrationOutcome = ""
+  /// The web view whose self-test waits for the migration to end
+  private static weak var webViewAwaitingMigration: WKWebView?
 
   /// `success`, `failure` or `cancel` while a test fakes the authentication of the app lock, otherwise `nil`
   static var fakeAuthenticationOutcome: String? {
@@ -94,12 +97,18 @@ enum TestHooks {
     return [WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: true)]
   }
 
-  /// What the migration of version 1's data did at this launch, for the self-test
-  static func recordMigration(_ outcome: String) {
+  /// What the migration of version 1's data did at this launch, for the self-test. A self-test that waited for the
+  /// migration runs now, or on the reloaded page when the app reloads.
+  static func recordMigration(_ outcome: String, willReloadApp: Bool) {
     guard isEnabled else {
       return
     }
     migrationOutcome = outcome
+    let webView = webViewAwaitingMigration
+    webViewAwaitingMigration = nil
+    if !willReloadApp, let webView {
+      runSelfTest(in: webView)
+    }
   }
 
   /// The app's page finished loading. Pages that report `appReady` run the self-test earlier.
@@ -122,6 +131,11 @@ enum TestHooks {
 
   private static func runSelfTest(in webView: WKWebView) {
     guard isEnabled, !hasRunSelfTest, let script = decodeEnvironmentScript(selfTestEnvironmentKey) else {
+      return
+    }
+    // The self-test reports what the migration did, so it waits until the migration has ended
+    guard !LegacyDataMigration.isMoving else {
+      webViewAwaitingMigration = webView
       return
     }
     hasRunSelfTest = true

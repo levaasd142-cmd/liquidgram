@@ -9,8 +9,8 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Me
 
 /// Bytes of a media file that the stream asks the page for
 struct MediaPartRequest {
-  /// The URL the media element loads, such as `liquidgram-web://app/progressive/document5032971201876312345?fileSize=…`,
-  /// which the page's API understands
+  /// The URL the media element loads, such as
+  /// `liquidgram-web://app/progressive/document5032971201876312345?fileSize=…`, which the page's API understands
   let url: String
   /// The first and the last byte, both included
   let start: Int
@@ -180,8 +180,9 @@ final class ProgressiveMediaStream {
         fail(stream, MediaStreamError.incompletePart)
         return
       }
-      let dataStart = part.data.startIndex
-      stream.task.didReceive(part.data.subdata(in: (dataStart + stream.offset - partStart)..<(dataStart + sliceEnd - partStart)))
+      // Where byte 0 of the file would be in the part's data
+      let fileStartIndex = part.data.startIndex - partStart
+      stream.task.didReceive(part.data.subdata(in: (fileStartIndex + stream.offset)..<(fileStartIndex + sliceEnd)))
       stream.offset = sliceEnd
       readAhead(after: index, for: stream)
     }
@@ -494,7 +495,8 @@ final class ProgressiveMediaStream {
 }
 
 /// Calls the page's `window.__liquidgramNative.loadMediaPart(url, start, end)`, which `util/nativeMediaStream.ts`
-/// sets. It resolves with `{ data, mimeType, fullSize }`, the bytes in base64, or with nothing when the download failed.
+/// sets. It resolves with `{ data, mimeType, fullSize }`, the bytes in base64, or with nothing when the download
+/// failed.
 enum PageMediaPartLoader {
   private static let script = """
     const loadMediaPart = window.__liquidgramNative?.loadMediaPart;
