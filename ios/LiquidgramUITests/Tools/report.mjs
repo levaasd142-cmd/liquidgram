@@ -29,7 +29,9 @@ const PREFERRED_SIMULATORS = ['iPhone 17 Pro', 'iPhone 16 Pro'];
 const IOS_RUNTIME_PATTERN = /SimRuntime\.iOS-(\d+)-(\d+)(?:-(\d+))?$/;
 const PRO_IPHONE_PATTERN = /^iPhone (\d+) Pro$/;
 // `Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' passed (12.345 seconds).`
-const LOG_RESULT_PATTERN = /^Test Case '-\[(?:[\w.]+\.)?(\w+) (\w+)\]' (passed|failed|skipped) \((\d+(?:\.\d+)?) seconds\)/;
+const LOG_RESULT_PATTERN = new RegExp(
+  "^Test Case '-\\[(?:[\\w.]+\\.)?(\\w+) (\\w+)\\]' (passed|failed|skipped) \\((\\d+(?:\\.\\d+)?) seconds\\)",
+);
 // `/path/CoreTests.swift:42: error: -[LiquidgramUITests.CoreTests testDemoAccount] : message`
 const LOG_FAILURE_PATTERN = /: error: -\[(?:[\w.]+\.)?(\w+) (\w+)\] : (.*)$/;
 const BUILD_ERROR_PATTERN = /(^|[^a-z])(error|fatal error):|BUILD FAILED|TEST BUILD FAILED/;
@@ -408,7 +410,10 @@ function renderSummary(summary) {
     '',
     `- Device: ${device.name || 'unknown'}${device.runtime ? `, ${device.runtime}` : ''}`,
   ];
-  if (source.branch) lines.push(`- Branch: \`${source.branch}\`${source.commit ? ` at \`${source.commit.slice(0, 7)}\`` : ''}`);
+  if (source.branch) {
+    const commit = source.commit ? ` at \`${source.commit.slice(0, 7)}\`` : '';
+    lines.push(`- Branch: \`${source.branch}\`${commit}`);
+  }
   if (source.run) lines.push(`- Run: ${source.run}`);
   lines.push(`- Generated: ${summary.generatedAt}`, '');
 
@@ -421,7 +426,10 @@ function renderSummary(summary) {
     summary.tests.forEach((test) => {
       const status = test.knownIssue ? `${test.status}, known issue` : test.status;
       const failure = [test.message, test.knownIssue && `Known issue: ${test.knownIssue}`].filter(Boolean).join('<br>');
-      lines.push(`| \`${test.name}\` | ${test.pass} | ${formatStatus(status)} | ${formatDuration(test.duration)} | ${escapeCell(failure)} |`);
+      const cells = [
+        `\`${test.name}\``, test.pass, formatStatus(status), formatDuration(test.duration), escapeCell(failure),
+      ];
+      lines.push(`| ${cells.join(' | ')} |`);
     });
     lines.push('');
   }
@@ -430,11 +438,14 @@ function renderSummary(summary) {
     lines.push(`## Self-test (${report.pass})`, '', '| Check | Result | Detail |', '| --- | --- | --- |');
     (report.checks || []).forEach((check) => {
       const result = check.ok ? 'ok' : (check.knownIssue ? 'failed, known issue' : '**failed**');
-      const detail = [check.detail, check.knownIssue && `Known issue: ${check.knownIssue}`].filter(Boolean).join('<br>');
+      const detail = [check.detail, check.knownIssue && `Known issue: ${check.knownIssue}`]
+        .filter(Boolean)
+        .join('<br>');
       lines.push(`| \`${check.name}\` | ${result} | ${escapeCell(detail)} |`);
     });
     if (report.info) {
-      lines.push('', '<details><summary>Page details</summary>', '', '```json', JSON.stringify(report.info, undefined, 2), '```', '', '</details>');
+      lines.push('', '<details><summary>Page details</summary>', '');
+      lines.push('```json', JSON.stringify(report.info, undefined, 2), '```', '', '</details>');
     }
     if (report.error) lines.push('', `The self-test script failed: ${escapeCell(report.error)}`);
     lines.push('');
@@ -475,7 +486,8 @@ function annotate(summaryFile) {
     return;
   }
 
-  const device = [summary.device && summary.device.name, summary.device && summary.device.runtime].filter(Boolean).join(', ');
+  const { name: deviceName, runtime } = summary.device || {};
+  const device = [deviceName, runtime].filter(Boolean).join(', ');
   process.stdout.write(`::notice title=UI tests ${escapeProperty(formatStatus(summary.status))}::`
     + `${escapeData(`${describeCounts(summary.counts)} on ${device || 'the simulator'}`)}\n`);
   if (summary.buildErrors && summary.buildErrors.length) {
@@ -488,12 +500,14 @@ function annotate(summaryFile) {
   annotatedTests.forEach((test) => {
     const known = test.knownIssue ? ` (known issue: ${test.knownIssue})` : '';
     const title = `${test.name} (${test.pass})`;
-    process.stdout.write(`::error title=${escapeProperty(title)}::${escapeData(`${test.message || 'Failed'}${known}`)}\n`);
+    const message = `${test.message || 'Failed'}${known}`;
+    process.stdout.write(`::error title=${escapeProperty(title)}::${escapeData(message)}\n`);
   });
   const hiddenTests = failedTests.slice(annotatedTests.length);
   if (hiddenTests.length) {
     const names = hiddenTests.map((test) => `${test.name} (${test.pass})`).join(', ');
-    process.stdout.write(`::error title=${hiddenTests.length} more failed tests::${escapeData(`${names}; see the report`)}\n`);
+    const title = `${hiddenTests.length} more failed tests`;
+    process.stdout.write(`::error title=${escapeProperty(title)}::${escapeData(`${names}; see the report`)}\n`);
   }
 }
 

@@ -43,6 +43,9 @@ final class FeatureTests: LiquidgramUITestCase {
   private static let notificationCenterDragEnd = CGVector(dx: 0.2, dy: 0.6)
   private static let homeIndicatorDragStart = CGVector(dx: 0.5, dy: 0.999)
   private static let homeIndicatorDragEnd = CGVector(dx: 0.5, dy: 0.4)
+  /// A slow drag up from the home indicator that stops halfway opens the app switcher
+  private static let appSwitcherDragEnd = CGVector(dx: 0.5, dy: 0.6)
+  private static let appSwitcherHoldDuration: TimeInterval = 1
   private static let dragPressDuration: TimeInterval = 0.1
 
   // MARK: - App lock
@@ -51,20 +54,20 @@ final class FeatureTests: LiquidgramUITestCase {
   /// background with the delay set to immediately
   @MainActor
   func testAppLockOpensAndLocksAgainAfterBackground() throws {
-    try launchApp(Launch(seedsDemoAccount: true, arguments: [
+    try launchApp(Launch(shouldSeedDemoAccount: true, arguments: [
       "-appLockEnabled", "YES",
       "-appLockDelay", "0",
       "-LiquidgramFakeAuthentication", "success",
       "-LiquidgramFakeAuthenticationDelay", Self.slowAuthenticationDelay,
     ]))
-    let lock = waitFor(nativeElement(Self.lockIdentifier), timeout: Self.lockTimeout, "the lock screen at launch")
+    let lock = waitFor(findNativeElement(Self.lockIdentifier), timeout: Self.lockTimeout, "the lock screen at launch")
     attachScreenshot("01-locked-at-launch")
-    let unlockButton = waitFor(nativeElement(Self.unlockButtonIdentifier), "the unlock button")
+    let unlockButton = waitFor(findNativeElement(Self.unlockButtonIdentifier), "the unlock button")
     XCTAssertTrue(unlockButton.isHittable, "The unlock button cannot be tapped")
     unlockButton.tap()
     waitForDisappearance(of: lock, timeout: Self.unlockTimeout, "the lock screen after Face ID succeeded")
     waitFor(
-      element(in: webView, labelContaining: Self.demoChatTitle),
+      findElement(in: webView, labelContaining: Self.demoChatTitle),
       timeout: Self.launchTimeout,
       "the chats after unlocking"
     )
@@ -87,12 +90,12 @@ final class FeatureTests: LiquidgramUITestCase {
       "-LiquidgramFakeAuthentication", "failure",
       "-LiquidgramFakeAuthenticationDelay", Self.failedAuthenticationDelay,
     ]))
-    let lock = waitFor(nativeElement(Self.lockIdentifier), timeout: Self.lockTimeout, "the lock screen at launch")
+    let lock = waitFor(findNativeElement(Self.lockIdentifier), timeout: Self.lockTimeout, "the lock screen at launch")
     pause(Self.afterFailureDelay)
     attachScreenshot("01-failed-authentication")
     XCTAssertTrue(lock.exists, "The lock opened although Face ID failed")
 
-    waitFor(nativeElement(Self.unlockButtonIdentifier), "the unlock button").tap()
+    waitFor(findNativeElement(Self.unlockButtonIdentifier), "the unlock button").tap()
     pause(Self.afterFailureDelay)
     attachScreenshot("02-failed-again")
     XCTAssertTrue(lock.exists, "The lock opened although Face ID failed again")
@@ -105,15 +108,15 @@ final class FeatureTests: LiquidgramUITestCase {
   /// when the app is active again
   @MainActor
   func testPrivacyShieldCoversAppWhileInactive() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
-    waitFor(element(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+    try launchApp(Launch(shouldSeedDemoAccount: true))
+    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
 
     app.coordinate(withNormalizedOffset: Self.notificationCenterDragStart).press(
       forDuration: Self.dragPressDuration,
       thenDragTo: app.coordinate(withNormalizedOffset: Self.notificationCenterDragEnd)
     )
     let shield = waitFor(
-      nativeElement(Self.privacyShieldIdentifier),
+      findNativeElement(Self.privacyShieldIdentifier),
       timeout: Self.shieldTimeout,
       "the privacy shield while Notification Center is open"
     )
@@ -126,6 +129,17 @@ final class FeatureTests: LiquidgramUITestCase {
     app.activate()
     waitForDisappearance(of: shield, timeout: Self.shieldTimeout, "the privacy shield after the app became active")
     attachScreenshot("02-shield-removed")
+
+    // For the report only: the app switcher shows the snapshot that iOS took as the app left the screen, which the
+    // shield covers. The gesture is not reliable enough for an assertion.
+    app.coordinate(withNormalizedOffset: Self.homeIndicatorDragStart).press(
+      forDuration: Self.dragPressDuration,
+      thenDragTo: app.coordinate(withNormalizedOffset: Self.appSwitcherDragEnd),
+      withVelocity: .slow,
+      thenHoldForDuration: Self.appSwitcherHoldDuration
+    )
+    attachScreenshot("03-app-switcher")
+    app.activate()
   }
 
   // MARK: - Quick actions
@@ -133,15 +147,15 @@ final class FeatureTests: LiquidgramUITestCase {
   /// The Saved Messages quick action opens the chat with yourself
   @MainActor
   func testQuickActionOpensSavedMessages() throws {
-    try launchApp(Launch(seedsDemoAccount: true, arguments: ["-LiquidgramTestAction", "openSavedMessages"]))
-    waitFor(textInput(in: webView, labeled: Self.composerLabel), timeout: Self.actionTimeout, "an opened chat")
+    try launchApp(Launch(shouldSeedDemoAccount: true, arguments: ["-LiquidgramTestAction", "openSavedMessages"]))
+    waitFor(findTextInput(in: webView, labeled: Self.composerLabel), timeout: Self.actionTimeout, "an opened chat")
     // The chat list under the opened chat has the same texts, but off screen
     waitForHittable(
       webView.staticTexts.matching(Self.makeLabelPredicate(containing: Self.savedMessagesText)),
       "the message of Saved Messages on screen"
     )
     waitForHittable(
-      elements(in: webView, labelContaining: Self.savedMessagesTitle),
+      findElements(in: webView, labelContaining: Self.savedMessagesTitle),
       "the Saved Messages title on screen"
     )
     attachScreenshot("01-saved-messages")
@@ -150,18 +164,18 @@ final class FeatureTests: LiquidgramUITestCase {
   /// The Search quick action focuses the chat search, so the keyboard comes up
   @MainActor
   func testQuickActionFocusesSearch() throws {
-    try launchApp(Launch(seedsDemoAccount: true, arguments: ["-LiquidgramTestAction", "openSearch"]))
+    try launchApp(Launch(shouldSeedDemoAccount: true, arguments: ["-LiquidgramTestAction", "openSearch"]))
     waitFor(keyboard, timeout: Self.actionTimeout, "the keyboard of the focused search")
-    waitFor(textInput(in: webView, labeled: Self.searchLabel), "the search field")
+    waitFor(findTextInput(in: webView, labeled: Self.searchLabel), "the search field")
     attachScreenshot("01-search-focused")
   }
 
   /// The New Message quick action opens the contacts to start a private chat with
   @MainActor
   func testQuickActionOpensNewMessage() throws {
-    try launchApp(Launch(seedsDemoAccount: true, arguments: ["-LiquidgramTestAction", "newMessage"]))
+    try launchApp(Launch(shouldSeedDemoAccount: true, arguments: ["-LiquidgramTestAction", "newMessage"]))
     waitFor(
-      textInput(in: webView, labeled: Self.contactsSearchLabel),
+      findTextInput(in: webView, labeled: Self.contactsSearchLabel),
       timeout: Self.actionTimeout,
       "the contacts picker"
     )
@@ -171,9 +185,9 @@ final class FeatureTests: LiquidgramUITestCase {
   /// The Ghost Mode quick action switches ghost mode and says so in a toast
   @MainActor
   func testQuickActionTogglesGhostMode() throws {
-    try launchApp(Launch(seedsDemoAccount: true, arguments: ["-LiquidgramTestAction", "toggleGhostMode"]))
+    try launchApp(Launch(shouldSeedDemoAccount: true, arguments: ["-LiquidgramTestAction", "toggleGhostMode"]))
     waitFor(
-      element(in: webView, labelContaining: Self.ghostModeToastPrefix),
+      findElement(in: webView, labelContaining: Self.ghostModeToastPrefix),
       timeout: Self.actionTimeout,
       "the ghost mode toast"
     )
@@ -185,13 +199,13 @@ final class FeatureTests: LiquidgramUITestCase {
   /// `liquidgram://settings` becomes `tg://settings`, which opens the settings of the web app
   @MainActor
   func testDeepLinkOpensSettings() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
-    waitFor(element(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+    try launchApp(Launch(shouldSeedDemoAccount: true))
+    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
 
     app.open(try XCTUnwrap(URL(string: Self.settingsDeepLink)))
     acceptOpenURLPromptIfShown()
     waitFor(
-      element(in: webView, labelContaining: Self.privacySettingsTitle),
+      findElement(in: webView, labelContaining: Self.privacySettingsTitle),
       timeout: Self.actionTimeout,
       "the settings opened by \(Self.settingsDeepLink)"
     )
@@ -203,7 +217,7 @@ final class FeatureTests: LiquidgramUITestCase {
   /// Settings › Liquidgram has a section for the iPhone app
   @MainActor
   func testLiquidgramSettingsShowIPhoneSection() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true))
     let settingsTab = waitFor(
       webView.buttons[Self.settingsTabLabel],
       timeout: Self.launchTimeout,
@@ -212,10 +226,10 @@ final class FeatureTests: LiquidgramUITestCase {
     settingsTab.tap()
     allowNotificationsIfAsked()
     waitForHittable(
-      elements(in: webView, labelContaining: Self.liquidgramSettingsDescription),
+      findElements(in: webView, labelContaining: Self.liquidgramSettingsDescription),
       "the Liquidgram settings row"
     ).tap()
-    waitFor(element(in: webView, labelContaining: Self.ghostModeSettingDescription), "the Liquidgram settings")
+    waitFor(findElement(in: webView, labelContaining: Self.ghostModeSettingDescription), "the Liquidgram settings")
     attachScreenshot("01-liquidgram-settings")
 
     let section = waitFor(
@@ -234,7 +248,7 @@ final class FeatureTests: LiquidgramUITestCase {
   /// The page extends under the status bar (`viewport-fit=cover`), so the web app keeps its headers below it
   @MainActor
   func testHeadersStayBelowStatusBar() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true))
     let menuButton = waitFor(
       webView.buttons[Self.menuButtonLabel],
       timeout: Self.launchTimeout,
@@ -247,7 +261,7 @@ final class FeatureTests: LiquidgramUITestCase {
       problems.append("the chat list header starts at y \(menuButton.frame.minY)")
     }
 
-    element(in: webView, labelContaining: Self.demoChatTitle).tap()
+    findElement(in: webView, labelContaining: Self.demoChatTitle).tap()
     let chatTitle = waitForHittable(chatHeaderTitle, "the header of the opened chat")
     attachScreenshot("02-chat-header")
     if chatTitle.frame.minY < statusBarBottom - Self.frameTolerance {
@@ -262,11 +276,11 @@ final class FeatureTests: LiquidgramUITestCase {
   /// The opened chat keeps its header on screen while the keyboard is up, rather than the whole page scrolling up
   @MainActor
   func testChatHeaderStaysVisibleWhileTyping() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
-    waitFor(element(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+    try launchApp(Launch(shouldSeedDemoAccount: true))
+    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
       .tap()
     allowNotificationsIfAsked()
-    waitFor(textInput(in: webView, labeled: Self.composerLabel), "the composer").tap()
+    waitFor(findTextInput(in: webView, labeled: Self.composerLabel), "the composer").tap()
     waitFor(keyboard, "the software keyboard")
     dismissKeyboardIntroductionIfShown()
     app.typeText(Self.typedMessage)
@@ -291,7 +305,7 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testKeyboardHasNoFormToolbar() throws {
     try launchApp()
-    waitFor(textInput(in: webView, labeled: Self.apiIdLabel), timeout: Self.launchTimeout, "the API ID field").tap()
+    waitFor(findTextInput(in: webView, labeled: Self.apiIdLabel), timeout: Self.launchTimeout, "the API ID field").tap()
     let keyboard = waitFor(self.keyboard, "the software keyboard")
     attachScreenshot("01-keyboard-without-toolbar")
 

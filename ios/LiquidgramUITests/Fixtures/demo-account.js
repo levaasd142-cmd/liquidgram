@@ -4,6 +4,8 @@
 // message dates relative to now) and API keys of the valid form, which the web app needs before it shows the main
 // screen. The keys are never used: the GramJS worker, the only part of the web app that connects to Telegram, is
 // replaced with one that never answers, so the app stays on its cached state and nothing reaches Telegram.
+// The cached state has only the sections the chats need. `migrateCache` logs a TypeError for the missing ones, such
+// as `appConfig`, and `readCache` takes them from the initial state.
 (() => {
   'use strict';
 
@@ -164,7 +166,12 @@
       { id: 1, ago: 1500, text: 'Скинь фотки с выходных 📸' },
       { id: 2, ago: 1495, out: true, text: 'Щас, только с телефона перекину' },
       { id: 3, ago: 1490, text: 'Жду-жду' },
-      { id: 4, ago: 1480, out: true, text: 'Кстати, ты пробовала новый Liquid Glass в iOS 26? Всё будто из жидкого стекла 💧' },
+      {
+        id: 4,
+        ago: 1480,
+        out: true,
+        text: 'Кстати, ты пробовала новый Liquid Glass в iOS 26? Всё будто из жидкого стекла 💧',
+      },
       { id: 5, ago: 1470, text: 'Да! Особенно таббар внизу, он прям переливается' },
       { id: 6, ago: 1465, out: true, text: 'Хочу такое на компе в телеге' },
       { id: 7, ago: 1460, text: 'Сделай сам, ты же умный 😄' },
@@ -172,7 +179,12 @@
       { id: 9, ago: 52, text: 'Привет! Ты видел новый айос? 😍' },
       { id: 10, ago: 51, out: true, text: 'Да, этот Liquid Glass просто бомба' },
       { id: 11, ago: 50, text: 'Хочу такое же в телеге', editedAgo: 49 },
-      { id: 12, ago: 48, out: true, text: 'Смотри что я собрал 👀 Liquidgram — свой клиент со стеклом и режимом призрака' },
+      {
+        id: 12,
+        ago: 48,
+        out: true,
+        text: 'Смотри что я собрал 👀 Liquidgram — свой клиент со стеклом и режимом призрака',
+      },
       { id: 13, ago: 47, text: 'Чё серьёзно?? Скинь ссылку' },
       { id: 14, ago: 46, text: 'Ой, это я не тебе написала 🙈', deletedAgo: 45 },
       { id: 15, ago: 44, out: true, text: 'Поздно, я всё видел 😏 антиудаление работает' },
@@ -198,7 +210,9 @@
       type: 'chatTypeChannel', title: 'iOS 26 Design', membersCount: 128400, isVerified: true,
     });
     addMessages('-1001000000002', [
-      { ago: 300, text: 'Liquid Glass — новый материал Apple: он преломляет и отражает всё, что под ним.', views: 48200 },
+      {
+        ago: 300, text: 'Liquid Glass — новый материал Apple: он преломляет и отражает всё, что под ним.', views: 48200,
+      },
       { ago: 120, text: 'Главные принципы: прозрачность, глубина и живая реакция на движение 💧', views: 39100 },
       { ago: 20, text: 'Собрали 15 приложений, которые уже обновили дизайн под iOS 26 👇', views: 12800 },
     ], { unreadCount: 2 });
@@ -288,7 +302,12 @@
         orderedIds: [0, 1, 2, 3],
         byId: {
           1: {
-            id: 1, title: { text: 'Личное' }, contacts: true, nonContacts: true, includedChatIds: [], excludedChatIds: [],
+            id: 1,
+            title: { text: 'Личное' },
+            contacts: true,
+            nonContacts: true,
+            includedChatIds: [],
+            excludedChatIds: [],
           },
           2: {
             id: 2, title: { text: 'Группы' }, groups: true, includedChatIds: [], excludedChatIds: [],

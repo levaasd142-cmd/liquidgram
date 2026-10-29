@@ -50,7 +50,8 @@ await runCheck('noServiceWorker', async () => {
   const container = navigator.serviceWorker;
   if (!container) return 'service workers are unavailable';
 
-  assert(!container.controller, `a service worker controls the page: ${container.controller && container.controller.scriptURL}`);
+  const { controller } = container;
+  assert(!controller, `a service worker controls the page: ${controller && controller.scriptURL}`);
   const registrations = typeof container.getRegistrations === 'function' ? await container.getRegistrations() : [];
   assert(!registrations.length, `${registrations.length} service worker registrations`);
   return 'no controller and no registrations';

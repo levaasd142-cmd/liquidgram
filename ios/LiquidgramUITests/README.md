@@ -115,8 +115,8 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | Fixture | Use |
 | --- | --- |
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
-| `demo-account.js` | `Launch(seedsDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen. It also replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so the keys are never used and nothing reaches Telegram |
-| `selftest.js` | `Launch(runsSelfTest: true)`: the self-test |
+| `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen. It also replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so the keys are never used and nothing reaches Telegram |
+| `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |
 | `liquidgram-selftest-worker.js` | Not injected: served from the web root for the `worker` check |
 
 The first tap in a session with the demo account makes the web app ask for the notification permission; `allowNotificationsIfAsked()` answers the system prompt, once per simulator.
@@ -124,7 +124,7 @@ The first tap in a session with the demo account makes the web app ask for the n
 ## Writing tests
 
 - Subclass `LiquidgramUITestCase` and mark test methods `@MainActor`, as the XCUI classes are main-actor isolated.
-- Find web content through `webView` with `element(in:labelContaining:)`, `staticText(in:containing:)` and `textInput(in:labeled:)`; find native views by accessibility identifier with `nativeElement(_:)`. A chat of the list is one link whose label holds the whole row.
+- Find web content through `webView` with `findElement(in:labelContaining:)`, `findStaticText(in:containing:)` and `findTextInput(in:labeled:)`; find native views by accessibility identifier with `findNativeElement(_:)`. A chat of the list is one button whose label holds the whole row.
 - Web content keeps screens that slid away, like the chat list under an opened chat, in the accessibility tree: use `waitForHittable(_:_:)` when only the element on screen counts.
 - Wait with `waitFor`, `waitForHittable` and `waitForDisappearance`; on a timeout they attach a screenshot and the accessibility tree before failing.
 - Name screenshots `NN-what-is-shown`; the report orders them by time and the dark run adds `-dark`.

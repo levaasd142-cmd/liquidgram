@@ -38,11 +38,11 @@ class LiquidgramUITestCase: XCTestCase {
   /// What a test launches the app with
   struct Launch {
     /// `-LiquidgramResetState YES`: no native settings and no web data from earlier tests
-    var resetsState = true
+    var shouldResetState = true
     /// Seeds the demo account of `Fixtures/demo-account.js`, which shows chats without a connection to Telegram
-    var seedsDemoAccount = false
+    var shouldSeedDemoAccount = false
     /// Runs `Fixtures/selftest.js` once the page is ready and shows its report as `selfTestResultIdentifier`
-    var runsSelfTest = false
+    var shouldRunSelfTest = false
     var arguments: [String] = []
   }
 
@@ -87,20 +87,20 @@ class LiquidgramUITestCase: XCTestCase {
     let app = XCUIApplication()
     // The assertions look for the English texts of the web app and the native screens
     var arguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
-    if launch.resetsState {
+    if launch.shouldResetState {
       arguments += ["-LiquidgramResetState", "YES"]
     }
     app.launchArguments = arguments + launch.arguments
 
     let errorRecorder = try loadFixture("page-errors")
     var userScripts = [errorRecorder]
-    if launch.seedsDemoAccount {
+    if launch.shouldSeedDemoAccount {
       userScripts.append(try loadFixture("demo-account"))
     }
     app.launchEnvironment[Self.userScriptEnvironmentKey] = Self.encodeScript(
       userScripts.joined(separator: Self.scriptSeparator)
     )
-    if launch.runsSelfTest {
+    if launch.shouldRunSelfTest {
       app.launchEnvironment[Self.selfTestEnvironmentKey] = Self.encodeScript(try loadFixture("selftest"))
     }
 
@@ -122,41 +122,41 @@ class LiquidgramUITestCase: XCTestCase {
     Data(source.utf8).base64EncodedString()
   }
 
+  // MARK: - Queries
+
   static func makeLabelPredicate(containing text: String) -> NSPredicate {
     NSPredicate(format: "label CONTAINS %@", text)
   }
 
-  // MARK: - Queries
-
   /// A native element by its accessibility identifier, whatever its type
   @MainActor
-  func nativeElement(_ identifier: String) -> XCUIElement {
+  func findNativeElement(_ identifier: String) -> XCUIElement {
     app.descendants(matching: .any).matching(identifier: identifier).firstMatch
   }
 
   /// Elements of any type whose label contains `text`
   @MainActor
-  func elements(in root: XCUIElement, labelContaining text: String) -> XCUIElementQuery {
+  func findElements(in root: XCUIElement, labelContaining text: String) -> XCUIElementQuery {
     root.descendants(matching: .any).matching(Self.makeLabelPredicate(containing: text))
   }
 
-  /// The outermost element whose label contains `text`. Web content exposes a chat of the list as one link whose
+  /// The outermost element whose label contains `text`. Web content exposes a chat of the list as one button whose
   /// label holds the whole row, and a message as a static text.
   @MainActor
-  func element(in root: XCUIElement, labelContaining text: String) -> XCUIElement {
-    elements(in: root, labelContaining: text).firstMatch
+  func findElement(in root: XCUIElement, labelContaining text: String) -> XCUIElement {
+    findElements(in: root, labelContaining: text).firstMatch
   }
 
   /// A static text whose label contains `text`
   @MainActor
-  func staticText(in root: XCUIElement, containing text: String) -> XCUIElement {
+  func findStaticText(in root: XCUIElement, containing text: String) -> XCUIElement {
     root.staticTexts.matching(Self.makeLabelPredicate(containing: text)).firstMatch
   }
 
   /// A text field or text view with this label or placeholder. The composer of the web app is a text view, the
   /// search fields and the API key fields are text fields.
   @MainActor
-  func textInput(in root: XCUIElement, labeled label: String) -> XCUIElement {
+  func findTextInput(in root: XCUIElement, labeled label: String) -> XCUIElement {
     let types = [XCUIElement.ElementType.textField, .textView, .searchField].map { NSNumber(value: $0.rawValue) }
     let predicate = NSPredicate(
       format: "(label == %@ OR placeholderValue == %@) AND elementType IN %@",
@@ -313,6 +313,7 @@ class LiquidgramUITestCase: XCTestCase {
     add(attachment)
   }
 
+  /// A JSON report, such as the self-test's, which `report.mjs` turns into a table
   func attachJSON(_ json: String, name: String) {
     let attachment = XCTAttachment(data: Data(json.utf8), uniformTypeIdentifier: Self.jsonType)
     attachment.name = name + Self.appearanceSuffix

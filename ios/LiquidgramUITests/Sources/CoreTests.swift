@@ -27,33 +27,36 @@ final class CoreTests: LiquidgramUITestCase {
     try launchApp()
     waitFor(webView, timeout: Self.launchTimeout, "the web view")
     waitFor(
-      textInput(in: webView, labeled: Self.apiIdLabel),
+      findTextInput(in: webView, labeled: Self.apiIdLabel),
       timeout: Self.launchTimeout,
       "the API ID field of the API keys screen"
     )
-    waitFor(textInput(in: webView, labeled: Self.apiHashLabel), "the API hash field")
-    waitFor(element(in: webView, labelContaining: Self.apiKeysDescription), "the description of the API keys screen")
+    waitFor(findTextInput(in: webView, labeled: Self.apiHashLabel), "the API hash field")
+    waitFor(
+      findElement(in: webView, labelContaining: Self.apiKeysDescription),
+      "the description of the API keys screen"
+    )
     attachScreenshot("01-api-keys-screen")
     attachAccessibilityTree("api-keys-screen")
 
     XCTAssertTrue(
-      nativeElement(Self.webViewIdentifier).exists,
+      findNativeElement(Self.webViewIdentifier).exists,
       "No element has the identifier \(Self.webViewIdentifier)"
     )
     XCTAssertFalse(
-      element(in: webView, labelContaining: Self.unsupportedBrowserText).exists,
+      findElement(in: webView, labelContaining: Self.unsupportedBrowserText).exists,
       "The web app says that the browser is not supported"
     )
-    XCTAssertFalse(nativeElement(Self.startupErrorIdentifier).exists, "The app shows its startup error")
+    XCTAssertFalse(findNativeElement(Self.startupErrorIdentifier).exists, "The app shows its startup error")
   }
 
   /// `Fixtures/selftest.js` checks the bridge, storage, crypto, workers, the local server and the user agent from
   /// inside the page
   @MainActor
   func testWebAppSelfTest() throws {
-    try launchApp(Launch(runsSelfTest: true))
+    try launchApp(Launch(shouldRunSelfTest: true))
     let result = waitFor(
-      nativeElement(Self.selfTestResultIdentifier),
+      findNativeElement(Self.selfTestResultIdentifier),
       timeout: Self.selfTestTimeout,
       "the self-test result"
     )
@@ -79,7 +82,7 @@ final class CoreTests: LiquidgramUITestCase {
   func testKeyboardKeepsFocusedFieldVisible() throws {
     try launchApp()
     let apiIdField = waitFor(
-      textInput(in: webView, labeled: Self.apiIdLabel),
+      findTextInput(in: webView, labeled: Self.apiIdLabel),
       timeout: Self.launchTimeout,
       "the API ID field"
     )
@@ -104,20 +107,20 @@ final class CoreTests: LiquidgramUITestCase {
   /// A signed-in session shows its chats, opens a chat and keeps the composer above the keyboard
   @MainActor
   func testDemoAccount() throws {
-    try launchApp(Launch(seedsDemoAccount: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true))
     let chat = waitFor(
-      element(in: webView, labelContaining: Self.demoChatTitle),
+      findElement(in: webView, labelContaining: Self.demoChatTitle),
       timeout: Self.launchTimeout,
       "the chat list of the demo account"
     )
-    waitFor(element(in: webView, labelContaining: Self.demoGroupTitle), "the group chat of the demo account")
+    waitFor(findElement(in: webView, labelContaining: Self.demoGroupTitle), "the group chat of the demo account")
     attachScreenshot("01-chat-list")
     attachAccessibilityTree("chat-list")
 
     chat.tap()
     allowNotificationsIfAsked()
-    waitFor(staticText(in: webView, containing: Self.demoMessage), "a message of the opened chat")
-    let composer = waitFor(textInput(in: webView, labeled: Self.composerLabel), "the composer")
+    waitFor(findStaticText(in: webView, containing: Self.demoMessage), "a message of the opened chat")
+    let composer = waitFor(findTextInput(in: webView, labeled: Self.composerLabel), "the composer")
     attachScreenshot("02-chat")
 
     composer.tap()
