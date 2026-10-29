@@ -65,6 +65,11 @@ enum NativeAction: Equatable {
     self == .scrollToTop
   }
 
+  /// The page focuses a text field for this action, and the keyboard should come up with it
+  var focusesTextField: Bool {
+    self == .openSearch
+  }
+
   /// The action of a home-screen quick action declared in `UIApplicationShortcutItems`
   init?(shortcutItemType: String) {
     guard shortcutItemType.hasPrefix(Self.shortcutTypePrefix) else {
