@@ -6,10 +6,8 @@ import (
 	"os/exec"
 )
 
-// Logs the message, which also prints it to stderr, and shows it with zenity on a desktop session
-func showError(message string) {
-	log.Print(message)
-
+// Shows the message with zenity on a desktop session. The log already printed it to stderr.
+func showDialog(message string, isWarning bool) {
 	if os.Getenv("DISPLAY") == "" && os.Getenv("WAYLAND_DISPLAY") == "" {
 		return
 	}
@@ -17,7 +15,12 @@ func showError(message string) {
 	if err != nil {
 		return
 	}
-	if err := exec.Command(zenity, "--error", "--no-markup", "--title="+appName, "--text="+message).Run(); err != nil {
-		log.Printf("Could not show the error dialog: %v", err)
+
+	kind := "--error"
+	if isWarning {
+		kind = "--warning"
+	}
+	if err := exec.Command(zenity, kind, "--no-markup", "--title="+appName, "--text="+message).Run(); err != nil {
+		log.Printf("Could not show the dialog: %v", err)
 	}
 }

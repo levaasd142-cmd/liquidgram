@@ -79,12 +79,19 @@ Section "Install"
   SetOutPath "$INSTDIR"
 
   ; Windows keeps a running executable locked but lets it be renamed, so an update works while an
-  ; older copy is open. The renamed copy is removed here or by the next update once it exits.
-  Delete "$INSTDIR\${APP_EXE}.old"
-  IfFileExists "$INSTDIR\${APP_EXE}" 0 +2
+  ; older copy is open. The renamed copy is removed by a later update or the uninstaller once it
+  ; exits. Only when copies from two earlier versions still run does the user have to close them.
+  retryReplace:
+    Delete "$INSTDIR\${APP_EXE}.old"
+    Delete "$INSTDIR\${APP_EXE}"
+    IfFileExists "$INSTDIR\${APP_EXE}" 0 replaced
+    ClearErrors
     Rename "$INSTDIR\${APP_EXE}" "$INSTDIR\${APP_EXE}.old"
+    IfErrors 0 replaced
+      MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryReplace
+      Abort
+  replaced:
   File "/oname=${APP_EXE}" "${APP_EXE_PATH}"
-  Delete "$INSTDIR\${APP_EXE}.old"
 
   WriteUninstaller "$INSTDIR\${UNINSTALLER_EXE}"
 

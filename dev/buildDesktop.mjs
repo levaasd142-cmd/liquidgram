@@ -23,8 +23,11 @@ const WINDOWS_EXE = 'Liquidgram.exe';
 const LINUX_BINARY = 'liquidgram-linux-x64';
 const INSTALLER = 'Liquidgram-Setup.exe';
 const PORTABLE_ZIP = 'Liquidgram-Portable.zip';
+const OUTPUT_FILES = [WINDOWS_EXE, LINUX_BINARY, PORTABLE_ZIP, INSTALLER];
 const ZIP_LEVEL = 9;
 const MEGABYTE = 1024 * 1024;
+const WINDOWS_VERSION_PARTS = 4;
+const MAX_VERSION_PART = 65535;
 const BYTE_ORDER_MARK = String.fromCodePoint(0xFEFF);
 const GO_HINT = 'Go 1.24 or newer is required, see go.dev/dl';
 const NSIS_HINT = 'NSIS is required for the installer: install it with `apt-get install nsis`, '
@@ -44,6 +47,7 @@ function buildDesktop() {
   const distDir = resolve(ROOT, options.dist);
   const outDir = resolve(ROOT, options.out);
   const version = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
+  const windowsVersion = toWindowsVersion(version);
   const shouldBuildInstaller = !options['no-installer'];
 
   if (!existsSync(join(distDir, 'index.html'))) {
@@ -55,14 +59,14 @@ function buildDesktop() {
   }
 
   copyWebBuild(distDir);
-  rmSync(outDir, { recursive: true, force: true });
+  // The output folder may be any folder, so only the files this script writes are replaced
   mkdirSync(outDir, { recursive: true });
+  OUTPUT_FILES.forEach((name) => rmSync(join(outDir, name), { force: true }));
 
   runGo(['vet', './...']);
   runGo(['vet', './...'], { GOOS: 'windows' });
   runGo(['test', './...']);
 
-  const windowsVersion = toWindowsVersion(version);
   runGo(['tool', 'go-winres', 'make', '--in', join('winres', 'winres.json'), '--arch', 'amd64', '--out', 'rsrc',
     '--product-version', windowsVersion, '--file-version', windowsVersion]);
 
@@ -118,11 +122,18 @@ function buildLauncher({
   });
 }
 
-// Windows version resources take exactly four numbers, so pre-release and build suffixes are dropped
+// Windows version resources take exactly four numbers up to 65535, so pre-release and build suffixes
+// are dropped
 function toWindowsVersion(version) {
   const parts = version.split(/[-+]/)[0].split('.').map(Number);
-  while (parts.length < 4) parts.push(0);
-  return parts.slice(0, 4).join('.');
+  const isValid = parts.length <= WINDOWS_VERSION_PARTS
+    && parts.every((part) => Number.isInteger(part) && part >= 0 && part <= MAX_VERSION_PART);
+  if (!isValid) {
+    throw new Error(`Version ${version} in package.json cannot become a Windows version`);
+  }
+
+  while (parts.length < WINDOWS_VERSION_PARTS) parts.push(0);
+  return parts.join('.');
 }
 
 function packPortableZip(exePath, outPath) {
@@ -150,7 +161,7 @@ function buildInstaller({
 }
 
 function printSummary(outDir, version) {
-  const files = [WINDOWS_EXE, LINUX_BINARY, PORTABLE_ZIP, INSTALLER].filter((name) => existsSync(join(outDir, name)));
+  const files = OUTPUT_FILES.filter((name) => existsSync(join(outDir, name)));
   const lines = files.map((name) => {
     const size = (statSync(join(outDir, name)).size / MEGABYTE).toFixed(1);
     return `  ${name} (${size} MB)`;

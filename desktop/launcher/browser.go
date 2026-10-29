@@ -128,6 +128,8 @@ func (a *desktopApp) waitUntilClosed() {
 	for {
 		time.Sleep(closeCheckPeriod)
 
+		// The lock is probed only while no started process runs, and starting one takes the same
+		// mutex, so the probe never meets a browser this launcher is starting
 		a.mu.Lock()
 		if a.processes > 0 || isProfileLocked(a.getProfileDir()) {
 			idleChecks = 0

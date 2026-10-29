@@ -1,14 +1,8 @@
 package main
 
-import (
-	"log"
+import "golang.org/x/sys/windows"
 
-	"golang.org/x/sys/windows"
-)
-
-func showError(message string) {
-	log.Print(message)
-
+func showDialog(message string, isWarning bool) {
 	text, err := windows.UTF16PtrFromString(message)
 	if err != nil {
 		return
@@ -17,5 +11,10 @@ func showError(message string) {
 	if err != nil {
 		return
 	}
-	windows.MessageBox(0, text, caption, windows.MB_OK|windows.MB_ICONERROR|windows.MB_SETFOREGROUND)
+
+	icon := uint32(windows.MB_ICONERROR)
+	if isWarning {
+		icon = windows.MB_ICONWARNING
+	}
+	windows.MessageBox(0, text, caption, windows.MB_OK|icon|windows.MB_SETFOREGROUND)
 }

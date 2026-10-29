@@ -40,9 +40,9 @@ var controlClient = &http.Client{
 	Transport: &http.Transport{Proxy: nil, DisableKeepAlives: true},
 }
 
-// Binds the saved port or the first available default one. Returns `errHandedOff` when the same
-// user's instance already runs on one of them and opened a window instead.
-func acquirePort(savedPort int, instanceID string) (net.Listener, int, error) {
+// Binds the saved port or the first available default one. Returns `errHandedOff` when an instance
+// with the same data folder already runs on one of them and opened a window instead.
+func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, error) {
 	ports := slices.DeleteFunc(slices.Clone(defaultPorts), func(port int) bool { return port == savedPort })
 	if savedPort != 0 {
 		ports = slices.Insert(ports, 0, savedPort)
@@ -50,7 +50,7 @@ func acquirePort(savedPort int, instanceID string) (net.Listener, int, error) {
 
 	var lastErr error
 	for _, port := range ports {
-		listener, err := listenOrHandOff(port, instanceID)
+		listener, err := listenOrHandOff(port, instanceID, dataDir)
 		if err == nil || errors.Is(err, errHandedOff) {
 			return listener, port, err
 		}
@@ -60,7 +60,7 @@ func acquirePort(savedPort int, instanceID string) (net.Listener, int, error) {
 	return nil, 0, fmt.Errorf("no port is available: %w", lastErr)
 }
 
-func listenOrHandOff(port int, instanceID string) (net.Listener, error) {
+func listenOrHandOff(port int, instanceID, dataDir string) (net.Listener, error) {
 	address := net.JoinHostPort(loopbackIP, strconv.Itoa(port))
 
 	var err error
@@ -75,8 +75,9 @@ func listenOrHandOff(port int, instanceID string) (net.Listener, error) {
 		case ownerOtherApp:
 			return nil, err
 		case ownerSameInstance:
-			// Fails only while that instance shuts down and releases the port
-			if requestWindow(port, instanceID) == nil {
+			// Fails only while that instance starts and writes its token, or shuts down and releases
+			// the port
+			if requestWindow(port, readLaunchToken(dataDir)) == nil {
 				return nil, errHandedOff
 			}
 		case ownerUnknown:
@@ -105,12 +106,12 @@ func probePortOwner(port int, instanceID string) portOwner {
 	return ownerSameInstance
 }
 
-func requestWindow(port int, instanceID string) error {
+func requestWindow(port int, launchToken string) error {
 	request, err := http.NewRequest(http.MethodGet, buildControlURL(port, openPath), nil)
 	if err != nil {
 		return err
 	}
-	request.Header.Set(instanceHeader, instanceID)
+	request.Header.Set(tokenHeader, launchToken)
 
 	response, err := controlClient.Do(request)
 	if err != nil {

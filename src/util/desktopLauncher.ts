@@ -47,7 +47,9 @@ function openWindowOrExternalUrl(url?: string | URL, target?: string, features?:
 }
 
 function handleLinkClick(e: MouseEvent) {
-  if (e.defaultPrevented) return;
+  // `auxclick` also fires for the right button, which opens the context menu
+  const isOpeningButton = e.button === MouseButton.Main || e.button === MouseButton.Auxiliary;
+  if (e.defaultPrevented || !isOpeningButton) return;
 
   const anchor = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href]');
   if (!anchor) return;

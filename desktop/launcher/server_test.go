@@ -16,6 +16,7 @@ import (
 const (
 	testPort     = 47819
 	testInstance = "instance"
+	testToken    = "secret-token"
 )
 
 var testFiles = fstest.MapFS{
@@ -55,13 +56,20 @@ type testActions struct {
 
 func newTestHandler() (*appHandler, *testActions) {
 	actions := &testActions{}
-	handler := newAppHandler(testFiles, testPort, testInstance, func() error {
-		actions.windows++
-		return nil
-	}, func(target string) error {
-		actions.urls = append(actions.urls, target)
-		return nil
-	})
+	handler := &appHandler{
+		files:        testFiles,
+		allowedHosts: buildAllowedHosts(testPort),
+		instanceID:   testInstance,
+		launchToken:  testToken,
+		openWindow: func() error {
+			actions.windows++
+			return nil
+		},
+		openURL: func(target string) error {
+			actions.urls = append(actions.urls, target)
+			return nil
+		},
+	}
 	return handler, actions
 }
 
@@ -169,10 +177,11 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 		status  int
 	}{
 		{http.MethodGet, nil, http.StatusForbidden},
-		{http.MethodGet, map[string]string{instanceHeader: "other"}, http.StatusForbidden},
-		{http.MethodGet, map[string]string{instanceHeader: testInstance, "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
-		{http.MethodHead, map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
-		{http.MethodGet, map[string]string{instanceHeader: testInstance}, http.StatusNoContent},
+		{http.MethodGet, map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: "guess"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: testToken, "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
+		{http.MethodHead, map[string]string{tokenHeader: testToken}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: testToken}, http.StatusNoContent},
 	}
 	for _, test := range tests {
 		if response := serve(handler, test.method, openPath, test.headers); response.Code != test.status {

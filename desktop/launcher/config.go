@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -12,14 +13,17 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 )
 
 const (
 	configFileName = "config.json"
 	logFileName    = "launcher.log"
+	tokenFileName  = "launcher.token"
 	maxLogSize     = 1 << 20
 	minConfigPort  = 1024
 	maxConfigPort  = 65535
+	tokenBytes     = 32
 )
 
 // The launcher state that has to survive restarts. The port defines the app origin, which owns the
@@ -63,6 +67,26 @@ func resolveDataDir() (string, error) {
 func buildInstanceID(dataDir string) string {
 	sum := sha256.Sum256([]byte(filepath.Clean(dataDir)))
 	return hex.EncodeToString(sum[:16])
+}
+
+// Creates the secret that a second launch presents to get a window. It stays in the data folder, which
+// other accounts on the computer cannot read, so only this user's launches can open windows here.
+func createLaunchToken(dataDir string) (string, error) {
+	secret := make([]byte, tokenBytes)
+	if _, err := rand.Read(secret); err != nil {
+		return "", err
+	}
+
+	token := hex.EncodeToString(secret)
+	return token, os.WriteFile(filepath.Join(dataDir, tokenFileName), []byte(token), 0o600)
+}
+
+func readLaunchToken(dataDir string) string {
+	data, err := os.ReadFile(filepath.Join(dataDir, tokenFileName))
+	if err != nil {
+		return ""
+	}
+	return strings.TrimSpace(string(data))
 }
 
 func setupLog(path string) (closeLog func()) {

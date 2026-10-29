@@ -8,12 +8,15 @@ import (
 
 var appleScriptEscaper = strings.NewReplacer(`\`, `\\`, `"`, `\"`)
 
-func showError(message string) {
-	log.Print(message)
+func showDialog(message string, isWarning bool) {
+	icon := "stop"
+	if isWarning {
+		icon = "caution"
+	}
 
 	script := `display dialog "` + appleScriptEscaper.Replace(message) + `" with title "` + appName +
-		`" buttons {"OK"} default button 1 with icon stop`
+		`" buttons {"OK"} default button 1 with icon ` + icon
 	if err := exec.Command("osascript", "-e", script).Run(); err != nil {
-		log.Printf("Could not show the error dialog: %v", err)
+		log.Printf("Could not show the dialog: %v", err)
 	}
 }

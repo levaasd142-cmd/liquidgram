@@ -46,6 +46,11 @@ const (
 		"Liquidgram could not open its window: %v"
 	messageNoDataDir = "Liquidgram не может создать папку для своих данных.\n\n" +
 		"Liquidgram could not create its data folder: %v"
+	messageSparePort = "Порт %d, к которому привязаны ваш вход, ключи и чаты в Liquidgram, сейчас занят " +
+		"другой программой, поэтому Liquidgram открылся без них.\n\n" +
+		"Ничего не потеряно: закройте Liquidgram, перезагрузите компьютер и откройте Liquidgram снова.\n\n" +
+		"Port %d, which holds your Liquidgram data, is busy, so the app opened without it. " +
+		"Nothing is lost: close Liquidgram, restart the computer and open it again."
 )
 
 func main() {
@@ -71,7 +76,7 @@ func run() int {
 	cfg := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
-	listener, port, err := acquirePort(cfg.Port, instanceID)
+	listener, port, err := acquirePort(cfg.Port, instanceID, dataDir)
 	if errors.Is(err, errHandedOff) {
 		log.Printf("The running instance on port %d opened a window", port)
 		return 0
@@ -83,11 +88,18 @@ func run() int {
 	}
 
 	// The first port stays preferred for good because the app data belongs to its origin
-	if cfg.Port == 0 {
+	savedPort := cfg.Port
+	if savedPort == 0 {
 		cfg.Port = port
 		saveConfig(dataDir, cfg)
-	} else if cfg.Port != port {
-		log.Printf("Saved port %d is unavailable, using port %d for this run", cfg.Port, port)
+	} else if savedPort != port {
+		log.Printf("Saved port %d is unavailable, using port %d for this run", savedPort, port)
+	}
+
+	// Without a token second launches cannot hand off, but this window still works
+	launchToken, err := createLaunchToken(dataDir)
+	if err != nil {
+		log.Printf("Could not save the launch token: %v", err)
 	}
 
 	app := &desktopApp{
@@ -98,7 +110,14 @@ func run() int {
 	}
 
 	server := &http.Server{
-		Handler:           newAppHandler(webappFiles(), port, instanceID, app.openWindow, openExternalURL),
+		Handler: &appHandler{
+			files:        webappFiles(),
+			allowedHosts: buildAllowedHosts(port),
+			instanceID:   instanceID,
+			launchToken:  launchToken,
+			openWindow:   app.openWindow,
+			openURL:      openExternalURL,
+		},
 		ReadHeaderTimeout: 10 * time.Second,
 		IdleTimeout:       2 * time.Minute,
 		ErrorLog:          log.Default(),
@@ -135,6 +154,11 @@ func run() int {
 		log.Printf("Could not start the browser: %v", err)
 		showError(fmt.Sprintf(messageStartFailed, logPath, err))
 		return 1
+	}
+
+	// The window of the spare origin opens without the user's data, so the user learns why
+	if savedPort != 0 && savedPort != port {
+		go showWarning(fmt.Sprintf(messageSparePort, savedPort, savedPort))
 	}
 
 	app.waitUntilClosed()

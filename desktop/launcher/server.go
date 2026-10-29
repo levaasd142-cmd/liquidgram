@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/sha256"
+	"crypto/subtle"
 	"encoding/hex"
 	"encoding/json"
 	"io"
@@ -25,6 +26,7 @@ const (
 	openPath          = controlPathPrefix + "open"
 	openURLPath       = controlPathPrefix + "open-url"
 	instanceHeader    = "X-Liquidgram-Instance"
+	tokenHeader       = "X-Liquidgram-Token"
 	signatureApp      = "liquidgram"
 	indexFileName     = "index.html"
 	defaultMediaType  = "application/octet-stream"
@@ -89,23 +91,18 @@ type pingResponse struct {
 type appHandler struct {
 	files        fs.FS
 	allowedHosts []string
-	instanceID   string
-	openWindow   func() error
-	openURL      func(string) error
-	etags        sync.Map
+	// Public: tells launches whether this instance uses their data folder
+	instanceID string
+	// Secret: kept in the data folder for this user's launches only
+	launchToken string
+	openWindow  func() error
+	openURL     func(string) error
+	etags       sync.Map
 }
 
-func newAppHandler(
-	files fs.FS, port int, instanceID string, openWindow func() error, openURL func(string) error,
-) *appHandler {
+func buildAllowedHosts(port int) []string {
 	portText := strconv.Itoa(port)
-	return &appHandler{
-		files:        files,
-		allowedHosts: []string{net.JoinHostPort(loopbackIP, portText), net.JoinHostPort("localhost", portText)},
-		instanceID:   instanceID,
-		openWindow:   openWindow,
-		openURL:      openURL,
-	}
+	return []string{net.JoinHostPort(loopbackIP, portText), net.JoinHostPort("localhost", portText)}
 }
 
 func (h *appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -156,10 +153,12 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Opens another app window for a second launch. Browsers cannot send the custom header cross-origin
-// without a preflight, which is refused, and the instance ID keeps launches of other users out.
+// Opens another app window for a second launch, which proves it runs as the same user by presenting
+// the token from the data folder
 func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || r.Header.Get(instanceHeader) != h.instanceID {
+	token := r.Header.Get(tokenHeader)
+	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || h.launchToken == "" ||
+		subtle.ConstantTimeCompare([]byte(token), []byte(h.launchToken)) != 1 {
 		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
 		return
 	}
