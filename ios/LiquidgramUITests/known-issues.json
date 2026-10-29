@@ -1,0 +1,6 @@
+{
+  "selfTestChecks": {
+    "userAgentMobile": "Fails on the v1 base: `applicationNameForUserAgent` replaces the `Mobile/15E148` part of the default user agent until the native fix lands. Remove this entry with that fix."
+  },
+  "tests": {}
+}

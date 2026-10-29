@@ -1,6 +1,7 @@
-# Builds the native iPhone app in `ios/` into an unsigned IPA, uploads it as an artifact and publishes it as
-# the `ios-latest` release, so it has a permanent download link. Sideloadly signs it with the user's Apple ID
-# when installing; see ios/README.md and ios/УСТАНОВКА-IPHONE.txt.
+# Builds the native iPhone app in `ios/` into an unsigned IPA, uploads it as an artifact, runs the UI tests on an
+# iPhone simulator and, when they pass, publishes the IPA as the `ios-latest` release, so it has a permanent download
+# link. The test report goes to the `ios-test-results/<branch>` branch. Sideloadly signs the IPA with the user's
+# Apple ID when installing; see ios/README.md and ios/УСТАНОВКА-IPHONE.txt.
 
 name: Build iOS app
 
@@ -98,6 +99,7 @@ jobs:
         run: brew install xcodegen
 
       - name: Build IPA
+        id: build-ipa
         run: |
           set -o pipefail
           bash ios/build-ipa.sh 2>&1 | tee "$RUNNER_TEMP/build-ipa.log"
@@ -106,7 +108,7 @@ jobs:
 
       # Compiler errors as one annotation, so they are readable without downloading the full log
       - name: Report build errors
-        if: failure()
+        if: failure() && steps.build-ipa.outcome == 'failure'
         run: |
           log="$RUNNER_TEMP/build-ipa.log"
           [ -f "$log" ] || exit 0
@@ -125,7 +127,38 @@ jobs:
           # The IPA is a zip archive already
           compression-level: 0
 
-      # Manual runs on other branches only upload the artifact, so the release keeps the default branch's build
+      # UI tests of the Debug build on an iPhone simulator, see ios/LiquidgramUITests/README.md
+      - name: Run UI tests
+        id: ui-tests
+        timeout-minutes: 45
+        run: bash ios/run-ui-tests.sh "$RUNNER_TEMP/ui-test-results"
+        env:
+          UI_TESTS_WORK_DIR: ${{ runner.temp }}/ui-test-work
+
+      # The report becomes the single commit of the `ios-test-results/<branch>` branch, where GitHub shows README.md
+      # with the screenshots; annotations on the run page give the counts and the failures
+      - name: Publish UI test results
+        if: always()
+        continue-on-error: true
+        env:
+          RESULTS_DIR: ${{ runner.temp }}/ui-test-results
+          RESULTS_BRANCH: ios-test-results/${{ github.ref_name }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -d "$RESULTS_DIR" ] || exit 0
+          node ios/LiquidgramUITests/Tools/report.mjs annotate "$RESULTS_DIR/summary.json"
+
+          cd "$RESULTS_DIR"
+          git init --quiet
+          git add --all
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit --quiet --message "UI test results of $GITHUB_REF_NAME at ${GITHUB_SHA:0:7}, run $GITHUB_RUN_ID"
+          git push --force --quiet "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "HEAD:refs/heads/$RESULTS_BRANCH"
+          echo "::notice title=UI test report::$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$RESULTS_BRANCH"
+
+      # Manual runs on other branches only upload the artifact, so the release keeps the default branch's build.
+      # Like every step without a status check, it runs only when the build and the UI tests succeeded.
       - name: Publish release
         if: github.ref_name == github.event.repository.default_branch
         env:
