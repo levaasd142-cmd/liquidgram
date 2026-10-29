@@ -51,6 +51,10 @@ const (
 		"Ничего не потеряно: закройте Liquidgram, перезагрузите компьютер и откройте Liquidgram снова.\n\n" +
 		"Port %d, which holds your Liquidgram data, is busy, so the app opens without it. " +
 		"Nothing is lost: close Liquidgram, restart the computer and open it again."
+	messageOlderVersion = "Liquidgram обновлён до версии %s, но сейчас ещё работает версия %s.\n\n" +
+		"Закройте все окна Liquidgram и откройте его снова, чтобы перейти на новую версию.\n\n" +
+		"Liquidgram was updated to %s, but version %s is still running. " +
+		"Close all Liquidgram windows and open it again to switch to the new version."
 	messageAlreadyRunning = "Liquidgram уже запущен, но не открыл новое окно.\n\n" +
 		"Закройте все окна Liquidgram и запустите его снова.\n\n" +
 		"Liquidgram is already running but did not open a new window. " +
@@ -80,9 +84,13 @@ func run() int {
 	cfg := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
-	listener, port, err := acquirePort(cfg.Port, instanceID, dataDir)
+	listener, port, runningVersion, err := acquirePort(cfg.Port, instanceID, dataDir)
 	if errors.Is(err, errHandedOff) {
 		log.Printf("The running instance on port %d opened a window", port)
+		// After an update the window comes from the older copy that still runs
+		if runningVersion != version {
+			showWarning(fmt.Sprintf(messageOlderVersion, version, runningVersion, version, runningVersion))
+		}
 		return 0
 	}
 	if errors.Is(err, errAlreadyRunning) {

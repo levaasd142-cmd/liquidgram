@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strings"
 )
 
@@ -21,8 +22,6 @@ const (
 	logFileName    = "launcher.log"
 	tokenFileName  = "launcher.token"
 	maxLogSize     = 1 << 20
-	minConfigPort  = 1024
-	maxConfigPort  = 65535
 	tokenBytes     = 32
 )
 
@@ -130,7 +129,8 @@ func loadConfig(dataDir string) config {
 		return config{}
 	}
 
-	if cfg.Port < minConfigPort || cfg.Port > maxConfigPort {
+	// The launcher only ever saves one of its own ports
+	if !slices.Contains(defaultPorts, cfg.Port) {
 		cfg.Port = 0
 	}
 	return cfg

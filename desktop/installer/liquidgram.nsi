@@ -116,14 +116,17 @@ SectionEnd
 Section "Uninstall"
   SetShellVarContext current
 
+  ; A copy renamed by an update may still run as well
   retryDelete:
-    ClearErrors
     Delete "$INSTDIR\${APP_EXE}"
-    IfErrors 0 +3
-      MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryDelete
-      Abort
+    Delete "$INSTDIR\${APP_EXE}.old"
+    IfFileExists "$INSTDIR\${APP_EXE}" askToClose
+    IfFileExists "$INSTDIR\${APP_EXE}.old" askToClose deleted
+  askToClose:
+    MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryDelete
+    Abort
+  deleted:
 
-  Delete "$INSTDIR\${APP_EXE}.old"
   Delete "$INSTDIR\${UNINSTALLER_EXE}"
   RMDir "$INSTDIR"
 

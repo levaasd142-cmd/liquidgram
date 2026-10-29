@@ -1,17 +1,15 @@
-// The desktop launcher in `desktop/launcher` serves the app on this host and one of these ports (`defaultPorts`
-// in `ports.go`). It opens each window with its token in the URL fragment, which no server ever receives.
+// The desktop launcher in `desktop/launcher` serves the app on this host and opens each window with its token
+// in the URL fragment, which no server ever receives
 const LAUNCHER_HOSTNAME = '127.0.0.1';
-const LAUNCHER_PORTS = new Set(['47819', '43819', '39819', '35819', '31819']);
 const RE_LAUNCHER_TOKEN_HASH = /^#liquidgram-launcher=([0-9a-f]+)$/;
 const LAUNCHER_TOKEN_STORAGE_KEY = 'lg-launcher-token';
 
 let launcherToken: string | undefined;
 
-// The routing calls this before it reads the URL, so the token never becomes part of a chat link. Windows opened
-// later, reloads and other accounts of the same launch find the token in storage.
+// The routing calls this before it reads the URL, so the token never becomes part of a chat link. Reloads,
+// windows opened later and other accounts of the same launch find the token in storage.
 export function claimLauncherToken() {
-  const { hostname, port } = window.location;
-  if (hostname !== LAUNCHER_HOSTNAME || !LAUNCHER_PORTS.has(port)) return;
+  if (window.location.hostname !== LAUNCHER_HOSTNAME) return;
 
   launcherToken = takeTokenFromUrl() || readStoredToken();
 }

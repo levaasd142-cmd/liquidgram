@@ -167,8 +167,16 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 	if err := json.NewDecoder(response.Body).Decode(&ping); err != nil {
 		t.Fatal(err)
 	}
-	if ping.App != signatureApp || ping.Instance != testInstance {
+	if ping.App != signatureApp || ping.Instance != testInstance || ping.Proof != "" {
 		t.Errorf("ping %+v", ping)
+	}
+
+	response = serve(handler, http.MethodGet, pingPath+"?nonce=abc123", nil)
+	if err := json.NewDecoder(response.Body).Decode(&ping); err != nil {
+		t.Fatal(err)
+	}
+	if ping.Proof != signPingNonce(testToken, "abc123") || ping.Proof == signPingNonce("other-token", "abc123") {
+		t.Errorf("ping proof %q does not match the token", ping.Proof)
 	}
 
 	tests := []struct {

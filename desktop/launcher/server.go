@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/hmac"
 	"crypto/sha256"
 	"crypto/subtle"
 	"encoding/hex"
@@ -33,8 +34,10 @@ const (
 	// The app window gets the launch token in its URL fragment, which never reaches any server.
 	// `src/util/desktopLauncherToken.ts` reads it under this key.
 	tokenFragmentKey = "liquidgram-launcher"
+	pingProofContext = "liquidgram-ping\n"
 
 	maxExternalURLLength = 8192
+	maxNonceLength       = 64
 
 	immutableCacheControl  = "public, max-age=31536000, immutable"
 	revalidateCacheControl = "no-cache"
@@ -87,6 +90,15 @@ type pingResponse struct {
 	App      string `json:"app"`
 	Version  string `json:"version"`
 	Instance string `json:"instance"`
+	// Answers the `nonce` query parameter with the launch token, so a launch sends its token only to an
+	// instance that already knows it and never to a program that took the port
+	Proof string `json:"proof,omitempty"`
+}
+
+func signPingNonce(launchToken, nonce string) string {
+	mac := hmac.New(sha256.New, []byte(launchToken))
+	mac.Write([]byte(pingProofContext + nonce))
+	return hex.EncodeToString(mac.Sum(nil))
 }
 
 // Serves the embedded web build and the control endpoints: the handoff of a second launch and links
@@ -145,8 +157,12 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 
 	switch r.URL.Path {
 	case pingPath:
+		ping := pingResponse{App: signatureApp, Version: version, Instance: h.instanceID}
+		if nonce := r.URL.Query().Get("nonce"); nonce != "" && len(nonce) <= maxNonceLength && h.launchToken != "" {
+			ping.Proof = signPingNonce(h.launchToken, nonce)
+		}
 		w.Header().Set("Content-Type", contentTypes[".json"])
-		json.NewEncoder(w).Encode(pingResponse{App: signatureApp, Version: version, Instance: h.instanceID})
+		json.NewEncoder(w).Encode(ping)
 	case openPath:
 		h.serveOpenWindow(w, r)
 	case openURLPath:
@@ -174,7 +190,7 @@ func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
 
 // Opens a link to another site in the default browser, which has the user's sign-ins, instead of a
 // window of the app profile. Only the app page may ask: the browser marks its requests as same-origin,
-// and the token reaches the page through the launch URL only.
+// and the page gets the token from the URL it was launched with.
 func (h *appHandler) serveOpenURL(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet || r.Header.Get("Sec-Fetch-Site") != "same-origin" || !h.hasLaunchToken(r) {
 		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
