@@ -40,12 +40,15 @@ private enum MessageType: String {
   case getNativeSettings
   case setNativeSetting
   case setAppIcon
+  case recordRoundVideo
+  case releaseMedia
 }
 
 /// Native side of the contract with `Resources/bridge.js`. Two user scripts run at document start in the main
 /// frame: one sets `window.__liquidgramNative` and the other is `bridge.js`, which adds the page's API to it.
 /// The page posts messages to the `liquidgram` handler, and the bridge answers through `resolvePermission`,
-/// `setPermission`, `notificationClicked`, `resolveRequest` and `dispatchAction` of `window.__liquidgramNative`.
+/// `setPermission`, `notificationClicked`, `resolveRequest`, `resolveRoundVideo` and `dispatchAction` of
+/// `window.__liquidgramNative`.
 /// Native actions wait until the current page reports `appReady` and the app is unlocked.
 /// The app delegate creates the bridge at launch, so it can receive taps on notifications from the start.
 /// All state is used on the main queue.
@@ -74,6 +77,7 @@ final class NativeBridge: NSObject {
 
   private weak var userContentController: WKUserContentController?
   private let requestHandler = NativeRequestHandler()
+  private let roundVideoRecorder = RoundVideoRecorder()
   private let haptics = Haptics()
   private let appVersion: String
   private let bridgeScript: String?
@@ -88,6 +92,8 @@ final class NativeBridge: NSObject {
     appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     bridgeScript = Self.loadBridgeScript()
     super.init()
+    // No page knows the paths of recordings from an earlier launch
+    MediaStore.shared.removeAllFiles()
   }
 
   /// Adds the message handler and the user scripts. `WKUserContentController` retains its handlers, so it
@@ -115,6 +121,9 @@ final class NativeBridge: NSObject {
   func pageDidCommit() {
     pageGeneration += 1
     isPageReady = false
+    // The recorder and the recordings belong to the page that is gone
+    roundVideoRecorder.cancel()
+    MediaStore.shared.releaseAll()
   }
 
   /// Sends an action to the page once the page is ready and the app is unlocked. A transient action, such as a
@@ -247,6 +256,17 @@ final class NativeBridge: NSObject {
       handleRequest(.setNativeSetting, body: body)
     case .setAppIcon:
       handleRequest(.setAppIcon, body: body)
+    case .recordRoundVideo:
+      if let requestId = NativeRequestHandler.readInteger(body["requestId"]) {
+        recordRoundVideo(
+          requestId: requestId,
+          canSendOneTimeMedia: NativeRequestHandler.readBool(body["canSendOneTimeMedia"]) ?? false
+        )
+      }
+    case .releaseMedia:
+      if let path = body["url"] as? String {
+        roundVideoRecorder.releaseMedia(path: path, in: webView?.window)
+      }
     }
   }
 
@@ -274,6 +294,22 @@ final class NativeBridge: NSObject {
     let generation = pageGeneration
     requestHandler.handle(type, body: body) { [weak self] response in
       self?.resolveRequest(requestId, response: response, generation: generation)
+    }
+  }
+
+  /// Opens the round video recorder; the page gets the recording's path and details, or `null` for nothing to send
+  private func recordRoundVideo(requestId: Int, canSendOneTimeMedia: Bool) {
+    let generation = pageGeneration
+    roundVideoRecorder.record(canSendOneTimeMedia: canSendOneTimeMedia, from: webView) { [weak self] result in
+      guard let self, generation == self.pageGeneration else {
+        // No other page knows the path
+        if let path = result?["url"] as? String {
+          MediaStore.shared.release(path: path)
+        }
+        return
+      }
+      let json = result.flatMap(Self.makeJSON) ?? "null"
+      self.callPage("resolveRoundVideo?.(\(requestId), \(json))")
     }
   }
 

@@ -1,0 +1,61 @@
+/* The round video recorder (RoundVideoRecorderViewController.swift) */
+
+/* Button that discards the round video being recorded */
+"roundVideo.cancel" = "Отмена";
+
+/* Accessibility label of the button that stops recording and sends the round video */
+"roundVideo.send" = "Отправить видеосообщение";
+
+/* Accessibility label of the button that switches between the front and the back camera */
+"roundVideo.switchCamera" = "Сменить камеру";
+
+/* Accessibility label of the button that lights the face with the screen or turns the torch on */
+"roundVideo.flash" = "Вспышка";
+
+/* Accessibility label of the button that makes the round video disappear after it was watched */
+"roundVideo.viewOnce" = "Просмотр один раз";
+
+/* Accessibility value of a switched-on button of the round video recorder */
+"roundVideo.on" = "Вкл.";
+
+/* Accessibility value of a switched-off button of the round video recorder */
+"roundVideo.off" = "Выкл.";
+
+/* Accessibility label of the round video recorder's timer */
+"roundVideo.recordingTime" = "Время записи";
+
+/* Button that closes the round video recorder when it cannot record */
+"roundVideo.close" = "Закрыть";
+
+/* Button that opens the app's page in the Settings app to allow the camera and the microphone */
+"roundVideo.openSettings" = "Открыть Настройки";
+
+/* Title shown when the app may not use the camera or the microphone */
+"roundVideo.accessDenied.title" = "Разрешите доступ к камере и микрофону";
+
+/* Explains how to allow the camera and the microphone */
+"roundVideo.accessDenied.message" = "Чтобы записывать видеосообщения, Liquidgram нужны камера и микрофон. Разрешить доступ можно в Настройках.";
+
+/* Title shown on a device without a camera, such as the simulator */
+"roundVideo.noCamera.title" = "Нет камеры";
+
+/* Shown on a device without a camera, such as the simulator */
+"roundVideo.noCamera.message" = "На этом устройстве нет камеры, которая может записывать видеосообщения.";
+
+/* Title shown when a call or another app holds the camera or the microphone */
+"roundVideo.busy.title" = "Камера занята";
+
+/* Shown when a call or another app holds the camera or the microphone */
+"roundVideo.busy.message" = "Камерой или микрофоном пользуется звонок или другое приложение. Попробуйте, когда они освободятся.";
+
+/* Title shown when the device is too hot to record video */
+"roundVideo.tooWarm.title" = "Устройство слишком нагрелось";
+
+/* Shown when the device is too hot to record video */
+"roundVideo.tooWarm.message" = "Дайте ему остыть и запишите видеосообщение снова.";
+
+/* Title shown when recording a round video failed */
+"roundVideo.failed.title" = "Не удалось записать";
+
+/* Shown when recording a round video failed */
+"roundVideo.failed.message" = "При записи видеосообщения что-то пошло не так. Попробуйте ещё раз.";

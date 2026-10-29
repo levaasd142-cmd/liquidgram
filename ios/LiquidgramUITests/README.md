@@ -65,6 +65,16 @@ Every test starts the app with `-LiquidgramResetState YES` unless it tests persi
 | `testDemoAccount` | The demo account shows its chats; a chat opens; the composer takes typed text (nothing is sent) and stays above the keyboard. Runs in light and dark mode |
 | `testDemoAccountSurvivesRestart` | After the home button and a restart without the reset and without seeding, the chats of the demo account are still there: the website data store keeps them on disk and the page keeps its origin |
 
+### `RoundVideoTests`: the native round video recorder
+
+`Fixtures/round-video.js` opens the recorder from the page through the bridge, as the composer does, and reports what the page got; the test drives the recorder on screen. The simulator has no camera, so the first two tests pass `-LiquidgramFakeRoundVideo YES`, which gives the recorder generated frames and silence and makes the app report the recorded file as `liquidgram.roundVideo.testReport`. The checks of each test become a table in the report, like the self-test's.
+
+| Test | Checks |
+| --- | --- |
+| `testRecordsAndSendsRoundVideo` | Recording starts by itself; the flash, the camera switch and view-once work while it records. After Send the page has a `/__liquidgram/media/` path, 480 × 480, view-once and the duration, and a second request during the recording got `null`. The file is a 480 × 480 H.264 High profile video with CABAC and mono 48 kHz AAC in an MP4 with the movie header first, of the duration the page got, with at least 15 frames per second and at most 250 KB per second, and its first frame decodes. When `AppSchemeHandler` serves the page, the page's fetch is a 480 × 480 `video/mp4` Blob of the file's size, a range request is `206`, and the path is `404` after `releaseMedia`. The app deletes the file once the page released it |
+| `testCancelDiscardsRecording` | Cancel gives the page `null` and leaves no file |
+| `testRecorderExplainsMissingCamera` | Without the generated camera the simulator has no camera: the recorder says "No camera", and Close gives the page `null` |
+
 ### `FeatureTests`: the native features of version 2
 
 They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names. The two layout tests check bugs that the screenshots of the v1 app show: its headers sit under the status bar, and typing in a chat scrolls the header away.
@@ -116,6 +126,7 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | Fixture | Use |
 | --- | --- |
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
+| `round-video.js` | `RoundVideoTests`, as the self-test script: opens the round video recorder from the page and reports what the page got |
 | `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
 | `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used |
 | `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |

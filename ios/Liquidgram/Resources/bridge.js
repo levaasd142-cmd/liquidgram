@@ -14,6 +14,11 @@
 // - `setActionHandler(handler)` receives the app's actions, such as `{ type: 'openSearch' }`, and tells the app with
 //   `{ type: 'appReady' }` that the page can take them. The app calls `dispatchAction(action)`; actions that arrive
 //   before a handler is set wait for it.
+// - `recordRoundVideo({ canSendOneTimeMedia })` opens the app's round video recorder and returns a promise of
+//   `{ url, durationMs, width, height, isViewOnce }`, or of `null` when there is nothing to send. `url` is a path of
+//   the page's origin under `/__liquidgram/media/`, which the page fetches once and then gives back with
+//   `releaseMedia(url)`. While the recorder is up, another call gets `null` at once. The app answers through
+//   `resolveRoundVideo(requestId, result)`.
 // The script runs once per page, and running it again changes nothing. Plain ES2019, so that every iOS 16
 // `WKWebView` runs it.
 (() => {
@@ -37,6 +42,8 @@
   // `setAppBadge()` without a count asks for a plain mark, and an iOS app icon shows only numbers
   const MARK_BADGE_COUNT = 1;
   const MAX_LOG_MESSAGES = 100;
+  // The app serves the files it hands to the page, such as recorded round videos, under this path
+  const MEDIA_URL_PREFIX = '/__liquidgram/media/';
 
   const statesByNotification = new WeakMap();
   // Notifications on screen by the identifier the app shows them with, so a tap reaches the right instance
@@ -51,6 +58,8 @@
   let logMessagesCount = 0;
   let actionHandler;
   let isActionFlushScheduled = false;
+  // `{ requestId, resolve }` while the round video recorder is up
+  let roundVideoRequest;
 
   class Notification extends EventTarget {
     static get permission() {
@@ -157,6 +166,9 @@
   native.postMessage = postMessage;
   native.setActionHandler = setActionHandler;
   native.dispatchAction = dispatchAction;
+  native.recordRoundVideo = recordRoundVideo;
+  native.resolveRoundVideo = resolveRoundVideo;
+  native.releaseMedia = releaseMedia;
 
   defineValue(window, 'Notification', Notification);
   // Telegram Web A reports the unread count through the Badging API, see `src/util/appBadge.ts`
@@ -330,6 +342,68 @@
         rethrowLater(err);
       }
     }
+  }
+
+  // No time limit, unlike `request`: the user records for up to a minute after granting access
+  function recordRoundVideo(options) {
+    return new Promise((resolve) => {
+      if (roundVideoRequest) {
+        resolve(null);
+        return;
+      }
+
+      const requestId = ++lastNativeRequestId;
+      const canSendOneTimeMedia = Boolean(options && options.canSendOneTimeMedia);
+      roundVideoRequest = { requestId, resolve };
+      if (!postToNative({ type: 'recordRoundVideo', requestId, canSendOneTimeMedia })) {
+        roundVideoRequest = undefined;
+        resolve(null);
+      }
+    });
+  }
+
+  function resolveRoundVideo(requestId, result) {
+    if (!roundVideoRequest || roundVideoRequest.requestId !== Number(requestId)) return;
+
+    const { resolve } = roundVideoRequest;
+    roundVideoRequest = undefined;
+    const roundVideo = normalizeRoundVideo(result);
+    if (!roundVideo && result && typeof result.url === 'string') {
+      // The page cannot use the file, so the app may delete it at once
+      releaseMedia(result.url);
+    }
+    resolve(roundVideo);
+  }
+
+  function releaseMedia(url) {
+    if (!isMediaUrl(url)) return;
+
+    postToNative({ type: 'releaseMedia', url });
+  }
+
+  function normalizeRoundVideo(result) {
+    if (!result || typeof result !== 'object' || !isMediaUrl(result.url)) return null;
+
+    const width = Number(result.width);
+    const height = Number(result.height);
+    const durationMs = Number(result.durationMs);
+    if (!isPositiveInteger(width) || !isPositiveInteger(height) || !(durationMs > 0)) return null;
+
+    return {
+      url: result.url,
+      durationMs,
+      width,
+      height,
+      isViewOnce: result.isViewOnce === true,
+    };
+  }
+
+  function isMediaUrl(url) {
+    return typeof url === 'string' && url.startsWith(MEDIA_URL_PREFIX) && url.length > MEDIA_URL_PREFIX.length;
+  }
+
+  function isPositiveInteger(value) {
+    return Number.isSafeInteger(value) && value > 0;
   }
 
   // Only the vibrations of a pattern count; the entries between them are pauses
