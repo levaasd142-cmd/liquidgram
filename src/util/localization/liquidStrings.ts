@@ -88,7 +88,6 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidRecordHoldVoiceOnly: 'Удерживай, чтобы записать голосовое.',
     LiquidRecordHoldVideoOnly: 'Удерживай, чтобы записать кружок.',
     LiquidRecordSlideToCancel: 'Влево — отмена',
-
     LiquidWatchOnYoutube: 'Смотреть на YouTube',
   },
 };

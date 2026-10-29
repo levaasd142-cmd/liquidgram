@@ -3458,6 +3458,7 @@ export interface LangPair {
   'LiquidRecordHoldVoiceOnly': undefined;
   'LiquidRecordHoldVideoOnly': undefined;
   'LiquidRecordSlideToCancel': undefined;
+  'LiquidWatchOnYoutube': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {

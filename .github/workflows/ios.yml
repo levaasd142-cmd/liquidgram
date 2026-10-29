@@ -34,6 +34,10 @@ on:
         description: Git revision of the loopback version whose data the migration test moves; empty skips that test
         required: false
         default: ''
+      beta:
+        description: Publish the IPA as the `ios-beta` pre-release as soon as it is built, before the UI tests
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -140,6 +144,32 @@ jobs:
           if-no-files-found: error
           # The IPA is a zip archive already
           compression-level: 0
+
+      # A test build for a phone: the `ios-beta` pre-release gets the IPA before the UI tests run, and the release of
+      # the default branch stays as it is
+      - name: Publish beta
+        if: inputs.beta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BETA_TAG: ios-beta
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          sha256="$(shasum -a 256 "$IPA_PATH" | cut -d ' ' -f 1)"
+          title="Liquidgram for iPhone (beta)"
+          notes="Test build of Liquidgram ${version} from ${GITHUB_REF_NAME}, build ${GITHUB_RUN_NUMBER}, commit ${GITHUB_SHA}.
+          It is published before its UI tests finish; the run shows their results.
+          SHA-256: ${sha256}"
+
+          git tag --force "$BETA_TAG" "$GITHUB_SHA"
+          git push --force origin "refs/tags/$BETA_TAG"
+
+          if gh release view "$BETA_TAG" > /dev/null 2>&1; then
+            gh release edit "$BETA_TAG" --title "$title" --notes "$notes" --prerelease
+          else
+            gh release create "$BETA_TAG" --title "$title" --notes "$notes" --prerelease
+          fi
+          gh release upload "$BETA_TAG" "$IPA_PATH" --clobber
 
       # UI tests of the Debug build on an iPhone simulator, see ios/LiquidgramUITests/README.md
       - name: Run UI tests
