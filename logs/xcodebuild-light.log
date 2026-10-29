@@ -1,0 +1,299 @@
+    t =     1.32s         Setting up automation session
+    t =     2.48s         Wait for org.liquidgram.messenger to idle
+    t =     3.81s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.82s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.85s Find the Any (Element at index 0)
+    t =     5.18s Added attachment named '01-chat-list-before-restart'
+    t =    11.18s Pressing Home button
+    t =    13.65s Terminate org.liquidgram.messenger:8275
+    t =    14.71s Open org.liquidgram.messenger
+    t =    14.71s     Launch org.liquidgram.messenger
+    t =    14.93s         Setting up automation session
+    t =    15.94s         Wait for org.liquidgram.messenger to idle
+    t =    17.23s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    17.87s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    18.43s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    18.46s Find the Any (Element at index 0)
+    t =    18.92s Added attachment named '02-chat-list-after-restart'
+    t =    18.92s Requesting snapshot of accessibility hierarchy for app with pid 8927
+    t =    19.14s Requesting snapshot of accessibility hierarchy for app with pid 8927
+    t =    19.19s Added attachment named 'ax-chat-list-after-restart'
+    t =    19.19s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccountSurvivesRestart]' passed (19.401 seconds).
+Test Case '-[LiquidgramUITests.CoreTests testKeyboardKeepsFocusedFieldVisible]' started.
+    t =     0.00s Start Test at 2026-10-29 18:06:30.935
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:8927
+    t =     1.26s         Setting up automation session
+    t =     2.12s         Wait for org.liquidgram.messenger to idle
+    t =     3.37s Checking existence of `Any (First Match)`
+    t =     4.14s Checking existence of `Any (First Match)`
+    t =     4.17s Find the Any (First Match)
+    t =     4.25s Tap "API ID" TextField
+    t =     4.25s     Wait for org.liquidgram.messenger to idle
+    t =     4.26s     Find the "API ID" TextField
+    t =     4.30s     Check for interrupting elements affecting "API ID" TextField
+    t =     4.33s     Synthesize event
+    t =     4.63s     Wait for org.liquidgram.messenger to idle
+    t =     5.07s Waiting 20.0s for Keyboard (First Match) to exist
+    t =     6.09s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     6.09s         Checking existence of `Keyboard (First Match)`
+    t =     6.11s Type '2040' into Target Application 'org.liquidgram.messenger'
+    t =     6.11s     Wait for org.liquidgram.messenger to idle
+    t =     6.11s     Find the Target Application 'org.liquidgram.messenger'
+    t =     6.13s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     6.15s     Synthesize event
+    t =     6.44s     Wait for org.liquidgram.messenger to idle
+    t =     6.44s Find the "API ID" TextField
+    t =     6.60s Added attachment named '01-keyboard-up'
+    t =     6.60s Requesting snapshot of accessibility hierarchy for app with pid 9454
+    t =     6.74s Requesting snapshot of accessibility hierarchy for app with pid 9454
+    t =     6.77s Added attachment named 'ax-keyboard-up'
+    t =     6.77s Find the Keyboard (First Match)
+    t =     6.79s Find the "API ID" TextField
+    t =     6.83s Find the Keyboard at {{0.0, 583.0}, {402.0, 233.0}}
+    t =     6.85s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testKeyboardKeepsFocusedFieldVisible]' passed (7.048 seconds).
+Test Case '-[LiquidgramUITests.CoreTests testWebAppSelfTest]' started.
+    t =     0.00s Start Test at 2026-10-29 18:06:37.984
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:9454
+    t =     1.25s         Setting up automation session
+    t =     2.09s         Wait for org.liquidgram.messenger to idle
+    t =     3.31s Waiting 90.0s for "liquidgram.selftest.result" Any to exist
+    t =     4.33s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     4.33s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     4.41s         Capturing element debug description
+    t =     5.33s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     5.33s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     5.39s         Capturing element debug description
+    t =     6.32s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     6.32s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     6.38s         Capturing element debug description
+    t =     7.31s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     7.31s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     7.36s         Capturing element debug description
+    t =     8.40s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     8.40s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     8.48s         Capturing element debug description
+    t =     9.33s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     9.33s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     9.44s Added attachment named '01-self-test-finished'
+    t =     9.44s Find the "liquidgram.selftest.result" Any
+    t =     9.45s Added attachment named 'selftest-report'
+    t =     9.46s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testWebAppSelfTest]' passed (9.669 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 18:06:47.653.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 66.292 (66.295) seconds
+Test Suite 'FeatureTests' started at 2026-10-29 18:06:47.653.
+Test Case '-[LiquidgramUITests.FeatureTests testChatHeaderStaysVisibleWhileTyping]' started.
+    t =     0.00s Start Test at 2026-10-29 18:06:47.654
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:9895
+    t =     1.32s         Setting up automation session
+    t =     2.48s         Wait for org.liquidgram.messenger to idle
+    t =     3.82s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.70s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.77s Find the Any (Element at index 0)
+    t =     4.95s Tap "Аня СмирноваАня Смирнова 18:05Договорились! До завтра 💙1" Button
+    t =     4.95s     Wait for org.liquidgram.messenger to idle
+    t =     4.95s     Find the "Аня СмирноваАня Смирнова 18:05Договорились! До завтра 💙1" Button
+    t =     5.02s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:05Договорились! До завтра 💙1" Button
+    t =     5.08s     Synthesize event
+    t =     5.38s     Wait for org.liquidgram.messenger to idle
+    t =     5.39s Waiting 2.0s for "Allow" Button to exist
+    t =     6.47s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.47s         Checking existence of `"Allow" Button`
+    t =     6.51s         Capturing element debug description
+    t =     7.39s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     7.39s         Checking existence of `"Allow" Button`
+    t =     7.42s         Capturing element debug description
+    t =     7.42s     Checking existence of `"Allow" Button`
+    t =     7.45s Collecting debug information to assist test failure triage
+    t =     7.45s     Requesting snapshot of accessibility hierarchy for app with pid 2334
+    t =     7.50s Checking existence of `Any (First Match)`
+    t =     7.62s Find the Any (First Match)
+    t =     7.73s Tap "Message" TextView
+    t =     7.73s     Wait for org.liquidgram.messenger to idle
+    t =     7.73s     Find the "Message" TextView
+    t =     7.87s     Check for interrupting elements affecting "Message" TextView
+    t =     7.95s     Synthesize event
+    t =     8.26s     Wait for org.liquidgram.messenger to idle
+    t =     8.28s Waiting 20.0s for Keyboard (First Match) to exist
+    t =     9.32s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     9.32s         Checking existence of `Keyboard (First Match)`
+    t =     9.34s Checking existence of `"Continue" Button`
+    t =     9.37s Type 'Typed by the UI te...' into Target Application 'org.liquidgram.messenger'
+    t =     9.37s     Wait for org.liquidgram.messenger to idle
+    t =     9.37s     Find the Target Application 'org.liquidgram.messenger'
+    t =     9.42s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     9.47s     Synthesize event
+    t =    10.06s     Wait for org.liquidgram.messenger to idle
+    t =    10.06s Checking existence of `StatusBar (First Match)`
+    t =    10.07s Find the StatusBar (First Match)
+    t =    10.21s Added attachment named '01-typing'
+    t =    10.21s Checking existence of `Button (First Match)`
+    t =    10.30s Find the Button (First Match)
+    t =    10.38s Find the "Аня Смирнова" Button
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/FeatureTests.swift:286: error: -[LiquidgramUITests.FeatureTests testChatHeaderStaysVisibleWhileTyping] : XCTAssertTrue failed - The chat header (114.0, -324.0, 121.0, 24.0) left the screen while typing; the status bar ends at y 54.0
+    t =    10.83s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testChatHeaderStaysVisibleWhileTyping]' failed (11.039 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testDeepLinkOpensSettings]' started.
+    t =     0.00s Start Test at 2026-10-29 18:06:58.693
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:10919
+    t =     1.24s         Setting up automation session
+    t =     2.23s         Wait for org.liquidgram.messenger to idle
+    t =     3.53s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.57s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.67s Find the Any (Element at index 0)
+    t =     4.76s Open org.liquidgram.messenger with URL liquidgram://settings
+    t =     4.76s     Launch org.liquidgram.messenger
+    t =     5.38s         Setting up automation session
+    t =     6.29s         Wait for org.liquidgram.messenger to idle
+    t =     7.54s Waiting 2.0s for "Open" Button to exist
+    t =     8.54s     Checking `Expect predicate `existsNoRetry == 1` for object "Open" Button`
+    t =     8.54s         Checking existence of `"Open" Button`
+    t =     8.56s         Capturing element debug description
+    t =     9.54s     Checking `Expect predicate `existsNoRetry == 1` for object "Open" Button`
+    t =     9.54s         Checking existence of `"Open" Button`
+    t =     9.56s         Capturing element debug description
+    t =     9.57s     Checking existence of `"Open" Button`
+    t =     9.59s Collecting debug information to assist test failure triage
+    t =     9.59s     Requesting snapshot of accessibility hierarchy for app with pid 2334
+    t =     9.67s Waiting 40.0s for Any (First Match) to exist
+    t =    10.73s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    10.73s         Checking existence of `Any (First Match)`
+    t =    10.94s Added attachment named '01-settings-from-deep-link'
+    t =    10.95s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testDeepLinkOpensSettings]' passed (11.147 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testHeadersStayBelowStatusBar]' started.
+    t =     0.00s Start Test at 2026-10-29 18:07:09.841
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:11633
+    t =     1.27s         Setting up automation session
+    t =     2.34s         Wait for org.liquidgram.messenger to idle
+    t =     3.65s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.62s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.70s Find the Any (Element at index 0)
+    t =     4.75s Waiting 20.0s for "Open menu" Button to exist
+    t =     5.79s     Checking `Expect predicate `existsNoRetry == 1` for object "Open menu" Button`
+    t =     5.80s         Checking existence of `"Open menu" Button`
+    t =     5.85s Checking existence of `StatusBar (First Match)`
+    t =     5.87s Find the StatusBar (First Match)
+    t =     6.07s Added attachment named '01-chat-list-header'
+    t =     6.07s Find the "Open menu" Button
+    t =     6.12s Find the "Open menu" Button
+    t =     6.16s Tap "Аня СмирноваАня Смирнова 18:06Договорились! До завтра 💙1" Button
+    t =     6.16s     Wait for org.liquidgram.messenger to idle
+    t =     6.16s     Find the "Аня СмирноваАня Смирнова 18:06Договорились! До завтра 💙1" Button
+    t =     6.19s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:06Договорились! До завтра 💙1" Button
+    t =     6.22s     Synthesize event
+    t =     6.52s     Wait for org.liquidgram.messenger to idle
+    t =     6.53s Get all elements bound by index for: Elements matching predicate 'label == "Аня Смирнова"'
+    t =     6.76s Find the Button (Element at index 0)
+    t =     7.18s Added attachment named '02-chat-header'
+    t =     7.19s Find the "Аня Смирнова" Button
+    t =     7.29s Find the "Аня Смирнова" Button
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/FeatureTests.swift:267: error: -[LiquidgramUITests.FeatureTests testHeadersStayBelowStatusBar] : XCTAssertTrue failed - Under the status bar, which ends at y 54.0: the chat list header starts at y 12.0; the chat header starts at y 11.0
+    t =     7.36s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testHeadersStayBelowStatusBar]' failed (7.574 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testKeyboardHasNoFormToolbar]' started.
+    t =     0.00s Start Test at 2026-10-29 18:07:17.415
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:12054
+    t =     1.29s         Setting up automation session
+    t =     2.20s         Wait for org.liquidgram.messenger to idle
+    t =     3.47s Checking existence of `Any (First Match)`
+    t =     4.25s Checking existence of `Any (First Match)`
+    t =     4.31s Find the Any (First Match)
+    t =     4.45s Tap "API ID" TextField
+    t =     4.45s     Wait for org.liquidgram.messenger to idle
+    t =     4.45s     Find the "API ID" TextField
+    t =     4.49s     Check for interrupting elements affecting "API ID" TextField
+    t =     4.52s     Synthesize event
+    t =     4.81s     Wait for org.liquidgram.messenger to idle
+    t =     4.88s Waiting 20.0s for Keyboard (First Match) to exist
+    t =     5.91s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     5.91s         Checking existence of `Keyboard (First Match)`
+    t =     6.03s Added attachment named '01-keyboard'
+    t =     6.03s Get all elements bound by index for: Elements matching predicate 'label IN {"Done", "Previous", "Next"}'
+    t =     6.07s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testKeyboardHasNoFormToolbar]' passed (6.275 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testLiquidgramSettingsShowIPhoneSection]' started.
+    t =     0.00s Start Test at 2026-10-29 18:07:23.690
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:12342
+    t =     1.25s         Setting up automation session
+    t =     2.11s         Wait for org.liquidgram.messenger to idle
+    t =     3.39s Checking existence of `"Settings" Button`
+    t =     4.24s Checking existence of `"Settings" Button`
+    t =     4.31s Find the "Settings" Button
+    t =     4.40s Tap "Settings" Button
+    t =     4.40s     Wait for org.liquidgram.messenger to idle
+    t =     4.41s     Find the "Settings" Button
+    t =     4.44s     Check for interrupting elements affecting "Settings" Button
+    t =     4.49s     Synthesize event
+    t =     4.82s     Wait for org.liquidgram.messenger to idle
+    t =     4.84s Waiting 2.0s for "Allow" Button to exist
+    t =     5.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     5.88s         Checking existence of `"Allow" Button`
+    t =     5.91s         Capturing element debug description
+    t =     6.84s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.84s         Checking existence of `"Allow" Button`
+    t =     6.87s         Capturing element debug description
+    t =     6.87s     Checking existence of `"Allow" Button`
+    t =     6.90s Collecting debug information to assist test failure triage
+    t =     6.90s     Requesting snapshot of accessibility hierarchy for app with pid 2334
+    t =     6.94s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Liquid Glass, ghost mode"'
+    t =     6.98s Find the Any (Element at index 0)
+    t =     7.02s Tap "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.02s     Wait for org.liquidgram.messenger to idle
+    t =     7.02s     Find the "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.05s     Check for interrupting elements affecting "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.08s     Synthesize event
+    t =     7.37s     Wait for org.liquidgram.messenger to idle
+    t =     7.52s Waiting 20.0s for Any (First Match) to exist
+    t =     8.56s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     8.56s         Checking existence of `Any (First Match)`
+    t =     8.82s Added attachment named '01-liquidgram-settings'
+    t =     8.82s Waiting 20.0s for Any (First Match) to exist
+    t =     9.87s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     9.87s         Checking existence of `Any (First Match)`
+    t =     9.95s Find the Any (First Match)
+    t =    10.14s Added attachment named '02-iphone-section'
+    t =    10.15s Requesting snapshot of accessibility hierarchy for app with pid 12719
+    t =    10.82s Requesting snapshot of accessibility hierarchy for app with pid 12719
+    t =    10.95s Added attachment named 'ax-iphone-section'
+    t =    10.95s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testLiquidgramSettingsShowIPhoneSection]' passed (11.155 seconds).
+Test Suite 'FeatureTests' failed at 2026-10-29 18:07:34.845.
+	 Executed 5 tests, with 2 failures (0 unexpected) in 47.190 (47.192) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 18:07:34.845.
+	 Executed 10 tests, with 2 failures (0 unexpected) in 113.481 (113.487) seconds
+Test Suite 'Selected tests' failed at 2026-10-29 18:07:34.846.
+	 Executed 10 tests, with 2 failures (0 unexpected) in 113.481 (113.488) seconds
+2026-10-29 18:07:51.026 xcodebuild[5155:21492] [MT] IDETestOperationsObserverDebug: 144.748 elapsed -- Testing started completed.
+2026-10-29 18:07:51.026 xcodebuild[5155:21492] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:07:51.026 xcodebuild[5155:21492] [MT] IDETestOperationsObserverDebug: 144.748 sec, +144.748 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started
