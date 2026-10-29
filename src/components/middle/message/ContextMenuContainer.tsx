@@ -110,6 +110,7 @@ export type OwnProps = {
   className?: string;
   onClose: NoneToVoidFunction;
   onCloseAnimationEnd: NoneToVoidFunction;
+  onOpenLink?: NoneToVoidFunction;
 };
 
 type StateProps = {
@@ -257,6 +258,7 @@ const ContextMenuContainer = ({
   isMessageProtected,
   onClose,
   onCloseAnimationEnd,
+  onOpenLink,
 }: OwnProps & StateProps) => {
   const {
     openThread,
@@ -661,6 +663,11 @@ const ContextMenuContainer = ({
     closeMenu();
   });
 
+  const handleOpenLink = useLastCallback(() => {
+    onOpenLink!();
+    closeMenu();
+  });
+
   const handleDownloadClick = useLastCallback(() => {
     const global = getGlobal();
     (album?.messages || [message]).forEach((msg) => {
@@ -858,6 +865,7 @@ const ContextMenuContainer = ({
         onCopyLink={handleCopyLink}
         onCopyMessages={handleCopyMessages}
         onCopyNumber={handleCopyNumber}
+        onOpenLink={onOpenLink ? handleOpenLink : undefined}
         onDownload={handleDownloadClick}
         onSaveGif={handleSaveGif}
         onToggleMusicInProfile={handleToggleMusicInProfile}

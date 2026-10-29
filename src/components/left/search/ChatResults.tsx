@@ -151,10 +151,11 @@ const ChatResults: FC<OwnProps & StateProps> = ({
     return lang('AllChatsSearchContext');
   }
 
+  // The menu opens from its button, not from a long press anywhere on the results
   const {
     isContextMenuOpen, contextMenuAnchor, handleContextMenu,
     handleContextMenuClose, handleContextMenuHide,
-  } = useContextMenuHandlers(ref);
+  } = useContextMenuHandlers(ref, undefined, undefined, true);
 
   const getRootElement = useLastCallback(() => ref.current!);
   const getMenuElement = useLastCallback(() => ref.current!.querySelector('.chatResultsContextMenu .bubble'));

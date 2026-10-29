@@ -1,4 +1,4 @@
-import { IS_IOS, IS_WINDOWS } from './browser/windowEnvironment';
+import { IS_IOS, IS_IOS_APP, IS_WINDOWS } from './browser/windowEnvironment';
 import { Lethargy } from './lethargy';
 import { clamp, round } from './math';
 import { debounce } from './schedulers';
@@ -73,6 +73,9 @@ type TSwipeAxis =
   | undefined;
 
 export const IOS_SCREEN_EDGE_THRESHOLD = 20;
+// Safari keeps the screen edges for its back and forward swipes. The iOS app has no such gesture, so its swipes start
+// at the edges as well.
+export const SHOULD_LEAVE_SCREEN_EDGES = IS_IOS && !IS_IOS_APP;
 export const SWIPE_DIRECTION_THRESHOLD = 10;
 export const SWIPE_DIRECTION_TOLERANCE = 1.5;
 
@@ -93,7 +96,40 @@ function getTouchCenter(a: Touch, b: Touch) {
   };
 }
 
+export function getTouchOwner() {
+  return touchOwner;
+}
+
+// Marks the current touch as taken, unless another handler took it before
+export function claimTouch(element: HTMLElement) {
+  touchOwner ??= element;
+}
+
+// Leaves the swipes of the current touch in `direction` to the handler of `element`, even if other handlers see them
+// first. Call it when the touch starts.
+export function reserveSwipe(element: HTMLElement, direction: SwipeDirection) {
+  reservedSwipe = { element, direction };
+}
+
+// Whether `target` is inside an element below `root` that follows the finger in every direction
+export function getIsInDragOnlyElement(target: HTMLElement, root: HTMLElement) {
+  for (let element: HTMLElement | null = target; element && element !== root; element = element.parentElement) {
+    if (dragOnlyElements.has(element)) return true;
+  }
+
+  return false;
+}
+
 let lastClickTime = 0;
+// The first event of the current touch. All handlers get the same event, so the first of them clears the last touch.
+let touchStartEvent: Event | undefined;
+// The element whose handler took the current touch, such as a swipe or a long-press menu. Handlers that overlap
+// others, like the back swipe, check it to leave the touch to the one that took it first.
+let touchOwner: HTMLElement | undefined;
+// A swipe that one handler reserved when the current touch started, such as the back swipe from the screen edge
+let reservedSwipe: { element: HTMLElement; direction: SwipeDirection } | undefined;
+// Elements that follow the finger in every direction, such as seek bars and drag handles
+const dragOnlyElements = new WeakSet<HTMLElement>();
 const lethargy = new Lethargy({
   stability: 5,
   sensitivity: 25,
@@ -128,6 +164,15 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
   let isNearEdge = false;
 
   function onCapture(e: MouseEvent | RealTouchEvent) {
+    // A new first finger starts a new touch
+    const isTouchStart = e.type === 'mousedown'
+      || (e.type === 'touchstart' && (e as RealTouchEvent).touches.length === 1);
+    if (isTouchStart && e !== touchStartEvent) {
+      touchStartEvent = e;
+      touchOwner = undefined;
+      reservedSwipe = undefined;
+    }
+
     const target = e.target as HTMLElement;
     const {
       excludedClosestSelector,
@@ -164,7 +209,7 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
       document.addEventListener('mousemove', onMove);
       document.addEventListener('mouseup', onRelease);
     } else if (e.type === 'touchstart') {
-      if (IS_IOS) {
+      if (SHOULD_LEAVE_SCREEN_EDGES) {
         const x = (e as RealTouchEvent).touches[0].pageX;
         isNearEdge = x <= IOS_SCREEN_EDGE_THRESHOLD || x >= windowSize.get().width - IOS_SCREEN_EDGE_THRESHOLD;
       }
@@ -309,6 +354,10 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
       if (options.onSwipe && !hasSwiped) {
         hasSwiped = onSwipe(e, dragOffsetX, dragOffsetY);
         shouldPreventScroll = hasSwiped;
+
+        if (hasSwiped) {
+          claimTouch(element);
+        }
       }
 
       if (IS_IOS && shouldPreventScroll && options.selectorToPreventScroll) {
@@ -321,7 +370,7 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
   }
 
   function onSwipe(e: MouseEvent | RealTouchEvent, dragOffsetX: number, dragOffsetY: number) {
-    if (IS_IOS && isNearEdge) {
+    if (SHOULD_LEAVE_SCREEN_EDGES && isNearEdge) {
       return false;
     }
 
@@ -347,7 +396,12 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
       return false;
     }
 
-    return processSwipe(e, axis, dragOffsetX, dragOffsetY, options.onSwipe!);
+    const direction = getSwipeDirection(axis, dragOffsetX, dragOffsetY);
+    if (reservedSwipe && reservedSwipe.direction === direction && reservedSwipe.element !== element) {
+      return false;
+    }
+
+    return options.onSwipe!(e, direction, { dragOffsetX, dragOffsetY });
   }
 
   const releaseWheelDrag = debounce(onRelease, RELEASE_WHEEL_DRAG_DELAY, false);
@@ -436,39 +490,29 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
     element.addEventListener('wheel', onWheel);
   }
 
+  const isDragOnly = Boolean(options.onDrag && !options.onSwipe);
+  if (isDragOnly) {
+    dragOnlyElements.add(element);
+  }
+
   element.addEventListener('mousedown', onCapture);
   document.body.addEventListener('touchstart', onCapture, { passive: !options.isNotPassive });
 
   return () => {
     onRelease();
+    if (isDragOnly) {
+      dragOnlyElements.delete(element);
+    }
     document.body.removeEventListener('touchstart', onCapture);
     element.removeEventListener('mousedown', onCapture);
     element.removeEventListener('wheel', onWheel);
   };
 }
 
-function processSwipe(
-  e: Event,
-  currentSwipeAxis: TSwipeAxis,
-  dragOffsetX: number,
-  dragOffsetY: number,
-  onSwipe: (e: Event, direction: SwipeDirection, offsets: MoveOffsets) => boolean,
-) {
-  const offsets = { dragOffsetX, dragOffsetY };
-
-  if (currentSwipeAxis === 'x') {
-    if (dragOffsetX < 0) {
-      return onSwipe(e, SwipeDirection.Left, offsets);
-    } else {
-      return onSwipe(e, SwipeDirection.Right, offsets);
-    }
-  } else if (currentSwipeAxis === 'y') {
-    if (dragOffsetY < 0) {
-      return onSwipe(e, SwipeDirection.Up, offsets);
-    } else {
-      return onSwipe(e, SwipeDirection.Down, offsets);
-    }
+function getSwipeDirection(axis: 'x' | 'y', dragOffsetX: number, dragOffsetY: number) {
+  if (axis === 'x') {
+    return dragOffsetX < 0 ? SwipeDirection.Left : SwipeDirection.Right;
   }
 
-  return false;
+  return dragOffsetY < 0 ? SwipeDirection.Up : SwipeDirection.Down;
 }

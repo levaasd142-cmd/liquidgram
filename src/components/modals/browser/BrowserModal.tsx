@@ -185,13 +185,14 @@ const BrowserModal = ({
     () => menuRef.current!,
   );
 
+  // The menu opens from its button, not from a long press anywhere in the browser
   const {
     isContextMenuOpen,
     contextMenuAnchor,
     handleContextMenu,
     handleContextMenuClose,
     handleContextMenuHide,
-  } = useContextMenuHandlers(ref);
+  } = useContextMenuHandlers(ref, undefined, undefined, true);
 
   const [isDraggingEnabled, setIsDraggingEnabled] = useState(false);
 
