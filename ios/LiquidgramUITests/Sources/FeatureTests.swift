@@ -70,11 +70,7 @@ final class FeatureTests: LiquidgramUITestCase {
     XCTAssertTrue(unlockButton.isHittable, "The unlock button cannot be tapped")
     unlockButton.tap()
     waitForDisappearance(of: lock, timeout: Self.unlockTimeout, "the lock screen after Face ID succeeded")
-    waitFor(
-      findElement(in: webView, labelContaining: Self.demoChatTitle),
-      timeout: Self.launchTimeout,
-      "the chats after unlocking"
-    )
+    waitForChatRow(titled: Self.demoChatTitle, "the chats after unlocking")
     attachScreenshot("02-unlocked")
 
     XCUIDevice.shared.press(.home)
@@ -113,7 +109,7 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testPrivacyShieldCoversAppWhileInactive() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list")
 
     app.coordinate(withNormalizedOffset: Self.notificationCenterDragStart).press(
       forDuration: Self.dragPressDuration,
@@ -204,7 +200,7 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testDeepLinkOpensSettings() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list")
 
     app.open(try XCTUnwrap(URL(string: Self.settingsDeepLink)))
     acceptOpenURLPromptIfShown()
@@ -222,7 +218,7 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testLiquidgramSettingsShowIPhoneSection() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    let settingsTab = waitFor(
+    let settingsTab = waitForHittable(
       webView.buttons[Self.settingsTabLabel],
       timeout: Self.launchTimeout,
       "the Settings tab"
@@ -253,11 +249,8 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testHeadersStayBelowStatusBar() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    let menuButton = waitFor(
-      webView.buttons[Self.menuButtonLabel],
-      timeout: Self.launchTimeout,
-      "the menu button of the chat list"
-    )
+    let chat = waitForChatRow(titled: Self.demoChatTitle, "the chat list")
+    let menuButton = waitFor(webView.buttons[Self.menuButtonLabel], "the menu button of the chat list")
     let statusBarBottom = statusBarFrame.maxY
     attachScreenshot("01-chat-list-header")
     var problems: [String] = []
@@ -265,7 +258,7 @@ final class FeatureTests: LiquidgramUITestCase {
       problems.append("the chat list header starts at y \(menuButton.frame.minY)")
     }
 
-    findElement(in: webView, labelContaining: Self.demoChatTitle).tap()
+    chat.tap()
     let chatTitle = waitForHittable(chatHeaderTitle, "the header of the opened chat")
     attachScreenshot("02-chat-header")
     if chatTitle.frame.minY < statusBarBottom - Self.frameTolerance {
@@ -281,10 +274,9 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testChatHeaderStaysVisibleWhileTyping() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    waitFor(findElement(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
-      .tap()
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list").tap()
     allowNotificationsIfAsked()
-    waitFor(findTextInput(in: webView, labeled: Self.composerLabel), "the composer").tap()
+    waitForHittable(findTextInput(in: webView, labeled: Self.composerLabel), "the composer").tap()
     waitFor(keyboard, "the software keyboard")
     dismissKeyboardIntroductionIfShown()
     app.typeText(Self.typedMessage)
@@ -292,7 +284,7 @@ final class FeatureTests: LiquidgramUITestCase {
     let title = chatHeaderTitle.firstMatch
     attachScreenshot("01-typing")
     XCTAssertTrue(
-      title.isHittable && title.frame.minY >= statusBarBottom - Self.frameTolerance,
+      title.exists && title.isHittable && title.frame.minY >= statusBarBottom - Self.frameTolerance,
       "The chat header \(title.frame) left the screen while typing; the status bar ends at y \(statusBarBottom)"
     )
   }
@@ -309,7 +301,11 @@ final class FeatureTests: LiquidgramUITestCase {
   @MainActor
   func testKeyboardHasNoFormToolbar() throws {
     try launchApp()
-    waitFor(findTextInput(in: webView, labeled: Self.apiIdLabel), timeout: Self.launchTimeout, "the API ID field").tap()
+    waitForHittable(
+      findTextInput(in: webView, labeled: Self.apiIdLabel),
+      timeout: Self.launchTimeout,
+      "the API ID field"
+    ).tap()
     let keyboard = waitFor(self.keyboard, "the software keyboard")
     attachScreenshot("01-keyboard")
 

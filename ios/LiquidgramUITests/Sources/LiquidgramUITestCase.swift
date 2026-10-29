@@ -221,6 +221,43 @@ class LiquidgramUITestCase: XCTestCase {
     return match ?? query.firstMatch
   }
 
+  /// Waits until `element` can be tapped, for elements that exist before the web app shows them
+  @MainActor
+  @discardableResult
+  func waitForHittable(
+    _ element: XCUIElement,
+    timeout: TimeInterval = LiquidgramUITestCase.elementTimeout,
+    _ description: String,
+    file: StaticString = #filePath,
+    line: UInt = #line
+  ) -> XCUIElement {
+    if !waitUntil(timeout: timeout, { element.exists && element.isHittable }) {
+      attachFailureContext(description)
+      XCTFail("Not on screen within \(Int(timeout)) s: \(description)", file: file, line: line)
+    }
+    return element
+  }
+
+  /// Waits until the row of a chat in the chat list is on screen. The rows enter the accessibility tree a moment
+  /// before the web app shows them, and a tap before that hits whatever still covers them.
+  @MainActor
+  @discardableResult
+  func waitForChatRow(
+    titled title: String,
+    timeout: TimeInterval = LiquidgramUITestCase.launchTimeout,
+    _ description: String,
+    file: StaticString = #filePath,
+    line: UInt = #line
+  ) -> XCUIElement {
+    waitForHittable(
+      findElements(in: webView, labelContaining: title),
+      timeout: timeout,
+      description,
+      file: file,
+      line: line
+    )
+  }
+
   /// Waits until `element` is gone; on timeout attaches the screen and the accessibility tree, then fails
   @MainActor
   func waitForDisappearance(

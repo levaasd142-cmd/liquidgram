@@ -84,7 +84,7 @@ final class CoreTests: LiquidgramUITestCase {
   @MainActor
   func testKeyboardKeepsFocusedFieldVisible() throws {
     try launchApp()
-    let apiIdField = waitFor(
+    let apiIdField = waitForHittable(
       findTextInput(in: webView, labeled: Self.apiIdLabel),
       timeout: Self.launchTimeout,
       "the API ID field"
@@ -111,11 +111,7 @@ final class CoreTests: LiquidgramUITestCase {
   @MainActor
   func testDemoAccount() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    let chat = waitFor(
-      findElement(in: webView, labelContaining: Self.demoChatTitle),
-      timeout: Self.launchTimeout,
-      "the chat list of the demo account"
-    )
+    let chat = waitForChatRow(titled: Self.demoChatTitle, "the chat list of the demo account")
     waitFor(findElement(in: webView, labelContaining: Self.demoGroupTitle), "the group chat of the demo account")
     attachScreenshot("01-chat-list")
     attachAccessibilityTree("chat-list")
@@ -123,7 +119,7 @@ final class CoreTests: LiquidgramUITestCase {
     chat.tap()
     allowNotificationsIfAsked()
     waitFor(findStaticText(in: webView, containing: Self.demoMessage), "a message of the opened chat")
-    let composer = waitFor(findTextInput(in: webView, labeled: Self.composerLabel), "the composer")
+    let composer = waitForHittable(findTextInput(in: webView, labeled: Self.composerLabel), "the composer")
     attachScreenshot("02-chat")
 
     composer.tap()
@@ -149,23 +145,17 @@ final class CoreTests: LiquidgramUITestCase {
   @MainActor
   func testDemoAccountSurvivesRestart() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
-    waitFor(
-      findElement(in: webView, labelContaining: Self.demoChatTitle),
-      timeout: Self.launchTimeout,
-      "the chat list of the demo account"
-    )
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list of the demo account")
+    attachScreenshot("01-chat-list-before-restart")
     pause(Self.cacheWriteDelay)
     XCUIDevice.shared.press(.home)
     pause(Self.backgroundDelay)
     app.terminate()
 
     try launchApp(Launch(shouldResetState: false, shouldStayOffline: true))
-    waitFor(
-      findElement(in: webView, labelContaining: Self.demoChatTitle),
-      timeout: Self.launchTimeout,
-      "the chat list after the restart"
-    )
-    attachScreenshot("01-chat-list-after-restart")
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list after the restart")
+    attachScreenshot("02-chat-list-after-restart")
+    attachAccessibilityTree("chat-list-after-restart")
   }
 }
 

@@ -127,6 +127,6 @@ A connected session asks for the notification permission after its first tap. Th
 
 - Subclass `LiquidgramUITestCase` and mark test methods `@MainActor`, as the XCUI classes are main-actor isolated.
 - Find web content through `webView` with `findElement(in:labelContaining:)`, `findStaticText(in:containing:)` and `findTextInput(in:labeled:)`; find native views by accessibility identifier with `findNativeElement(_:)`. A chat of the list is one button whose label holds the whole row.
-- Web content keeps screens that slid away, like the chat list under an opened chat, in the accessibility tree: use `waitForHittable(_:_:)` when only the element on screen counts.
+- Web content enters the accessibility tree before the web app shows it, and keeps screens that slid away, like the chat list under an opened chat: wait with `waitForHittable(_:_:)` before a tap or a screenshot, and with `waitForChatRow(titled:_:)` for a row of the chat list.
 - Wait with `waitFor`, `waitForHittable` and `waitForDisappearance`; on a timeout they attach a screenshot and the accessibility tree before failing.
 - Name screenshots `NN-what-is-shown`; the report orders them by time and the dark run adds `-dark`.
