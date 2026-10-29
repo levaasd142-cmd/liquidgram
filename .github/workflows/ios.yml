@@ -34,9 +34,12 @@ on:
 permissions:
   contents: write
 
-# A newer push to the same branch replaces a build in progress
+# A newer build of the same branch replaces one in progress. A push to a branch other than the default one builds
+# nothing, so it gets a group of its own instead of cancelling a manual run of that branch.
 concurrency:
-  group: ios-${{ github.ref }}
+  group: >-
+    ios-${{ github.ref }}-${{ (github.event_name == 'workflow_dispatch'
+    || github.ref_name == github.event.repository.default_branch) && 'build' || github.run_id }}
   cancel-in-progress: true
 
 env:
