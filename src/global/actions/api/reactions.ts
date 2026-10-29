@@ -15,6 +15,7 @@ import {
 } from '../../../util/iteratees';
 import { getMessageKey } from '../../../util/keys/messageKey';
 import * as mediaLoader from '../../../util/mediaLoader';
+import { triggerHaptic } from '../../../util/nativeApp';
 import requestActionTimeout from '../../../util/requestActionTimeout';
 import { callApi } from '../../../api/gramjs';
 import {
@@ -244,6 +245,8 @@ addActionHandler('toggleReaction', async (global, actions, payload): Promise<voi
   const trimmedRegularReactions = regularReactions.slice(-limit) as ApiReaction[];
   const localReactions = [...paidReactions, ...trimmedRegularReactions];
   const messageKey = getMessageKey(message);
+
+  if (!hasReaction) triggerHaptic('light');
 
   if (selectPerformanceSettingsValue(global, 'reactionEffects')) {
     if (hasReaction) {

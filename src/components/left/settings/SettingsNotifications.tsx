@@ -6,6 +6,7 @@ import type { ApiNotifyPeerType, ApiPeerNotifySettings } from '../../../api/type
 import {
   checkIfNotificationsSupported,
   checkIfOfflinePushFailed,
+  checkIfPushSupported,
   playNotifySound,
 } from '../../../util/notifications';
 
@@ -56,7 +57,9 @@ const SettingsNotifications = ({
   const runDebounced = useRunDebounced(500, true);
 
   const areNotificationsSupported = checkIfNotificationsSupported();
-  const areOfflineNotificationsSupported = areNotificationsSupported && !checkIfOfflinePushFailed();
+  // Without push, which needs a service worker, notifications come only while the app is open
+  const areOfflineNotificationsSupported = areNotificationsSupported && checkIfPushSupported()
+    && !checkIfOfflinePushFailed();
 
   const areChannelsMuted = Boolean(notifyDefaults?.channels?.mutedUntil);
   const areGroupsMuted = Boolean(notifyDefaults?.groups?.mutedUntil);

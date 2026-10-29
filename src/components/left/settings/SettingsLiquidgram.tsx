@@ -5,6 +5,7 @@ import type { GhostModeSettings, LiquidSettings } from '../../../global/types';
 import type { RegularLangKey } from '../../../types/language';
 
 import { selectGhostModeSettings, selectLiquidSettings } from '../../../global/selectors/sharedState';
+import { IS_IOS_APP } from '../../../util/browser/windowEnvironment';
 import { IS_GLASS_REFRACTION_SUPPORTED } from '../../../util/liquidGlass';
 
 import useHistoryBack from '../../../hooks/useHistoryBack';
@@ -15,6 +16,7 @@ import Island, { IslandDescription, IslandTitle } from '../../gili/layout/Island
 import Checkbox from '../../ui/Checkbox';
 import ListItem from '../../ui/ListItem';
 import RangeSlider from '../../ui/RangeSlider';
+import SettingsLiquidgramIphone from './SettingsLiquidgramIphone';
 
 import styles from './SettingsLiquidgram.module.scss';
 
@@ -71,6 +73,8 @@ const SettingsLiquidgram = ({
         <h3 className={styles.heroTitle}>Liquidgram</h3>
         <p className={styles.heroDescription} dir="auto">{lang('LiquidSettingsAbout')}</p>
       </div>
+
+      {IS_IOS_APP && <SettingsLiquidgramIphone />}
 
       <IslandTitle dir={lang.isRtl ? 'rtl' : undefined}>{lang('LiquidSectionDesign')}</IslandTitle>
       <Island>

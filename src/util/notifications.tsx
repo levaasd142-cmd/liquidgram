@@ -53,7 +53,7 @@ function getDeviceToken(subscription: PushSubscription) {
   });
 }
 
-function checkIfPushSupported() {
+export function checkIfPushSupported() {
   if (!IS_SERVICE_WORKER_SUPPORTED || IS_TAURI) return false;
 
   if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
@@ -104,6 +104,8 @@ export function checkIfNotificationsSupported() {
   }
   return true;
 }
+
+const pageNotificationsByChatId = new Map<string, Map<number, Notification>>();
 
 const expirationTime = 12 * 60 * 60 * 1000; // 12 hours
 // Notification id is removed from soundPlayed cache after 3 seconds
@@ -507,6 +509,7 @@ export async function notifyAboutMessage({
     }
 
     const notification = new Notification(title, options);
+    addPageNotification(chat.id, message.id, notification);
 
     notification.onclick = () => {
       notification.close();
@@ -530,11 +533,52 @@ export async function notifyAboutMessage({
 }
 
 export function closeMessageNotifications(payload: { chatId: string; lastReadInboxMessageId?: number }) {
-  if (IS_TEST || !navigator.serviceWorker?.controller) return;
-  navigator.serviceWorker.controller.postMessage({
+  if (IS_TEST) return;
+
+  closePageNotifications(payload);
+  navigator.serviceWorker?.controller?.postMessage({
     type: 'closeMessageNotifications',
     payload,
   });
+}
+
+// Keeps a notification that the page shows itself, so it can close once the chat is read. A service worker keeps
+// track of its own notifications.
+function addPageNotification(chatId: string, messageId: number, notification: Notification) {
+  const notifications = pageNotificationsByChatId.get(chatId) || new Map<number, Notification>();
+  pageNotificationsByChatId.set(chatId, notifications);
+  notifications.set(messageId, notification);
+
+  function removeNotification() {
+    // A notification about a reaction replaces the one about its message
+    if (notifications.get(messageId) !== notification) return;
+
+    notifications.delete(messageId);
+    if (!notifications.size && pageNotificationsByChatId.get(chatId) === notifications) {
+      pageNotificationsByChatId.delete(chatId);
+    }
+  }
+
+  notification.addEventListener('click', removeNotification);
+  notification.addEventListener('close', removeNotification);
+}
+
+function closePageNotifications({ chatId, lastReadInboxMessageId }: {
+  chatId: string; lastReadInboxMessageId?: number;
+}) {
+  const notifications = pageNotificationsByChatId.get(chatId);
+  if (!notifications) return;
+
+  // Without the read message the whole chat counts as read, as in the service worker
+  const maxId = lastReadInboxMessageId || Infinity;
+  notifications.forEach((notification, messageId) => {
+    if (messageId > maxId) return;
+
+    notifications.delete(messageId);
+    notification.close();
+  });
+
+  if (!notifications.size) pageNotificationsByChatId.delete(chatId);
 }
 
 function getChatNotifyException(global: GlobalState, chat: ApiChat) {

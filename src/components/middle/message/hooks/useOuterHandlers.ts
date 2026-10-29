@@ -7,6 +7,7 @@ import type { Signal } from '../../../../util/signals';
 import { requestMeasure } from '../../../../lib/fasterdom/fasterdom';
 import { IS_ANDROID, IS_TOUCH_ENV } from '../../../../util/browser/windowEnvironment';
 import { captureEvents, SwipeDirection } from '../../../../util/captureEvents';
+import { triggerHaptic } from '../../../../util/nativeApp';
 import stopEvent from '../../../../util/stopEvent';
 import windowSize from '../../../../util/windowSize';
 import { REM } from '../../../common/helpers/mediaDimensions';
@@ -173,6 +174,7 @@ export default function useOuterHandlers(
         if (direction === SwipeDirection.Left) {
           if (!startedAt) {
             startedAt = Date.now();
+            triggerHaptic('light');
           }
 
           markSwiped();

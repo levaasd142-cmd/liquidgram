@@ -56,6 +56,12 @@ export type WebAppButtonOptions = {
   position?: 'left' | 'right' | 'top' | 'bottom';
 };
 
+export type WebAppHapticFeedback = {
+  type: 'impact' | 'notification' | 'selection_change';
+  impact_style?: 'light' | 'medium' | 'heavy' | 'rigid' | 'soft';
+  notification_type?: 'error' | 'success' | 'warning';
+};
+
 export type SafeArea = {
   top: number;
   bottom: number;
@@ -73,11 +79,7 @@ interface WebAppInboundEventMap {
   web_app_open_link: { url: string; try_instant_view?: boolean };
   web_app_open_tg_link: { path_full: string; force_request?: boolean };
   web_app_open_invoice: { slug: string };
-  web_app_trigger_haptic_feedback: {
-    type: 'impact' | 'notification' | 'selection_change';
-    impact_style?: 'light' | 'medium' | 'heavy';
-    notification_type?: 'error' | 'success' | 'warning';
-  };
+  web_app_trigger_haptic_feedback: WebAppHapticFeedback;
   web_app_set_bottom_bar_color: { color: string };
   web_app_set_background_color: { color: string };
   web_app_set_header_color: { color_key?: 'bg_color' | 'secondary_bg_color'; color?: string };

@@ -2,7 +2,7 @@ import type { ElementRef } from '../lib/teact/teact';
 import { useCallback, useLayoutEffect, useState } from '../lib/teact/teact';
 
 import { DEBUG } from '../config';
-import { IS_IOS, IS_PWA } from '../util/browser/windowEnvironment';
+import { IS_IOS, IS_IOS_APP, IS_PWA } from '../util/browser/windowEnvironment';
 import safePlay, { getIsVideoPlaying } from '../util/safePlay';
 import { createSignal } from '../util/signals';
 
@@ -23,8 +23,8 @@ export default function usePictureInPicture(
   const [isActive, setIsActive] = useState(false);
 
   useLayoutEffect(() => {
-    // PIP is not supported in PWA on iOS, despite being detected
-    if ((IS_IOS && IS_PWA) || !elRef.current) return undefined;
+    // PIP is not supported in PWA on iOS, despite being detected, but the web view of the iOS app allows it
+    if ((IS_IOS && IS_PWA && !IS_IOS_APP) || !elRef.current) return undefined;
     const video = elRef.current;
     const setMode = getSetPresentationMode(video);
     const isEnabled = (document.pictureInPictureEnabled && !elRef.current?.disablePictureInPicture)

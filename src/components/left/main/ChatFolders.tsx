@@ -14,6 +14,7 @@ import { IS_TOUCH_ENV } from '../../../util/browser/windowEnvironment';
 import buildClassName from '../../../util/buildClassName';
 import captureEscKeyListener from '../../../util/captureEscKeyListener';
 import { captureEvents, SwipeDirection } from '../../../util/captureEvents';
+import { triggerHaptic } from '../../../util/nativeApp';
 import { resolveTransitionName } from '../../../util/resolveTransitionName';
 
 import useDerivedState from '../../../hooks/useDerivedState';
@@ -132,6 +133,7 @@ const ChatFolders = ({
   const openFolder = useLastCallback((index: number) => {
     if (activeChatFolder === index) return;
 
+    triggerHaptic('selection');
     setActiveChatFolder({ activeChatFolder: index }, { forceOnHeavyAnimation: true });
   });
 
@@ -164,20 +166,17 @@ const ChatFolders = ({
       selectorToPreventScroll: '.chat-list',
       onSwipe: (e, direction) => {
         if (direction === SwipeDirection.Left) {
-          setActiveChatFolder(
-            { activeChatFolder: Math.min(activeChatFolder + 1, folderTabs.length - 1) },
-            { forceOnHeavyAnimation: true },
-          );
+          openFolder(Math.min(activeChatFolder + 1, folderTabs.length - 1));
           return true;
         } else if (direction === SwipeDirection.Right) {
-          setActiveChatFolder({ activeChatFolder: Math.max(0, activeChatFolder - 1) }, { forceOnHeavyAnimation: true });
+          openFolder(Math.max(0, activeChatFolder - 1));
           return true;
         }
 
         return false;
       },
     });
-  }, [activeChatFolder, folderTabs, isForumPanelOpen, setActiveChatFolder]);
+  }, [activeChatFolder, folderTabs, isForumPanelOpen]);
 
   const isNotInFirstFolderRef = useRef();
   isNotInFirstFolderRef.current = !isInFirstFolder;

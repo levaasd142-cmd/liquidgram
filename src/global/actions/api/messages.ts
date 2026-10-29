@@ -66,6 +66,7 @@ import { getMessageKey, isLocalMessageId } from '../../../util/keys/messageKey';
 import { parseTranslationCacheKey } from '../../../util/keys/translationKey';
 import { getTranslationFn, type RegularLangFnParameters } from '../../../util/localization';
 import { formatStarsAsText } from '../../../util/localization/format';
+import { triggerHaptic } from '../../../util/nativeApp';
 import { debounce, onTickEnd, rafPromise } from '../../../util/schedulers';
 import { getServerTime } from '../../../util/serverTime';
 import { callApi, cancelApiProgress } from '../../../api/gramjs';
@@ -720,6 +721,8 @@ addActionHandler('sendMessage', async (global, actions, payload): Promise<void> 
       getActions().openThread({ chatId: chat.id, threadId: topic });
     }
   }
+
+  triggerHaptic('light');
 
   if (!payload.scheduledAt && !isStoryReply) {
     actions.animateMessageSending({ chatId: chatId!, threadId: threadId!, tabId });
