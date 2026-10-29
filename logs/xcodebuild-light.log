@@ -1,0 +1,299 @@
+    t =    19.05s Tap "Reply" MenuItem
+    t =    19.05s     Wait for org.liquidgram.messenger to idle
+    t =    19.06s     Find the "Reply" MenuItem
+    t =    19.22s     Check for interrupting elements affecting "Reply" MenuItem
+    t =    19.38s     Synthesize event
+    t =    19.70s     Wait for org.liquidgram.messenger to idle
+    t =    19.71s Get all elements bound by index for: Elements matching predicate 'label == "Cancel"'
+    t =    22.09s Find the Button (Element at index 0)
+    t =    23.05s Added attachment named '03-reply-from-menu'
+    t =    23.06s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testLongPressOpensMessageMenu]' passed (23.267 seconds).
+Test Case '-[LiquidgramUITests.GestureTests testSlowShortSwipeSpringsBack]' started.
+    t =     0.00s Start Test at 2026-10-29 18:40:51.438
+    t =     0.00s Set Up
+    t =     0.02s Open org.liquidgram.messenger
+    t =     0.02s     Launch org.liquidgram.messenger
+    t =     0.03s         Terminate org.liquidgram.messenger:11913
+    t =     1.97s         Setting up automation session
+    t =     4.68s         Wait for org.liquidgram.messenger to idle
+    t =     6.33s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.98s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     9.13s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.30s Find the Any (Element at index 0)
+    t =    10.78s Tap "Аня СмирноваАня Смирнова 18:39Договорились! До завтра 💙1" Button
+    t =    10.78s     Wait for org.liquidgram.messenger to idle
+    t =    10.79s     Find the "Аня СмирноваАня Смирнова 18:39Договорились! До завтра 💙1" Button
+    t =    10.89s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:39Договорились! До завтра 💙1" Button
+    t =    10.97s     Synthesize event
+    t =    11.32s     Wait for org.liquidgram.messenger to idle
+    t =    11.95s Waiting 2.0s for "Allow" Button to exist
+    t =    13.04s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    13.04s         Checking existence of `"Allow" Button`
+    t =    13.24s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    13.25s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    13.25s         Capturing element debug description
+    t =    13.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    13.95s         Checking existence of `"Allow" Button`
+    t =    14.00s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    14.00s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    14.00s         Capturing element debug description
+    t =    14.01s     Checking existence of `"Allow" Button`
+    t =    14.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    14.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    14.04s Collecting debug information to assist test failure triage
+    t =    14.04s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =    14.13s Checking existence of `Any (First Match)`
+    t =    14.33s Find the Any (First Match)
+    t =    16.31s Added attachment named '01-chat'
+    t =    16.31s Press WebView (First Match)[0.00, 0.50] -> (4.0, 0.0) for 0.1 seconds, then drag to WebView (First Match)[0.25, 0.50] with velocity of 150.00 pixels per second, and then hold for 0.6 seconds 
+    t =    16.31s     Wait for org.liquidgram.messenger to idle
+    t =    16.31s     Find the WebView (First Match)
+    t =    16.36s     Check for interrupting elements affecting "liquidgram.webview" WebView
+    t =    16.41s     Synthesize event
+    t =    16.41s         Find the "liquidgram.webview" WebView
+    t =    16.44s         Find the "liquidgram.webview" WebView
+    t =    16.48s         Find the WebView (First Match)
+    t =    16.51s         Find the "liquidgram.webview" WebView
+    t =    16.55s         Find the "liquidgram.webview" WebView
+    t =    18.13s     Wait for org.liquidgram.messenger to idle
+    t =    19.84s Added attachment named '02-chat-after-short-swipe'
+    t =    19.85s Checking existence of `"Message" TextView`
+    t =    20.25s Find the "Message" TextView
+    t =    20.50s Find the Target Application 'org.liquidgram.messenger'
+    t =    20.59s Find the "Message" TextView
+    t =    20.89s Checking existence of `"Open menu" Button`
+    t =    21.01s Find the "Open menu" Button
+    t =    21.16s Find the Target Application 'org.liquidgram.messenger'
+    t =    21.22s Find the "Open menu" Button
+    t =    21.37s Checking existence of `StaticText (First Match)`
+    t =    21.53s Find the StaticText (First Match)
+    t =    21.67s Find the Target Application 'org.liquidgram.messenger'
+    t =    21.82s Find the "Во сколько завтра встречаемся?" StaticText
+    t =    22.02s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testSlowShortSwipeSpringsBack]' passed (22.229 seconds).
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackClosesProfile]' started.
+    t =     0.00s Start Test at 2026-10-29 18:41:13.667
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:12379
+    t =     1.46s         Setting up automation session
+    t =     3.40s         Wait for org.liquidgram.messenger to idle
+    t =     5.07s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.11s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.95s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.13s Find the Any (Element at index 0)
+    t =     7.30s Tap "Аня СмирноваАня Смирнова 18:40Договорились! До завтра 💙1" Button
+    t =     7.30s     Wait for org.liquidgram.messenger to idle
+    t =     7.31s     Find the "Аня СмирноваАня Смирнова 18:40Договорились! До завтра 💙1" Button
+    t =     7.47s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:40Договорились! До завтра 💙1" Button
+    t =     7.58s     Synthesize event
+    t =     7.89s     Wait for org.liquidgram.messenger to idle
+    t =     7.96s Waiting 2.0s for "Allow" Button to exist
+    t =     9.04s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     9.04s         Checking existence of `"Allow" Button`
+    t =     9.12s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.13s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.14s         Capturing element debug description
+    t =     9.97s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     9.97s         Checking existence of `"Allow" Button`
+    t =    10.00s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.00s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.00s         Capturing element debug description
+    t =    10.00s     Checking existence of `"Allow" Button`
+    t =    10.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.04s Collecting debug information to assist test failure triage
+    t =    10.04s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =    10.12s Checking existence of `Any (First Match)`
+    t =    10.37s Find the Any (First Match)
+    t =    12.26s Added attachment named '01-chat'
+    t =    12.26s Get all elements bound by index for: Elements matching predicate 'label == "Аня Смирнова"'
+    t =    12.41s Find the Button (Element at index 0)
+    t =    12.53s Find the "Аня Смирнова" Button
+    t =    12.67s Checking existence of `StatusBar (First Match)`
+    t =    12.70s Find the StatusBar (First Match)
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/GestureTests.swift:102: -[LiquidgramUITests.GestureTests testSwipeBackClosesProfile] : Test skipped - The chat header is under the status bar, which takes the tap that opens the profile
+    t =    12.81s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackClosesProfile]' skipped (13.020 seconds).
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackFromEdgeClosesChat]' started.
+    t =     0.00s Start Test at 2026-10-29 18:41:26.687
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:13089
+    t =    35.62s         Setting up automation session
+    t =    37.19s         Wait for org.liquidgram.messenger to idle
+    t =    38.51s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    39.48s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    40.60s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    41.19s Find the Any (Element at index 0)
+    t =    41.89s Tap "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =    41.89s     Wait for org.liquidgram.messenger to idle
+    t =    41.89s     Find the "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =    41.96s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =    42.07s     Synthesize event
+    t =    42.41s     Wait for org.liquidgram.messenger to idle
+    t =    42.96s Waiting 2.0s for "Allow" Button to exist
+    t =    44.00s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    44.00s         Checking existence of `"Allow" Button`
+    t =    44.18s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    44.20s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    44.21s         Capturing element debug description
+    t =    44.96s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    44.99s         Checking existence of `"Allow" Button`
+    t =    45.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    45.04s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    45.04s         Capturing element debug description
+    t =    45.04s     Checking existence of `"Allow" Button`
+    t =    45.10s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    45.10s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    45.10s Collecting debug information to assist test failure triage
+    t =    45.10s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =    45.19s Checking existence of `Any (First Match)`
+    t =    45.41s Find the Any (First Match)
+    t =    47.41s Added attachment named '01-chat'
+    t =    47.41s Press WebView (First Match)[0.00, 0.50] -> (4.0, 0.0) for 0.1 seconds, then drag to WebView (First Match)[0.85, 0.50] with velocity of 1200.00 pixels per second, and then hold for 0.0 seconds 
+    t =    47.41s     Wait for org.liquidgram.messenger to idle
+    t =    47.41s     Find the WebView (First Match)
+    t =    47.46s     Check for interrupting elements affecting "liquidgram.webview" WebView
+    t =    47.53s     Synthesize event
+    t =    47.53s         Find the "liquidgram.webview" WebView
+    t =    47.57s         Find the "liquidgram.webview" WebView
+    t =    47.60s         Find the WebView (First Match)
+    t =    47.62s         Find the "liquidgram.webview" WebView
+    t =    47.65s         Find the "liquidgram.webview" WebView
+    t =    48.26s     Wait for org.liquidgram.messenger to idle
+    t =    48.27s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Бразы"'
+    t =    48.53s Find the Any (Element at index 0)
+    t =    48.85s Checking existence of `"Open menu" Button`
+    t =    48.98s Find the "Open menu" Button
+    t =    49.38s Added attachment named '02-chat-list-after-edge-swipe'
+    t =    49.39s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackFromEdgeClosesChat]' passed (49.596 seconds).
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackFromMiddleClosesChat]' started.
+    t =     0.00s Start Test at 2026-10-29 18:42:16.284
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:13414
+    t =     1.65s         Setting up automation session
+    t =     3.70s         Wait for org.liquidgram.messenger to idle
+    t =     5.12s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.63s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.33s Find the Any (Element at index 0)
+    t =     7.67s Tap "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     7.67s     Wait for org.liquidgram.messenger to idle
+    t =     7.68s     Find the "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     7.74s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     7.79s     Synthesize event
+    t =     8.11s     Wait for org.liquidgram.messenger to idle
+    t =     8.16s Waiting 2.0s for "Allow" Button to exist
+    t =     9.17s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     9.17s         Checking existence of `"Allow" Button`
+    t =     9.25s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.25s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.25s         Capturing element debug description
+    t =    10.16s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    10.16s         Checking existence of `"Allow" Button`
+    t =    10.20s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.20s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.20s         Capturing element debug description
+    t =    10.20s     Checking existence of `"Allow" Button`
+    t =    10.23s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.23s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    10.23s Collecting debug information to assist test failure triage
+    t =    10.23s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =    10.30s Checking existence of `Any (First Match)`
+    t =    10.49s Find the Any (First Match)
+    t =    12.36s Added attachment named '01-chat'
+    t =    12.36s Press WebView (First Match)[0.30, 0.50] for 0.1 seconds, then drag to WebView (First Match)[0.85, 0.50] with velocity of 1200.00 pixels per second, and then hold for 0.0 seconds 
+    t =    12.36s     Wait for org.liquidgram.messenger to idle
+    t =    12.36s     Find the WebView (First Match)
+    t =    12.38s     Check for interrupting elements affecting "liquidgram.webview" WebView
+    t =    12.44s     Synthesize event
+    t =    12.44s         Find the "liquidgram.webview" WebView
+    t =    12.48s         Find the "liquidgram.webview" WebView
+    t =    12.49s         Find the WebView (First Match)
+    t =    12.51s         Find the "liquidgram.webview" WebView
+    t =    12.53s         Find the "liquidgram.webview" WebView
+    t =    13.05s     Wait for org.liquidgram.messenger to idle
+    t =    13.07s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Бразы"'
+    t =    13.51s Find the Any (Element at index 0)
+    t =    13.73s Checking existence of `"Open menu" Button`
+    t =    13.83s Find the "Open menu" Button
+    t =    14.29s Added attachment named '02-chat-list-after-middle-swipe'
+    t =    14.29s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testSwipeBackFromMiddleClosesChat]' passed (14.499 seconds).
+Test Case '-[LiquidgramUITests.GestureTests testSwipeToReply]' started.
+    t =     0.00s Start Test at 2026-10-29 18:42:30.783
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:15991
+    t =     1.59s         Setting up automation session
+    t =     3.35s         Wait for org.liquidgram.messenger to idle
+    t =     4.71s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.03s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.66s Find the Any (Element at index 0)
+    t =     6.99s Tap "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     6.99s     Wait for org.liquidgram.messenger to idle
+    t =     7.02s     Find the "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     7.10s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:41Договорились! До завтра 💙1" Button
+    t =     7.15s     Synthesize event
+    t =     7.47s     Wait for org.liquidgram.messenger to idle
+    t =     7.49s Waiting 2.0s for "Allow" Button to exist
+    t =     8.56s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     8.56s         Checking existence of `"Allow" Button`
+    t =     8.66s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     8.66s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     8.66s         Capturing element debug description
+    t =     9.50s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     9.50s         Checking existence of `"Allow" Button`
+    t =     9.58s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.59s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.59s         Capturing element debug description
+    t =     9.59s     Checking existence of `"Allow" Button`
+    t =     9.64s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.65s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =     9.65s Collecting debug information to assist test failure triage
+    t =     9.65s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =     9.71s Checking existence of `Any (First Match)`
+    t =     9.95s Find the Any (First Match)
+    t =    11.93s Added attachment named '01-chat'
+    t =    11.93s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Давай в 19:00 у кофейни"'
+    t =    12.01s Find the StaticText (Element at index 0)
+    t =    12.14s Get all elements bound by index for: Elements matching predicate 'label == "Cancel"'
+    t =    12.23s Press "Давай в 19:00 у кофейни на Патриках" StaticText[0.50, 0.50] for 0.1 seconds, then drag to "Давай в 19:00 у кофейни на Патриках" StaticText[0.50, 0.50] -> (-140.0, 0.0) with velocity of 400.00 pixels per second, and then hold for 0.0 seconds 
+    t =    12.23s     Wait for org.liquidgram.messenger to idle
+    t =    12.24s     Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    12.35s     Check for interrupting elements affecting "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    12.42s     Synthesize event
+    t =    12.42s         Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    12.53s         Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    12.70s         Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    12.93s         Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    13.00s         Find the "Давай в 19:00 у кофейни на Патриках" StaticText
+    t =    13.75s     Wait for org.liquidgram.messenger to idle
+    t =    13.75s Get all elements bound by index for: Elements matching predicate 'label == "Cancel"'
+    t =    13.94s Find the Button (Element at index 0)
+    t =    14.51s Added attachment named '02-reply-from-swipe'
+    t =    14.51s Tear Down
+Test Case '-[LiquidgramUITests.GestureTests testSwipeToReply]' passed (14.715 seconds).
+Test Suite 'GestureTests' passed at 2026-10-29 18:42:45.505.
+	 Executed 7 tests, with 1 test skipped and 0 failures (0 unexpected) in 159.320 (159.332) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 18:42:45.507.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 226.319 (226.336) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 18:42:45.508.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 226.319 (226.338) seconds
+2026-10-29 18:42:47.798 xcodebuild[6537:24001] [MT] IDETestOperationsObserverDebug: 315.461 elapsed -- Testing started completed.
+2026-10-29 18:42:47.798 xcodebuild[6537:24001] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:42:47.798 xcodebuild[6537:24001] [MT] IDETestOperationsObserverDebug: 315.461 sec, +315.461 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

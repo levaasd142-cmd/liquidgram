@@ -1,0 +1,221 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-10-29T18:44:23.900Z",
+  "source": {
+    "branch": "ios-v2/fix-gestures-web",
+    "commit": "1703332810feda7ffee63c3706ded75f626e8c15",
+    "run": "https://github.com/levaasd142-cmd/liquidgram/actions/runs/40930670859"
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "counts": {
+    "total": 9,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 1,
+    "knownIssues": 0
+  },
+  "tests": [
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 66.99834501743317,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "status": "passed",
+      "duration": 21.994503021240234,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testLongPressOpensMessageMenu",
+      "status": "passed",
+      "duration": 23.267462968826294,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSlowShortSwipeSpringsBack",
+      "status": "passed",
+      "duration": 22.22856104373932,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackClosesProfile",
+      "status": "skipped",
+      "duration": 13.019917964935303,
+      "message": "Test skipped - The chat header is under the status bar, which takes the tap that opens the profile",
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "status": "passed",
+      "duration": 49.595988035202026,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "status": "passed",
+      "duration": 14.499055981636047,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeToReply",
+      "status": "passed",
+      "duration": 14.714702010154724,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 41.59604597091675,
+      "pass": "dark"
+    }
+  ],
+  "selfTests": [],
+  "buildErrors": [],
+  "screenshots": [
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "02-chat",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "03-composer-with-keyboard",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/GestureTests-testChatListRightSwipeKeepsChatList-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "pass": "light",
+      "name": "02-chat-list-after-right-swipe",
+      "file": "screenshots/GestureTests-testChatListRightSwipeKeepsChatList-02-chat-list-after-right-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "02-message-menu",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-02-message-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "03-reply-from-menu",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-03-reply-from-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSlowShortSwipeSpringsBack",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSlowShortSwipeSpringsBack-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSlowShortSwipeSpringsBack",
+      "pass": "light",
+      "name": "02-chat-after-short-swipe",
+      "file": "screenshots/GestureTests-testSlowShortSwipeSpringsBack-02-chat-after-short-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackClosesProfile",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackClosesProfile-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackFromEdgeClosesChat-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "pass": "light",
+      "name": "02-chat-list-after-edge-swipe",
+      "file": "screenshots/GestureTests-testSwipeBackFromEdgeClosesChat-02-chat-list-after-edge-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackFromMiddleClosesChat-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "pass": "light",
+      "name": "02-chat-list-after-middle-swipe",
+      "file": "screenshots/GestureTests-testSwipeBackFromMiddleClosesChat-02-chat-list-after-middle-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeToReply",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeToReply-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeToReply",
+      "pass": "light",
+      "name": "02-reply-from-swipe",
+      "file": "screenshots/GestureTests-testSwipeToReply-02-reply-from-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "01-chat-list-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "02-chat-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "03-composer-with-keyboard-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard-dark.png",
+      "isFailure": false
+    }
+  ]
+}

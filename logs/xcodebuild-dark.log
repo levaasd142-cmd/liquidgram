@@ -1,0 +1,102 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=E952A9B0-CC78-435C-BF08-06AD47FE1076 -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/dark.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/CoreTests/testDemoAccount"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+2026-10-29 18:43:20.176107+0000 LiquidgramUITests-Runner[18707:56360] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 18:43:22.459.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 18:43:22.460.
+Test Suite 'CoreTests' started at 2026-10-29 18:43:22.460.
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' started.
+    t =     0.00s Start Test at 2026-10-29 18:43:22.461
+    t =     0.01s Set Up
+    t =     0.02s Open org.liquidgram.messenger
+    t =     0.02s     Launch org.liquidgram.messenger
+    t =    14.97s         Setting up automation session
+    t =    18.46s         Wait for org.liquidgram.messenger to idle
+    t =    20.85s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    21.69s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    22.31s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    24.66s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    25.59s Find the Any (Element at index 0)
+    t =    25.71s Waiting 20.0s for Any (First Match) to exist
+    t =    26.78s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    26.78s         Checking existence of `Any (First Match)`
+    t =    27.24s Added attachment named '01-chat-list-dark'
+    t =    27.24s Requesting snapshot of accessibility hierarchy for app with pid 19300
+    t =    27.73s Requesting snapshot of accessibility hierarchy for app with pid 19300
+    t =    27.80s Added attachment named 'ax-chat-list-dark'
+    t =    27.82s Tap "Аня СмирноваАня Смирнова 18:42Договорились! До завтра 💙1" Button
+    t =    27.82s     Wait for org.liquidgram.messenger to idle
+    t =    27.82s     Find the "Аня СмирноваАня Смирнова 18:42Договорились! До завтра 💙1" Button
+    t =    27.89s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:42Договорились! До завтра 💙1" Button
+    t =    28.03s     Synthesize event
+    t =    28.41s     Wait for org.liquidgram.messenger to idle
+    t =    29.06s Waiting 2.0s for "Allow" Button to exist
+    t =    30.13s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    30.13s         Checking existence of `"Allow" Button`
+    t =    30.41s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    30.42s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    30.42s         Capturing element debug description
+    t =    31.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    31.08s         Checking existence of `"Allow" Button`
+    t =    31.18s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    31.18s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    31.18s         Capturing element debug description
+    t =    31.18s     Checking existence of `"Allow" Button`
+    t =    31.27s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    31.28s Ignoring failure to get hierarchy for remote element in process 12244 (Error getting main window kAXErrorServerNotFound)
+    t =    31.29s Collecting debug information to assist test failure triage
+    t =    31.29s     Requesting snapshot of accessibility hierarchy for app with pid 2718
+    t =    31.43s Waiting 20.0s for StaticText (First Match) to exist
+    t =    32.46s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    32.46s         Checking existence of `StaticText (First Match)`
+    t =    32.71s Checking existence of `Any (First Match)`
+    t =    32.92s Find the Any (First Match)
+    t =    33.49s Added attachment named '02-chat-dark'
+    t =    33.50s Tap "Message" TextView
+    t =    33.50s     Wait for org.liquidgram.messenger to idle
+    t =    33.51s     Find the "Message" TextView
+    t =    33.68s     Check for interrupting elements affecting "Message" TextView
+    t =    33.77s     Synthesize event
+    t =    34.11s     Wait for org.liquidgram.messenger to idle
+    t =    36.59s Waiting 20.0s for Keyboard (First Match) to exist
+    t =    37.61s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    37.61s         Checking existence of `Keyboard (First Match)`
+    t =    37.77s Checking existence of `"Continue" Button`
+    t =    37.98s Type 'Typed by the UI te...' into Target Application 'org.liquidgram.messenger'
+    t =    37.98s     Wait for org.liquidgram.messenger to idle
+    t =    37.99s     Find the Target Application 'org.liquidgram.messenger'
+    t =    38.18s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    38.28s     Synthesize event
+    t =    38.94s     Wait for org.liquidgram.messenger to idle
+    t =    39.11s Find the "Message" TextView
+    t =    39.81s Added attachment named '03-composer-with-keyboard-dark'
+    t =    39.81s Requesting snapshot of accessibility hierarchy for app with pid 19300
+    t =    40.70s Requesting snapshot of accessibility hierarchy for app with pid 19300
+    t =    40.93s Added attachment named 'ax-composer-with-keyboard-dark'
+    t =    40.94s Find the "Message" TextView
+    t =    41.23s Find the Keyboard (First Match)
+    t =    41.39s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' passed (41.596 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 18:44:04.059.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.596 (41.599) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 18:44:04.060.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.596 (41.601) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 18:44:04.061.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.596 (41.602) seconds
+2026-10-29 18:44:08.708 xcodebuild[18111:54741] [MT] IDETestOperationsObserverDebug: 56.425 elapsed -- Testing started completed.
+2026-10-29 18:44:08.708 xcodebuild[18111:54741] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:44:08.708 xcodebuild[18111:54741] [MT] IDETestOperationsObserverDebug: 56.428 sec, +56.428 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
