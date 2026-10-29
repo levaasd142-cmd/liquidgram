@@ -36,21 +36,15 @@ env:
   IPA_PATH: dist-ios/Liquidgram.ipa
 
 jobs:
-  build:
+  # The web build runs on Linux, where Actions minutes are cheaper; the macOS job only runs Xcode
+  web:
     # Pushes build only on the default branch, whatever its name is
     if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
-    # The build uses the newest stable Xcode on the image and its iOS SDK. macos-15 has Xcode 16 and Xcode 26
-    # (iOS 26 SDK); switch to macos-26 when the build needs an Xcode release that macos-15 lacks.
-    runs-on: macos-15
-    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Select the latest stable Xcode
-        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
-        with:
-          xcode-version: latest-stable
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -69,13 +63,58 @@ jobs:
       - name: Build web app
         run: npm run build:production
 
+      - name: Upload web build
+        uses: actions/upload-artifact@v7
+        with:
+          name: web-dist
+          path: |
+            dist
+            !dist/**/*.map
+          if-no-files-found: error
+          retention-days: 1
+
+  build:
+    needs: web
+    # The build uses the newest stable Xcode on the image and its iOS SDK. macos-15 has Xcode 16 and Xcode 26
+    # (iOS 26 SDK); switch to macos-26 when the build needs an Xcode release that macos-15 lacks.
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Select the latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Download web build
+        uses: actions/download-artifact@v7
+        with:
+          name: web-dist
+          path: dist
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
       - name: Build IPA
-        run: bash ios/build-ipa.sh
+        run: |
+          set -o pipefail
+          bash ios/build-ipa.sh 2>&1 | tee "$RUNNER_TEMP/build-ipa.log"
         env:
           BUILD_NUMBER: ${{ github.run_number }}
+
+      # Compiler errors as one annotation, so they are readable without downloading the full log
+      - name: Report build errors
+        if: failure()
+        run: |
+          log="$RUNNER_TEMP/build-ipa.log"
+          [ -f "$log" ] || exit 0
+          errors="$(grep -E '(^|[^a-z])(error|fatal error):|BUILD FAILED|xcodegen|Testing failed' "$log" | head -n 80 || true)"
+          [ -n "$errors" ] || errors="$(tail -n 60 "$log")"
+          errors="${errors//'%'/'%25'}"
+          errors="${errors//$'\n'/'%0A'}"
+          echo "::error title=IPA build failed::${errors}"
 
       - name: Upload IPA
         uses: actions/upload-artifact@v7

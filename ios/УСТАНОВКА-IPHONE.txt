@@ -2,7 +2,7 @@ Liquidgram для iPhone — установка через Sideloadly
 
 Что понадобится:
 - компьютер с Windows 10 или 11;
-- iPhone с iOS 16 или новее и кабель USB;
+- iPhone с iOS 16.4 или новее и кабель USB;
 - Apple ID. Лучше завести отдельный, а не входить основным:
   Sideloadly и сертификат разработчика будут привязаны к нему;
 - файл Liquidgram.ipa.

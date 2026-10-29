@@ -2,7 +2,7 @@
 
 The iPhone app is a small UIKit app in Swift that shows the production web build in a full-screen `WKWebView`. The web build ships inside the app and is served by an HTTP server on the loopback interface, so the page has a fixed origin, `http://127.0.0.1:47821/`. A JavaScript bridge gives the page local notifications, the app icon badge and native permission prompts; downloads go to the share sheet.
 
-The app targets iOS 16 and later on iPhone and iPad. The build is an unsigned IPA that the user installs with [Sideloadly](https://sideloadly.io) and a free Apple ID; the Russian guide [УСТАНОВКА-IPHONE.txt](УСТАНОВКА-IPHONE.txt) walks through it.
+The app targets iOS 16.4 and later on iPhone and iPad, the oldest version the web build supports. The build is an unsigned IPA that the user installs with [Sideloadly](https://sideloadly.io) and a free Apple ID; the Russian guide [УСТАНОВКА-IPHONE.txt](УСТАНОВКА-IPHONE.txt) walks through it.
 
 ## Build
 
