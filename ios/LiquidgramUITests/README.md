@@ -86,6 +86,15 @@ They follow the shared v2 contract, so on a build without these features they fa
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
 
+### `RecordingTests`: the record button
+
+The record button of a chat works as in Telegram's apps. The tests run the offline demo account with `Fixtures/fake-capture.js`, so a recording starts without the microphone and the round video recorder that the simulator lacks, and nothing is sent.
+
+| Test | Checks |
+| --- | --- |
+| `testTapSwitchesBetweenVoiceAndVideo` | A tap on the record button switches it to video messages ("Record video message") with the hint "Hold to record video…" and opens no microphone; a second tap switches back |
+| `testHoldRecordsVoiceAndSlidesCancelOrLock` | Holding the button records a voice message: sliding left closes the microphone again and leaves no recording; sliding up locks the recording, which keeps its trash button after the finger lifts, and the trash button ends it |
+
 ## The self-test
 
 `Fixtures/selftest.js` is the body of an async function that `TestHooks` runs in the page through `callAsyncJavaScript` once the web app reports `appReady`, or 5 seconds after the first load of a page that never does, like the API keys screen. Each check has a 10-second limit. The JSON report becomes the accessibility value of `liquidgram.selftest.result`, the test attaches it, and the report shows it as a table.
@@ -119,6 +128,7 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
 | `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used |
 | `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |
+| `fake-capture.js` | `Launch(fixtures: ["fake-capture"])`: `getUserMedia` for audio returns a quiet tone, and a nearly transparent text "Test microphone: opened N, live M" counts the opened streams and the tracks the page has not stopped; until bridge.js has the round video recorder, it provides one that cancels, so the page offers video messages |
 | `liquidgram-selftest-worker.js` | Not injected: served from the web root for the `worker` check |
 
 A connected session asks for the notification permission after its first tap. The offline demo account never gets there, since the web app subscribes only after its first sync with Telegram, but `allowNotificationsIfAsked()` answers the system prompt if it ever shows, as it would block every later step.

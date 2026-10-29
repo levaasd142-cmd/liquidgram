@@ -41,6 +41,8 @@ import type {
   ThreadId,
 } from '../../types';
 import type { RegularLangKey } from '../../types/language';
+import type { NativeRoundVideo } from '../../util/nativeRoundVideo';
+import type { RecordModeHintKey } from '../middle/composer/RecordModeHint';
 import type { RichEditorTooltipsConfig } from './tooltips/types';
 import { ApiMediaFormat, ApiMessageEntityTypes, MAIN_THREAD_ID } from '../../api/types';
 
@@ -131,7 +133,11 @@ import {
   selectNoWebPage,
 } from '../../global/selectors/threads';
 import {
-  IS_IOS, IS_VIDEO_RECORDING_SUPPORTED, IS_VOICE_RECORDING_SUPPORTED,
+  IS_IOS,
+  IS_NATIVE_ROUND_VIDEO_SUPPORTED,
+  IS_TOUCH_ENV,
+  IS_VIDEO_RECORDING_SUPPORTED,
+  IS_VOICE_RECORDING_SUPPORTED,
 } from '../../util/browser/windowEnvironment';
 import buildClassName from '../../util/buildClassName';
 import captureEscKeyListener from '../../util/captureEscKeyListener';
@@ -145,6 +151,8 @@ import focusEditableElement from '../../util/focusEditableElement';
 import { formatStarsAsIcon } from '../../util/localization/format';
 import { fetch } from '../../util/mediaLoader';
 import { MEMO_EMPTY_ARRAY } from '../../util/memo';
+import { triggerHaptic } from '../../util/nativeApp';
+import { recordNativeRoundVideo } from '../../util/nativeRoundVideo';
 import { getServerTime } from '../../util/serverTime';
 import stopEvent from '../../util/stopEvent';
 import { getUtf8Length } from '../../util/textFormat';
@@ -191,6 +199,7 @@ import useDraft from '../middle/composer/hooks/useDraft';
 import useEditing from '../middle/composer/hooks/useEditing';
 import useLoadLinkPreview from '../middle/composer/hooks/useLoadLinkPreview';
 import usePaidMessageConfirmation from '../middle/composer/hooks/usePaidMessageConfirmation';
+import useRecordButtonGesture from '../middle/composer/hooks/useRecordButtonGesture';
 import useRichEditor from '../middle/composer/hooks/useRichEditor';
 import useRichMedia from '../middle/composer/hooks/useRichMedia';
 import useVideoRecording from '../middle/composer/hooks/useVideoRecording';
@@ -205,6 +214,8 @@ import ComposerEmbeddedMessage from '../middle/composer/ComposerEmbeddedMessage'
 import CustomSendMenu from '../middle/composer/CustomSendMenu.async';
 import DropArea, { DropAreaState } from '../middle/composer/DropArea.async';
 import MessageInput from '../middle/composer/MessageInput.async';
+import RecordHoldOverlay from '../middle/composer/RecordHoldOverlay';
+import RecordModeHint from '../middle/composer/RecordModeHint';
 import RecordModeMenu, { type RecordMode } from '../middle/composer/RecordModeMenu';
 import RoundVideoRecorder from '../middle/composer/RoundVideoRecorder';
 import SendAsMenu from '../middle/composer/SendAsMenu.async';
@@ -374,6 +385,9 @@ type ScheduledMessageArgs = TabState['contentToBeScheduled'] | {
 
 const VOICE_RECORDING_FILENAME = 'wonderful-voice-message.ogg';
 const CAN_SWITCH_RECORD_MODE = IS_VOICE_RECORDING_SUPPORTED && IS_VIDEO_RECORDING_SUPPORTED;
+// A voice message recorded by holding the button for less than this is dropped: the recorder pads a recording to a
+// second, so it would record on after the finger lifted
+const MIN_HELD_VOICE_RECORDING_TIME = 1000; // ms
 // When voice recording is active, composer placeholder will hide to prevent overlapping
 const SCREEN_WIDTH_TO_HIDE_PLACEHOLDER = 600; // px
 
@@ -942,15 +956,13 @@ const Composer = ({
   } = useVideoRecording();
 
   const activeRecording = activeVoiceRecording || activeVideoRecording;
+  // The iOS app's camera screen is up
+  const [isNativeRoundVideoRecording, setIsNativeRoundVideoRecording] = useState(false);
+  // Changes with the chat, so a round video from the app reaches only the chat it was recorded for
+  const nativeRoundVideoTokenRef = useRef(0);
+  const isHeldRecordingVideoRef = useRef(false);
+  const [recordModeHint, setRecordModeHint] = useState<{ key: RecordModeHintKey }>();
   const [isEmbeddedMessageOpen, setIsEmbeddedMessageOpen] = useState(false);
-
-  useEffect(() => {
-    if (!activeRecording) return;
-    const input = document.getElementById(editableInputId);
-    if (input && document.activeElement === input) {
-      input.blur();
-    }
-  }, [activeRecording, editableInputId]);
 
   const shouldSendRecordingStatus = isForCurrentMessageList && !isInStoryViewer;
   useInterval(() => {
@@ -958,18 +970,24 @@ const Composer = ({
   }, shouldSendRecordingStatus ? activeVoiceRecording && SEND_MESSAGE_ACTION_INTERVAL : undefined);
   useInterval(() => {
     sendMessageAction({ type: 'recordRound' });
-  }, shouldSendRecordingStatus ? activeVideoRecording && SEND_MESSAGE_ACTION_INTERVAL : undefined);
+  }, shouldSendRecordingStatus && (activeVideoRecording || isNativeRoundVideoRecording)
+    ? SEND_MESSAGE_ACTION_INTERVAL : undefined);
 
   useEffect(() => {
     if (!isForCurrentMessageList || isInStoryViewer) return;
-    if (!activeVoiceRecording && !activeVideoRecording) {
+    if (!activeVoiceRecording && !activeVideoRecording && !isNativeRoundVideoRecording) {
       sendMessageAction({ type: 'cancel' });
     }
-  }, [activeVoiceRecording, activeVideoRecording, isForCurrentMessageList, isInStoryViewer, sendMessageAction]);
+  }, [
+    activeVoiceRecording, activeVideoRecording, isNativeRoundVideoRecording, isForCurrentMessageList, isInStoryViewer,
+    sendMessageAction,
+  ]);
 
   useEffect(() => {
     return () => {
       discardRecordingVideo();
+      // eslint-disable-next-line react-hooks-static-deps/exhaustive-deps
+      nativeRoundVideoTokenRef.current++;
     };
   }, [chatId, threadId, discardRecordingVideo]);
 
@@ -1264,6 +1282,8 @@ const Composer = ({
 
   const canSwitchRecordMode = CAN_SWITCH_RECORD_MODE
     && canSendVoiceByPrivacy && canSendVoices && canSendRoundVideos;
+  // On touch screens a tap on the record button switches the mode instead, and holding it records
+  const canShowRecordModeMenu = canSwitchRecordMode && !IS_TOUCH_ENV;
 
   const {
     isContextMenuOpen: isRecordModeMenuOpen,
@@ -1271,7 +1291,7 @@ const Composer = ({
     handleContextMenuClose: handleRecordModeMenuClose,
     handleContextMenuHide: handleRecordModeMenuHide,
   } = useContextMenuHandlers(
-    mainButtonRef, !(mainButtonState === MainButtonState.Record && canSwitchRecordMode),
+    mainButtonRef, !(mainButtonState === MainButtonState.Record && canShowRecordModeMenu),
   );
 
   const handleSelectRecordMode = useLastCallback((mode: RecordMode) => {
@@ -2462,7 +2482,62 @@ const Composer = ({
     && (!canAttachMedia || !canSendVoiceByPrivacy
       || (isRecordingVideoMode ? !canSendRoundVideos : !canSendVoices));
 
+  const showRecordingsNotAllowedNotification = useLastCallback(() => {
+    if (!canSendVoiceByPrivacy) {
+      showNotification({
+        message: isRecordingVideoMode
+          ? {
+            key: 'VideoMessagesRestrictedByPrivacy',
+            variables: { user: chat?.title ?? '' },
+            options: { withNodes: true, withMarkdown: true },
+          }
+          : lang('NoVoiceMessagesAllowed', { user: chat?.title }),
+      });
+    } else if (isRecordingVideoMode ? !canSendRoundVideos : !canSendVoices) {
+      showAllowedMessageTypesNotification({ chatId, messageListType });
+    }
+  });
+
+  const sendNativeRoundVideo = useLastCallback(async (record: NativeRoundVideo) => {
+    const attachment = await prepareAttachment(await buildAttachment(VIDEO_RECORDING_FILENAME, record.blob, {
+      isRoundVideo: true,
+      ttlSeconds: record.isViewOnce ? ONE_TIME_MEDIA_TTL_SECONDS : undefined,
+      quick: { width: record.width, height: record.height, duration: record.duration },
+    }));
+
+    if (isInScheduledList) {
+      requestMessageSchedule((scheduledAt, scheduleRepeatPeriod) => {
+        handleSendCore([attachment], false, scheduledAt, scheduleRepeatPeriod);
+      });
+      return;
+    }
+
+    handleActionWithPaymentConfirmation(handleSendCore, [attachment]);
+  });
+
+  const recordRoundVideoWithApp = useLastCallback(async () => {
+    if (isNativeRoundVideoRecording) return;
+
+    const token = nativeRoundVideoTokenRef.current;
+    setIsNativeRoundVideoRecording(true);
+    try {
+      const record = await recordNativeRoundVideo(Boolean(canSendOneTimeMedia));
+      const isSameChat = token === nativeRoundVideoTokenRef.current;
+      if (record && isSameChat && record.durationMs >= MIN_ROUND_VIDEO_RECORDING_TIME) {
+        await sendNativeRoundVideo(record);
+      }
+    } catch (err) {
+      showNotification({ message: { key: 'VideoMessageRecordError' } });
+      // eslint-disable-next-line no-console
+      console.error(err);
+    } finally {
+      setIsNativeRoundVideoRecording(false);
+    }
+  });
+
   const mainButtonHandler = useLastCallback(() => {
+    if (getIsMainButtonClickSuppressed()) return;
+
     switch (mainButtonState) {
       case MainButtonState.Stop:
         stopTypingDraft({ chatId, threadId, randomId: stoppableTypingDraftId! });
@@ -2475,19 +2550,9 @@ const Composer = ({
         break;
       case MainButtonState.Record: {
         if (areRecordingsNotAllowed) {
-          if (!canSendVoiceByPrivacy) {
-            showNotification({
-              message: isRecordingVideoMode
-                ? {
-                  key: 'VideoMessagesRestrictedByPrivacy',
-                  variables: { user: chat?.title ?? '' },
-                  options: { withNodes: true, withMarkdown: true },
-                }
-                : lang('NoVoiceMessagesAllowed', { user: chat?.title }),
-            });
-          } else if (isRecordingVideoMode ? !canSendRoundVideos : !canSendVoices) {
-            showAllowedMessageTypesNotification({ chatId, messageListType });
-          }
+          showRecordingsNotAllowedNotification();
+        } else if (isRecordingVideoMode && IS_NATIVE_ROUND_VIDEO_SUPPORTED) {
+          void recordRoundVideoWithApp();
         } else {
           setIsViewOnceEnabled(false);
           if (isRecordingVideoMode) {
@@ -2527,11 +2592,126 @@ const Composer = ({
     }
   });
 
+  const showRecordModeHint = useLastCallback((isVideo: boolean) => {
+    if (canSwitchRecordMode) {
+      setRecordModeHint({ key: isVideo ? 'LiquidRecordHoldVideo' : 'LiquidRecordHoldVoice' });
+    } else {
+      setRecordModeHint({ key: isVideo ? 'LiquidRecordHoldVideoOnly' : 'LiquidRecordHoldVoiceOnly' });
+    }
+  });
+
+  const hideRecordModeHint = useLastCallback(() => {
+    setRecordModeHint(undefined);
+  });
+
+  const handleRecordButtonTap = useLastCallback(() => {
+    if (areRecordingsNotAllowed) {
+      showRecordingsNotAllowedNotification();
+      return;
+    }
+
+    if (canSwitchRecordMode) {
+      triggerHaptic('selection');
+      setSettingOption({ lastRecordMessageMode: isRecordingVideoMode ? 'voice' : 'video' });
+    }
+    showRecordModeHint(canSwitchRecordMode ? !isRecordingVideoMode : isRecordingVideoMode);
+  });
+
+  const handleRecordButtonHoldStart = useLastCallback(() => {
+    if (areRecordingsNotAllowed) {
+      showRecordingsNotAllowedNotification();
+      return false;
+    }
+
+    hideRecordModeHint();
+    setIsViewOnceEnabled(false);
+    if (isRecordingVideoMode && IS_NATIVE_ROUND_VIDEO_SUPPORTED) {
+      // The app's camera screen takes over with controls of its own
+      void recordRoundVideoWithApp();
+      return false;
+    }
+
+    triggerHaptic('light');
+    isHeldRecordingVideoRef.current = isRecordingVideoMode;
+    const startRecording = isRecordingVideoMode ? startRecordingVideo : startRecordingVoice;
+    void startRecording().then((isStarted) => {
+      if (!isStarted) abortRecordButtonHold();
+    });
+    return true;
+  });
+
+  const cancelHeldRecording = useLastCallback(() => {
+    if (isHeldRecordingVideoRef.current) {
+      discardRecordingVideo();
+    } else {
+      cancelRecordingVoice();
+    }
+  });
+
+  const handleRecordButtonCancel = useLastCallback(() => {
+    triggerHaptic('rigid');
+    cancelHeldRecording();
+  });
+
+  const handleRecordButtonLock = useLastCallback(() => {
+    triggerHaptic('medium');
+  });
+
+  const handleRecordButtonRelease = useLastCallback(() => {
+    const isVideo = isHeldRecordingVideoRef.current;
+    const recording = isVideo ? activeVideoRecording : activeVoiceRecording;
+    const minDuration = isVideo ? MIN_ROUND_VIDEO_RECORDING_TIME : MIN_HELD_VOICE_RECORDING_TIME;
+    if (!recording || recording.getElapsedMs() < minDuration) {
+      // Like Telegram, a press too short to record anything explains how the button works
+      cancelHeldRecording();
+      triggerHaptic('error');
+      showRecordModeHint(isVideo);
+      return;
+    }
+
+    // In the scheduled messages the recording stays, as a locked one does, until the user picks the time
+    if (isInScheduledList) return;
+
+    // The message ends where the finger lifted, however long the payment confirmation takes
+    if (paidMessagesStars) {
+      if (isVideo) {
+        finishRecordingVideo();
+      } else {
+        void pauseRecordingVoice();
+      }
+    }
+    handleSendWithConfirmation();
+  });
+
+  const {
+    holdAnchor: recordHoldAnchor,
+    getHoldOffset: getRecordHoldOffset,
+    getIsClickSuppressed: getIsMainButtonClickSuppressed,
+    abortHold: abortRecordButtonHold,
+  } = useRecordButtonGesture({
+    buttonRef: mainButtonRef,
+    isEnabled: IS_TOUCH_ENV && mainButtonState === MainButtonState.Record,
+    onTap: handleRecordButtonTap,
+    onHoldStart: handleRecordButtonHoldStart,
+    onCancel: handleRecordButtonCancel,
+    onLock: handleRecordButtonLock,
+    onRelease: handleRecordButtonRelease,
+  });
+
+  // A recording that the finger holds keeps the keyboard, as in Telegram, until it is locked
+  useEffect(() => {
+    if (!activeRecording || recordHoldAnchor) return;
+    const input = document.getElementById(editableInputId);
+    if (input && document.activeElement === input) {
+      input.blur();
+    }
+  }, [activeRecording, editableInputId, recordHoldAnchor]);
+
   let mainButtonContextMenuHandler: typeof handleContextMenu | undefined;
   if (mainButtonState === MainButtonState.Send && canShowCustomSendMenu) {
     mainButtonContextMenuHandler = handleContextMenu;
   } else if (mainButtonState === MainButtonState.Record) {
-    mainButtonContextMenuHandler = canSwitchRecordMode ? handleRecordModeContextMenu : stopEvent;
+    mainButtonContextMenuHandler = canShowRecordModeMenu ? handleRecordModeContextMenu : stopEvent;
   }
 
   let sendButtonAriaLabel: RegularLangKey = 'SendMessage';
@@ -2737,7 +2917,7 @@ const Composer = ({
   const renderedVideoRecording = useCurrentOrPrev(activeVideoRecording);
   const renderedPreviewStream = useCurrentOrPrev(previewStream);
 
-  const isPaidSend = Boolean(paidMessagesStars && mainButtonState === MainButtonState.Send);
+  const isPaidSend = Boolean(paidMessagesStars && mainButtonState === MainButtonState.Send && !recordHoldAnchor);
   const { ref: paidStarsRef, shouldRender: shouldRenderPaidStars } = useShowTransition({
     isOpen: isPaidSend,
     withShouldRender: true,
@@ -3145,8 +3325,10 @@ const Composer = ({
               recording={renderedRecording}
               isVideo={Boolean(activeVideoRecording)}
               isPaused={activeVideoRecording ? (isVideoRecordingPaused || isRecordingFinished) : isRecordingPaused}
+              isHolding={Boolean(recordHoldAnchor)}
               canSendOneTimeMedia={canSendOneTimeMedia}
               isViewOnceEnabled={isViewOnceEnabled}
+              getHoldOffset={getRecordHoldOffset}
               onPause={activeVideoRecording ? pauseRecordingVideo : pauseRecordingVoice}
               onResume={activeVideoRecording ? resumeRecordingVideo : resumeRecordingVoice}
               onCancel={activeVideoRecording ? discardRecordingVideo : cancelRecordingVoice}
@@ -3276,6 +3458,15 @@ const Composer = ({
           </div>
         )}
       </Button>
+      {IS_TOUCH_ENV && (
+        <RecordHoldOverlay
+          anchor={recordHoldAnchor}
+          isVideo={isRecordingVideoMode}
+          getOffset={getRecordHoldOffset}
+          subscribeToPeaks={isRecordingVideoMode ? subscribeToVideoRecordingPeaks : subscribeToRecordingPeaks}
+        />
+      )}
+      {IS_TOUCH_ENV && <RecordModeHint hint={recordModeHint} onHide={hideRecordModeHint} />}
       {effectEmoji && (
         <span className="effect-icon" onClick={handleRemoveEffect}>
           {renderText(effectEmoji)}
@@ -3312,7 +3503,7 @@ const Composer = ({
           canPlayAnimatedEmojis={canPlayAnimatedEmojis}
         />
       )}
-      {canSwitchRecordMode && (
+      {canShowRecordModeMenu && (
         <RecordModeMenu
           isOpen={isRecordModeMenuOpen}
           onSelectMode={handleSelectRecordMode}

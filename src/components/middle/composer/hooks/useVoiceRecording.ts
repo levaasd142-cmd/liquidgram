@@ -16,6 +16,9 @@ const useVoiceRecording = () => {
   const [isRecordingPaused, setIsRecordingPaused] = useState(false);
   const [isViewOnceEnabled, setIsViewOnceEnabled] = useState(false);
   const peakCallbacks = useRef(createCallbackManager<PeakListener>()).current;
+  const isStartingRef = useRef(false);
+  // Stopping or cancelling while the microphone starts discards the recording that starts
+  const startTokenRef = useRef(0);
 
   useEffect(() => {
     if (IS_SAFARI && IS_VOICE_RECORDING_SUPPORTED) {
@@ -23,19 +26,34 @@ const useVoiceRecording = () => {
     }
   }, []);
 
+  // Resolves with whether a recording started
   const startRecordingVoice = useLastCallback(async () => {
+    if (isStartingRef.current) return false;
+
+    isStartingRef.current = true;
+    const token = ++startTokenRef.current;
     try {
       const recording = await voiceRecording.start(peakCallbacks.runCallbacks);
+      if (token !== startTokenRef.current) {
+        void recording.stop(true).catch(() => undefined);
+        return false;
+      }
 
       setIsRecordingPaused(false);
       setActiveVoiceRecording(recording);
+      return true;
     } catch (err) {
+      if (token !== startTokenRef.current) return false;
+
       if (err instanceof DOMException && (err.name === 'NotAllowedError' || err.name === 'NotFoundError')) {
         getActions().showNotification({ message: { key: 'VoiceRecordMicError' } });
-        return;
+        return false;
       }
       // eslint-disable-next-line no-console
       console.error(err);
+      return false;
+    } finally {
+      isStartingRef.current = false;
     }
   });
 
@@ -59,6 +77,7 @@ const useVoiceRecording = () => {
   });
 
   const stopRecordingVoice = useLastCallback((shouldSkipMinTime?: boolean) => {
+    startTokenRef.current++;
     if (!activeVoiceRecording) {
       return undefined;
     }

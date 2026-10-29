@@ -46,6 +46,8 @@ class LiquidgramUITestCase: XCTestCase {
     var shouldStayOffline = false
     /// Runs `Fixtures/selftest.js` once the page is ready and shows its report as `selfTestResultIdentifier`
     var shouldRunSelfTest = false
+    /// More scripts of `Fixtures` by name, injected after the others, such as `fake-capture`
+    var fixtures: [String] = []
     var arguments: [String] = []
   }
 
@@ -102,6 +104,9 @@ class LiquidgramUITestCase: XCTestCase {
     }
     if launch.shouldSeedDemoAccount {
       userScripts.append(try loadFixture("demo-account"))
+    }
+    for fixture in launch.fixtures {
+      userScripts.append(try loadFixture(fixture))
     }
     app.launchEnvironment[Self.userScriptEnvironmentKey] = Self.encodeScript(
       userScripts.joined(separator: Self.scriptSeparator)
