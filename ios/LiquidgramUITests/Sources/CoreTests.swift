@@ -1,8 +1,8 @@
 import XCTest
 
 /// What the iPhone app does since its first version: start the bundled web app, give it the browser features it
-/// needs, keep the focused field above the keyboard and show a signed-in session. `run-ui-tests.sh` runs
-/// `testDemoAccount` a second time with the simulator in dark mode.
+/// needs, keep the focused field above the keyboard, show a signed-in session and keep it across restarts.
+/// `run-ui-tests.sh` runs `testDemoAccount` a second time with the simulator in dark mode.
 final class CoreTests: LiquidgramUITestCase {
   private static let apiIdLabel = "API ID"
   private static let apiHashLabel = "API hash"
@@ -18,6 +18,9 @@ final class CoreTests: LiquidgramUITestCase {
   private static let demoGroupTitle = "Бразы"
   private static let demoMessage = "Во сколько завтра встречаемся?"
   private static let selfTestTimeout: TimeInterval = 90
+  /// The web app writes its cache to IndexedDB at most every 5 seconds, and at once when the page loses focus
+  private static let cacheWriteDelay: TimeInterval = 6
+  private static let backgroundDelay: TimeInterval = 2
   /// Frames of web content and of the keyboard come from different processes and may differ by rounding
   private static let frameTolerance: CGFloat = 1
 
@@ -139,6 +142,30 @@ final class CoreTests: LiquidgramUITestCase {
       keyboard.frame.minY + Self.frameTolerance,
       "The composer \(composer.frame) is under the keyboard \(keyboard.frame)"
     )
+  }
+
+  /// The session and its cached chats survive a restart of the app: the website data store keeps them on disk, and the
+  /// local server gives the page the same origin every time
+  @MainActor
+  func testDemoAccountSurvivesRestart() throws {
+    try launchApp(Launch(shouldSeedDemoAccount: true))
+    waitFor(
+      findElement(in: webView, labelContaining: Self.demoChatTitle),
+      timeout: Self.launchTimeout,
+      "the chat list of the demo account"
+    )
+    pause(Self.cacheWriteDelay)
+    XCUIDevice.shared.press(.home)
+    pause(Self.backgroundDelay)
+    app.terminate()
+
+    try launchApp(Launch(shouldResetState: false, shouldStayOffline: true))
+    waitFor(
+      findElement(in: webView, labelContaining: Self.demoChatTitle),
+      timeout: Self.launchTimeout,
+      "the chat list after the restart"
+    )
+    attachScreenshot("01-chat-list-after-restart")
   }
 }
 

@@ -30,7 +30,7 @@ UI_TESTS_ONLY=LiquidgramUITests/CoreTests bash ios/run-ui-tests.sh
 ### What the script does
 
 1. Picks an iPhone simulator on the newest installed iOS runtime from `xcrun simctl list -j`: an iPhone 17 Pro or 16 Pro if there is one, else the newest Pro, else any iPhone.
-2. Turns off the hardware keyboard of the simulator before it boots, so the software keyboard shows, boots it, and inside it turns off autocorrection and predictions and sets a fixed status bar.
+2. Turns off the hardware keyboard of the simulator before it boots, so the software keyboard shows, boots it, and sets a fixed status bar for the screenshots.
 3. Builds the app and the tests once (`xcodebuild build-for-testing`, Debug, no signing), with `Fixtures/liquidgram-selftest-worker.js` added to the web build of this build only.
 4. Runs all tests in light mode, then `CoreTests/testDemoAccount` again in dark mode (`xcrun simctl ui <udid> appearance dark`), each with a result bundle, without parallel testing and with a time limit per test.
 5. Exports the attachments (`xcrun xcresulttool export attachments`) and the results (`xcrun xcresulttool get test-results tests`), collects the app's log from the simulator (`log show` for the subsystem `org.liquidgram.messenger`) and keeps the last 300 lines of each `xcodebuild` output.
@@ -63,6 +63,7 @@ Every test starts the app with `-LiquidgramResetState YES` unless it tests persi
 | `testWebAppSelfTest` | Every check of [`Fixtures/selftest.js`](Fixtures/selftest.js) passes, see below |
 | `testKeyboardKeepsFocusedFieldVisible` | Typing digits into the API ID field: the software keyboard is up and the field is above it |
 | `testDemoAccount` | The demo account shows its chats; a chat opens; the composer takes typed text (nothing is sent) and stays above the keyboard. Runs in light and dark mode |
+| `testDemoAccountSurvivesRestart` | After the home button and a restart without the reset and without seeding, the chats of the demo account are still there: the website data store keeps them on disk and the page keeps its origin |
 
 ### `FeatureTests`: the native features of version 2
 
@@ -72,7 +73,7 @@ They follow the shared v2 contract, so on a build without these features they fa
 | --- | --- |
 | `testAppLockOpensAndLocksAgainAfterBackground` | `-appLockEnabled YES -appLockDelay 0 -LiquidgramFakeAuthentication success`: the lock (`liquidgram.lock`) shows at launch, its button (`liquidgram.lock.unlock`) can be tapped, the chats appear after the faked Face ID; after the home button and a return the lock shows again and opens again |
 | `testAppLockStaysLockedWhenAuthenticationFails` | With `failure` the lock stays, also after a tap on the unlock button, and the web app cannot be touched |
-| `testPrivacyShieldCoversAppWhileInactive` | With Notification Center open over the app, `liquidgram.privacyShield` covers it; it goes away when the app is active again |
+| `testPrivacyShieldCoversAppWhileInactive` | With Notification Center open over the app, `liquidgram.privacyShield` covers it; it goes away when the app is active again. A last screenshot shows the app switcher, without an assertion, since the gesture that opens it is not reliable |
 | `testQuickActionOpensSavedMessages` | `-LiquidgramTestAction openSavedMessages` opens Saved Messages with its message on screen |
 | `testQuickActionFocusesSearch` | `openSearch` focuses the chat search, so the keyboard comes up |
 | `testQuickActionOpensNewMessage` | `newMessage` opens the contacts picker ("Search contacts") |
@@ -115,11 +116,12 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | Fixture | Use |
 | --- | --- |
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
-| `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen. It also replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so the keys are never used and nothing reaches Telegram |
+| `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
+| `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used |
 | `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |
 | `liquidgram-selftest-worker.js` | Not injected: served from the web root for the `worker` check |
 
-The first tap in a session with the demo account makes the web app ask for the notification permission; `allowNotificationsIfAsked()` answers the system prompt, once per simulator.
+A connected session asks for the notification permission after its first tap. The offline demo account never gets there, since the web app subscribes only after its first sync with Telegram, but `allowNotificationsIfAsked()` answers the system prompt if it ever shows, as it would block every later step.
 
 ## Writing tests
 

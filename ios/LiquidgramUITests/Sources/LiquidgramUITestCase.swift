@@ -34,6 +34,7 @@ class LiquidgramUITestCase: XCTestCase {
   private static let keyboardIntroductionButtonLabel = "Continue"
   private static let pngType = "public.png"
   private static let jsonType = "public.json"
+  private static let maxAttachmentNameLength = 48
 
   /// What a test launches the app with
   struct Launch {
@@ -41,6 +42,8 @@ class LiquidgramUITestCase: XCTestCase {
     var shouldResetState = true
     /// Seeds the demo account of `Fixtures/demo-account.js`, which shows chats without a connection to Telegram
     var shouldSeedDemoAccount = false
+    /// Keeps a stored session offline with `Fixtures/offline-api.js`, as the demo account always is
+    var shouldStayOffline = false
     /// Runs `Fixtures/selftest.js` once the page is ready and shows its report as `selfTestResultIdentifier`
     var shouldRunSelfTest = false
     var arguments: [String] = []
@@ -94,6 +97,9 @@ class LiquidgramUITestCase: XCTestCase {
 
     let errorRecorder = try loadFixture("page-errors")
     var userScripts = [errorRecorder]
+    if launch.shouldSeedDemoAccount || launch.shouldStayOffline {
+      userScripts.append(try loadFixture("offline-api"))
+    }
     if launch.shouldSeedDemoAccount {
       userScripts.append(try loadFixture("demo-account"))
     }
@@ -328,10 +334,18 @@ class LiquidgramUITestCase: XCTestCase {
     attachAccessibilityTree(name)
   }
 
-  /// Lowercase ASCII words joined by dashes, which make readable file names in the report
+  /// The first lowercase ASCII words joined by dashes, which make readable file names in the report
   private static func makeAttachmentName(_ text: String) -> String {
-    let words = text.lowercased().unicodeScalars
+    let characters = text.lowercased().unicodeScalars
       .map { $0.isASCII && CharacterSet.alphanumerics.contains($0) ? Character($0) : " " }
-    return String(words).split(separator: " ").joined(separator: "-")
+    var name = ""
+    for word in String(characters).split(separator: " ") {
+      let nextName = name.isEmpty ? String(word) : "\(name)-\(word)"
+      guard nextName.count <= maxAttachmentNameLength else {
+        break
+      }
+      name = nextName
+    }
+    return name
   }
 }

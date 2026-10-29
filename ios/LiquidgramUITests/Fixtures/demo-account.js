@@ -1,9 +1,8 @@
-// Seeds a demo account for the UI tests, so the web app shows its main screen with chats and messages offline. The
-// tests inject it at document start through `LIQUIDGRAM_TEST_USER_SCRIPT`, before the app's scripts. It writes what a
-// signed-in session leaves in `localStorage` (`account1` and the cached global state in `tt-global-state`, with
-// message dates relative to now) and API keys of the valid form, which the web app needs before it shows the main
-// screen. The keys are never used: the GramJS worker, the only part of the web app that connects to Telegram, is
-// replaced with one that never answers, so the app stays on its cached state and nothing reaches Telegram.
+// Seeds a demo account for the UI tests, so the web app shows its main screen with chats and messages. The tests
+// inject it at document start through `LIQUIDGRAM_TEST_USER_SCRIPT`, before the app's scripts and after
+// `offline-api.js`, which keeps the session offline. It writes what a signed-in session leaves in `localStorage`
+// (`account1` and the cached global state in `tt-global-state`, with message dates relative to now) and API keys of
+// the valid form, which the web app needs before it shows the main screen; offline, the keys are never used.
 // The cached state has only the sections the chats need. `migrateCache` logs a TypeError for the missing ones, such
 // as `appConfig`, and `readCache` takes them from the initial state.
 (() => {
@@ -22,10 +21,7 @@
   const OFFLINE_SINCE_SECONDS = 3600;
   const ACCOUNT_TTL_DAYS = 365;
   const ME = '100000';
-  // GramJS runs in `worker-<hash>.js` in production and in `worker.ts` in development
-  const API_WORKER_PATH = /(^|\/)worker(-[\w-]+)?\.(js|ts)$/;
 
-  blockApiWorker();
   seedOncePerSession();
 
   // A page reload keeps the session storage, so the state the app has changed since the first load stays
@@ -39,43 +35,6 @@
       sessionStorage.setItem(SEEDED_KEY, '1');
     } catch (err) {
       // The self-test and the screenshots show the missing account; the page must not break here
-    }
-  }
-
-  function blockApiWorker() {
-    const NativeWorker = window.Worker;
-    if (typeof NativeWorker !== 'function') return;
-
-    class OfflineApiWorker extends EventTarget {
-      constructor() {
-        super();
-        this.onmessage = undefined;
-        this.onmessageerror = undefined;
-        this.onerror = undefined;
-      }
-
-      postMessage() {}
-
-      terminate() {}
-    }
-
-    function DemoWorker(url, options) {
-      if (isApiWorkerUrl(url)) {
-        return new OfflineApiWorker();
-      }
-
-      return new NativeWorker(url, options);
-    }
-
-    DemoWorker.prototype = NativeWorker.prototype;
-    Object.defineProperty(window, 'Worker', { configurable: true, writable: true, value: DemoWorker });
-  }
-
-  function isApiWorkerUrl(url) {
-    try {
-      return API_WORKER_PATH.test(new URL(String(url), document.baseURI).pathname);
-    } catch (err) {
-      return false;
     }
   }
 

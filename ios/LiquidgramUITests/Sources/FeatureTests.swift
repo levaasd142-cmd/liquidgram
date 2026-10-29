@@ -60,7 +60,11 @@ final class FeatureTests: LiquidgramUITestCase {
       "-LiquidgramFakeAuthentication", "success",
       "-LiquidgramFakeAuthenticationDelay", Self.slowAuthenticationDelay,
     ]))
-    let lock = waitFor(findNativeElement(Self.lockIdentifier), timeout: Self.lockTimeout, "the lock screen at launch")
+    let lock = waitFor(
+      findNativeElement(Self.lockIdentifier),
+      timeout: Self.lockTimeout,
+      "the lock screen at launch, while the faked Face ID waits TestHooks.fakeAuthenticationDelay"
+    )
     attachScreenshot("01-locked-at-launch")
     let unlockButton = waitFor(findNativeElement(Self.unlockButtonIdentifier), "the unlock button")
     XCTAssertTrue(unlockButton.isHittable, "The unlock button cannot be tapped")
@@ -307,7 +311,7 @@ final class FeatureTests: LiquidgramUITestCase {
     try launchApp()
     waitFor(findTextInput(in: webView, labeled: Self.apiIdLabel), timeout: Self.launchTimeout, "the API ID field").tap()
     let keyboard = waitFor(self.keyboard, "the software keyboard")
-    attachScreenshot("01-keyboard-without-toolbar")
+    attachScreenshot("01-keyboard")
 
     let toolbarButtons = app.buttons.matching(
       NSPredicate(format: "label IN %@", Self.formToolbarButtonLabels as NSArray)

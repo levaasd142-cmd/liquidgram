@@ -101,8 +101,8 @@ xcodebuild build-for-testing \
 
 xcrun simctl bootstatus "$UDID" -b > /dev/null || echo "warning: $DEVICE_NAME did not report a finished boot"
 
-# Settings inside the simulator: no autocorrection or predictions changing typed text, and no swipe typing
-# introduction over the keyboard
+# Keyboard preferences inside the simulator, on a best-effort basis: no autocorrection changing typed text and no
+# swipe typing introduction over the keyboard
 sim_defaults() {
   xcrun simctl spawn "$UDID" defaults write "$@" > /dev/null 2>&1 || true
 }
