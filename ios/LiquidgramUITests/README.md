@@ -163,6 +163,14 @@ The swipes are drags of `XCUICoordinate` at a set speed, which reach the web app
 | `testLongPressOpensMessageMenu` | A one-second press on a message opens its menu with Reply rather than Quote & Reply, so the press selected no text; the first tap on it puts the reply above the composer (its Cancel button) |
 | `testSwipeToReply` | A message dragged 140 points to the left puts the reply above the composer |
 
+### `ShellTests`: the native shell around the page
+
+| Test | Checks |
+| --- | --- |
+| `testKeyboardResizesPageAndRestoresIt` | The web view starts below the status bar. In a chat, the keyboard leaves the header where it was, the web view ends at the top of the keyboard and the composer rests on it; after a tap on a message closes the keyboard, the web view, the header and the composer are back where they were. Screenshots of the chat list, the chat, the keyboard up and the keyboard hidden |
+| `testIPhoneStaysInPortrait` | With the simulator turned to landscape, the app's window stays in portrait |
+| `testWindowOpenedLateShowsInAppBrowser` | A button that a test script adds to the page opens a web page 1.5 seconds after its tap, as the web app does for links that wait for Telegram first; the in-app browser covers the page instead of WebKit's pop-up blocker dropping the window |
+
 ## The self-test
 
 `Fixtures/selftest.js` is the body of an async function that `TestHooks` runs in the page through `callAsyncJavaScript` once the web app reports `appReady`, or 5 seconds after the first load of a page that never does, like the API keys screen. Each check has a 10-second limit. The JSON report becomes the accessibility value of `liquidgram.selftest.result`, the test attaches it, and the report shows it as a table.

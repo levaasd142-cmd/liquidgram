@@ -25,7 +25,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     webViewController = controller
 
     let appLock = AppLock(windowScene: windowScene, mainWindow: window)
-    appLock.didUnlock = { [weak bridge = appDelegate.bridge] in
+    appLock.didUnlock = { [weak bridge = appDelegate.bridge, weak controller] in
+      // Locking took the first responder from the page, which the page needs to count as being in front
+      controller?.focusPage()
       bridge?.deliverPendingActions()
     }
     appDelegate.bridge.appLock = appLock

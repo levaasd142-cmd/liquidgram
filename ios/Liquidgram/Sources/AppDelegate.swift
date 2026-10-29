@@ -36,6 +36,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     return configuration
   }
 
+  /// `Info.plist` starts the iPhone app in portrait, and its screens stay there, see
+  /// `WebViewController.supportedOrientations`. Video that plays full screen in WebKit's own window may turn sideways.
+  func application(
+    _ application: UIApplication,
+    supportedInterfaceOrientationsFor window: UIWindow?
+  ) -> UIInterfaceOrientationMask {
+    UIDevice.current.userInterfaceIdiom == .phone ? .allButUpsideDown : .all
+  }
+
   /// Voice messages and videos play even when the Ring/Silent switch is set to silent. With the `audio` background
   /// mode, playback also goes on while the phone is locked or another app is in front, and videos can continue in
   /// Picture in Picture.

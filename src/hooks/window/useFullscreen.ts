@@ -2,7 +2,7 @@ import type { ElementRef } from '../../lib/teact/teact';
 import { useEffect, useLayoutEffect, useState } from '../../lib/teact/teact';
 
 import { IS_TAURI } from '../../util/browser/globalEnvironment';
-import { IS_IOS } from '../../util/browser/windowEnvironment';
+import { IS_IOS, IS_IOS_APP } from '../../util/browser/windowEnvironment';
 
 type ReturnType = [boolean, () => void, () => void] | [false];
 type CallbackType = (isPlayed: boolean) => void;
@@ -137,6 +137,13 @@ export function checkIfFullscreen() {
 }
 
 export function safeRequestFullscreen(element: HTMLElement) {
+  // The iPhone app turns on element fullscreen for calls and bot web apps, but videos keep the system player, which
+  // turns to landscape and offers Picture in Picture and AirPlay
+  if (IS_IOS_APP && element instanceof HTMLVideoElement && element.webkitEnterFullscreen) {
+    element.webkitEnterFullscreen();
+    return;
+  }
+
   if (element.requestFullscreen) {
     element.requestFullscreen();
   } else if (element.webkitRequestFullscreen) {

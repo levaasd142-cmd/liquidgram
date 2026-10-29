@@ -35,6 +35,11 @@ final class PrivacyShield {
 }
 
 private final class PrivacyShieldViewController: UIViewController {
+  /// The shield's window is above the app's window, so it decides the orientation while it is shown
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    WebViewController.supportedOrientations
+  }
+
   override func loadView() {
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThickMaterial))
     blurView.accessibilityIdentifier = "liquidgram.privacyShield"
