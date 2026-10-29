@@ -1,0 +1,45 @@
+Attributes: Application, 0x1034dfff0, pid: 29181, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x1034dfff0, pid: 29181, label: 'Liquidgram'
+    Window (Main), 0x1153b0240, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x11539c0c0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1034ae670, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x103423610, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x103424770, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x1153a31f0, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x1153e3c00, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1153a3e30, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1153a1cf0, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1153a3a10, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1153a35f0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Катя Дизайн'
+                          Other, 0x1153a2bb0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'web dialog'
+                            Button, 0x1153e6780, {{8.0, 8.0}, {40.0, 40.0}}, label: 'Close', Focused
+                            Other, 0x1153e6ba0, {{72.0, 8.0}, {90.0, 23.0}}
+                              StaticText, 0x1153e6fc0, {{72.0, 9.0}, {36.0, 20.0}}, label: 'Катя', value: Катя
+                            Other, 0x1153a4b40, {{72.0, 31.0}, {90.0, 20.0}}
+                              StaticText, 0x1153a4c60, {{72.0, 32.0}, {91.0, 18.0}}, label: 'today at 15:03', value: today at 15:03
+                            Button, 0x1153a4d80, {{354.0, 8.0}, {40.0, 40.0}}, label: 'Open menu'
+                            Other, 0x1153a4ea0, {{0.0, 0.0}, {402.0, 874.0}}
+                            Other, 0x1153a4fc0, {{0.0, 0.0}, {402.0, 874.0}}
+                              Other, 0x1153a50e0, {{41.0, 317.0}, {320.0, 240.0}}
+                              Other, 0x1153a5200, {{0.0, 836.0}, {402.0, 22.0}}
+                                StaticText, 0x1153a5320, {{107.0, 837.0}, {188.0, 19.0}}, label: 'Превью главного экрана', value: Превью главного эк...
+                            Other, 0x1153a5440, {{442.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1153a5560, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1153a5680, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1153a57a0, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1153a58c0, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x1153a59e0, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1153a5b00, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1153a5c20, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1153a5d40, {{336.0, 868.0}, {7.0, 3.0}}
+    Window, 0x1153a5e60, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1153a5f80, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1153a60a0, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x1034dfff0, pid: 29181, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x1035fbe30, pid: 29181, label: 'Liquidgram'
+  }

@@ -1,0 +1,66 @@
+Attributes: Application, 0x11584fd30, pid: 32065, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x11584fd30, pid: 32065, label: 'Liquidgram'
+    Window (Main), 0x11584c680, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x115857080, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x11585bd80, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x11585b7b0, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x11584dff0, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x115856620, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x115856740, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1158503e0, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x115850500, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x115850620, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x115850740, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Liquidgram', Focused
+                          Button, 0x115850860, {{8.0, 12.0}, {40.0, 40.0}}, label: 'Go back', Focused
+                          Other, 0x11585a080, {{70.0, 17.0}, {75.0, 30.0}}, label: 'Settings', value: 3, Focused
+                            StaticText, 0x11585a1a0, {{70.0, 19.0}, {75.0, 25.0}}, label: 'Settings', value: Settings, Focused
+                          Button, 0x11585a2c0, {{265.0, 12.0}, {40.0, 40.0}}, label: 'Search', Focused
+                          Button, 0x11585a3e0, {{305.0, 12.0}, {40.0, 40.0}}, label: 'Edit profile', Focused
+                          Button, 0x11585a500, {{349.0, 12.0}, {40.0, 40.0}}, label: 'More options', Focused
+                          Other, 0x11585a620, {{349.0, 12.0}, {40.0, 10.0}}, Focused
+                          Other, 0x11585a740, {{141.0, 107.0}, {120.0, 121.0}}, label: 'Бро', Focused
+                            StaticText, 0x11585a860, {{183.0, 132.0}, {36.0, 69.0}}, label: 'Б', value: Б, Focused
+                          Button, 0x11585a980, {{183.0, 281.0}, {36.0, 23.0}}, label: 'Бро', Focused
+                          StaticText, 0x11585aaa0, {{181.0, 304.0}, {40.0, 19.0}}, label: 'online', value: online, Focused
+                          Button, 0x11585d1d0, {{24.0, 372.0}, {354.0, 56.0}}, label: '100000 ID', Focused
+                          Button, 0x11585d2f0, {{24.0, 460.0}, {354.0, 56.0}}, label: 'Liquidgram Liquid Glass, ghost mode, anti-delete', Focused
+                          Button, 0x11585d410, {{24.0, 548.0}, {354.0, 56.0}}, label: 'Account Username, Bio, Birthday', Focused
+                          Button, 0x11585d530, {{24.0, 604.0}, {354.0, 56.0}}, label: 'General Settings Wallpaper, Theme, Keyboard', Focused
+                          Button, 0x11585d650, {{24.0, 660.0}, {354.0, 56.0}}, label: 'Notifications Sounds, Calls, Badges', Focused
+                          Button, 0x115851a90, {{24.0, 716.0}, {354.0, 56.0}}, label: 'Privacy and Security Last Seen, Password, Blocked Users', Focused
+                          Button, 0x115851bb0, {{24.0, 772.0}, {354.0, 56.0}}, label: 'Data and Storage Media Download, Cache', Focused
+                          Button, 0x115851cd0, {{24.0, 828.0}, {354.0, 56.0}}, label: 'Chat Folders Sort chats into folders', Focused
+                          Button, 0x115851df0, {{24.0, 884.0}, {354.0, 56.0}}, label: 'Animations and Performance Animations, Transitions, Autoplay', Focused
+                          Button, 0x115851f10, {{24.0, 940.0}, {354.0, 56.0}}, label: 'Stickers and Emoji Stickers, Emoji, Reactions', Focused
+                          Button, 0x115852030, {{24.0, 996.0}, {354.0, 56.0}}, label: 'Language English, Translate Messages', Focused
+                          Button, 0x115852550, {{24.0, 1052.0}, {354.0, 56.0}}, label: 'Active Sessions Sessions, Automatically terminate', Focused
+                          Button, 0x115852670, {{24.0, 1140.0}, {354.0, 48.0}}, label: 'Telegram Premium', Focused
+                          Button, 0x115852790, {{24.0, 1188.0}, {354.0, 48.0}}, label: 'My Stars', Focused
+                          Button, 0x1158528b0, {{24.0, 1236.0}, {354.0, 48.0}}, label: 'Gram Earnings', Focused
+                          Button, 0x1158529d0, {{24.0, 1316.0}, {354.0, 48.0}}, label: 'Ask a Question', Focused
+                          Button, 0x115852af0, {{24.0, 1364.0}, {354.0, 48.0}}, label: 'Telegram FAQ', Focused
+                          Button, 0x115852c10, {{24.0, 1412.0}, {354.0, 48.0}}, label: 'Privacy Policy', Focused
+                          Other, 0x115852e80, {{16.0, 764.0}, {306.0, 60.0}}, label: 'navigation', Focused
+                            Button, 0x115852fa0, {{20.0, 768.0}, {97.0, 52.0}}, label: 'Chats', Focused
+                            Button, 0x1158530c0, {{120.0, 768.0}, {98.0, 52.0}}, label: 'Contacts', Focused
+                            Button, 0x1158531e0, {{221.0, 768.0}, {98.0, 52.0}}, label: 'Settings', Focused
+                          TextField, 0x115860070, {{0.0, 824.0}, {216.0, 34.0}}, Focused
+                Other, 0x115860390, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1158604b0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1158605d0, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1158606f0, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x115860810, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x115860930, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x115860a50, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x115860b70, {{336.0, 868.0}, {7.0, 3.0}}
+    Window, 0x115860c90, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x115860db0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x115860ed0, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x11584fd30, pid: 32065, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x115713b50, pid: 32065, label: 'Liquidgram'
+  }

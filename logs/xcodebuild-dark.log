@@ -1,0 +1,130 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/dark.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/CoreTests/testDemoAccount" "-only-testing:LiquidgramUITests/UsabilityTests/testStatusBarStripMatchesTheme"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C, OS:26.2, name:iPhone 17 Pro }
+2026-10-29 18:04:23.193180+0000 LiquidgramUITests-Runner[36451:104499] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 18:04:23.826.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 18:04:23.826.
+Test Suite 'CoreTests' started at 2026-10-29 18:04:23.826.
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' started.
+    t =     0.00s Start Test at 2026-10-29 18:04:23.827
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     5.17s         Setting up automation session
+    t =     5.98s         Wait for org.liquidgram.messenger to idle
+    t =     7.22s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.83s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.44s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.48s Find the Any (Element at index 0)
+    t =     8.59s Waiting 20.0s for Any (First Match) to exist
+    t =     9.61s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     9.61s         Checking existence of `Any (First Match)`
+    t =     9.82s Added attachment named '01-chat-list-dark'
+    t =     9.84s Tap "Аня СмирноваАня Смирнова 18:03Договорились! До завтра 💙1" Button
+    t =     9.84s     Wait for org.liquidgram.messenger to idle
+    t =     9.84s     Find the "Аня СмирноваАня Смирнова 18:03Договорились! До завтра 💙1" Button
+    t =     9.87s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:03Договорились! До завтра 💙1" Button
+    t =     9.92s     Synthesize event
+    t =    10.21s     Wait for org.liquidgram.messenger to idle
+    t =    10.23s Waiting 2.0s for "Allow" Button to exist
+    t =    11.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    11.33s         Checking existence of `"Allow" Button`
+    t =    11.37s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    11.38s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    11.38s         Capturing element debug description
+    t =    12.23s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    12.23s         Checking existence of `"Allow" Button`
+    t =    12.26s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    12.27s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    12.27s         Capturing element debug description
+    t =    12.27s     Checking existence of `"Allow" Button`
+    t =    12.30s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    12.30s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =    12.30s Collecting debug information to assist test failure triage
+    t =    12.30s     Requesting snapshot of accessibility hierarchy for app with pid 2338
+    t =    12.35s Waiting 20.0s for StaticText (First Match) to exist
+    t =    13.38s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    13.38s         Checking existence of `StaticText (First Match)`
+    t =    13.49s Checking existence of `Any (First Match)`
+    t =    13.59s Find the Any (First Match)
+    t =    13.87s Added attachment named '02-chat-dark'
+    t =    13.87s Tap "Message" TextView
+    t =    13.87s     Wait for org.liquidgram.messenger to idle
+    t =    13.88s     Find the "Message" TextView
+    t =    13.99s     Check for interrupting elements affecting "Message" TextView
+    t =    14.05s     Synthesize event
+    t =    14.41s     Wait for org.liquidgram.messenger to idle
+    t =    15.03s Waiting 20.0s for Keyboard (First Match) to exist
+    t =    16.03s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    16.03s         Checking existence of `Keyboard (First Match)`
+    t =    16.06s Checking existence of `"Continue" Button`
+    t =    16.12s Type 'Typed by the UI te...' into Target Application 'org.liquidgram.messenger'
+    t =    16.12s     Wait for org.liquidgram.messenger to idle
+    t =    16.12s     Find the Target Application 'org.liquidgram.messenger'
+    t =    16.19s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    16.26s     Synthesize event
+    t =    16.93s     Wait for org.liquidgram.messenger to idle
+    t =    16.93s Find the "Message" TextView
+    t =    17.44s Added attachment named '03-composer-with-keyboard-dark'
+    t =    17.45s Find the "Message" TextView
+    t =    17.64s Find the Keyboard (First Match)
+    t =    17.67s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' passed (17.879 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 18:04:41.706.
+	 Executed 1 test, with 0 failures (0 unexpected) in 17.879 (17.880) seconds
+Test Suite 'UsabilityTests' started at 2026-10-29 18:04:41.707.
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' started.
+    t =     0.00s Start Test at 2026-10-29 18:04:41.707
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:36873
+    t =     1.26s         Setting up automation session
+    t =     2.55s         Wait for org.liquidgram.messenger to idle
+    t =     3.84s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.65s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     5.26s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     5.32s Find the Any (Element at index 0)
+    t =     5.45s Checking existence of `Any (First Match)`
+    t =     5.51s Find the Any (First Match)
+    t =     6.57s Find the WebView (First Match)
+    t =     6.61s Checking existence of `StatusBar (First Match)`
+    t =     6.63s Find the StatusBar (First Match)
+    t =     6.78s Added attachment named '01-status-bar-strip-dark'
+    t =     6.78s Checking existence of `StatusBar (First Match)`
+    t =     6.80s Find the StatusBar (First Match)
+    t =     6.82s Checking existence of `StatusBar (First Match)`
+    t =     6.83s Find the StatusBar (First Match)
+    t =     6.87s Find the Window (First Match)
+    t =     7.22s Added attachment named 'failure-the-status-bar-strip-in-the-dark-theme-the-page-dark'
+    t =     7.22s Requesting snapshot of accessibility hierarchy for app with pid 37492
+    t =     7.51s Requesting snapshot of accessibility hierarchy for app with pid 37492
+    t =     7.56s Added attachment named 'ax-failure-the-status-bar-strip-in-the-dark-theme-the-page-dark'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/UsabilityTests.swift:550: error: -[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme] : failed - The status bar strip in the dark theme: The page starts at y 0, under the status bar, which ends at y 54, so the status bar shows the page instead of a strip in the theme color; The strip at y 2 shows #383738, #393738, #373837, #383737, #393838, #383839, #383838, #393737, #383837 instead of the theme color #212121; The strip at y 51 shows #313031, #3d3d3d, #3e3d3d, #313030, #312f30 instead of the theme color #212121
+    t =     7.75s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' failed (7.959 seconds).
+Test Suite 'UsabilityTests' failed at 2026-10-29 18:04:49.667.
+	 Executed 1 test, with 1 failure (0 unexpected) in 7.959 (7.960) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 18:04:49.667.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 25.839 (25.841) seconds
+Test Suite 'Selected tests' failed at 2026-10-29 18:04:49.667.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 25.839 (25.842) seconds
+2026-10-29 18:05:02.882 xcodebuild[36426:104141] [MT] IDETestOperationsObserverDebug: 41.565 elapsed -- Testing started completed.
+2026-10-29 18:05:02.882 xcodebuild[36426:104141] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:05:02.882 xcodebuild[36426:104141] [MT] IDETestOperationsObserverDebug: 41.565 sec, +41.565 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

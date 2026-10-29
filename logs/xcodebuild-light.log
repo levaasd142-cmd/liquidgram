@@ -1,0 +1,299 @@
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:29181
+    t =     1.23s         Setting up automation session
+    t =     2.06s         Wait for org.liquidgram.messenger to idle
+    t =     3.30s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     3.85s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.40s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.45s Find the Any (Element at index 0)
+    t =     5.52s Checking existence of `Any (First Match)`
+    t =     5.56s Find the Any (First Match)
+    t =     5.75s Added attachment named '01-chat-list-untouched'
+    t =     5.90s Added attachment named 'failure-the-page-treats-itself-as-being-in-the'
+    t =     5.90s Requesting snapshot of accessibility hierarchy for app with pid 30634
+    t =     6.10s Requesting snapshot of accessibility hierarchy for app with pid 30634
+    t =     6.14s Added attachment named 'ax-failure-the-page-treats-itself-as-being-in-the'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/UsabilityTests.swift:565: error: -[LiquidgramUITests.UsabilityTests testPageIsActiveBeforeFirstTap] : failed - The page treats itself as being in the background until the first tap (body.in-background; document.hasFocus() is false), so its animations stand still
+    t =     6.14s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testPageIsActiveBeforeFirstTap]' failed (6.348 seconds).
+Test Case '-[LiquidgramUITests.UsabilityTests testProfileTopRowWorks]' started.
+    t =     0.00s Start Test at 2026-10-29 18:03:03.356
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:30634
+    t =     1.22s         Setting up automation session
+    t =     1.99s         Wait for org.liquidgram.messenger to idle
+    t =     3.24s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     3.81s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.38s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.43s Find the Any (Element at index 0)
+    t =     4.48s Tap "Аня СмирноваАня Смирнова 18:02Договорились! До завтра 💙1" Button
+    t =     4.48s     Wait for org.liquidgram.messenger to idle
+    t =     4.49s     Find the "Аня СмирноваАня Смирнова 18:02Договорились! До завтра 💙1" Button
+    t =     4.52s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 18:02Договорились! До завтра 💙1" Button
+    t =     4.54s     Synthesize event
+    t =     4.83s     Wait for org.liquidgram.messenger to idle
+    t =     4.83s Waiting 2.0s for "Allow" Button to exist
+    t =     5.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     5.88s         Checking existence of `"Allow" Button`
+    t =     5.91s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     5.91s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     5.91s         Capturing element debug description
+    t =     6.84s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.84s         Checking existence of `"Allow" Button`
+    t =     6.87s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.87s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.88s         Capturing element debug description
+    t =     6.88s     Checking existence of `"Allow" Button`
+    t =     6.90s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.90s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.90s Collecting debug information to assist test failure triage
+    t =     6.90s     Requesting snapshot of accessibility hierarchy for app with pid 2338
+    t =     6.95s Get all elements bound by index for: Elements matching predicate '(label == "Message" OR placeholderValue == "Message") AND elementType IN {49, 52, 45}'
+    t =     7.04s Find the Any (Element at index 0)
+    t =     7.12s Get all elements bound by index for: Elements matching predicate 'label == "Аня Смирнова"'
+    t =     7.17s Find the Button (Element at index 0)
+    t =     7.23s Find the "Аня Смирнова" Button
+    t =     7.29s Tap "Аня Смирнова" Button[0.50, 0.50]
+    t =     7.29s     Wait for org.liquidgram.messenger to idle
+    t =     7.29s     Find the "Аня Смирнова" Button
+    t =     7.34s     Check for interrupting elements affecting "Аня Смирнова" Button
+    t =     7.38s     Synthesize event
+    t =     7.38s         Find the "Аня Смирнова" Button
+    t =     7.44s         Find the "Аня Смирнова" Button
+    t =     7.50s         Find the "Аня Смирнова" Button
+    t =     7.83s     Wait for org.liquidgram.messenger to idle
+    t =     7.84s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =     8.40s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =     8.96s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =     9.51s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    10.08s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    10.63s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    11.20s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    11.76s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    12.32s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    12.87s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    12.92s Checking existence of `StatusBar (First Match)`
+    t =    12.94s Find the StatusBar (First Match)
+    t =    12.96s Find the WebView (First Match)
+    t =    12.99s Find the "Аня Смирнова" Button
+    t =    13.18s Added attachment named 'failure-the-top-row-of-a-profile-the-chat-title-at-114'
+    t =    13.18s Requesting snapshot of accessibility hierarchy for app with pid 31337
+    t =    13.67s Requesting snapshot of accessibility hierarchy for app with pid 31337
+    t =    13.75s Added attachment named 'ax-failure-the-top-row-of-a-profile-the-chat-title-at-114'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/UsabilityTests.swift:249: error: -[LiquidgramUITests.UsabilityTests testProfileTopRowWorks] : failed - The top row of a profile: The chat title at (114, 11, 121×24) is under the status bar, which ends at y 54; A tap on the chat title at (114, 11, 121×24) did not open the profile
+    t =    13.76s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testProfileTopRowWorks]' failed (13.968 seconds).
+Test Case '-[LiquidgramUITests.UsabilityTests testSettingsTopRowWorks]' started.
+    t =     0.00s Start Test at 2026-10-29 18:03:17.324
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:31337
+    t =     1.29s         Setting up automation session
+    t =     2.01s         Wait for org.liquidgram.messenger to idle
+    t =     3.26s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     3.85s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.42s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.47s Find the Any (Element at index 0)
+    t =     4.51s Get all elements bound by index for: Elements matching predicate 'label == "Settings"'
+    t =     4.54s Find the Button (Element at index 0)
+    t =     4.58s Tap "Settings" Button[0.50, 0.50]
+    t =     4.58s     Wait for org.liquidgram.messenger to idle
+    t =     4.59s     Find the "Settings" Button
+    t =     4.61s     Check for interrupting elements affecting "Settings" Button
+    t =     4.64s     Synthesize event
+    t =     4.64s         Find the "Settings" Button
+    t =     4.69s         Find the "Settings" Button
+    t =     4.73s         Find the "Settings" Button
+    t =     5.05s     Wait for org.liquidgram.messenger to idle
+    t =     5.07s Waiting 2.0s for "Allow" Button to exist
+    t =     6.09s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.09s         Checking existence of `"Allow" Button`
+    t =     6.12s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.13s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     6.13s         Capturing element debug description
+    t =     7.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     7.08s         Checking existence of `"Allow" Button`
+    t =     7.10s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     7.10s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     7.10s         Capturing element debug description
+    t =     7.10s     Checking existence of `"Allow" Button`
+    t =     7.13s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     7.13s Ignoring failure to get hierarchy for remote element in process 28470 (Error getting main window kAXErrorServerNotFound)
+    t =     7.13s Collecting debug information to assist test failure triage
+    t =     7.13s     Requesting snapshot of accessibility hierarchy for app with pid 2338
+    t =     7.17s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =     7.20s Find the Button (Element at index 0)
+    t =     7.24s Get all elements bound by index for: Elements matching predicate 'label == "Search"'
+    t =     7.26s Find the Button (Element at index 0)
+    t =     7.29s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =     7.32s Find the Button (Element at index 0)
+    t =     7.35s Get all elements bound by index for: Elements matching predicate 'label == "More options"'
+    t =     7.38s Find the Button (Element at index 0)
+    t =     7.52s Added attachment named '01-settings'
+    t =     7.52s Checking existence of `StatusBar (First Match)`
+    t =     7.53s Find the StatusBar (First Match)
+    t =     7.55s Find the WebView (First Match)
+    t =     7.56s Find the "Go back" Button
+    t =     7.59s Find the "Search" Button
+    t =     7.63s Find the "Edit profile" Button
+    t =     7.66s Find the "More options" Button
+    t =     7.69s Find the "More options" Button
+    t =     7.73s Tap "More options" Button[0.50, 0.50]
+    t =     7.73s     Wait for org.liquidgram.messenger to idle
+    t =     7.73s     Find the "More options" Button
+    t =     7.76s     Check for interrupting elements affecting "More options" Button
+    t =     7.78s     Synthesize event
+    t =     7.78s         Find the "More options" Button
+    t =     7.81s         Find the "More options" Button
+    t =     7.85s         Find the "More options" Button
+    t =     8.16s     Wait for org.liquidgram.messenger to idle
+    t =     8.16s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =     8.69s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =     9.22s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =     9.76s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    10.28s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    10.82s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    11.36s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    11.91s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    12.44s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    12.98s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    13.52s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    13.56s Find the "Search" Button
+    t =    13.59s Tap "Search" Button[0.50, 0.50]
+    t =    13.59s     Wait for org.liquidgram.messenger to idle
+    t =    13.59s     Find the "Search" Button
+    t =    13.62s     Check for interrupting elements affecting "Search" Button
+    t =    13.64s     Synthesize event
+    t =    13.64s         Find the "Search" Button
+    t =    13.68s         Find the "Search" Button
+    t =    13.71s         Find the "Search" Button
+    t =    14.03s     Wait for org.liquidgram.messenger to idle
+    t =    14.03s Checking existence of `"Edit profile" Button`
+    t =    14.07s Find the "Edit profile" Button
+    t =    14.61s Checking existence of `"Edit profile" Button`
+    t =    14.64s Find the "Edit profile" Button
+    t =    15.18s Checking existence of `"Edit profile" Button`
+    t =    15.21s Find the "Edit profile" Button
+    t =    15.77s Checking existence of `"Edit profile" Button`
+    t =    15.81s Find the "Edit profile" Button
+    t =    16.37s Checking existence of `"Edit profile" Button`
+    t =    16.40s Find the "Edit profile" Button
+    t =    16.96s Checking existence of `"Edit profile" Button`
+    t =    16.99s Find the "Edit profile" Button
+    t =    17.53s Checking existence of `"Edit profile" Button`
+    t =    17.56s Find the "Edit profile" Button
+    t =    18.11s Checking existence of `"Edit profile" Button`
+    t =    18.14s Find the "Edit profile" Button
+    t =    18.69s Checking existence of `"Edit profile" Button`
+    t =    18.72s Find the "Edit profile" Button
+    t =    19.29s Checking existence of `"Edit profile" Button`
+    t =    19.34s Find the "Edit profile" Button
+    t =    19.38s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =    19.40s Find the Any (Element at index 0)
+    t =    19.45s Find the "Edit profile" Button
+    t =    19.48s Tap "Edit profile" Button[0.50, 0.50]
+    t =    19.48s     Wait for org.liquidgram.messenger to idle
+    t =    19.49s     Find the "Edit profile" Button
+    t =    19.52s     Check for interrupting elements affecting "Edit profile" Button
+    t =    19.54s     Synthesize event
+    t =    19.54s         Find the "Edit profile" Button
+    t =    19.58s         Find the "Edit profile" Button
+    t =    19.61s         Find the "Edit profile" Button
+    t =    19.93s     Wait for org.liquidgram.messenger to idle
+    t =    19.93s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    20.47s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    21.01s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    21.56s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    22.11s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    22.66s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    23.21s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    23.76s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    24.33s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    24.89s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    25.43s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    25.49s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =    25.52s Find the Any (Element at index 0)
+    t =    25.56s Find the "Go back" Button
+    t =    25.60s Tap "Go back" Button[0.50, 0.50]
+    t =    25.60s     Wait for org.liquidgram.messenger to idle
+    t =    25.61s     Find the "Go back" Button
+    t =    25.64s     Check for interrupting elements affecting "Go back" Button
+    t =    25.67s     Synthesize event
+    t =    25.67s         Find the "Go back" Button
+    t =    25.71s         Find the "Go back" Button
+    t =    25.75s         Find the "Go back" Button
+    t =    26.06s     Wait for org.liquidgram.messenger to idle
+    t =    26.07s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    26.60s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    27.15s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    27.72s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    28.26s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    28.82s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    29.35s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    29.88s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    30.41s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    30.97s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    31.51s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    31.67s Added attachment named '05-chat-list'
+    t =    31.78s Added attachment named 'failure-the-top-row-of-the-settings-go-back-at-8-12-40'
+    t =    31.78s Requesting snapshot of accessibility hierarchy for app with pid 32065
+    t =    32.00s Requesting snapshot of accessibility hierarchy for app with pid 32065
+    t =    32.04s Added attachment named 'ax-failure-the-top-row-of-the-settings-go-back-at-8-12-40'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/UsabilityTests.swift:349: error: -[LiquidgramUITests.UsabilityTests testSettingsTopRowWorks] : failed - The top row of the settings: Go back at (8, 12, 40×40) is under the status bar, which ends at y 54; Search at (265, 12, 40×40) is under the status bar, which ends at y 54; Edit profile at (305, 12, 40×40) is under the status bar, which ends at y 54; More options at (349, 12, 40×40) is under the status bar, which ends at y 54; A tap on More options at (349, 12, 40×40) did not open the settings menu; A tap on Search at (265, 12, 40×40) did not open the settings search; A tap on Edit profile at (305, 12, 40×40) did not open the profile editor; A tap on Go back at (8, 12, 40×40) did not return to the chat list
+    t =    32.04s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testSettingsTopRowWorks]' failed (32.248 seconds).
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' started.
+    t =     0.00s Start Test at 2026-10-29 18:03:49.572
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:32065
+    t =     1.23s         Setting up automation session
+    t =     2.15s         Wait for org.liquidgram.messenger to idle
+    t =     3.41s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     3.99s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.53s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.59s Find the Any (Element at index 0)
+    t =     4.67s Checking existence of `Any (First Match)`
+    t =     4.72s Find the Any (First Match)
+    t =     5.78s Find the WebView (First Match)
+    t =     5.81s Checking existence of `StatusBar (First Match)`
+    t =     5.82s Find the StatusBar (First Match)
+    t =     5.98s Added attachment named '01-status-bar-strip'
+    t =     5.98s Checking existence of `StatusBar (First Match)`
+    t =     5.99s Find the StatusBar (First Match)
+    t =     6.01s Checking existence of `StatusBar (First Match)`
+    t =     6.03s Find the StatusBar (First Match)
+    t =     6.05s Find the Window (First Match)
+    t =     6.41s Added attachment named 'failure-the-status-bar-strip-in-the-light-theme-the-page'
+    t =     6.41s Requesting snapshot of accessibility hierarchy for app with pid 33825
+    t =     6.60s Requesting snapshot of accessibility hierarchy for app with pid 33825
+    t =     6.64s Added attachment named 'ax-failure-the-status-bar-strip-in-the-light-theme-the-page'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/UsabilityTests.swift:550: error: -[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme] : failed - The status bar strip in the light theme: The page starts at y 0, under the status bar, which ends at y 54, so the status bar shows the page instead of a strip in the theme color; The strip at y 2 shows #f7f2f6, #faf3f7, #f9f3f5, #fbf3f5, #fdf4f4, #fef4f3, #fff4f2, #fef3f0, #fef4ef, #fff4ef, #fff3ef, #fff2ef, #fff3f1, #fef1f0 instead of the theme color #fff; The strip at y 51 shows #f6eef6, #f8f0f6, #f9f6f9, #fbf8f9, #fcf8f8, #fdf8f8, #fdf8f7, #fcf6f5, #fdf7f4, #fef8f6, #fcf6f4, #fef8f5, #fef7f6, #fdf7f5, #fcf5f5, #ffefee, #feedee instead of the theme color #fff
+    t =     6.65s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' failed (6.853 seconds).
+Test Suite 'UsabilityTests' failed at 2026-10-29 18:03:56.425.
+	 Executed 13 tests, with 12 failures (0 unexpected) in 256.653 (256.660) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 18:03:56.425.
+	 Executed 28 tests, with 13 failures (0 unexpected) in 462.867 (462.888) seconds
+Test Suite 'All tests' failed at 2026-10-29 18:03:56.426.
+	 Executed 28 tests, with 13 failures (0 unexpected) in 462.867 (462.889) seconds
+2026-10-29 18:04:11.755 xcodebuild[4604:19823] [MT] IDETestOperationsObserverDebug: 491.483 elapsed -- Testing started completed.
+2026-10-29 18:04:11.755 xcodebuild[4604:19823] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:04:11.755 xcodebuild[4604:19823] [MT] IDETestOperationsObserverDebug: 491.483 sec, +491.483 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

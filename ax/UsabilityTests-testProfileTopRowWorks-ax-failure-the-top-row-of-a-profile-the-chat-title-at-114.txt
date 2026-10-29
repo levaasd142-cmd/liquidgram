@@ -1,0 +1,147 @@
+Attributes: Application, 0x1153bb5d0, pid: 31337, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x1153bb5d0, pid: 31337, label: 'Liquidgram'
+    Window (Main), 0x1153bf340, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1153bf700, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1153bf820, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1153bf460, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x1153bf580, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x1153bf940, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x1153bfa60, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1153bfb80, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1153bfca0, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1153bfdc0, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1153bfee0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Аня Смирнова', Focused
+                          Button, 0x1153c0000, {{0.0, 12.0}, {40.0, 40.0}}, label: 'Open menu', Focused
+                          Other, 0x1153c0120, {{0.0, 10.0}, {680.0, 10.0}}, Focused
+                            Button, 0x1153c0240, {{0.0, 10.0}, {680.0, 10.0}}, label: 'Open Story List', Focused
+                          TextField, 0x1153c0360, {{0.0, 12.0}, {201.0, 40.0}}, placeholderValue: 'Search', value: Search, Focused
+                          Other, 0x1153c0480, {{0.0, 10.0}, {680.0, 10.0}}, Focused
+                          Button, 0x1153c05a0, {{0.0, 12.0}, {40.0, 40.0}}, label: 'Ghost mode', Focused
+                          StaticText, 0x1153c06c0, {{0.0, 82.0}, {19.0, 20.0}}, label: 'All', value: All, Focused
+                          StaticText, 0x1153c07e0, {{0.0, 84.0}, {8.0, 15.0}}, label: '2', value: 2, Focused
+                          StaticText, 0x1153c0900, {{0.0, 82.0}, {59.0, 20.0}}, label: 'Личное', value: Личное, Focused
+                          StaticText, 0x1153c0a20, {{0.0, 82.0}, {58.0, 20.0}}, label: 'Группы', value: Группы, Focused
+                          StaticText, 0x1153c0b40, {{0.0, 84.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          StaticText, 0x1153c0c60, {{0.0, 82.0}, {60.0, 20.0}}, label: 'Каналы', value: Каналы, Focused
+                          StaticText, 0x1153c0d80, {{0.0, 84.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          Other, 0x1153c0ea0, {{0.0, 126.0}, {402.0, 576.0}}, Focused
+                            Other, 0x1153c0fc0, {{0.0, 126.0}, {402.0, 10.0}}, Focused
+                            Button, 0x1153c10e0, {{0.0, 126.0}, {402.0, 72.0}}, label: 'Аня СмирноваАня Смирнова 18:02Договорились! До завтра 💙', Focused
+                            Button, 0x1153c1200, {{0.0, 198.0}, {402.0, 72.0}}, label: 'Бразы 🔥Бразы 🔥 17:57Лёха : Кто сегодня в чат-рум после 22?4', Focused
+                            Button, 0x1153c1320, {{0.0, 270.0}, {402.0, 72.0}}, label: 'iOS 26 DesigniOS 26 Design 17:43Собрали 15 приложений, которые уже обновили дизайн под iOS 26 👇2', Focused
+                            Button, 0x1153c1440, {{0.0, 342.0}, {402.0, 72.0}}, label: 'Катя ДизайнКатя Дизайн 15:23Уже 😎', Focused
+                            Button, 0x1153c1560, {{0.0, 414.0}, {402.0, 72.0}}, label: 'МамаМама 14:03Позвони вечером ❤️', Focused
+                            Button, 0x1153c1680, {{0.0, 486.0}, {402.0, 72.0}}, label: 'Макс ОрловМакс Орлов WedЛови, там 40 слайдов', Focused
+                            Button, 0x1153c17a0, {{0.0, 558.0}, {402.0, 72.0}}, label: 'Дима КодДима Код WedПоправил, перезапусти', Focused
+                            Button, 0x1153c18c0, {{0.0, 630.0}, {402.0, 72.0}}, label: 'БроSaved Messages TueИдеи для Liquidgram: стекло, призрак, антиудаление ✅', Focused
+                          Button, 0x1153c19e0, {{0.0, 776.0}, {48.0, 48.0}}, label: 'New Message', Focused
+                          Other, 0x1153c1b00, {{0.0, 776.0}, {450.0, 10.0}}, Focused
+                          Button, 0x1153c1c20, {{16.0, 12.0}, {40.0, 40.0}}, label: 'Back', Focused
+                          Other, 0x1153c1d40, {{44.0, 12.0}, {20.0, 16.0}}, Focused
+                            StaticText, 0x1153c1e60, {{50.0, 12.0}, {8.0, 15.0}}, label: '6', value: 6, Focused
+                          Other, 0x1153c1f80, {{64.0, 12.0}, {40.0, 40.0}}, label: 'Аня Смирнова', Focused
+                            StaticText, 0x1153c20a0, {{71.0, 21.0}, {26.0, 22.0}}, label: 'АС', value: АС, Focused
+                          Button, 0x1153c21c0, {{114.0, 11.0}, {121.0, 24.0}}, label: 'Аня Смирнова', Focused
+                          StaticText, 0x1153c22e0, {{114.0, 35.0}, {39.0, 18.0}}, label: 'online', value: online, Focused
+                          Button, 0x1153c2400, {{346.0, 12.0}, {40.0, 40.0}}, label: 'More options', Focused
+                          Other, 0x1153c2520, {{8.0, 72.0}, {386.0, 24.0}}, Focused
+                            StaticText, 0x1153c2640, {{164.0, 74.0}, {74.0, 20.0}}, label: 'Yesterday', value: Yesterday, Focused
+                          StaticText, 0x1153c2760, {{21.0, -285.0}, {203.0, 22.0}}, label: 'Скинь фотки с выходных', value: Скинь фотки с выхо..., Focused
+                          Image, 0x1153c2880, {{223.0, -285.0}, {22.0, 23.0}}, label: '📸', Focused
+                          StaticText, 0x1153c29a0, {{256.0, -276.0}, {32.0, 16.0}}, label: '17:03', value: 17:03, Focused
+                          StaticText, 0x1153c2ac0, {{57.0, -244.0}, {273.0, 22.0}}, label: 'Щас, только с телефона перекину', value: Щас, только с теле..., Focused
+                          StaticText, 0x1153c2be0, {{331.0, -213.0}, {32.0, 16.0}}, label: '17:08', value: 17:08, Focused
+                          Other, 0x1153c2e50, {{364.0, -214.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c2f70, {{21.0, -182.0}, {75.0, 22.0}}, label: 'Жду-жду', value: Жду-жду, Focused
+                          StaticText, 0x1153c3090, {{106.0, -173.0}, {30.0, 16.0}}, label: '17:13', value: 17:13, Focused
+                          StaticText, 0x1153c31b0, {{57.0, -141.0}, {303.0, 66.0}}, label: 'Кстати, ты пробовала новый Liquid Glass в iOS 26? Всё будто из жидкого стекла', value: Кстати, ты пробова..., Focused
+                          Image, 0x1153c32d0, {{114.0, -97.0}, {22.0, 23.0}}, label: '💧', Focused
+                          StaticText, 0x1153c33f0, {{332.0, -88.0}, {31.0, 16.0}}, label: '17:23', value: 17:23, Focused
+                          Other, 0x1153c3510, {{364.0, -89.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c3630, {{21.0, -56.0}, {299.0, 44.0}}, label: 'Да! Особенно таббар внизу, он прям переливается', value: Да! Особенно табба..., Focused
+                          StaticText, 0x1153c3750, {{314.0, -25.0}, {31.0, 16.0}}, label: '17:33', value: 17:33, Focused
+                          StaticText, 0x1153c3870, {{86.0, 7.0}, {236.0, 22.0}}, label: 'Хочу такое на компе в телеге', value: Хочу такое на комп..., Focused
+                          StaticText, 0x1153c3990, {{332.0, 16.0}, {31.0, 16.0}}, label: '17:38', value: 17:38, Focused
+                          Other, 0x1153c3ab0, {{364.0, 15.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c3bd0, {{21.0, 48.0}, {212.0, 22.0}}, label: 'Сделай сам, ты же умный', value: Сделай сам, ты же ..., Focused
+                          Image, 0x1153c3cf0, {{232.0, 48.0}, {22.0, 23.0}}, label: '😄', Focused
+                          StaticText, 0x1153c3e10, {{265.0, 57.0}, {32.0, 16.0}}, label: '17:43', value: 17:43, Focused
+                          StaticText, 0x1153c3f30, {{184.0, 89.0}, {115.0, 22.0}}, label: 'Вызов принят', value: Вызов принят , Focused
+                          Image, 0x1153c2d00, {{298.0, 89.0}, {23.0, 23.0}}, label: '😎', Focused
+                          StaticText, 0x1153c4270, {{332.0, 98.0}, {31.0, 16.0}}, label: '17:53', value: 17:53, Focused
+                          Other, 0x1153c4390, {{364.0, 97.0}, {19.0, 19.0}}, Focused
+                          Other, 0x1153c44b0, {{8.0, 133.0}, {386.0, 24.0}}, Focused
+                            StaticText, 0x1153c45d0, {{178.0, 135.0}, {46.0, 20.0}}, label: 'Today', value: Today, Focused
+                          StaticText, 0x1153c46f0, {{21.0, 174.0}, {250.0, 22.0}}, label: 'Привет! Ты видел новый айос?', value: Привет! Ты видел н..., Focused
+                          Image, 0x1153c4810, {{270.0, 174.0}, {23.0, 23.0}}, label: '😍', Focused
+                          StaticText, 0x1153c4930, {{303.0, 183.0}, {28.0, 16.0}}, label: '17:11', value: 17:11, Focused
+                          StaticText, 0x1153c4a50, {{57.0, 215.0}, {277.0, 22.0}}, label: 'Да, этот Liquid Glass просто бомба', value: Да, этот Liquid Gl..., Focused
+                          StaticText, 0x1153c4b70, {{334.0, 246.0}, {29.0, 16.0}}, label: '17:12', value: 17:12, Focused
+                          Other, 0x1153c4c90, {{364.0, 245.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c4db0, {{21.0, 277.0}, {185.0, 22.0}}, label: 'Хочу такое же в телеге', value: Хочу такое же в те..., Focused
+                          StaticText, 0x1153c4ed0, {{216.0, 286.0}, {36.0, 16.0}}, label: 'edited', value: edited, Focused
+                          StaticText, 0x1153c4ff0, {{255.0, 286.0}, {30.0, 16.0}}, label: '17:13', value: 17:13, Focused
+                          StaticText, 0x1153c5110, {{57.0, 318.0}, {172.0, 22.0}}, label: 'Смотри что я собрал', value: Смотри что я собрал , Focused
+                          Image, 0x1153c5230, {{228.0, 318.0}, {23.0, 23.0}}, label: '👀', Focused
+                          StaticText, 0x1153c5350, {{251.0, 318.0}, {5.0, 22.0}}, value:  , Focused
+                          StaticText, 0x1153c5470, {{57.0, 318.0}, {308.0, 66.0}}, label: 'Liquidgram — свой клиент со стеклом и режимом призрака', value: Liquidgram — свой ..., Focused
+                          StaticText, 0x1153c5590, {{334.0, 371.0}, {29.0, 16.0}}, label: '17:15', value: 17:15, Focused
+                          Other, 0x1153c56b0, {{364.0, 370.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c57d0, {{21.0, 403.0}, {231.0, 22.0}}, label: 'Чё серьёзно?? Скинь ссылку', value: Чё серьёзно?? Скин..., Focused
+                          StaticText, 0x1153c58f0, {{263.0, 412.0}, {30.0, 16.0}}, label: '17:16', value: 17:16, Focused
+                          StaticText, 0x1153c5a10, {{21.0, 441.0}, {220.0, 22.0}}, label: 'Ой, это я не тебе написала', value: Ой, это я не тебе ..., Focused
+                          Image, 0x1153c5b30, {{240.0, 441.0}, {22.0, 23.0}}, label: '🙈', Focused
+                          StaticText, 0x1153c5c50, {{267.0, 472.0}, {44.0, 16.0}}, label: 'deleted', value: deleted, Focused
+                          StaticText, 0x1153c5d70, {{316.0, 472.0}, {29.0, 16.0}}, label: '17:17', value: 17:17, Focused
+                          StaticText, 0x1153c5e90, {{57.0, 503.0}, {166.0, 22.0}}, label: 'Поздно, я всё видел', value: Поздно, я всё видел , Focused
+                          Image, 0x1153c4050, {{222.0, 503.0}, {22.0, 23.0}}, label: '😏', Focused
+                          StaticText, 0x1153c6320, {{244.0, 503.0}, {5.0, 22.0}}, value:  , Focused
+                          StaticText, 0x1153c6440, {{57.0, 503.0}, {309.0, 44.0}}, label: 'антиудаление работает', value: антиудаление работ..., Focused
+                          StaticText, 0x1153c6560, {{333.0, 534.0}, {30.0, 16.0}}, label: '17:19', value: 17:19, Focused
+                          Other, 0x1153c6680, {{364.0, 533.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153c67a0, {{21.0, 566.0}, {209.0, 22.0}}, label: 'Ахахах ладно, ты победил', value: Ахахах ладно, ты п..., Focused
+                          StaticText, 0x1153c68c0, {{240.0, 575.0}, {30.0, 16.0}}, label: '17:51', value: 17:51, Focused
+                          StaticText, 0x1153c69e0, {{21.0, 604.0}, {262.0, 22.0}}, label: 'Во сколько завтра встречаемся?', value: Во сколько завтра ..., Focused
+                          StaticText, 0x1153c6b00, {{293.0, 613.0}, {32.0, 16.0}}, label: '17:52', value: 17:52, Focused
+                          StaticText, 0x1153c6c20, {{57.0, 645.0}, {305.0, 22.0}}, label: 'Давай в 19:00 у кофейни на Патриках', value: Давай в 19:00 у ко..., Focused
+                          Image, 0x1153c6d40, {{57.0, 667.0}, {22.0, 23.0}}, label: '☕️', Focused
+                          StaticText, 0x1153c6e60, {{331.0, 676.0}, {32.0, 16.0}}, label: '18:00', value: 18:00, Focused
+                          Other, 0x1153c6f80, {{364.0, 675.0}, {19.0, 19.0}}, Focused
+                          Other, 0x1153c70a0, {{8.0, 704.0}, {386.0, 24.0}}, Focused
+                            StaticText, 0x1153c71c0, {{134.0, 706.0}, {134.0, 20.0}}, label: 'Unread Messages', value: Unread Messages, Focused
+                          StaticText, 0x1153c72e0, {{21.0, 741.0}, {208.0, 22.0}}, label: 'Договорились! До завтра', value: Договорились! До з..., Focused
+                          Image, 0x1153c7400, {{228.0, 741.0}, {22.0, 23.0}}, label: '💙', Focused
+                          StaticText, 0x1153c7520, {{261.0, 750.0}, {33.0, 16.0}}, label: '18:02', value: 18:02, Focused
+                          Button, 0x1153c7640, {{348.0, 728.0}, {46.0, 46.0}}, label: 'Go to next unread poll vote', Focused
+                          Button, 0x1153c7760, {{348.0, 734.0}, {46.0, 46.0}}, label: 'Go to next unread reactions', Focused
+                          Button, 0x1153c7880, {{348.0, 740.0}, {46.0, 46.0}}, label: 'Go to next mention', Focused
+                          Button, 0x1153c79a0, {{348.0, 802.0}, {46.0, 46.0}}, label: 'Go to bottom', Focused
+                          Other, 0x1153c7ac0, {{12.0, 788.0}, {40.0, 40.0}}, label: 'Add attachment', Focused
+                          Other, 0x1153c7be0, {{12.0, 788.0}, {40.0, 10.0}}, label: 'Add attachment', Focused
+                          Button, 0x1153c7d00, {{350.0, 788.0}, {40.0, 40.0}}, label: 'Open full editor', Focused
+                          TextView, 0x1153c7e20, {{56.0, 788.0}, {234.0, 40.0}}, label: 'Message', value: 
+, Focused
+                          StaticText, 0x1153c7f40, {{56.0, 796.0}, {69.0, 23.0}}, label: 'Message', value: Message, Focused
+                          Button, 0x1153c8060, {{298.0, 788.0}, {40.0, 40.0}}, label: 'Choose emoji, sticker or GIF', Focused
+                          Button, 0x1153c8180, {{350.0, 788.0}, {40.0, 40.0}}, label: 'Record voice message', Focused
+                          StaticText, 0x1153c82a0, {{122.0, 806.0}, {158.0, 20.0}}, label: '0 messages selected', value: 0 messages selected, Focused
+                          TextField, 0x1153c83c0, {{0.0, 824.0}, {216.0, 34.0}}, Focused
+                Other, 0x1153c84e0, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1153c8600, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1153c8720, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1153c8840, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x1153c8960, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1153c8a80, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1153c8ba0, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1153c8cc0, {{336.0, 868.0}, {7.0, 3.0}}
+    Window, 0x1153c8de0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1153c8f00, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1153c9020, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x1153bb5d0, pid: 31337, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x103582180, pid: 31337, label: 'Liquidgram'
+  }

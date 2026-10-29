@@ -1,0 +1,1266 @@
+Attributes: Application, 0x1155cd170, pid: 18433, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x1155cd170, pid: 18433, label: 'Liquidgram'
+    Window (Main), 0x1155ccd50, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1155cf760, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1155cf880, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1155cf4c0, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x1155cf5e0, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x1155cf9a0, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x1155cfac0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1155cfbe0, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1155cfd00, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1155cfe20, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1155cff40, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Аня Смирнова', Focused
+                          Button, 0x1155d0060, {{10.0, 598.0}, {34.0, 34.0}}, label: 'Recently Used', Focused
+                          Button, 0x1155d0180, {{49.0, 598.0}, {34.0, 34.0}}, label: 'Smileys & People', Focused
+                          Button, 0x1155d02a0, {{85.0, 598.0}, {34.0, 34.0}}, label: 'Animals & Nature', Focused
+                          Button, 0x1155d03c0, {{121.0, 598.0}, {34.0, 34.0}}, label: 'Food & Drink', Focused
+                          Button, 0x1155d04e0, {{157.0, 598.0}, {34.0, 34.0}}, label: 'Activities', Focused
+                          Button, 0x1155d0600, {{193.0, 598.0}, {34.0, 34.0}}, label: 'Travel & Places', Focused
+                          Button, 0x1155d0750, {{229.0, 598.0}, {34.0, 34.0}}, label: 'Objects', Focused
+                          Button, 0x1155d0870, {{265.0, 598.0}, {34.0, 34.0}}, label: 'Symbols', Focused
+                          Button, 0x1155d0990, {{301.0, 598.0}, {34.0, 34.0}}, label: 'Flags', Focused
+                          Button, 0x1155d0ab0, {{16.0, 658.0}, {24.0, 24.0}}, label: 'Go back', Focused
+                          TextField, 0x1155d0bd0, {{40.0, 651.0}, {325.0, 38.0}}, label: 'Search Emoji', placeholderValue: 'Search Emoji', value: Search Emoji, Focused
+                          Button, 0x1155d0cf0, {{365.0, 656.0}, {28.0, 28.0}}, label: 'Clear', Focused
+                          Other, 0x1155d0e10, {{4.0, 701.0}, {108.0, 24.0}}, Focused
+                            StaticText, 0x1155d0f30, {{4.0, 703.0}, {108.0, 20.0}}, label: 'Recently Used', value: Recently Used, Focused
+                          Other, 0x1155d1050, {{4.0, 741.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d1170, {{6.0, 743.0}, {32.0, 32.0}}, label: '😀', Focused
+                          Other, 0x1155d1290, {{48.0, 741.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d13b0, {{50.0, 743.0}, {33.0, 32.0}}, label: '😘', Focused
+                          Other, 0x1155d14d0, {{93.0, 741.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d15f0, {{95.0, 743.0}, {33.0, 32.0}}, label: '🎄', Focused
+                          Other, 0x1155d1710, {{138.0, 741.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d1830, {{140.0, 743.0}, {33.0, 32.0}}, label: '🧠', Focused
+                          Other, 0x1155d1950, {{183.0, 741.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d1a70, {{185.0, 743.0}, {32.0, 32.0}}, label: '🏆', Focused
+                          Other, 0x1155d1b90, {{227.0, 741.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d1cb0, {{229.0, 743.0}, {33.0, 32.0}}, label: '🦆', Focused
+                          Other, 0x1155d1dd0, {{272.0, 741.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d1ef0, {{274.0, 743.0}, {33.0, 32.0}}, label: '🍒', Focused
+                          Other, 0x1155d2010, {{4.0, 797.0}, {111.0, 24.0}}, Focused
+                            StaticText, 0x1155d2130, {{4.0, 799.0}, {111.0, 20.0}}, label: 'Emoji & People', value: Emoji & People, Focused
+                          Other, 0x1155d2250, {{4.0, 837.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d2370, {{6.0, 839.0}, {32.0, 32.0}}, label: '😀', Focused
+                          Other, 0x1155d2490, {{48.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d25b0, {{50.0, 839.0}, {33.0, 32.0}}, label: '😃', Focused
+                          Other, 0x1155d26d0, {{93.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d27f0, {{95.0, 839.0}, {33.0, 32.0}}, label: '😄', Focused
+                          Other, 0x1155d2910, {{138.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d2a30, {{140.0, 839.0}, {33.0, 32.0}}, label: '😁', Focused
+                          Other, 0x1155d2b50, {{183.0, 837.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d2c70, {{185.0, 839.0}, {32.0, 32.0}}, label: '😆', Focused
+                          Other, 0x1155d2d90, {{227.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d2eb0, {{229.0, 839.0}, {33.0, 32.0}}, label: '😅', Focused
+                          Other, 0x1155d3120, {{272.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d3240, {{274.0, 839.0}, {33.0, 32.0}}, label: '🤣', Focused
+                          Other, 0x1155d3360, {{317.0, 837.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d3480, {{319.0, 839.0}, {33.0, 32.0}}, label: '😂', Focused
+                          Other, 0x1155d35a0, {{362.0, 837.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d36c0, {{364.0, 839.0}, {32.0, 32.0}}, label: '🙂', Focused
+                          Other, 0x1155d37e0, {{4.0, 881.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d3900, {{6.0, 883.0}, {32.0, 32.0}}, label: '🙃', Focused
+                          Other, 0x1155d3a20, {{48.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d3b40, {{50.0, 883.0}, {33.0, 32.0}}, label: '🫠', Focused
+                          Other, 0x1155d3c60, {{93.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d3d80, {{95.0, 883.0}, {33.0, 32.0}}, label: '😉', Focused
+                          Other, 0x1155d3ea0, {{138.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d3fc0, {{140.0, 883.0}, {33.0, 32.0}}, label: '😊', Focused
+                          Other, 0x1155d40e0, {{183.0, 881.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d4200, {{185.0, 883.0}, {32.0, 32.0}}, label: '😇', Focused
+                          Other, 0x1155d4320, {{227.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d4440, {{229.0, 883.0}, {33.0, 32.0}}, label: '🥰', Focused
+                          Other, 0x1155d4560, {{272.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d4680, {{274.0, 883.0}, {33.0, 32.0}}, label: '😍', Focused
+                          Other, 0x1155d47a0, {{317.0, 881.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d48c0, {{319.0, 883.0}, {33.0, 32.0}}, label: '🤩', Focused
+                          Other, 0x1155d49e0, {{362.0, 881.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d4b00, {{364.0, 883.0}, {32.0, 32.0}}, label: '😘', Focused
+                          Other, 0x1155d4c20, {{4.0, 925.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d4d40, {{6.0, 927.0}, {32.0, 32.0}}, label: '😗', Focused
+                          Other, 0x1155d4e60, {{48.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d4f80, {{50.0, 927.0}, {33.0, 32.0}}, label: '☺️', Focused
+                          Other, 0x1155d50a0, {{93.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d51c0, {{95.0, 927.0}, {33.0, 32.0}}, label: '😚', Focused
+                          Other, 0x1155d52e0, {{138.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d5400, {{140.0, 927.0}, {33.0, 32.0}}, label: '😙', Focused
+                          Other, 0x1155d2fd0, {{183.0, 925.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d5740, {{185.0, 927.0}, {32.0, 32.0}}, label: '🥲', Focused
+                          Other, 0x1155d5860, {{227.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d5980, {{229.0, 927.0}, {33.0, 32.0}}, label: '😋', Focused
+                          Other, 0x1155d5aa0, {{272.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d5bc0, {{274.0, 927.0}, {33.0, 32.0}}, label: '😛', Focused
+                          Other, 0x1155d5ce0, {{317.0, 925.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d5e00, {{319.0, 927.0}, {33.0, 32.0}}, label: '😜', Focused
+                          Other, 0x1155d5f20, {{362.0, 925.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d6040, {{364.0, 927.0}, {32.0, 32.0}}, label: '🤪', Focused
+                          Other, 0x1155d6160, {{4.0, 969.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d6280, {{6.0, 971.0}, {32.0, 32.0}}, label: '😝', Focused
+                          Other, 0x1155d63a0, {{48.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d64c0, {{50.0, 971.0}, {33.0, 32.0}}, label: '🤑', Focused
+                          Other, 0x1155d65e0, {{93.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d6700, {{95.0, 971.0}, {33.0, 32.0}}, label: '🤗', Focused
+                          Other, 0x1155d6820, {{138.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d6940, {{140.0, 971.0}, {33.0, 32.0}}, label: '🤭', Focused
+                          Other, 0x1155d6a60, {{183.0, 969.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d6b80, {{185.0, 971.0}, {32.0, 32.0}}, label: '🫢', Focused
+                          Other, 0x1155d6ca0, {{227.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d6dc0, {{229.0, 971.0}, {33.0, 32.0}}, label: '🫣', Focused
+                          Other, 0x1155d6ee0, {{272.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d7000, {{274.0, 971.0}, {33.0, 32.0}}, label: '🤫', Focused
+                          Other, 0x1155d7120, {{317.0, 969.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d7240, {{319.0, 971.0}, {33.0, 32.0}}, label: '🤔', Focused
+                          Other, 0x1155d7360, {{362.0, 969.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d7480, {{364.0, 971.0}, {32.0, 32.0}}, label: '🫡', Focused
+                          Other, 0x1155d75a0, {{4.0, 1013.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d76c0, {{6.0, 1015.0}, {32.0, 32.0}}, label: '🤐', Focused
+                          Other, 0x1155d77e0, {{48.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d7900, {{50.0, 1015.0}, {33.0, 32.0}}, label: '🤨', Focused
+                          Other, 0x1155d7a20, {{93.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d7b40, {{95.0, 1015.0}, {33.0, 32.0}}, label: '😐', Focused
+                          Other, 0x1155d7c60, {{138.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d7d80, {{140.0, 1015.0}, {33.0, 32.0}}, label: '😑', Focused
+                          Other, 0x1155d7ea0, {{183.0, 1013.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d7fc0, {{185.0, 1015.0}, {32.0, 32.0}}, label: '😶', Focused
+                          Other, 0x1155d80e0, {{227.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d8200, {{229.0, 1015.0}, {33.0, 32.0}}, label: '🫥', Focused
+                          Other, 0x1155d8320, {{272.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d8440, {{274.0, 1015.0}, {33.0, 32.0}}, label: '😶‍🌫️', Focused
+                          Other, 0x1155d8560, {{317.0, 1013.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d8680, {{319.0, 1015.0}, {33.0, 32.0}}, label: '😏', Focused
+                          Other, 0x1155d87a0, {{362.0, 1013.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d88c0, {{364.0, 1015.0}, {32.0, 32.0}}, label: '😒', Focused
+                          Other, 0x1155d89e0, {{4.0, 1057.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d8b00, {{6.0, 1059.0}, {32.0, 32.0}}, label: '🙄', Focused
+                          Other, 0x1155d8c20, {{48.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d8d40, {{50.0, 1059.0}, {33.0, 32.0}}, label: '😬', Focused
+                          Other, 0x1155d8e60, {{93.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d8f80, {{95.0, 1059.0}, {33.0, 32.0}}, label: '😮‍💨', Focused
+                          Other, 0x1155d5520, {{138.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d9410, {{140.0, 1059.0}, {33.0, 32.0}}, label: '🤥', Focused
+                          Other, 0x1155d9530, {{183.0, 1057.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d9650, {{185.0, 1059.0}, {32.0, 32.0}}, label: '🫨', Focused
+                          Other, 0x1155d9770, {{227.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d9890, {{229.0, 1059.0}, {33.0, 32.0}}, label: '🙂‍↔️', Focused
+                          Other, 0x1155d99b0, {{272.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d9ad0, {{274.0, 1059.0}, {33.0, 32.0}}, label: '🙂‍↕️', Focused
+                          Other, 0x1155d9bf0, {{317.0, 1057.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155d9d10, {{319.0, 1059.0}, {33.0, 32.0}}, label: '😌', Focused
+                          Other, 0x1155d9e30, {{362.0, 1057.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d9f50, {{364.0, 1059.0}, {32.0, 32.0}}, label: '😔', Focused
+                          Other, 0x1155da070, {{4.0, 1101.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155da190, {{6.0, 1103.0}, {32.0, 32.0}}, label: '😪', Focused
+                          Other, 0x1155da2b0, {{48.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155da3d0, {{50.0, 1103.0}, {33.0, 32.0}}, label: '🤤', Focused
+                          Other, 0x1155da4f0, {{93.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155da610, {{95.0, 1103.0}, {33.0, 32.0}}, label: '😴', Focused
+                          Other, 0x1155da730, {{138.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155da850, {{140.0, 1103.0}, {33.0, 32.0}}, label: '🫩', Focused
+                          Other, 0x1155da970, {{183.0, 1101.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155daa90, {{185.0, 1103.0}, {32.0, 32.0}}, label: '😷', Focused
+                          Other, 0x1155dabb0, {{227.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dacd0, {{229.0, 1103.0}, {33.0, 32.0}}, label: '🤒', Focused
+                          Other, 0x1155dadf0, {{272.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155daf10, {{274.0, 1103.0}, {33.0, 32.0}}, label: '🤕', Focused
+                          Other, 0x1155db030, {{317.0, 1101.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155db150, {{319.0, 1103.0}, {33.0, 32.0}}, label: '🤢', Focused
+                          Other, 0x1155db270, {{362.0, 1101.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155db390, {{364.0, 1103.0}, {32.0, 32.0}}, label: '🤮', Focused
+                          Other, 0x1155db4b0, {{4.0, 1145.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155db5d0, {{6.0, 1147.0}, {32.0, 32.0}}, label: '🤧', Focused
+                          Other, 0x1155db6f0, {{48.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155db810, {{50.0, 1147.0}, {33.0, 32.0}}, label: '🥵', Focused
+                          Other, 0x1155db930, {{93.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dba50, {{95.0, 1147.0}, {33.0, 32.0}}, label: '🥶', Focused
+                          Other, 0x1155dbb70, {{138.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dbc90, {{140.0, 1147.0}, {33.0, 32.0}}, label: '🥴', Focused
+                          Other, 0x1155dbdb0, {{183.0, 1145.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155dbed0, {{185.0, 1147.0}, {32.0, 32.0}}, label: '😵', Focused
+                          Other, 0x1155dbff0, {{227.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dc110, {{229.0, 1147.0}, {33.0, 32.0}}, label: '😵‍💫', Focused
+                          Other, 0x1155dc230, {{272.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dc350, {{274.0, 1147.0}, {33.0, 32.0}}, label: '🤯', Focused
+                          Other, 0x1155dc470, {{317.0, 1145.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dc590, {{319.0, 1147.0}, {33.0, 32.0}}, label: '🤠', Focused
+                          Other, 0x1155dc6b0, {{362.0, 1145.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155dc7d0, {{364.0, 1147.0}, {32.0, 32.0}}, label: '🥳', Focused
+                          Other, 0x1155dc8f0, {{4.0, 1189.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155dca10, {{6.0, 1191.0}, {32.0, 32.0}}, label: '🥸', Focused
+                          Other, 0x1155dcb30, {{48.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dcc50, {{50.0, 1191.0}, {33.0, 32.0}}, label: '😎', Focused
+                          Other, 0x1155dcd70, {{93.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dce90, {{95.0, 1191.0}, {33.0, 32.0}}, label: '🤓', Focused
+                          Other, 0x1155dcfb0, {{138.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dd0d0, {{140.0, 1191.0}, {33.0, 32.0}}, label: '🧐', Focused
+                          Other, 0x1155dd1f0, {{183.0, 1189.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155dd310, {{185.0, 1191.0}, {32.0, 32.0}}, label: '😕', Focused
+                          Other, 0x1155dd430, {{227.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dd550, {{229.0, 1191.0}, {33.0, 32.0}}, label: '🫤', Focused
+                          Other, 0x1155dd670, {{272.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dd790, {{274.0, 1191.0}, {33.0, 32.0}}, label: '😟', Focused
+                          Other, 0x1155dd8b0, {{317.0, 1189.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dd9d0, {{319.0, 1191.0}, {33.0, 32.0}}, label: '🙁', Focused
+                          Other, 0x1155ddaf0, {{362.0, 1189.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ddc10, {{364.0, 1191.0}, {32.0, 32.0}}, label: '☹️', Focused
+                          Other, 0x1155ddd30, {{4.0, 1233.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155dde50, {{6.0, 1235.0}, {32.0, 32.0}}, label: '😮', Focused
+                          Other, 0x1155ddf70, {{48.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155de090, {{50.0, 1235.0}, {33.0, 32.0}}, label: '😯', Focused
+                          Other, 0x1155de1b0, {{93.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155de2d0, {{95.0, 1235.0}, {33.0, 32.0}}, label: '😲', Focused
+                          Other, 0x1155de3f0, {{138.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155de510, {{140.0, 1235.0}, {33.0, 32.0}}, label: '😳', Focused
+                          Other, 0x1155de630, {{183.0, 1233.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155de750, {{185.0, 1235.0}, {32.0, 32.0}}, label: '🫪', Focused
+                          Other, 0x1155de870, {{227.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155de990, {{229.0, 1235.0}, {33.0, 32.0}}, label: '🥺', Focused
+                          Other, 0x1155deab0, {{272.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155debd0, {{274.0, 1235.0}, {33.0, 32.0}}, label: '🥹', Focused
+                          Other, 0x1155decf0, {{317.0, 1233.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dee10, {{319.0, 1235.0}, {33.0, 32.0}}, label: '😦', Focused
+                          Other, 0x1155def30, {{362.0, 1233.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155df050, {{364.0, 1235.0}, {32.0, 32.0}}, label: '😧', Focused
+                          Other, 0x1155d90a0, {{4.0, 1277.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155d91c0, {{6.0, 1279.0}, {32.0, 32.0}}, label: '😨', Focused
+                          Other, 0x1155d92e0, {{48.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155df170, {{50.0, 1279.0}, {33.0, 32.0}}, label: '😰', Focused
+                          Other, 0x1155df290, {{93.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155df3b0, {{95.0, 1279.0}, {33.0, 32.0}}, label: '😥', Focused
+                          Other, 0x1155df4d0, {{138.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155df5f0, {{140.0, 1279.0}, {33.0, 32.0}}, label: '😢', Focused
+                          Other, 0x1155df710, {{183.0, 1277.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155df830, {{185.0, 1279.0}, {32.0, 32.0}}, label: '😭', Focused
+                          Other, 0x1155df950, {{227.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dfa70, {{229.0, 1279.0}, {33.0, 32.0}}, label: '😱', Focused
+                          Other, 0x1155dfb90, {{272.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dfcb0, {{274.0, 1279.0}, {33.0, 32.0}}, label: '😖', Focused
+                          Other, 0x1155dfdd0, {{317.0, 1277.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155dfef0, {{319.0, 1279.0}, {33.0, 32.0}}, label: '😣', Focused
+                          Other, 0x1155e0010, {{362.0, 1277.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e0130, {{364.0, 1279.0}, {32.0, 32.0}}, label: '😞', Focused
+                          Other, 0x1155e0250, {{4.0, 1321.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e0370, {{6.0, 1323.0}, {32.0, 32.0}}, label: '😓', Focused
+                          Other, 0x1155e0490, {{48.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e05b0, {{50.0, 1323.0}, {33.0, 32.0}}, label: '😩', Focused
+                          Other, 0x1155e06d0, {{93.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e07f0, {{95.0, 1323.0}, {33.0, 32.0}}, label: '😫', Focused
+                          Other, 0x1155e0910, {{138.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e0a30, {{140.0, 1323.0}, {33.0, 32.0}}, label: '🥱', Focused
+                          Other, 0x1155e0b50, {{183.0, 1321.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e0c70, {{185.0, 1323.0}, {32.0, 32.0}}, label: '😤', Focused
+                          Other, 0x1155e0d90, {{227.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e0eb0, {{229.0, 1323.0}, {33.0, 32.0}}, label: '😡', Focused
+                          Other, 0x1155e0fd0, {{272.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e10f0, {{274.0, 1323.0}, {33.0, 32.0}}, label: '😠', Focused
+                          Other, 0x1155e1210, {{317.0, 1321.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e1330, {{319.0, 1323.0}, {33.0, 32.0}}, label: '🤬', Focused
+                          Other, 0x1155e1450, {{362.0, 1321.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e1570, {{364.0, 1323.0}, {32.0, 32.0}}, label: '😈', Focused
+                          Other, 0x1155e1690, {{4.0, 1365.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e17b0, {{6.0, 1367.0}, {32.0, 32.0}}, label: '👿', Focused
+                          Other, 0x1155e18d0, {{48.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e19f0, {{50.0, 1367.0}, {33.0, 32.0}}, label: '💀', Focused
+                          Other, 0x1155e1b10, {{93.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e1c30, {{95.0, 1367.0}, {33.0, 32.0}}, label: '☠️', Focused
+                          Other, 0x1155e1d50, {{138.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e1e70, {{140.0, 1367.0}, {33.0, 32.0}}, label: '💩', Focused
+                          Other, 0x1155e1f90, {{183.0, 1365.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e20b0, {{185.0, 1367.0}, {32.0, 32.0}}, label: '🤡', Focused
+                          Other, 0x1155e21d0, {{227.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e22f0, {{229.0, 1367.0}, {33.0, 32.0}}, label: '👹', Focused
+                          Other, 0x1155e2410, {{272.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e2530, {{274.0, 1367.0}, {33.0, 32.0}}, label: '👺', Focused
+                          Other, 0x1155e2650, {{317.0, 1365.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e2770, {{319.0, 1367.0}, {33.0, 32.0}}, label: '👻', Focused
+                          Other, 0x1155e2890, {{362.0, 1365.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e29b0, {{364.0, 1367.0}, {32.0, 32.0}}, label: '👽', Focused
+                          Other, 0x1155e2ad0, {{4.0, 1409.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e2bf0, {{6.0, 1411.0}, {32.0, 32.0}}, label: '👾', Focused
+                          Other, 0x1155e2d10, {{48.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e2e30, {{50.0, 1411.0}, {33.0, 32.0}}, label: '🤖', Focused
+                          Other, 0x1155e2f50, {{93.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e3070, {{95.0, 1411.0}, {33.0, 32.0}}, label: '😺', Focused
+                          Other, 0x1155e3190, {{138.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e32b0, {{140.0, 1411.0}, {33.0, 32.0}}, label: '😸', Focused
+                          Other, 0x1155e33d0, {{183.0, 1409.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e34f0, {{185.0, 1411.0}, {32.0, 32.0}}, label: '😹', Focused
+                          Other, 0x1155e3610, {{227.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e3730, {{229.0, 1411.0}, {33.0, 32.0}}, label: '😻', Focused
+                          Other, 0x1155e3850, {{272.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e3970, {{274.0, 1411.0}, {33.0, 32.0}}, label: '😼', Focused
+                          Other, 0x1155e3a90, {{317.0, 1409.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e3bb0, {{319.0, 1411.0}, {33.0, 32.0}}, label: '😽', Focused
+                          Other, 0x1155e3cd0, {{362.0, 1409.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e3df0, {{364.0, 1411.0}, {32.0, 32.0}}, label: '🙀', Focused
+                          Other, 0x1155e3f10, {{4.0, 1453.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e4030, {{6.0, 1455.0}, {32.0, 32.0}}, label: '😿', Focused
+                          Other, 0x1155e4150, {{48.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e4270, {{50.0, 1455.0}, {33.0, 32.0}}, label: '😾', Focused
+                          Other, 0x1155e4390, {{93.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e44b0, {{95.0, 1455.0}, {33.0, 32.0}}, label: '🙈', Focused
+                          Other, 0x1155e45d0, {{138.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e46f0, {{140.0, 1455.0}, {33.0, 32.0}}, label: '🙉', Focused
+                          Other, 0x1155e4810, {{183.0, 1453.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e4930, {{185.0, 1455.0}, {32.0, 32.0}}, label: '🙊', Focused
+                          Other, 0x1155e4a50, {{227.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e4b70, {{229.0, 1455.0}, {33.0, 32.0}}, label: '💌', Focused
+                          Other, 0x1155e4c90, {{272.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e4db0, {{274.0, 1455.0}, {33.0, 32.0}}, label: '💘', Focused
+                          Other, 0x1155e4ed0, {{317.0, 1453.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e4ff0, {{319.0, 1455.0}, {33.0, 32.0}}, label: '💝', Focused
+                          Other, 0x1155e5110, {{362.0, 1453.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e5230, {{364.0, 1455.0}, {32.0, 32.0}}, label: '💖', Focused
+                          Other, 0x1155e5350, {{4.0, 1497.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e5470, {{6.0, 1499.0}, {32.0, 32.0}}, label: '💗', Focused
+                          Other, 0x1155e5590, {{48.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e56b0, {{50.0, 1499.0}, {33.0, 32.0}}, label: '💓', Focused
+                          Other, 0x1155e57d0, {{93.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e58f0, {{95.0, 1499.0}, {33.0, 32.0}}, label: '💞', Focused
+                          Other, 0x1155e5a10, {{138.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e5b30, {{140.0, 1499.0}, {33.0, 32.0}}, label: '💕', Focused
+                          Other, 0x1155e5c50, {{183.0, 1497.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e5d70, {{185.0, 1499.0}, {32.0, 32.0}}, label: '💟', Focused
+                          Other, 0x1155e5e90, {{227.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e5fb0, {{229.0, 1499.0}, {33.0, 32.0}}, label: '❣️', Focused
+                          Other, 0x1155e60d0, {{272.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e61f0, {{274.0, 1499.0}, {33.0, 32.0}}, label: '💔', Focused
+                          Other, 0x1155e6310, {{317.0, 1497.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e6430, {{319.0, 1499.0}, {33.0, 32.0}}, label: '❤️‍🔥', Focused
+                          Other, 0x1155e6550, {{362.0, 1497.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e6670, {{364.0, 1499.0}, {32.0, 32.0}}, label: '❤️‍🩹', Focused
+                          Other, 0x1155e6790, {{4.0, 1541.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e68b0, {{6.0, 1543.0}, {32.0, 32.0}}, label: '❤️', Focused
+                          Other, 0x1155e69d0, {{48.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e6af0, {{50.0, 1543.0}, {33.0, 32.0}}, label: '🩷', Focused
+                          Other, 0x1155e6c10, {{93.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e6d30, {{95.0, 1543.0}, {33.0, 32.0}}, label: '🧡', Focused
+                          Other, 0x1155e6e50, {{138.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e6f70, {{140.0, 1543.0}, {33.0, 32.0}}, label: '💛', Focused
+                          Other, 0x1155e7090, {{183.0, 1541.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e71b0, {{185.0, 1543.0}, {32.0, 32.0}}, label: '💚', Focused
+                          Other, 0x1155e72d0, {{227.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e73f0, {{229.0, 1543.0}, {33.0, 32.0}}, label: '💙', Focused
+                          Other, 0x1155e7510, {{272.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e7630, {{274.0, 1543.0}, {33.0, 32.0}}, label: '🩵', Focused
+                          Other, 0x1155e7750, {{317.0, 1541.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e7870, {{319.0, 1543.0}, {33.0, 32.0}}, label: '💜', Focused
+                          Other, 0x1155e7990, {{362.0, 1541.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e7ab0, {{364.0, 1543.0}, {32.0, 32.0}}, label: '🤎', Focused
+                          Other, 0x1155e7bd0, {{4.0, 1585.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e7cf0, {{6.0, 1587.0}, {32.0, 32.0}}, label: '🖤', Focused
+                          Other, 0x1155e7e10, {{48.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e7f30, {{50.0, 1587.0}, {33.0, 32.0}}, label: '🩶', Focused
+                          Other, 0x1155e8050, {{93.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e8170, {{95.0, 1587.0}, {33.0, 32.0}}, label: '🤍', Focused
+                          Other, 0x1155e8290, {{138.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e83b0, {{140.0, 1587.0}, {33.0, 32.0}}, label: '💋', Focused
+                          Other, 0x1155e84d0, {{183.0, 1585.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e85f0, {{185.0, 1587.0}, {32.0, 32.0}}, label: '💯', Focused
+                          Other, 0x1155e8710, {{227.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e8830, {{229.0, 1587.0}, {33.0, 32.0}}, label: '💢', Focused
+                          Other, 0x1155e8950, {{272.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e8a70, {{274.0, 1587.0}, {33.0, 32.0}}, label: '🫯', Focused
+                          Other, 0x1155e8b90, {{317.0, 1585.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e8cb0, {{319.0, 1587.0}, {33.0, 32.0}}, label: '💥', Focused
+                          Other, 0x1155e8dd0, {{362.0, 1585.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e8ef0, {{364.0, 1587.0}, {32.0, 32.0}}, label: '💫', Focused
+                          Other, 0x1155e9010, {{4.0, 1629.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e9130, {{6.0, 1631.0}, {32.0, 32.0}}, label: '💦', Focused
+                          Other, 0x1155e9250, {{48.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e9370, {{50.0, 1631.0}, {33.0, 32.0}}, label: '💨', Focused
+                          Other, 0x1155e9490, {{93.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e95b0, {{95.0, 1631.0}, {33.0, 32.0}}, label: '🕳️', Focused
+                          Other, 0x1155e96d0, {{138.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e97f0, {{140.0, 1631.0}, {33.0, 32.0}}, label: '💬', Focused
+                          Other, 0x1155e9910, {{183.0, 1629.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155e9a30, {{185.0, 1631.0}, {32.0, 32.0}}, label: '👁️‍🗨️', Focused
+                          Other, 0x1155e9b50, {{227.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e9c70, {{229.0, 1631.0}, {33.0, 32.0}}, label: '🗨️', Focused
+                          Other, 0x1155e9d90, {{272.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155e9eb0, {{274.0, 1631.0}, {33.0, 32.0}}, label: '🗯️', Focused
+                          Other, 0x1155e9fd0, {{317.0, 1629.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ea0f0, {{319.0, 1631.0}, {33.0, 32.0}}, label: '💭', Focused
+                          Other, 0x1155ea210, {{362.0, 1629.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ea330, {{364.0, 1631.0}, {32.0, 32.0}}, label: '💤', Focused
+                          Other, 0x1155ea450, {{4.0, 1673.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ea570, {{6.0, 1675.0}, {32.0, 32.0}}, label: '👋', Focused
+                          Other, 0x1155ea690, {{48.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ea7b0, {{50.0, 1675.0}, {33.0, 32.0}}, label: '🤚', Focused
+                          Other, 0x1037c4a70, {{93.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037aa530, {{95.0, 1675.0}, {33.0, 32.0}}, label: '🖐️', Focused
+                          Other, 0x1037c3e50, {{138.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037a9050, {{140.0, 1675.0}, {33.0, 32.0}}, label: '✋', Focused
+                          Other, 0x1037a9b70, {{183.0, 1673.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c3a30, {{185.0, 1675.0}, {32.0, 32.0}}, label: '🖖', Focused
+                          Other, 0x1037aa9b0, {{227.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c7a40, {{229.0, 1675.0}, {33.0, 32.0}}, label: '🫱', Focused
+                          Other, 0x1037c7b60, {{272.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c7c80, {{274.0, 1675.0}, {33.0, 32.0}}, label: '🫲', Focused
+                          Other, 0x1037c7da0, {{317.0, 1673.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c7ec0, {{319.0, 1675.0}, {33.0, 32.0}}, label: '🫳', Focused
+                          Other, 0x1037c7fe0, {{362.0, 1673.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c8100, {{364.0, 1675.0}, {32.0, 32.0}}, label: '🫴', Focused
+                          Other, 0x1037c8220, {{4.0, 1717.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c8340, {{6.0, 1719.0}, {32.0, 32.0}}, label: '🫷', Focused
+                          Other, 0x1037c8460, {{48.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c8580, {{50.0, 1719.0}, {33.0, 32.0}}, label: '🫸', Focused
+                          Other, 0x1037c86a0, {{93.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c87c0, {{95.0, 1719.0}, {33.0, 32.0}}, label: '👌', Focused
+                          Other, 0x1037c88e0, {{138.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c8a00, {{140.0, 1719.0}, {33.0, 32.0}}, label: '🤌', Focused
+                          Other, 0x1037c8b20, {{183.0, 1717.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c8c40, {{185.0, 1719.0}, {32.0, 32.0}}, label: '🤏', Focused
+                          Other, 0x1037c8d60, {{227.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c8e80, {{229.0, 1719.0}, {33.0, 32.0}}, label: '✌️', Focused
+                          Other, 0x1037c8fa0, {{272.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c90c0, {{274.0, 1719.0}, {33.0, 32.0}}, label: '🤞', Focused
+                          Other, 0x1037c91e0, {{317.0, 1717.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c9300, {{319.0, 1719.0}, {33.0, 32.0}}, label: '🫰', Focused
+                          Other, 0x1037c9420, {{362.0, 1717.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c9540, {{364.0, 1719.0}, {32.0, 32.0}}, label: '🤟', Focused
+                          Other, 0x1037c9660, {{4.0, 1761.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037c9780, {{6.0, 1763.0}, {32.0, 32.0}}, label: '🤘', Focused
+                          Other, 0x1037c98a0, {{48.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c99c0, {{50.0, 1763.0}, {33.0, 32.0}}, label: '🤙', Focused
+                          Other, 0x1037c9ae0, {{93.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c9c00, {{95.0, 1763.0}, {33.0, 32.0}}, label: '👈', Focused
+                          Other, 0x1037c9d20, {{138.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037c9e40, {{140.0, 1763.0}, {33.0, 32.0}}, label: '👉', Focused
+                          Other, 0x1037c9f60, {{183.0, 1761.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037ca080, {{185.0, 1763.0}, {32.0, 32.0}}, label: '👆', Focused
+                          Other, 0x1037ca1a0, {{227.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037ca2c0, {{229.0, 1763.0}, {33.0, 32.0}}, label: '🖕', Focused
+                          Other, 0x1037ca3e0, {{272.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037ca500, {{274.0, 1763.0}, {33.0, 32.0}}, label: '👇', Focused
+                          Other, 0x1037ca620, {{317.0, 1761.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037ca740, {{319.0, 1763.0}, {33.0, 32.0}}, label: '☝️', Focused
+                          Other, 0x1037ca860, {{362.0, 1761.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037ca980, {{364.0, 1763.0}, {32.0, 32.0}}, label: '🫵', Focused
+                          Other, 0x1037caaa0, {{4.0, 1805.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037cabc0, {{6.0, 1807.0}, {32.0, 32.0}}, label: '👍', Focused
+                          Other, 0x1037cace0, {{48.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037cae00, {{50.0, 1807.0}, {33.0, 32.0}}, label: '👎', Focused
+                          Other, 0x1037caf20, {{93.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037cb040, {{95.0, 1807.0}, {33.0, 32.0}}, label: '✊', Focused
+                          Other, 0x1037cb160, {{138.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1037cb280, {{140.0, 1807.0}, {33.0, 32.0}}, label: '👊', Focused
+                          Other, 0x1037cb3a0, {{183.0, 1805.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1037cb4c0, {{185.0, 1807.0}, {32.0, 32.0}}, label: '🤛', Focused
+                          Other, 0x1155ea8d0, {{227.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ea9f0, {{229.0, 1807.0}, {33.0, 32.0}}, label: '🤜', Focused
+                          Other, 0x1155eab10, {{272.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eac30, {{274.0, 1807.0}, {33.0, 32.0}}, label: '👏', Focused
+                          Other, 0x1155ead50, {{317.0, 1805.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eae70, {{319.0, 1807.0}, {33.0, 32.0}}, label: '🙌', Focused
+                          Other, 0x1155eaf90, {{362.0, 1805.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155eb0b0, {{364.0, 1807.0}, {32.0, 32.0}}, label: '🫶', Focused
+                          Other, 0x1155eb1d0, {{4.0, 1849.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155eb2f0, {{6.0, 1851.0}, {32.0, 32.0}}, label: '👐', Focused
+                          Other, 0x1155eb410, {{48.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eb530, {{50.0, 1851.0}, {33.0, 32.0}}, label: '🤲', Focused
+                          Other, 0x1155eb650, {{93.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eb770, {{95.0, 1851.0}, {33.0, 32.0}}, label: '🤝', Focused
+                          Other, 0x1155eb890, {{138.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eb9b0, {{140.0, 1851.0}, {33.0, 32.0}}, label: '🙏', Focused
+                          Other, 0x1155ebad0, {{183.0, 1849.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ebbf0, {{185.0, 1851.0}, {32.0, 32.0}}, label: '✍️', Focused
+                          Other, 0x1155ebd10, {{227.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ebe30, {{229.0, 1851.0}, {33.0, 32.0}}, label: '💅', Focused
+                          Other, 0x1155ebf50, {{272.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ec070, {{274.0, 1851.0}, {33.0, 32.0}}, label: '🤳', Focused
+                          Other, 0x1155ec190, {{317.0, 1849.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ec2b0, {{319.0, 1851.0}, {33.0, 32.0}}, label: '💪', Focused
+                          Other, 0x1155ec3d0, {{362.0, 1849.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ec4f0, {{364.0, 1851.0}, {32.0, 32.0}}, label: '🦾', Focused
+                          Other, 0x1155ec610, {{4.0, 1893.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ec730, {{6.0, 1895.0}, {32.0, 32.0}}, label: '🦿', Focused
+                          Other, 0x1155ec850, {{48.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ec970, {{50.0, 1895.0}, {33.0, 32.0}}, label: '🦵', Focused
+                          Other, 0x1155eca90, {{93.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ecbb0, {{95.0, 1895.0}, {33.0, 32.0}}, label: '🦶', Focused
+                          Other, 0x1155eccd0, {{138.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ecdf0, {{140.0, 1895.0}, {33.0, 32.0}}, label: '👂', Focused
+                          Other, 0x1155ecf10, {{183.0, 1893.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ed030, {{185.0, 1895.0}, {32.0, 32.0}}, label: '🦻', Focused
+                          Other, 0x1155ed150, {{227.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ed270, {{229.0, 1895.0}, {33.0, 32.0}}, label: '👃', Focused
+                          Other, 0x1155ed390, {{272.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ed4b0, {{274.0, 1895.0}, {33.0, 32.0}}, label: '🧠', Focused
+                          Other, 0x1155ed5d0, {{317.0, 1893.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ed6f0, {{319.0, 1895.0}, {33.0, 32.0}}, label: '🫀', Focused
+                          Other, 0x1155ed810, {{362.0, 1893.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155ed930, {{364.0, 1895.0}, {32.0, 32.0}}, label: '🫁', Focused
+                          Other, 0x1155eda50, {{4.0, 1937.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1155edb70, {{6.0, 1939.0}, {32.0, 32.0}}, label: '🦷', Focused
+                          Other, 0x1155edc90, {{48.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155eddb0, {{50.0, 1939.0}, {33.0, 32.0}}, label: '🦴', Focused
+                          Other, 0x1155eded0, {{93.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155edff0, {{95.0, 1939.0}, {33.0, 32.0}}, label: '👀', Focused
+                          Other, 0x1155ee110, {{138.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1155ee230, {{140.0, 1939.0}, {33.0, 32.0}}, label: '👁️', Focused
+                          Other, 0x1034b53a0, {{183.0, 1937.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1034b3be0, {{185.0, 1939.0}, {32.0, 32.0}}, label: '👅', Focused
+                          Other, 0x115360120, {{227.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11535fae0, {{229.0, 1939.0}, {33.0, 32.0}}, label: '👄', Focused
+                          Other, 0x11535ec40, {{272.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11535f6c0, {{274.0, 1939.0}, {33.0, 32.0}}, label: '🫦', Focused
+                          Other, 0x115361a70, {{317.0, 1937.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115361b90, {{319.0, 1939.0}, {33.0, 32.0}}, label: '👶', Focused
+                          Other, 0x115361cb0, {{362.0, 1937.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115361dd0, {{364.0, 1939.0}, {32.0, 32.0}}, label: '🧒', Focused
+                          Other, 0x115361ef0, {{4.0, 1981.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115362010, {{6.0, 1983.0}, {32.0, 32.0}}, label: '👦', Focused
+                          Other, 0x115362130, {{48.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115362250, {{50.0, 1983.0}, {33.0, 32.0}}, label: '👧', Focused
+                          Other, 0x115362370, {{93.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115362490, {{95.0, 1983.0}, {33.0, 32.0}}, label: '🧑', Focused
+                          Other, 0x1153625b0, {{138.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153626d0, {{140.0, 1983.0}, {33.0, 32.0}}, label: '👱', Focused
+                          Other, 0x1153627f0, {{183.0, 1981.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115362910, {{185.0, 1983.0}, {32.0, 32.0}}, label: '👨', Focused
+                          Other, 0x115362a30, {{227.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115362b50, {{229.0, 1983.0}, {33.0, 32.0}}, label: '🧔', Focused
+                          Other, 0x115362c70, {{272.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115362d90, {{274.0, 1983.0}, {33.0, 32.0}}, label: '🧔‍♂️', Focused
+                          Other, 0x115362eb0, {{317.0, 1981.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115362fd0, {{319.0, 1983.0}, {33.0, 32.0}}, label: '🧔‍♀️', Focused
+                          Other, 0x1153630f0, {{362.0, 1981.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115363210, {{364.0, 1983.0}, {32.0, 32.0}}, label: '👨‍🦰', Focused
+                          Other, 0x115363330, {{4.0, 2025.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115363450, {{6.0, 2027.0}, {32.0, 32.0}}, label: '👨‍🦱', Focused
+                          Other, 0x115363570, {{48.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115363690, {{50.0, 2027.0}, {33.0, 32.0}}, label: '👨‍🦳', Focused
+                          Other, 0x1153637b0, {{93.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153638d0, {{95.0, 2027.0}, {33.0, 32.0}}, label: '👨‍🦲', Focused
+                          Other, 0x1153639f0, {{138.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115363b10, {{140.0, 2027.0}, {33.0, 32.0}}, label: '👩', Focused
+                          Other, 0x115363c30, {{183.0, 2025.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115363d50, {{185.0, 2027.0}, {32.0, 32.0}}, label: '👩‍🦰', Focused
+                          Other, 0x115363e70, {{227.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115363f90, {{229.0, 2027.0}, {33.0, 32.0}}, label: '🧑‍🦰', Focused
+                          Other, 0x1153640b0, {{272.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153641d0, {{274.0, 2027.0}, {33.0, 32.0}}, label: '👩‍🦱', Focused
+                          Other, 0x1153642f0, {{317.0, 2025.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115364410, {{319.0, 2027.0}, {33.0, 32.0}}, label: '🧑‍🦱', Focused
+                          Other, 0x115364530, {{362.0, 2025.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115364650, {{364.0, 2027.0}, {32.0, 32.0}}, label: '👩‍🦳', Focused
+                          Other, 0x115364770, {{4.0, 2069.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115364890, {{6.0, 2071.0}, {32.0, 32.0}}, label: '🧑‍🦳', Focused
+                          Other, 0x1153649b0, {{48.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115364ad0, {{50.0, 2071.0}, {33.0, 32.0}}, label: '👩‍🦲', Focused
+                          Other, 0x115364bf0, {{93.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115364d10, {{95.0, 2071.0}, {33.0, 32.0}}, label: '🧑‍🦲', Focused
+                          Other, 0x115364e30, {{138.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115364f50, {{140.0, 2071.0}, {33.0, 32.0}}, label: '👱‍♀️', Focused
+                          Other, 0x115365070, {{183.0, 2069.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115365190, {{185.0, 2071.0}, {32.0, 32.0}}, label: '👱‍♂️', Focused
+                          Other, 0x1153652b0, {{227.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153653d0, {{229.0, 2071.0}, {33.0, 32.0}}, label: '🧓', Focused
+                          Other, 0x1153654f0, {{272.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115365610, {{274.0, 2071.0}, {33.0, 32.0}}, label: '👴', Focused
+                          Other, 0x115365730, {{317.0, 2069.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115365850, {{319.0, 2071.0}, {33.0, 32.0}}, label: '👵', Focused
+                          Other, 0x115365970, {{362.0, 2069.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115365a90, {{364.0, 2071.0}, {32.0, 32.0}}, label: '🙍', Focused
+                          Other, 0x115365bb0, {{4.0, 2113.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115365cd0, {{6.0, 2115.0}, {32.0, 32.0}}, label: '🙍‍♂️', Focused
+                          Other, 0x115365df0, {{48.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115365f10, {{50.0, 2115.0}, {33.0, 32.0}}, label: '🙍‍♀️', Focused
+                          Other, 0x115366030, {{93.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115366150, {{95.0, 2115.0}, {33.0, 32.0}}, label: '🙎', Focused
+                          Other, 0x115366270, {{138.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115366390, {{140.0, 2115.0}, {33.0, 32.0}}, label: '🙎‍♂️', Focused
+                          Other, 0x1153664b0, {{183.0, 2113.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153665d0, {{185.0, 2115.0}, {32.0, 32.0}}, label: '🙎‍♀️', Focused
+                          Other, 0x1153666f0, {{227.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115366810, {{229.0, 2115.0}, {33.0, 32.0}}, label: '🙅', Focused
+                          Other, 0x115366930, {{272.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115366a50, {{274.0, 2115.0}, {33.0, 32.0}}, label: '🙅‍♂️', Focused
+                          Other, 0x115366b70, {{317.0, 2113.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115366c90, {{319.0, 2115.0}, {33.0, 32.0}}, label: '🙅‍♀️', Focused
+                          Other, 0x115366db0, {{362.0, 2113.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115366ed0, {{364.0, 2115.0}, {32.0, 32.0}}, label: '🙆', Focused
+                          Other, 0x115366ff0, {{4.0, 2157.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115367110, {{6.0, 2159.0}, {32.0, 32.0}}, label: '🙆‍♂️', Focused
+                          Other, 0x115367230, {{48.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115367350, {{50.0, 2159.0}, {33.0, 32.0}}, label: '🙆‍♀️', Focused
+                          Other, 0x115367470, {{93.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115367590, {{95.0, 2159.0}, {33.0, 32.0}}, label: '💁', Focused
+                          Other, 0x1153676b0, {{138.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153677d0, {{140.0, 2159.0}, {33.0, 32.0}}, label: '💁‍♂️', Focused
+                          Other, 0x1153678f0, {{183.0, 2157.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115367a10, {{185.0, 2159.0}, {32.0, 32.0}}, label: '💁‍♀️', Focused
+                          Other, 0x115367b30, {{227.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115367c50, {{229.0, 2159.0}, {33.0, 32.0}}, label: '🙋', Focused
+                          Other, 0x115367d70, {{272.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115367e90, {{274.0, 2159.0}, {33.0, 32.0}}, label: '🙋‍♂️', Focused
+                          Other, 0x115367fb0, {{317.0, 2157.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153680d0, {{319.0, 2159.0}, {33.0, 32.0}}, label: '🙋‍♀️', Focused
+                          Other, 0x1153681f0, {{362.0, 2157.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115368310, {{364.0, 2159.0}, {32.0, 32.0}}, label: '🧏', Focused
+                          Other, 0x115368430, {{4.0, 2201.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115368550, {{6.0, 2203.0}, {32.0, 32.0}}, label: '🧏‍♂️', Focused
+                          Other, 0x115368670, {{48.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115368790, {{50.0, 2203.0}, {33.0, 32.0}}, label: '🧏‍♀️', Focused
+                          Other, 0x1153688b0, {{93.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153689d0, {{95.0, 2203.0}, {33.0, 32.0}}, label: '🙇', Focused
+                          Other, 0x115368af0, {{138.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115368c10, {{140.0, 2203.0}, {33.0, 32.0}}, label: '🙇‍♂️', Focused
+                          Other, 0x115368d30, {{183.0, 2201.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115368e50, {{185.0, 2203.0}, {32.0, 32.0}}, label: '🙇‍♀️', Focused
+                          Other, 0x115368f70, {{227.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115369090, {{229.0, 2203.0}, {33.0, 32.0}}, label: '🤦', Focused
+                          Other, 0x1153691b0, {{272.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153692d0, {{274.0, 2203.0}, {33.0, 32.0}}, label: '🤦‍♂️', Focused
+                          Other, 0x1153693f0, {{317.0, 2201.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115369510, {{319.0, 2203.0}, {33.0, 32.0}}, label: '🤦‍♀️', Focused
+                          Other, 0x115369630, {{362.0, 2201.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115369750, {{364.0, 2203.0}, {32.0, 32.0}}, label: '🤷', Focused
+                          Other, 0x115369870, {{4.0, 2245.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115369990, {{6.0, 2247.0}, {32.0, 32.0}}, label: '🤷‍♂️', Focused
+                          Other, 0x115369ab0, {{48.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115369bd0, {{50.0, 2247.0}, {33.0, 32.0}}, label: '🤷‍♀️', Focused
+                          Other, 0x115369cf0, {{93.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115369e10, {{95.0, 2247.0}, {33.0, 32.0}}, label: '🧑‍⚕️', Focused
+                          Other, 0x115369f30, {{138.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536a050, {{140.0, 2247.0}, {33.0, 32.0}}, label: '👨‍⚕️', Focused
+                          Other, 0x11536a170, {{183.0, 2245.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536a290, {{185.0, 2247.0}, {32.0, 32.0}}, label: '👩‍⚕️', Focused
+                          Other, 0x11536a3b0, {{227.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536a4d0, {{229.0, 2247.0}, {33.0, 32.0}}, label: '🧑‍🎓', Focused
+                          Other, 0x11536a5f0, {{272.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536a710, {{274.0, 2247.0}, {33.0, 32.0}}, label: '👨‍🎓', Focused
+                          Other, 0x11536a830, {{317.0, 2245.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536a950, {{319.0, 2247.0}, {33.0, 32.0}}, label: '👩‍🎓', Focused
+                          Other, 0x11536aa70, {{362.0, 2245.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536ab90, {{364.0, 2247.0}, {32.0, 32.0}}, label: '🧑‍🏫', Focused
+                          Other, 0x11536acb0, {{4.0, 2289.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536add0, {{6.0, 2291.0}, {32.0, 32.0}}, label: '👨‍🏫', Focused
+                          Other, 0x11536aef0, {{48.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536b010, {{50.0, 2291.0}, {33.0, 32.0}}, label: '👩‍🏫', Focused
+                          Other, 0x11536b130, {{93.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536b250, {{95.0, 2291.0}, {33.0, 32.0}}, label: '🧑‍⚖️', Focused
+                          Other, 0x11536b370, {{138.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536b490, {{140.0, 2291.0}, {33.0, 32.0}}, label: '👨‍⚖️', Focused
+                          Other, 0x11536b5b0, {{183.0, 2289.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536b6d0, {{185.0, 2291.0}, {32.0, 32.0}}, label: '👩‍⚖️', Focused
+                          Other, 0x11536b7f0, {{227.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536b910, {{229.0, 2291.0}, {33.0, 32.0}}, label: '🧑‍🌾', Focused
+                          Other, 0x11536ba30, {{272.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536bb50, {{274.0, 2291.0}, {33.0, 32.0}}, label: '👨‍🌾', Focused
+                          Other, 0x11536bc70, {{317.0, 2289.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536bd90, {{319.0, 2291.0}, {33.0, 32.0}}, label: '👩‍🌾', Focused
+                          Other, 0x11536beb0, {{362.0, 2289.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536bfd0, {{364.0, 2291.0}, {32.0, 32.0}}, label: '🧑‍🍳', Focused
+                          Other, 0x11536c0f0, {{4.0, 2333.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536c210, {{6.0, 2335.0}, {32.0, 32.0}}, label: '👨‍🍳', Focused
+                          Other, 0x11536c330, {{48.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536c450, {{50.0, 2335.0}, {33.0, 32.0}}, label: '👩‍🍳', Focused
+                          Other, 0x11536c570, {{93.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536c690, {{95.0, 2335.0}, {33.0, 32.0}}, label: '🧑‍🔧', Focused
+                          Other, 0x11536c7b0, {{138.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536c8d0, {{140.0, 2335.0}, {33.0, 32.0}}, label: '👨‍🔧', Focused
+                          Other, 0x11536c9f0, {{183.0, 2333.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536cb10, {{185.0, 2335.0}, {32.0, 32.0}}, label: '👩‍🔧', Focused
+                          Other, 0x11536cc30, {{227.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536cd50, {{229.0, 2335.0}, {33.0, 32.0}}, label: '🧑‍🏭', Focused
+                          Other, 0x11536ce70, {{272.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536cf90, {{274.0, 2335.0}, {33.0, 32.0}}, label: '👨‍🏭', Focused
+                          Other, 0x11536d0b0, {{317.0, 2333.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536d1d0, {{319.0, 2335.0}, {33.0, 32.0}}, label: '👩‍🏭', Focused
+                          Other, 0x11536d2f0, {{362.0, 2333.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536d410, {{364.0, 2335.0}, {32.0, 32.0}}, label: '🧑‍💼', Focused
+                          Other, 0x11536d530, {{4.0, 2377.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536d650, {{6.0, 2379.0}, {32.0, 32.0}}, label: '👨‍💼', Focused
+                          Other, 0x11536d770, {{48.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536d890, {{50.0, 2379.0}, {33.0, 32.0}}, label: '👩‍💼', Focused
+                          Other, 0x11536d9b0, {{93.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536dad0, {{95.0, 2379.0}, {33.0, 32.0}}, label: '🧑‍🔬', Focused
+                          Other, 0x11536dbf0, {{138.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536dd10, {{140.0, 2379.0}, {33.0, 32.0}}, label: '👨‍🔬', Focused
+                          Other, 0x11536de30, {{183.0, 2377.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536df50, {{185.0, 2379.0}, {32.0, 32.0}}, label: '👩‍🔬', Focused
+                          Other, 0x11536e070, {{227.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536e190, {{229.0, 2379.0}, {33.0, 32.0}}, label: '🧑‍💻', Focused
+                          Other, 0x11536e2b0, {{272.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536e3d0, {{274.0, 2379.0}, {33.0, 32.0}}, label: '👨‍💻', Focused
+                          Other, 0x11536e4f0, {{317.0, 2377.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536e610, {{319.0, 2379.0}, {33.0, 32.0}}, label: '👩‍💻', Focused
+                          Other, 0x11536e730, {{362.0, 2377.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536e850, {{364.0, 2379.0}, {32.0, 32.0}}, label: '🧑‍🎤', Focused
+                          Other, 0x11536e970, {{4.0, 2421.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536ea90, {{6.0, 2423.0}, {32.0, 32.0}}, label: '👨‍🎤', Focused
+                          Other, 0x11536ebb0, {{48.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536ecd0, {{50.0, 2423.0}, {33.0, 32.0}}, label: '👩‍🎤', Focused
+                          Other, 0x11536edf0, {{93.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536ef10, {{95.0, 2423.0}, {33.0, 32.0}}, label: '🧑‍🎨', Focused
+                          Other, 0x11536f030, {{138.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536f150, {{140.0, 2423.0}, {33.0, 32.0}}, label: '👨‍🎨', Focused
+                          Other, 0x11536f270, {{183.0, 2421.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536f390, {{185.0, 2423.0}, {32.0, 32.0}}, label: '👩‍🎨', Focused
+                          Other, 0x11536f4b0, {{227.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536f5d0, {{229.0, 2423.0}, {33.0, 32.0}}, label: '🧑‍✈️', Focused
+                          Other, 0x11536f6f0, {{272.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536f810, {{274.0, 2423.0}, {33.0, 32.0}}, label: '👨‍✈️', Focused
+                          Other, 0x11536f930, {{317.0, 2421.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11536fa50, {{319.0, 2423.0}, {33.0, 32.0}}, label: '👩‍✈️', Focused
+                          Other, 0x11536fb70, {{362.0, 2421.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536fc90, {{364.0, 2423.0}, {32.0, 32.0}}, label: '🧑‍🚀', Focused
+                          Other, 0x11536fdb0, {{4.0, 2465.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11536fed0, {{6.0, 2467.0}, {32.0, 32.0}}, label: '👨‍🚀', Focused
+                          Other, 0x11536fff0, {{48.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370110, {{50.0, 2467.0}, {33.0, 32.0}}, label: '👩‍🚀', Focused
+                          Other, 0x115370230, {{93.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370350, {{95.0, 2467.0}, {33.0, 32.0}}, label: '🧑‍🚒', Focused
+                          Other, 0x115370470, {{138.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370590, {{140.0, 2467.0}, {33.0, 32.0}}, label: '👨‍🚒', Focused
+                          Other, 0x1153706b0, {{183.0, 2465.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153707d0, {{185.0, 2467.0}, {32.0, 32.0}}, label: '👩‍🚒', Focused
+                          Other, 0x1153708f0, {{227.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370a10, {{229.0, 2467.0}, {33.0, 32.0}}, label: '👮', Focused
+                          Other, 0x115370b30, {{272.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370c50, {{274.0, 2467.0}, {33.0, 32.0}}, label: '👮‍♂️', Focused
+                          Other, 0x115370d70, {{317.0, 2465.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115370e90, {{319.0, 2467.0}, {33.0, 32.0}}, label: '👮‍♀️', Focused
+                          Other, 0x115370fb0, {{362.0, 2465.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153710d0, {{364.0, 2467.0}, {32.0, 32.0}}, label: '🕵️', Focused
+                          Other, 0x1153711f0, {{4.0, 2509.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115371310, {{6.0, 2511.0}, {32.0, 32.0}}, label: '🕵️‍♂️', Focused
+                          Other, 0x115371430, {{48.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115371550, {{50.0, 2511.0}, {33.0, 32.0}}, label: '🕵️‍♀️', Focused
+                          Other, 0x115371670, {{93.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115371790, {{95.0, 2511.0}, {33.0, 32.0}}, label: '💂', Focused
+                          Other, 0x1153718b0, {{138.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153719d0, {{140.0, 2511.0}, {33.0, 32.0}}, label: '💂‍♂️', Focused
+                          Other, 0x115371af0, {{183.0, 2509.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115371c10, {{185.0, 2511.0}, {32.0, 32.0}}, label: '💂‍♀️', Focused
+                          Other, 0x115371d30, {{227.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115371e50, {{229.0, 2511.0}, {33.0, 32.0}}, label: '🥷', Focused
+                          Other, 0x115371f70, {{272.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115372090, {{274.0, 2511.0}, {33.0, 32.0}}, label: '👷', Focused
+                          Other, 0x1153721b0, {{317.0, 2509.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153722d0, {{319.0, 2511.0}, {33.0, 32.0}}, label: '👷‍♂️', Focused
+                          Other, 0x1153723f0, {{362.0, 2509.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115372510, {{364.0, 2511.0}, {32.0, 32.0}}, label: '👷‍♀️', Focused
+                          Other, 0x115372630, {{4.0, 2553.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115372750, {{6.0, 2555.0}, {32.0, 32.0}}, label: '🫅', Focused
+                          Other, 0x115372870, {{48.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115372990, {{50.0, 2555.0}, {33.0, 32.0}}, label: '🤴', Focused
+                          Other, 0x115372ab0, {{93.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115372bd0, {{95.0, 2555.0}, {33.0, 32.0}}, label: '👸', Focused
+                          Other, 0x115372cf0, {{138.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115372e10, {{140.0, 2555.0}, {33.0, 32.0}}, label: '👳', Focused
+                          Other, 0x115372f30, {{183.0, 2553.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115373050, {{185.0, 2555.0}, {32.0, 32.0}}, label: '👳‍♂️', Focused
+                          Other, 0x115373170, {{227.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115373290, {{229.0, 2555.0}, {33.0, 32.0}}, label: '👳‍♀️', Focused
+                          Other, 0x1153733b0, {{272.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153734d0, {{274.0, 2555.0}, {33.0, 32.0}}, label: '👲', Focused
+                          Other, 0x1153735f0, {{317.0, 2553.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115373710, {{319.0, 2555.0}, {33.0, 32.0}}, label: '🧕', Focused
+                          Other, 0x115373830, {{362.0, 2553.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115373950, {{364.0, 2555.0}, {32.0, 32.0}}, label: '🤵', Focused
+                          Other, 0x115373a70, {{4.0, 2597.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115373b90, {{6.0, 2599.0}, {32.0, 32.0}}, label: '🤵‍♂️', Focused
+                          Other, 0x115373cb0, {{48.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115373dd0, {{50.0, 2599.0}, {33.0, 32.0}}, label: '🤵‍♀️', Focused
+                          Other, 0x115373ef0, {{93.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115374010, {{95.0, 2599.0}, {33.0, 32.0}}, label: '👰', Focused
+                          Other, 0x115374130, {{138.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115374250, {{140.0, 2599.0}, {33.0, 32.0}}, label: '👰‍♂️', Focused
+                          Other, 0x115374370, {{183.0, 2597.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115374490, {{185.0, 2599.0}, {32.0, 32.0}}, label: '👰‍♀️', Focused
+                          Other, 0x1153745b0, {{227.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153746d0, {{229.0, 2599.0}, {33.0, 32.0}}, label: '🤰', Focused
+                          Other, 0x1153747f0, {{272.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115374910, {{274.0, 2599.0}, {33.0, 32.0}}, label: '🫃', Focused
+                          Other, 0x115374a30, {{317.0, 2597.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115374b50, {{319.0, 2599.0}, {33.0, 32.0}}, label: '🫄', Focused
+                          Other, 0x115374c70, {{362.0, 2597.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115374d90, {{364.0, 2599.0}, {32.0, 32.0}}, label: '🤱', Focused
+                          Other, 0x115374eb0, {{4.0, 2641.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115374fd0, {{6.0, 2643.0}, {32.0, 32.0}}, label: '👩‍🍼', Focused
+                          Other, 0x1153750f0, {{48.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375210, {{50.0, 2643.0}, {33.0, 32.0}}, label: '👨‍🍼', Focused
+                          Other, 0x115375330, {{93.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375450, {{95.0, 2643.0}, {33.0, 32.0}}, label: '🧑‍🍼', Focused
+                          Other, 0x115375570, {{138.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375690, {{140.0, 2643.0}, {33.0, 32.0}}, label: '👼', Focused
+                          Other, 0x1153757b0, {{183.0, 2641.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153758d0, {{185.0, 2643.0}, {32.0, 32.0}}, label: '🎅', Focused
+                          Other, 0x1153759f0, {{227.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375b10, {{229.0, 2643.0}, {33.0, 32.0}}, label: '🤶', Focused
+                          Other, 0x115375c30, {{272.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375d50, {{274.0, 2643.0}, {33.0, 32.0}}, label: '🧑‍🎄', Focused
+                          Other, 0x115375e70, {{317.0, 2641.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115375f90, {{319.0, 2643.0}, {33.0, 32.0}}, label: '🦸', Focused
+                          Other, 0x1153760b0, {{362.0, 2641.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153761d0, {{364.0, 2643.0}, {32.0, 32.0}}, label: '🦸‍♂️', Focused
+                          Other, 0x1153762f0, {{4.0, 2685.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115376410, {{6.0, 2687.0}, {32.0, 32.0}}, label: '🦸‍♀️', Focused
+                          Other, 0x115376530, {{48.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115376650, {{50.0, 2687.0}, {33.0, 32.0}}, label: '🦹', Focused
+                          Other, 0x115376770, {{93.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115376890, {{95.0, 2687.0}, {33.0, 32.0}}, label: '🦹‍♂️', Focused
+                          Other, 0x1153769b0, {{138.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115376ad0, {{140.0, 2687.0}, {33.0, 32.0}}, label: '🦹‍♀️', Focused
+                          Other, 0x115376bf0, {{183.0, 2685.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115376d10, {{185.0, 2687.0}, {32.0, 32.0}}, label: '🧙', Focused
+                          Other, 0x115376e30, {{227.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115376f50, {{229.0, 2687.0}, {33.0, 32.0}}, label: '🧙‍♂️', Focused
+                          Other, 0x115377070, {{272.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115377190, {{274.0, 2687.0}, {33.0, 32.0}}, label: '🧙‍♀️', Focused
+                          Other, 0x1153772b0, {{317.0, 2685.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153773d0, {{319.0, 2687.0}, {33.0, 32.0}}, label: '🧚', Focused
+                          Other, 0x1153774f0, {{362.0, 2685.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115377610, {{364.0, 2687.0}, {32.0, 32.0}}, label: '🧚‍♂️', Focused
+                          Other, 0x115377730, {{4.0, 2729.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115377850, {{6.0, 2731.0}, {32.0, 32.0}}, label: '🧚‍♀️', Focused
+                          Other, 0x115377970, {{48.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115377a90, {{50.0, 2731.0}, {33.0, 32.0}}, label: '🧛', Focused
+                          Other, 0x115377bb0, {{93.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115377cd0, {{95.0, 2731.0}, {33.0, 32.0}}, label: '🧛‍♂️', Focused
+                          Other, 0x115377df0, {{138.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115377f10, {{140.0, 2731.0}, {33.0, 32.0}}, label: '🧛‍♀️', Focused
+                          Other, 0x115378030, {{183.0, 2729.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115378150, {{185.0, 2731.0}, {32.0, 32.0}}, label: '🧜', Focused
+                          Other, 0x115378270, {{227.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115378390, {{229.0, 2731.0}, {33.0, 32.0}}, label: '🧜‍♂️', Focused
+                          Other, 0x1153784b0, {{272.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153785d0, {{274.0, 2731.0}, {33.0, 32.0}}, label: '🧜‍♀️', Focused
+                          Other, 0x1153786f0, {{317.0, 2729.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115378810, {{319.0, 2731.0}, {33.0, 32.0}}, label: '🧝', Focused
+                          Other, 0x115378930, {{362.0, 2729.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115378a50, {{364.0, 2731.0}, {32.0, 32.0}}, label: '🧝‍♂️', Focused
+                          Other, 0x115378b70, {{4.0, 2773.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115378c90, {{6.0, 2775.0}, {32.0, 32.0}}, label: '🧝‍♀️', Focused
+                          Other, 0x115378db0, {{48.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115378ed0, {{50.0, 2775.0}, {33.0, 32.0}}, label: '🧞', Focused
+                          Other, 0x115378ff0, {{93.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115379110, {{95.0, 2775.0}, {33.0, 32.0}}, label: '🧞‍♂️', Focused
+                          Other, 0x115379230, {{138.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115379350, {{140.0, 2775.0}, {33.0, 32.0}}, label: '🧞‍♀️', Focused
+                          Other, 0x115379470, {{183.0, 2773.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115379590, {{185.0, 2775.0}, {32.0, 32.0}}, label: '🧟', Focused
+                          Other, 0x1153796b0, {{227.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153797d0, {{229.0, 2775.0}, {33.0, 32.0}}, label: '🧟‍♂️', Focused
+                          Other, 0x1153798f0, {{272.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115379a10, {{274.0, 2775.0}, {33.0, 32.0}}, label: '🧟‍♀️', Focused
+                          Other, 0x115379b30, {{317.0, 2773.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115379c50, {{319.0, 2775.0}, {33.0, 32.0}}, label: '🧌', Focused
+                          Other, 0x115379d70, {{362.0, 2773.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115379e90, {{364.0, 2775.0}, {32.0, 32.0}}, label: '🫈', Focused
+                          Other, 0x115379fb0, {{4.0, 2817.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537a0d0, {{6.0, 2819.0}, {32.0, 32.0}}, label: '💆', Focused
+                          Other, 0x11537a1f0, {{48.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537a310, {{50.0, 2819.0}, {33.0, 32.0}}, label: '💆‍♂️', Focused
+                          Other, 0x11537a430, {{93.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537a550, {{95.0, 2819.0}, {33.0, 32.0}}, label: '💆‍♀️', Focused
+                          Other, 0x11537a670, {{138.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537a790, {{140.0, 2819.0}, {33.0, 32.0}}, label: '💇', Focused
+                          Other, 0x11537a8b0, {{183.0, 2817.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537a9d0, {{185.0, 2819.0}, {32.0, 32.0}}, label: '💇‍♂️', Focused
+                          Other, 0x11537aaf0, {{227.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537ac10, {{229.0, 2819.0}, {33.0, 32.0}}, label: '💇‍♀️', Focused
+                          Other, 0x11537ad30, {{272.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537ae50, {{274.0, 2819.0}, {33.0, 32.0}}, label: '🚶', Focused
+                          Other, 0x11537af70, {{317.0, 2817.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537b090, {{319.0, 2819.0}, {33.0, 32.0}}, label: '🚶‍♂️', Focused
+                          Other, 0x11537b1b0, {{362.0, 2817.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537b2d0, {{364.0, 2819.0}, {32.0, 32.0}}, label: '🚶‍♀️', Focused
+                          Other, 0x11537b3f0, {{4.0, 2861.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537b510, {{6.0, 2863.0}, {32.0, 32.0}}, label: '🚶‍➡️', Focused
+                          Other, 0x11537b630, {{48.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537b750, {{50.0, 2863.0}, {33.0, 32.0}}, label: '🚶‍♀️‍➡️', Focused
+                          Other, 0x11537b870, {{93.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537b990, {{95.0, 2863.0}, {33.0, 32.0}}, label: '🚶‍♂️‍➡️', Focused
+                          Other, 0x11537bab0, {{138.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537bbd0, {{140.0, 2863.0}, {33.0, 32.0}}, label: '🧍', Focused
+                          Other, 0x11537bcf0, {{183.0, 2861.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537be10, {{185.0, 2863.0}, {32.0, 32.0}}, label: '🧍‍♂️', Focused
+                          Other, 0x11537bf30, {{227.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537c050, {{229.0, 2863.0}, {33.0, 32.0}}, label: '🧍‍♀️', Focused
+                          Other, 0x11537c170, {{272.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537c290, {{274.0, 2863.0}, {33.0, 32.0}}, label: '🧎', Focused
+                          Other, 0x11537c3b0, {{317.0, 2861.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537c4d0, {{319.0, 2863.0}, {33.0, 32.0}}, label: '🧎‍♂️', Focused
+                          Other, 0x11537c5f0, {{362.0, 2861.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537c710, {{364.0, 2863.0}, {32.0, 32.0}}, label: '🧎‍♀️', Focused
+                          Other, 0x11537c830, {{4.0, 2905.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537c950, {{6.0, 2907.0}, {32.0, 32.0}}, label: '🧎‍➡️', Focused
+                          Other, 0x11537ca70, {{48.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537cb90, {{50.0, 2907.0}, {33.0, 32.0}}, label: '🧎‍♀️‍➡️', Focused
+                          Other, 0x11537ccb0, {{93.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537cdd0, {{95.0, 2907.0}, {33.0, 32.0}}, label: '🧎‍♂️‍➡️', Focused
+                          Other, 0x11537cef0, {{138.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537d010, {{140.0, 2907.0}, {33.0, 32.0}}, label: '🧑‍🦯', Focused
+                          Other, 0x11537d130, {{183.0, 2905.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537d250, {{185.0, 2907.0}, {32.0, 32.0}}, label: '🧑‍🦯‍➡️', Focused
+                          Other, 0x11537d370, {{227.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537d490, {{229.0, 2907.0}, {33.0, 32.0}}, label: '👨‍🦯', Focused
+                          Other, 0x11537d5b0, {{272.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537d6d0, {{274.0, 2907.0}, {33.0, 32.0}}, label: '👨‍🦯‍➡️', Focused
+                          Other, 0x11537d7f0, {{317.0, 2905.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537d910, {{319.0, 2907.0}, {33.0, 32.0}}, label: '👩‍🦯', Focused
+                          Other, 0x11537da30, {{362.0, 2905.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537db50, {{364.0, 2907.0}, {32.0, 32.0}}, label: '👩‍🦯‍➡️', Focused
+                          Other, 0x11537dc70, {{4.0, 2949.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537dd90, {{6.0, 2951.0}, {32.0, 32.0}}, label: '🧑‍🦼', Focused
+                          Other, 0x11537deb0, {{48.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537dfd0, {{50.0, 2951.0}, {33.0, 32.0}}, label: '🧑‍🦼‍➡️', Focused
+                          Other, 0x11537e0f0, {{93.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537e210, {{95.0, 2951.0}, {33.0, 32.0}}, label: '👨‍🦼', Focused
+                          Other, 0x11537e330, {{138.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537e450, {{140.0, 2951.0}, {33.0, 32.0}}, label: '👨‍🦼‍➡️', Focused
+                          Other, 0x11537e570, {{183.0, 2949.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537e690, {{185.0, 2951.0}, {32.0, 32.0}}, label: '👩‍🦼', Focused
+                          Other, 0x11537e7b0, {{227.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537e8d0, {{229.0, 2951.0}, {33.0, 32.0}}, label: '👩‍🦼‍➡️', Focused
+                          Other, 0x11537e9f0, {{272.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537eb10, {{274.0, 2951.0}, {33.0, 32.0}}, label: '🧑‍🦽', Focused
+                          Other, 0x11537ec30, {{317.0, 2949.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537ed50, {{319.0, 2951.0}, {33.0, 32.0}}, label: '🧑‍🦽‍➡️', Focused
+                          Other, 0x11537ee70, {{362.0, 2949.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537ef90, {{364.0, 2951.0}, {32.0, 32.0}}, label: '👨‍🦽', Focused
+                          Other, 0x11537f0b0, {{4.0, 2993.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537f1d0, {{6.0, 2995.0}, {32.0, 32.0}}, label: '👨‍🦽‍➡️', Focused
+                          Other, 0x11537f2f0, {{48.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537f410, {{50.0, 2995.0}, {33.0, 32.0}}, label: '👩‍🦽', Focused
+                          Other, 0x11537f530, {{93.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537f650, {{95.0, 2995.0}, {33.0, 32.0}}, label: '👩‍🦽‍➡️', Focused
+                          Other, 0x11537f770, {{138.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537f890, {{140.0, 2995.0}, {33.0, 32.0}}, label: '🏃', Focused
+                          Other, 0x11537f9b0, {{183.0, 2993.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11537fad0, {{185.0, 2995.0}, {32.0, 32.0}}, label: '🏃‍♂️', Focused
+                          Other, 0x11537fbf0, {{227.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537fd10, {{229.0, 2995.0}, {33.0, 32.0}}, label: '🏃‍♀️', Focused
+                          Other, 0x11537fe30, {{272.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11537ff50, {{274.0, 2995.0}, {33.0, 32.0}}, label: '🏃‍➡️', Focused
+                          Other, 0x115380070, {{317.0, 2993.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115380190, {{319.0, 2995.0}, {33.0, 32.0}}, label: '🏃‍♀️‍➡️', Focused
+                          Other, 0x1153802b0, {{362.0, 2993.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153803d0, {{364.0, 2995.0}, {32.0, 32.0}}, label: '🏃‍♂️‍➡️', Focused
+                          Other, 0x1153804f0, {{4.0, 3037.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115380610, {{6.0, 3039.0}, {32.0, 32.0}}, label: '🧑‍🩰', Focused
+                          Other, 0x115380730, {{48.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115380850, {{50.0, 3039.0}, {33.0, 32.0}}, label: '💃', Focused
+                          Other, 0x115380970, {{93.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115380a90, {{95.0, 3039.0}, {33.0, 32.0}}, label: '🕺', Focused
+                          Other, 0x115380bb0, {{138.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115380cd0, {{140.0, 3039.0}, {33.0, 32.0}}, label: '🕴️', Focused
+                          Other, 0x115380ed0, {{183.0, 3037.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115380ff0, {{185.0, 3039.0}, {32.0, 32.0}}, label: '👯', Focused
+                          Other, 0x115381110, {{227.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115381230, {{229.0, 3039.0}, {33.0, 32.0}}, label: '👯‍♂️', Focused
+                          Other, 0x115381350, {{272.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115381470, {{274.0, 3039.0}, {33.0, 32.0}}, label: '👯‍♀️', Focused
+                          Other, 0x115381590, {{317.0, 3037.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153816b0, {{319.0, 3039.0}, {33.0, 32.0}}, label: '🧖', Focused
+                          Other, 0x1153817d0, {{362.0, 3037.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153818f0, {{364.0, 3039.0}, {32.0, 32.0}}, label: '🧖‍♂️', Focused
+                          Other, 0x115381a10, {{4.0, 3081.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115381b30, {{6.0, 3083.0}, {32.0, 32.0}}, label: '🧖‍♀️', Focused
+                          Other, 0x115381c50, {{48.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115381d70, {{50.0, 3083.0}, {33.0, 32.0}}, label: '🧗', Focused
+                          Other, 0x115381e90, {{93.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115381fb0, {{95.0, 3083.0}, {33.0, 32.0}}, label: '🧗‍♂️', Focused
+                          Other, 0x1153820d0, {{138.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153821f0, {{140.0, 3083.0}, {33.0, 32.0}}, label: '🧗‍♀️', Focused
+                          Other, 0x115382310, {{183.0, 3081.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115382430, {{185.0, 3083.0}, {32.0, 32.0}}, label: '🤺', Focused
+                          Other, 0x115382550, {{227.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115382670, {{229.0, 3083.0}, {33.0, 32.0}}, label: '🏇', Focused
+                          Other, 0x115382790, {{272.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153828b0, {{274.0, 3083.0}, {33.0, 32.0}}, label: '⛷️', Focused
+                          Other, 0x1153829d0, {{317.0, 3081.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115382af0, {{319.0, 3083.0}, {33.0, 32.0}}, label: '🏂', Focused
+                          Other, 0x115382c10, {{362.0, 3081.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115382d30, {{364.0, 3083.0}, {32.0, 32.0}}, label: '🏌️', Focused
+                          Other, 0x115382e50, {{4.0, 3125.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115382f70, {{6.0, 3127.0}, {32.0, 32.0}}, label: '🏌️‍♂️', Focused
+                          Other, 0x115383090, {{48.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153831b0, {{50.0, 3127.0}, {33.0, 32.0}}, label: '🏌️‍♀️', Focused
+                          Other, 0x1153832d0, {{93.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153833f0, {{95.0, 3127.0}, {33.0, 32.0}}, label: '🏄', Focused
+                          Other, 0x115383510, {{138.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115383630, {{140.0, 3127.0}, {33.0, 32.0}}, label: '🏄‍♂️', Focused
+                          Other, 0x115383750, {{183.0, 3125.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115383870, {{185.0, 3127.0}, {32.0, 32.0}}, label: '🏄‍♀️', Focused
+                          Other, 0x115383990, {{227.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115383ab0, {{229.0, 3127.0}, {33.0, 32.0}}, label: '🚣', Focused
+                          Other, 0x115383bd0, {{272.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115383cf0, {{274.0, 3127.0}, {33.0, 32.0}}, label: '🚣‍♂️', Focused
+                          Other, 0x115383e10, {{317.0, 3125.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115383f30, {{319.0, 3127.0}, {33.0, 32.0}}, label: '🚣‍♀️', Focused
+                          Other, 0x115384050, {{362.0, 3125.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115384170, {{364.0, 3127.0}, {32.0, 32.0}}, label: '🏊', Focused
+                          Other, 0x115384290, {{4.0, 3169.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153843b0, {{6.0, 3171.0}, {32.0, 32.0}}, label: '🏊‍♂️', Focused
+                          Other, 0x1153844d0, {{48.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153845f0, {{50.0, 3171.0}, {33.0, 32.0}}, label: '🏊‍♀️', Focused
+                          Other, 0x115384710, {{93.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115384830, {{95.0, 3171.0}, {33.0, 32.0}}, label: '⛹️', Focused
+                          Other, 0x115384950, {{138.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115384a70, {{140.0, 3171.0}, {33.0, 32.0}}, label: '⛹️‍♂️', Focused
+                          Other, 0x115384b90, {{183.0, 3169.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115384cb0, {{185.0, 3171.0}, {32.0, 32.0}}, label: '⛹️‍♀️', Focused
+                          Other, 0x115384dd0, {{227.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115384ef0, {{229.0, 3171.0}, {33.0, 32.0}}, label: '🏋️', Focused
+                          Other, 0x115385010, {{272.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115385130, {{274.0, 3171.0}, {33.0, 32.0}}, label: '🏋️‍♂️', Focused
+                          Other, 0x115385250, {{317.0, 3169.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115385370, {{319.0, 3171.0}, {33.0, 32.0}}, label: '🏋️‍♀️', Focused
+                          Other, 0x115385490, {{362.0, 3169.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153855b0, {{364.0, 3171.0}, {32.0, 32.0}}, label: '🚴', Focused
+                          Other, 0x1153856d0, {{4.0, 3213.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153857f0, {{6.0, 3215.0}, {32.0, 32.0}}, label: '🚴‍♂️', Focused
+                          Other, 0x115385910, {{48.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115385a30, {{50.0, 3215.0}, {33.0, 32.0}}, label: '🚴‍♀️', Focused
+                          Other, 0x115385b50, {{93.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115385c70, {{95.0, 3215.0}, {33.0, 32.0}}, label: '🚵', Focused
+                          Other, 0x115385d90, {{138.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115385eb0, {{140.0, 3215.0}, {33.0, 32.0}}, label: '🚵‍♂️', Focused
+                          Other, 0x115385fd0, {{183.0, 3213.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153860f0, {{185.0, 3215.0}, {32.0, 32.0}}, label: '🚵‍♀️', Focused
+                          Other, 0x115386210, {{227.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115386330, {{229.0, 3215.0}, {33.0, 32.0}}, label: '🤸', Focused
+                          Other, 0x115386450, {{272.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115386570, {{274.0, 3215.0}, {33.0, 32.0}}, label: '🤸‍♂️', Focused
+                          Other, 0x115386690, {{317.0, 3213.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153867b0, {{319.0, 3215.0}, {33.0, 32.0}}, label: '🤸‍♀️', Focused
+                          Other, 0x1153868d0, {{362.0, 3213.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153869f0, {{364.0, 3215.0}, {32.0, 32.0}}, label: '🤼', Focused
+                          Other, 0x115386b10, {{4.0, 3257.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115386c30, {{6.0, 3259.0}, {32.0, 32.0}}, label: '🤼‍♂️', Focused
+                          Other, 0x115386d50, {{48.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115386e70, {{50.0, 3259.0}, {33.0, 32.0}}, label: '🤼‍♀️', Focused
+                          Other, 0x115386f90, {{93.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153870b0, {{95.0, 3259.0}, {33.0, 32.0}}, label: '🤽', Focused
+                          Other, 0x1153871d0, {{138.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153872f0, {{140.0, 3259.0}, {33.0, 32.0}}, label: '🤽‍♂️', Focused
+                          Other, 0x115387410, {{183.0, 3257.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115387530, {{185.0, 3259.0}, {32.0, 32.0}}, label: '🤽‍♀️', Focused
+                          Other, 0x115387650, {{227.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115387770, {{229.0, 3259.0}, {33.0, 32.0}}, label: '🤾', Focused
+                          Other, 0x115387890, {{272.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153879b0, {{274.0, 3259.0}, {33.0, 32.0}}, label: '🤾‍♂️', Focused
+                          Other, 0x115387ad0, {{317.0, 3257.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115387bf0, {{319.0, 3259.0}, {33.0, 32.0}}, label: '🤾‍♀️', Focused
+                          Other, 0x115387d10, {{362.0, 3257.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115387e30, {{364.0, 3259.0}, {32.0, 32.0}}, label: '🤹', Focused
+                          Other, 0x115387f50, {{4.0, 3301.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115388070, {{6.0, 3303.0}, {32.0, 32.0}}, label: '🤹‍♂️', Focused
+                          Other, 0x115388190, {{48.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153882b0, {{50.0, 3303.0}, {33.0, 32.0}}, label: '🤹‍♀️', Focused
+                          Other, 0x1153883d0, {{93.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153884f0, {{95.0, 3303.0}, {33.0, 32.0}}, label: '🧘', Focused
+                          Other, 0x115388610, {{138.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115388730, {{140.0, 3303.0}, {33.0, 32.0}}, label: '🧘‍♂️', Focused
+                          Other, 0x115388850, {{183.0, 3301.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115388970, {{185.0, 3303.0}, {32.0, 32.0}}, label: '🧘‍♀️', Focused
+                          Other, 0x115388a90, {{227.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115388bb0, {{229.0, 3303.0}, {33.0, 32.0}}, label: '🛀', Focused
+                          Other, 0x115388cd0, {{272.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115388df0, {{274.0, 3303.0}, {33.0, 32.0}}, label: '🛌', Focused
+                          Other, 0x115388f10, {{317.0, 3301.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115389030, {{319.0, 3303.0}, {33.0, 32.0}}, label: '🧑‍🤝‍🧑', Focused
+                          Other, 0x115389150, {{362.0, 3301.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115389270, {{364.0, 3303.0}, {32.0, 32.0}}, label: '👭', Focused
+                          Other, 0x115389390, {{4.0, 3345.0}, {36.0, 36.0}}, Focused
+                            Image, 0x1153894b0, {{6.0, 3347.0}, {32.0, 32.0}}, label: '👫', Focused
+                          Other, 0x1153895d0, {{48.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x1153896f0, {{50.0, 3347.0}, {33.0, 32.0}}, label: '👬', Focused
+                          Other, 0x115389810, {{93.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115389930, {{95.0, 3347.0}, {33.0, 32.0}}, label: '💏', Focused
+                          Other, 0x115389a50, {{138.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115389b70, {{140.0, 3347.0}, {33.0, 32.0}}, label: '👩‍❤️‍💋‍👨', Focused
+                          Other, 0x115389c90, {{183.0, 3345.0}, {36.0, 36.0}}, Focused
+                            Image, 0x115389db0, {{185.0, 3347.0}, {32.0, 32.0}}, label: '👨‍❤️‍💋‍👨', Focused
+                          Other, 0x115389ed0, {{227.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x115389ff0, {{229.0, 3347.0}, {33.0, 32.0}}, label: '👩‍❤️‍💋‍👩', Focused
+                          Other, 0x11538a110, {{272.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538a230, {{274.0, 3347.0}, {33.0, 32.0}}, label: '💑', Focused
+                          Other, 0x11538a350, {{317.0, 3345.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538a470, {{319.0, 3347.0}, {33.0, 32.0}}, label: '👩‍❤️‍👨', Focused
+                          Other, 0x11538a590, {{362.0, 3345.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11538a6b0, {{364.0, 3347.0}, {32.0, 32.0}}, label: '👨‍❤️‍👨', Focused
+                          Other, 0x11538a7d0, {{4.0, 3389.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11538a8f0, {{6.0, 3391.0}, {32.0, 32.0}}, label: '👩‍❤️‍👩', Focused
+                          Other, 0x11538aa10, {{48.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538ab30, {{50.0, 3391.0}, {33.0, 32.0}}, label: '👨‍👩‍👦', Focused
+                          Other, 0x11538ac50, {{93.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538ad70, {{95.0, 3391.0}, {33.0, 32.0}}, label: '👨‍👩‍👧‍👦', Focused
+                          Other, 0x11538ae90, {{138.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538afb0, {{140.0, 3391.0}, {33.0, 32.0}}, label: '👩‍👦', Focused
+                          Other, 0x11538b0d0, {{183.0, 3389.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11538b1f0, {{185.0, 3391.0}, {32.0, 32.0}}, label: '👩‍👧‍👦', Focused
+                          Other, 0x11538b310, {{227.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538b430, {{229.0, 3391.0}, {33.0, 32.0}}, label: '🗣️', Focused
+                          Other, 0x11538b550, {{272.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538b670, {{274.0, 3391.0}, {33.0, 32.0}}, label: '👤', Focused
+                          Other, 0x11538b790, {{317.0, 3389.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538b8b0, {{319.0, 3391.0}, {33.0, 32.0}}, label: '👥', Focused
+                          Other, 0x11538b9d0, {{362.0, 3389.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11538baf0, {{364.0, 3391.0}, {32.0, 32.0}}, label: '🫂', Focused
+                          Other, 0x11538bc10, {{4.0, 3433.0}, {36.0, 36.0}}, Focused
+                            Image, 0x11538bd30, {{6.0, 3435.0}, {32.0, 32.0}}, label: '👣', Focused
+                          Other, 0x11538be50, {{48.0, 3433.0}, {37.0, 36.0}}, Focused
+                            Image, 0x11538bf70, {{50.0, 3435.0}, {33.0, 32.0}}, label: '🫆', Focused
+                          Other, 0x11538c090, {{4.0, 3797.0}, {143.0, 24.0}}, Focused
+                            StaticText, 0x11538c1b0, {{4.0, 3799.0}, {143.0, 20.0}}, label: 'Animals and nature', value: Animals and nature, Focused
+                          Other, 0x11538c2d0, {{4.0, 4729.0}, {111.0, 24.0}}, Focused
+                            StaticText, 0x11538c3f0, {{4.0, 4731.0}, {111.0, 20.0}}, label: 'Food and drink', value: Food and drink, Focused
+                          Other, 0x11538c510, {{4.0, 5529.0}, {56.0, 24.0}}, Focused
+                            StaticText, 0x11538c630, {{4.0, 5531.0}, {56.0, 20.0}}, label: 'Activity', value: Activity, Focused
+                          Other, 0x11538c750, {{4.0, 6065.0}, {129.0, 24.0}}, Focused
+                            StaticText, 0x11538c870, {{4.0, 6067.0}, {129.0, 20.0}}, label: 'Travel and places', value: Travel and places, Focused
+                          Other, 0x11538c990, {{4.0, 7349.0}, {58.0, 24.0}}, Focused
+                            StaticText, 0x11538cab0, {{4.0, 7351.0}, {58.0, 20.0}}, label: 'Objects', value: Objects, Focused
+                          Other, 0x11538cbd0, {{4.0, 8897.0}, {64.0, 24.0}}, Focused
+                            StaticText, 0x11538ccf0, {{4.0, 8899.0}, {64.0, 20.0}}, label: 'Symbols', value: Symbols, Focused
+                          Other, 0x11538ce10, {{4.0, 10181.0}, {40.0, 24.0}}, Focused
+                            StaticText, 0x11538cf30, {{4.0, 10183.0}, {40.0, 20.0}}, label: 'Flags', value: Flags, Focused
+                          Button, 0x11538d050, {{126.0, 833.0}, {34.0, 34.0}}, label: 'Emoji', Focused
+                          Button, 0x11538d170, {{184.0, 833.0}, {34.0, 34.0}}, label: 'Stickers', Focused
+                          Button, 0x11538d290, {{242.0, 833.0}, {34.0, 34.0}}, label: 'GIFs', Focused
+                          Button, 0x11538d3b0, {{360.0, 833.0}, {34.0, 34.0}}, label: 'Delete emoji', Focused
+                          Image, 0x11538d4d0, {{0.0, 0.0}, {1.0, 1.0}}, label: 'liquidgram-probe {"scrollTop":0,"scrollY":0,"pageTop":0,"offsetTop":0,"max":{"scrollTop":0,"scrollY":0,"pageTop":0,"offsetTop":0},"innerWidth":402,"innerHeight":874,"clientHeight":874,"visualHeight":874,"htmlHeight":874,"vh":874,"safeTop":62,"safeBottom":34,"themeColor":"#fff","theme":"light","active":"body","hasFocus":true,"isInBackground":false,"isKeyboardVisible":false}', Focused
+                          Button, 0x11538d780, {{0.0, 480.0}, {44.0, 45.0}}, label: 'liquidgram-probe-blur', Focused
+                          Button, 0x11538d8a0, {{0.0, 524.0}, {44.0, 45.0}}, label: 'liquidgram-probe-open-later', Focused
+                          Button, 0x11538d9c0, {{0.0, 12.0}, {40.0, 40.0}}, label: 'Open menu', Focused
+                          Other, 0x11538dae0, {{0.0, 10.0}, {680.0, 10.0}}, Focused
+                            Button, 0x11538dc00, {{0.0, 10.0}, {680.0, 10.0}}, label: 'Open Story List', Focused
+                          TextField, 0x11538dd20, {{0.0, 12.0}, {201.0, 40.0}}, placeholderValue: 'Search', value: Search, Focused
+                          Other, 0x11538de40, {{0.0, 10.0}, {680.0, 10.0}}, Focused
+                          Button, 0x11538df60, {{0.0, 12.0}, {40.0, 40.0}}, label: 'Ghost mode', Focused
+                          StaticText, 0x11538e080, {{0.0, 82.0}, {19.0, 20.0}}, label: 'All', value: All, Focused
+                          StaticText, 0x11538e1a0, {{0.0, 84.0}, {8.0, 15.0}}, label: '2', value: 2, Focused
+                          StaticText, 0x11538e2c0, {{0.0, 82.0}, {59.0, 20.0}}, label: 'Личное', value: Личное, Focused
+                          StaticText, 0x11538e3e0, {{0.0, 82.0}, {58.0, 20.0}}, label: 'Группы', value: Группы, Focused
+                          StaticText, 0x11538e500, {{0.0, 84.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          StaticText, 0x11538e620, {{0.0, 82.0}, {60.0, 20.0}}, label: 'Каналы', value: Каналы, Focused
+                          StaticText, 0x11538e740, {{0.0, 84.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          Other, 0x11538e860, {{0.0, 126.0}, {402.0, 576.0}}, Focused
+                            Other, 0x11538e980, {{0.0, 126.0}, {402.0, 10.0}}, Focused
+                            Button, 0x11538eaa0, {{0.0, 126.0}, {402.0, 72.0}}, label: 'Аня СмирноваАня Смирнова 17:58Договорились! До завтра 💙', Focused
+                            Button, 0x11538ebc0, {{0.0, 198.0}, {402.0, 72.0}}, label: 'Бразы 🔥Бразы 🔥 17:53Лёха : Кто сегодня в чат-рум после 22?4', Focused
+                            Button, 0x11538ece0, {{0.0, 270.0}, {402.0, 72.0}}, label: 'iOS 26 DesigniOS 26 Design 17:39Собрали 15 приложений, которые уже обновили дизайн под iOS 26 👇2', Focused
+                            Button, 0x11538ee00, {{0.0, 342.0}, {402.0, 72.0}}, label: 'Катя ДизайнКатя Дизайн 15:19Уже 😎', Focused
+                            Button, 0x11538ef20, {{0.0, 414.0}, {402.0, 72.0}}, label: 'МамаМама 13:59Позвони вечером ❤️', Focused
+                            Button, 0x11538f040, {{0.0, 486.0}, {402.0, 72.0}}, label: 'Макс ОрловМакс Орлов WedЛови, там 40 слайдов', Focused
+                            Button, 0x11538f160, {{0.0, 558.0}, {402.0, 72.0}}, label: 'Дима КодДима Код WedПоправил, перезапусти', Focused
+                            Button, 0x11538f280, {{0.0, 630.0}, {402.0, 72.0}}, label: 'БроSaved Messages TueИдеи для Liquidgram: стекло, призрак, антиудаление ✅', Focused
+                          Button, 0x11538f3a0, {{0.0, 776.0}, {48.0, 48.0}}, label: 'New Message', Focused
+                          Other, 0x11538f4c0, {{0.0, 776.0}, {450.0, 10.0}}, Focused
+                          Button, 0x11538f5e0, {{16.0, 12.0}, {40.0, 40.0}}, label: 'Back', Focused
+                          Other, 0x11538f700, {{44.0, 12.0}, {20.0, 16.0}}, Focused
+                            StaticText, 0x11538f820, {{50.0, 12.0}, {8.0, 15.0}}, label: '6', value: 6, Focused
+                          Other, 0x11538f940, {{64.0, 12.0}, {40.0, 40.0}}, label: 'Аня Смирнова', Focused
+                            StaticText, 0x11538fa60, {{71.0, 21.0}, {26.0, 22.0}}, label: 'АС', value: АС, Focused
+                          Button, 0x11538fb80, {{114.0, 11.0}, {121.0, 24.0}}, label: 'Аня Смирнова', Focused
+                          StaticText, 0x11538fca0, {{114.0, 35.0}, {39.0, 18.0}}, label: 'online', value: online, Focused
+                          Button, 0x11538fdc0, {{346.0, 12.0}, {40.0, 40.0}}, label: 'More options', Focused
+                          Other, 0x11538fee0, {{8.0, -494.0}, {386.0, 307.0}}, Focused
+                            StaticText, 0x115390000, {{164.0, -209.0}, {74.0, 20.0}}, label: 'Yesterday', value: Yesterday, Focused
+                          StaticText, 0x115390120, {{21.0, -568.0}, {203.0, 22.0}}, label: 'Скинь фотки с выходных', value: Скинь фотки с выхо..., Focused
+                          Image, 0x115390240, {{223.0, -568.0}, {22.0, 23.0}}, label: '📸', Focused
+                          StaticText, 0x115390360, {{256.0, -559.0}, {33.0, 16.0}}, label: '16:59', value: 16:59, Focused
+                          StaticText, 0x115390480, {{57.0, -527.0}, {273.0, 22.0}}, label: 'Щас, только с телефона перекину', value: Щас, только с теле..., Focused
+                          StaticText, 0x1153905a0, {{331.0, -496.0}, {32.0, 16.0}}, label: '17:04', value: 17:04, Focused
+                          Other, 0x1153906c0, {{364.0, -497.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x1153907e0, {{21.0, -465.0}, {75.0, 22.0}}, label: 'Жду-жду', value: Жду-жду, Focused
+                          StaticText, 0x115390900, {{106.0, -456.0}, {32.0, 16.0}}, label: '17:09', value: 17:09, Focused
+                          StaticText, 0x115390a20, {{57.0, -424.0}, {303.0, 66.0}}, label: 'Кстати, ты пробовала новый Liquid Glass в iOS 26? Всё будто из жидкого стекла', value: Кстати, ты пробова..., Focused
+                          Image, 0x115390b40, {{114.0, -380.0}, {22.0, 23.0}}, label: '💧', Focused
+                          StaticText, 0x115390c60, {{333.0, -371.0}, {30.0, 16.0}}, label: '17:19', value: 17:19, Focused
+                          Other, 0x115390d80, {{364.0, -372.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x115390ea0, {{21.0, -339.0}, {299.0, 44.0}}, label: 'Да! Особенно таббар внизу, он прям переливается', value: Да! Особенно табба..., Focused
+                          StaticText, 0x115390fc0, {{314.0, -308.0}, {31.0, 16.0}}, label: '17:29', value: 17:29, Focused
+                          StaticText, 0x1153910e0, {{86.0, -276.0}, {235.0, 22.0}}, label: 'Хочу такое на компе в телеге', value: Хочу такое на комп..., Focused
+                          StaticText, 0x115391200, {{331.0, -267.0}, {32.0, 16.0}}, label: '17:34', value: 17:34, Focused
+                          Other, 0x115391320, {{364.0, -268.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x115391440, {{21.0, -235.0}, {212.0, 22.0}}, label: 'Сделай сам, ты же умный', value: Сделай сам, ты же ..., Focused
+                          Image, 0x115391560, {{232.0, -235.0}, {22.0, 23.0}}, label: '😄', Focused
+                          StaticText, 0x115391680, {{265.0, -226.0}, {32.0, 16.0}}, label: '17:39', value: 17:39, Focused
+                          StaticText, 0x1153917a0, {{183.0, -194.0}, {116.0, 22.0}}, label: 'Вызов принят', value: Вызов принят , Focused
+                          Image, 0x1153918c0, {{298.0, -194.0}, {22.0, 23.0}}, label: '😎', Focused
+                          StaticText, 0x1153919e0, {{331.0, -185.0}, {32.0, 16.0}}, label: '17:49', value: 17:49, Focused
+                          Other, 0x115391b00, {{364.0, -186.0}, {19.0, 19.0}}, Focused
+                          Other, 0x115391c20, {{8.0, -433.0}, {386.0, 307.0}}, Focused
+                            StaticText, 0x115391d40, {{178.0, -148.0}, {46.0, 20.0}}, label: 'Today', value: Today, Focused
+                          StaticText, 0x115391e60, {{21.0, -109.0}, {250.0, 22.0}}, label: 'Привет! Ты видел новый айос?', value: Привет! Ты видел н..., Focused
+                          Image, 0x115391f80, {{270.0, -109.0}, {23.0, 23.0}}, label: '😍', Focused
+                          StaticText, 0x1153920a0, {{303.0, -100.0}, {31.0, 16.0}}, label: '17:07', value: 17:07, Focused
+                          StaticText, 0x1153921c0, {{57.0, -68.0}, {277.0, 22.0}}, label: 'Да, этот Liquid Glass просто бомба', value: Да, этот Liquid Gl..., Focused
+                          StaticText, 0x1153922e0, {{331.0, -37.0}, {32.0, 16.0}}, label: '17:08', value: 17:08, Focused
+                          Other, 0x115392400, {{364.0, -38.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x115392520, {{21.0, -6.0}, {185.0, 22.0}}, label: 'Хочу такое же в телеге', value: Хочу такое же в те..., Focused
+                          StaticText, 0x115392640, {{216.0, 3.0}, {36.0, 16.0}}, label: 'edited', value: edited, Focused
+                          StaticText, 0x115392760, {{255.0, 3.0}, {32.0, 16.0}}, label: '17:09', value: 17:09, Focused
+                          StaticText, 0x115392880, {{57.0, 35.0}, {172.0, 22.0}}, label: 'Смотри что я собрал', value: Смотри что я собрал , Focused
+                          Image, 0x1153929a0, {{228.0, 35.0}, {23.0, 23.0}}, label: '👀', Focused
+                          StaticText, 0x115392ac0, {{251.0, 35.0}, {5.0, 22.0}}, value:  , Focused
+                          StaticText, 0x115392be0, {{57.0, 35.0}, {308.0, 66.0}}, label: 'Liquidgram — свой клиент со стеклом и режимом призрака', value: Liquidgram — свой ..., Focused
+                          StaticText, 0x115392d00, {{336.0, 88.0}, {27.0, 16.0}}, label: '17:11', value: 17:11, Focused
+                          Other, 0x115392e20, {{364.0, 87.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x115392f40, {{21.0, 120.0}, {231.0, 22.0}}, label: 'Чё серьёзно?? Скинь ссылку', value: Чё серьёзно?? Скин..., Focused
+                          StaticText, 0x115393060, {{263.0, 129.0}, {29.0, 16.0}}, label: '17:12', value: 17:12, Focused
+                          StaticText, 0x115393180, {{21.0, 158.0}, {220.0, 22.0}}, label: 'Ой, это я не тебе написала', value: Ой, это я не тебе ..., Focused
+                          Image, 0x1153932a0, {{240.0, 158.0}, {22.0, 23.0}}, label: '🙈', Focused
+                          StaticText, 0x1153933c0, {{266.0, 189.0}, {45.0, 16.0}}, label: 'deleted', value: deleted, Focused
+                          StaticText, 0x1153934e0, {{316.0, 189.0}, {29.0, 16.0}}, label: '17:13', value: 17:13, Focused
+                          StaticText, 0x115393600, {{57.0, 220.0}, {166.0, 22.0}}, label: 'Поздно, я всё видел', value: Поздно, я всё видел , Focused
+                          Image, 0x115393720, {{222.0, 220.0}, {22.0, 23.0}}, label: '😏', Focused
+                          StaticText, 0x115393840, {{244.0, 220.0}, {5.0, 22.0}}, value:  , Focused
+                          StaticText, 0x115393960, {{57.0, 220.0}, {309.0, 44.0}}, label: 'антиудаление работает', value: антиудаление работ..., Focused
+                          StaticText, 0x115393a80, {{334.0, 251.0}, {29.0, 16.0}}, label: '17:15', value: 17:15, Focused
+                          Other, 0x115393ba0, {{364.0, 250.0}, {19.0, 19.0}}, Focused
+                          StaticText, 0x115393cc0, {{21.0, 283.0}, {209.0, 22.0}}, label: 'Ахахах ладно, ты победил', value: Ахахах ладно, ты п..., Focused
+                          StaticText, 0x115393de0, {{240.0, 292.0}, {31.0, 16.0}}, label: '17:47', value: 17:47, Focused
+                          StaticText, 0x115393f00, {{21.0, 321.0}, {262.0, 22.0}}, label: 'Во сколько завтра встречаемся?', value: Во сколько завтра ..., Focused
+                          StaticText, 0x115394020, {{293.0, 330.0}, {32.0, 16.0}}, label: '17:48', value: 17:48, Focused
+                          StaticText, 0x115394140, {{57.0, 362.0}, {305.0, 22.0}}, label: 'Давай в 19:00 у кофейни на Патриках', value: Давай в 19:00 у ко..., Focused
+                          Image, 0x115394260, {{57.0, 384.0}, {22.0, 23.0}}, label: '☕️', Focused
+                          StaticText, 0x115394380, {{331.0, 393.0}, {32.0, 16.0}}, label: '17:56', value: 17:56, Focused
+                          Other, 0x1153944a0, {{364.0, 392.0}, {19.0, 19.0}}, Focused
+                          Other, 0x1153945c0, {{8.0, 138.0}, {386.0, 307.0}}, Focused
+                            StaticText, 0x1153946e0, {{134.0, 423.0}, {134.0, 20.0}}, label: 'Unread Messages', value: Unread Messages, Focused
+                          StaticText, 0x115394800, {{21.0, 458.0}, {208.0, 22.0}}, label: 'Договорились! До завтра', value: Договорились! До з..., Focused
+                          Image, 0x115394920, {{228.0, 458.0}, {22.0, 23.0}}, label: '💙', Focused
+                          StaticText, 0x115394a40, {{261.0, 467.0}, {32.0, 16.0}}, label: '17:58', value: 17:58, Focused
+                          Button, 0x115394b60, {{348.0, 445.0}, {46.0, 46.0}}, label: 'Go to next unread poll vote', Focused
+                          Button, 0x115394c80, {{348.0, 451.0}, {46.0, 46.0}}, label: 'Go to next unread reactions', Focused
+                          Button, 0x115394da0, {{348.0, 457.0}, {46.0, 46.0}}, label: 'Go to next mention', Focused
+                          Button, 0x115394ec0, {{348.0, 519.0}, {46.0, 46.0}}, label: 'Go to bottom', Focused
+                          Other, 0x115394fe0, {{12.0, 505.0}, {40.0, 40.0}}, label: 'Add attachment', Focused
+                          Other, 0x115395100, {{12.0, 222.0}, {40.0, 10.0}}, label: 'Add attachment', Focused
+                          Button, 0x115395220, {{350.0, 505.0}, {40.0, 40.0}}, label: 'Open full editor', Focused
+                          TextView, 0x115395340, {{56.0, 505.0}, {234.0, 40.0}}, label: 'Message', value: 
+, Focused
+                          StaticText, 0x115395460, {{56.0, 513.0}, {69.0, 23.0}}, label: 'Message', value: Message, Focused
+                          Button, 0x115395580, {{298.0, 505.0}, {40.0, 40.0}}, label: 'Choose emoji, sticker or GIF', Focused
+                          Button, 0x1153956a0, {{350.0, 505.0}, {40.0, 40.0}}, label: 'Record voice message', Focused
+                          StaticText, 0x1153957c0, {{122.0, 523.0}, {158.0, 20.0}}, label: '0 messages selected', value: 0 messages selected, Focused
+                          TextField, 0x1153958e0, {{44.0, 12.0}, {20.0, 40.0}}, placeholderValue: 'Search', value: Search, Focused
+                          Button, 0x115395a00, {{16.0, 8.0}, {40.0, 40.0}}, label: 'Jump to Date', Focused
+                          TextField, 0x115395b20, {{0.0, 824.0}, {216.0, 34.0}}, Focused
+                Other, 0x115395c40, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x115395e40, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x115395f60, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x115396080, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x1153961a0, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1153962c0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x1153963e0, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x115396500, {{336.0, 868.0}, {7.0, 3.0}}
+    Window, 0x115396620, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x115396740, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x115396860, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x1155cd170, pid: 18433, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x1033b2970, pid: 18433, label: 'Liquidgram'
+  }
