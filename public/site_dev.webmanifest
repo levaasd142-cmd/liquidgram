@@ -19,6 +19,12 @@
             "src": "icon-dev-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "icon-square-dev-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "screenshots" : [{
@@ -36,7 +42,7 @@
         "url": "url",
         "files": [
           {
-            "name": "Liquidgram",
+            "name": "files",
             "accept": "*/*"
           }
         ]

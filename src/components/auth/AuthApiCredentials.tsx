@@ -70,6 +70,7 @@ const AuthApiCredentials = () => {
             label={lang('LiquidApiHash')}
             value={apiHash}
             autoComplete="off"
+            noAutoCorrect
             onChange={handleApiHashChange}
           />
           <Button className="auth-button" type="submit" ripple disabled={!apiId || !apiHash}>

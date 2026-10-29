@@ -86,9 +86,20 @@
 
   .message-edit-history {
     cursor: var(--custom-cursor, pointer);
+
+    position: relative;
+
     margin-inline-end: 0.25rem;
+
     text-decoration: underline dotted;
     text-underline-offset: 0.125rem;
+
+    // Enlarges the tap target around the small meta text for touch screens
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -0.875rem -0.5rem;
+    }
   }
 
   .message-imported,

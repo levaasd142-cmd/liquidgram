@@ -186,11 +186,20 @@ html.liquid-glass {
   }
 }
 
-/* Chats and Settings scroll under the floating mobile tab bar */
+/* Chats and Settings scroll under the floating mobile tab bar, which sits above the home indicator */
 @media (max-width: 600px) {
   html.liquid-glass #LeftColumn .chat-list,
   html.liquid-glass #LeftColumn .settings-main-scroll {
-    padding-bottom: 5.5rem;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
+  /* The new chat button lines up with the tab bar and still hides fully below the screen */
+  html.liquid-glass #LeftColumn .NewChatButton {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+
+  html.liquid-glass #LeftColumn .NewChatButton:not(.revealed) {
+    transform: translateY(calc(5rem + env(safe-area-inset-bottom)));
   }
 }
 

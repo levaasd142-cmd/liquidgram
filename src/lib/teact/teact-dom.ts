@@ -46,12 +46,12 @@ const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
 const HAS_MOVE_BEFORE_SUPPORT = typeof Element !== 'undefined' && 'moveBefore' in Element.prototype;
 
 const FILTERED_ATTRIBUTES = new Set(['key', 'ref', 'teactFastList', 'teactOrderKey']);
-const HTML_ATTRIBUTES = new Set(['dir', 'role', 'form']);
+// The `autocorrect` property is boolean, so a string such as "off" only works as an attribute
+const HTML_ATTRIBUTES = new Set(['dir', 'role', 'form', 'autoCorrect']);
 const CONTROLLABLE_TAGS = ['INPUT', 'TEXTAREA', 'SELECT'];
 const MAPPED_ATTRIBUTES: Partial<Record<string, string>> = {
   autoCapitalize: 'autocapitalize',
   autoComplete: 'autocomplete',
-  autoCorrect: 'autocorrect',
   autoPlay: 'autoplay',
   spellCheck: 'spellcheck',
   autoFocus: 'autofocus',

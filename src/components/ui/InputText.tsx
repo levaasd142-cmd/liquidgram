@@ -31,6 +31,8 @@ type OwnProps = {
   autoFocus?: boolean;
   teactExperimentControlled?: boolean;
   noMargin?: boolean;
+  // Turns off keyboard autocapitalization, autocorrection and spellcheck for values typed verbatim
+  noAutoCorrect?: boolean;
   inputMode?: 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onInput?: (e: FormEvent<HTMLInputElement>) => void;
@@ -62,6 +64,7 @@ const InputText = ({
   autoFocus,
   teactExperimentControlled,
   noMargin,
+  noAutoCorrect,
   onChange,
   onInput,
   onKeyPress,
@@ -96,7 +99,9 @@ const InputText = ({
         placeholder={placeholder}
         maxLength={maxLength}
         autoComplete={autoComplete}
-        spellCheck={IS_TAURI ? false : undefined}
+        autoCapitalize={noAutoCorrect ? 'none' : undefined}
+        autoCorrect={noAutoCorrect ? 'off' : undefined}
+        spellCheck={IS_TAURI || noAutoCorrect ? false : undefined}
         inputMode={inputMode}
         disabled={disabled}
         readOnly={readOnly}
