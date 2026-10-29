@@ -76,7 +76,8 @@ html.liquid-glass {
     background: transparent;
   }
 
-  #LeftColumn .ListItem.Chat:not(.selected) .ListItem-button:hover {
+  #LeftColumn .ListItem.Chat:not(.selected) .ListItem-button:hover,
+  #LeftColumn .ListItem.Chat.has-menu-open:not(.selected) .ListItem-button {
     background: color-mix(in srgb, var(--color-background) 45%, transparent);
   }
 
