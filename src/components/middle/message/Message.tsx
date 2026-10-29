@@ -124,13 +124,13 @@ import {
   selectUploadProgress,
   selectUser,
 } from '../../../global/selectors';
+import { selectMessageEditHistory } from '../../../global/selectors/liquid';
 import {
   selectIsMediaNsfw,
   selectMessageDownloadableMedia,
   selectMessageLastPlaybackTimestamp,
   selectMessageTimestampableDuration,
 } from '../../../global/selectors/media';
-import { selectMessageEditHistory } from '../../../global/selectors/liquid';
 import { selectLiquidSettings, selectSharedSettings } from '../../../global/selectors/sharedState';
 import { selectThreadInfo, selectThreadReadState } from '../../../global/selectors/threads';
 import { IS_TAURI } from '../../../util/browser/globalEnvironment';
@@ -1183,7 +1183,7 @@ const Message = ({
   }
 
   const toggleEditHistory = useLastCallback(() => {
-    setIsEditHistoryShown((isShown) => !isShown);
+    setIsEditHistoryShown((isHistoryShown) => !isHistoryShown);
   });
 
   const renderQuickReactionButton = useCallback(() => {

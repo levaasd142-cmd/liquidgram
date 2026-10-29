@@ -138,9 +138,11 @@
     &.active {
       color: var(--color-white);
       background: linear-gradient(160deg, #8b7dff, #5b4bd8);
+      /* stylelint-disable plugin/whole-pixel */
       box-shadow:
         inset 0 1px 0.5px rgba(255, 255, 255, 0.6),
         0 0.25rem 0.75rem -0.125rem rgba(91, 75, 216, 0.55);
+      /* stylelint-enable plugin/whole-pixel */
 
       &:hover {
         background: linear-gradient(160deg, #9a8dff, #6656e0);

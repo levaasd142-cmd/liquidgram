@@ -23,10 +23,10 @@ import appStyles from '../App.module.scss';
 import styles from './UiLoader.module.scss';
 
 import starIconPath from '../../assets/icons/star/star.webp';
+import liquidgramLogoPath from '../../assets/liquidgram-logo.svg';
 import lockPreviewPath from '../../assets/lock.png';
 import monkeyPath from '../../assets/monkey.svg';
 import spoilerMaskPath from '../../assets/spoilers/mask.svg';
-import liquidgramLogoPath from '../../assets/liquidgram-logo.svg';
 import pausePreviewPath from '../../assets/tgs-previews/Pause.svg';
 import playPreviewPath from '../../assets/tgs-previews/Play.svg';
 

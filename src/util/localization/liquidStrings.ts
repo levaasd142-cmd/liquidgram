@@ -6,7 +6,8 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidSettingsTitle: 'Liquidgram',
     LiquidSettingsDesc: 'Liquid Glass, призрак, антиудаление',
     LiquidSettingsKeywords: 'стекло, призрак, невидимка, удалённые, правки, стример, id',
-    LiquidSettingsAbout: 'Неофициальный клиент на базе Telegram Web A. Все фишки работают локально, прямо на твоём устройстве.',
+    LiquidSettingsAbout: 'Неофициальный клиент на базе Telegram Web A. '
+      + 'Все фишки работают локально, прямо на твоём устройстве.',
     LiquidSectionDesign: 'Дизайн',
     LiquidGlass: 'Liquid Glass',
     LiquidGlassInfo: 'Прозрачный интерфейс в стиле iOS 26',
@@ -22,7 +23,8 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidGhostStories: 'Смотреть истории анонимно',
     LiquidGhostMedia: 'Не отмечать голосовые и кружки прослушанными',
     LiquidGhostReadOnSend: 'Читать чат, когда я отвечаю',
-    LiquidGhostDescription: 'Призрак работает на стороне клиента: серверы Telegram просто не получают эти сигналы. Быстро включается кнопкой с глазом рядом с поиском.',
+    LiquidGhostDescription: 'Призрак работает на стороне клиента: серверы Telegram просто не получают эти сигналы. '
+      + 'Быстро включается кнопкой с глазом рядом с поиском.',
     LiquidGhostEnabled: 'Режим призрака включён',
     LiquidGhostDisabled: 'Режим призрака выключен',
     LiquidSectionMessages: 'Сообщения',
@@ -42,7 +44,8 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidMessageDeleted: 'удалено',
     LiquidEditHistoryTitle: 'Прошлые версии',
     LiquidEditHistoryEmpty: '(без текста)',
-    LiquidApiDescription: 'Liquidgram — неофициальный клиент, поэтому ему нужны твои API-ключи. Получить их бесплатно можно на my.telegram.org → API development tools.',
+    LiquidApiDescription: 'Liquidgram — неофициальный клиент, поэтому ему нужны твои API-ключи. '
+      + 'Получить их бесплатно можно на my.telegram.org → API development tools.',
     LiquidApiId: 'API ID',
     LiquidApiHash: 'API hash',
     LiquidApiContinue: 'Продолжить',

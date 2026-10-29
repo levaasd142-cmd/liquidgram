@@ -1005,7 +1005,8 @@ addActionHandler('apiUpdate', (global, actions, update): ActionReturnType => {
         : ids;
       if (!idsToDelete.length) break;
 
-      deleteMessages(getGlobal(), chatId, idsToDelete, actions);
+      global = getGlobal();
+      deleteMessages(global, chatId, idsToDelete, actions);
       break;
     }
 

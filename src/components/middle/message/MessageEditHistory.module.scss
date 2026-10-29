@@ -31,7 +31,7 @@
   color: var(--color-text-secondary);
   text-decoration: line-through;
   text-decoration-color: color-mix(in srgb, var(--color-text-secondary) 45%, transparent);
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .date {

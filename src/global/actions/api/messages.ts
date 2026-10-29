@@ -1310,7 +1310,7 @@ addActionHandler('deleteMessages', (global, actions, payload): ActionReturnType 
     global = removeLiquidDeletedMessages(global, chatId, preservedIds);
     setGlobal(global);
     const updateChatId = isChatChannel(chat) || isChatSuperGroup(chat) ? chatId : undefined;
-    deleteMessages(getGlobal(), updateChatId, preservedIds, actions);
+    deleteMessages(global, updateChatId, preservedIds, actions);
     global = getGlobal();
   }
 
