@@ -30,6 +30,7 @@ BrandingText "${APP_NAME} ${VERSION}"
 
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
+!include "WinVer.nsh"
 !include "x64.nsh"
 
 !define MUI_ICON "${ICON_PATH}"
@@ -53,8 +54,8 @@ BrandingText "${APP_NAME} ${VERSION}"
 
 LangString WelcomeText ${LANG_RUSSIAN} "Программа установит Liquidgram, неофициальный клиент Telegram с дизайном Liquid Glass.$\r$\n$\r$\nОкно приложения открывается через Microsoft Edge или Google Chrome. Ваш обычный браузер, его вкладки и настройки при этом не меняются.$\r$\n$\r$\nНажмите «Установить», чтобы продолжить."
 LangString WelcomeText ${LANG_ENGLISH} "Setup will install Liquidgram, an unofficial Telegram client with the Liquid Glass design.$\r$\n$\r$\nThe app window opens through Microsoft Edge or Google Chrome. Your regular browser, its tabs and settings stay as they are.$\r$\n$\r$\nClick Install to continue."
-LangString Need64Bit ${LANG_RUSSIAN} "Liquidgram работает только на 64-битной Windows 10 или 11."
-LangString Need64Bit ${LANG_ENGLISH} "Liquidgram requires 64-bit Windows 10 or 11."
+LangString UnsupportedWindows ${LANG_RUSSIAN} "Liquidgram работает только на 64-битной Windows 10 или 11."
+LangString UnsupportedWindows ${LANG_ENGLISH} "Liquidgram requires 64-bit Windows 10 or 11."
 LangString CloseApp ${LANG_RUSSIAN} "Закройте все окна Liquidgram и нажмите «Повтор»."
 LangString CloseApp ${LANG_ENGLISH} "Close all Liquidgram windows and click Retry."
 
@@ -67,9 +68,12 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "GPL-3.0-or-later"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VERSION}"
 
+; The launcher is built with Go, which needs Windows 10 or later. A silent install skips the message
+; and exits with code 2.
 Function .onInit
   ${IfNot} ${RunningX64}
-    MessageBox MB_OK|MB_ICONSTOP "$(Need64Bit)" /SD IDOK
+  ${OrIfNot} ${AtLeastWin10}
+    MessageBox MB_OK|MB_ICONSTOP "$(UnsupportedWindows)" /SD IDOK
     Abort
   ${EndIf}
 FunctionEnd

@@ -61,7 +61,7 @@ LIQUIDGRAM_SERVER_ONLY=1 go run .    # then open the address it prints
 
 ## Installer
 
-`desktop/installer/liquidgram.nsi` builds a per-user installer that needs no administrator rights. It uses Modern UI in Russian, or English when Windows uses English, and installs into `%LOCALAPPDATA%\Programs\Liquidgram`. It creates Start menu and desktop shortcuts and registers an uninstaller under `HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\Liquidgram`. The finish page has a "Run Liquidgram" checkbox. `/S` installs or uninstalls silently. An update over a running copy renames the old executable, which Windows allows, and writes the new one next to it. If even that fails, the installer asks the user to close Liquidgram; a silent install exits with code 2 and keeps the old files.
+`desktop/installer/liquidgram.nsi` builds a per-user installer that needs no administrator rights. It uses Modern UI in Russian, or English when Windows uses English, and installs into `%LOCALAPPDATA%\Programs\Liquidgram`. It refuses 32-bit Windows and versions older than Windows 10, which the Go launcher cannot run on: a message explains it, and a silent install exits with code 2. It creates Start menu and desktop shortcuts and registers an uninstaller under `HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\Liquidgram`. The finish page has a "Run Liquidgram" checkbox. `/S` installs or uninstalls silently. An update over a running copy renames the old executable, which Windows allows, and writes the new one next to it. If even that fails, the installer asks the user to close Liquidgram; a silent install exits with code 2 and keeps the old files.
 
 ## Assets
 
