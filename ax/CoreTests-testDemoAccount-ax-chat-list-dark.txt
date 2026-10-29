@@ -1,0 +1,60 @@
+Attributes: Application, 0x103f14bf0, pid: 17224, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x103f14bf0, pid: 17224, label: 'Liquidgram'
+    Window (Main), 0x103f14f10, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x103f152d0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x103f153f0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x103f15030, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x103f15150, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x103f15510, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x103f15630, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x103f15750, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x103f15870, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x103f15990, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x103f15ab0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Liquidgram', Focused
+                          Button, 0x103f15bd0, {{8.0, 12.0}, {40.0, 40.0}}, label: 'Open menu', Focused
+                          Other, 0x103f15cf0, {{0.0, 0.0}, {0.0, 0.0}}, Focused
+                            Button, 0x103f15e10, {{0.0, 0.0}, {0.0, 0.0}}, label: 'Open Story List', Focused
+                          TextField, 0x103f15f30, {{96.0, 12.0}, {201.0, 40.0}}, placeholderValue: 'Search', value: Search, Focused
+                          Other, 0x103f16050, {{0.0, 0.0}, {0.0, 0.0}}, Focused
+                          Button, 0x103f16170, {{354.0, 12.0}, {40.0, 40.0}}, label: 'Ghost mode', Focused
+                          StaticText, 0x103f16290, {{29.0, 83.0}, {19.0, 20.0}}, label: 'All', value: All, Focused
+                          StaticText, 0x103f163b0, {{61.0, 85.0}, {9.0, 15.0}}, label: '3', value: 3, Focused
+                          StaticText, 0x103f164d0, {{107.0, 83.0}, {59.0, 20.0}}, label: 'Личное', value: Личное, Focused
+                          StaticText, 0x103f165f0, {{180.0, 85.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          StaticText, 0x103f16710, {{225.0, 83.0}, {58.0, 20.0}}, label: 'Группы', value: Группы, Focused
+                          StaticText, 0x103f16830, {{297.0, 85.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          StaticText, 0x103f16950, {{342.0, 83.0}, {60.0, 20.0}}, label: 'Каналы', value: Каналы, Focused
+                          StaticText, 0x103f16a70, {{416.0, 85.0}, {7.0, 15.0}}, label: '1', value: 1, Focused
+                          Other, 0x103f16b90, {{0.0, 126.0}, {402.0, 576.0}}, Focused
+                            Other, 0x103f16cb0, {{0.0, 0.0}, {0.0, 0.0}}, Focused
+                            Button, 0x103f16dd0, {{0.0, 126.0}, {402.0, 72.0}}, label: 'Аня СмирноваАня Смирнова 18:01Договорились! До завтра 💙1', Focused
+                            Button, 0x103f16ef0, {{0.0, 198.0}, {402.0, 72.0}}, label: 'Бразы 🔥Бразы 🔥 17:56Лёха : Кто сегодня в чат-рум после 22?4', Focused
+                            Button, 0x103f17010, {{0.0, 270.0}, {402.0, 72.0}}, label: 'iOS 26 DesigniOS 26 Design 17:42Собрали 15 приложений, которые уже обновили дизайн под iOS 26 👇2', Focused
+                            Button, 0x103f17130, {{0.0, 342.0}, {402.0, 72.0}}, label: 'Катя ДизайнКатя Дизайн 15:22Уже 😎', Focused
+                            Button, 0x103f17250, {{0.0, 414.0}, {402.0, 72.0}}, label: 'МамаМама 14:02Позвони вечером ❤️', Focused
+                            Button, 0x103f17370, {{0.0, 486.0}, {402.0, 72.0}}, label: 'Макс ОрловМакс Орлов WedЛови, там 40 слайдов', Focused
+                            Button, 0x103f17490, {{0.0, 558.0}, {402.0, 72.0}}, label: 'Дима КодДима Код WedПоправил, перезапусти', Focused
+                            Button, 0x103f175b0, {{0.0, 630.0}, {402.0, 72.0}}, label: 'БроSaved Messages TueИдеи для Liquidgram: стекло, призрак, антиудаление ✅', Focused
+                          Button, 0x103f176d0, {{338.0, 776.0}, {48.0, 48.0}}, label: 'New Message', Focused
+                          Other, 0x103f177f0, {{0.0, 0.0}, {0.0, 0.0}}, Focused
+                          Other, 0x103f17910, {{16.0, 764.0}, {306.0, 60.0}}, label: 'navigation', Focused
+                            Button, 0x103f17a30, {{20.0, 768.0}, {97.0, 52.0}}, label: 'Chats', Focused
+                            Button, 0x103f17b50, {{120.0, 768.0}, {98.0, 52.0}}, label: 'Contacts', Focused
+                            Button, 0x103f17c70, {{221.0, 768.0}, {98.0, 52.0}}, label: 'Settings', Focused
+                          TextField, 0x103f17d90, {{0.0, 824.0}, {216.0, 35.0}}, Focused
+                Other, 0x103f17eb0, {{369.0, 55.7}, {30.0, 762.3}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x103f17fd0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x103f180f0, {{56.0, 841.0}, {290.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x103f18210, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x103f18330, {{369.0, 55.7}, {30.0, 762.3}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x103f18450, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x103f18570, {{56.0, 841.0}, {290.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x103f18690, {{336.0, 868.0}, {7.0, 3.0}}
+Path to element:
+ →Application, 0x103f14bf0, pid: 17224, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x10591e7f0, pid: 17224, label: 'Liquidgram'
+  }

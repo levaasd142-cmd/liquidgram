@@ -1,0 +1,52 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=7FF9581C-A82C-472C-B005-492B077D1038 -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/migration.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/TransportTests/testLegacyDataMovesToAppOrigin"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/migration.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:7FF9581C-A82C-472C-B005-492B077D1038, OS:18.6, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:7FF9581C-A82C-472C-B005-492B077D1038, OS:18.6, name:iPhone 16 Pro }
+2026-10-29 18:00:59.873395+0000 LiquidgramUITests-Runner[10076:35559] [Default] Running tests...
+2026-10-29 18:00:59.907997+0000 LiquidgramUITests-Runner[10076:35640] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-29 18:00:59.949802+0000 LiquidgramUITests-Runner[10076:35638] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 18:01:03.291.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 18:01:03.291.
+Test Suite 'TransportTests' started at 2026-10-29 18:01:03.292.
+Test Case '-[LiquidgramUITests.TransportTests testLegacyDataMovesToAppOrigin]' started.
+    t =     0.00s Start Test at 2026-10-29 18:01:03.293
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     9.16s         Setting up automation session
+    t =     9.98s         Wait for org.liquidgram.messenger to idle
+    t =    11.14s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    11.81s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.35s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.88s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    13.01s Find the Any (Element at index 0)
+    t =    13.26s Added attachment named '01-chats-after-migration'
+    t =    13.26s Waiting 90.0s for "liquidgram.selftest.result" Any to exist
+    t =    14.29s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =    14.29s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =    14.33s Find the "liquidgram.selftest.result" Any
+    t =    14.34s Added attachment named 'selftest-report-migration'
+    t =    14.35s Tear Down
+Test Case '-[LiquidgramUITests.TransportTests testLegacyDataMovesToAppOrigin]' passed (14.554 seconds).
+Test Suite 'TransportTests' passed at 2026-10-29 18:01:17.847.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.554 (14.555) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 18:01:17.847.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.554 (14.556) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 18:01:17.847.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.554 (14.556) seconds
+2026-10-29 18:01:18.505 xcodebuild[9490:33960] [MT] IDETestOperationsObserverDebug: 21.877 elapsed -- Testing started completed.
+2026-10-29 18:01:18.505 xcodebuild[9490:33960] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:01:18.505 xcodebuild[9490:33960] [MT] IDETestOperationsObserverDebug: 21.877 sec, +21.877 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/migration.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
