@@ -7,7 +7,8 @@ import { SettingsScreens } from '../../../../types';
 import { IS_IOS, IS_MAC_OS } from '../../../../util/browser/windowEnvironment';
 
 export type SettingsSearchFlag =
-  'isDesktopLayout' | 'canSendWithKeyboard' | 'isIosApp' | keyof ReturnType<typeof selectSettingsSearchFlags>;
+  'isDesktopLayout' | 'canSendWithKeyboard' | 'isIosApp' | 'isStreamerModeSupported'
+  | keyof ReturnType<typeof selectSettingsSearchFlags>;
 
 export type SettingsSearchSection = {
   screen: SettingsScreens;
@@ -354,9 +355,10 @@ export const SETTINGS_SEARCH_ENTRIES: SettingsSearchEntry[] = [
   ...buildEntries(SettingsScreens.Liquidgram, [
     'LiquidGlass', 'LiquidRefraction', 'LiquidGlassIntensity', 'LiquidGhostMode', 'LiquidGhostReadReceipts',
     'LiquidGhostTyping', 'LiquidGhostOffline', 'LiquidGhostStories', 'LiquidGhostMedia', 'LiquidGhostReadOnSend',
-    'LiquidAntiDelete', 'LiquidEditHistory', 'LiquidShowSeconds', 'LiquidStreamerMode', 'LiquidShowIds',
-    'LiquidHideStories', 'LiquidMarkAllRead',
+    'LiquidAntiDelete', 'LiquidEditHistory', 'LiquidShowSeconds', 'LiquidShowIds', 'LiquidHideStories',
+    'LiquidMarkAllRead',
   ]),
+  ...buildEntries(SettingsScreens.Liquidgram, ['LiquidStreamerMode'], { requires: 'isStreamerModeSupported' }),
   ...buildEntries(SettingsScreens.Liquidgram, ['LiquidAppLock'], {
     requires: 'isIosApp', keywordsKey: 'LiquidAppLockKeywords',
   }),
