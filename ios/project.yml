@@ -38,6 +38,9 @@ targets:
         SWIFT_VERSION: "5.0"
         SWIFT_STRICT_CONCURRENCY: minimal
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # The icons people can switch to in the app's settings, by these names
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: "AppIconMidnight AppIconAurora AppIconGlass AppIconClassic"
+        ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: "YES"
         # The web build's PNG files are served to the page byte for byte
         COMPRESS_PNG_FILES: "NO"
         STRIP_PNG_TEXT: "NO"
