@@ -1,0 +1,547 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-10-29T17:56:43.145Z",
+  "source": {
+    "branch": "ios-v2/fix-recorder-native",
+    "commit": "a064afa60d5694b6809dec30cd278b6a113134d1",
+    "run": "https://github.com/levaasd142-cmd/liquidgram/actions/runs/40924547013"
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "counts": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "knownIssues": 0
+  },
+  "tests": [
+    {
+      "name": "CoreTests/testColdStartShowsApiKeysScreen",
+      "status": "passed",
+      "duration": 13.342105984687805,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 14.698312044143677,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccountSurvivesRestart",
+      "status": "passed",
+      "duration": 19.12859606742859,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "status": "passed",
+      "duration": 10.240182995796204,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testWebAppSelfTest",
+      "status": "passed",
+      "duration": 9.836864948272705,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testCancelDiscardsRecording",
+      "status": "passed",
+      "duration": 14.68542993068695,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "status": "passed",
+      "duration": 13.734389066696167,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "status": "passed",
+      "duration": 21.723363041877747,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 20.400743007659912,
+      "pass": "dark"
+    }
+  ],
+  "selfTests": [
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "file": "logs/CoreTests-testWebAppSelfTest-selftest-report.json",
+      "ok": true,
+      "checks": [
+        {
+          "name": "bridge",
+          "ok": true,
+          "detail": "version 1.0.0, notification permission default"
+        },
+        {
+          "name": "notificationBridge",
+          "ok": true,
+          "detail": "permission default"
+        },
+        {
+          "name": "noServiceWorker",
+          "ok": true,
+          "detail": "service workers are unavailable"
+        },
+        {
+          "name": "secureContext",
+          "ok": true,
+          "detail": "http://127.0.0.1:47821"
+        },
+        {
+          "name": "webCrypto",
+          "ok": true,
+          "detail": "SHA-256 digest matches"
+        },
+        {
+          "name": "localStorage",
+          "ok": true,
+          "detail": "write, read and remove work"
+        },
+        {
+          "name": "indexedDb",
+          "ok": true,
+          "detail": "open, put and get work"
+        },
+        {
+          "name": "webAssembly",
+          "ok": true,
+          "detail": "a module compiles and runs"
+        },
+        {
+          "name": "worker",
+          "ok": true,
+          "detail": "a module worker from the app's origin answered (secure context true)"
+        },
+        {
+          "name": "fetchIndex",
+          "ok": true,
+          "detail": "status 200, text/html; charset=utf-8"
+        },
+        {
+          "name": "rangeRequest",
+          "ok": true,
+          "detail": "/assets/index-v9lLG9Y1.js: 206 with bytes 100-1123/159267"
+        },
+        {
+          "name": "userAgentMobile",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "userAgentLiquidgram",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "appRendered",
+          "ok": true,
+          "detail": "Transition full-height is-auth"
+        },
+        {
+          "name": "compatTest",
+          "ok": true,
+          "detail": "passed"
+        },
+        {
+          "name": "noPageErrors",
+          "ok": true,
+          "detail": "none since the page started"
+        }
+      ],
+      "info": {
+        "url": "http://127.0.0.1:47821/",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram",
+        "language": "en-US",
+        "viewport": "402x874 at 3x",
+        "colorScheme": "light",
+        "backdropFilter": true,
+        "blobWorker": "blocked: Error: worker error: the script did not load",
+        "authScreen": true
+      }
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testCancelDiscardsRecording-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "null",
+          "name": "roundVideoCancelResult",
+          "ok": true
+        },
+        {
+          "detail": "presented, cancelled",
+          "name": "roundVideoCancelEvents",
+          "ok": true
+        },
+        {
+          "detail": "0 files stored",
+          "name": "roundVideoCancelFiles",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {
+          "events": [
+            "presented",
+            "cancelled"
+          ],
+          "storedFiles": 0
+        },
+        "page": {
+          "hasRecorder": true,
+          "origin": "http://127.0.0.1:47821",
+          "pageErrors": [],
+          "result": null,
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    },
+    {
+      "test": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testRecorderExplainsMissingCamera-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "null",
+          "name": "roundVideoNoCameraResult",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {},
+        "page": {
+          "hasRecorder": true,
+          "origin": "http://127.0.0.1:47821",
+          "pageErrors": [],
+          "result": null,
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testRecordsAndSendsRoundVideo-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "http://127.0.0.1:47821",
+          "name": "roundVideoBridge",
+          "ok": true
+        },
+        {
+          "detail": "a second request while recording got null",
+          "name": "roundVideoSecondRequest",
+          "ok": true
+        },
+        {
+          "detail": "/__liquidgram/media/f260dac70d11c1136c879f3a1e71bc22.mp4",
+          "name": "roundVideoPath",
+          "ok": true
+        },
+        {
+          "detail": "480x480",
+          "name": "roundVideoSize",
+          "ok": true
+        },
+        {
+          "detail": "9133 ms",
+          "name": "roundVideoResultDuration",
+          "ok": true
+        },
+        {
+          "detail": "true",
+          "name": "roundVideoViewOnce",
+          "ok": true
+        },
+        {
+          "detail": "[]",
+          "name": "roundVideoPageErrors",
+          "ok": true
+        },
+        {
+          "detail": "ftyp, moov, mdat",
+          "name": "roundVideoFastStart",
+          "ok": true
+        },
+        {
+          "detail": "avc1 480x480",
+          "name": "roundVideoVideoTrack",
+          "ok": true
+        },
+        {
+          "detail": "profile 100, level 30, CABAC true",
+          "name": "roundVideoH264High",
+          "ok": true
+        },
+        {
+          "detail": "mp4a object type 2, 48000 Hz, 1 channel, 64000 bit/s",
+          "name": "roundVideoAudioTrack",
+          "ok": true
+        },
+        {
+          "detail": "file 9133 ms, page 9133 ms, recorded 9133 ms",
+          "name": "roundVideoDuration",
+          "ok": true
+        },
+        {
+          "detail": "274 frames in 9.133 s",
+          "name": "roundVideoFrames",
+          "ok": true
+        },
+        {
+          "detail": "611109 bytes",
+          "name": "roundVideoFileSize",
+          "ok": true
+        },
+        {
+          "detail": "480x480",
+          "name": "roundVideoDecodes",
+          "ok": true
+        },
+        {
+          "detail": "skipped: http://127.0.0.1:47821 is not served by AppSchemeHandler, fetch gave {\"blobType\":\"text\\/plain\",\"contentType\":\"text\\/plain; charset=utf-8\",\"size\":9,\"status\":404}",
+          "name": "roundVideoPageFetch",
+          "ok": true
+        },
+        {
+          "detail": "presented, sent, released",
+          "name": "roundVideoEvents",
+          "ok": true
+        },
+        {
+          "detail": "0 files stored after the release",
+          "name": "roundVideoReleased",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {
+          "events": [
+            "presented",
+            "sent",
+            "released"
+          ],
+          "file": {
+            "decodedFrame": "480x480",
+            "durationMs": 9133,
+            "fastStart": true,
+            "recordedDurationMs": 9133,
+            "size": 611109,
+            "topLevelBoxes": [
+              "ftyp",
+              "moov",
+              "mdat"
+            ],
+            "tracks": [
+              {
+                "cabac": true,
+                "codec": "avc1",
+                "durationMs": 9133,
+                "handler": "vide",
+                "height": 480,
+                "level": 30,
+                "profile": 100,
+                "samples": 274,
+                "width": 480
+              },
+              {
+                "audioObjectType": 2,
+                "averageBitRate": 64000,
+                "channelConfiguration": 1,
+                "channels": 2,
+                "codec": "mp4a",
+                "durationMs": 9194,
+                "handler": "soun",
+                "objectTypeIndication": 64,
+                "sampleRate": 48000,
+                "samples": 431,
+                "samplingFrequencyIndex": 3
+              }
+            ]
+          },
+          "result": {
+            "durationMs": 9133,
+            "height": 480,
+            "isViewOnce": true,
+            "url": "/__liquidgram/media/f260dac70d11c1136c879f3a1e71bc22.mp4",
+            "width": 480
+          },
+          "storedFiles": 0
+        },
+        "page": {
+          "afterRelease": {
+            "status": 404
+          },
+          "fetch": {
+            "blobType": "text/plain",
+            "contentType": "text/plain; charset=utf-8",
+            "size": 9,
+            "status": 404
+          },
+          "hasRecorder": true,
+          "origin": "http://127.0.0.1:47821",
+          "pageErrors": [],
+          "range": {
+            "contentRange": null,
+            "length": 9,
+            "status": 404
+          },
+          "result": {
+            "durationMs": 9133,
+            "height": 480,
+            "isViewOnce": true,
+            "url": "/__liquidgram/media/f260dac70d11c1136c879f3a1e71bc22.mp4",
+            "width": 480
+          },
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    }
+  ],
+  "buildErrors": [],
+  "screenshots": [
+    {
+      "test": "CoreTests/testColdStartShowsApiKeysScreen",
+      "pass": "light",
+      "name": "01-api-keys-screen",
+      "file": "screenshots/CoreTests-testColdStartShowsApiKeysScreen-01-api-keys-screen.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "02-chat",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "03-composer-with-keyboard",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccountSurvivesRestart",
+      "pass": "light",
+      "name": "01-chat-list-before-restart",
+      "file": "screenshots/CoreTests-testDemoAccountSurvivesRestart-01-chat-list-before-restart.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccountSurvivesRestart",
+      "pass": "light",
+      "name": "02-chat-list-after-restart",
+      "file": "screenshots/CoreTests-testDemoAccountSurvivesRestart-02-chat-list-after-restart.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "pass": "light",
+      "name": "01-keyboard-up",
+      "file": "screenshots/CoreTests-testKeyboardKeepsFocusedFieldVisible-01-keyboard-up.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "name": "01-self-test-finished",
+      "file": "screenshots/CoreTests-testWebAppSelfTest-01-self-test-finished.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "name": "01-recording",
+      "file": "screenshots/RoundVideoTests-testCancelDiscardsRecording-01-recording.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "name": "02-after-cancel",
+      "file": "screenshots/RoundVideoTests-testCancelDiscardsRecording-02-after-cancel.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "pass": "light",
+      "name": "01-no-camera",
+      "file": "screenshots/RoundVideoTests-testRecorderExplainsMissingCamera-01-no-camera.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "01-recording",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-01-recording.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "02-screen-flash",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-02-screen-flash.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "03-back-camera-view-once",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-03-back-camera-view-once.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "04-after-send",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-04-after-send.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "01-chat-list-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "02-chat-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "03-composer-with-keyboard-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard-dark.png",
+      "isFailure": false
+    }
+  ]
+}

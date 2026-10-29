@@ -1,0 +1,299 @@
+    t =     3.58s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.26s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.30s Find the Any (Element at index 0)
+    t =     4.49s Added attachment named '01-chat-list-before-restart'
+    t =    10.50s Pressing Home button
+    t =    12.99s Terminate org.liquidgram.messenger:7766
+    t =    14.02s Open org.liquidgram.messenger
+    t =    14.02s     Launch org.liquidgram.messenger
+    t =    14.24s         Setting up automation session
+    t =    15.32s         Wait for org.liquidgram.messenger to idle
+    t =    16.57s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    17.26s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    17.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    18.27s Find the Any (Element at index 0)
+    t =    18.57s Added attachment named '02-chat-list-after-restart'
+    t =    18.57s Requesting snapshot of accessibility hierarchy for app with pid 8617
+    t =    18.85s Requesting snapshot of accessibility hierarchy for app with pid 8617
+    t =    18.92s Added attachment named 'ax-chat-list-after-restart'
+    t =    18.92s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccountSurvivesRestart]' passed (19.129 seconds).
+Test Case '-[LiquidgramUITests.CoreTests testKeyboardKeepsFocusedFieldVisible]' started.
+    t =     0.00s Start Test at 2026-10-29 17:54:53.975
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:8617
+    t =     1.27s         Setting up automation session
+    t =     2.34s         Wait for org.liquidgram.messenger to idle
+    t =     3.64s Checking existence of `Any (First Match)`
+    t =     4.17s Checking existence of `Any (First Match)`
+    t =     4.70s Checking existence of `Any (First Match)`
+    t =     5.24s Checking existence of `Any (First Match)`
+    t =     5.80s Checking existence of `Any (First Match)`
+    t =     6.32s Checking existence of `Any (First Match)`
+    t =     7.35s Checking existence of `Any (First Match)`
+    t =     7.43s Find the Any (First Match)
+    t =     7.53s Tap "API ID" TextField
+    t =     7.53s     Wait for org.liquidgram.messenger to idle
+    t =     7.53s     Find the "API ID" TextField
+    t =     7.57s     Check for interrupting elements affecting "API ID" TextField
+    t =     7.60s     Synthesize event
+    t =     7.89s     Wait for org.liquidgram.messenger to idle
+    t =     8.09s Waiting 20.0s for Keyboard (First Match) to exist
+    t =     9.12s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     9.12s         Checking existence of `Keyboard (First Match)`
+    t =     9.13s Type '2040' into Target Application 'org.liquidgram.messenger'
+    t =     9.13s     Wait for org.liquidgram.messenger to idle
+    t =     9.14s     Find the Target Application 'org.liquidgram.messenger'
+    t =     9.18s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     9.22s     Synthesize event
+    t =     9.50s     Wait for org.liquidgram.messenger to idle
+    t =     9.50s Find the "API ID" TextField
+    t =     9.69s Added attachment named '01-keyboard-up'
+    t =     9.69s Requesting snapshot of accessibility hierarchy for app with pid 9086
+    t =     9.90s Requesting snapshot of accessibility hierarchy for app with pid 9086
+    t =     9.95s Added attachment named 'ax-keyboard-up'
+    t =     9.95s Find the Keyboard (First Match)
+    t =     9.97s Find the "API ID" TextField
+    t =    10.02s Find the Keyboard at {{0.0, 583.0}, {402.0, 233.0}}
+    t =    10.03s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testKeyboardKeepsFocusedFieldVisible]' passed (10.240 seconds).
+Test Case '-[LiquidgramUITests.CoreTests testWebAppSelfTest]' started.
+    t =     0.00s Start Test at 2026-10-29 17:55:04.216
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:9086
+    t =     1.27s         Setting up automation session
+    t =     2.26s         Wait for org.liquidgram.messenger to idle
+    t =     3.50s Waiting 90.0s for "liquidgram.selftest.result" Any to exist
+    t =     4.51s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     4.51s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     4.57s         Capturing element debug description
+    t =     5.59s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     5.59s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     5.64s         Capturing element debug description
+    t =     6.56s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     6.56s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     6.69s         Capturing element debug description
+    t =     7.50s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     7.50s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     7.54s         Capturing element debug description
+    t =     8.56s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     8.56s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     8.61s         Capturing element debug description
+    t =     9.51s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =     9.51s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =     9.62s Added attachment named '01-self-test-finished'
+    t =     9.62s Find the "liquidgram.selftest.result" Any
+    t =     9.63s Added attachment named 'selftest-report'
+    t =     9.63s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testWebAppSelfTest]' passed (9.837 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 17:55:14.053.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 67.246 (67.249) seconds
+Test Suite 'RoundVideoTests' started at 2026-10-29 17:55:14.053.
+Test Case '-[LiquidgramUITests.RoundVideoTests testCancelDiscardsRecording]' started.
+    t =     0.00s Start Test at 2026-10-29 17:55:14.053
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:9221
+    t =     1.25s         Setting up automation session
+    t =     2.18s         Wait for org.liquidgram.messenger to idle
+    t =     3.45s Waiting 60.0s for "liquidgram.roundVideo.recorder" Any to exist
+    t =     4.48s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     4.48s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     4.59s         Capturing element debug description
+    t =     5.51s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     5.51s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     5.58s         Capturing element debug description
+    t =     6.46s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     6.46s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     6.52s         Capturing element debug description
+    t =     7.45s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     7.45s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     7.51s         Capturing element debug description
+    t =     8.53s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     8.53s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     8.61s         Capturing element debug description
+    t =     9.53s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     9.53s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     9.58s Waiting 20.0s for "liquidgram.roundVideo.send" Any to exist
+    t =    10.60s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.send" Any`
+    t =    10.60s         Checking existence of `"liquidgram.roundVideo.send" Any`
+    t =    10.64s Find the "liquidgram.roundVideo.send" Any
+    t =    11.17s Find the "liquidgram.roundVideo.send" Button
+    t =    11.41s Added attachment named '01-recording'
+    t =    11.41s Checking existence of `"liquidgram.roundVideo.cancel" Any`
+    t =    11.44s Find the "liquidgram.roundVideo.cancel" Any
+    t =    11.48s Tap "liquidgram.roundVideo.cancel" Button
+    t =    11.48s     Wait for org.liquidgram.messenger to idle
+    t =    11.49s     Find the "liquidgram.roundVideo.cancel" Button
+    t =    11.52s     Check for interrupting elements affecting "liquidgram.roundVideo.cancel" Button
+    t =    11.58s     Synthesize event
+    t =    11.88s     Wait for org.liquidgram.messenger to idle
+    t =    12.26s Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =    12.32s Waiting 30.0s for "liquidgram.selftest.result" Any to exist
+    t =    13.33s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =    13.33s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =    13.34s Find the "liquidgram.selftest.result" Any
+    t =    13.35s Added attachment named 'round-video-page'
+    t =    13.35s Waiting 30.0s for "liquidgram.roundVideo.testReport" Any to exist
+    t =    14.35s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.testReport" Any`
+    t =    14.35s         Checking existence of `"liquidgram.roundVideo.testReport" Any`
+    t =    14.36s Find the "liquidgram.roundVideo.testReport" Any
+    t =    14.37s Find the "liquidgram.roundVideo.testReport" StaticText
+    t =    14.37s Added attachment named 'round-video-app'
+    t =    14.47s Added attachment named '02-after-cancel'
+    t =    14.48s Added attachment named 'selftest-report-round-video'
+    t =    14.48s Tear Down
+Test Case '-[LiquidgramUITests.RoundVideoTests testCancelDiscardsRecording]' passed (14.685 seconds).
+Test Case '-[LiquidgramUITests.RoundVideoTests testRecorderExplainsMissingCamera]' started.
+    t =     0.00s Start Test at 2026-10-29 17:55:28.739
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:9837
+    t =     1.27s         Setting up automation session
+    t =     2.22s         Wait for org.liquidgram.messenger to idle
+    t =     3.46s Waiting 60.0s for "liquidgram.roundVideo.recorder" Any to exist
+    t =     4.48s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     4.48s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     4.54s         Capturing element debug description
+    t =     5.53s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     5.53s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     5.61s         Capturing element debug description
+    t =     6.52s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     6.52s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     6.56s         Capturing element debug description
+    t =     7.47s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     7.47s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     7.52s         Capturing element debug description
+    t =     8.55s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     8.55s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     8.59s         Capturing element debug description
+    t =     9.52s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     9.52s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     9.53s Waiting 20.0s for "liquidgram.roundVideo.message" Any to exist
+    t =    10.56s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.message" Any`
+    t =    10.56s         Checking existence of `"liquidgram.roundVideo.message" Any`
+    t =    10.58s Waiting 20.0s for "No camera" StaticText to exist
+    t =    11.59s     Checking `Expect predicate `existsNoRetry == 1` for object "No camera" StaticText`
+    t =    11.59s         Checking existence of `"No camera" StaticText`
+    t =    11.76s Added attachment named '01-no-camera'
+    t =    11.76s Checking existence of `"liquidgram.roundVideo.close" Any`
+    t =    11.78s Find the "liquidgram.roundVideo.close" Any
+    t =    11.81s Tap "liquidgram.roundVideo.close" Button
+    t =    11.81s     Wait for org.liquidgram.messenger to idle
+    t =    11.81s     Find the "liquidgram.roundVideo.close" Button
+    t =    11.83s     Check for interrupting elements affecting "liquidgram.roundVideo.close" Button
+    t =    11.85s     Synthesize event
+    t =    12.13s     Wait for org.liquidgram.messenger to idle
+    t =    12.47s Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =    12.51s Waiting 30.0s for "liquidgram.selftest.result" Any to exist
+    t =    13.52s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =    13.52s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =    13.52s Find the "liquidgram.selftest.result" Any
+    t =    13.53s Added attachment named 'round-video-page'
+    t =    13.53s Added attachment named 'selftest-report-round-video'
+    t =    13.53s Tear Down
+Test Case '-[LiquidgramUITests.RoundVideoTests testRecorderExplainsMissingCamera]' passed (13.734 seconds).
+Test Case '-[LiquidgramUITests.RoundVideoTests testRecordsAndSendsRoundVideo]' started.
+    t =     0.00s Start Test at 2026-10-29 17:55:42.474
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:10507
+    t =     1.24s         Setting up automation session
+    t =     2.10s         Wait for org.liquidgram.messenger to idle
+    t =     3.32s Waiting 60.0s for "liquidgram.roundVideo.recorder" Any to exist
+    t =     4.35s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     4.35s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     4.42s         Capturing element debug description
+    t =     5.35s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     5.35s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     5.39s         Capturing element debug description
+    t =     6.42s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     6.42s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     6.47s         Capturing element debug description
+    t =     7.40s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     7.40s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     7.45s         Capturing element debug description
+    t =     8.37s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     8.37s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     8.43s         Capturing element debug description
+    t =     9.39s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.recorder" Any`
+    t =     9.39s         Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =     9.40s Waiting 20.0s for "liquidgram.roundVideo.send" Any to exist
+    t =    10.44s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.send" Any`
+    t =    10.44s         Checking existence of `"liquidgram.roundVideo.send" Any`
+    t =    10.46s Find the "liquidgram.roundVideo.send" Any
+    t =    10.64s Added attachment named '01-recording'
+    t =    10.65s Checking existence of `"liquidgram.roundVideo.flash" Any`
+    t =    10.67s Find the "liquidgram.roundVideo.flash" Any
+    t =    10.70s Tap "liquidgram.roundVideo.flash" Button
+    t =    10.70s     Wait for org.liquidgram.messenger to idle
+    t =    10.70s     Find the "liquidgram.roundVideo.flash" Button
+    t =    10.72s     Check for interrupting elements affecting "liquidgram.roundVideo.flash" Button
+    t =    10.76s     Synthesize event
+    t =    11.06s     Wait for org.liquidgram.messenger to idle
+    t =    13.08s Added attachment named '02-screen-flash'
+    t =    13.08s Checking existence of `"liquidgram.roundVideo.flip" Any`
+    t =    13.10s Find the "liquidgram.roundVideo.flip" Any
+    t =    13.14s Tap "liquidgram.roundVideo.flip" Button
+    t =    13.14s     Wait for org.liquidgram.messenger to idle
+    t =    13.14s     Find the "liquidgram.roundVideo.flip" Button
+    t =    13.17s     Check for interrupting elements affecting "liquidgram.roundVideo.flip" Button
+    t =    13.21s     Synthesize event
+    t =    13.51s     Wait for org.liquidgram.messenger to idle
+    t =    14.41s Checking existence of `"liquidgram.roundVideo.viewOnce" Any`
+    t =    14.44s Find the "liquidgram.roundVideo.viewOnce" Any
+    t =    14.48s Tap "liquidgram.roundVideo.viewOnce" Button
+    t =    14.48s     Wait for org.liquidgram.messenger to idle
+    t =    14.49s     Find the "liquidgram.roundVideo.viewOnce" Button
+    t =    14.51s     Check for interrupting elements affecting "liquidgram.roundVideo.viewOnce" Button
+    t =    14.54s     Synthesize event
+    t =    14.84s     Wait for org.liquidgram.messenger to idle
+    t =    17.82s Added attachment named '03-back-camera-view-once'
+    t =    17.82s Requesting snapshot of accessibility hierarchy for app with pid 11504
+    t =    18.00s Requesting snapshot of accessibility hierarchy for app with pid 11504
+    t =    18.03s Added attachment named 'ax-recorder'
+    t =    18.04s Tap "liquidgram.roundVideo.send" Button
+    t =    18.04s     Wait for org.liquidgram.messenger to idle
+    t =    18.04s     Find the "liquidgram.roundVideo.send" Button
+    t =    18.07s     Check for interrupting elements affecting "liquidgram.roundVideo.send" Button
+    t =    18.10s     Synthesize event
+    t =    18.39s     Wait for org.liquidgram.messenger to idle
+    t =    19.20s Checking existence of `"liquidgram.roundVideo.recorder" Any`
+    t =    19.25s Waiting 30.0s for "liquidgram.selftest.result" Any to exist
+    t =    20.31s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =    20.31s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =    20.32s Find the "liquidgram.selftest.result" Any
+    t =    20.33s Added attachment named 'round-video-page'
+    t =    20.33s Waiting 30.0s for "liquidgram.roundVideo.testReport" Any to exist
+    t =    21.38s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.roundVideo.testReport" Any`
+    t =    21.38s         Checking existence of `"liquidgram.roundVideo.testReport" Any`
+    t =    21.38s Find the "liquidgram.roundVideo.testReport" Any
+    t =    21.39s Find the "liquidgram.roundVideo.testReport" StaticText
+    t =    21.40s Added attachment named 'round-video-app'
+    t =    21.50s Added attachment named '04-after-send'
+    t =    21.51s Added attachment named 'selftest-report-round-video'
+    t =    21.51s Tear Down
+Test Case '-[LiquidgramUITests.RoundVideoTests testRecordsAndSendsRoundVideo]' passed (21.723 seconds).
+Test Suite 'RoundVideoTests' passed at 2026-10-29 17:56:04.197.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 50.143 (50.144) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 17:56:04.198.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 117.389 (117.394) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 17:56:04.198.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 117.389 (117.395) seconds
+2026-10-29 17:56:04.672 xcodebuild[4791:19304] [MT] IDETestOperationsObserverDebug: 135.135 elapsed -- Testing started completed.
+2026-10-29 17:56:04.672 xcodebuild[4791:19304] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 17:56:04.672 xcodebuild[4791:19304] [MT] IDETestOperationsObserverDebug: 135.135 sec, +135.135 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
