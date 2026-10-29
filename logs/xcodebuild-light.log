@@ -1,0 +1,299 @@
+    t =    13.32s Find the Any (Element at index 0)
+    t =    13.54s Tap "Аня СмирноваАня Смирнова 19:33Договорились! До завтра 💙1" Button
+    t =    13.54s     Wait for org.liquidgram.messenger to idle
+    t =    13.54s     Find the "Аня СмирноваАня Смирнова 19:33Договорились! До завтра 💙1" Button
+    t =    13.64s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 19:33Договорились! До завтра 💙1" Button
+    t =    13.70s     Synthesize event
+    t =    14.05s     Wait for org.liquidgram.messenger to idle
+    t =    14.12s Waiting 2.0s for "Allow" Button to exist
+    t =    15.15s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    15.16s         Checking existence of `"Allow" Button`
+    t =    15.46s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    15.47s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    15.48s         Capturing element debug description
+    t =    16.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    16.12s         Checking existence of `"Allow" Button`
+    t =    16.15s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    16.16s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    16.16s         Capturing element debug description
+    t =    16.16s     Checking existence of `"Allow" Button`
+    t =    16.20s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    16.20s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    16.21s Collecting debug information to assist test failure triage
+    t =    16.21s     Requesting snapshot of accessibility hierarchy for app with pid 5231
+    t =    16.28s Get all elements bound by index for: Elements matching predicate '(label == "Message" OR placeholderValue == "Message") AND elementType IN {49, 52, 45}'
+    t =    16.42s Find the Any (Element at index 0)
+    t =    16.56s Get all elements bound by index for: Elements matching predicate 'label == "Аня Смирнова"'
+    t =    16.66s Find the Button (Element at index 0)
+    t =    16.81s Find the "Аня Смирнова" Button
+    t =    17.01s Tap "Аня Смирнова" Button[0.50, 0.50]
+    t =    17.01s     Wait for org.liquidgram.messenger to idle
+    t =    17.02s     Find the "Аня Смирнова" Button
+    t =    17.11s     Check for interrupting elements affecting "Аня Смирнова" Button
+    t =    17.19s     Synthesize event
+    t =    17.19s         Find the "Аня Смирнова" Button
+    t =    17.28s         Find the "Аня Смирнова" Button
+    t =    17.44s         Find the "Аня Смирнова" Button
+    t =    17.83s     Wait for org.liquidgram.messenger to idle
+    t =    17.85s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    18.44s Find the Button (Element at index 0)
+    t =    18.78s Get all elements bound by index for: Elements matching predicate 'label == "Back"'
+    t =    18.91s Find the Button (Element at index 0)
+    t =    19.04s Find the Button (Element at index 1)
+    t =    19.32s Added attachment named '01-profile'
+    t =    19.32s Checking existence of `StatusBar (First Match)`
+    t =    19.34s Find the StatusBar (First Match)
+    t =    19.35s Find the WebView (First Match)
+    t =    19.39s Find the "Back" Button
+    t =    19.51s Find the "Edit" Button
+    t =    19.62s Find the "Edit" Button
+    t =    19.80s Tap "Edit" Button[0.50, 0.50]
+    t =    19.80s     Wait for org.liquidgram.messenger to idle
+    t =    19.81s     Find the "Edit" Button
+    t =    19.91s     Check for interrupting elements affecting "Edit" Button
+    t =    20.00s     Synthesize event
+    t =    20.00s         Find the "Edit" Button
+    t =    20.15s         Find the "Edit" Button
+    t =    20.41s         Find the "Edit" Button
+    t =    20.91s     Wait for org.liquidgram.messenger to idle
+    t =    20.91s Get all elements bound by index for: Elements matching predicate '(label == "First Name" OR placeholderValue == "First Name") AND elementType IN {49, 52, 45}'
+    t =    22.88s Find the Any (Element at index 0)
+    t =    23.62s Added attachment named '02-edit-contact'
+    t =    23.62s Get all elements bound by index for: Elements matching predicate 'label == "Back"'
+    t =    23.73s Find the Any (Element at index 0)
+    t =    23.89s Find the Any (Element at index 1)
+    t =    24.00s Tap "Back" Button[0.50, 0.50]
+    t =    24.00s     Wait for org.liquidgram.messenger to idle
+    t =    24.00s     Find the "Back" Button
+    t =    24.11s     Check for interrupting elements affecting "Back" Button
+    t =    24.20s     Synthesize event
+    t =    24.20s         Find the "Back" Button
+    t =    24.32s         Find the "Back" Button
+    t =    24.44s         Find the "Back" Button
+    t =    24.85s     Wait for org.liquidgram.messenger to idle
+    t =    24.89s Get all elements bound by index for: Elements matching predicate 'label == "Edit"'
+    t =    25.85s Find the Any (Element at index 0)
+    t =    26.04s Get all elements bound by index for: Elements matching predicate 'label == "Back"'
+    t =    26.12s Find the Any (Element at index 0)
+    t =    26.24s Find the Any (Element at index 1)
+    t =    26.34s Find the "Back" Button
+    t =    26.47s Tap "Back" Button[0.50, 0.50]
+    t =    26.47s     Wait for org.liquidgram.messenger to idle
+    t =    26.47s     Find the "Back" Button
+    t =    26.55s     Check for interrupting elements affecting "Back" Button
+    t =    26.64s     Synthesize event
+    t =    26.64s         Find the "Back" Button
+    t =    26.79s         Find the "Back" Button
+    t =    26.96s         Find the "Back" Button
+    t =    27.41s     Wait for org.liquidgram.messenger to idle
+    t =    27.43s Checking existence of `"Message" TextView`
+    t =    27.66s Find the "Message" TextView
+    t =    28.06s Added attachment named '03-chat-after-back'
+    t =    28.07s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testProfileTopRowWorks]' passed (28.273 seconds).
+Test Case '-[LiquidgramUITests.UsabilityTests testSettingsTopRowWorks]' started.
+    t =     0.00s Start Test at 2026-10-29 19:34:31.738
+    t =     0.01s Set Up
+    t =     0.01s Getting device orientation
+    t =     0.02s Open org.liquidgram.messenger
+    t =     0.02s     Launch org.liquidgram.messenger
+    t =     0.02s         Terminate org.liquidgram.messenger:45801
+    t =     1.66s         Setting up automation session
+    t =     3.50s         Wait for org.liquidgram.messenger to idle
+    t =     4.92s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     5.67s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     6.19s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.23s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.73s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.82s Find the Any (Element at index 0)
+    t =     8.94s Get all elements bound by index for: Elements matching predicate 'label == "Settings"'
+    t =     8.98s Find the Button (Element at index 0)
+    t =     9.06s Tap "Settings" Button[0.50, 0.50]
+    t =     9.06s     Wait for org.liquidgram.messenger to idle
+    t =     9.08s     Find the "Settings" Button
+    t =     9.14s     Check for interrupting elements affecting "Settings" Button
+    t =     9.17s     Synthesize event
+    t =     9.17s         Find the "Settings" Button
+    t =     9.26s         Find the "Settings" Button
+    t =     9.31s         Find the "Settings" Button
+    t =     9.67s     Wait for org.liquidgram.messenger to idle
+    t =     9.70s Waiting 2.0s for "Allow" Button to exist
+    t =    10.76s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    10.76s         Checking existence of `"Allow" Button`
+    t =    10.82s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    10.82s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    10.82s         Capturing element debug description
+    t =    11.71s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    11.71s         Checking existence of `"Allow" Button`
+    t =    11.75s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    11.77s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    11.77s         Capturing element debug description
+    t =    11.77s     Checking existence of `"Allow" Button`
+    t =    11.80s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    11.80s Ignoring failure to get hierarchy for remote element in process 24180 (Error getting main window kAXErrorServerNotFound)
+    t =    11.80s Collecting debug information to assist test failure triage
+    t =    11.80s     Requesting snapshot of accessibility hierarchy for app with pid 5231
+    t =    11.87s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =    11.94s Find the Button (Element at index 0)
+    t =    12.02s Get all elements bound by index for: Elements matching predicate 'label == "Search"'
+    t =    12.07s Find the Button (Element at index 0)
+    t =    12.15s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =    12.21s Find the Button (Element at index 0)
+    t =    12.26s Get all elements bound by index for: Elements matching predicate 'label == "More options"'
+    t =    12.31s Find the Button (Element at index 0)
+    t =    12.55s Added attachment named '01-settings'
+    t =    12.55s Checking existence of `StatusBar (First Match)`
+    t =    12.57s Find the StatusBar (First Match)
+    t =    12.59s Find the WebView (First Match)
+    t =    12.61s Find the "Go back" Button
+    t =    12.68s Find the "Search" Button
+    t =    12.73s Find the "Edit profile" Button
+    t =    12.77s Find the "More options" Button
+    t =    12.83s Find the "More options" Button
+    t =    12.89s Tap "More options" Button[0.50, 0.50]
+    t =    12.89s     Wait for org.liquidgram.messenger to idle
+    t =    12.89s     Find the "More options" Button
+    t =    12.93s     Check for interrupting elements affecting "More options" Button
+    t =    12.97s     Synthesize event
+    t =    12.97s         Find the "More options" Button
+    t =    13.01s         Find the "More options" Button
+    t =    13.05s         Find the "More options" Button
+    t =    13.55s     Wait for org.liquidgram.messenger to idle
+    t =    13.68s Get all elements bound by index for: Elements matching predicate 'label == "Log Out"'
+    t =    14.27s Find the Any (Element at index 0)
+    t =    14.45s Added attachment named '02-settings-menu'
+    t =    14.45s Find the Window (First Match)
+    t =    14.46s Find the "Log Out" MenuItem
+    t =    14.51s Tap Target Application 'org.liquidgram.messenger'[0.00, 0.00] -> (60.3, 480.7)
+    t =    14.51s     Wait for org.liquidgram.messenger to idle
+    t =    14.51s     Find the Target Application 'org.liquidgram.messenger'
+    t =    14.53s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    14.58s     Synthesize event
+    t =    14.58s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.60s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.64s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.95s     Wait for org.liquidgram.messenger to idle
+    t =    14.96s Find the "Log Out" MenuItem
+    t =    15.54s Find the "Log Out" MenuItem
+    t =    16.58s     Find the "Log Out" MenuItem (retry 1)
+    t =    17.63s     Find the "Log Out" MenuItem (retry 2)
+    t =    17.68s Find the "Search" Button
+    t =    17.75s Tap "Search" Button[0.50, 0.50]
+    t =    17.75s     Wait for org.liquidgram.messenger to idle
+    t =    17.76s     Find the "Search" Button
+    t =    17.79s     Check for interrupting elements affecting "Search" Button
+    t =    17.83s     Synthesize event
+    t =    17.83s         Find the "Search" Button
+    t =    17.89s         Find the "Search" Button
+    t =    17.93s         Find the "Search" Button
+    t =    18.26s     Wait for org.liquidgram.messenger to idle
+    t =    18.29s Checking existence of `"Edit profile" Button`
+    t =    18.38s Find the "Edit profile" Button
+    t =    18.47s Get all elements bound by index for: Elements matching predicate '(label == "Search" OR placeholderValue == "Search") AND elementType IN {49, 52, 45}'
+    t =    18.52s Find the Any (Element at index 0)
+    t =    18.73s Added attachment named '03-settings-search'
+    t =    18.73s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =    18.75s Find the Any (Element at index 0)
+    t =    18.78s Tap "Go back" Button[0.50, 0.50]
+    t =    18.78s     Wait for org.liquidgram.messenger to idle
+    t =    18.79s     Find the "Go back" Button
+    t =    18.81s     Check for interrupting elements affecting "Go back" Button
+    t =    18.83s     Synthesize event
+    t =    18.83s         Find the "Go back" Button
+    t =    18.87s         Find the "Go back" Button
+    t =    18.90s         Find the "Go back" Button
+    t =    19.21s     Wait for org.liquidgram.messenger to idle
+    t =    19.21s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =    19.27s Find the Any (Element at index 0)
+    t =    19.34s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =    19.37s Find the Any (Element at index 0)
+    t =    19.43s Find the "Edit profile" Button
+    t =    19.54s Tap "Edit profile" Button[0.50, 0.50]
+    t =    19.54s     Wait for org.liquidgram.messenger to idle
+    t =    19.55s     Find the "Edit profile" Button
+    t =    19.60s     Check for interrupting elements affecting "Edit profile" Button
+    t =    19.64s     Synthesize event
+    t =    19.64s         Find the "Edit profile" Button
+    t =    19.69s         Find the "Edit profile" Button
+    t =    19.72s         Find the "Edit profile" Button
+    t =    20.05s     Wait for org.liquidgram.messenger to idle
+    t =    20.05s Get all elements bound by index for: Elements matching predicate '(label == "First name (required)" OR placeholderValue == "First name (required)") AND elementType IN {49, 52, 45}'
+    t =    20.14s Find the Any (Element at index 0)
+    t =    20.41s Added attachment named '04-edit-profile'
+    t =    20.41s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =    20.48s Find the Any (Element at index 0)
+    t =    20.55s Tap "Go back" Button[0.50, 0.50]
+    t =    20.55s     Wait for org.liquidgram.messenger to idle
+    t =    20.55s     Find the "Go back" Button
+    t =    20.61s     Check for interrupting elements affecting "Go back" Button
+    t =    20.65s     Synthesize event
+    t =    20.65s         Find the "Go back" Button
+    t =    20.70s         Find the "Go back" Button
+    t =    20.76s         Find the "Go back" Button
+    t =    21.09s     Wait for org.liquidgram.messenger to idle
+    t =    21.10s Get all elements bound by index for: Elements matching predicate 'label == "Edit profile"'
+    t =    21.18s Find the Any (Element at index 0)
+    t =    21.29s Get all elements bound by index for: Elements matching predicate 'label == "Go back"'
+    t =    21.36s Find the Any (Element at index 0)
+    t =    21.53s Find the "Go back" Button
+    t =    21.63s Tap "Go back" Button[0.50, 0.50]
+    t =    21.63s     Wait for org.liquidgram.messenger to idle
+    t =    21.63s     Find the "Go back" Button
+    t =    21.67s     Check for interrupting elements affecting "Go back" Button
+    t =    21.70s     Synthesize event
+    t =    21.71s         Find the "Go back" Button
+    t =    21.75s         Find the "Go back" Button
+    t =    21.79s         Find the "Go back" Button
+    t =    22.15s     Wait for org.liquidgram.messenger to idle
+    t =    22.16s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    22.32s Find the Any (Element at index 0)
+    t =    22.84s Added attachment named '05-chat-list'
+    t =    22.85s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testSettingsTopRowWorks]' passed (23.055 seconds).
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' started.
+    t =     0.00s Start Test at 2026-10-29 19:34:54.791
+    t =     0.00s Set Up
+    t =     0.00s Getting device orientation
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:46595
+    t =    20.82s         Setting up automation session
+    t =    23.41s         Wait for org.liquidgram.messenger to idle
+    t =    25.14s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    27.21s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    27.75s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    28.27s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    28.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    29.40s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    30.20s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    30.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    31.87s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    32.22s Find the Any (Element at index 0)
+    t =    32.50s Checking existence of `Any (First Match)`
+    t =    32.57s Find the Any (First Match)
+    t =    33.68s Find the WebView (First Match)
+    t =    33.72s Checking existence of `StatusBar (First Match)`
+    t =    33.76s Find the StatusBar (First Match)
+    t =    34.09s Added attachment named '01-status-bar-strip'
+    t =    34.09s Checking existence of `StatusBar (First Match)`
+    t =    34.12s Find the StatusBar (First Match)
+    t =    34.14s Find the Window (First Match)
+    t =    34.53s Tear Down
+Test Case '-[LiquidgramUITests.UsabilityTests testStatusBarStripMatchesTheme]' passed (34.741 seconds).
+Test Suite 'UsabilityTests' failed at 2026-10-29 19:35:29.532.
+	 Executed 13 tests, with 2 failures (0 unexpected) in 431.820 (431.833) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 19:35:29.538.
+	 Executed 45 tests, with 1 test skipped and 4 failures (0 unexpected) in 1102.678 (1102.755) seconds
+Test Suite 'All tests' failed at 2026-10-29 19:35:29.540.
+	 Executed 45 tests, with 1 test skipped and 4 failures (0 unexpected) in 1102.678 (1102.758) seconds
+2026-10-29 19:36:14.109 xcodebuild[10703:35988] [MT] IDETestOperationsObserverDebug: 1173.363 elapsed -- Testing started completed.
+2026-10-29 19:36:14.111 xcodebuild[10703:35988] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 19:36:14.111 xcodebuild[10703:35988] [MT] IDETestOperationsObserverDebug: 1173.363 sec, +1173.363 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

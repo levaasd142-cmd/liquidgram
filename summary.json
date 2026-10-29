@@ -1,0 +1,1478 @@
+{
+  "status": "failed",
+  "generatedAt": "2026-10-29T19:38:39.611Z",
+  "source": {
+    "branch": "ios-v2/integration2",
+    "commit": "f751fddc00e47105923db1e29b0f973ea1b972a6",
+    "run": "https://github.com/levaasd142-cmd/liquidgram/actions/runs/40937116355"
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "counts": {
+    "total": 47,
+    "passed": 42,
+    "failed": 4,
+    "skipped": 1,
+    "knownIssues": 0
+  },
+  "tests": [
+    {
+      "name": "CoreTests/testColdStartShowsApiKeysScreen",
+      "status": "passed",
+      "duration": 50.82184898853302,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "failed",
+      "duration": 51.83384096622467,
+      "message": "CoreTests.swift:118: failed - Not found within 20 s: a message of the opened chat",
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccountSurvivesRestart",
+      "status": "passed",
+      "duration": 51.37129306793213,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "status": "passed",
+      "duration": 14.362430930137634,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testWebAppSelfTest",
+      "status": "passed",
+      "duration": 14.002624988555908,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "status": "passed",
+      "duration": 26.43679106235504,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "status": "passed",
+      "duration": 17.68569004535675,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testDeepLinkOpensSettings",
+      "status": "passed",
+      "duration": 21.60106599330902,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testKeyboardHasNoFormToolbar",
+      "status": "passed",
+      "duration": 9.960946917533875,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "status": "passed",
+      "duration": 16.014158964157104,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "status": "passed",
+      "duration": 23.71507203578949,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionFocusesSearch",
+      "status": "passed",
+      "duration": 18.851543068885803,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionOpensNewMessage",
+      "status": "passed",
+      "duration": 21.660709023475647,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionOpensSavedMessages",
+      "status": "passed",
+      "duration": 11.315778017044067,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionTogglesGhostMode",
+      "status": "passed",
+      "duration": 8.820872068405151,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "status": "passed",
+      "duration": 15.656054973602295,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testLongPressOpensMessageMenu",
+      "status": "passed",
+      "duration": 23.282891035079956,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSlowShortSwipeSpringsBack",
+      "status": "passed",
+      "duration": 23.145663022994995,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackClosesProfile",
+      "status": "passed",
+      "duration": 19.473283052444458,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "status": "passed",
+      "duration": 16.573812007904053,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "status": "passed",
+      "duration": 16.07495391368866,
+      "pass": "light"
+    },
+    {
+      "name": "GestureTests/testSwipeToReply",
+      "status": "passed",
+      "duration": 15.929854989051819,
+      "pass": "light"
+    },
+    {
+      "name": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "status": "passed",
+      "duration": 25.09825098514557,
+      "pass": "light"
+    },
+    {
+      "name": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "status": "passed",
+      "duration": 18.948865056037903,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testCancelDiscardsRecording",
+      "status": "passed",
+      "duration": 20.90350902080536,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "status": "passed",
+      "duration": 19.942188024520874,
+      "pass": "light"
+    },
+    {
+      "name": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "status": "passed",
+      "duration": 28.880897998809814,
+      "pass": "light"
+    },
+    {
+      "name": "ShellTests/testIPhoneStaysInPortrait",
+      "status": "passed",
+      "duration": 11.12065601348877,
+      "pass": "light"
+    },
+    {
+      "name": "ShellTests/testKeyboardResizesPageAndRestoresIt",
+      "status": "passed",
+      "duration": 22.494354009628296,
+      "pass": "light"
+    },
+    {
+      "name": "ShellTests/testWindowOpenedLateShowsInAppBrowser",
+      "status": "failed",
+      "duration": 14.491176009178162,
+      "message": "ShellTests.swift:154: Failed to determine hittability of \"Open a page later\" Button: Activation point invalid and no suggested hit points based on element frame",
+      "pass": "light"
+    },
+    {
+      "name": "TransportTests/testLegacyDataMovesToAppOrigin",
+      "status": "skipped",
+      "duration": 0.7968959808349609,
+      "message": "Test skipped - Needs the data of the loopback version; run-ui-tests.sh seeds it with UI_TESTS_LEGACY_REF",
+      "pass": "light"
+    },
+    {
+      "name": "TransportTests/testMediaStreamsFromPage",
+      "status": "passed",
+      "duration": 19.59031593799591,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testAppStaysPortrait",
+      "status": "passed",
+      "duration": 13.157422065734863,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testAttachMenuAndEmojiPanelFitOnScreen",
+      "status": "passed",
+      "duration": 34.94933497905731,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testChatListTopRowWorks",
+      "status": "passed",
+      "duration": 56.445058941841125,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testChatTopRowWorks",
+      "status": "failed",
+      "duration": 19.770743012428284,
+      "message": "UsabilityTests.swift:817: Failed to determine hittability of \"Select messages\" MenuItem: Activation point invalid and no suggested hit points based on element frame",
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testDelayedWindowOpenShowsInAppBrowser",
+      "status": "passed",
+      "duration": 46.107807993888855,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testDraggingMessagesHidesKeyboard",
+      "status": "passed",
+      "duration": 40.97338902950287,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "status": "failed",
+      "duration": 53.7228729724884,
+      "message": "UsabilityTests.swift:443: failed - The chat with the keyboard: The page scrolled during the keyboard cycles: highest pageTop 0.0, offsetTop 335.0, scrollTop 0.0, scrollY 0.0",
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testLongPressOnMessageOpensMenu",
+      "status": "passed",
+      "duration": 29.33533799648285,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testMediaViewerOpensAndCloses",
+      "status": "passed",
+      "duration": 34.75455391407013,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testPageIsActiveBeforeFirstTap",
+      "status": "passed",
+      "duration": 16.533636927604675,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testProfileTopRowWorks",
+      "status": "passed",
+      "duration": 28.273276925086975,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testSettingsTopRowWorks",
+      "status": "passed",
+      "duration": 23.055158019065857,
+      "pass": "light"
+    },
+    {
+      "name": "UsabilityTests/testStatusBarStripMatchesTheme",
+      "status": "passed",
+      "duration": 34.74108004570007,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 54.94407594203949,
+      "pass": "dark"
+    },
+    {
+      "name": "UsabilityTests/testStatusBarStripMatchesTheme",
+      "status": "passed",
+      "duration": 13.464221954345703,
+      "pass": "dark"
+    }
+  ],
+  "selfTests": [
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "file": "logs/CoreTests-testWebAppSelfTest-selftest-report.json",
+      "ok": true,
+      "checks": [
+        {
+          "name": "bridge",
+          "ok": true,
+          "detail": "version 1.0.0, notification permission default"
+        },
+        {
+          "name": "notificationBridge",
+          "ok": true,
+          "detail": "permission default"
+        },
+        {
+          "name": "noServiceWorker",
+          "ok": true,
+          "detail": "service workers are unavailable"
+        },
+        {
+          "name": "appOrigin",
+          "ok": true,
+          "detail": "liquidgram-web://app"
+        },
+        {
+          "name": "secureContext",
+          "ok": true,
+          "detail": "liquidgram-web://app"
+        },
+        {
+          "name": "webCrypto",
+          "ok": true,
+          "detail": "SHA-256 digest matches"
+        },
+        {
+          "name": "localStorage",
+          "ok": true,
+          "detail": "write, read and remove work"
+        },
+        {
+          "name": "indexedDb",
+          "ok": true,
+          "detail": "open, put and get work"
+        },
+        {
+          "name": "webAssembly",
+          "ok": true,
+          "detail": "a module compiles and runs"
+        },
+        {
+          "name": "worker",
+          "ok": true,
+          "detail": "a module worker from the app's origin answered (secure context true)"
+        },
+        {
+          "name": "fetchIndex",
+          "ok": true,
+          "detail": "status 200, text/html; charset=utf-8"
+        },
+        {
+          "name": "rangeRequest",
+          "ok": true,
+          "detail": "/assets/index-Cjmo11nt.js: 206 with bytes 100-1123/101631"
+        },
+        {
+          "name": "userAgentMobile",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "userAgentLiquidgram",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "appRendered",
+          "ok": true,
+          "detail": "Transition full-height is-auth"
+        },
+        {
+          "name": "compatTest",
+          "ok": true,
+          "detail": "passed"
+        },
+        {
+          "name": "noPageErrors",
+          "ok": true,
+          "detail": "none since the page started"
+        }
+      ],
+      "info": {
+        "url": "liquidgram-web://app/",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram",
+        "language": "en-US",
+        "viewport": "402x812 at 3x",
+        "colorScheme": "light",
+        "backdropFilter": true,
+        "blobWorker": "blocked: Error: worker error: the script did not load",
+        "authScreen": true
+      }
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testCancelDiscardsRecording-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "null",
+          "name": "roundVideoCancelResult",
+          "ok": true
+        },
+        {
+          "detail": "presented, cancelled",
+          "name": "roundVideoCancelEvents",
+          "ok": true
+        },
+        {
+          "detail": "0 files stored",
+          "name": "roundVideoCancelFiles",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {
+          "events": [
+            "presented",
+            "cancelled"
+          ],
+          "storedFiles": 0
+        },
+        "page": {
+          "hasRecorder": true,
+          "origin": "liquidgram-web://app",
+          "pageErrors": [],
+          "result": null,
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    },
+    {
+      "test": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testRecorderExplainsMissingCamera-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "null",
+          "name": "roundVideoNoCameraResult",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {},
+        "page": {
+          "hasRecorder": true,
+          "origin": "liquidgram-web://app",
+          "pageErrors": [],
+          "result": null,
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "file": "logs/RoundVideoTests-testRecordsAndSendsRoundVideo-selftest-report-round-video.json",
+      "checks": [
+        {
+          "detail": "liquidgram-web://app",
+          "name": "roundVideoBridge",
+          "ok": true
+        },
+        {
+          "detail": "a second request while recording got null",
+          "name": "roundVideoSecondRequest",
+          "ok": true
+        },
+        {
+          "detail": "/__liquidgram/media/6ca8a2b337ad20c25600b631ee712ac0.mp4",
+          "name": "roundVideoPath",
+          "ok": true
+        },
+        {
+          "detail": "480x480",
+          "name": "roundVideoSize",
+          "ok": true
+        },
+        {
+          "detail": "13733 ms",
+          "name": "roundVideoResultDuration",
+          "ok": true
+        },
+        {
+          "detail": "true",
+          "name": "roundVideoViewOnce",
+          "ok": true
+        },
+        {
+          "detail": "[]",
+          "name": "roundVideoPageErrors",
+          "ok": true
+        },
+        {
+          "detail": "ftyp, moov, mdat",
+          "name": "roundVideoFastStart",
+          "ok": true
+        },
+        {
+          "detail": "avc1 480x480",
+          "name": "roundVideoVideoTrack",
+          "ok": true
+        },
+        {
+          "detail": "profile 100, level 30, CABAC true",
+          "name": "roundVideoH264High",
+          "ok": true
+        },
+        {
+          "detail": "mp4a object type 2, 48000 Hz, 1 channel, 64000 bit/s",
+          "name": "roundVideoAudioTrack",
+          "ok": true
+        },
+        {
+          "detail": "file 13733 ms, page 13733 ms, recorded 13733 ms",
+          "name": "roundVideoDuration",
+          "ok": true
+        },
+        {
+          "detail": "412 frames in 13.733 s",
+          "name": "roundVideoFrames",
+          "ok": true
+        },
+        {
+          "detail": "913617 bytes",
+          "name": "roundVideoFileSize",
+          "ok": true
+        },
+        {
+          "detail": "480x480",
+          "name": "roundVideoDecodes",
+          "ok": true
+        },
+        {
+          "detail": "{\"blobType\":\"video\\/mp4\",\"contentType\":\"video\\/mp4\",\"size\":913617,\"status\":200,\"topLevelBoxes\":[\"ftyp\",\"moov\",\"mdat\"],\"video\":{\"durationMs\":13733,\"height\":480,\"width\":480}}",
+          "name": "roundVideoPageFetch",
+          "ok": true
+        },
+        {
+          "detail": "{\"durationMs\":13733,\"height\":480,\"width\":480}",
+          "name": "roundVideoPageDecode",
+          "ok": true
+        },
+        {
+          "detail": "{\"contentRange\":\"bytes 0-1\\/913617\",\"length\":2,\"status\":206}",
+          "name": "roundVideoPageRange",
+          "ok": true
+        },
+        {
+          "detail": "{\"status\":404}",
+          "name": "roundVideoPageRelease",
+          "ok": true
+        },
+        {
+          "detail": "presented, sent, released",
+          "name": "roundVideoEvents",
+          "ok": true
+        },
+        {
+          "detail": "0 files stored after the release",
+          "name": "roundVideoReleased",
+          "ok": true
+        }
+      ],
+      "info": {
+        "app": {
+          "events": [
+            "presented",
+            "sent",
+            "released"
+          ],
+          "file": {
+            "decodedFrame": "480x480",
+            "durationMs": 13733,
+            "fastStart": true,
+            "recordedDurationMs": 13733,
+            "size": 913617,
+            "topLevelBoxes": [
+              "ftyp",
+              "moov",
+              "mdat"
+            ],
+            "tracks": [
+              {
+                "cabac": true,
+                "codec": "avc1",
+                "durationMs": 13733,
+                "handler": "vide",
+                "height": 480,
+                "level": 30,
+                "profile": 100,
+                "samples": 412,
+                "width": 480
+              },
+              {
+                "audioObjectType": 2,
+                "averageBitRate": 64000,
+                "channelConfiguration": 1,
+                "channels": 2,
+                "codec": "mp4a",
+                "durationMs": 13781,
+                "handler": "soun",
+                "objectTypeIndication": 64,
+                "sampleRate": 48000,
+                "samples": 646,
+                "samplingFrequencyIndex": 3
+              }
+            ]
+          },
+          "result": {
+            "durationMs": 13733,
+            "height": 480,
+            "isViewOnce": true,
+            "url": "/__liquidgram/media/6ca8a2b337ad20c25600b631ee712ac0.mp4",
+            "width": 480
+          },
+          "storedFiles": 0
+        },
+        "page": {
+          "afterRelease": {
+            "status": 404
+          },
+          "fetch": {
+            "blobType": "video/mp4",
+            "contentType": "video/mp4",
+            "size": 913617,
+            "status": 200,
+            "topLevelBoxes": [
+              "ftyp",
+              "moov",
+              "mdat"
+            ],
+            "video": {
+              "durationMs": 13733,
+              "height": 480,
+              "width": 480
+            }
+          },
+          "hasRecorder": true,
+          "origin": "liquidgram-web://app",
+          "pageErrors": [],
+          "range": {
+            "contentRange": "bytes 0-1/913617",
+            "length": 2,
+            "status": 206
+          },
+          "result": {
+            "durationMs": 13733,
+            "height": 480,
+            "isViewOnce": true,
+            "url": "/__liquidgram/media/6ca8a2b337ad20c25600b631ee712ac0.mp4",
+            "width": 480
+          },
+          "secondRequest": null
+        }
+      },
+      "ok": true
+    },
+    {
+      "test": "TransportTests/testMediaStreamsFromPage",
+      "pass": "light",
+      "file": "logs/TransportTests-testMediaStreamsFromPage-selftest-report-stream.json",
+      "ok": true,
+      "checks": [
+        {
+          "name": "appOrigin",
+          "ok": true,
+          "detail": "liquidgram-web://app"
+        },
+        {
+          "name": "loadMediaPartRegistered",
+          "ok": true,
+          "detail": "the web app set `window.__liquidgramNative.loadMediaPart`"
+        },
+        {
+          "name": "webAppChain",
+          "ok": true,
+          "detail": "played in 1392 ms, seeked in 429 ms and played to 2.33 s of 3 s; the web app downloaded parts 0, 3 of 4"
+        },
+        {
+          "name": "probeRange",
+          "ok": true,
+          "detail": "206 bytes 0-1, video/mp4, nosniff, sandbox"
+        },
+        {
+          "name": "openRange",
+          "ok": true,
+          "detail": "206 with the first 524288 bytes"
+        },
+        {
+          "name": "unalignedRanges",
+          "ok": true,
+          "detail": "across a part boundary and at the end of the file"
+        },
+        {
+          "name": "suffixRanges",
+          "ok": true,
+          "detail": "with and without the size in the URL"
+        },
+        {
+          "name": "beyondEnd",
+          "ok": true,
+          "detail": "416 with bytes */1300000"
+        },
+        {
+          "name": "wholeFile",
+          "ok": true,
+          "detail": "GET without a range is 200 with every part in order; HEAD gives the size"
+        },
+        {
+          "name": "parallelRanges",
+          "ok": true,
+          "detail": "12 requests, at most 4 parts loading at once"
+        },
+        {
+          "name": "contentTypeGuard",
+          "ok": true,
+          "detail": "text/html is served as application/octet-stream in a sandbox"
+        },
+        {
+          "name": "failedPart",
+          "ok": true,
+          "detail": "the request failed (TypeError: Load failed), the next one worked"
+        },
+        {
+          "name": "abortedFetch",
+          "ok": true,
+          "detail": "a request stopped while streaming leaves the stream working"
+        },
+        {
+          "name": "audioStreamsAndSeeks",
+          "ok": true,
+          "detail": "played in 1412 ms, seeked in 639 ms and played to 24.62 s of 30 s; 2 of 6 parts were in when it started"
+        },
+        {
+          "name": "videoPlaysAndSeeks",
+          "ok": true,
+          "detail": "played in 674 ms, seeked in 370 ms and played to 2.38 s of 3 s; parts 0, 3 of 4 were asked for"
+        }
+      ],
+      "info": {
+        "migrationOutcome": "nothing to move",
+        "webAppChain": {
+          "playingMs": 1392,
+          "duration": 3,
+          "seekedMs": 429,
+          "playedTo": 2.33,
+          "parts": [
+            0,
+            3
+          ]
+        },
+        "audio": {
+          "playingMs": 1412,
+          "partsBeforePlaying": 2,
+          "duration": 30,
+          "seekedMs": 639,
+          "playedTo": 24.62,
+          "requestedParts": [
+            0,
+            4,
+            5
+          ],
+          "totalParts": 6,
+          "seekPart": 4
+        },
+        "video": {
+          "playingMs": 674,
+          "partsBeforePlaying": 1,
+          "duration": 3,
+          "seekedMs": 370,
+          "playedTo": 2.38,
+          "requestedParts": [
+            0,
+            3
+          ]
+        }
+      }
+    }
+  ],
+  "buildErrors": [],
+  "screenshots": [
+    {
+      "test": "CoreTests/testColdStartShowsApiKeysScreen",
+      "pass": "light",
+      "name": "01-api-keys-screen",
+      "file": "screenshots/CoreTests-testColdStartShowsApiKeysScreen-01-api-keys-screen.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "failure-a-message-of-the-opened-chat",
+      "file": "screenshots/CoreTests-testDemoAccount-failure-a-message-of-the-opened-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccountSurvivesRestart",
+      "pass": "light",
+      "name": "01-chat-list-before-restart",
+      "file": "screenshots/CoreTests-testDemoAccountSurvivesRestart-01-chat-list-before-restart.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccountSurvivesRestart",
+      "pass": "light",
+      "name": "02-chat-list-after-restart",
+      "file": "screenshots/CoreTests-testDemoAccountSurvivesRestart-02-chat-list-after-restart.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "pass": "light",
+      "name": "01-keyboard-up",
+      "file": "screenshots/CoreTests-testKeyboardKeepsFocusedFieldVisible-01-keyboard-up.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "name": "01-self-test-finished",
+      "file": "screenshots/CoreTests-testWebAppSelfTest-01-self-test-finished.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "pass": "light",
+      "name": "01-locked-at-launch",
+      "file": "screenshots/FeatureTests-testAppLockOpensAndLocksAgainAfterBackground-01-locked-at-launch.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "pass": "light",
+      "name": "02-unlocked",
+      "file": "screenshots/FeatureTests-testAppLockOpensAndLocksAgainAfterBackground-02-unlocked.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "pass": "light",
+      "name": "03-locked-after-background",
+      "file": "screenshots/FeatureTests-testAppLockOpensAndLocksAgainAfterBackground-03-locked-after-background.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "pass": "light",
+      "name": "04-unlocked-again",
+      "file": "screenshots/FeatureTests-testAppLockOpensAndLocksAgainAfterBackground-04-unlocked-again.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "pass": "light",
+      "name": "01-failed-authentication",
+      "file": "screenshots/FeatureTests-testAppLockStaysLockedWhenAuthenticationFails-01-failed-authentication.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "pass": "light",
+      "name": "02-failed-again",
+      "file": "screenshots/FeatureTests-testAppLockStaysLockedWhenAuthenticationFails-02-failed-again.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testDeepLinkOpensSettings",
+      "pass": "light",
+      "name": "01-settings-from-deep-link",
+      "file": "screenshots/FeatureTests-testDeepLinkOpensSettings-01-settings-from-deep-link.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testKeyboardHasNoFormToolbar",
+      "pass": "light",
+      "name": "01-keyboard",
+      "file": "screenshots/FeatureTests-testKeyboardHasNoFormToolbar-01-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "pass": "light",
+      "name": "01-liquidgram-settings",
+      "file": "screenshots/FeatureTests-testLiquidgramSettingsShowIPhoneSection-01-liquidgram-settings.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "pass": "light",
+      "name": "02-iphone-section",
+      "file": "screenshots/FeatureTests-testLiquidgramSettingsShowIPhoneSection-02-iphone-section.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "01-shield-under-notification-center",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-01-shield-under-notification-center.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "02-shield-removed",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-02-shield-removed.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "03-app-switcher",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-03-app-switcher.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionFocusesSearch",
+      "pass": "light",
+      "name": "01-search-focused",
+      "file": "screenshots/FeatureTests-testQuickActionFocusesSearch-01-search-focused.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionOpensNewMessage",
+      "pass": "light",
+      "name": "01-new-message",
+      "file": "screenshots/FeatureTests-testQuickActionOpensNewMessage-01-new-message.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionOpensSavedMessages",
+      "pass": "light",
+      "name": "01-saved-messages",
+      "file": "screenshots/FeatureTests-testQuickActionOpensSavedMessages-01-saved-messages.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionTogglesGhostMode",
+      "pass": "light",
+      "name": "01-ghost-mode-toast",
+      "file": "screenshots/FeatureTests-testQuickActionTogglesGhostMode-01-ghost-mode-toast.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/GestureTests-testChatListRightSwipeKeepsChatList-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testChatListRightSwipeKeepsChatList",
+      "pass": "light",
+      "name": "02-chat-list-after-right-swipe",
+      "file": "screenshots/GestureTests-testChatListRightSwipeKeepsChatList-02-chat-list-after-right-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "02-message-menu",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-02-message-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testLongPressOpensMessageMenu",
+      "pass": "light",
+      "name": "03-reply-from-menu",
+      "file": "screenshots/GestureTests-testLongPressOpensMessageMenu-03-reply-from-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSlowShortSwipeSpringsBack",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSlowShortSwipeSpringsBack-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSlowShortSwipeSpringsBack",
+      "pass": "light",
+      "name": "02-chat-after-short-swipe",
+      "file": "screenshots/GestureTests-testSlowShortSwipeSpringsBack-02-chat-after-short-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackClosesProfile",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackClosesProfile-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackClosesProfile",
+      "pass": "light",
+      "name": "02-profile",
+      "file": "screenshots/GestureTests-testSwipeBackClosesProfile-02-profile.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackClosesProfile",
+      "pass": "light",
+      "name": "03-chat-after-profile-swipe",
+      "file": "screenshots/GestureTests-testSwipeBackClosesProfile-03-chat-after-profile-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackFromEdgeClosesChat-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromEdgeClosesChat",
+      "pass": "light",
+      "name": "02-chat-list-after-edge-swipe",
+      "file": "screenshots/GestureTests-testSwipeBackFromEdgeClosesChat-02-chat-list-after-edge-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeBackFromMiddleClosesChat-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeBackFromMiddleClosesChat",
+      "pass": "light",
+      "name": "02-chat-list-after-middle-swipe",
+      "file": "screenshots/GestureTests-testSwipeBackFromMiddleClosesChat-02-chat-list-after-middle-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeToReply",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/GestureTests-testSwipeToReply-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "GestureTests/testSwipeToReply",
+      "pass": "light",
+      "name": "02-reply-from-swipe",
+      "file": "screenshots/GestureTests-testSwipeToReply-02-reply-from-swipe.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "01-cancelled",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-01-cancelled.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "02-locked",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-02-locked.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "03-discarded",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-03-discarded.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "01-voice-mode",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-01-voice-mode.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "02-video-mode",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-02-video-mode.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "03-voice-mode-again",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-03-voice-mode-again.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "name": "01-recording",
+      "file": "screenshots/RoundVideoTests-testCancelDiscardsRecording-01-recording.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testCancelDiscardsRecording",
+      "pass": "light",
+      "name": "02-after-cancel",
+      "file": "screenshots/RoundVideoTests-testCancelDiscardsRecording-02-after-cancel.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecorderExplainsMissingCamera",
+      "pass": "light",
+      "name": "01-no-camera",
+      "file": "screenshots/RoundVideoTests-testRecorderExplainsMissingCamera-01-no-camera.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "01-recording",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-01-recording.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "02-screen-flash",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-02-screen-flash.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "03-back-camera-view-once",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-03-back-camera-view-once.png",
+      "isFailure": false
+    },
+    {
+      "test": "RoundVideoTests/testRecordsAndSendsRoundVideo",
+      "pass": "light",
+      "name": "04-after-send",
+      "file": "screenshots/RoundVideoTests-testRecordsAndSendsRoundVideo-04-after-send.png",
+      "isFailure": false
+    },
+    {
+      "test": "ShellTests/testIPhoneStaysInPortrait",
+      "pass": "light",
+      "name": "01-turned-sideways",
+      "file": "screenshots/ShellTests-testIPhoneStaysInPortrait-01-turned-sideways.png",
+      "isFailure": false
+    },
+    {
+      "test": "ShellTests/testKeyboardResizesPageAndRestoresIt",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/ShellTests-testKeyboardResizesPageAndRestoresIt-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "ShellTests/testKeyboardResizesPageAndRestoresIt",
+      "pass": "light",
+      "name": "02-chat",
+      "file": "screenshots/ShellTests-testKeyboardResizesPageAndRestoresIt-02-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "ShellTests/testKeyboardResizesPageAndRestoresIt",
+      "pass": "light",
+      "name": "03-keyboard-up",
+      "file": "screenshots/ShellTests-testKeyboardResizesPageAndRestoresIt-03-keyboard-up.png",
+      "isFailure": false
+    },
+    {
+      "test": "ShellTests/testKeyboardResizesPageAndRestoresIt",
+      "pass": "light",
+      "name": "04-keyboard-hidden",
+      "file": "screenshots/ShellTests-testKeyboardResizesPageAndRestoresIt-04-keyboard-hidden.png",
+      "isFailure": false
+    },
+    {
+      "test": "TransportTests/testMediaStreamsFromPage",
+      "pass": "light",
+      "name": "01-stream-check-finished",
+      "file": "screenshots/TransportTests-testMediaStreamsFromPage-01-stream-check-finished.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testAppStaysPortrait",
+      "pass": "light",
+      "name": "01-portrait",
+      "file": "screenshots/UsabilityTests-testAppStaysPortrait-01-portrait.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testAppStaysPortrait",
+      "pass": "light",
+      "name": "02-device-turned",
+      "file": "screenshots/UsabilityTests-testAppStaysPortrait-02-device-turned.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testAttachMenuAndEmojiPanelFitOnScreen",
+      "pass": "light",
+      "name": "01-attach-menu",
+      "file": "screenshots/UsabilityTests-testAttachMenuAndEmojiPanelFitOnScreen-01-attach-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testAttachMenuAndEmojiPanelFitOnScreen",
+      "pass": "light",
+      "name": "02-emoji-panel",
+      "file": "screenshots/UsabilityTests-testAttachMenuAndEmojiPanelFitOnScreen-02-emoji-panel.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatListTopRowWorks",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/UsabilityTests-testChatListTopRowWorks-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatListTopRowWorks",
+      "pass": "light",
+      "name": "02-main-menu",
+      "file": "screenshots/UsabilityTests-testChatListTopRowWorks-02-main-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatListTopRowWorks",
+      "pass": "light",
+      "name": "03-search",
+      "file": "screenshots/UsabilityTests-testChatListTopRowWorks-03-search.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatListTopRowWorks",
+      "pass": "light",
+      "name": "04-ghost-mode",
+      "file": "screenshots/UsabilityTests-testChatListTopRowWorks-04-ghost-mode.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatTopRowWorks",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/UsabilityTests-testChatTopRowWorks-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testChatTopRowWorks",
+      "pass": "light",
+      "name": "02-chat-menu",
+      "file": "screenshots/UsabilityTests-testChatTopRowWorks-02-chat-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testDelayedWindowOpenShowsInAppBrowser",
+      "pass": "light",
+      "name": "01-in-app-browser",
+      "file": "screenshots/UsabilityTests-testDelayedWindowOpenShowsInAppBrowser-01-in-app-browser.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testDraggingMessagesHidesKeyboard",
+      "pass": "light",
+      "name": "01-keyboard-up",
+      "file": "screenshots/UsabilityTests-testDraggingMessagesHidesKeyboard-01-keyboard-up.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testDraggingMessagesHidesKeyboard",
+      "pass": "light",
+      "name": "02-after-drag",
+      "file": "screenshots/UsabilityTests-testDraggingMessagesHidesKeyboard-02-after-drag.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "pass": "light",
+      "name": "01-chat",
+      "file": "screenshots/UsabilityTests-testKeyboardKeepsChatLayout-01-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "pass": "light",
+      "name": "02-keyboard",
+      "file": "screenshots/UsabilityTests-testKeyboardKeepsChatLayout-02-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "pass": "light",
+      "name": "03-keyboard-hidden",
+      "file": "screenshots/UsabilityTests-testKeyboardKeepsChatLayout-03-keyboard-hidden.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "pass": "light",
+      "name": "04-after-keyboard-cycles",
+      "file": "screenshots/UsabilityTests-testKeyboardKeepsChatLayout-04-after-keyboard-cycles.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testKeyboardKeepsChatLayout",
+      "pass": "light",
+      "name": "failure-the-chat-with-the-keyboard-the-page-scrolled",
+      "file": "screenshots/UsabilityTests-testKeyboardKeepsChatLayout-failure-the-chat-with-the-keyboard-the-page-scrolled.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testLongPressOnMessageOpensMenu",
+      "pass": "light",
+      "name": "01-message-menu",
+      "file": "screenshots/UsabilityTests-testLongPressOnMessageOpensMenu-01-message-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testLongPressOnMessageOpensMenu",
+      "pass": "light",
+      "name": "02-reply",
+      "file": "screenshots/UsabilityTests-testLongPressOnMessageOpensMenu-02-reply.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testMediaViewerOpensAndCloses",
+      "pass": "light",
+      "name": "01-chat-with-photo",
+      "file": "screenshots/UsabilityTests-testMediaViewerOpensAndCloses-01-chat-with-photo.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testMediaViewerOpensAndCloses",
+      "pass": "light",
+      "name": "02-media-viewer",
+      "file": "screenshots/UsabilityTests-testMediaViewerOpensAndCloses-02-media-viewer.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testMediaViewerOpensAndCloses",
+      "pass": "light",
+      "name": "03-media-viewer-closed",
+      "file": "screenshots/UsabilityTests-testMediaViewerOpensAndCloses-03-media-viewer-closed.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testPageIsActiveBeforeFirstTap",
+      "pass": "light",
+      "name": "01-chat-list-untouched",
+      "file": "screenshots/UsabilityTests-testPageIsActiveBeforeFirstTap-01-chat-list-untouched.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testProfileTopRowWorks",
+      "pass": "light",
+      "name": "01-profile",
+      "file": "screenshots/UsabilityTests-testProfileTopRowWorks-01-profile.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testProfileTopRowWorks",
+      "pass": "light",
+      "name": "02-edit-contact",
+      "file": "screenshots/UsabilityTests-testProfileTopRowWorks-02-edit-contact.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testProfileTopRowWorks",
+      "pass": "light",
+      "name": "03-chat-after-back",
+      "file": "screenshots/UsabilityTests-testProfileTopRowWorks-03-chat-after-back.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testSettingsTopRowWorks",
+      "pass": "light",
+      "name": "01-settings",
+      "file": "screenshots/UsabilityTests-testSettingsTopRowWorks-01-settings.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testSettingsTopRowWorks",
+      "pass": "light",
+      "name": "02-settings-menu",
+      "file": "screenshots/UsabilityTests-testSettingsTopRowWorks-02-settings-menu.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testSettingsTopRowWorks",
+      "pass": "light",
+      "name": "03-settings-search",
+      "file": "screenshots/UsabilityTests-testSettingsTopRowWorks-03-settings-search.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testSettingsTopRowWorks",
+      "pass": "light",
+      "name": "04-edit-profile",
+      "file": "screenshots/UsabilityTests-testSettingsTopRowWorks-04-edit-profile.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testSettingsTopRowWorks",
+      "pass": "light",
+      "name": "05-chat-list",
+      "file": "screenshots/UsabilityTests-testSettingsTopRowWorks-05-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testStatusBarStripMatchesTheme",
+      "pass": "light",
+      "name": "01-status-bar-strip",
+      "file": "screenshots/UsabilityTests-testStatusBarStripMatchesTheme-01-status-bar-strip.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "01-chat-list-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "02-chat-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "03-composer-with-keyboard-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "UsabilityTests/testStatusBarStripMatchesTheme",
+      "pass": "dark",
+      "name": "01-status-bar-strip-dark",
+      "file": "screenshots/UsabilityTests-testStatusBarStripMatchesTheme-01-status-bar-strip-dark.png",
+      "isFailure": false
+    }
+  ],
+  "contactSheet": "contact-sheet.png"
+}
