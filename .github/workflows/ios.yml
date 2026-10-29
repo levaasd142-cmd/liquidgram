@@ -1,0 +1,110 @@
+# Builds the native iPhone app in `ios/` into an unsigned IPA, uploads it as an artifact and publishes it as
+# the `ios-latest` release, so it has a permanent download link. Sideloadly signs it with the user's Apple ID
+# when installing; see ios/README.md and ios/УСТАНОВКА-IPHONE.txt.
+
+name: Build iOS app
+
+on:
+  push:
+    paths:
+      - ios/**
+      - src/**
+      - public/**
+      - plugins/**
+      - dev/postcss-*
+      - index.html
+      - package.json
+      - package-lock.json
+      - vite.config.ts
+      - postcss.config.ts
+      - tsconfig*.json
+      - .node-version
+      - .npmrc
+      - .github/workflows/ios.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A newer push to the same branch replaces a build in progress
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RELEASE_TAG: ios-latest
+  IPA_PATH: dist-ios/Liquidgram.ipa
+
+jobs:
+  build:
+    # Pushes build only on the default branch, whatever its name is
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
+    # The build uses the newest stable Xcode on the image and its iOS SDK. macos-15 has Xcode 16 and Xcode 26
+    # (iOS 26 SDK); switch to macos-26 when the build needs an Xcode release that macos-15 lacks.
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Select the latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      # The `opus-recorder` git dependency has submodules on gitlab.xiph.org, which npm clones when
+      # the GitHub tarball of the dependency is unavailable. The official GitHub mirrors keep CI off that host.
+      - name: Use GitHub mirrors for xiph submodules
+        run: git config --global url."https://github.com/xiph/".insteadOf "https://gitlab.xiph.org/xiph/"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build:production
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build IPA
+        run: bash ios/build-ipa.sh
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v7
+        with:
+          name: Liquidgram-iOS
+          path: ${{ env.IPA_PATH }}
+          if-no-files-found: error
+          # The IPA is a zip archive already
+          compression-level: 0
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          sha256="$(shasum -a 256 "$IPA_PATH" | cut -d ' ' -f 1)"
+          title="Liquidgram for iPhone"
+          notes="Unsigned IPA of Liquidgram ${version}, build ${GITHUB_RUN_NUMBER}, commit ${GITHUB_SHA}.
+          Install it with Sideloadly: ios/УСТАНОВКА-IPHONE.txt (Russian) or ios/README.md (English).
+          SHA-256: ${sha256}"
+
+          # The tag follows the latest build, so the release always points at the commit it was built from
+          git tag --force "$RELEASE_TAG" "$GITHUB_SHA"
+          git push --force origin "refs/tags/$RELEASE_TAG"
+
+          if gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            gh release edit "$RELEASE_TAG" --title "$title" --notes "$notes"
+          else
+            gh release create "$RELEASE_TAG" --title "$title" --notes "$notes"
+          fi
+          gh release upload "$RELEASE_TAG" "$IPA_PATH" --clobber

@@ -1,0 +1,8 @@
+/* Button that accepts a web page dialog */
+"alert.ok" = "OK";
+
+/* Button that dismisses a web page dialog */
+"alert.cancel" = "Cancel";
+
+/* Shown when the bundled web app does not load */
+"startup.error" = "Liquidgram could not start. Close the app and open it again.";

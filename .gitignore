@@ -12,10 +12,14 @@ dev/perf/screenshot*
 .github/workflows/*
 !.github/workflows/package-and-publish.yml
 !.github/workflows/pages.yml
+!.github/workflows/ios.yml
 
 # Liquidgram build output
 /dist
 /dist-extension
 /dist-desktop
+/dist-ios
 /desktop/launcher/webapp
 /desktop/launcher/*.syso
+/ios/Liquidgram/WebApp
+/ios/Liquidgram.xcodeproj
