@@ -1,0 +1,46 @@
+Attributes: Application, 0x10297f640, pid: 16239, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x10297f640, pid: 16239, label: 'Liquidgram'
+    Window (Main), 0x10297db60, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1029801a0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x102981000, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x102980c00, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x1029805c0, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x10297fd80, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x10297f960, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x10297d740, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x10297cee0, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1029820e0, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x102982200, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Liquidgram'
+                          Button, 0x102982320, {{8.0, 12.0}, {40.0, 40.0}}, label: 'Return to chat list'
+                          Other, 0x102982440, {{58.0, 10.0}, {336.0, 10.0}}
+                          TextField, 0x102982560, {{96.0, 12.0}, {245.0, 40.0}}, placeholderValue: 'Search', value: Search, Keyboard Focused, Focused
+                          Other, 0x102982680, {{58.0, 10.0}, {336.0, 10.0}}
+                          StaticText, 0x1029827a0, {{36.0, 86.0}, {44.0, 20.0}}, label: 'Chats', value: Chats
+                          StaticText, 0x1029828c0, {{111.0, 86.0}, {70.0, 20.0}}, label: 'Channels', value: Channels
+                          StaticText, 0x1029829e0, {{212.0, 86.0}, {39.0, 20.0}}, label: 'Apps', value: Apps
+                          StaticText, 0x102982b00, {{282.0, 86.0}, {42.0, 20.0}}, label: 'Posts', value: Posts
+                          StaticText, 0x102982c20, {{356.0, 86.0}, {46.0, 20.0}}, label: 'Media', value: Media
+                          StaticText, 0x102982d40, {{433.0, 86.0}, {39.0, 20.0}}, label: 'Links', value: Links
+                          StaticText, 0x102982e60, {{503.0, 86.0}, {35.0, 20.0}}, label: 'Files', value: Files
+                          StaticText, 0x102982f80, {{569.0, 86.0}, {45.0, 20.0}}, label: 'Music', value: Music
+                          StaticText, 0x1029830a0, {{645.0, 86.0}, {42.0, 20.0}}, label: 'Voice', value: Voice
+                          Other, 0x1029831c0, {{0.0, 120.0}, {402.0, 754.0}}
+                          Button, 0x1029832e0, {{338.0, 890.0}, {48.0, 48.0}}, label: 'New Message'
+                          Other, 0x102983400, {{338.0, 890.0}, {48.0, 10.0}}
+                          TextField, 0x102983520, {{0.0, 824.0}, {216.0, 34.0}}
+                Other, 0x102983640, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x102983760, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x102983880, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1029839a0, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x102983ac0, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x102983be0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x102983d00, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x102983e20, {{336.0, 868.0}, {7.0, 3.0}}
+Path to element:
+ →Application, 0x10297f640, pid: 16239, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x10297f150, pid: 16239, label: 'Liquidgram'
+  }

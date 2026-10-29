@@ -1,0 +1,172 @@
+Attributes: Application, 0x101639830, pid: 14355, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x101639830, pid: 14355, label: 'Liquidgram'
+    Window (Main), 0x1016514f0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x10164da80, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x10164c990, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x101639b90, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x101638380, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x101638700, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x101651c20, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x101655900, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x101659340, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x101655c60, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1016614a0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Liquidgram', Focused
+                          Button, 0x10165ef90, {{8.0, 12.0}, {40.0, 40.0}}, label: 'Go back', Focused
+                          Other, 0x10165ab10, {{70.0, 17.0}, {102.0, 30.0}}, label: 'Liquidgram', value: 3, Focused
+                            StaticText, 0x101652300, {{70.0, 19.0}, {102.0, 25.0}}, label: 'Liquidgram', value: Liquidgram, Focused
+                          Other, 0x101653080, {{161.0, 100.0}, {80.0, 80.0}}, Focused
+                          Other, 0x101656310, {{144.0, 208.0}, {114.0, 33.0}}, label: 'Liquidgram', value: 3, Focused
+                            StaticText, 0x1016544e0, {{144.0, 211.0}, {114.0, 27.0}}, label: 'Liquidgram', value: Liquidgram, Focused
+                          Other, 0x101652d10, {{41.0, 247.0}, {320.0, 36.0}}, Focused
+                            StaticText, 0x101658570, {{48.0, 247.0}, {306.0, 36.0}}, label: 'Unofficial client built on Telegram Web A. Every feature here works locally on your device.', value: Unofficial client ..., Focused
+                          Other, 0x101653730, {{16.0, 291.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x10165b550, {{32.0, 292.0}, {74.0, 18.0}}, label: 'iPhone app', value: iPhone app, Focused
+                          Other, 0x101639ed0, {{24.0, 327.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x101660e10, {{24.0, 327.0}, {354.0, 72.0}}, label: 'Lock with device passcode Asks to unlock when you return to Liquidgram ', value: 0, Focused
+                            Other, 0x101651f90, {{88.0, 327.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x1016596b0, {{88.0, 334.0}, {196.0, 20.0}}, label: 'Lock with device passcode', value: Lock with device p..., Focused
+                            StaticText, 0x101651890, {{88.0, 357.0}, {220.0, 34.0}}, label: 'Asks to unlock when you return to Liquidgram', value: Asks to unlock whe..., Focused
+                            StaticText, 0x1016503f0, {{42.0, 353.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101650e10, {{24.0, 431.0}, {354.0, 56.0}}, Focused
+                            Switch, 0x101650760, {{24.0, 431.0}, {354.0, 56.0}}, label: 'Hide in app switcher Blurs your chats when you switch apps ', value: 1, Focused
+                            Other, 0x101638010, {{88.0, 431.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101650ac0, {{88.0, 438.0}, {148.0, 20.0}}, label: 'Hide in app switcher', value: Hide in app switcher, Focused
+                            StaticText, 0x101637cc0, {{88.0, 461.0}, {251.0, 18.0}}, label: 'Blurs your chats when you switch apps', value: Blurs your chats w..., Focused
+                            StaticText, 0x10161f550, {{42.0, 449.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10161e0b0, {{24.0, 487.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x101651190, {{24.0, 487.0}, {354.0, 72.0}}, label: 'Haptic feedback Light vibrations when you send, react and switch ', value: 1, Focused
+                            Other, 0x10163b2f0, {{88.0, 487.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101638dd0, {{88.0, 494.0}, {119.0, 20.0}}, label: 'Haptic feedback', value: Haptic feedback, Focused
+                            StaticText, 0x10163a240, {{88.0, 517.0}, {270.0, 34.0}}, label: 'Light vibrations when you send, react and switch', value: Light vibrations w..., Focused
+                            StaticText, 0x10163ac30, {{42.0, 513.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10163a8e0, {{24.0, 559.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x10163a590, {{24.0, 559.0}, {354.0, 72.0}}, label: 'Open links in Liquidgram Websites open in a browser inside the app instead of Safari ', value: 1, Focused
+                            Other, 0x10164f9b0, {{88.0, 559.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10163c450, {{88.0, 566.0}, {179.0, 20.0}}, label: 'Open links in Liquidgram', value: Open links in Liqu..., Focused
+                            StaticText, 0x10161d670, {{88.0, 589.0}, {273.0, 34.0}}, label: 'Websites open in a browser inside the app instead of Safari', value: Websites open in a..., Focused
+                            StaticText, 0x10163bd60, {{42.0, 585.0}, {20.0, 20.0}}, label: '', Focused
+                          Button, 0x1016394c0, {{24.0, 631.0}, {354.0, 48.0}}, label: 'Notifications in iOS Settings', Focused
+                          Other, 0x10163b670, {{16.0, 703.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x10164ccf0, {{32.0, 704.0}, {59.0, 18.0}}, label: 'App icon', value: App icon, Focused
+                          Switch, 0x10164d060, {{28.0, 747.0}, {66.0, 78.0}}, label: 'Default', value: 1, Focused
+                          Switch, 0x10164c2a0, {{98.0, 747.0}, {66.0, 78.0}}, label: 'Midnight', value: 0, Focused
+                          Switch, 0x10164d720, {{168.0, 747.0}, {66.0, 78.0}}, label: 'Aurora', value: 0, Focused
+                          Switch, 0x10163c100, {{238.0, 747.0}, {66.0, 78.0}}, label: 'Glass', value: 0, Focused
+                          Switch, 0x10164fd20, {{308.0, 747.0}, {66.0, 78.0}}, label: 'Classic', value: 0, Focused
+                          Other, 0x10164ddf0, {{16.0, 857.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x10165a0e0, {{32.0, 858.0}, {46.0, 18.0}}, label: 'Design', value: Design, Focused
+                          Other, 0x10164ef50, {{24.0, 893.0}, {354.0, 56.0}}, Focused
+                            Switch, 0x10164d3b0, {{24.0, 893.0}, {354.0, 56.0}}, label: 'Liquid Glass Translucent iOS 26-style interface ', value: 1, Focused
+                            Other, 0x10165bc60, {{88.0, 893.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10165ae80, {{88.0, 900.0}, {89.0, 20.0}}, label: 'Liquid Glass', value: Liquid Glass, Focused
+                            StaticText, 0x10165b1e0, {{88.0, 923.0}, {222.0, 18.0}}, label: 'Translucent iOS 26-style interface', value: Translucent iOS 26..., Focused
+                            StaticText, 0x10165b8e0, {{42.0, 911.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10165a7a0, {{24.0, 949.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x10165bfd0, {{24.0, 949.0}, {354.0, 72.0}}, label: 'Light refraction Lens distortion along glass edges (Chrome, Edge) ', value: 0, Focused, Disabled
+                            Other, 0x10165d0f0, {{88.0, 949.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10165c6c0, {{88.0, 956.0}, {111.0, 20.0}}, label: 'Light refraction', value: Light refraction, Focused
+                            StaticText, 0x10165de70, {{88.0, 979.0}, {280.0, 34.0}}, label: 'Lens distortion along glass edges (Chrome, Edge)', value: Lens distortion al..., Focused
+                            StaticText, 0x10165c330, {{42.0, 975.0}, {20.0, 20.0}}, label: '', Focused
+                          StaticText, 0x10165cd80, {{40.0, 1031.0}, {106.0, 20.0}}, label: 'Glass intensity', value: Glass intensity, Focused
+                          StaticText, 0x10165e540, {{327.0, 1031.0}, {35.0, 20.0}}, label: '60%', value: 60%, Focused
+                          Other, 0x10165d7e0, {{40.0, 1068.0}, {194.0, 2.0}}, Focused
+                          Slider, 0x10165d460, {{40.0, 1063.0}, {322.0, 12.0}}, value: 60.00, Focused
+                          Other, 0x10165e8b0, {{16.0, 1107.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x101660400, {{32.0, 1108.0}, {81.0, 18.0}}, label: 'Ghost mode', value: Ghost mode, Focused
+                          Other, 0x1016588c0, {{24.0, 1143.0}, {354.0, 56.0}}, Focused
+                            Switch, 0x101658c60, {{24.0, 1143.0}, {354.0, 56.0}}, label: 'Ghost mode Read, watch and stay invisible ', value: 0, Focused
+                            Other, 0x10165e1e0, {{88.0, 1143.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10165db20, {{88.0, 1150.0}, {89.0, 20.0}}, label: 'Ghost mode', value: Ghost mode, Focused
+                            StaticText, 0x10165ca10, {{88.0, 1173.0}, {194.0, 18.0}}, label: 'Read, watch and stay invisible', value: Read, watch and st..., Focused
+                            StaticText, 0x10165f9a0, {{42.0, 1161.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101658fc0, {{24.0, 1199.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x101659a10, {{24.0, 1199.0}, {354.0, 48.0}}, label: 'Don't send read receipts ', value: 1, Focused, Disabled
+                            Other, 0x10163af90, {{88.0, 1213.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10164f2c0, {{88.0, 1213.0}, {179.0, 20.0}}, label: 'Don't send read receipts', value: Don't send read re..., Focused
+                            StaticText, 0x10164c610, {{42.0, 1213.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x1016569e0, {{24.0, 1247.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x1016570b0, {{24.0, 1247.0}, {354.0, 48.0}}, label: 'Hide "typing…" status ', value: 1, Focused, Disabled
+                            Other, 0x101656d40, {{88.0, 1261.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101657ae0, {{88.0, 1261.0}, {158.0, 20.0}}, label: 'Hide "typing…" status', value: Hide "typing…" sta..., Focused
+                            StaticText, 0x101657410, {{42.0, 1261.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101650080, {{24.0, 1295.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x101657780, {{24.0, 1295.0}, {354.0, 48.0}}, label: 'Always appear offline ', value: 1, Focused, Disabled
+                            Other, 0x101657e70, {{88.0, 1309.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101658200, {{88.0, 1309.0}, {155.0, 20.0}}, label: 'Always appear offline', value: Always appear offl..., Focused
+                            StaticText, 0x1016617f0, {{42.0, 1309.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101661b50, {{24.0, 1343.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x101661ed0, {{24.0, 1343.0}, {354.0, 48.0}}, label: 'View stories anonymously ', value: 1, Focused, Disabled
+                            Other, 0x101662260, {{88.0, 1357.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x1016625b0, {{88.0, 1357.0}, {188.0, 20.0}}, label: 'View stories anonymously', value: View stories anony..., Focused
+                            StaticText, 0x1016630c0, {{42.0, 1357.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101663440, {{24.0, 1391.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x1016637b0, {{24.0, 1391.0}, {354.0, 48.0}}, label: 'Don't mark voice and video messages as played ', value: 1, Focused, Disabled
+                            Other, 0x101663b10, {{88.0, 1395.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101663e80, {{88.0, 1395.0}, {275.0, 40.0}}, label: 'Don't mark voice and video messages as played', value: Don't mark voice a..., Focused
+                            StaticText, 0x1016641f0, {{42.0, 1405.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101664570, {{24.0, 1439.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x1016648f0, {{24.0, 1439.0}, {354.0, 48.0}}, label: 'Mark chat as read when I reply ', value: 1, Focused, Disabled
+                            Other, 0x101664c40, {{88.0, 1453.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101664fb0, {{88.0, 1453.0}, {222.0, 20.0}}, label: 'Mark chat as read when I reply', value: Mark chat as read ..., Focused
+                            StaticText, 0x101665300, {{42.0, 1453.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x1016656a0, {{16.0, 1503.0}, {370.0, 64.0}}, Focused
+                            StaticText, 0x1016659f0, {{32.0, 1510.0}, {331.0, 50.0}}, label: 'Ghost mode works in the client: Telegram servers simply don't receive these signals. Toggle it quickly with the eye button next to search.', value: Ghost mode works i..., Focused
+                          Other, 0x101665d40, {{16.0, 1583.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x1016660a0, {{32.0, 1584.0}, {67.0, 18.0}}, label: 'Messages', value: Messages, Focused
+                          Other, 0x101666400, {{24.0, 1619.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x101666770, {{24.0, 1619.0}, {354.0, 72.0}}, label: 'Keep deleted messages Messages deleted by others stay visible with a mark ', value: 1, Focused
+                            Other, 0x101666ab0, {{88.0, 1619.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101666e00, {{88.0, 1626.0}, {173.0, 20.0}}, label: 'Keep deleted messages', value: Keep deleted messa..., Focused
+                            StaticText, 0x1016671a0, {{88.0, 1649.0}, {289.0, 34.0}}, label: 'Messages deleted by others stay visible with a mark', value: Messages deleted b..., Focused
+                            StaticText, 0x101667510, {{42.0, 1645.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x101667860, {{24.0, 1691.0}, {354.0, 56.0}}, Focused
+                            Switch, 0x101667be0, {{24.0, 1691.0}, {354.0, 56.0}}, label: 'Edit history Tap "edited" to see previous versions ', value: 1, Focused
+                            Other, 0x101667f50, {{88.0, 1691.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x1016682b0, {{88.0, 1698.0}, {82.0, 20.0}}, label: 'Edit history', value: Edit history, Focused
+                            StaticText, 0x101668630, {{88.0, 1721.0}, {241.0, 18.0}}, label: 'Tap "edited" to see previous versions', value: Tap "edited" to se..., Focused
+                            StaticText, 0x1016689a0, {{42.0, 1709.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x1016699e0, {{24.0, 1747.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x101669d50, {{24.0, 1747.0}, {354.0, 48.0}}, label: 'Show seconds in message time ', value: 0, Focused
+                            Other, 0x10166a0c0, {{88.0, 1761.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10166a440, {{88.0, 1761.0}, {228.0, 20.0}}, label: 'Show seconds in message time', value: Show seconds in me..., Focused
+                            StaticText, 0x10166b660, {{42.0, 1761.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10166b9f0, {{16.0, 1819.0}, {370.0, 20.0}}, Focused
+                            StaticText, 0x10166bd70, {{32.0, 1820.0}, {60.0, 18.0}}, label: 'Interface', value: Interface, Focused
+                          Other, 0x10166c100, {{24.0, 1855.0}, {354.0, 72.0}}, Focused
+                            Switch, 0x10166c4a0, {{24.0, 1855.0}, {354.0, 72.0}}, label: 'Streamer mode Blurs chats, names and avatars until hovered with a mouse ', value: 0, Focused
+                            Other, 0x10166c820, {{88.0, 1855.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10166cb90, {{88.0, 1862.0}, {112.0, 20.0}}, label: 'Streamer mode', value: Streamer mode, Focused
+                            StaticText, 0x10166cf00, {{88.0, 1885.0}, {289.0, 34.0}}, label: 'Blurs chats, names and avatars until hovered with a mouse', value: Blurs chats, names..., Focused
+                            StaticText, 0x10166d940, {{42.0, 1881.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10166dce0, {{24.0, 1927.0}, {354.0, 56.0}}, Focused
+                            Switch, 0x10166e060, {{24.0, 1927.0}, {354.0, 56.0}}, label: 'Show IDs User and chat IDs in profiles, tap to copy ', value: 1, Focused
+                            Other, 0x10166e3c0, {{88.0, 1927.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x10166eeb0, {{88.0, 1934.0}, {68.0, 20.0}}, label: 'Show IDs', value: Show IDs, Focused
+                            StaticText, 0x10166f230, {{88.0, 1957.0}, {263.0, 18.0}}, label: 'User and chat IDs in profiles, tap to copy', value: User and chat IDs ..., Focused
+                            StaticText, 0x10166f580, {{42.0, 1945.0}, {20.0, 20.0}}, label: '', Focused
+                          Other, 0x10166f8d0, {{24.0, 1983.0}, {354.0, 48.0}}, Focused
+                            Switch, 0x10166fc30, {{24.0, 1983.0}, {354.0, 48.0}}, label: 'Hide stories ', value: 0, Focused
+                            Other, 0x10166ffb0, {{88.0, 1997.0}, {290.0, 10.0}}, Focused
+                            StaticText, 0x101670320, {{88.0, 1997.0}, {87.0, 20.0}}, label: 'Hide stories', value: Hide stories, Focused
+                            StaticText, 0x101670680, {{42.0, 1997.0}, {20.0, 20.0}}, label: '', Focused
+                          Button, 0x101670a10, {{24.0, 2031.0}, {354.0, 48.0}}, label: 'Mark all chats as read', Focused
+                          TextField, 0x101670d80, {{0.0, 824.0}, {216.0, 34.0}}, Focused
+                Other, 0x101656660, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x1016710e0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x101671430, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1016724d0, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x101672820, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x101672bb0, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x101672f30, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x1016732b0, {{336.0, 868.0}, {7.0, 3.0}}
+    Window, 0x101673630, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x1016739b0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1016744f0, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x101639830, pid: 14355, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x1028d4b60, pid: 14355, label: 'Liquidgram'
+  }

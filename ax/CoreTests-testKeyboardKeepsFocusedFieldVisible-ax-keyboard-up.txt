@@ -1,0 +1,74 @@
+Attributes: Application, 0x102a26f00, pid: 9520, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x102a26f00, pid: 9520, label: 'Liquidgram'
+    Window (Main), 0x102a24c40, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x102a23dc0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x102a239a0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x102a231a0, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x102a252a0, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x102a241e0, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x102a24600, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x102a23580, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x102a18e40, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x102a18a20, {{0.0, -107.0}, {402.0, 874.0}}
+                        Other, 0x102a18600, {{0.0, -107.0}, {402.0, 874.0}}, label: 'Liquidgram'
+                          Other, 0x102a181e0, {{16.0, 134.0}, {370.0, 25.0}}, label: 'Liquidgram', value: 1
+                            StaticText, 0x102a17dc0, {{150.0, 134.0}, {102.0, 25.0}}, label: 'Liquidgram', value: Liquidgram
+                          Other, 0x102a22f60, {{16.0, 165.0}, {370.0, 54.0}}
+                            StaticText, 0x102a23080, {{26.0, 165.0}, {350.0, 54.0}}, label: 'Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org → API development tools.', value: Liquidgram is an u...
+                          Other, 0x102a47920, {{16.0, 259.0}, {370.0, 202.0}}, label: 'form'
+                            TextField, 0x102a47a40, {{16.0, 259.0}, {370.0, 48.0}}, label: 'API ID', value: 2040, Keyboard Focused, Focused
+                            Other, 0x102a47b60, {{32.0, 249.0}, {45.0, 18.0}}, label: 'API ID'
+                              StaticText, 0x102a47c80, {{38.0, 250.0}, {33.0, 16.0}}, label: 'API ID', value: API ID
+                            TextField, 0x102a47da0, {{16.0, 325.0}, {370.0, 48.0}}, label: 'API hash'
+                            Other, 0x102a47ec0, {{32.0, 336.0}, {80.0, 24.0}}, label: 'API hash'
+                              StaticText, 0x102a47fe0, {{40.0, 338.0}, {64.0, 20.0}}, label: 'API hash', value: API hash
+                            Button, 0x102a48100, {{16.0, 413.0}, {370.0, 48.0}}, label: 'CONTINUE', Disabled
+                          Other, 0x102a48220, {{16.0, 485.0}, {370.0, 18.0}}
+                            Link, 0x102a48340, {{110.0, 485.0}, {182.0, 18.0}}, label: 'Get keys at my.telegram.org'
+                              StaticText, 0x102a48460, {{110.0, 485.0}, {182.0, 18.0}}, label: 'Get keys at my.telegram.org', value: Get keys at my.tel...
+                Other, 0x102a48580, {{369.0, 62.0}, {30.0, 470.0}}, label: 'Vertical scroll bar, 2 pages', value: 35%
+                  Other, 0x102a486a0, {{396.0, 107.0}, {3.0, 343.0}}
+                Other, 0x102a487c0, {{62.0, 499.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x102a488e0, {{65.0, 526.0}, {272.0, 3.0}}
+                Other, 0x102a48a00, {{369.0, 62.0}, {30.0, 470.0}}, label: 'Vertical scroll bar, 2 pages', value: 35%
+                  Other, 0x102a48b20, {{396.0, 107.0}, {3.0, 343.0}}
+                Other, 0x102a48c40, {{62.0, 499.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x102a48d60, {{65.0, 526.0}, {272.0, 3.0}}
+    Window, 0x102a48e80, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x102a48fa0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x102a490c0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x102a491e0, {{0.0, 566.0}, {402.0, 308.0}}
+          Other, 0x102a49300, {{0.0, 566.0}, {402.0, 308.0}}, identifier: 'inputView'
+    Window, 0x102a49420, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x102a49540, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x102a49660, {{0.0, 566.0}, {402.0, 308.0}}
+          Other, 0x102a49780, {{0.0, 566.0}, {402.0, 308.0}}
+            Other, 0x102a498a0, {{0.0, 566.0}, {402.0, 308.0}}
+              Other, 0x102a499c0, {{0.0, 566.0}, {402.0, 308.0}}
+          Other, 0x102a49ae0, {{0.0, 583.0}, {402.0, 233.0}}
+            Keyboard, 0x102a49c00, {{0.0, 583.0}, {402.0, 233.0}}
+              Other, 0x102a49d20, {{0.0, 583.0}, {402.0, 233.0}}
+                Other, 0x102a49e40, {{0.0, 583.0}, {402.0, 233.0}}, identifier: 'UIKeyboardLayoutStar Preview'
+                  Key, 0x102a49f60, {{4.7, 590.0}, {131.7, 54.0}}, label: '1'
+                  Key, 0x102a4a080, {{136.3, 590.0}, {131.7, 54.0}}, label: '2'
+                  Key, 0x10164ebe0, {{268.0, 590.0}, {131.7, 54.0}}, label: '3'
+                  Key, 0x10161eb20, {{4.7, 644.0}, {131.7, 54.0}}, label: '4'
+                  Key, 0x10161f1f0, {{136.3, 644.0}, {131.7, 54.0}}, label: '5'
+                  Key, 0x10161dd50, {{268.0, 644.0}, {131.7, 54.0}}, label: '6'
+                  Key, 0x101648b60, {{4.7, 698.0}, {131.7, 54.0}}, label: '7'
+                  Key, 0x10161ee90, {{136.3, 698.0}, {131.7, 54.0}}, label: '8'
+                  Key, 0x101648ec0, {{268.0, 698.0}, {131.7, 54.0}}, label: '9'
+                  Key, 0x10164a410, {{4.7, 752.0}, {131.7, 54.0}}
+                  Key, 0x10164a790, {{136.3, 752.0}, {131.7, 54.0}}, label: '0'
+                  Key, 0x10164ae60, {{268.0, 752.0}, {131.7, 54.0}}, label: 'Delete'
+          Other, 0x10164aae0, {{0.0, 583.0}, {402.0, 291.0}}
+            Button, 0x101649930, {{325.4, 805.4}, {68.1, 68.7}}, identifier: 'dictation', label: 'Dictate', Disabled
+              StaticText, 0x101649230, {{325.4, 805.4}, {0.0, 0.0}}
+Path to element:
+ →Application, 0x102a26f00, pid: 9520, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x10164e4f0, pid: 9520, label: 'Liquidgram'
+  }

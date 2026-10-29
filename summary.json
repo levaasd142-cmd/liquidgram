@@ -1,0 +1,413 @@
+{
+  "status": "failed",
+  "generatedAt": "2026-10-29T15:59:52.785Z",
+  "source": {
+    "branch": "ios-v2/integration",
+    "commit": "2f470e969bea1b683dd3cab06dad8862ff364fdd",
+    "run": "https://github.com/levaasd142-cmd/liquidgram/actions/runs/40905720998"
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "counts": {
+    "total": 17,
+    "passed": 13,
+    "failed": 4,
+    "skipped": 0,
+    "knownIssues": 0
+  },
+  "tests": [
+    {
+      "name": "CoreTests/testColdStartShowsApiKeysScreen",
+      "status": "passed",
+      "duration": 13.707844018936157,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 15.42678701877594,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "status": "passed",
+      "duration": 6.911795020103455,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testWebAppSelfTest",
+      "status": "passed",
+      "duration": 9.741587042808533,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "status": "failed",
+      "duration": 14.555930018424988,
+      "message": "FeatureTests.swift:63: failed - Not found within 10 s: the lock screen at launch",
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "status": "passed",
+      "duration": 13.041936039924622,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testChatHeaderStaysVisibleWhileTyping",
+      "status": "failed",
+      "duration": 11.502776980400085,
+      "message": "FeatureTests.swift:290: XCTAssertTrue failed - The chat header (114.0, -324.0, 121.0, 24.0) left the screen while typing; the status bar ends at y 54.0",
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testDeepLinkOpensSettings",
+      "status": "passed",
+      "duration": 10.606288075447083,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testHeadersStayBelowStatusBar",
+      "status": "failed",
+      "duration": 8.393691062927246,
+      "message": "FeatureTests.swift:270: XCTAssertTrue failed - Under the status bar, which ends at y 54.0: the chat list header starts at y 12.0; the chat header starts at y 11.0",
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testKeyboardHasNoFormToolbar",
+      "status": "passed",
+      "duration": 8.498198986053467,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "status": "passed",
+      "duration": 11.162509083747864,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "status": "passed",
+      "duration": 13.31667697429657,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionFocusesSearch",
+      "status": "failed",
+      "duration": 44.09496605396271,
+      "message": "FeatureTests.swift:168: failed - Not found within 40 s: the keyboard of the focused search",
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionOpensNewMessage",
+      "status": "passed",
+      "duration": 6.05353307723999,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionOpensSavedMessages",
+      "status": "passed",
+      "duration": 6.32144296169281,
+      "pass": "light"
+    },
+    {
+      "name": "FeatureTests/testQuickActionTogglesGhostMode",
+      "status": "passed",
+      "duration": 4.902583956718445,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 18.566087007522583,
+      "pass": "dark"
+    }
+  ],
+  "selfTests": [
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "file": "logs/CoreTests-testWebAppSelfTest-selftest-report.json",
+      "ok": true,
+      "checks": [
+        {
+          "name": "bridge",
+          "ok": true,
+          "detail": "version 1.0.0, notification permission default"
+        },
+        {
+          "name": "notificationBridge",
+          "ok": true,
+          "detail": "permission default"
+        },
+        {
+          "name": "noServiceWorker",
+          "ok": true,
+          "detail": "service workers are unavailable"
+        },
+        {
+          "name": "secureContext",
+          "ok": true,
+          "detail": "http://127.0.0.1:47821"
+        },
+        {
+          "name": "webCrypto",
+          "ok": true,
+          "detail": "SHA-256 digest matches"
+        },
+        {
+          "name": "localStorage",
+          "ok": true,
+          "detail": "write, read and remove work"
+        },
+        {
+          "name": "indexedDb",
+          "ok": true,
+          "detail": "open, put and get work"
+        },
+        {
+          "name": "webAssembly",
+          "ok": true,
+          "detail": "a module compiles and runs"
+        },
+        {
+          "name": "worker",
+          "ok": true,
+          "detail": "a module worker from the app's origin answered (secure context true)"
+        },
+        {
+          "name": "fetchIndex",
+          "ok": true,
+          "detail": "status 200, text/html; charset=utf-8"
+        },
+        {
+          "name": "rangeRequest",
+          "ok": true,
+          "detail": "/assets/index-CwFJCx2p.js: 206 with bytes 100-1123/159267"
+        },
+        {
+          "name": "userAgentMobile",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "userAgentLiquidgram",
+          "ok": true,
+          "detail": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram"
+        },
+        {
+          "name": "appRendered",
+          "ok": true,
+          "detail": "Transition full-height is-auth"
+        },
+        {
+          "name": "compatTest",
+          "ok": true,
+          "detail": "passed"
+        },
+        {
+          "name": "noPageErrors",
+          "ok": true,
+          "detail": "none since the page started"
+        }
+      ],
+      "info": {
+        "url": "http://127.0.0.1:47821/",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Liquidgram",
+        "language": "en-US",
+        "viewport": "402x874 at 3x",
+        "colorScheme": "light",
+        "backdropFilter": true,
+        "blobWorker": "blocked: Error: worker error: the script did not load",
+        "authScreen": true
+      }
+    }
+  ],
+  "buildErrors": [],
+  "screenshots": [
+    {
+      "test": "CoreTests/testColdStartShowsApiKeysScreen",
+      "pass": "light",
+      "name": "01-api-keys-screen",
+      "file": "screenshots/CoreTests-testColdStartShowsApiKeysScreen-01-api-keys-screen.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "02-chat",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "03-composer-with-keyboard",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testKeyboardKeepsFocusedFieldVisible",
+      "pass": "light",
+      "name": "01-keyboard-up",
+      "file": "screenshots/CoreTests-testKeyboardKeepsFocusedFieldVisible-01-keyboard-up.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testWebAppSelfTest",
+      "pass": "light",
+      "name": "01-self-test-finished",
+      "file": "screenshots/CoreTests-testWebAppSelfTest-01-self-test-finished.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockOpensAndLocksAgainAfterBackground",
+      "pass": "light",
+      "name": "failure-the-lock-screen-at-launch",
+      "file": "screenshots/FeatureTests-testAppLockOpensAndLocksAgainAfterBackground-failure-the-lock-screen-at-launch.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "pass": "light",
+      "name": "01-failed-authentication",
+      "file": "screenshots/FeatureTests-testAppLockStaysLockedWhenAuthenticationFails-01-failed-authentication.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testAppLockStaysLockedWhenAuthenticationFails",
+      "pass": "light",
+      "name": "02-failed-again",
+      "file": "screenshots/FeatureTests-testAppLockStaysLockedWhenAuthenticationFails-02-failed-again.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testChatHeaderStaysVisibleWhileTyping",
+      "pass": "light",
+      "name": "01-typing",
+      "file": "screenshots/FeatureTests-testChatHeaderStaysVisibleWhileTyping-01-typing.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testDeepLinkOpensSettings",
+      "pass": "light",
+      "name": "01-settings-from-deep-link",
+      "file": "screenshots/FeatureTests-testDeepLinkOpensSettings-01-settings-from-deep-link.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testHeadersStayBelowStatusBar",
+      "pass": "light",
+      "name": "01-chat-list-header",
+      "file": "screenshots/FeatureTests-testHeadersStayBelowStatusBar-01-chat-list-header.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testHeadersStayBelowStatusBar",
+      "pass": "light",
+      "name": "02-chat-header",
+      "file": "screenshots/FeatureTests-testHeadersStayBelowStatusBar-02-chat-header.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testKeyboardHasNoFormToolbar",
+      "pass": "light",
+      "name": "01-keyboard-without-toolbar",
+      "file": "screenshots/FeatureTests-testKeyboardHasNoFormToolbar-01-keyboard-without-toolbar.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "pass": "light",
+      "name": "01-liquidgram-settings",
+      "file": "screenshots/FeatureTests-testLiquidgramSettingsShowIPhoneSection-01-liquidgram-settings.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testLiquidgramSettingsShowIPhoneSection",
+      "pass": "light",
+      "name": "02-iphone-section",
+      "file": "screenshots/FeatureTests-testLiquidgramSettingsShowIPhoneSection-02-iphone-section.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "01-shield-under-notification-center",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-01-shield-under-notification-center.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "02-shield-removed",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-02-shield-removed.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testPrivacyShieldCoversAppWhileInactive",
+      "pass": "light",
+      "name": "03-app-switcher",
+      "file": "screenshots/FeatureTests-testPrivacyShieldCoversAppWhileInactive-03-app-switcher.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionFocusesSearch",
+      "pass": "light",
+      "name": "failure-the-keyboard-of-the-focused-search",
+      "file": "screenshots/FeatureTests-testQuickActionFocusesSearch-failure-the-keyboard-of-the-focused-search.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionOpensNewMessage",
+      "pass": "light",
+      "name": "01-new-message",
+      "file": "screenshots/FeatureTests-testQuickActionOpensNewMessage-01-new-message.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionOpensSavedMessages",
+      "pass": "light",
+      "name": "01-saved-messages",
+      "file": "screenshots/FeatureTests-testQuickActionOpensSavedMessages-01-saved-messages.png",
+      "isFailure": false
+    },
+    {
+      "test": "FeatureTests/testQuickActionTogglesGhostMode",
+      "pass": "light",
+      "name": "01-ghost-mode-toast",
+      "file": "screenshots/FeatureTests-testQuickActionTogglesGhostMode-01-ghost-mode-toast.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "01-chat-list-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "02-chat-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "03-composer-with-keyboard-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard-dark.png",
+      "isFailure": false
+    }
+  ]
+}

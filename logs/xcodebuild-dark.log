@@ -1,0 +1,95 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=E952A9B0-CC78-435C-BF08-06AD47FE1076 -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/dark.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/CoreTests/testDemoAccount"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+2026-10-29 15:59:24.786107+0000 LiquidgramUITests-Runner[21948:71621] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 15:59:25.474.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 15:59:25.474.
+Test Suite 'CoreTests' started at 2026-10-29 15:59:25.475.
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' started.
+    t =     0.00s Start Test at 2026-10-29 15:59:25.475
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     5.15s         Setting up automation session
+    t =     5.98s         Wait for org.liquidgram.messenger to idle
+    t =     7.22s Waiting 60.0s for Any (First Match) to exist
+    t =     8.26s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     8.26s         Checking existence of `Any (First Match)`
+    t =     8.34s Waiting 20.0s for Any (First Match) to exist
+    t =     9.39s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     9.39s         Checking existence of `Any (First Match)`
+    t =     9.59s Added attachment named '01-chat-list-dark'
+    t =     9.59s Requesting snapshot of accessibility hierarchy for app with pid 22013
+    t =     9.79s Requesting snapshot of accessibility hierarchy for app with pid 22013
+    t =     9.83s Added attachment named 'ax-chat-list-dark'
+    t =     9.83s Tap Any (First Match)
+    t =     9.83s     Wait for org.liquidgram.messenger to idle
+    t =     9.84s     Find the Any (First Match)
+    t =     9.87s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 15:58Договорились! До завтра 💙1" Button
+    t =     9.90s     Synthesize event
+    t =    10.20s     Wait for org.liquidgram.messenger to idle
+    t =    10.21s Waiting 2.0s for "Allow" Button to exist
+    t =    11.27s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    11.28s         Checking existence of `"Allow" Button`
+    t =    11.31s         Capturing element debug description
+    t =    12.22s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    12.22s         Checking existence of `"Allow" Button`
+    t =    12.24s         Capturing element debug description
+    t =    12.24s     Checking existence of `"Allow" Button`
+    t =    12.27s Collecting debug information to assist test failure triage
+    t =    12.27s     Requesting snapshot of accessibility hierarchy for app with pid 4261
+    t =    12.31s Waiting 20.0s for StaticText (First Match) to exist
+    t =    13.35s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    13.35s         Checking existence of `StaticText (First Match)`
+    t =    13.42s Waiting 20.0s for Any (First Match) to exist
+    t =    14.48s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    14.48s         Checking existence of `Any (First Match)`
+    t =    14.71s Added attachment named '02-chat-dark'
+    t =    14.71s Tap Any (First Match)
+    t =    14.71s     Wait for org.liquidgram.messenger to idle
+    t =    14.72s     Find the Any (First Match)
+    t =    14.83s     Check for interrupting elements affecting "Message" TextView
+    t =    14.88s     Synthesize event
+    t =    15.21s     Wait for org.liquidgram.messenger to idle
+    t =    15.58s Waiting 20.0s for Keyboard (First Match) to exist
+    t =    16.64s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    16.64s         Checking existence of `Keyboard (First Match)`
+    t =    16.66s Checking existence of `"Continue" Button`
+    t =    16.69s Type 'Typed by the UI te...' into Target Application 'org.liquidgram.messenger'
+    t =    16.69s     Wait for org.liquidgram.messenger to idle
+    t =    16.69s     Find the Target Application 'org.liquidgram.messenger'
+    t =    16.75s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    16.80s     Synthesize event
+    t =    17.38s     Wait for org.liquidgram.messenger to idle
+    t =    17.38s Find the "Message" TextView
+    t =    17.63s Added attachment named '03-composer-with-keyboard-dark'
+    t =    17.64s Requesting snapshot of accessibility hierarchy for app with pid 22013
+    t =    18.09s Requesting snapshot of accessibility hierarchy for app with pid 22013
+    t =    18.23s Added attachment named 'ax-composer-with-keyboard-dark'
+    t =    18.23s Find the "Message" TextView
+    t =    18.34s Find the Keyboard (First Match)
+    t =    18.36s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' passed (18.566 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 15:59:44.041.
+	 Executed 1 test, with 0 failures (0 unexpected) in 18.566 (18.567) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 15:59:44.042.
+	 Executed 1 test, with 0 failures (0 unexpected) in 18.566 (18.567) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 15:59:44.042.
+	 Executed 1 test, with 0 failures (0 unexpected) in 18.566 (18.568) seconds
+2026-10-29 15:59:44.654 xcodebuild[21291:70028] [MT] IDETestOperationsObserverDebug: 22.046 elapsed -- Testing started completed.
+2026-10-29 15:59:44.654 xcodebuild[21291:70028] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 15:59:44.654 xcodebuild[21291:70028] [MT] IDETestOperationsObserverDebug: 22.046 sec, +22.046 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/dark.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

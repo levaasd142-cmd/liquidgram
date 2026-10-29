@@ -1,0 +1,299 @@
+    t =     4.90s     Wait for org.liquidgram.messenger to idle
+    t =     4.93s Waiting 2.0s for "Allow" Button to exist
+    t =     5.96s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     5.96s         Checking existence of `"Allow" Button`
+    t =     5.99s         Capturing element debug description
+    t =     6.93s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.93s         Checking existence of `"Allow" Button`
+    t =     6.95s         Capturing element debug description
+    t =     6.96s     Checking existence of `"Allow" Button`
+    t =     6.98s Collecting debug information to assist test failure triage
+    t =     6.98s     Requesting snapshot of accessibility hierarchy for app with pid 4261
+    t =     7.02s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Liquid Glass, ghost mode"'
+    t =     7.06s Find the Any (Element at index 0)
+    t =     7.10s Tap "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.10s     Wait for org.liquidgram.messenger to idle
+    t =     7.10s     Find the "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.13s     Check for interrupting elements affecting "Liquidgram Liquid Glass, ghost mode, anti-delete" Button
+    t =     7.17s     Synthesize event
+    t =     7.46s     Wait for org.liquidgram.messenger to idle
+    t =     7.59s Waiting 20.0s for Any (First Match) to exist
+    t =     8.61s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     8.61s         Checking existence of `Any (First Match)`
+    t =     8.82s Added attachment named '01-liquidgram-settings'
+    t =     8.82s Waiting 20.0s for Any (First Match) to exist
+    t =     9.86s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     9.86s         Checking existence of `Any (First Match)`
+    t =     9.95s Find the Any (First Match)
+    t =    10.15s Added attachment named '02-iphone-section'
+    t =    10.16s Requesting snapshot of accessibility hierarchy for app with pid 14355
+    t =    10.84s Requesting snapshot of accessibility hierarchy for app with pid 14355
+    t =    10.96s Added attachment named 'ax-iphone-section'
+    t =    10.96s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testLiquidgramSettingsShowIPhoneSection]' passed (11.163 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testPrivacyShieldCoversAppWhileInactive]' started.
+    t =     0.00s Start Test at 2026-10-29 15:57:42.410
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:14355
+    t =     1.28s         Setting up automation session
+    t =     2.13s         Wait for org.liquidgram.messenger to idle
+    t =     3.36s Waiting 60.0s for Any (First Match) to exist
+    t =     4.41s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     4.41s         Checking existence of `Any (First Match)`
+    t =     4.46s Press Target Application 'org.liquidgram.messenger'[0.20, 0.00] for 0.1 seconds, then drag to Target Application 'org.liquidgram.messenger'[0.20, 0.60] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =     4.46s     Wait for org.liquidgram.messenger to idle
+    t =     4.46s     Find the Target Application 'org.liquidgram.messenger'
+    t =     4.51s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     4.53s     Synthesize event
+    t =     4.53s         Find the Target Application 'org.liquidgram.messenger'
+    t =     4.55s         Find the Target Application 'org.liquidgram.messenger'
+    t =     4.56s         Find the Target Application 'org.liquidgram.messenger'
+    t =     4.58s         Find the Target Application 'org.liquidgram.messenger'
+    t =     4.60s         Find the Target Application 'org.liquidgram.messenger'
+    t =     6.00s     Wait for org.liquidgram.messenger to idle
+    t =     6.01s Waiting 10.0s for "liquidgram.privacyShield" Any to exist
+    t =     7.05s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.privacyShield" Any`
+    t =     7.05s         Checking existence of `"liquidgram.privacyShield" Any`
+    t =     7.25s Added attachment named '01-shield-under-notification-center'
+    t =     7.25s Press Target Application 'org.liquidgram.messenger'[0.50, 1.00] for 0.1 seconds, then drag to Target Application 'org.liquidgram.messenger'[0.50, 0.40] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =     7.25s     Wait for org.liquidgram.messenger to idle
+    t =     7.25s     Find the Target Application 'org.liquidgram.messenger'
+    t =     7.27s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     7.29s     Synthesize event
+    t =     7.29s         Find the Target Application 'org.liquidgram.messenger'
+    t =     7.31s         Find the Target Application 'org.liquidgram.messenger'
+    t =     7.34s         Find the Target Application 'org.liquidgram.messenger'
+    t =     7.35s         Find the Target Application 'org.liquidgram.messenger'
+    t =     7.37s         Find the Target Application 'org.liquidgram.messenger'
+    t =     8.77s     Wait for org.liquidgram.messenger to idle
+    t =     8.78s Open org.liquidgram.messenger
+    t =     8.78s     Activate org.liquidgram.messenger
+    t =     9.41s         Wait for org.liquidgram.messenger to idle
+    t =     9.41s Checking existence of `"liquidgram.privacyShield" Any`
+    t =     9.64s Added attachment named '02-shield-removed'
+    t =     9.64s Press Target Application 'org.liquidgram.messenger'[0.50, 1.00] for 0.1 seconds, then drag to Target Application 'org.liquidgram.messenger'[0.50, 0.60] with velocity of 250.00 pixels per second, and then hold for 1.0 seconds 
+    t =     9.64s     Wait for org.liquidgram.messenger to idle
+    t =     9.64s     Find the Target Application 'org.liquidgram.messenger'
+    t =     9.66s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     9.68s     Synthesize event
+    t =     9.68s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.69s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.71s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.72s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.74s         Find the Target Application 'org.liquidgram.messenger'
+    t =    12.49s     Wait for org.liquidgram.messenger to idle
+    t =    12.80s Added attachment named '03-app-switcher'
+    t =    12.80s Open org.liquidgram.messenger
+    t =    12.80s     Activate org.liquidgram.messenger
+    t =    13.10s         Wait for org.liquidgram.messenger to idle
+    t =    13.11s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testPrivacyShieldCoversAppWhileInactive]' passed (13.317 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionFocusesSearch]' started.
+    t =     0.00s Start Test at 2026-10-29 15:57:55.727
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:15548
+    t =     1.24s         Setting up automation session
+    t =     2.23s         Wait for org.liquidgram.messenger to idle
+    t =     3.47s Waiting 40.0s for Keyboard (First Match) to exist
+    t =     4.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     4.52s         Checking existence of `Keyboard (First Match)`
+    t =     4.57s         Capturing element debug description
+    t =     5.48s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     5.48s         Checking existence of `Keyboard (First Match)`
+    t =     5.50s         Capturing element debug description
+    t =     6.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     6.47s         Checking existence of `Keyboard (First Match)`
+    t =     6.54s         Capturing element debug description
+    t =     7.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     7.47s         Checking existence of `Keyboard (First Match)`
+    t =     7.50s         Capturing element debug description
+    t =     8.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     8.47s         Checking existence of `Keyboard (First Match)`
+    t =     8.49s         Capturing element debug description
+    t =     9.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     9.52s         Checking existence of `Keyboard (First Match)`
+    t =     9.54s         Capturing element debug description
+    t =    10.49s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    10.49s         Checking existence of `Keyboard (First Match)`
+    t =    10.51s         Capturing element debug description
+    t =    11.48s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    11.49s         Checking existence of `Keyboard (First Match)`
+    t =    11.50s         Capturing element debug description
+    t =    12.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    12.47s         Checking existence of `Keyboard (First Match)`
+    t =    12.50s         Capturing element debug description
+    t =    13.48s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    13.48s         Checking existence of `Keyboard (First Match)`
+    t =    13.51s         Capturing element debug description
+    t =    14.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    14.47s         Checking existence of `Keyboard (First Match)`
+    t =    14.49s         Capturing element debug description
+    t =    15.49s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    15.49s         Checking existence of `Keyboard (First Match)`
+    t =    15.51s         Capturing element debug description
+    t =    16.50s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    16.50s         Checking existence of `Keyboard (First Match)`
+    t =    16.52s         Capturing element debug description
+    t =    17.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    17.47s         Checking existence of `Keyboard (First Match)`
+    t =    17.49s         Capturing element debug description
+    t =    18.54s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    18.54s         Checking existence of `Keyboard (First Match)`
+    t =    18.57s         Capturing element debug description
+    t =    19.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    19.47s         Checking existence of `Keyboard (First Match)`
+    t =    19.49s         Capturing element debug description
+    t =    20.51s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    20.51s         Checking existence of `Keyboard (First Match)`
+    t =    20.54s         Capturing element debug description
+    t =    21.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    21.48s         Checking existence of `Keyboard (First Match)`
+    t =    21.50s         Capturing element debug description
+    t =    22.53s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    22.53s         Checking existence of `Keyboard (First Match)`
+    t =    22.56s         Capturing element debug description
+    t =    23.51s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    23.51s         Checking existence of `Keyboard (First Match)`
+    t =    23.53s         Capturing element debug description
+    t =    24.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    24.47s         Checking existence of `Keyboard (First Match)`
+    t =    24.57s         Capturing element debug description
+    t =    25.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    25.52s         Checking existence of `Keyboard (First Match)`
+    t =    25.55s         Capturing element debug description
+    t =    26.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    26.47s         Checking existence of `Keyboard (First Match)`
+    t =    26.49s         Capturing element debug description
+    t =    27.51s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    27.51s         Checking existence of `Keyboard (First Match)`
+    t =    27.53s         Capturing element debug description
+    t =    28.48s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    28.48s         Checking existence of `Keyboard (First Match)`
+    t =    28.51s         Capturing element debug description
+    t =    29.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    29.47s         Checking existence of `Keyboard (First Match)`
+    t =    29.50s         Capturing element debug description
+    t =    30.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    30.52s         Checking existence of `Keyboard (First Match)`
+    t =    30.54s         Capturing element debug description
+    t =    31.48s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    31.48s         Checking existence of `Keyboard (First Match)`
+    t =    31.50s         Capturing element debug description
+    t =    32.50s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    32.50s         Checking existence of `Keyboard (First Match)`
+    t =    32.52s         Capturing element debug description
+    t =    33.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    33.47s         Checking existence of `Keyboard (First Match)`
+    t =    33.49s         Capturing element debug description
+    t =    34.56s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    34.56s         Checking existence of `Keyboard (First Match)`
+    t =    34.59s         Capturing element debug description
+    t =    35.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    35.47s         Checking existence of `Keyboard (First Match)`
+    t =    35.49s         Capturing element debug description
+    t =    36.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    36.52s         Checking existence of `Keyboard (First Match)`
+    t =    36.54s         Capturing element debug description
+    t =    37.49s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    37.49s         Checking existence of `Keyboard (First Match)`
+    t =    37.52s         Capturing element debug description
+    t =    38.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    38.47s         Checking existence of `Keyboard (First Match)`
+    t =    38.50s         Capturing element debug description
+    t =    39.52s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    39.52s         Checking existence of `Keyboard (First Match)`
+    t =    39.54s         Capturing element debug description
+    t =    40.49s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    40.49s         Checking existence of `Keyboard (First Match)`
+    t =    40.51s         Capturing element debug description
+    t =    41.51s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    41.51s         Checking existence of `Keyboard (First Match)`
+    t =    41.53s         Capturing element debug description
+    t =    42.49s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    42.49s         Checking existence of `Keyboard (First Match)`
+    t =    42.51s         Capturing element debug description
+    t =    43.47s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    43.47s         Checking existence of `Keyboard (First Match)`
+    t =    43.49s         Capturing element debug description
+    t =    43.49s     Checking existence of `Keyboard (First Match)`
+    t =    43.51s Collecting debug information to assist test failure triage
+    t =    43.51s     Requesting snapshot of accessibility hierarchy for app with pid 16239
+    t =    43.69s Added attachment named 'failure-the-keyboard-of-the-focused-search'
+    t =    43.69s Requesting snapshot of accessibility hierarchy for app with pid 16239
+    t =    43.86s Requesting snapshot of accessibility hierarchy for app with pid 16239
+    t =    43.89s Added attachment named 'ax-failure-the-keyboard-of-the-focused-search'
+/Users/runner/work/liquidgram/liquidgram/ios/LiquidgramUITests/Sources/FeatureTests.swift:168: error: -[LiquidgramUITests.FeatureTests testQuickActionFocusesSearch] : failed - Not found within 40 s: the keyboard of the focused search
+    t =    43.89s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionFocusesSearch]' failed (44.095 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensNewMessage]' started.
+    t =     0.00s Start Test at 2026-10-29 15:58:39.822
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:16239
+    t =     1.25s         Setting up automation session
+    t =     2.32s         Wait for org.liquidgram.messenger to idle
+    t =     3.58s Waiting 40.0s for Any (First Match) to exist
+    t =     4.62s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     4.62s         Checking existence of `Any (First Match)`
+    t =     4.88s         Capturing element debug description
+    t =     5.62s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     5.62s         Checking existence of `Any (First Match)`
+    t =     5.84s Added attachment named '01-new-message'
+    t =     5.84s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensNewMessage]' passed (6.054 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensSavedMessages]' started.
+    t =     0.00s Start Test at 2026-10-29 15:58:45.876
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:18735
+    t =     1.27s         Setting up automation session
+    t =     2.47s         Wait for org.liquidgram.messenger to idle
+    t =     3.73s Waiting 40.0s for Any (First Match) to exist
+    t =     4.77s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     4.77s         Checking existence of `Any (First Match)`
+    t =     5.03s         Capturing element debug description
+    t =     5.73s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     5.73s         Checking existence of `Any (First Match)`
+    t =     5.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Идеи для Liquidgram"'
+    t =     5.84s Find the StaticText (Element at index 0)
+    t =     5.89s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Saved Messages"'
+    t =     5.93s Find the Any (Element at index 0)
+    t =     6.12s Added attachment named '01-saved-messages'
+    t =     6.12s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensSavedMessages]' passed (6.321 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionTogglesGhostMode]' started.
+    t =     0.00s Start Test at 2026-10-29 15:58:52.198
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:19292
+    t =     1.23s         Setting up automation session
+    t =     2.13s         Wait for org.liquidgram.messenger to idle
+    t =     3.36s Waiting 40.0s for Any (First Match) to exist
+    t =     4.40s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     4.40s         Checking existence of `Any (First Match)`
+    t =     4.70s Added attachment named '01-ghost-mode-toast'
+    t =     4.70s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionTogglesGhostMode]' passed (4.903 seconds).
+Test Suite 'FeatureTests' failed at 2026-10-29 15:58:57.101.
+	 Executed 12 tests, with 4 failures (0 unexpected) in 152.451 (152.456) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 15:58:57.101.
+	 Executed 16 tests, with 4 failures (0 unexpected) in 198.239 (198.247) seconds
+Test Suite 'All tests' failed at 2026-10-29 15:58:57.101.
+	 Executed 16 tests, with 4 failures (0 unexpected) in 198.239 (198.247) seconds
+2026-10-29 15:59:12.796 xcodebuild[6698:25774] [MT] IDETestOperationsObserverDebug: 234.545 elapsed -- Testing started completed.
+2026-10-29 15:59:12.797 xcodebuild[6698:25774] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 15:59:12.797 xcodebuild[6698:25774] [MT] IDETestOperationsObserverDebug: 234.545 sec, +234.545 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started
