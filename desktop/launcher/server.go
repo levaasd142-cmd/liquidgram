@@ -177,9 +177,12 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 }
 
 // Opens another app window for a second launch, which proves it runs as the same user by presenting
-// the token from the data folder
+// the token from the data folder. The app page knows the token as well, so requests that a browser
+// marks with fetch metadata are refused: then no script, not even one of the app, can open windows.
 func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || !h.hasLaunchToken(r) {
+	isFromBrowser := r.Header.Get("Origin") != "" || r.Header.Get("Sec-Fetch-Site") != "" ||
+		r.Header.Get("Sec-Fetch-Mode") != ""
+	if r.Method != http.MethodGet || isFromBrowser || !h.hasLaunchToken(r) {
 		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
 		return
 	}

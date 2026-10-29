@@ -191,6 +191,14 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 		{http.MethodGet, map[string]string{"X-Liquidgram-Instance": testInstance}, http.StatusForbidden},
 		{http.MethodGet, map[string]string{tokenHeader: "guess"}, http.StatusForbidden},
 		{http.MethodGet, map[string]string{tokenHeader: testToken, "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
+		// A script of the app page knows the token too, but its requests carry fetch metadata
+		{http.MethodGet, map[string]string{tokenHeader: testToken, "Sec-Fetch-Site": "same-origin"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: testToken, "Sec-Fetch-Site": "none"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: testToken, "Sec-Fetch-Mode": "cors"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{tokenHeader: testToken, "Sec-Fetch-Mode": "no-cors"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{
+			tokenHeader: testToken, "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty",
+		}, http.StatusForbidden},
 		{http.MethodHead, map[string]string{tokenHeader: testToken}, http.StatusForbidden},
 		{http.MethodGet, map[string]string{tokenHeader: testToken}, http.StatusNoContent},
 	}
