@@ -218,7 +218,11 @@ func run() int {
 		return 1
 	}
 
-	app.waitUntilClosed()
+	if err := app.waitUntilClosed(); err != nil {
+		log.Printf("The browser did not start: %v", err)
+		showError(fmt.Sprintf(messageStartFailed, logPath, err))
+		return 1
+	}
 	log.Print("All app windows are closed, exiting")
 	return 0
 }

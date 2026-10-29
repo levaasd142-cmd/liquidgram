@@ -17,6 +17,8 @@ const (
 	profileDirPrefix  = "Browser-"
 	closeCheckPeriod  = time.Second
 	closeConfirmCount = 3
+	// A browser process that exits with an error sooner than this after its start failed to start
+	startFailureTime = 10 * time.Second
 )
 
 var errClosing = errors.New("the app is shutting down")
@@ -38,6 +40,10 @@ type desktopApp struct {
 	mu        sync.Mutex
 	browser   browser
 	processes int
+	// Set once a browser process runs for a while or exits cleanly, or another process holds the profile
+	hasStarted bool
+	// The error of the last browser process that failed to start
+	startErr  error
 	isClosing bool
 }
 
@@ -115,6 +121,7 @@ func (a *desktopApp) startBrowserLocked(isNewProfile bool) error {
 
 	a.processes++
 	pid := cmd.Process.Pid
+	startedAt := time.Now()
 	log.Printf("Started browser process %d", pid)
 
 	go func() {
@@ -123,6 +130,13 @@ func (a *desktopApp) startBrowserLocked(isNewProfile bool) error {
 
 		a.mu.Lock()
 		a.processes--
+		// A browser that hands the window to its running process exits with an error as well, but
+		// that process holds the profile, which `waitUntilClosed` notices
+		if err == nil || time.Since(startedAt) >= startFailureTime {
+			a.hasStarted = true
+		} else {
+			a.startErr = err
+		}
 		a.mu.Unlock()
 	}()
 	return nil
@@ -130,8 +144,9 @@ func (a *desktopApp) startBrowserLocked(isNewProfile bool) error {
 
 // Returns once no browser process started here runs and no other process holds the profile. The
 // profile lock covers browsers that outlive their launcher or hand the window to an existing
-// process. A few consecutive idle checks ride out browser restarts.
-func (a *desktopApp) waitUntilClosed() {
+// process. A few consecutive idle checks ride out browser restarts. Reports a browser that never
+// started: every process exited with an error right after its start and none held the profile.
+func (a *desktopApp) waitUntilClosed() error {
 	idleChecks := 0
 	for {
 		time.Sleep(closeCheckPeriod)
@@ -139,15 +154,23 @@ func (a *desktopApp) waitUntilClosed() {
 		// The lock is probed only while no started process runs, and starting one takes the same
 		// mutex, so the probe never meets a browser this launcher is starting
 		a.mu.Lock()
-		if a.processes > 0 || isProfileLocked(a.getProfileDir()) {
+		switch {
+		case a.processes > 0:
 			idleChecks = 0
-		} else {
+		case isProfileLocked(a.getProfileDir()):
+			a.hasStarted = true
+			idleChecks = 0
+		default:
 			idleChecks++
 		}
 		if idleChecks >= closeConfirmCount {
 			a.isClosing = true
+			var err error
+			if !a.hasStarted {
+				err = fmt.Errorf("%s exited right after its start: %w", a.browser.id, a.startErr)
+			}
 			a.mu.Unlock()
-			return
+			return err
 		}
 		a.mu.Unlock()
 	}
