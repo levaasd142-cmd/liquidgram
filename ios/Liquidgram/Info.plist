@@ -38,11 +38,6 @@
   <false/>
   <key>LSRequiresIPhoneOS</key>
   <true/>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSAllowsLocalNetworking</key>
-    <true/>
-  </dict>
   <key>NSCameraUsageDescription</key>
   <string>Liquidgram uses the camera to take photos and videos for your chats and for video calls.</string>
   <key>NSFaceIDUsageDescription</key>

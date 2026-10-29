@@ -6,6 +6,9 @@ import { deepFreeze } from '../../util/data/freeze';
 import { deepDiff } from '../../util/deepDiff';
 import { deepMerge } from '../../util/deepMerge';
 
+// In the iOS app a shared worker runs outside the page, where the app's URL scheme has no handler: it gets an opaque
+// origin without `crypto.subtle` or storage and can load nothing, so the built worker must stay one file that only
+// passes messages
 declare const self: SharedWorkerGlobalScope;
 
 const PASSCODE_NAVIGATION_DEK_LIFETIME_MS = 8000;

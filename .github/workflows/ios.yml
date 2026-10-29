@@ -30,6 +30,10 @@ on:
           `UsabilityTests,CoreTests/testDemoAccount`; `-X` skips X; no release then
         required: false
         default: ''
+      legacy_ref:
+        description: Git revision of the loopback version whose data the migration test moves; empty skips that test
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -145,6 +149,7 @@ jobs:
         env:
           UI_TESTS_WORK_DIR: ${{ runner.temp }}/ui-test-work
           UI_TESTS_ONLY: ${{ inputs.ui_tests }}
+          UI_TESTS_LEGACY_REF: ${{ inputs.legacy_ref }}
 
       # The report becomes the single commit of the `ios-test-results/<branch>` branch, where GitHub shows README.md
       # with the screenshots; annotations on the run page give the counts and the failures

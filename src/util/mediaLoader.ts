@@ -13,11 +13,12 @@ import {
 } from '../config';
 import { callApi, cancelApiProgress } from '../api/gramjs';
 import {
-  IS_OPUS_SUPPORTED, IS_PROGRESSIVE_SUPPORTED,
+  IS_IOS_APP, IS_OPUS_SUPPORTED, IS_PROGRESSIVE_SUPPORTED, IS_SERVICE_WORKER_SUPPORTED,
 } from './browser/windowEnvironment';
 import * as cacheApi from './cacheApi';
 import { fetchBlob } from './files';
 import { ACCOUNT_SLOT } from './multiaccount';
+import { registerNativeMediaPartLoader } from './nativeMediaStream';
 import { oggToWav } from './oggToWav';
 
 const asCacheApiType = {
@@ -55,7 +56,7 @@ export function fetch<T extends ApiMediaFormat>(
 
   if (mediaFormat === ApiMediaFormat.DownloadUrl) {
     return (
-      IS_PROGRESSIVE_SUPPORTED
+      IS_SERVICE_WORKER_SUPPORTED
         ? Promise.resolve(getDownloadUrl(url))
         : fetch(url, ApiMediaFormat.BlobUrl, isHtmlAllowed, onProgress, callbackUniqueId)
     );
@@ -248,7 +249,7 @@ function prepareMedia(mediaData: Exclude<ApiParsedMedia, ArrayBuffer>): ApiPrepa
   return mediaData;
 }
 
-if (IS_PROGRESSIVE_SUPPORTED) {
+if (IS_SERVICE_WORKER_SUPPORTED) {
   navigator.serviceWorker.addEventListener('message', async (e) => {
     const { type, messageId, params } = e.data as {
       type: string;
@@ -260,29 +261,7 @@ if (IS_PROGRESSIVE_SUPPORTED) {
       return;
     }
 
-    async function downloadWithRetry(retryNumber = 0) {
-      const result = await callApi('downloadMedia', { mediaFormat: ApiMediaFormat.Progressive, ...params });
-      if (!result) {
-        if (retryNumber >= MAX_MEDIA_RETRIES) {
-          if (DEBUG) {
-            // eslint-disable-next-line no-console
-            console.warn(`Failed to download media part after ${MAX_MEDIA_RETRIES} retries:`, params.url);
-          }
-          return undefined;
-        }
-        await new Promise((resolve) => {
-          setTimeout(resolve, getRetryTimeout(retryNumber));
-        });
-        if (DEBUG) {
-          // eslint-disable-next-line no-console
-          console.debug(`Retrying to download media part ${params.url}, attempt ${retryNumber + 1}`);
-        }
-        return downloadWithRetry(retryNumber + 1);
-      }
-      return result;
-    }
-
-    const result = await downloadWithRetry();
+    const result = await downloadProgressivePart(params);
     if (!result) {
       return;
     }
@@ -299,6 +278,32 @@ if (IS_PROGRESSIVE_SUPPORTED) {
       },
     }, [arrayBuffer!]);
   });
+}
+
+if (IS_IOS_APP) {
+  registerNativeMediaPartLoader(downloadProgressivePart);
+}
+
+async function downloadProgressivePart(params: { url: string; start: number; end: number }, retryNumber = 0) {
+  const result = await callApi('downloadMedia', { mediaFormat: ApiMediaFormat.Progressive, ...params });
+  if (!result) {
+    if (retryNumber >= MAX_MEDIA_RETRIES) {
+      if (DEBUG) {
+        // eslint-disable-next-line no-console
+        console.warn(`Failed to download media part after ${MAX_MEDIA_RETRIES} retries:`, params.url);
+      }
+      return undefined;
+    }
+    await new Promise((resolve) => {
+      setTimeout(resolve, getRetryTimeout(retryNumber));
+    });
+    if (DEBUG) {
+      // eslint-disable-next-line no-console
+      console.debug(`Retrying to download media part ${params.url}, attempt ${retryNumber + 1}`);
+    }
+    return downloadProgressivePart(params, retryNumber + 1);
+  }
+  return result;
 }
 
 function getRetryTimeout(retryNumber: number) {

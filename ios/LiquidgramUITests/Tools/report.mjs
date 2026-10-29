@@ -16,7 +16,7 @@ import zlib from 'node:zlib';
 
 const TOOLS_DIR = path.dirname(fileURLToPath(import.meta.url));
 const KNOWN_ISSUES_FILE = path.join(TOOLS_DIR, '..', 'known-issues.json');
-const PASSES = ['light', 'dark'];
+const PASSES = ['migration', 'light', 'dark'];
 const LOG_TAIL_LINES = 300;
 const SCREENSHOT_MAX_SIZE = 1200;
 const SCREENSHOT_DISPLAY_WIDTH = 260;

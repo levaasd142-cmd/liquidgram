@@ -19,6 +19,9 @@
 #   UI_TESTS_DEVICE     a simulator name to use instead of an iPhone 17 Pro or 16 Pro
 #   UI_TESTS_SKIP_DARK  1 skips the dark mode pass
 #   UI_TESTS_WORK_DIR   where the result bundles go, <repo-root>/dist-ios/ui-tests-work by default
+#   UI_TESTS_LEGACY_REF a Git revision of the loopback version, such as the last commit of version 1: before the other
+#                       tests it runs with the demo account (LiquidgramUITests/Tools/seed-legacy-app.sh), then
+#                       TransportTests/testLegacyDataMovesToAppOrigin starts this build over its data
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -34,6 +37,7 @@ WEBAPP_DIR="$IOS_DIR/Liquidgram/WebApp"
 # The `worker` check of the self-test loads this echo worker from the app's origin; only the test build has it
 SELFTEST_WORKER="liquidgram-selftest-worker.js"
 DARK_MODE_TEST="LiquidgramUITests/CoreTests/testDemoAccount"
+MIGRATION_TEST="LiquidgramUITests/TransportTests/testLegacyDataMovesToAppOrigin"
 APP_LOG_PREDICATE='subsystem == "org.liquidgram.messenger"'
 APP_LOG_WINDOW="30m"
 # Tests that also run with the simulator in dark mode: the demo account and the color of the status bar strip
@@ -95,7 +99,7 @@ rm -rf "$OUT_DIR/screenshots" "$OUT_DIR/ax" "$OUT_DIR/logs" \
   "$OUT_DIR/README.md" "$OUT_DIR/summary.md" "$OUT_DIR/summary.json" "$OUT_DIR/contact-sheet.png"
 rm -rf "$WORK_DIR/DerivedData" "$WORK_DIR/light" "$WORK_DIR/dark" "$WORK_DIR/light.xcresult" "$WORK_DIR/dark.xcresult" \
   "$WORK_DIR/light.log" "$WORK_DIR/dark.log" "$WORK_DIR/build-for-testing.log" "$WORK_DIR/app.log" \
-  "$WORK_DIR/simulator.txt"
+  "$WORK_DIR/simulator.txt" "$WORK_DIR/migration" "$WORK_DIR/migration.xcresult" "$WORK_DIR/migration.log"
 
 cp "$TESTS_DIR/Fixtures/$SELFTEST_WORKER" "$WEBAPP_DIR/$SELFTEST_WORKER"
 trap 'rm -f "$WEBAPP_DIR/$SELFTEST_WORKER"' EXIT
@@ -189,6 +193,27 @@ run_tests() {
   return "$status"
 }
 
+# The data of the loopback version goes on the simulator first; the migration test then starts this build over it
+run_migration_test() {
+  echo "Running the migration test over the data of $UI_TESTS_LEGACY_REF"
+  bash "$TESTS_DIR/Tools/seed-legacy-app.sh" "$UI_TESTS_LEGACY_REF" "$UDID" "$WORK_DIR" || return 1
+  local status=0
+  env TEST_RUNNER_LIQUIDGRAM_LEGACY_SEEDED=1 xcodebuild test-without-building \
+    -project "$PROJECT" \
+    -scheme "$SCHEME" \
+    -configuration Debug \
+    -destination "id=$UDID" \
+    -derivedDataPath "$WORK_DIR/DerivedData" \
+    -resultBundlePath "$WORK_DIR/migration.xcresult" \
+    -parallel-testing-enabled NO \
+    -test-timeouts-enabled YES \
+    -default-test-execution-time-allowance "$DEFAULT_TEST_TIME_ALLOWANCE" \
+    -maximum-test-execution-time-allowance "$MAX_TEST_TIME_ALLOWANCE" \
+    "-only-testing:$MIGRATION_TEST" \
+    2>&1 | tee "$WORK_DIR/migration.log" || status=$?
+  return "$status"
+}
+
 # Exports what a pass left in its result bundle for report.mjs
 export_results() {
   local pass="$1"
@@ -239,6 +264,11 @@ fi
 
 test_status=0
 if [[ "$build_status" == 0 ]]; then
+  if [[ -n "${UI_TESTS_LEGACY_REF:-}" ]]; then
+    run_migration_test || test_status=1
+    export_results migration
+  fi
+
   run_tests light ${only_testing[@]+"${only_testing[@]}"} || test_status=1
   export_results light
 

@@ -1,4 +1,5 @@
 import type { NativeAppAction, NativeHapticStyle } from '../nativeApp';
+import type { NativeMediaPart } from '../nativeMediaStream';
 import type { NativeRoundVideoFile } from '../nativeRoundVideo';
 
 import {
@@ -33,6 +34,8 @@ declare global {
       resolveRequest?: (requestId: number, response: AnyLiteral) => void;
       dispatchAction?: (action: NativeAppAction) => void;
       resolveRoundVideo?: (requestId: number, result: NativeRoundVideoFile | null) => void;
+      // Set by the page, see `util/nativeMediaStream.ts`; resolves with `undefined` when the download failed
+      loadMediaPart?: (url: string, start: number, end: number) => Promise<NativeMediaPart | undefined>;
     };
   }
 }
@@ -127,7 +130,8 @@ export const IS_EXTENSION = window.location.protocol.endsWith('-extension:');
 export const IS_SERVICE_WORKER_SUPPORTED = 'serviceWorker' in navigator && !IS_EXTENSION && !IS_IOS_APP;
 
 // TODO Consider failed service worker
-export const IS_PROGRESSIVE_SUPPORTED = IS_SERVICE_WORKER_SUPPORTED;
+// The iOS app answers the requests for progressive URLs itself, see `util/nativeMediaStream.ts`
+export const IS_PROGRESSIVE_SUPPORTED = IS_SERVICE_WORKER_SUPPORTED || IS_IOS_APP;
 export const IS_OPUS_SUPPORTED = Boolean((new Audio()).canPlayType('audio/ogg; codecs=opus'));
 export const IS_CANVAS_FILTER_SUPPORTED = (
   !IS_TEST && 'filter' in (document.createElement('canvas').getContext('2d') || {})

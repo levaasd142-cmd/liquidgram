@@ -27,6 +27,7 @@ import {
   IS_OPUS_SUPPORTED,
   IS_PROGRESSIVE_SUPPORTED,
   IS_SAFARI,
+  IS_SERVICE_WORKER_SUPPORTED,
   MAX_BUFFER_SIZE,
 } from '../../util/browser/windowEnvironment';
 import { buildCollectionByKey } from '../../util/iteratees';
@@ -427,7 +428,8 @@ export function getMediaFormat(
   const size = getMediaFileSize(media) || 0; // Media types that do not have `size` are smaller than `MAX_BUFFER_SIZE`
 
   if (target === 'download') {
-    if (IS_PROGRESSIVE_SUPPORTED && size > MAX_BUFFER_SIZE && !IS_OPFS_SUPPORTED) {
+    // Download URLs are answered by the service worker
+    if (IS_SERVICE_WORKER_SUPPORTED && size > MAX_BUFFER_SIZE && !IS_OPFS_SUPPORTED) {
       return ApiMediaFormat.DownloadUrl;
     }
     return ApiMediaFormat.BlobUrl;

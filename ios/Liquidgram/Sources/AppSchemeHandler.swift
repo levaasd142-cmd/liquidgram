@@ -10,6 +10,10 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Ap
 /// app can bind while Liquidgram is suspended. Since iOS 16 WebKit gives a scheme with a handler a regular origin and
 /// treats it as a secure context, so Web Crypto, media capture and storage work as on HTTPS.
 ///
+/// Requests under `/progressive/` go to `ProgressiveMediaStream`, which streams videos and music from the page.
+/// Everything else is a file of the web build; files the app adds under the origin, such as recordings under
+/// `/__liquidgram/media/`, belong in `SchemeFileResponder.makeAnswer`, which gives them the same ranges and chunks.
+///
 /// Two limits come with the scheme. WebKit sends no `Referer` from pages that are not http(s), so embeds that require
 /// one, such as YouTube's player, show an error instead of the video. Shared workers run outside the page, where the
 /// scheme has no handler: they get an opaque origin that is not a secure context and cannot load anything, which the
@@ -28,12 +32,14 @@ final class AppSchemeHandler: NSObject {
   private static let chunkLength = 256 * 1024
 
   private let responder: SchemeFileResponder
+  private let mediaStream: ProgressiveMediaStream
   private let readQueue = DispatchQueue(label: "org.liquidgram.messenger.app-scheme", qos: .userInitiated)
   /// Tasks that WebKit started and has not stopped, used on the main queue only
   private var runningTasks: [ObjectIdentifier: RunningTask] = [:]
 
-  init(webRoot: URL = AppSchemeHandler.bundledWebRoot) {
+  init(webRoot: URL = AppSchemeHandler.bundledWebRoot, mediaStream: ProgressiveMediaStream = ProgressiveMediaStream()) {
     responder = SchemeFileResponder(webRoot: webRoot.standardizedFileURL)
+    self.mediaStream = mediaStream
     super.init()
   }
 
@@ -108,6 +114,10 @@ final class AppSchemeHandler: NSObject {
 
 extension AppSchemeHandler: WKURLSchemeHandler {
   func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
+    if ProgressiveMediaStream.canAnswer(urlSchemeTask.request.url) {
+      mediaStream.start(urlSchemeTask, in: webView)
+      return
+    }
     let task = RunningTask(task: urlSchemeTask)
     runningTasks[ObjectIdentifier(urlSchemeTask)] = task
     let request = urlSchemeTask.request
@@ -121,6 +131,7 @@ extension AppSchemeHandler: WKURLSchemeHandler {
 
   func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
     guard let task = runningTasks.removeValue(forKey: ObjectIdentifier(urlSchemeTask)) else {
+      mediaStream.stop(urlSchemeTask)
       return
     }
     task.isStopped = true
@@ -191,8 +202,8 @@ private final class FileBody {
   }
 }
 
-/// Answers requests with files of the web build, with the content types, cache headers and range support of
-/// `LocalServer`
+/// Answers requests with files of the web build, with content types from an explicit table, cache headers and
+/// single ranges
 private struct SchemeFileResponder {
   private static let indexFileName = "index.html"
   private static let defaultContentType = "application/octet-stream"
@@ -446,7 +457,7 @@ private struct SchemeFileResponder {
 
 /// A single `bytes=` range of a `Range` header. Other forms, such as several ranges, are ignored, as RFC 9110 allows,
 /// and the response then carries the whole file.
-private enum SchemeByteRange {
+enum SchemeByteRange {
   case entire
   case partial(Range<Int>)
   case unsatisfiable
@@ -496,10 +507,11 @@ private enum SchemeByteRange {
   }
 }
 
-private enum SchemeStatus: Int {
+enum SchemeStatus: Int {
   case ok = 200
   case partialContent = 206
   case badRequest = 400
+  case forbidden = 403
   case notFound = 404
   case methodNotAllowed = 405
   case rangeNotSatisfiable = 416
@@ -513,6 +525,8 @@ private enum SchemeStatus: Int {
       return "Partial Content"
     case .badRequest:
       return "Bad Request"
+    case .forbidden:
+      return "Forbidden"
     case .notFound:
       return "Not Found"
     case .methodNotAllowed:
