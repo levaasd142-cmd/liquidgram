@@ -25,6 +25,8 @@ const WASM_ADD_MODULE = [
   0x0a, 0x09, 0x01, 0x07, 0x00, 0x20, 0x00, 0x20, 0x01, 0x6a, 0x0b,
 ];
 const SHA256_OF_ABC = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad';
+// The app serves the web build through its URL scheme handler; all user data belongs to this origin
+const APP_ORIGIN = 'liquidgram-web://app';
 
 const checks = [];
 
@@ -55,6 +57,11 @@ await runCheck('noServiceWorker', async () => {
   const registrations = typeof container.getRegistrations === 'function' ? await container.getRegistrations() : [];
   assert(!registrations.length, `${registrations.length} service worker registrations`);
   return 'no controller and no registrations';
+});
+
+await runCheck('appOrigin', () => {
+  assert(location.origin === APP_ORIGIN, `the origin is ${location.origin}`);
+  return location.origin;
 });
 
 await runCheck('secureContext', () => {
