@@ -15,3 +15,6 @@ dev/perf/screenshot*
 # Liquidgram build output
 /dist
 /dist-extension
+/dist-desktop
+/desktop/launcher/webapp
+/desktop/launcher/*.syso

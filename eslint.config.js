@@ -35,6 +35,8 @@ export default defineConfig(
     'src/types/language.d.ts',
     'dist/',
     'dist-extension/',
+    'dist-desktop/',
+    'desktop/launcher/webapp/',
     // Plain browser-extension scripts rely on the `chrome` API, which the TypeScript projects do not include
     'extension/',
     'public/',
