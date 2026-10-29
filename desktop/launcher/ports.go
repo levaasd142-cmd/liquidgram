@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/hmac"
 	"crypto/rand"
-	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -11,19 +10,17 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"net/url"
 	"slices"
 	"strconv"
 	"time"
 )
 
 const (
-	controlTimeout     = 3 * time.Second
-	maxBindAttempts    = 10
-	maxRefusedRequests = 3
-	bindRetryDelay     = 300 * time.Millisecond
-	maxPingBodyBytes   = 4096
-	nonceBytes         = 16
+	controlTimeout   = 3 * time.Second
+	maxBindAttempts  = 10
+	maxRejections    = 3
+	bindRetryDelay   = 300 * time.Millisecond
+	maxPingBodyBytes = 4096
 )
 
 // Fixed ports below the Windows dynamic range (49152 and up), so outgoing connections never take
@@ -31,16 +28,28 @@ const (
 var defaultPorts = []int{47819, 43819, 39819, 35819, 31819}
 
 var (
-	errHandedOff      = errors.New("handed off to the running instance")
-	errAlreadyRunning = errors.New("the running instance did not open a window")
+	errAlreadyRunning = errors.New("the program on the port claims this data folder but opened no window")
 	errWindowRefused  = errors.New("the running instance refused the window request")
 )
+
+// Reports that the instance of the same data folder already runs and opened a window for this launch
+type handoffError struct {
+	// The build of the running instance, which may differ from this one after an update
+	build string
+}
+
+func (e *handoffError) Error() string {
+	return "the running instance opened a window"
+}
 
 type portOwner int
 
 const (
 	ownerUnknown portOwner = iota
 	ownerOtherApp
+	// Claims this data folder but does not prove it knows the launch token: an instance that lost its
+	// token file or signs differently, or a program that imitates the launcher
+	ownerUnproven
 	ownerSameInstance
 )
 
@@ -49,10 +58,11 @@ var controlClient = &http.Client{
 	Transport: &http.Transport{Proxy: nil, DisableKeepAlives: true},
 }
 
-// Binds the saved port or the first available default one. Returns `errHandedOff` with the version of
-// the instance of the same data folder that already runs on one of them and opened a window instead,
-// and `errAlreadyRunning` when that instance did not open one.
-func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, string, error) {
+// Binds the saved port or the first available default one. Stops with a `handoffError` when the
+// instance of the same data folder already runs on one of them and opened a window instead, and with
+// `errAlreadyRunning` when the program there claims the data folder but opened no window. The port
+// returned is the one bound or the one where the launch stopped.
+func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, error) {
 	ports := slices.DeleteFunc(slices.Clone(defaultPorts), func(port int) bool { return port == savedPort })
 	if savedPort != 0 {
 		ports = slices.Insert(ports, 0, savedPort)
@@ -60,93 +70,92 @@ func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, 
 
 	var lastErr error
 	for _, port := range ports {
-		listener, runningVersion, err := listenOrHandOff(port, instanceID, dataDir)
-		if err == nil || errors.Is(err, errHandedOff) || errors.Is(err, errAlreadyRunning) {
-			return listener, port, runningVersion, err
+		listener, err := listenOrHandOff(port, instanceID, dataDir)
+		var handoff *handoffError
+		if err == nil || errors.As(err, &handoff) || errors.Is(err, errAlreadyRunning) {
+			return listener, port, err
 		}
 		log.Printf("Port %d is unavailable: %v", port, err)
 		lastErr = err
 	}
-	return nil, 0, "", fmt.Errorf("no port is available: %w", lastErr)
+	return nil, 0, fmt.Errorf("no port is available: %w", lastErr)
 }
 
-// An instance with the same data folder never makes the launcher move to another port, because that
-// origin would show an empty profile. Such an instance answers 503 while it shuts down, so the port
-// frees up soon, and 403 when the token does not match.
-func listenOrHandOff(port int, instanceID, dataDir string) (net.Listener, string, error) {
+// A program that claims the same data folder never makes the launcher move to another port, because
+// that origin would show an empty profile. A program that only imitates the launcher can keep it from
+// starting this way, but holding all of its ports does that as well. An instance answers 503 while it
+// shuts down, so the port frees up soon, and 403 when the token does not match.
+func listenOrHandOff(port int, instanceID, dataDir string) (net.Listener, error) {
 	address := net.JoinHostPort(loopbackIP, strconv.Itoa(port))
 
 	var err error
-	isSameInstance := false
-	refusedRequests := 0
-	for attempt := 0; attempt < maxBindAttempts; attempt++ {
+	isSameFolder := false
+	rejections := 0
+	for attempt := 0; attempt < maxBindAttempts && rejections < maxRejections; attempt++ {
+		if attempt > 0 {
+			time.Sleep(bindRetryDelay)
+		}
+
 		var listener net.Listener
 		listener, err = net.Listen("tcp4", address)
 		if err == nil {
-			return listener, "", nil
+			return listener, nil
 		}
 
-		owner, ping, launchToken := probePortOwner(port, instanceID, dataDir)
+		owner, runningBuild, launchToken := probePortOwner(port, instanceID, dataDir)
 		switch owner {
 		case ownerOtherApp:
-			return nil, "", err
+			return nil, err
+		case ownerUnproven:
+			log.Printf("The program on port %d claims this data folder but does not prove it knows its token", port)
+			isSameFolder = true
+			rejections++
 		case ownerSameInstance:
-			isSameInstance = true
+			isSameFolder = true
 			windowErr := requestWindow(port, launchToken)
 			if windowErr == nil {
-				return nil, ping.Version, errHandedOff
+				return nil, &handoffError{build: runningBuild}
 			}
 			log.Printf("The running instance on port %d did not open a window: %v", port, windowErr)
 			if errors.Is(windowErr, errWindowRefused) {
-				refusedRequests++
-			}
-			if refusedRequests >= maxRefusedRequests {
-				return nil, "", errAlreadyRunning
+				rejections++
 			}
 		case ownerUnknown:
 			// One more attempt covers an instance that releases the port right now
-			if attempt > 0 && !isSameInstance {
-				return nil, "", err
+			if attempt > 0 && !isSameFolder {
+				return nil, err
 			}
 		}
-		time.Sleep(bindRetryDelay)
 	}
 
-	if isSameInstance {
-		return nil, "", errAlreadyRunning
+	if isSameFolder {
+		return nil, errAlreadyRunning
 	}
-	return nil, "", err
+	return nil, err
 }
 
-// Asks the program on the port who it is. An instance of this data folder proves it knows the launch
-// token, which is read only after the answer: the instance writes a new one before it starts serving.
-func probePortOwner(port int, instanceID, dataDir string) (portOwner, pingResponse, string) {
-	var ping pingResponse
-
-	nonce := make([]byte, nonceBytes)
-	if _, err := rand.Read(nonce); err != nil {
-		return ownerUnknown, ping, ""
-	}
-	nonceText := hex.EncodeToString(nonce)
-
-	response, err := controlClient.Get(buildControlURL(port, pingPath) + "?nonce=" + url.QueryEscape(nonceText))
+// Asks the program on the port who it is and returns its build and the launch token to present to it.
+// An instance of this data folder proves it knows the token of its port, which is read only after the
+// answer: the instance writes it before it starts serving.
+func probePortOwner(port int, instanceID, dataDir string) (portOwner, string, string) {
+	nonce := rand.Text()
+	response, err := controlClient.Get(buildControlURL(port, pingPath) + "?nonce=" + nonce)
 	if err != nil {
-		return ownerUnknown, ping, ""
+		return ownerUnknown, "", ""
 	}
 	defer response.Body.Close()
 
+	var ping pingResponse
 	err = json.NewDecoder(io.LimitReader(response.Body, maxPingBodyBytes)).Decode(&ping)
 	if err != nil || response.StatusCode != http.StatusOK || ping.App != signatureApp || ping.Instance != instanceID {
-		return ownerOtherApp, ping, ""
+		return ownerOtherApp, "", ""
 	}
 
-	launchToken := readLaunchToken(dataDir)
-	expectedProof := signPingNonce(launchToken, nonceText)
-	if launchToken == "" || !hmac.Equal([]byte(ping.Proof), []byte(expectedProof)) {
-		log.Printf("The program on port %d claims this data folder but does not know its token", port)
-		return ownerOtherApp, ping, ""
+	launchToken := readLaunchToken(dataDir, port)
+	if launchToken == "" || !hmac.Equal([]byte(ping.Proof), []byte(signPingNonce(launchToken, port, nonce))) {
+		return ownerUnproven, "", ""
 	}
-	return ownerSameInstance, ping, launchToken
+	return ownerSameInstance, ping.Build, launchToken
 }
 
 func requestWindow(port int, launchToken string) error {

@@ -31,8 +31,11 @@ const (
 	shutdownTimeout = 2 * time.Second
 )
 
-// Set by the build script through `-ldflags "-X main.version=..."`
-var version = "dev"
+// Set by the build script through `-ldflags "-X main.version=... -X main.buildID=..."`
+var (
+	version = "dev"
+	buildID = "dev"
+)
 
 const (
 	messageNoBrowser = "Liquidgram не нашёл браузер, в котором можно открыть окно приложения.\n\n" +
@@ -51,14 +54,15 @@ const (
 		"Ничего не потеряно: закройте Liquidgram, перезагрузите компьютер и откройте Liquidgram снова.\n\n" +
 		"Port %d, which holds your Liquidgram data, is busy, so the app opens without it. " +
 		"Nothing is lost: close Liquidgram, restart the computer and open it again."
-	messageOlderVersion = "Liquidgram обновлён до версии %s, но сейчас ещё работает версия %s.\n\n" +
-		"Закройте все окна Liquidgram и откройте его снова, чтобы перейти на новую версию.\n\n" +
-		"Liquidgram was updated to %s, but version %s is still running. " +
-		"Close all Liquidgram windows and open it again to switch to the new version."
-	messageAlreadyRunning = "Liquidgram уже запущен, но не открыл новое окно.\n\n" +
-		"Закройте все окна Liquidgram и запустите его снова.\n\n" +
-		"Liquidgram is already running but did not open a new window. " +
-		"Close all Liquidgram windows and start it again."
+	messageOtherBuild = "Сейчас работает другая версия Liquidgram, и окно открыла она.\n\n" +
+		"Чтобы запустить эту версию, закройте все окна Liquidgram и откройте его снова.\n\n" +
+		"Another version of Liquidgram is running and opened the window. " +
+		"Close all Liquidgram windows and open it again to start this version."
+	messageAlreadyRunning = "Liquidgram уже запущен, но не открыл новое окно, или его порт %d занят другой программой.\n\n" +
+		"Закройте все окна Liquidgram и запустите его снова. Если это сообщение появится опять, " +
+		"перезагрузите компьютер.\n\n" +
+		"Liquidgram is already running but did not open a new window, or another program holds its port %d. " +
+		"Close all Liquidgram windows and start it again. If this message appears again, restart the computer."
 )
 
 func main() {
@@ -79,22 +83,24 @@ func run() int {
 	closeLog := setupLog(logPath)
 	defer closeLog()
 
-	log.Printf("Liquidgram %s started, data folder %s", version, dataDir)
+	log.Printf("Liquidgram %s (build %s) started, data folder %s", version, buildID, dataDir)
 
 	cfg := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
-	listener, port, runningVersion, err := acquirePort(cfg.Port, instanceID, dataDir)
-	if errors.Is(err, errHandedOff) {
-		log.Printf("The running instance on port %d opened a window", port)
-		// After an update the window comes from the older copy that still runs
-		if runningVersion != version {
-			showWarning(fmt.Sprintf(messageOlderVersion, version, runningVersion, version, runningVersion))
+	listener, port, err := acquirePort(cfg.Port, instanceID, dataDir)
+	var handoff *handoffError
+	if errors.As(err, &handoff) {
+		log.Printf("The running instance on port %d opened a window (build %s)", port, handoff.build)
+		// After an update the window comes from the copy that still runs
+		if handoff.build != buildID {
+			showWarning(messageOtherBuild)
 		}
 		return 0
 	}
 	if errors.Is(err, errAlreadyRunning) {
-		showWarning(messageAlreadyRunning)
+		log.Printf("Port %d: %v", port, err)
+		showWarning(fmt.Sprintf(messageAlreadyRunning, port, port))
 		return 0
 	}
 	if err != nil {
@@ -112,9 +118,8 @@ func run() int {
 		log.Printf("Saved port %d is unavailable, using port %d for this run", savedPort, port)
 	}
 
-	// Without a token this window still works, but second launches cannot open more windows and
-	// links open in a window of the app profile
-	launchToken, err := createLaunchToken(dataDir)
+	// Without the saved token second launches cannot open more windows
+	launchToken, err := createLaunchToken(dataDir, port)
 	if err != nil {
 		log.Printf("Could not save the launch token: %v", err)
 	}
@@ -130,6 +135,7 @@ func run() int {
 	server := &http.Server{
 		Handler: &appHandler{
 			files:        webappFiles(),
+			port:         port,
 			allowedHosts: buildAllowedHosts(port),
 			instanceID:   instanceID,
 			launchToken:  launchToken,

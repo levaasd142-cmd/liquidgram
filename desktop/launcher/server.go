@@ -87,17 +87,20 @@ var contentTypes = map[string]string{
 }
 
 type pingResponse struct {
-	App      string `json:"app"`
-	Version  string `json:"version"`
+	App     string `json:"app"`
+	Version string `json:"version"`
+	// Differs between builds of one version, so a launch can tell that another build opens its window
+	Build    string `json:"build"`
 	Instance string `json:"instance"`
 	// Answers the `nonce` query parameter with the launch token, so a launch sends its token only to an
-	// instance that already knows it and never to a program that took the port
+	// instance that already knows it and never to a program that took the port. The port is signed too,
+	// so a program on another port cannot pass the nonce on to the real instance and return its answer.
 	Proof string `json:"proof,omitempty"`
 }
 
-func signPingNonce(launchToken, nonce string) string {
+func signPingNonce(launchToken string, port int, nonce string) string {
 	mac := hmac.New(sha256.New, []byte(launchToken))
-	mac.Write([]byte(pingProofContext + nonce))
+	mac.Write([]byte(pingProofContext + strconv.Itoa(port) + "\n" + nonce))
 	return hex.EncodeToString(mac.Sum(nil))
 }
 
@@ -105,6 +108,7 @@ func signPingNonce(launchToken, nonce string) string {
 // that the app sends to the default browser
 type appHandler struct {
 	files        fs.FS
+	port         int
 	allowedHosts []string
 	// Public: tells launches whether this instance uses their data folder
 	instanceID string
@@ -157,9 +161,9 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 
 	switch r.URL.Path {
 	case pingPath:
-		ping := pingResponse{App: signatureApp, Version: version, Instance: h.instanceID}
+		ping := pingResponse{App: signatureApp, Version: version, Build: buildID, Instance: h.instanceID}
 		if nonce := r.URL.Query().Get("nonce"); nonce != "" && len(nonce) <= maxNonceLength && h.launchToken != "" {
-			ping.Proof = signPingNonce(h.launchToken, nonce)
+			ping.Proof = signPingNonce(h.launchToken, h.port, nonce)
 		}
 		w.Header().Set("Content-Type", contentTypes[".json"])
 		json.NewEncoder(w).Encode(ping)

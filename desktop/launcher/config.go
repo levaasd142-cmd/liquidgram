@@ -13,16 +13,16 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-	"slices"
 	"strings"
 )
 
 const (
 	configFileName = "config.json"
 	logFileName    = "launcher.log"
-	tokenFileName  = "launcher.token"
 	maxLogSize     = 1 << 20
 	tokenBytes     = 32
+	minConfigPort  = 1024
+	maxConfigPort  = 65535
 )
 
 // The launcher state that has to survive restarts. The port defines the app origin, which owns the
@@ -69,27 +69,28 @@ func buildInstanceID(dataDir string) string {
 }
 
 // Creates the secret that a second launch reads from the data folder, which other accounts on the
-// computer cannot read, and that the app window gets in its launch URL. The file is written before the
-// server starts, so a launch that reached the server never reads it half-written.
-func createLaunchToken(dataDir string) (string, error) {
+// computer cannot read, and that the app windows get in their launch URL. Each port has its own file,
+// so instances on different ports never replace each other's token. The file is written before the
+// server starts, so a launch that reached the server never reads it half-written. A token that could
+// not be saved still serves the windows of this run.
+func createLaunchToken(dataDir string, port int) (string, error) {
 	secret := make([]byte, tokenBytes)
-	if _, err := rand.Read(secret); err != nil {
-		return "", err
-	}
-
+	// Since Go 1.24 `rand.Read` never returns an error
+	rand.Read(secret)
 	token := hex.EncodeToString(secret)
-	if err := os.WriteFile(filepath.Join(dataDir, tokenFileName), []byte(token), 0o600); err != nil {
-		return "", err
-	}
-	return token, nil
+	return token, os.WriteFile(getTokenPath(dataDir, port), []byte(token), 0o600)
 }
 
-func readLaunchToken(dataDir string) string {
-	data, err := os.ReadFile(filepath.Join(dataDir, tokenFileName))
+func readLaunchToken(dataDir string, port int) string {
+	data, err := os.ReadFile(getTokenPath(dataDir, port))
 	if err != nil {
 		return ""
 	}
 	return strings.TrimSpace(string(data))
+}
+
+func getTokenPath(dataDir string, port int) string {
+	return filepath.Join(dataDir, fmt.Sprintf("launcher-%d.token", port))
 }
 
 func setupLog(path string) (closeLog func()) {
@@ -129,8 +130,8 @@ func loadConfig(dataDir string) config {
 		return config{}
 	}
 
-	// The launcher only ever saves one of its own ports
-	if !slices.Contains(defaultPorts, cfg.Port) {
+	// The launcher saves one of its own ports, but a port set by hand may be any unprivileged one
+	if cfg.Port < minConfigPort || cfg.Port > maxConfigPort {
 		cfg.Port = 0
 	}
 	return cfg

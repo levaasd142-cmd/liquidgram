@@ -2,8 +2,9 @@
 // with its installer and portable zip, and the Linux launcher. Requires Go and NSIS (`makensis`).
 import { zipSync } from 'fflate';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import {
-  cpSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync,
+  cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync,
 } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -26,6 +27,10 @@ const PORTABLE_ZIP = 'Liquidgram-Portable.zip';
 const OUTPUT_FILES = [WINDOWS_EXE, LINUX_BINARY, PORTABLE_ZIP, INSTALLER];
 const ZIP_LEVEL = 9;
 const MEGABYTE = 1024 * 1024;
+const BUILD_ID_LENGTH = 12;
+// The files that make up the launcher: its Go sources without tests, the module files, the Windows resource
+// definitions and the embedded web build
+const RE_LAUNCHER_INPUT = /^(?:[^/]+(?<!_test)\.go|go\.(?:mod|sum)|winres\/.+|webapp\/.+)$/;
 const WINDOWS_VERSION_PARTS = 4;
 const MAX_VERSION_PART = 65535;
 const RE_DIGITS = /^\d+$/;
@@ -60,6 +65,7 @@ function buildDesktop() {
   }
 
   copyWebBuild(distDir);
+  const buildId = computeBuildId(version);
   // The output folder may be any folder, so only the files this script writes are replaced
   mkdirSync(outDir, { recursive: true });
   OUTPUT_FILES.forEach((name) => rmSync(join(outDir, name), { force: true }));
@@ -73,10 +79,10 @@ function buildDesktop() {
 
   const exePath = join(outDir, WINDOWS_EXE);
   buildLauncher({
-    goos: 'windows', goarch: 'amd64', version, outPath: exePath, extraLdflags: ['-H=windowsgui'],
+    goos: 'windows', goarch: 'amd64', version, buildId, outPath: exePath, extraLdflags: ['-H=windowsgui'],
   });
   buildLauncher({
-    goos: 'linux', goarch: 'amd64', version, outPath: join(outDir, LINUX_BINARY),
+    goos: 'linux', goarch: 'amd64', version, buildId, outPath: join(outDir, LINUX_BINARY),
   });
 
   packPortableZip(exePath, join(outDir, PORTABLE_ZIP));
@@ -86,7 +92,7 @@ function buildDesktop() {
     });
   }
 
-  printSummary(outDir, version);
+  printSummary(outDir, version, buildId);
 }
 
 function checkTool(command, args, hint) {
@@ -105,6 +111,20 @@ function copyWebBuild(distDir) {
   });
 }
 
+// Changes with every file of the launcher and the embedded web build, so a launch can tell that the
+// running copy is another build even when `package.json` keeps the same version
+function computeBuildId(version) {
+  const hash = createHash('sha256').update(version);
+  readdirSync(LAUNCHER_DIR, { recursive: true })
+    .map((path) => path.replaceAll('\\', '/'))
+    .filter((path) => RE_LAUNCHER_INPUT.test(path) && statSync(join(LAUNCHER_DIR, path)).isFile())
+    .sort()
+    .forEach((path) => {
+      hash.update(`\0${path}\0`).update(readFileSync(join(LAUNCHER_DIR, path)));
+    });
+  return hash.digest('hex').slice(0, BUILD_ID_LENGTH);
+}
+
 function runGo(args, env = {}) {
   execFileSync(GO, args, {
     cwd: LAUNCHER_DIR,
@@ -114,9 +134,9 @@ function runGo(args, env = {}) {
 }
 
 function buildLauncher({
-  goos, goarch, version, outPath, extraLdflags = [],
+  goos, goarch, version, buildId, outPath, extraLdflags = [],
 }) {
-  const ldflags = [...extraLdflags, '-s', '-w', `-X main.version=${version}`].join(' ');
+  const ldflags = [...extraLdflags, '-s', '-w', `-X main.version=${version}`, `-X main.buildID=${buildId}`].join(' ');
   runGo(['build', '-trimpath', '-buildvcs=false', '-ldflags', ldflags, '-o', outPath, '.'], {
     GOOS: goos,
     GOARCH: goarch,
@@ -161,7 +181,7 @@ function buildInstaller({
   ], { stdio: 'inherit' });
 }
 
-function printSummary(outDir, version) {
+function printSummary(outDir, version, buildId) {
   const files = OUTPUT_FILES.filter((name) => existsSync(join(outDir, name)));
   const lines = files.map((name) => {
     const size = (statSync(join(outDir, name)).size / MEGABYTE).toFixed(1);
@@ -169,5 +189,6 @@ function printSummary(outDir, version) {
   });
 
   // eslint-disable-next-line no-console
-  console.log(`Liquidgram desktop ${version} is ready in ${relative(ROOT, outDir) || '.'}:\n${lines.join('\n')}`);
+  console.log(`Liquidgram desktop ${version} (build ${buildId}) is ready in ${relative(ROOT, outDir) || '.'}:\n`
+    + lines.join('\n'));
 }

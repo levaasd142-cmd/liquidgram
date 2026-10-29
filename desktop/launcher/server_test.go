@@ -58,6 +58,7 @@ func newTestHandler() (*appHandler, *testActions) {
 	actions := &testActions{}
 	handler := &appHandler{
 		files:        testFiles,
+		port:         testPort,
 		allowedHosts: buildAllowedHosts(testPort),
 		instanceID:   testInstance,
 		launchToken:  testToken,
@@ -167,7 +168,7 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 	if err := json.NewDecoder(response.Body).Decode(&ping); err != nil {
 		t.Fatal(err)
 	}
-	if ping.App != signatureApp || ping.Instance != testInstance || ping.Proof != "" {
+	if ping.App != signatureApp || ping.Instance != testInstance || ping.Build != buildID || ping.Proof != "" {
 		t.Errorf("ping %+v", ping)
 	}
 
@@ -175,8 +176,10 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 	if err := json.NewDecoder(response.Body).Decode(&ping); err != nil {
 		t.Fatal(err)
 	}
-	if ping.Proof != signPingNonce(testToken, "abc123") || ping.Proof == signPingNonce("other-token", "abc123") {
-		t.Errorf("ping proof %q does not match the token", ping.Proof)
+	if ping.Proof != signPingNonce(testToken, testPort, "abc123") ||
+		ping.Proof == signPingNonce("other-token", testPort, "abc123") ||
+		ping.Proof == signPingNonce(testToken, testPort+1, "abc123") {
+		t.Errorf("ping proof %q does not match the token and the port", ping.Proof)
 	}
 
 	tests := []struct {

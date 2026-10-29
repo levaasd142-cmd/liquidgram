@@ -116,15 +116,18 @@ SectionEnd
 Section "Uninstall"
   SetShellVarContext current
 
-  ; A copy renamed by an update may still run as well
+  ; A copy renamed by an update may still run as well. It goes first, so a cancel never leaves the
+  ; shortcuts pointing to a deleted program.
+  retryDeleteOld:
+    Delete "$INSTDIR\${APP_EXE}.old"
+    IfFileExists "$INSTDIR\${APP_EXE}.old" 0 retryDelete
+      MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryDeleteOld
+      Abort
   retryDelete:
     Delete "$INSTDIR\${APP_EXE}"
-    Delete "$INSTDIR\${APP_EXE}.old"
-    IfFileExists "$INSTDIR\${APP_EXE}" askToClose
-    IfFileExists "$INSTDIR\${APP_EXE}.old" askToClose deleted
-  askToClose:
-    MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryDelete
-    Abort
+    IfFileExists "$INSTDIR\${APP_EXE}" 0 deleted
+      MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(CloseApp)" /SD IDCANCEL IDRETRY retryDelete
+      Abort
   deleted:
 
   Delete "$INSTDIR\${UNINSTALLER_EXE}"
