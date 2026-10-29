@@ -14,6 +14,9 @@
 Unicode true
 ManifestDPIAware true
 SetCompressor /SOLID lzma
+; Installed files get the time of installation, so the installer keeps no file times of the build machine
+; and the same inputs give the same installer
+SetDateSave off
 RequestExecutionLevel user
 
 !define APP_NAME "Liquidgram"

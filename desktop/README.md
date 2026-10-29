@@ -17,10 +17,10 @@ This runs `npm run build:production` and then `dev/buildDesktop.mjs`, which:
 1. copies `dist` without source maps into `desktop/launcher/webapp` (ignored by Git) for `go:embed`;
 2. runs `go vet` and `go test`;
 3. generates the Windows resources (icon, version from `package.json`, manifest) with `go-winres`;
-4. builds `Liquidgram.exe` (`windows/amd64`, GUI subsystem) and `liquidgram-linux-x64` with the version and a build ID, a hash of the launcher sources and the embedded web build;
+4. builds `Liquidgram.exe` (`windows/amd64`, GUI subsystem) and `liquidgram-linux-x64` with the version and a build ID, a hash of the launcher sources, the icon and the embedded web build;
 5. packs `Liquidgram-Portable.zip` (the exe and a Russian `README.txt`) and builds `Liquidgram-Setup.exe` with `makensis`.
 
-Everything lands in `dist-desktop/`. To package an existing web build: `node dev/buildDesktop.mjs --dist path/to/dist [--out dir] [--no-installer]`. The `GO` and `MAKENSIS` environment variables override the tool paths.
+Everything lands in `dist-desktop/`. The same sources and web build give byte-identical files: Go builds with `-trimpath`, the zip entries carry the time from `SOURCE_DATE_EPOCH` or else the time of the last commit, and the installer stores no file times (`SetDateSave off`). To package an existing web build: `node dev/buildDesktop.mjs --dist path/to/dist [--out dir] [--no-installer]`. The `GO` and `MAKENSIS` environment variables override the tool paths.
 
 ## How the launcher works
 

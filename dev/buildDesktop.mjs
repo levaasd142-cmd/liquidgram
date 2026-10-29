@@ -31,10 +31,13 @@ const BUILD_ID_LENGTH = 12;
 // The files that make up the launcher: its Go sources without tests, the module files, the Windows resource
 // definitions and the embedded web build
 const RE_LAUNCHER_INPUT = /^(?:[^/]+(?<!_test)\.go|go\.(?:mod|sum)|winres\/.+|webapp\/.+)$/;
+// Files outside the launcher folder that go into the executable: the icon of the Windows resources
+const LAUNCHER_EXTRA_INPUTS = ['../assets/liquidgram.ico'];
 const WINDOWS_VERSION_PARTS = 4;
 const MAX_VERSION_PART = 65535;
 const RE_DIGITS = /^\d+$/;
 const BYTE_ORDER_MARK = String.fromCodePoint(0xFEFF);
+const MS_IN_SECOND = 1000;
 const GO_HINT = 'Go 1.24 or newer is required, see go.dev/dl';
 const NSIS_HINT = 'NSIS is required for the installer: install it with `apt-get install nsis`, '
   + '`brew install makensis` or from nsis.sourceforge.io, or pass --no-installer';
@@ -111,17 +114,16 @@ function copyWebBuild(distDir) {
   });
 }
 
-// Changes with every file of the launcher and the embedded web build, so a launch can tell that the
+// Changes with every file of the launcher, the embedded web build and the icon, so a launch can tell that the
 // running copy is another build even when `package.json` keeps the same version
 function computeBuildId(version) {
   const hash = createHash('sha256').update(version);
-  readdirSync(LAUNCHER_DIR, { recursive: true })
+  const launcherFiles = readdirSync(LAUNCHER_DIR, { recursive: true })
     .map((path) => path.replaceAll('\\', '/'))
-    .filter((path) => RE_LAUNCHER_INPUT.test(path) && statSync(join(LAUNCHER_DIR, path)).isFile())
-    .sort()
-    .forEach((path) => {
-      hash.update(`\0${path}\0`).update(readFileSync(join(LAUNCHER_DIR, path)));
-    });
+    .filter((path) => RE_LAUNCHER_INPUT.test(path) && statSync(join(LAUNCHER_DIR, path)).isFile());
+  [...launcherFiles, ...LAUNCHER_EXTRA_INPUTS].sort().forEach((path) => {
+    hash.update(`\0${path}\0`).update(readFileSync(join(LAUNCHER_DIR, path)));
+  });
   return hash.digest('hex').slice(0, BUILD_ID_LENGTH);
 }
 
@@ -163,8 +165,33 @@ function packPortableZip(exePath, outPath) {
   const zip = zipSync({
     [WINDOWS_EXE]: readFileSync(exePath),
     'README.txt': new TextEncoder().encode(readme),
-  }, { level: ZIP_LEVEL });
+  }, { level: ZIP_LEVEL, mtime: getSourceTime() });
   writeFileSync(outPath, zip);
+}
+
+// The file time in the portable zip: `SOURCE_DATE_EPOCH` or the time of the last commit, so the same sources
+// give the same archive
+function getSourceTime() {
+  const epoch = process.env.SOURCE_DATE_EPOCH || readCommitTime();
+  if (!RE_DIGITS.test(epoch)) {
+    throw new Error(`SOURCE_DATE_EPOCH must be a number of seconds, not ${epoch}`);
+  }
+
+  // Zip entries keep a local wall-clock time, so the UTC fields go in as they are and the time zone of the
+  // build does not matter
+  const date = new Date(Number(epoch) * MS_IN_SECOND);
+  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+    date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+}
+
+function readCommitTime() {
+  try {
+    return execFileSync('git', ['log', '-1', '--format=%ct'], {
+      cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    throw new Error('Set SOURCE_DATE_EPOCH to build outside a Git checkout');
+  }
 }
 
 function buildInstaller({
