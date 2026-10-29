@@ -4,6 +4,17 @@ import {
 import { requestForcedReflow, requestMutation } from '../../lib/fasterdom/fasterdom.ts';
 import { IS_TAURI } from './globalEnvironment';
 
+declare global {
+  interface Window {
+    // The iOS app in `ios/` sets it before any page script, and its `bridge.js` adds the native callbacks
+    __liquidgramNative?: {
+      platform: 'ios';
+      version: string;
+      notificationPermission: NotificationPermission;
+    };
+  }
+}
+
 const MIN_CHROMIUM_TUCK_VERSION = 149;
 const CHROMIUM_VERSION = Number(
   navigator.userAgentData?.brands.find((data) => data.brand === 'Chromium')?.version
@@ -57,10 +68,14 @@ export const MouseButton = {
   Fifth: 4,
 };
 
+export const IS_IOS_APP = Boolean(window.__liquidgramNative);
+
 export const IS_PWA = (
   window.matchMedia('(display-mode: standalone)').matches
   || (window.navigator as any).standalone
   || document.referrer.includes('android-app://')
+  // The iOS app shows the build full screen in a `WKWebView`, as iOS shows a home-screen web app
+  || IS_IOS_APP
 );
 
 export const IS_APP = IS_PWA || IS_TAURI;
@@ -82,9 +97,10 @@ export const IS_VIDEO_RECORDING_SUPPORTED = Boolean(
 );
 export const IS_EMOJI_SUPPORTED = PLATFORM_ENV && (IS_MAC_OS || IS_IOS) && isLastEmojiVersionSupported();
 
-// Pages of the Liquidgram browser extension cannot rely on a service worker of their own
+// Pages of the Liquidgram browser extension cannot rely on a service worker of their own, and neither can the iOS
+// app: `WKWebView` supports service workers only on app-bound domains
 export const IS_EXTENSION = window.location.protocol.endsWith('-extension:');
-export const IS_SERVICE_WORKER_SUPPORTED = 'serviceWorker' in navigator && !IS_EXTENSION;
+export const IS_SERVICE_WORKER_SUPPORTED = 'serviceWorker' in navigator && !IS_EXTENSION && !IS_IOS_APP;
 
 // TODO Consider failed service worker
 export const IS_PROGRESSIVE_SUPPORTED = IS_SERVICE_WORKER_SUPPORTED;

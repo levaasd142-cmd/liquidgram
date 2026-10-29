@@ -39,6 +39,8 @@ export default defineConfig(
     'desktop/launcher/webapp/',
     // Plain browser-extension scripts rely on the `chrome` API, which the TypeScript projects do not include
     'extension/',
+    // The iOS app injects its plain ES2019 bridge script into `WKWebView`, outside the TypeScript projects
+    'ios/',
     'public/',
     'deploy/update_version.js',
     'tauri/target/',
