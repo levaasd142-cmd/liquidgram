@@ -27,6 +27,11 @@
     <key>NSAllowsLocalNetworking</key>
     <true/>
   </dict>
+  <!-- WebKit exposes `navigator.mediaDevices` only to apps that declare these, as the app does -->
+  <key>NSCameraUsageDescription</key>
+  <string>The probe checks that video capture is available. It records nothing.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>The probe checks that audio capture is available. It records nothing.</string>
   <key>UIApplicationSceneManifest</key>
   <dict>
     <key>UIApplicationSupportsMultipleScenes</key>

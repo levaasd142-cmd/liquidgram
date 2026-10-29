@@ -39,6 +39,8 @@ async function main() {
 
   if (PHASE === 'verify') {
     await runVerifyChecks();
+  } else if (PHASE === 'cleared') {
+    await runClearedChecks();
   } else {
     await runMainChecks();
   }
@@ -75,8 +77,14 @@ async function runMainChecks() {
   await check('worker-classic', checkClassicWorker);
   await check('worker-module', checkModuleWorker);
   await check('worker-websocket', checkWorkerWebSocket);
-  await check('sharedworker-classic', checkClassicSharedWorker);
-  await check('sharedworker-module', checkModuleSharedWorker);
+  await check('sharedworker-load', () => askSharedWorker('shared-basic.js', undefined, 'ping', 'pong'));
+  await check('sharedworker-module-load', () => askSharedWorker('shared-module-basic.js', 'module', 'ping', 'pong'));
+  await check('info-sharedworker-importscripts', () => (
+    askSharedWorker('shared-basic.js', undefined, 'importScripts', 'helper-ok')
+  ));
+  await check('info-sharedworker-fetch', () => askSharedWorker('shared-basic.js', undefined, 'fetch', '200 data-ok'));
+  await check('info-sharedworker-subtle', () => askSharedWorker('shared-basic.js', undefined, 'subtle', 'SHA-256 ok'));
+  await check('info-sharedworker-module-import', () => askSharedWorker('shared-module.js', 'module', 'ping', 'dep-ok'));
   await check('broadcast-channel', checkBroadcastChannel);
   await check('compression-streams', checkCompressionStreams);
   await check('blob-url', checkBlobUrl);
@@ -101,6 +109,19 @@ async function runVerifyChecks() {
   await check('persist-indexeddb', verifyIndexedDb);
   await check('persist-cache-storage', verifyCacheStorage);
   await check('info-storage-persisted', checkStoragePersisted);
+}
+
+// After the app removed all website data the way `TestHooks.prepareForLaunch` does for a clean start
+async function runClearedChecks() {
+  await check('clean-start-local-storage', () => expectCleared(() => localStorage.getItem(MARKER_KEY)));
+  await check('clean-start-indexeddb', () => expectCleared(readIndexedDbMarker));
+  await check('clean-start-cache-storage', () => expectCleared(readCacheStorageMarker));
+}
+
+async function expectCleared(read) {
+  const value = await read();
+  assert(value === undefined || value === null, `still found ${describe(value)}`);
+  return 'removed';
 }
 
 async function check(name, run) {
@@ -212,13 +233,14 @@ function checkRandomUuid() {
   return uuid;
 }
 
-// Only checks that the API exists in this context: the probe records no audio or video
-function checkGetUserMediaExists() {
+// Only checks that the API exists in this context and lists the devices: the probe records no audio or video
+async function checkGetUserMediaExists() {
   const { mediaDevices } = navigator;
   assert(mediaDevices && typeof mediaDevices.getUserMedia === 'function', `navigator.mediaDevices is ${typeof mediaDevices}`);
+  const devices = await mediaDevices.enumerateDevices();
   return {
     getUserMedia: typeof mediaDevices.getUserMedia,
-    enumerateDevices: typeof mediaDevices.enumerateDevices,
+    devices: devices.map((device) => device.kind).join(',') || 'none',
     MediaRecorder: typeof window.MediaRecorder,
     AudioContext: typeof (window.AudioContext || window.webkitAudioContext),
     RTCPeerConnection: typeof window.RTCPeerConnection,
@@ -278,15 +300,20 @@ async function writeIndexedDb() {
   return `stored ${RUN_ID}`;
 }
 
-async function verifyIndexedDb() {
+async function readIndexedDbMarker() {
   const db = await openProbeDb();
   try {
     const value = await settleRequest(db.transaction(STORE_NAME).objectStore(STORE_NAME).get(MARKER_KEY));
-    assert(value && value.runId === RUN_ID, `found ${JSON.stringify(value && value.runId)} instead of ${RUN_ID}`);
-    return `found ${value.runId}`;
+    return value ? value.runId : undefined;
   } finally {
     db.close();
   }
+}
+
+async function verifyIndexedDb() {
+  const value = await readIndexedDbMarker();
+  assert(value === RUN_ID, `found ${value} instead of ${RUN_ID}`);
+  return `found ${value}`;
 }
 
 async function writeCacheStorage() {
@@ -298,11 +325,15 @@ async function writeCacheStorage() {
   return `stored ${RUN_ID} under ${CACHE_KEY}`;
 }
 
-async function verifyCacheStorage() {
+async function readCacheStorageMarker() {
   assert(self.caches, 'caches is missing');
   const cache = await caches.open(CACHE_NAME);
   const match = await cache.match(CACHE_KEY);
-  const value = match ? await match.text() : undefined;
+  return match ? match.text() : undefined;
+}
+
+async function verifyCacheStorage() {
+  const value = await readCacheStorageMarker();
   assert(value === RUN_ID, `found ${value} instead of ${RUN_ID}`);
   return `found ${value}`;
 }
@@ -518,20 +549,30 @@ function runDedicatedWorker(url, options, message) {
   });
 }
 
-function runSharedWorker(url, options) {
+// Starts a new instance of a shared worker, sends it a task and expects `value` in its answer
+function askSharedWorker(url, type, task, value) {
+  assert(typeof SharedWorker === 'function', 'SharedWorker is missing');
   return new Promise((resolve, reject) => {
-    const worker = new SharedWorker(url, options);
+    const worker = new SharedWorker(url, { name: `probe-${task}-${Math.random()}`, type });
     const timer = setTimeout(() => reject(new Error('no answer from the shared worker')), CHECK_TIMEOUT_MS - 1000);
     worker.onerror = (e) => {
       clearTimeout(timer);
       reject(new Error(`shared worker error: ${e.message || 'the script did not load'}`));
     };
-    worker.port.onmessage = (e) => {
+    worker.port.onmessage = ({ data }) => {
       clearTimeout(timer);
       worker.port.close();
-      resolve(e.data);
+      if (data.error) {
+        reject(new Error(data.error));
+      } else if (data.value !== value) {
+        reject(new Error(`answered ${describe(data.value)}`));
+      } else if (data.origin !== window.location.origin || !data.isSecureContext) {
+        reject(new Error(`runs in ${data.origin}, secure context ${data.isSecureContext}`));
+      } else {
+        resolve(`${task}: ${data.value}`);
+      }
     };
-    worker.port.postMessage('run');
+    worker.port.postMessage({ task });
   });
 }
 
@@ -561,18 +602,6 @@ async function checkModuleWorker() {
 async function checkWorkerWebSocket() {
   const data = await runDedicatedWorker('worker-classic.js', undefined, { task: 'websocket', url: TELEGRAM_WEBSOCKET_URL });
   return expectWorkerResult(data, {}).websocket;
-}
-
-async function checkClassicSharedWorker() {
-  assert(typeof SharedWorker === 'function', 'SharedWorker is missing');
-  const data = await runSharedWorker('shared-classic.js', { name: `probe-classic-${RUN_ID}` });
-  return expectWorkerResult(data, { importScripts: 'helper-ok', isSecureContext: true, origin: window.location.origin });
-}
-
-async function checkModuleSharedWorker() {
-  assert(typeof SharedWorker === 'function', 'SharedWorker is missing');
-  const data = await runSharedWorker('shared-module.js', { name: `probe-module-${RUN_ID}`, type: 'module' });
-  return expectWorkerResult(data, { staticImport: 'dep-ok', isSecureContext: true, origin: window.location.origin });
 }
 
 async function checkBroadcastChannel() {
@@ -621,29 +650,38 @@ async function checkCompressionStreams() {
   return results.join('; ');
 }
 
+// Runs a step and names it in the error, so a failure says which part of a check broke
+async function step(label, run) {
+  try {
+    return await run();
+  } catch (err) {
+    throw new Error(`${label}: ${describe(err)}`);
+  }
+}
+
 async function checkBlobUrl() {
-  const textUrl = URL.createObjectURL(new Blob(['blob-ok'], { type: 'text/plain' }));
+  const textUrl = await step('create a text URL', () => URL.createObjectURL(new Blob(['blob-ok'], { type: 'text/plain' })));
   assert(textUrl.startsWith(`blob:${window.location.origin}/`), textUrl);
-  const text = await (await fetch(textUrl)).text();
+  const text = await step('fetch the text URL', async () => (await fetch(textUrl)).text());
   URL.revokeObjectURL(textUrl);
   assert(text === 'blob-ok', `fetched ${text}`);
+
+  const png = await step('read an image', async () => (await fetch('/icon-192x192.png')).blob());
+  const imageUrl = await step('create an image URL', () => URL.createObjectURL(png));
+  const image = new Image();
+  image.src = imageUrl;
+  await step('decode the image URL', () => image.decode());
+  URL.revokeObjectURL(imageUrl);
+  assert(image.naturalWidth === 192, `image width ${image.naturalWidth}`);
 
   const canvas = document.createElement('canvas');
   canvas.width = 8;
   canvas.height = 8;
-  const context = canvas.getContext('2d');
-  context.fillStyle = '#f00';
-  context.fillRect(0, 0, 8, 8);
-  const png = await new Promise((resolve) => {
+  canvas.getContext('2d').fillRect(0, 0, 8, 8);
+  const canvasBlob = await step('encode a canvas', () => new Promise((resolve) => {
     canvas.toBlob(resolve, 'image/png');
-  });
-  const imageUrl = URL.createObjectURL(png);
-  const image = new Image();
-  image.src = imageUrl;
-  await image.decode();
-  URL.revokeObjectURL(imageUrl);
-  assert(image.naturalWidth === 8, `image width ${image.naturalWidth}`);
-  return { url: textUrl, image: `${image.naturalWidth}x${image.naturalHeight}` };
+  }));
+  return { url: textUrl, image: `${image.naturalWidth}x${image.naturalHeight}`, canvasBlob: canvasBlob ? canvasBlob.size : 'null' };
 }
 
 // The app saves the file natively and calls `window.__probeDownloadDone(name, size)`

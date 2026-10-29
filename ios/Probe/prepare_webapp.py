@@ -16,6 +16,9 @@ PROBE_PATH = '__probe'
 # Worker entry files sit in the root of the build, named `[name]-[hash].js` (`worker.rolldownOptions` in vite.config.ts)
 GRAMJS_WORKER_RE = re.compile(r'^worker-[\w-]+\.js$')
 SHARED_STATE_WORKER_RE = re.compile(r'^sharedState\.worker-[\w-]+\.js$')
+# The opus-recorder workers that `src/util/oggToWav.ts` imports with `?url`, emitted as hashed assets
+DECODER_WORKER_RE = re.compile(r'^decoderWorker\.min-[\w-]+\.js$')
+WAVE_WORKER_RE = re.compile(r'^waveWorker\.min-[\w-]+\.js$')
 
 
 def find_first(pattern, names):
@@ -36,9 +39,13 @@ def main():
 
     root_files = sorted(path.name for path in WEBAPP_DIR.iterdir() if path.is_file())
     assets = sorted(path.name for path in (WEBAPP_DIR / 'assets').iterdir() if path.is_file())
+    decoder_worker = find_first(DECODER_WORKER_RE, assets)
+    wave_worker = find_first(WAVE_WORKER_RE, assets)
     info = {
         'gramjsWorker': find_first(GRAMJS_WORKER_RE, root_files),
         'sharedStateWorker': find_first(SHARED_STATE_WORKER_RE, root_files),
+        'decoderWorker': decoder_worker and f'/assets/{decoder_worker}',
+        'waveWorker': wave_worker and f'/assets/{wave_worker}',
         'wasm': [f'/assets/{name}' for name in assets if name.endswith('.wasm')],
         'fonts': [f'/assets/{name}' for name in assets if name.endswith('.woff2')],
     }

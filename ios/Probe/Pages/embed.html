@@ -5,18 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Embed probe</title>
   <style>
-    body { margin: 0; padding: 48px 8px 8px; font: 13px -apple-system, sans-serif; background: #fff; color: #000; }
-    iframe { display: block; border: 0; margin: 8px 0; }
+    body { margin: 0; padding: 48px 8px 8px; font: 12px -apple-system, sans-serif; background: #fff; color: #000; }
+    p { margin: 6px 0 2px; }
+    iframe { display: block; border: 0; }
   </style>
 </head>
 <body>
-  <p id="status">A YouTube embed with the sandbox and permissions of Instant View embeds (src/components/iv/EmbedFrame.tsx).
+  <p>YouTube embeds with the sandbox and permissions of Instant View embeds (src/components/iv/EmbedFrame.tsx).
     The app records the Referer header of each frame navigation.</p>
+  <p>1. Plain embed URL</p>
   <iframe
-    width="352"
-    height="198"
+    width="320"
+    height="180"
     src="https://www.youtube.com/embed/aqz-KE-bpKQ"
-    title="YouTube embed"
+    title="Plain"
+    sandbox="allow-scripts allow-popups allow-forms allow-modals allow-same-origin allow-storage-access-by-user-activation"
+    allow="clipboard-write;"
+    allowfullscreen
+  ></iframe>
+  <p>2. With origin=https://web.telegram.org</p>
+  <iframe
+    width="320"
+    height="180"
+    src="https://www.youtube.com/embed/aqz-KE-bpKQ?origin=https%3A%2F%2Fweb.telegram.org"
+    title="Origin parameter"
+    sandbox="allow-scripts allow-popups allow-forms allow-modals allow-same-origin allow-storage-access-by-user-activation"
+    allow="clipboard-write;"
+    allowfullscreen
+  ></iframe>
+  <p>3. With widget_referrer=https://web.telegram.org/</p>
+  <iframe
+    width="320"
+    height="180"
+    src="https://www.youtube.com/embed/aqz-KE-bpKQ?widget_referrer=https%3A%2F%2Fweb.telegram.org%2F"
+    title="Widget referrer parameter"
     sandbox="allow-scripts allow-popups allow-forms allow-modals allow-same-origin allow-storage-access-by-user-activation"
     allow="clipboard-write;"
     allowfullscreen

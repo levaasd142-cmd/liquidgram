@@ -46,6 +46,10 @@ final class ProbeViewController: UIViewController {
   private static let environmentScript =
     "window.__liquidgramNative = { platform: 'ios', version: 'probe', notificationPermission: 'default' };"
   private static let apiKeysFormQuery = "return Boolean(document.querySelector('#auth-api-credentials-form'))"
+  private static let reloadMarkerScript = "window.__probeBeforeReload = true; return true"
+  private static let reloadedFormQuery =
+    "return !window.__probeBeforeReload && Boolean(document.querySelector('#auth-api-credentials-form'))"
+  private static let clearedPagePhase = "cleared"
   private static let realAppChecksBody = """
     const checks = await import('/__probe/realapp-checks.js');
     return JSON.stringify(await checks.runChecks());
@@ -215,6 +219,20 @@ final class ProbeViewController: UIViewController {
       }
     }
 
+    // A clean start of the UI tests removes all website data; the markers of both origins must be gone afterwards
+    if phase == .verify {
+      await removeAllWebsiteData()
+      for origin in origins where origin.label == Self.customOriginLabel || isServerReady {
+        await runPage(
+          "cleared",
+          path: Self.featuresPath,
+          origin: origin,
+          timeout: Self.verifyTimeout,
+          pagePhase: Self.clearedPagePhase
+        )
+      }
+    }
+
     if case .success(let value) = await callPage("return navigator.userAgent") {
       userAgent = value as? String ?? ""
     }
@@ -239,10 +257,16 @@ final class ProbeViewController: UIViewController {
   }
 
   /// Loads a probe page, which reports its checks and ends with a `done` message
-  private func runPage(_ name: String, path: String, origin: ProbeOrigin, timeout: TimeInterval) async {
+  private func runPage(
+    _ name: String,
+    path: String,
+    origin: ProbeOrigin,
+    timeout: TimeInterval,
+    pagePhase: String? = nil
+  ) async {
     var components = URLComponents(url: origin.baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: false)
     components?.queryItems = [
-      URLQueryItem(name: "phase", value: phase.rawValue),
+      URLQueryItem(name: "phase", value: pagePhase ?? phase.rawValue),
       URLQueryItem(name: "origin", value: origin.label),
       URLQueryItem(name: "run", value: runId),
     ]
@@ -273,9 +297,39 @@ final class ProbeViewController: UIViewController {
     // Errors and workers that come after the first render
     try? await Task.sleep(nanoseconds: Self.realAppSettleNanoseconds)
     await runRealAppChecks(in: scenario)
+    await reloadRealApp(in: scenario)
     recordRealAppErrors(in: scenario)
     scenario.status = "done"
     await endScenario(scenario)
+  }
+
+  /// Reloads the app as the web view controller does after iOS ends the web content process
+  private func reloadRealApp(in scenario: ScenarioRecord) async {
+    _ = await callPage(Self.reloadMarkerScript)
+    let startedAt = elapsed
+    webView.reload()
+    let deadline = Date().addingTimeInterval(Self.realAppTimeout)
+    var hasReloaded = false
+    while !hasReloaded && Date() < deadline {
+      try? await Task.sleep(nanoseconds: Self.pollNanoseconds)
+      hasReloaded = await evaluateBoolean(Self.reloadedFormQuery)
+    }
+    scenario.checks.append(ProbeCheck(
+      name: "realapp-reload",
+      ok: hasReloaded,
+      detail: hasReloaded ? "the API keys screen rendered again after \(elapsed - startedAt) s" : "no API keys screen"
+    ))
+    try? await Task.sleep(nanoseconds: Self.realAppSettleNanoseconds)
+  }
+
+  /// Removes all website data the way `TestHooks.prepareForLaunch` does for a clean start
+  private func removeAllWebsiteData() async {
+    await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+      let dataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
+      WKWebsiteDataStore.default().removeData(ofTypes: dataTypes, modifiedSince: .distantPast) {
+        continuation.resume()
+      }
+    }
   }
 
   private func runRealAppChecks(in scenario: ScenarioRecord) async {
