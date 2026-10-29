@@ -77,6 +77,27 @@ npm run build:extension
 - В боковой панели браузер не показывает запросы разрешений: микрофон нужно один раз разрешить во вкладке.
 - Без «Режима разработчика» браузер отключает распакованное расширение.
 
+## Приложение для Windows
+
+```bash
+npm run build:desktop
+```
+
+Нужны Go 1.24+ и NSIS. Готовые файлы появятся в `dist-desktop/`: установщик `Liquidgram-Setup.exe`, переносная версия `Liquidgram-Portable.zip` и Linux-версия того же лаунчера. Подробности — в [desktop/README.md](desktop/README.md).
+
+Лаунчер на Go содержит веб-сборку внутри себя, отдаёт её на `127.0.0.1` с постоянным портом и открывает окно Microsoft Edge или Chrome в режиме приложения, с отдельным профилем и без адресной строки. Сервис-воркер работает, поэтому видео стримится. Установщик ставит Liquidgram без прав администратора и создаёт ярлыки.
+
+Ограничения: программа не подписана, поэтому Windows SmartScreen предупреждает при первом запуске; нужен Edge или Chrome; уведомления приходят, пока окно открыто.
+
+## iPhone и Android
+
+На телефоне Liquidgram ставится как веб-приложение на экран «Домой», для этого нужен HTTPS-адрес:
+
+- **GitHub Pages.** Workflow [.github/workflows/pages.yml](.github/workflows/pages.yml) собирает и публикует сайт при пуше в основную ветку. Один раз включи Settings → Pages → Source: GitHub Actions.
+- **Netlify Drop.** Перетащи папку со сборкой (без файлов `*.map`) на <https://app.netlify.com/drop> и сохрани сайт в бесплатный аккаунт.
+
+Дальше на iPhone: открыть адрес в Safari → «Поделиться» → «На экран „Домой“». На Android: Chrome → «Установить приложение».
+
 ## Где что в коде
 
 | Фича | Файлы |
@@ -88,6 +109,8 @@ npm run build:extension
 | Ключи API на экране входа | `src/components/auth/AuthApiCredentials.tsx`, `src/util/apiCredentials.ts` |
 | Русские строки | `src/util/localization/liquidStrings.ts` |
 | Расширение для браузера | `extension/`, `dev/buildExtension.mjs` |
+| Приложение для Windows | `desktop/`, `dev/buildDesktop.mjs`, `src/util/desktopLauncher.ts` |
+| Публикация для телефонов | `.github/workflows/pages.yml` |
 
 ## Важно
 
