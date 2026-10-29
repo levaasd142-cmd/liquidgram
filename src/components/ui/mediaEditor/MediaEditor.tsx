@@ -8,7 +8,7 @@ import type { CropAction, CropState } from './hooks/useCropper';
 
 import { selectTheme } from '../../../global/selectors';
 import { selectAnimationLevel } from '../../../global/selectors/sharedState';
-import { IS_WINDOWS } from '../../../util/browser/windowEnvironment';
+import { IS_POPOVER_SUPPORTED, IS_WINDOWS } from '../../../util/browser/windowEnvironment';
 import buildClassName from '../../../util/buildClassName';
 import buildStyle from '../../../util/buildStyle';
 import captureEscKeyListener from '../../../util/captureEscKeyListener';
@@ -345,8 +345,13 @@ const MediaEditor = ({
       setImageDimensions({ width: 0, height: 0 });
       originalImageRef.current = undefined;
       hasStartedLandingRef.current = false;
-      // Opened from the Media Viewer → morph its media into the canvas and fade in above it
-      setIsAwaitingGhostLanding(isOpenedFromMediaViewer());
+      // Opened from the Media Viewer → morph its media into the canvas and fade in above it. Without the Popover API
+      // the editor cannot rise above the viewer's modal dialog, so the viewer closes at once.
+      const isFromMediaViewer = isOpenedFromMediaViewer();
+      if (isFromMediaViewer && !IS_POPOVER_SUPPORTED) {
+        closeMediaViewer({ shouldLandInMediaEditor: true });
+      }
+      setIsAwaitingGhostLanding(isFromMediaViewer && IS_POPOVER_SUPPORTED);
     }
     // eslint-disable-next-line react-hooks-static-deps/exhaustive-deps
   }, [isOpen, imageUrl]);
