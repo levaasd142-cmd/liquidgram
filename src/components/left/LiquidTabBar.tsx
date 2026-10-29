@@ -64,7 +64,7 @@ const LiquidTabBar = ({
   if (!isMobile || !isGlassEnabled || isChatOpen || !activeTab) return undefined;
 
   return (
-    <nav className={styles.root}>
+    <nav className={styles.root} dir={lang.isRtl ? 'rtl' : undefined}>
       {TABS.map(({ key, icon, labelKey }) => (
         <button
           key={key}

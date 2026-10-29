@@ -193,12 +193,14 @@ html.liquid-glass {
     padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 
-  /* The new chat button lines up with the tab bar and still hides fully below the screen */
-  html.liquid-glass #LeftColumn .NewChatButton {
+  /* Floating buttons stay above the home indicator, in line with the tab bar, and still hide fully below the screen */
+  html.liquid-glass #LeftColumn .NewChatButton,
+  html.liquid-glass #LeftColumn .FloatingActionButton {
     bottom: calc(1rem + env(safe-area-inset-bottom));
   }
 
-  html.liquid-glass #LeftColumn .NewChatButton:not(.revealed) {
+  html.liquid-glass #LeftColumn .NewChatButton:not(.revealed),
+  html.liquid-glass #LeftColumn .FloatingActionButton:not(.revealed) {
     transform: translateY(calc(5rem + env(safe-area-inset-bottom)));
   }
 }
@@ -270,7 +272,8 @@ html.liquid-glass.liquid-refraction {
   }
 }
 
-/* Streamer mode hides personal data until hovered */
+/* Streamer mode hides personal data until hovered with a mouse */
+/* Touch screens report hover on every tap, so the data stays hidden there */
 html.liquid-streamer {
   #LeftColumn .ListItem.Chat .Avatar,
   #LeftColumn .ListItem.Chat .fullName,
@@ -282,12 +285,14 @@ html.liquid-streamer {
     transition: filter 0.2s ease;
   }
 
-  #LeftColumn .ListItem.Chat:hover .Avatar,
-  #LeftColumn .ListItem.Chat:hover .fullName,
-  #LeftColumn .ListItem.Chat:hover .last-message,
-  .MiddleHeader .ChatInfo:hover,
-  .Message:hover .message-content,
-  .Message:hover .Avatar {
-    filter: none;
+  @media (hover: hover) {
+    #LeftColumn .ListItem.Chat:hover .Avatar,
+    #LeftColumn .ListItem.Chat:hover .fullName,
+    #LeftColumn .ListItem.Chat:hover .last-message,
+    .MiddleHeader .ChatInfo:hover,
+    .Message:hover .message-content,
+    .Message:hover .Avatar {
+      filter: none;
+    }
   }
 }

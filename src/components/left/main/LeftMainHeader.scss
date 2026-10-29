@@ -144,8 +144,11 @@
         0 0.25rem 0.75rem -0.125rem rgba(91, 75, 216, 0.55);
       /* stylelint-enable plugin/whole-pixel */
 
-      &:hover {
-        background: linear-gradient(160deg, #9a8dff, #6656e0);
+      // Touch screens report hover on every tap, which would leave the lighter color on after turning ghost mode on
+      @media (hover: hover) {
+        &:hover {
+          background: linear-gradient(160deg, #9a8dff, #6656e0);
+        }
       }
     }
   }

@@ -16,6 +16,12 @@
   -webkit-backdrop-filter: var(--lg-backdrop);
   backdrop-filter: var(--lg-backdrop);
   box-shadow: var(--lg-shadow);
+
+  /* Floating buttons sit on the left in right-to-left languages */
+  &[dir="rtl"] {
+    right: 1rem;
+    left: 5rem;
+  }
 }
 
 .tab {

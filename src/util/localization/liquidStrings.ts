@@ -35,7 +35,7 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidShowSeconds: 'Секунды во времени сообщений',
     LiquidSectionInterface: 'Интерфейс',
     LiquidStreamerMode: 'Режим стримера',
-    LiquidStreamerModeInfo: 'Размывает переписку, имена и аватарки, пока не наведёшь курсор',
+    LiquidStreamerModeInfo: 'Размывает переписку, имена и аватарки, пока не наведёшь курсор мыши',
     LiquidShowIds: 'Показывать ID',
     LiquidShowIdsInfo: 'ID пользователей и чатов в профиле, нажатие копирует',
     LiquidHideStories: 'Скрыть истории',

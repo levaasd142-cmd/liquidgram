@@ -4541,7 +4541,7 @@
 "LiquidShowSeconds" = "Show seconds in message time";
 "LiquidSectionInterface" = "Interface";
 "LiquidStreamerMode" = "Streamer mode";
-"LiquidStreamerModeInfo" = "Blurs chats, names and avatars until you hover them";
+"LiquidStreamerModeInfo" = "Blurs chats, names and avatars until hovered with a mouse";
 "LiquidShowIds" = "Show IDs";
 "LiquidShowIdsInfo" = "User and chat IDs in profiles, tap to copy";
 "LiquidHideStories" = "Hide stories";

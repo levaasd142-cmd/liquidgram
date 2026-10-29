@@ -13,8 +13,9 @@ permissions:
   pages: write
   id-token: write
 
+# Deploys queue per branch, so a push to another branch, which skips both jobs, cannot cancel a waiting deploy
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
