@@ -15,7 +15,8 @@ rmSync(OUTPUT_DIR, { recursive: true, force: true });
 cpSync(DIST_DIR, OUTPUT_DIR, { recursive: true, filter: (path) => !path.endsWith(SOURCE_MAP_SUFFIX) });
 cpSync(EXTENSION_SOURCE_DIR, OUTPUT_DIR, { recursive: true });
 
-const { version } = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));
+// Chrome accepts only dot-separated integers, so pre-release and build suffixes are dropped
+const version = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version.split(/[-+]/)[0];
 const manifestPath = join(OUTPUT_DIR, 'manifest.json');
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 manifest.version = version;

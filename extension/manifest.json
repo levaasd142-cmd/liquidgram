@@ -3,6 +3,7 @@
   "name": "Liquidgram",
   "description": "Unofficial Telegram client with an iOS 26-style Liquid Glass design, ghost mode and anti-delete.",
   "version": "0.0.0",
+  "minimum_chrome_version": "116",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjvfaY/VmGTGZRQXGF9z//oFJiAlBKkEY+52ptYxsek5jXXHeE5+jm05a3m5b5WKUGbWSXRfY+uZj1+aeuwPSiDIJjqnp8vu7xDxYqVE2Cfb9N9wPgtW+kNv/tEAkN6c5D49tJF8DlM8OyLubtNoQDmasjdpmTzre/35ZMtYllzTPdqQbe+AY5ti+72rEL2YNn0D44/EQaP4jvE+DRjmemVwGko+V4CIYeSaB3hmleBWYCSxftZn5iOvrtbKyFowRYldJQKLZ9sHX/NN4X8/kyVNUl5XCMqq+uCTiwPId/vy35z25d53hx3Iw7FYfxsu48xXjM1r8Dg+zoSTJFQGp3QIDAQAB",
   "icons": {
     "16": "icons/icon-16.png",
@@ -23,7 +24,8 @@
   },
   "permissions": [
     "sidePanel",
-    "notifications"
+    "notifications",
+    "unlimitedStorage"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"

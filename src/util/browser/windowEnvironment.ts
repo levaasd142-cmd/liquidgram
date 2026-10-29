@@ -83,7 +83,7 @@ export const IS_VIDEO_RECORDING_SUPPORTED = Boolean(
 export const IS_EMOJI_SUPPORTED = PLATFORM_ENV && (IS_MAC_OS || IS_IOS) && isLastEmojiVersionSupported();
 
 // Pages of the Liquidgram browser extension cannot rely on a service worker of their own
-export const IS_EXTENSION = window.location.protocol === 'chrome-extension:';
+export const IS_EXTENSION = window.location.protocol.endsWith('-extension:');
 export const IS_SERVICE_WORKER_SUPPORTED = 'serviceWorker' in navigator && !IS_EXTENSION;
 
 // TODO Consider failed service worker

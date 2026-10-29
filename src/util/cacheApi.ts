@@ -16,7 +16,9 @@ const ACCESS_THROTTLE = 24 * 60 * 60 * 1000; // 1 day
 const CLEANUP_INTERVAL = 1 * 60 * 60 * 1000; // 1 hour
 
 const CLEARABLE_CACHE_NAMES = [MEDIA_CACHE_NAME, MEDIA_CACHE_NAME_AVATARS, MEDIA_PROGRESSIVE_CACHE_NAME];
-const CACHE_KEY_BASE = `${self.location.origin}/`;
+// Cache Storage accepts only http(s) keys, so browser extension pages key entries under a reserved domain
+const EXTENSION_CACHE_KEY_BASE = 'https://liquidgram.invalid/';
+const CACHE_KEY_BASE = /^https?:$/.test(self.location.protocol) ? `${self.location.origin}/` : EXTENSION_CACHE_KEY_BASE;
 
 void cleanup(CLEARABLE_CACHE_NAMES).catch(() => undefined);
 setInterval(() => {
