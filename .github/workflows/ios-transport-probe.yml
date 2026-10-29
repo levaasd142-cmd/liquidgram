@@ -1,0 +1,135 @@
+# Scratch workflow of the iOS transport probe in ios/Probe. It runs only on pushes to its scratch branch: it builds the
+# web app, builds the probe for the simulator, runs it on iOS 26 and iOS 18 simulators and pushes the reports,
+# snapshots and logs to the results branch. A summary of each runtime is reported as an annotation.
+
+name: iOS transport probe
+
+on:
+  push:
+    branches: ['ios-v2-scratch/transport']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-transport-probe
+  cancel-in-progress: true
+
+env:
+  RESULTS_BRANCH: ios-test-results/ios-v2-scratch/transport
+  PROBE_APP: ${{ github.workspace }}/probe-build/Build/Products/Debug-iphonesimulator/LiquidgramProbe.app
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Use GitHub mirrors for xiph submodules
+        run: git config --global url."https://github.com/xiph/".insteadOf "https://gitlab.xiph.org/xiph/"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build:production
+
+      - name: Upload web build
+        uses: actions/upload-artifact@v7
+        with:
+          name: web-dist
+          path: |
+            dist
+            !dist/**/*.map
+          if-no-files-found: error
+          retention-days: 1
+
+  probe:
+    needs: web
+    runs-on: macos-15
+    timeout-minutes: 80
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Select the latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Download web build
+        uses: actions/download-artifact@v7
+        with:
+          name: web-dist
+          path: dist
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build the probe
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/results"
+          xcodebuild -version | tee "$RUNNER_TEMP/results/xcode.txt"
+          xcrun simctl list runtimes | tee -a "$RUNNER_TEMP/results/xcode.txt"
+          python3 ios/Probe/prepare_webapp.py dist
+          xcodegen generate --spec ios/Probe/project.yml --project ios/Probe
+          xcodebuild \
+            -project ios/Probe/LiquidgramProbe.xcodeproj \
+            -scheme LiquidgramProbe \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$GITHUB_WORKSPACE/probe-build" \
+            CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee "$RUNNER_TEMP/probe-build.log" | grep -E '(error|warning):|BUILD (SUCCEEDED|FAILED)' || true
+          test -x "$PROBE_APP/LiquidgramProbe"
+
+      - name: Report build errors
+        if: failure()
+        run: |
+          log="$RUNNER_TEMP/probe-build.log"
+          [ -f "$log" ] || exit 0
+          tail -n 400 "$log" > "$RUNNER_TEMP/results/build-tail.log"
+          errors="$(grep -E '(^|[^a-z])(error|fatal error):|BUILD FAILED|xcodegen' "$log" | head -n 80 || true)"
+          [ -n "$errors" ] || errors="$(tail -n 60 "$log")"
+          errors="${errors//'%'/'%25'}"
+          errors="${errors//$'\n'/'%0A'}"
+          echo "::error title=Probe build failed::${errors}"
+
+      - name: Run on iOS 26.2
+        timeout-minutes: 30
+        run: python3 ios/Probe/run_probe.py "$PROBE_APP" 26.2 "$RUNNER_TEMP/results/ios-26" "$GITHUB_RUN_ID"
+
+      - name: Run on iOS 18
+        timeout-minutes: 30
+        run: python3 ios/Probe/run_probe.py "$PROBE_APP" 18. "$RUNNER_TEMP/results/ios-18" "$GITHUB_RUN_ID"
+
+      - name: Summarize
+        if: always()
+        run: |
+          [ -d "$RUNNER_TEMP/results" ] || exit 0
+          python3 ios/Probe/summarize.py "$RUNNER_TEMP/results"
+
+      - name: Push the results
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -d "$RUNNER_TEMP/results" ] || exit 0
+          cd "$RUNNER_TEMP/results"
+          git init -q
+          git checkout -q -b results
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Transport probe results of run $GITHUB_RUN_ID for $GITHUB_SHA"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "HEAD:refs/heads/$RESULTS_BRANCH"

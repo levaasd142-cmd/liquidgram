@@ -1,0 +1,55 @@
+# XcodeGen spec of the transport probe, a simulator-only test app. It serves the production web build with the app's
+# `LocalServer` and with `AppSchemeHandler` and records what works over each origin; see README.md.
+# `prepare_webapp.py` fills the generated `WebApp` folder.
+name: LiquidgramProbe
+
+options:
+  minimumXcodeGenVersion: 2.38.0
+  developmentLanguage: en
+  createIntermediateGroups: true
+
+targets:
+  LiquidgramProbe:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.4"
+    sources:
+      - path: Sources
+      # The app's own transports, compiled unchanged
+      - path: ../Liquidgram/Sources/LocalServer.swift
+      - path: ../Liquidgram/Sources/AppSchemeHandler.swift
+      - path: ../Liquidgram/Resources/bridge.js
+        buildPhase: resources
+      - path: Resources
+        buildPhase: resources
+      - path: WebApp
+        name: WebApp
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_NAME: LiquidgramProbe
+        PRODUCT_BUNDLE_IDENTIFIER: org.liquidgram.probe
+        INFOPLIST_FILE: Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: "NO"
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+        COMPRESS_PNG_FILES: "NO"
+        STRIP_PNG_TEXT: "NO"
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "NO"
+        DEVELOPMENT_TEAM: ""
+
+schemes:
+  LiquidgramProbe:
+    build:
+      targets:
+        LiquidgramProbe: all
+    run:
+      config: Debug
