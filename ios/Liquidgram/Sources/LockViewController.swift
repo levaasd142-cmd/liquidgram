@@ -32,12 +32,16 @@ private enum Strings {
 /// authentication again after a failed or cancelled attempt. The colors come from the launch screen and follow
 /// light and dark mode.
 final class LockViewController: UIViewController {
-  /// The web app's accent color
-  private static let accentColor = UIColor(red: 0x33 / 255, green: 0x90 / 255, blue: 0xEC / 255, alpha: 1)
+  /// A deeper shade of the web app's accent color `#3390EC`, so white text on the button has a contrast of 4.5:1
+  private static let accentColor = UIColor(red: 0x1F / 255, green: 0x6F / 255, blue: 0xD0 / 255, alpha: 1)
   private static let titleFontSize: CGFloat = 22
   private static let spacing: CGFloat = 24
   private static let minimumTopSpacing: CGFloat = 16
   private static let buttonImagePadding: CGFloat = 8
+  /// Below the compression resistance of the title and the button, so large text moves the logo up instead of
+  /// clipping them
+  private static let logoCenterPriority = UILayoutPriority(500)
+  private static let logoTopPriority = UILayoutPriority(740)
 
   private let biometryType: BiometryType
   private let unlockAction: () -> Void
@@ -93,12 +97,12 @@ final class LockViewController: UIViewController {
     let margins = containerView.layoutMarginsGuide
     // The logo stays where the launch screen shows it and only moves up when large text needs the room
     let logoCenter = logoView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
-    logoCenter.priority = .defaultHigh
+    logoCenter.priority = Self.logoCenterPriority
     let logoTop = logoView.topAnchor.constraint(
       greaterThanOrEqualTo: safeArea.topAnchor,
       constant: Self.minimumTopSpacing
     )
-    logoTop.priority = .required - 1
+    logoTop.priority = Self.logoTopPriority
     NSLayoutConstraint.activate([
       logoView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
       logoCenter,
@@ -130,6 +134,8 @@ final class LockViewController: UIViewController {
     }
     configuration.buttonSize = .large
     configuration.imagePadding = Self.buttonImagePadding
+    // Glass would derive a light tint for the text, which is hard to read on the blue
+    configuration.baseForegroundColor = .white
 
     switch biometryType {
     case .faceID:
