@@ -192,6 +192,7 @@ final class WebViewController: UIViewController {
     launchOverlay.frame = containerView.bounds
     launchOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     containerView.addSubview(launchOverlay)
+    webView.accessibilityElementsHidden = true
     view = containerView
   }
 
@@ -269,8 +270,8 @@ final class WebViewController: UIViewController {
   }
 
   /// Makes the page the first responder. WebKit reports `document.hasFocus()` only then, and the web app pauses its
-  /// animations and videos while the page has no focus, as in a background tab. Safari does this for its pages, a
-  /// web view waits for the first tap. No keyboard appears while no field of the page is focused.
+  /// animations and videos while the page has no focus, as in a background tab. Safari does this for its pages; a
+  /// web view otherwise waits for the first tap. No keyboard appears while no field of the page is focused.
   func focusPage() {
     guard hasLoadedApp, presentedViewController == nil, webView.window != nil else {
       return
@@ -476,6 +477,7 @@ final class WebViewController: UIViewController {
     launchOverlay.layer.removeAllAnimations()
     launchOverlay.alpha = 1
     launchOverlay.isHidden = false
+    webView.accessibilityElementsHidden = true
   }
 
   /// Fades the launch screen into the page once the web app has drawn its first screen
@@ -505,6 +507,9 @@ final class WebViewController: UIViewController {
     guard generation == launchOverlayGeneration, !launchOverlay.isHidden else {
       return
     }
+    // The page takes touches from now on, so VoiceOver and UI tests may reach it
+    webView.accessibilityElementsHidden = false
+    UIAccessibility.post(notification: .screenChanged, argument: nil)
     UIView.animate(
       withDuration: Self.launchOverlayFadeDuration,
       animations: {
@@ -1005,13 +1010,18 @@ private final class AppWebView: WKWebView {
   }
 }
 
-/// The launch screen of `Info.plist`: the logo in the middle of the screen on the launch color
+/// The launch screen of `Info.plist`: the logo in the middle of the screen on the launch color. Like the launch screen,
+/// it takes the touches meant for the page under it. While it is up, it is the one accessibility element instead of
+/// the page, so VoiceOver and UI tests reach the page only once it shows.
 private final class LaunchOverlayView: UIView {
+  private static let accessibilityName = "Liquidgram"
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = WebViewController.backgroundColor
     accessibilityIdentifier = "liquidgram.launchOverlay"
-    accessibilityElementsHidden = true
+    isAccessibilityElement = true
+    accessibilityLabel = Self.accessibilityName
 
     let logoView = UIImageView(image: UIImage(named: "LaunchLogo"))
     logoView.translatesAutoresizingMaskIntoConstraints = false

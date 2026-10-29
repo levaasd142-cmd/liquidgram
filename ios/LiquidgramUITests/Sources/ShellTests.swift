@@ -12,14 +12,33 @@ final class ShellTests: LiquidgramUITestCase {
   private static let menuButtonLabel = "Open menu"
   /// Frames of web content come from another process and may be off by rounding
   private static let frameTolerance: CGFloat = 1
-  /// The keyboard's frame in the accessibility tree and the one that the app gets in its notifications may differ a
-  /// little on newer systems, whose keyboard has rounded corners and margins
-  private static let keyboardEdgeTolerance: CGFloat = 12
-  /// The composer rests on the keyboard, below the web app's bottom margin
-  private static let maxComposerGap: CGFloat = 60
+  /// The keyboard in the accessibility tree starts at its keys, below the suggestions bar, which the keyboard frame of
+  /// the app's notifications includes
+  private static let maxKeyboardBarHeight: CGFloat = 60
+  /// The composer rests on the keyboard: the suggestions bar and the web app's margins are between them
+  private static let maxComposerGap: CGFloat = 100
   /// The resize follows the keyboard's animation, and the page lays itself out again after it
   private static let layoutTimeout: TimeInterval = 5
   private static let rotationDelay: TimeInterval = 2
+  private static let lateWindowButtonLabel = "Open a page later"
+  /// The page opens its window 1.5 seconds after the tap, and Safari's view controller slides in after that
+  private static let inAppBrowserTimeout: TimeInterval = 15
+  /// A button over the page that opens a web page 1.5 seconds after the tap, as the web app does for links that wait
+  /// for an answer from Telegram first. WebKit's pop-up blocker drops such a window once the tap is a second old,
+  /// unless the app lets scripts open windows.
+  private static let lateWindowScript = """
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.createElement('button');
+      button.textContent = 'Open later';
+      button.setAttribute('aria-label', '\(lateWindowButtonLabel)');
+      button.style.cssText = 'position: fixed; z-index: 2147483647; left: 50%; top: 50%; padding: 24px;'
+        + 'transform: translate(-50%, -50%); font-size: 20px';
+      button.addEventListener('click', () => {
+        setTimeout(() => window.open('https://example.org/', '_blank', 'noopener'), 1500);
+      });
+      document.body.appendChild(button);
+    });
+    """
 
   /// Typing in a chat leaves the header in place: the web view ends at the top of the keyboard, the composer rests on
   /// the keyboard, and everything is back where it was once the keyboard hides
@@ -65,11 +84,10 @@ final class ShellTests: LiquidgramUITestCase {
       accuracy: Self.frameTolerance,
       "The chat header moved from \(titleFrame) to \(title.frame) when the keyboard came up"
     )
-    XCTAssertEqual(
-      webView.frame.maxY,
-      keyboardFrame.minY,
-      accuracy: Self.keyboardEdgeTolerance,
-      "The web view \(webView.frame) does not end at the keyboard \(keyboardFrame)"
+    let keyboardGap = keyboardFrame.minY - webView.frame.maxY
+    XCTAssertTrue(
+      keyboardGap >= -Self.frameTolerance && keyboardGap <= Self.maxKeyboardBarHeight,
+      "The web view \(webView.frame) does not end at the top of the keyboard \(keyboardFrame)"
     )
     XCTAssertLessThanOrEqual(
       composer.frame.maxY,
@@ -124,9 +142,36 @@ final class ShellTests: LiquidgramUITestCase {
     XCTAssertLessThan(windowFrame.width, windowFrame.height, "The app turned to landscape: \(windowFrame)")
   }
 
+  /// A window that the page opens well after the tap, as for the "Log in" buttons of bots, shows the web page in the
+  /// in-app browser instead of being dropped
+  @MainActor
+  func testWindowOpenedLateShowsInAppBrowser() throws {
+    try launchApp(pageScript: Self.lateWindowScript)
+    waitForChatRow(titled: Self.demoChatTitle, "the chat list")
+    let button = waitForHittable(webView.buttons[Self.lateWindowButtonLabel], "the button of the test page")
+    button.tap()
+    let isCovered = waitUntil(timeout: Self.inAppBrowserTimeout) {
+      !button.isHittable
+    }
+    attachScreenshot("01-in-app-browser")
+    XCTAssertTrue(isCovered, "No in-app browser covers the page after it opened a window 1.5 seconds after the tap")
+    XCTAssertEqual(app.state, .runningForeground, "The link left the app")
+  }
+
   /// The title in the header of the demo chat; the chat list row has a longer label
   @MainActor
   private var chatHeaderTitle: XCUIElementQuery {
     webView.buttons.matching(NSPredicate(format: "label == %@", Self.demoChatTitle))
+  }
+
+  /// Launches the app like `launchApp(_:)` with the demo account, plus one more page script after the fixtures
+  @MainActor
+  private func launchApp(pageScript: String) throws {
+    let app = XCUIApplication()
+    app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US", "-LiquidgramResetState", "YES"]
+    let scripts = try ["page-errors", "offline-api", "demo-account"].map { try loadFixture($0) } + [pageScript]
+    app.launchEnvironment[Self.userScriptEnvironmentKey] = Data(scripts.joined(separator: "\n;\n").utf8)
+      .base64EncodedString()
+    app.launch()
   }
 }

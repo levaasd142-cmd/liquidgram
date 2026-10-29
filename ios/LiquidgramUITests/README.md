@@ -92,6 +92,7 @@ The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID t
 | --- | --- |
 | `testKeyboardResizesPageAndRestoresIt` | The web view starts below the status bar. In a chat, the keyboard leaves the header where it was, the web view ends at the top of the keyboard and the composer rests on it; after a tap on a message closes the keyboard, the web view, the header and the composer are back where they were. Screenshots of the chat list, the chat, the keyboard up and the keyboard hidden |
 | `testIPhoneStaysInPortrait` | With the simulator turned to landscape, the app's window stays in portrait |
+| `testWindowOpenedLateShowsInAppBrowser` | A button that a test script adds to the page opens a web page 1.5 seconds after its tap, as the web app does for links that wait for Telegram first; the in-app browser covers the page instead of WebKit's pop-up blocker dropping the window |
 
 ## The self-test
 
