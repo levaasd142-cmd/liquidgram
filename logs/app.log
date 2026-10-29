@@ -1,0 +1,43 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-29 16:11:35.061 Df Liquidgram[6842:68f8] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:11:35.803 Df Liquidgram[6842:68f8] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:11:43.286 Df Liquidgram[7071:6c75] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:11:43.929 Df Liquidgram[7071:6c75] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:11:57.819 Df Liquidgram[7776:7490] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:11:58.568 Df Liquidgram[7776:7490] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:12:16.157 Df Liquidgram[8975:810d] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:12:16.787 Df Liquidgram[8975:810d] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:12:23.075 Df Liquidgram[9179:852d] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:12:23.750 Df Liquidgram[9179:852d] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:12:29.498 Df Liquidgram[9179:852d] [org.liquidgram.messenger:SelfTest] Self-test result: {"ok":false,"checks":[{"name":"bridge","ok":true,"detail":"version 1.0.0, notification permission default"},{"name":"notificationBridge","ok":true,"detail":"permission default"},{"name":"noServiceWorker","ok":true,"detail":"service workers are unavailable"},{"name":"secureContext","ok":true,"detail":"http://127.0.0.1:47821"},{"name":"webCrypto","ok":true,"detail":"SHA-256 digest matches"},{"name":"localStorage","ok":true,"detail":"write, read and remove work"},{"name":"indexedDb","ok":true,"detail":"open, put and get work"},{"name":"webAssembly","ok":true,"detail":"a module compiles and runs"},{"name":"worker","ok":true,"detail":"a module worker from the app's origin answered (secure context true)"},{"name":"fetchIndex","ok":true,"detail":"status 200, text/html; charset=utf-8"},{"name":"rangeRequest","ok":true,"detail":"/assets/index-CIU2cnEp.js: 206 with bytes 100-1123/159272"},{"name":"userAgentMobile","ok":false,"detail":"Error: no \134"Mobile/\134" in Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram"},{"name":"userAgentLiquidgram","ok":true,"detail":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram"},{"name":"appRendered","ok":true,"detail":"Transition full-height is-auth"},{"name":"compatTest","ok":true,"detail":"passed"},{"name":"noPageErrors","ok":true,"detail":"none since the page started"}],"info":{"url":"http://127.0.0.1:47821/","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram","language":"en-US","viewport":"402x874 at 3x","colorScheme":"light","backdropFilter":true,"blobWorker":"blocked: Error: worker error: the script did not load","authScreen":true}}
+2026-10-29 16:12:33.080 Df Liquidgram[10427:9232] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:12:33.712 Df Liquidgram[10427:9232] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:12:50.778 Df Liquidgram[11321:9ce4] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:12:51.400 Df Liquidgram[11321:9ce4] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:13:04.683 Df Liquidgram[12230:a76d] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:13:05.299 Df Liquidgram[12230:a76d] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:13:14.357 Df Liquidgram[12712:acf6] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:13:15.031 Df Liquidgram[12712:acf6] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:13:17.692 Df Liquidgram[12935:af61] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:13:18.416 Df Liquidgram[12935:af61] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:14:03.858 Df Liquidgram[16305:d41d] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:14:04.512 Df Liquidgram[16305:d41d] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:14:10.635 Df Liquidgram[16980:da83] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:14:11.334 Df Liquidgram[16980:da83] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:14:17.500 Df Liquidgram[16999:db8c] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:14:18.293 Df Liquidgram[16999:db8c] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:14:49.944 Df Liquidgram[19324:f2dd] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:14:50.743 Df Liquidgram[19324:f2dd] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:15:07.519 Df Liquidgram[20625:100d8] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:15:08.259 Df Liquidgram[20625:100d8] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:15:51.804 Df Liquidgram[23604:11fb6] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:15:52.663 Df Liquidgram[23604:11fb6] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:16:36.264 Df Liquidgram[26606:13e0c] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:16:37.011 Df Liquidgram[26606:13e0c] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:17:20.754 Df Liquidgram[30074:15c80] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:17:20.837 I  Liquidgram[30074:15cd5] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:17:21.521 Df Liquidgram[30074:15c80] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:18:39.559 Df Liquidgram[35113:1943d] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:18:39.656 I  Liquidgram[35113:19480] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:18:40.271 Df Liquidgram[35113:1943d] [org.liquidgram.messenger:SelfTest] Removed the web data

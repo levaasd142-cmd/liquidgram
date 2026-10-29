@@ -1,0 +1,44 @@
+Attributes: Application, 0x101e2d630, pid: 11321, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x101e2d630, pid: 11321, label: 'Liquidgram'
+    Window (Main), 0x101e2d750, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x101e2d870, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x101e221e0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x101e21f40, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x101e22060, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x101e22300, {{0.0, 0.0}, {402.0, 874.0}}
+                WebView, 0x101e22420, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x101e22540, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x101e22660, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x101e22780, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x101e228a0, {{0.0, 0.0}, {402.0, 874.0}}, label: 'Liquidgram', Focused
+                          Other, 0x101e229c0, {{16.0, 241.0}, {370.0, 25.0}}, label: 'Liquidgram', value: 1, Focused
+                            StaticText, 0x101e22ae0, {{150.0, 241.0}, {102.0, 25.0}}, label: 'Liquidgram', value: Liquidgram, Focused
+                          Other, 0x101e22c00, {{16.0, 272.0}, {370.0, 54.0}}, Focused
+                            StaticText, 0x101e22d20, {{26.0, 272.0}, {350.0, 54.0}}, label: 'Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org → API development tools.', value: Liquidgram is an u..., Focused
+                          Other, 0x101e23080, {{16.0, 366.0}, {370.0, 202.0}}, label: 'form', Focused
+                            TextField, 0x101e231a0, {{16.0, 366.0}, {370.0, 48.0}}, label: 'API ID', Focused
+                            Other, 0x101e232c0, {{32.0, 377.0}, {60.0, 24.0}}, label: 'API ID', Focused
+                              StaticText, 0x101e233e0, {{40.0, 379.0}, {44.0, 20.0}}, label: 'API ID', value: API ID, Focused
+                            TextField, 0x101e23500, {{16.0, 432.0}, {370.0, 48.0}}, label: 'API hash', Focused
+                            Other, 0x101e23620, {{32.0, 443.0}, {80.0, 24.0}}, label: 'API hash', Focused
+                              StaticText, 0x101e23740, {{40.0, 445.0}, {64.0, 20.0}}, label: 'API hash', value: API hash, Focused
+                            Button, 0x101e23860, {{16.0, 520.0}, {370.0, 48.0}}, label: 'CONTINUE', Focused, Disabled
+                          Other, 0x101e23980, {{16.0, 592.0}, {370.0, 18.0}}, Focused
+                            Link, 0x101e23aa0, {{110.0, 592.0}, {182.0, 18.0}}, label: 'Get keys at my.telegram.org', Focused
+                              StaticText, 0x101e23bc0, {{110.0, 592.0}, {182.0, 18.0}}, label: 'Get keys at my.telegram.org', value: Get keys at my.tel..., Focused
+                Other, 0x101e23ce0, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x101e23e00, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x101e23f20, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x101e24040, {{336.0, 868.0}, {7.0, 3.0}}
+                Other, 0x101e24160, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x101e24280, {{396.0, 808.0}, {3.0, 7.0}}
+                Other, 0x101e243a0, {{62.0, 841.0}, {278.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x101e244c0, {{336.0, 868.0}, {7.0, 3.0}}
+Path to element:
+ →Application, 0x101e2d630, pid: 11321, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x101e24800, pid: 11321, label: 'Liquidgram'
+  }
