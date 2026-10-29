@@ -1,4 +1,4 @@
-import { IS_IOS, IS_IOS_APP, IS_WINDOWS } from './browser/windowEnvironment';
+import { IS_IOS, IS_IOS_APP, IS_PWA, IS_WINDOWS } from './browser/windowEnvironment';
 import { Lethargy } from './lethargy';
 import { clamp, round } from './math';
 import { debounce } from './schedulers';
@@ -83,6 +83,11 @@ const MOVE_THRESHOLD = 15;
 const SWIPE_THRESHOLD_DEFAULT = 20;
 const RELEASE_WHEEL_ZOOM_DELAY = 150;
 const RELEASE_WHEEL_DRAG_DELAY = 150;
+// WebKit on iOS clicks when a finger that rested lifts, even after it moved, if the page has no link previews: in
+// home-screen web apps and in the iOS app, whose web view turns them off. A swipe moves other content under the
+// finger, so for a while after a swipe, mouse events that no new touch started are this click.
+const HAS_SWIPE_CLICK_THROUGH = IS_IOS && IS_PWA;
+const SWIPE_CLICK_GUARD_MS = 600;
 
 function getDistance(a: Touch, b?: Touch) {
   if (!b) return 0;
@@ -128,6 +133,7 @@ let touchStartEvent: Event | undefined;
 let touchOwner: HTMLElement | undefined;
 // A swipe that one handler reserved when the current touch started, such as the back swipe from the screen edge
 let reservedSwipe: { element: HTMLElement; direction: SwipeDirection } | undefined;
+let swipeClickGuardUntil = 0;
 // Elements that follow the finger in every direction, such as seek bars and drag handles
 const dragOnlyElements = new WeakSet<HTMLElement>();
 const lethargy = new Lethargy({
@@ -136,6 +142,25 @@ const lethargy = new Lethargy({
   tolerance: IS_WINDOWS ? 1 : 0.6, // Windows `scrollDelta` does not die down to 0
   delay: 150,
 });
+
+function handleSwipeClickCapture(e: MouseEvent) {
+  if (!e.isTrusted || performance.now() > swipeClickGuardUntil) return;
+
+  e.stopImmediatePropagation();
+  e.preventDefault();
+}
+
+// A new touch clicks as usual
+function resetSwipeClickGuard() {
+  swipeClickGuardUntil = 0;
+}
+
+if (HAS_SWIPE_CLICK_THROUGH) {
+  document.addEventListener('touchstart', resetSwipeClickGuard, { capture: true, passive: true });
+  document.addEventListener('mousedown', handleSwipeClickCapture, true);
+  document.addEventListener('mouseup', handleSwipeClickCapture, true);
+  document.addEventListener('click', handleSwipeClickCapture, true);
+}
 
 export function captureEvents(element: HTMLElement, options: CaptureOptions) {
   let captureEvent: MouseEvent | RealTouchEvent | WheelEvent | undefined;
@@ -260,6 +285,10 @@ export function captureEvents(element: HTMLElement, options: CaptureOptions) {
           .forEach((scrollable) => {
             scrollable.style.overflow = '';
           });
+      }
+
+      if (hasSwiped && e?.type === 'touchend') {
+        swipeClickGuardUntil = performance.now() + SWIPE_CLICK_GUARD_MS;
       }
 
       if (e) {

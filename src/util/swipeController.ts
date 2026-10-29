@@ -58,7 +58,7 @@ export function captureControlledSwipe(
       }
 
       velocityTracker?.reset();
-      velocityTracker?.add(offsets.dragOffsetX * forwardSign);
+      velocityTracker?.add(offsets.dragOffsetX * forwardSign, e.timeStamp);
       startControlledSwipe(offsets);
 
       return true;
@@ -67,16 +67,16 @@ export function captureControlledSwipe(
     onDrag(e, captureEvent, offsets) {
       if (!isSwipeActive) return;
 
-      velocityTracker?.add(offsets.dragOffsetX * forwardSign);
+      velocityTracker?.add(offsets.dragOffsetX * forwardSign, e.timeStamp);
       dragControlledSwipe(offsets);
     },
 
-    onRelease() {
+    onRelease(e) {
       if (!isSwipeActive || !swipeOffsets) return;
 
       const shouldComplete = velocityTracker ? getShouldCompleteSwipe(
         (velocityTracker.getLastValue() - swipeOffsets.dragOffsetX * forwardSign) / element.offsetWidth,
-        velocityTracker.getVelocity(),
+        velocityTracker.getVelocity(e.timeStamp),
       ) : undefined;
       releaseControlledSwipe(options.onCancel, shouldComplete);
     },
@@ -118,23 +118,18 @@ export function getShouldCompleteSwipe(progress: number, velocity: number) {
   return progress >= COMPLETE_PROGRESS;
 }
 
-// Measures how fast a value, such as the offset of a finger, changed over its last updates, in units per ms
+// Measures how fast a value, such as the offset of a finger, changed over its last updates, in units per ms. The times
+// are those of the events, so a busy page that handles a burst of late events still sees the pace of the finger.
 export function createVelocityTracker() {
   let samples: { time: number; value: number }[] = [];
 
-  function getRecentSamples() {
-    const now = performance.now();
-    return samples.filter(({ time }) => now - time <= VELOCITY_WINDOW_MS);
-  }
-
   return {
-    add(value: number) {
-      const time = performance.now();
+    add(value: number, time: number) {
       samples.push({ time, value });
       samples = samples.filter((sample) => time - sample.time <= VELOCITY_WINDOW_MS);
     },
-    getVelocity() {
-      const recentSamples = getRecentSamples();
+    getVelocity(time: number) {
+      const recentSamples = samples.filter((sample) => time - sample.time <= VELOCITY_WINDOW_MS);
       if (recentSamples.length < 2) return 0;
 
       const first = recentSamples[0];

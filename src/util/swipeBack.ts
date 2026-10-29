@@ -66,9 +66,9 @@ export function captureSwipeBack(element: HTMLElement, options: SwipeBackOptions
     return !findHorizontalScroller(target, element);
   }
 
-  function end(shouldGoBack: boolean) {
+  function end(shouldGoBack: boolean, velocity: number) {
     isActive = false;
-    options.onEnd(shouldGoBack, velocityTracker.getVelocity());
+    options.onEnd(shouldGoBack, velocity);
   }
 
   return captureEvents(element, {
@@ -83,7 +83,7 @@ export function captureSwipeBack(element: HTMLElement, options: SwipeBackOptions
       }
 
       // A release that never reached the handlers still ends the previous swipe
-      if (isActive) end(false);
+      if (isActive) end(false, 0);
 
       hasYielded = false;
       const { clientX } = (e as RealTouchEvent).touches[0];
@@ -114,7 +114,7 @@ export function captureSwipeBack(element: HTMLElement, options: SwipeBackOptions
       startOffset = getBackOffset(dragOffsetX);
       offset = 0;
       velocityTracker.reset();
-      velocityTracker.add(offset);
+      velocityTracker.add(offset, e.timeStamp);
 
       return true;
     },
@@ -123,16 +123,15 @@ export function captureSwipeBack(element: HTMLElement, options: SwipeBackOptions
       if (!isActive) return;
 
       offset = Math.max(0, getBackOffset(dragOffsetX) - startOffset);
-      velocityTracker.add(offset);
+      velocityTracker.add(offset, e.timeStamp);
       options.onMove(offset);
     },
 
     onRelease(e) {
       if (!isActive) return;
 
-      end(e.type !== 'touchcancel' && getShouldCompleteSwipe(
-        offset / element.offsetWidth, velocityTracker.getVelocity(),
-      ));
+      const velocity = velocityTracker.getVelocity(e.timeStamp);
+      end(e.type !== 'touchcancel' && getShouldCompleteSwipe(offset / element.offsetWidth, velocity), velocity);
     },
   });
 }

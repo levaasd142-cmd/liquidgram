@@ -9,6 +9,7 @@ import { requestMutation } from '../lib/fasterdom/fasterdom';
 import { IS_IOS, IS_IOS_APP, IS_PWA, IS_TOUCH_ENV } from '../util/browser/windowEnvironment';
 import { claimTouch } from '../util/captureEvents';
 import { triggerHaptic } from '../util/nativeApp';
+import { removeAllSelections } from '../util/selection';
 import useLastCallback from './useLastCallback';
 
 // The iOS app waits about as long as the context menus of iOS, so a slightly slow tap stays a tap
@@ -25,6 +26,8 @@ const CLICK_THROUGH_RADIUS = 24;
 // One emulated context menu per touch, shared by all hooks, so nested and overlapping elements open only one
 let isLongTapHandled = false;
 let clickThroughGuard: { x: number; y: number; until: number } | undefined;
+// The element whose long press opened a menu in the iOS app, which keeps text unselected until the next touch
+let longTapElement: HTMLElement | undefined;
 
 function stopEvent(e: Event) {
   e.stopImmediatePropagation();
@@ -37,6 +40,7 @@ function handleTouchStartCapture(e: TouchEvent) {
   if (e.touches.length === 1) {
     isLongTapHandled = false;
     clickThroughGuard = undefined;
+    releaseLongTapSelection();
   }
 }
 
@@ -63,6 +67,33 @@ function handleMouseCapture(e: MouseEvent) {
 
   if (e.type === 'click') clickThroughGuard = undefined;
   stopEvent(e);
+}
+
+// A long press opens the menu without selecting text, as in Telegram for iOS. WebKit selects the text under a finger
+// that rests for half a second, a moment after the menu opens, and the menu would then offer to quote it.
+function preventLongTapSelection(element: HTMLElement) {
+  longTapElement = element;
+  document.addEventListener('selectionchange', handleLongTapSelectionChange);
+  requestMutation(() => {
+    addExtraClass(element, 'no-selection');
+  });
+}
+
+function releaseLongTapSelection() {
+  const element = longTapElement;
+  if (!element) return;
+
+  longTapElement = undefined;
+  document.removeEventListener('selectionchange', handleLongTapSelectionChange);
+  requestMutation(() => {
+    removeExtraClass(element, 'no-selection');
+  });
+}
+
+function handleLongTapSelectionChange() {
+  if (window.getSelection()?.type === 'Range') {
+    removeAllSelections();
+  }
 }
 
 if (IS_TOUCH_ENV) {
@@ -172,6 +203,7 @@ const useContextMenuHandlers = (
       clickThroughGuard = { x: clientX, y: clientY, until: Infinity };
       // Swipes, such as the swipe back, leave this touch to the menu
       claimTouch(element);
+      if (IS_IOS_APP) preventLongTapSelection(element);
 
       triggerHaptic('medium');
       setIsContextMenuAltKeyPressed(false);
