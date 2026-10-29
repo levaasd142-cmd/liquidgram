@@ -1,3 +1,5 @@
+import { getActions } from '../global';
+
 import { MouseButton } from './browser/windowEnvironment';
 import { getLauncherToken } from './desktopLauncherToken';
 
@@ -49,16 +51,23 @@ function handleLinkClick(e: MouseEvent) {
 }
 
 async function openInDefaultBrowser(url: string, target?: string, features?: string) {
+  let isOpened = false;
   try {
     const response = await fetch(`${LAUNCHER_OPEN_URL}?url=${encodeURIComponent(url)}`, {
       headers: { [LAUNCHER_TOKEN_HEADER]: getLauncherToken()! },
     });
-    if (response.ok) return;
+    isOpened = response.ok;
   } catch {
     // Falls back to a window of the app profile below
   }
 
-  openBrowserWindow(url, target, features);
+  if (!isOpened) {
+    openBrowserWindow(url, target, features);
+    return;
+  }
+
+  // Windows may keep the browser behind the app window, so the user learns where the link went
+  getActions().showNotification({ message: { key: 'LiquidLinkOpenedInBrowser' } });
 }
 
 function getExternalUrl(url: string | URL) {

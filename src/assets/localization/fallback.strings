@@ -4558,3 +4558,4 @@
 "LiquidApiGetKeys" = "Get keys at my.telegram.org";
 "LiquidPeerId" = "ID";
 "LiquidIdCopied" = "ID copied to clipboard";
+"LiquidLinkOpenedInBrowser" = "Link opened in your browser";

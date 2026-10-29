@@ -53,5 +53,6 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidApiGetKeys: 'Получить ключи на my.telegram.org',
     LiquidPeerId: 'ID',
     LiquidIdCopied: 'ID скопирован',
+    LiquidLinkOpenedInBrowser: 'Ссылка открыта в браузере',
   },
 };

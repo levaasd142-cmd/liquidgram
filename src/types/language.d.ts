@@ -3423,6 +3423,7 @@ export interface LangPair {
   'LiquidApiGetKeys': undefined;
   'LiquidPeerId': undefined;
   'LiquidIdCopied': undefined;
+  'LiquidLinkOpenedInBrowser': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {
