@@ -69,7 +69,7 @@ LIQUIDGRAM_SERVER_ONLY=1 go run .    # then open the address it prints
 
 ## Limitations
 
-- The executables are not code-signed, so SmartScreen warns on first launch.
+- The executables are not code-signed, so SmartScreen warns on first launch. On Windows 11 PCs where Smart App Control is on, Windows blocks unsigned apps outright and offers no way to run them; there, use the browser extension (`extension/`) instead. `portable/README.txt` tells users this in Russian. An Authenticode signature would avoid both.
 - The foreground handoff follows the Windows documentation but has not run on a real Windows PC: Wine does not enforce the foreground rules.
 - The app runs only while its window is open. There is no tray icon, autostart or push notifications when it is closed.
 - A window pinned to the taskbar starts the browser directly, without the launcher. Pin the Start menu shortcut instead.
