@@ -145,6 +145,7 @@ jobs:
           UI_TESTS_WORK_DIR: ${{ runner.temp }}/ui-test-work
           UI_TESTS_ONLY: ${{ inputs.ui_tests }}
           UI_TESTS_LEGACY_REF: ${{ inputs.legacy_ref }}
+          UI_TESTS_RUNTIME: '18.'
 
       # The report becomes the single commit of the `ios-test-results/<branch>` branch, where GitHub shows README.md
       # with the screenshots; annotations on the run page give the counts and the failures

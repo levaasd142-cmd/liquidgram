@@ -61,7 +61,7 @@ function pickSimulator(preferredName) {
   const { devices } = JSON.parse(fs.readFileSync(0, 'utf8'));
   const runtimes = Object.entries(devices)
     .map(([runtime, list]) => ({ runtime, version: parseRuntimeVersion(runtime), list }))
-    .filter(({ version, list }) => version && list.some(isUsableIPhone))
+    .filter(({ version, list }) => version && list.some(isUsableIPhone) && version.join('.').startsWith(process.env.UI_TESTS_RUNTIME || ''))
     .sort((a, b) => compareVersions(b.version, a.version));
   if (!runtimes.length) {
     process.stderr.write('No available iPhone simulator\n');
