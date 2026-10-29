@@ -1,9 +1,13 @@
 import { useEffect } from '@teact';
 
+import { IS_IOS_APP } from '../../util/browser/windowEnvironment';
 import { createSignal } from '../../util/signals';
 import useLastCallback from '../useLastCallback';
 
-const [getIsInBackgroundLocal, setIsInBackground] = createSignal(!document.hasFocus());
+// A `WKWebView` gets the focus only with the first tap, so the iOS app is in the background while it is hidden
+const [getIsInBackgroundLocal, setIsInBackground] = createSignal(
+  IS_IOS_APP ? document.visibilityState === 'hidden' : !document.hasFocus(),
+);
 export const getIsInBackground = getIsInBackgroundLocal;
 
 function handleBlur() {
@@ -14,8 +18,16 @@ function handleFocus() {
   setIsInBackground(false);
 }
 
-window.addEventListener('blur', handleBlur);
-window.addEventListener('focus', handleFocus);
+function handleVisibilityChange() {
+  setIsInBackground(document.visibilityState === 'hidden');
+}
+
+if (IS_IOS_APP) {
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+} else {
+  window.addEventListener('blur', handleBlur);
+  window.addEventListener('focus', handleFocus);
+}
 
 export default function useBackgroundMode(
   onBlur?: AnyToVoidFunction,
