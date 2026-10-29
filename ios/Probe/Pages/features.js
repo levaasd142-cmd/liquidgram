@@ -1,6 +1,7 @@
 // Feature checks of the transport probe. The app loads this page over the custom scheme and over the loopback
 // server; each check posts `{ type: 'check', name, ok, detail }` to the `probe` message handler and the page ends
 // with `{ type: 'done' }`. Names without the `info-` prefix are capabilities Telegram Web A needs.
+import { createVideo, playAndSeek } from './media-common.js';
 import { depValue } from './module-dep.js';
 
 const params = new URLSearchParams(window.location.search);
@@ -8,10 +9,8 @@ const PHASE = params.get('phase') || 'main';
 const RUN_ID = params.get('run') || 'local';
 const TELEGRAM_WEBSOCKET_URL = 'wss://venus.web.telegram.org/apiws';
 const CHECK_TIMEOUT_MS = 30000;
-const MEDIA_EVENT_TIMEOUT_MS = 15000;
-const PLAYBACK_TIMEOUT_MS = 12000;
-const MAX_SEEK_ERROR_SECONDS = 1.5;
-const MIN_PROGRESS_SECONDS = 0.3;
+const SEEK_FRACTION = 0.6;
+const ABORT_REPEATS = 5;
 const DOWNLOAD_TIMEOUT_MS = 20000;
 const MARKER_KEY = 'probe-marker';
 const DB_NAME = 'probe-db';
@@ -69,6 +68,7 @@ async function runMainChecks() {
   await check('fetch-404', checkFetch404);
   await check('fetch-range', checkFetchRange);
   await check('fetch-traversal', checkFetchTraversal);
+  await check('fetch-abort', checkFetchAbort);
   await check('xhr', checkXhr);
   await check('wasm-streaming', checkWasmStreaming);
   await check('wasm-instantiate', checkWasmInstantiate);
@@ -442,6 +442,31 @@ async function checkFetchRange() {
   return results.join('; ');
 }
 
+// Cancels loads of a large file after its first chunk and before any response, so WebKit stops the handler's
+// tasks midway, then checks that the scheme keeps serving
+async function checkFetchAbort() {
+  const results = [];
+  for (let index = 0; index < ABORT_REPEATS; index++) {
+    const controller = new AbortController();
+    const response = await fetch(`/__probe/large.bin?abort=${index}`, { signal: controller.signal, cache: 'no-store' });
+    const reader = response.body.getReader();
+    const first = await reader.read();
+    controller.abort();
+    await reader.read().catch(() => undefined);
+    results.push(`aborted after ${first.value ? first.value.byteLength : 0} bytes`);
+  }
+  for (let index = 0; index < ABORT_REPEATS; index++) {
+    const controller = new AbortController();
+    const pending = fetch(`/__probe/large.bin?early=${index}`, { signal: controller.signal, cache: 'no-store' })
+      .then(() => 'answered before the abort', (err) => err.name);
+    controller.abort();
+    results.push(await pending);
+  }
+  const response = await fetch('data.json', { cache: 'no-store' });
+  assert((await response.json()).probe === 'data-ok', 'the next fetch failed');
+  return results.join('; ');
+}
+
 // Paths that try to leave the web build. WebKit normalizes plain dot segments, so the escapes reach the server.
 async function checkFetchTraversal() {
   const attempts = [
@@ -706,119 +731,20 @@ async function checkBlobDownload() {
   }
 }
 
-function waitForMediaEvent(media, name) {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => {
-      cleanup();
-      reject(new Error(`no ${name} (readyState ${media.readyState}, networkState ${media.networkState})`));
-    }, MEDIA_EVENT_TIMEOUT_MS);
-    function onEvent() {
-      cleanup();
-      resolve();
-    }
-    function onError() {
-      cleanup();
-      reject(new Error(`media error ${media.error ? `${media.error.code} ${media.error.message}` : 'unknown'}`));
-    }
-    function cleanup() {
-      clearTimeout(timer);
-      media.removeEventListener(name, onEvent);
-      media.removeEventListener('error', onError);
-    }
-    media.addEventListener(name, onEvent);
-    media.addEventListener('error', onError);
-  });
-}
-
-function waitForCondition(condition, label) {
-  return new Promise((resolve, reject) => {
-    const startedAt = Date.now();
-    (function poll() {
-      if (condition()) {
-        resolve();
-        return;
-      }
-      if (Date.now() - startedAt > PLAYBACK_TIMEOUT_MS) {
-        reject(new Error(`timeout waiting for ${label()}`));
-        return;
-      }
-      setTimeout(poll, 100);
-    }());
-  });
-}
-
-// Plays muted media from `src`, seeks to `seekFraction` of its duration and checks that playback continues there,
-// which needs range requests into the middle of the file
-async function playAndSeek(media, src, seekFraction) {
-  const events = [];
-  ['loadedmetadata', 'canplay', 'playing', 'seeking', 'seeked', 'waiting', 'stalled'].forEach((name) => {
-    media.addEventListener(name, () => events.push(`${name}@${media.currentTime.toFixed(1)}`));
-  });
-  media.muted = true;
-  media.preload = 'auto';
-  media.setAttribute('playsinline', '');
-  const metadata = waitForMediaEvent(media, 'loadedmetadata');
-  media.src = src;
-  try {
-    await metadata;
-    assert(Number.isFinite(media.duration) && media.duration > 0, `duration ${media.duration}`);
-    await media.play();
-    await waitForCondition(() => media.currentTime > MIN_PROGRESS_SECONDS, () => `playback (at ${media.currentTime})`);
-    const result = { duration: Number(media.duration.toFixed(2)) };
-    if (seekFraction) {
-      const target = media.duration * seekFraction;
-      const seeked = waitForMediaEvent(media, 'seeked');
-      media.currentTime = target;
-      await seeked;
-      assert(Math.abs(media.currentTime - target) < MAX_SEEK_ERROR_SECONDS, `seeked to ${media.currentTime}, not ${target}`);
-      const seekedTo = media.currentTime;
-      await waitForCondition(
-        () => media.currentTime > seekedTo + MIN_PROGRESS_SECONDS,
-        () => `playback after the seek (at ${media.currentTime})`,
-      );
-      result.seekedTo = Number(seekedTo.toFixed(2));
-      result.playedTo = Number(media.currentTime.toFixed(2));
-    }
-    if (media.videoWidth !== undefined) {
-      result.size = `${media.videoWidth}x${media.videoHeight}`;
-    }
-    return result;
-  } catch (err) {
-    err.message = `${err.message}; events: ${events.join(' ')}`;
-    throw err;
-  } finally {
-    media.pause();
-    showMediaEvents(events);
-  }
-}
-
-// Keeps the event log of each media check visible on the page
-function showMediaEvents(events) {
-  const item = document.createElement('div');
-  item.textContent = events.join(' ');
-  stage.appendChild(item);
-}
-
-function createVideo() {
-  const video = document.createElement('video');
-  stage.appendChild(video);
-  return video;
-}
-
 function checkBundledAudio() {
-  return playAndSeek(new Audio(), '/call_busy.mp3', 0);
+  return playAndSeek(new Audio(), '/call_busy.mp3', stage);
 }
 
 function checkAudioSeek() {
-  return playAndSeek(new Audio(), '/__probe/probe-audio.m4a', 0.6);
+  return playAndSeek(new Audio(), '/__probe/probe-audio.m4a', stage, { seekFraction: SEEK_FRACTION });
 }
 
 function checkVideoSeek() {
-  return playAndSeek(createVideo(), '/__probe/probe-video.mp4', 0.6);
+  return playAndSeek(createVideo(stage), '/__probe/probe-video.mp4', stage, { seekFraction: SEEK_FRACTION });
 }
 
 function checkBundledVideo() {
-  return playAndSeek(createVideo(), '/nojs.mp4', 0);
+  return playAndSeek(createVideo(stage), '/nojs.mp4', stage);
 }
 
 // Telegram Web A plays downloaded media from `blob:` URLs
@@ -826,7 +752,7 @@ async function checkBlobVideo() {
   const blob = await (await fetch('/__probe/probe-video.mp4')).blob();
   const url = URL.createObjectURL(blob);
   try {
-    return await playAndSeek(createVideo(), url, 0.6);
+    return await playAndSeek(createVideo(stage), url, stage, { seekFraction: SEEK_FRACTION });
   } finally {
     URL.revokeObjectURL(url);
   }

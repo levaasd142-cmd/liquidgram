@@ -5,8 +5,9 @@ The app runs twice on a new simulator device: `-ProbePhase main` checks every ca
 markers in website storage, then a relaunch with `-ProbePhase verify` reads the markers back. The reports, the page
 snapshots, simulator screenshots, the app's log and any crash report go to <out-dir>, with a `runner.json` summary.
 
-Usage: run_probe.py <app-path> <runtime-version-prefix> <out-dir> <run-id>
+Usage: run_probe.py <app-path> <runtime-version-prefix> <out-dir> <run-id> [first-origin]
   runtime-version-prefix  such as `26.2` or `18.`; the newest available iOS runtime that matches is used
+  first-origin            `custom` (default) or `http`: the origin the app loads first, which meets cold caches
 """
 import json
 import os
@@ -83,10 +84,11 @@ def is_running(pid):
     return True
 
 
-def run_phase(udid, phase, run_id, out_dir):
+def run_phase(udid, phase, run_id, first_origin, out_dir):
     started = time.time()
     output = simctl(
-        'launch', '--terminate-running-process', udid, BUNDLE_ID, '-ProbePhase', phase, '-ProbeRunId', run_id,
+        'launch', '--terminate-running-process', udid, BUNDLE_ID,
+        '-ProbePhase', phase, '-ProbeRunId', run_id, '-ProbeFirstOrigin', first_origin,
     )
     # `simctl launch` prints `<bundle id>: <pid>`
     pid = int(output.strip().rsplit(':', 1)[-1])
@@ -145,13 +147,14 @@ def save_crash_reports(started, out_dir):
 
 
 def main():
-    if len(sys.argv) != 5:
+    if len(sys.argv) not in (5, 6):
         sys.exit(__doc__)
-    app_path, prefix, out_arg, run_id = sys.argv[1:]
+    app_path, prefix, out_arg, run_id = sys.argv[1:5]
+    first_origin = sys.argv[5] if len(sys.argv) == 6 else 'custom'
     out_dir = Path(out_arg)
     out_dir.mkdir(parents=True, exist_ok=True)
     started = time.time()
-    summary = {'runtimePrefix': prefix, 'runId': run_id, 'phases': {}}
+    summary = {'runtimePrefix': prefix, 'runId': run_id, 'firstOrigin': first_origin, 'phases': {}}
     udid = None
     try:
         runtime = find_runtime(prefix)
@@ -168,7 +171,7 @@ def main():
         simctl('bootstatus', udid, '-b', timeout=BOOT_TIMEOUT_SECONDS)
         simctl('install', udid, app_path, timeout=INSTALL_TIMEOUT_SECONDS)
         for phase in PHASES:
-            summary['phases'][phase] = run_phase(udid, phase, f'{run_id}-{prefix}', out_dir)
+            summary['phases'][phase] = run_phase(udid, phase, f'{run_id}-{prefix}', first_origin, out_dir)
     except Exception as err:  # Each runtime reports its own failure, the next one still runs
         summary['error'] = f'{type(err).__name__}: {err}'
     finally:

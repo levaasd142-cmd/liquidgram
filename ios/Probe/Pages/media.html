@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Media probe</title>
+  <style>
+    body { margin: 0; padding: 48px 8px 8px; font: 12px -apple-system, sans-serif; background: #fff; color: #000; }
+    h1 { margin: 0 0 4px; font-size: 15px; }
+    ol { margin: 0; padding-left: 22px; }
+    li { margin: 1px 0; word-break: break-all; }
+    .ok { color: #070; }
+    .fail { color: #c00; font-weight: 600; }
+    #stage video { width: 96px; height: 72px; background: #000; }
+    #stage div { display: none; }
+  </style>
+  <script type="module" src="media.js"></script>
+</head>
+<body>
+  <h1 id="title">Media probe</h1>
+  <div id="stage"></div>
+  <ol id="list"></ol>
+</body>
+</html>

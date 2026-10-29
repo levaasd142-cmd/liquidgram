@@ -35,6 +35,8 @@ private final class OnceWaiter {
 final class ProbeViewController: UIViewController {
   private static let phaseKey = "ProbePhase"
   private static let runIdKey = "ProbeRunId"
+  /// `http` runs the loopback origin first, so a cold start of WebKit's media stack hits it instead
+  private static let firstOriginKey = "ProbeFirstOrigin"
   private static let probeHandlerName = "probe"
   private static let bridgeHandlerName = "liquidgram"
   private static let applicationName = "Liquidgram"
@@ -42,6 +44,7 @@ final class ProbeViewController: UIViewController {
   private static let httpOriginLabel = "http"
   private static let featuresPath = "__probe/features.html"
   private static let embedPath = "__probe/embed.html"
+  private static let mediaPath = "__probe/media.html"
   private static let referrerProbeHost = "probe-referrer.invalid"
   private static let environmentScript =
     "window.__liquidgramNative = { platform: 'ios', version: 'probe', notificationPermission: 'default' };"
@@ -57,6 +60,7 @@ final class ProbeViewController: UIViewController {
   private static let featuresTimeout: TimeInterval = 300
   private static let verifyTimeout: TimeInterval = 120
   private static let embedTimeout: TimeInterval = 40
+  private static let mediaTimeout: TimeInterval = 420
   private static let realAppTimeout: TimeInterval = 90
   private static let serverTimeout: TimeInterval = 30
   private static let realAppSettleNanoseconds: UInt64 = 5_000_000_000
@@ -70,6 +74,7 @@ final class ProbeViewController: UIViewController {
 
   private let phase: ProbePhase
   private let runId: String
+  private let isHttpFirst: Bool
   private let outputDirectory: URL
   private let startDate: Date
   private let server = LocalServer()
@@ -91,6 +96,7 @@ final class ProbeViewController: UIViewController {
     let messageHandler = WeakMessageHandler()
     self.phase = phase
     runId = defaults.string(forKey: Self.runIdKey) ?? "local"
+    isHttpFirst = defaults.string(forKey: Self.firstOriginKey) == Self.httpOriginLabel
     outputDirectory = documents.appendingPathComponent("probe-\(phase.rawValue)", isDirectory: true)
     self.startDate = startDate
     self.schemeHandler = schemeHandler
@@ -196,10 +202,9 @@ final class ProbeViewController: UIViewController {
     prepareOutputDirectory()
     logger.notice("Probe \(self.phase.rawValue, privacy: .public) of run \(self.runId, privacy: .public) started")
     let isServerReady = await waitForServer()
-    let origins = [
-      ProbeOrigin(label: Self.customOriginLabel, baseURL: AppSchemeHandler.appURL),
-      ProbeOrigin(label: Self.httpOriginLabel, baseURL: LocalServer.appURL),
-    ]
+    let customOrigin = ProbeOrigin(label: Self.customOriginLabel, baseURL: AppSchemeHandler.appURL)
+    let httpOrigin = ProbeOrigin(label: Self.httpOriginLabel, baseURL: LocalServer.appURL)
+    let origins = isHttpFirst ? [httpOrigin, customOrigin] : [customOrigin, httpOrigin]
     for origin in origins {
       guard origin.label == Self.customOriginLabel || isServerReady else {
         let scenario = beginScenario("server", origin: origin, url: origin.baseURL)
@@ -216,6 +221,13 @@ final class ProbeViewController: UIViewController {
         await runPage("embed", path: Self.embedPath, origin: origin, timeout: Self.embedTimeout)
       case .verify:
         await runPage("verify", path: Self.featuresPath, origin: origin, timeout: Self.verifyTimeout)
+      }
+    }
+
+    // Repeated seeks once the media stack of both origins is warm
+    if phase == .main {
+      for origin in origins where origin.label == Self.customOriginLabel || isServerReady {
+        await runPage("media", path: Self.mediaPath, origin: origin, timeout: Self.mediaTimeout)
       }
     }
 

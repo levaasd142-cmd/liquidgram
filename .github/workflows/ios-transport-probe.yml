@@ -122,9 +122,10 @@ jobs:
         timeout-minutes: 30
         run: python3 ios/Probe/run_probe.py "$PROBE_APP" 26.2 "$RUNNER_TEMP/results/ios-26" "$GITHUB_RUN_ID"
 
+      # The loopback origin goes first here, so a cold start of the media stack hits it rather than the custom scheme
       - name: Run on iOS 18
         timeout-minutes: 30
-        run: python3 ios/Probe/run_probe.py "$PROBE_APP" 18. "$RUNNER_TEMP/results/ios-18" "$GITHUB_RUN_ID"
+        run: python3 ios/Probe/run_probe.py "$PROBE_APP" 18. "$RUNNER_TEMP/results/ios-18" "$GITHUB_RUN_ID" http
 
       - name: Upload the results
         if: always()

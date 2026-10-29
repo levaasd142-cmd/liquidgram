@@ -19,6 +19,7 @@ SHARED_STATE_WORKER_RE = re.compile(r'^sharedState\.worker-[\w-]+\.js$')
 # The opus-recorder workers that `src/util/oggToWav.ts` imports with `?url`, emitted as hashed assets
 DECODER_WORKER_RE = re.compile(r'^decoderWorker\.min-[\w-]+\.js$')
 WAVE_WORKER_RE = re.compile(r'^waveWorker\.min-[\w-]+\.js$')
+LARGE_FILE_LENGTH = 32 * 1024 * 1024
 
 
 def find_first(pattern, names):
@@ -54,6 +55,9 @@ def main():
         sys.exit(f'The build lacks: {", ".join(missing)}')
 
     (WEBAPP_DIR / PROBE_PATH / 'build-info.json').write_text(json.dumps(info, indent=2) + '\n')
+    # Large enough that WebKit stops the handler's tasks while they stream, when a page aborts the fetch
+    pattern = bytes(range(256))
+    (WEBAPP_DIR / PROBE_PATH / 'large.bin').write_bytes(pattern * (LARGE_FILE_LENGTH // len(pattern)))
     file_count = sum(1 for path in WEBAPP_DIR.rglob('*') if path.is_file())
     print(json.dumps(info, indent=2))
     print(f'{file_count} files in {WEBAPP_DIR}')

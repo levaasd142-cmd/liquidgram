@@ -10,6 +10,11 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Ap
 /// app can bind while Liquidgram is suspended. Since iOS 16 WebKit gives a scheme with a handler a regular origin and
 /// treats it as a secure context, so Web Crypto, media capture and storage work as on HTTPS.
 ///
+/// Two limits come with the scheme. WebKit sends no `Referer` from pages that are not http(s), so embeds that require
+/// one, such as YouTube's player, show an error instead of the video. Shared workers run outside the page, where the
+/// scheme has no handler: they get an opaque origin that is not a secure context and cannot load anything, which the
+/// web app's shared state worker never needs.
+///
 /// WebKit starts and stops tasks on the main queue. Files are read on a background queue, one chunk of a task at a
 /// time, and every call to a task happens on the main queue after checking that WebKit has not stopped it: a call to a
 /// stopped task raises an exception.
