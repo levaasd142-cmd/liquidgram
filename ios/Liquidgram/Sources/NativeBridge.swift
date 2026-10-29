@@ -63,8 +63,17 @@ final class NativeBridge: NSObject {
   private static let maxPendingActions = 8
   /// Actions that waited longer, for example while the user signed in, are dropped
   private static let pendingActionLifetime: Duration = .seconds(120)
+  /// How long after an action such as `openSearch` the page may focus its field with the keyboard, which leaves time
+  /// for the screen with the field to open
+  private static let actionFocusDuration: Duration = .seconds(3)
 
-  weak var webView: WKWebView?
+  weak var webView: WKWebView? {
+    didSet {
+      if let webView {
+        keyboardFocusPolicy.install(in: webView)
+      }
+    }
+  }
   /// Actions wait while the lock is up, and the lock confirms changes of its own setting
   weak var appLock: AppLock? {
     didSet {
@@ -75,6 +84,7 @@ final class NativeBridge: NSObject {
   private weak var userContentController: WKUserContentController?
   private let requestHandler = NativeRequestHandler()
   private let haptics = Haptics()
+  private let keyboardFocusPolicy = KeyboardFocusPolicy()
   private let appVersion: String
   private let bridgeScript: String?
   private var permission = NotificationPermission.notDetermined
@@ -292,6 +302,9 @@ final class NativeBridge: NSObject {
   private func dispatch(_ action: NativeAction) {
     guard let json = Self.makeJSON(action.message) else {
       return
+    }
+    if action.focusesTextField {
+      keyboardFocusPolicy.allowKeyboard(for: Self.actionFocusDuration)
     }
     callPage("dispatchAction?.(\(json))")
   }
