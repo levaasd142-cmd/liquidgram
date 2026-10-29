@@ -6,7 +6,6 @@ import {
 import { LoadMoreDirection } from '../../types';
 
 import { requestForcedReflow } from '../../lib/fasterdom/fasterdom';
-import { IS_ANDROID } from '../../util/browser/windowEnvironment';
 import buildStyle from '../../util/buildStyle';
 import resetScroll from '../../util/resetScroll';
 import { debounce } from '../../util/schedulers';
@@ -287,7 +286,7 @@ const InfiniteScroll = ({
       {withAbsolutePositioning && items?.length ? (
         <div
           teactFastList={!noFastList}
-          style={buildStyle('position: relative', IS_ANDROID && `height: ${maxHeight}px`)}
+          style={buildStyle('position: relative', maxHeight !== undefined && `height: ${maxHeight}px`)}
         >
           {children}
         </div>

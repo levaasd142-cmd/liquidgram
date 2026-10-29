@@ -1,5 +1,8 @@
-/* Liquid Glass material inspired by iOS 26. Enabled with `html.liquid-glass`; `--lg-intensity` (0–1) comes from settings. */
+/* Liquid Glass material inspired by iOS 26. Enabled with `html.liquid-glass`. */
+/* `--lg-intensity` (0–1) comes from settings. */
 /* The file avoids Sass-only syntax so the same rules work as native nested CSS. */
+/* Glass rims and outlines rely on hairline widths that render crisply on high-density screens */
+/* stylelint-disable plugin/whole-pixel */
 
 html.liquid-glass {
   --lg-intensity: 0.6;
@@ -13,14 +16,17 @@ html.liquid-glass {
   --lg-rim-bottom: rgba(255, 255, 255, 0.35);
   --lg-edge: rgba(255, 255, 255, 0.4);
   --lg-glow: rgba(255, 255, 255, 0.35);
-  --lg-drop: 0 0.625rem 1.875rem -0.625rem rgba(24, 30, 60, 0.28), 0 0.125rem 0.375rem -0.0625rem rgba(24, 30, 60, 0.12);
-  --lg-sheen: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.38) 0%,
-    rgba(255, 255, 255, 0.1) 42%,
-    rgba(255, 255, 255, 0) 58%,
-    rgba(255, 255, 255, 0.14) 100%
-  );
+  --lg-drop:
+    0 0.625rem 1.875rem -0.625rem rgba(24, 30, 60, 0.28),
+    0 0.125rem 0.375rem -0.0625rem rgba(24, 30, 60, 0.12);
+  --lg-sheen:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.1) 42%,
+      rgba(255, 255, 255, 0) 58%,
+      rgba(255, 255, 255, 0.14) 100%
+    );
   --lg-tint: color-mix(in srgb, var(--color-background) var(--lg-fill), transparent);
   --lg-panel-tint: color-mix(in srgb, var(--color-background) var(--lg-panel-fill), transparent);
   --lg-material: var(--lg-sheen), linear-gradient(var(--lg-tint), var(--lg-tint));
@@ -43,9 +49,9 @@ html.liquid-glass {
   #LeftColumn,
   #RightColumn {
     background: var(--lg-panel-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-panel-backdrop);
     backdrop-filter: var(--lg-panel-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   #LeftColumn-main,
@@ -90,9 +96,9 @@ html.liquid-glass {
   .Composer.is-chat-composer,
   .MessageSelectToolbar-inner {
     background: var(--lg-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-backdrop);
     backdrop-filter: var(--lg-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   .MiddleHeader .header-tools {
@@ -101,17 +107,17 @@ html.liquid-glass {
 
   .TabList {
     background: var(--lg-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-backdrop);
     backdrop-filter: var(--lg-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   /* Round floating controls */
   .middle-column-footer .Button.round.secondary:not(.main-button) {
     background: var(--lg-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-backdrop);
     backdrop-filter: var(--lg-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   .Composer .Button.main-button,
@@ -127,13 +133,14 @@ html.liquid-glass {
   .sticky-date > span,
   .ActionMessage .action-message-content {
     color: var(--color-text);
+
     background: color-mix(in srgb, var(--color-background) 38%, transparent);
+    -webkit-backdrop-filter: blur(0.75rem) saturate(180%);
+    backdrop-filter: blur(0.75rem) saturate(180%);
     box-shadow:
       inset 0 1px 0.5px var(--lg-rim-top),
       inset 0 -1px 0.5px var(--lg-rim-bottom),
       0 0.25rem 0.75rem -0.25rem rgba(24, 30, 60, 0.25);
-    -webkit-backdrop-filter: blur(0.75rem) saturate(180%);
-    backdrop-filter: blur(0.75rem) saturate(180%);
   }
 
   /* Bubbles stay solid for legibility and only get a soft rim */
@@ -153,34 +160,36 @@ html.liquid-glass {
   .Menu:not(.with-reactions) .bubble,
   .MessageContextMenu_items {
     border-radius: 1.25rem;
+
     background: var(--lg-panel-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-panel-backdrop);
     backdrop-filter: var(--lg-panel-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   .Modal .modal-dialog {
     background: var(--lg-panel-material);
-    box-shadow: var(--lg-shadow);
     -webkit-backdrop-filter: var(--lg-panel-backdrop);
     backdrop-filter: var(--lg-panel-backdrop);
+    box-shadow: var(--lg-shadow);
   }
 
   .Notification {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%),
       rgba(20, 22, 30, 0.62);
+    -webkit-backdrop-filter: blur(1.25rem) saturate(180%);
+    backdrop-filter: blur(1.25rem) saturate(180%);
     box-shadow:
       inset 0 1px 0.5px rgba(255, 255, 255, 0.35),
       0 0.75rem 2rem -0.75rem rgba(0, 0, 0, 0.5);
-    -webkit-backdrop-filter: blur(1.25rem) saturate(180%);
-    backdrop-filter: blur(1.25rem) saturate(180%);
   }
 }
 
-/* Chats scroll under the floating mobile tab bar */
+/* Chats and Settings scroll under the floating mobile tab bar */
 @media (max-width: 600px) {
-  html.liquid-glass #LeftColumn .chat-list {
+  html.liquid-glass #LeftColumn .chat-list,
+  html.liquid-glass #LeftColumn .settings-main-scroll {
     padding-bottom: 5.5rem;
   }
 }
@@ -213,13 +222,14 @@ html.liquid-glass.theme-dark {
   --lg-edge: rgba(255, 255, 255, 0.12);
   --lg-glow: rgba(255, 255, 255, 0.06);
   --lg-drop: 0 0.75rem 2rem -0.625rem rgba(0, 0, 0, 0.55), 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
-  --lg-sheen: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.03) 45%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+  --lg-sheen:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 45%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
 
   .Message .message-content.has-solid-background {
     box-shadow:
