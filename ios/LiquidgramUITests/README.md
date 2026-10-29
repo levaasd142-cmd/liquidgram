@@ -95,6 +95,16 @@ The user of v1 found the interface shifted, many buttons dead, the gestures bad.
 | `testLongPressOnMessageOpensMenu` | A long press on a message opens its menu on screen, and the first tap on Reply closes the menu and starts a reply. `GestureTests` checks the other gestures |
 | `testDelayedWindowOpenShowsInAppBrowser` | A `window.open` that the page calls 1.5 s after a tap, like flows that wait for the server first, opens the in-app browser: its Close or Done button or the address shows, or, where XCUITest cannot see into Safari's view, a view covers the page while the app stays in front |
 
+### `RoundVideoTests`: the native round video recorder
+
+`Fixtures/round-video.js` opens the recorder from the page through the bridge, as the composer does, and reports what the page got; the test drives the recorder on screen. The simulator has no camera, so the first two tests pass `-LiquidgramFakeRoundVideo YES`, which gives the recorder generated frames and silence and makes the app report the recorded file as `liquidgram.roundVideo.testReport`. The checks of each test become a table in the report, like the self-test's.
+
+| Test | Checks |
+| --- | --- |
+| `testRecordsAndSendsRoundVideo` | Recording starts by itself; the flash, the camera switch and view-once work while it records. After Send the page has a `/__liquidgram/media/` path, 480 × 480, view-once and the duration, and a second request during the recording got `null`. The file is a 480 × 480 H.264 High profile video with CABAC and mono 48 kHz AAC in an MP4 with the movie header first, of the duration the page got, with at least 15 frames per second and at most 250 KB per second, and its first frame decodes. When `AppSchemeHandler` serves the page, the page's fetch is a 480 × 480 `video/mp4` Blob of the file's size, a range request is `206`, and the path is `404` after `releaseMedia`. The app deletes the file once the page released it |
+| `testCancelDiscardsRecording` | Cancel gives the page `null` and leaves no file |
+| `testRecorderExplainsMissingCamera` | Without the generated camera the simulator has no camera: the recorder says "No camera", and Close gives the page `null` |
+
 ### `FeatureTests`: the native features of version 2
 
 They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names.
@@ -153,6 +163,7 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | Fixture | Use |
 | --- | --- |
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
+| `round-video.js` | `RoundVideoTests`, as the self-test script: opens the round video recorder from the page and reports what the page got |
 | `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
 | `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used. The chat with Катя Дизайн has a photo, drawn on a canvas and stored as its `blobUrl` like a photo the web app has just sent, so the media viewer opens it without a download |
 | `ui-probe.js` | `Launch(fixtures: ["ui-probe"])`: publishes the page's measurements as the accessibility label of a tiny element, `liquidgram-probe {json}` (viewport sizes, scroll offsets and their highest values since the start, safe-area insets, `--vh`, the theme color, the focused element, `body.in-background`), and adds two nearly transparent buttons at the left edge that run page code: `liquidgram-probe-blur` takes the focus from the focused field and `liquidgram-probe-open-later` calls `window.open` 1.5 s after the tap |

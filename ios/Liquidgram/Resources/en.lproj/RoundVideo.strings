@@ -1,0 +1,61 @@
+/* The round video recorder (RoundVideoRecorderViewController.swift) */
+
+/* Button that discards the round video being recorded */
+"roundVideo.cancel" = "Cancel";
+
+/* Accessibility label of the button that stops recording and sends the round video */
+"roundVideo.send" = "Send video message";
+
+/* Accessibility label of the button that switches between the front and the back camera */
+"roundVideo.switchCamera" = "Switch camera";
+
+/* Accessibility label of the button that lights the face with the screen or turns the torch on */
+"roundVideo.flash" = "Flash";
+
+/* Accessibility label of the button that makes the round video disappear after it was watched */
+"roundVideo.viewOnce" = "View once";
+
+/* Accessibility value of a switched-on button of the round video recorder */
+"roundVideo.on" = "On";
+
+/* Accessibility value of a switched-off button of the round video recorder */
+"roundVideo.off" = "Off";
+
+/* Accessibility label of the round video recorder's timer */
+"roundVideo.recordingTime" = "Recording time";
+
+/* Button that closes the round video recorder when it cannot record */
+"roundVideo.close" = "Close";
+
+/* Button that opens the app's page in the Settings app to allow the camera and the microphone */
+"roundVideo.openSettings" = "Open Settings";
+
+/* Title shown when the app may not use the camera or the microphone */
+"roundVideo.accessDenied.title" = "Allow the camera and the microphone";
+
+/* Explains how to allow the camera and the microphone */
+"roundVideo.accessDenied.message" = "Liquidgram needs the camera and the microphone to record video messages. You can allow them in Settings.";
+
+/* Title shown on a device without a camera, such as the simulator */
+"roundVideo.noCamera.title" = "No camera";
+
+/* Shown on a device without a camera, such as the simulator */
+"roundVideo.noCamera.message" = "This device has no camera that can record video messages.";
+
+/* Title shown when a call or another app holds the camera or the microphone */
+"roundVideo.busy.title" = "The camera is busy";
+
+/* Shown when a call or another app holds the camera or the microphone */
+"roundVideo.busy.message" = "A call or another app is using the camera or the microphone. Try again when it is done.";
+
+/* Title shown when the device is too hot to record video */
+"roundVideo.tooWarm.title" = "Your device is too warm";
+
+/* Shown when the device is too hot to record video */
+"roundVideo.tooWarm.message" = "Let it cool down, then record your video message again.";
+
+/* Title shown when recording a round video failed */
+"roundVideo.failed.title" = "Could not record";
+
+/* Shown when recording a round video failed */
+"roundVideo.failed.message" = "Something went wrong while recording the video message. Try again.";

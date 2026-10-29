@@ -257,6 +257,13 @@ private struct SchemeFileResponder {
     guard Self.allowedMethods.contains(method) else {
       return makeError(.methodNotAllowed, url: url, omitsBody: omitsBody, extraHeaders: ["Allow": "GET, HEAD"])
     }
+    if let mediaAnswer = makeMediaAnswer(
+      url: url,
+      rangeHeader: request.value(forHTTPHeaderField: "Range"),
+      omitsBody: omitsBody
+    ) {
+      return mediaAnswer
+    }
     guard let fileName = Self.resolveFileName(url) else {
       return makeError(.badRequest, url: url, omitsBody: omitsBody)
     }
@@ -315,6 +322,53 @@ private struct SchemeFileResponder {
       return .failure(URLError(.cannotParseResponse))
     }
     let body: SchemeBody = omitsBody || range.isEmpty ? .none : .file(FileBody(url: fileURL, range: range))
+    return .response(response, body)
+  }
+
+  /// Files that the app hands to the page, such as recorded round videos, live outside the web build under
+  /// `MediaStore.pathPrefix`. They are never cached, support single ranges like the build's files, and a path that is
+  /// not registered, or no longer, is 404 rather than a file of the build. `nil` for every other path.
+  private func makeMediaAnswer(url: URL, rangeHeader: String?, omitsBody: Bool) -> SchemeAnswer? {
+    guard url.path.hasPrefix(MediaStore.pathPrefix) else {
+      return nil
+    }
+    guard let file = MediaStore.shared.findFile(path: url.path) else {
+      return makeError(.notFound, url: url, omitsBody: omitsBody)
+    }
+    var headers = [
+      "Content-Type": file.contentType,
+      "Cache-Control": "no-store",
+      "Accept-Ranges": "bytes",
+      "X-Content-Type-Options": "nosniff",
+    ]
+    let status: SchemeStatus
+    let range: Range<Int>
+    switch SchemeByteRange(header: rangeHeader, length: file.length) {
+    case .entire:
+      status = .ok
+      range = 0..<file.length
+    case .partial(let partialRange):
+      status = .partialContent
+      range = partialRange
+      headers["Content-Range"] = "bytes \(partialRange.lowerBound)-\(partialRange.upperBound - 1)/\(file.length)"
+    case .unsatisfiable:
+      return makeError(
+        .rangeNotSatisfiable,
+        url: url,
+        omitsBody: omitsBody,
+        extraHeaders: ["Content-Range": "bytes */\(file.length)"]
+      )
+    }
+    headers["Content-Length"] = String(range.count)
+    guard let response = HTTPURLResponse(
+      url: url,
+      statusCode: status.rawValue,
+      httpVersion: Self.httpVersion,
+      headerFields: headers
+    ) else {
+      return .failure(URLError(.cannotParseResponse))
+    }
+    let body: SchemeBody = omitsBody || range.isEmpty ? .none : .file(FileBody(url: file.url, range: range))
     return .response(response, body)
   }
 
