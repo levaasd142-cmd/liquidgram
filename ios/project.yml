@@ -48,12 +48,43 @@ targets:
         CODE_SIGNING_ALLOWED: "NO"
         DEVELOPMENT_TEAM: ""
 
+  # Scratch UI tests of the ios-v2/swift agent; never merged
+  SmokeUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "16.4"
+    sources:
+      - path: SmokeUITests
+    dependencies:
+      - target: Liquidgram
+    settings:
+      base:
+        PRODUCT_NAME: SmokeUITests
+        PRODUCT_BUNDLE_IDENTIFIER: org.liquidgram.messenger.smokeuitests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TEST_TARGET_NAME: Liquidgram
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "NO"
+        DEVELOPMENT_TEAM: ""
+
 schemes:
   Liquidgram:
     build:
       targets:
         Liquidgram: all
+        SmokeUITests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      captureScreenshotsAutomatically: false
+      targets:
+        - name: SmokeUITests
+          parallelizable: false
     archive:
       config: Release

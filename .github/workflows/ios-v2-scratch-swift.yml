@@ -1,0 +1,61 @@
+# Scratch workflow of the ios-v2/swift agent: compiler warnings and a smoke test on the iOS Simulator.
+# It lives only on the ios-v2-scratch/swift branch and is never merged.
+name: iOS v2 scratch (swift)
+
+on:
+  push:
+    branches: ['ios-v2-scratch/swift']
+
+permissions:
+  contents: write
+
+jobs:
+  smoke:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      RESULTS: ${{ github.workspace }}/../results
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Select the latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Smoke test
+        run: |
+          mkdir -p "$RESULTS"
+          xcodebuild -version > "$RESULTS/xcode.txt"
+          bash ios-smoke/smoke.sh
+
+      - name: Report warnings and the self-test
+        if: always()
+        run: |
+          for name in steps.txt warnings-device.txt warnings-sim.txt ui-summary.txt; do
+            file="$RESULTS/$name"
+            [ -f "$file" ] || continue
+            text="$(head -c 30000 "$file")"
+            [ -n "$text" ] || text="(empty)"
+            text="${text//'%'/'%25'}"
+            text="${text//$'\r'/'%0D'}"
+            text="${text//$'\n'/'%0A'}"
+            echo "::notice title=${name}::${text}"
+          done
+
+      - name: Push the results
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RESULTS"
+          git init -q -b results
+          git add -A
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "Smoke test results of ${GITHUB_SHA}"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            HEAD:refs/heads/ios-test-results/ios-v2-scratch/swift
