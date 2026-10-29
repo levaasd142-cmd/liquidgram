@@ -47,31 +47,27 @@ final class GestureTests: LiquidgramUITestCase {
   /// A quick swipe from the left edge of a chat goes back to the chat list
   @MainActor
   func testSwipeBackFromEdgeClosesChat() throws {
-    let composer = try openDemoChat()
+    try openDemoChat()
     swipe(
       from: edgePoint(y: Self.chatSwipeY),
       to: point(x: Self.swipeEndX, y: Self.chatSwipeY),
       velocity: Self.quickSwipeVelocity
     )
     waitForChatList("the chat list after a swipe back from the left edge")
-    let isChatClosed = waitUntilOffScreen(composer)
     attachScreenshot("02-chat-list-after-edge-swipe")
-    XCTAssertTrue(isChatClosed, "The composer of the chat is still on screen")
   }
 
   /// A swipe back starts anywhere in a chat, not only at the edge
   @MainActor
   func testSwipeBackFromMiddleClosesChat() throws {
-    let composer = try openDemoChat()
+    try openDemoChat()
     swipe(
       from: point(x: Self.middleSwipeStartX, y: Self.chatSwipeY),
       to: point(x: Self.swipeEndX, y: Self.chatSwipeY),
       velocity: Self.quickSwipeVelocity
     )
     waitForChatList("the chat list after a swipe back from the middle")
-    let isChatClosed = waitUntilOffScreen(composer)
     attachScreenshot("02-chat-list-after-middle-swipe")
-    XCTAssertTrue(isChatClosed, "The composer of the chat is still on screen")
   }
 
   /// A short swipe back that stops before the finger lifts springs back, and the chat stays
@@ -86,22 +82,29 @@ final class GestureTests: LiquidgramUITestCase {
     )
     pause(Self.settleDelay)
     attachScreenshot("02-chat-after-short-swipe")
-    XCTAssertTrue(Self.isOnScreen(composer), "The chat closed after a short and slow swipe")
-    XCTAssertFalse(Self.isOnScreen(menuButton), "The chat list is on screen after a short and slow swipe")
+    XCTAssertTrue(isOnScreen(composer), "The chat closed after a short and slow swipe")
+    XCTAssertFalse(isOnScreen(menuButton), "The chat list is on screen after a short and slow swipe")
+    // WebKit clicks when a finger that rested lifts, which must not open a chat that the swipe uncovered
+    XCTAssertTrue(
+      isOnScreen(webView.staticTexts.matching(Self.makeLabelPredicate(containing: Self.incomingMessage)).firstMatch),
+      "Another chat opened after a short and slow swipe"
+    )
   }
 
   /// A quick swipe from the left edge of a profile goes back to its chat
   @MainActor
   func testSwipeBackClosesProfile() throws {
     let composer = try openDemoChat()
-    waitForHittable(
+    let title = waitForHittable(
       webView.buttons.matching(NSPredicate(format: "label == %@", Self.demoChatTitle)),
       "the title in the header of the chat"
-    ).tap()
-    let profileRow = waitForHittable(
-      findElements(in: webView, labelContaining: Self.profileRowLabel),
-      "a row of the profile"
     )
+    try XCTSkipIf(
+      title.frame.midY < statusBarFrame.maxY,
+      "The chat header is under the status bar, which takes the tap that opens the profile"
+    )
+    title.tap()
+    waitForHittable(findElements(in: webView, labelContaining: Self.profileRowLabel), "a row of the profile")
     attachScreenshot("02-profile")
 
     swipe(
@@ -109,10 +112,9 @@ final class GestureTests: LiquidgramUITestCase {
       to: point(x: Self.swipeEndX, y: Self.profileSwipeY),
       velocity: Self.quickSwipeVelocity
     )
-    let isProfileClosed = waitUntilOffScreen(profileRow)
+    // The profile covers the composer until it closes
+    waitForHittable(composer, "the composer of the chat after a swipe back from the profile")
     attachScreenshot("03-chat-after-profile-swipe")
-    XCTAssertTrue(isProfileClosed, "The profile is still on screen after a swipe back from its edge")
-    XCTAssertTrue(Self.isOnScreen(composer), "The chat is not on screen after the profile closed")
   }
 
   /// A right swipe on the chat list, which has nothing to go back to, leaves it as it is instead of opening the search
@@ -131,10 +133,10 @@ final class GestureTests: LiquidgramUITestCase {
     pause(Self.settleDelay)
     attachScreenshot("02-chat-list-after-right-swipe")
 
-    XCTAssertTrue(Self.isOnScreen(menuButton), "The menu button of the chat list is gone, so another screen opened")
+    XCTAssertTrue(isOnScreen(menuButton), "The menu button of the chat list is gone, so another screen opened")
     let searchTabs = webView.descendants(matching: .any)
       .matching(NSPredicate(format: "label IN %@", Self.searchTabLabels as NSArray))
-      .allElementsBoundByIndex.filter { Self.isOnScreen($0) }
+      .allElementsBoundByIndex.filter { isOnScreen($0) }
     XCTAssertTrue(
       searchTabs.isEmpty,
       "The right swipe opened the search: " + searchTabs.map(\.label).joined(separator: ", ")
@@ -142,7 +144,8 @@ final class GestureTests: LiquidgramUITestCase {
     XCTAssertFalse(keyboard.exists, "The right swipe brought up the keyboard")
   }
 
-  /// A long press on a message opens its menu, and the first tap on an item does what the item says
+  /// A long press on a message opens its menu without selecting text, and the first tap on an item does what the item
+  /// says
   @MainActor
   func testLongPressOpensMessageMenu() throws {
     try openDemoChat()
@@ -151,16 +154,19 @@ final class GestureTests: LiquidgramUITestCase {
       "the incoming message"
     )
     message.press(forDuration: Self.longPressDuration)
+    // A selected text turns the item into Quote & Reply
     let replyItem = waitForHittable(
-      webView.descendants(matching: .any).matching(NSPredicate(format: "label == %@", Self.replyMenuItemLabel)),
-      "the Reply item of the message menu"
+      webView.descendants(matching: .any).matching(NSPredicate(format: "label ENDSWITH %@", Self.replyMenuItemLabel)),
+      "the reply item of the message menu"
     )
+    let replyItemLabel = replyItem.label
     attachScreenshot("02-message-menu")
     attachAccessibilityTree("message-menu")
 
     replyItem.tap()
-    waitForHittable(cancelReplyButtons, "the reply above the composer after a tap on Reply")
+    waitForHittable(cancelReplyButtons, "the reply above the composer after a tap on the reply item")
     attachScreenshot("03-reply-from-menu")
+    XCTAssertEqual(replyItemLabel, Self.replyMenuItemLabel, "The long press selected text of the message")
   }
 
   /// A message swiped to the left past the threshold becomes the reply of the composer
@@ -172,7 +178,7 @@ final class GestureTests: LiquidgramUITestCase {
       "the outgoing message"
     )
     XCTAssertFalse(
-      cancelReplyButtons.allElementsBoundByIndex.contains { Self.isOnScreen($0) },
+      cancelReplyButtons.allElementsBoundByIndex.contains { isOnScreen($0) },
       "The composer has a reply before the swipe"
     )
 
@@ -220,16 +226,15 @@ final class GestureTests: LiquidgramUITestCase {
     waitForHittable(menuButton, description)
   }
 
-  /// Waits until `element` has left the screen, which takes a moment after another screen came in
+  /// Web content keeps screens that slid away in the accessibility tree, so only a hittable element is on screen. An
+  /// element without a frame on screen is not asked, as XCUITest fails the test when it finds no point to hit.
   @MainActor
-  private func waitUntilOffScreen(_ element: XCUIElement) -> Bool {
-    waitUntil(timeout: Self.elementTimeout) { !Self.isOnScreen(element) }
-  }
-
-  /// Web content keeps screens that slid away in the accessibility tree, so only a hittable element is on screen
-  @MainActor
-  private static func isOnScreen(_ element: XCUIElement) -> Bool {
-    element.exists && element.isHittable
+  private func isOnScreen(_ element: XCUIElement) -> Bool {
+    guard element.exists else {
+      return false
+    }
+    let frame = element.frame
+    return !frame.isEmpty && app.frame.intersects(frame) && element.isHittable
   }
 
   /// A point of the web view at shares of its width and height

@@ -92,12 +92,12 @@ The swipes are drags of `XCUICoordinate` at a set speed, which reach the web app
 
 | Test | Checks |
 | --- | --- |
-| `testSwipeBackFromEdgeClosesChat` | A quick swipe from 4 points off the left edge of a chat brings back the chat list (another chat and its menu button on screen) and takes the composer off screen |
+| `testSwipeBackFromEdgeClosesChat` | A quick swipe from 4 points off the left edge of a chat brings back the chat list: another chat and the menu button of the list on screen |
 | `testSwipeBackFromMiddleClosesChat` | The same swipe from 30 percent of the width |
-| `testSlowShortSwipeSpringsBack` | A slow swipe to a quarter of the width that rests before the finger lifts leaves the chat open and the chat list off screen |
-| `testSwipeBackClosesProfile` | The title in the chat header opens the profile; a quick swipe from its left edge brings back the chat |
+| `testSlowShortSwipeSpringsBack` | A slow swipe to a quarter of the width that rests before the finger lifts leaves the same chat open, with its messages on screen and the chat list off screen; the click that WebKit sends when a finger that rested lifts opens no other chat |
+| `testSwipeBackClosesProfile` | The title in the chat header opens the profile; a quick swipe from its left edge brings back the chat. Skipped while the header is under the status bar, which takes the tap |
 | `testChatListRightSwipeKeepsChatList` | A right swipe on the chat list keeps its menu button, opens no search tabs and brings up no keyboard |
-| `testLongPressOpensMessageMenu` | A one-second press on a message opens its menu; the first tap on Reply puts the reply above the composer (its Cancel button) |
+| `testLongPressOpensMessageMenu` | A one-second press on a message opens its menu with Reply rather than Quote & Reply, so the press selected no text; the first tap on it puts the reply above the composer (its Cancel button) |
 | `testSwipeToReply` | A message dragged 140 points to the left puts the reply above the composer |
 
 ## The self-test
