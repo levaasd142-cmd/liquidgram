@@ -4,7 +4,9 @@
 // (`account1` and the cached global state in `tt-global-state`, with message dates relative to now) and API keys of
 // the valid form, which the web app needs before it shows the main screen; offline, the keys are never used.
 // The cached state has only the sections the chats need. `migrateCache` logs a TypeError for the missing ones, such
-// as `appConfig`, and `readCache` takes them from the initial state.
+// as `appConfig`, and `readCache` takes them from the initial state. The photo in the chat with Катя Дизайн is drawn
+// on a canvas and stored as its `blobUrl`, the way the web app keeps a photo it has just sent, so the media viewer
+// opens it without a download.
 (() => {
   'use strict';
 
@@ -21,6 +23,10 @@
   const OFFLINE_SINCE_SECONDS = 3600;
   const ACCOUNT_TTL_DAYS = 365;
   const ME = '100000';
+  const PHOTO_SIZE = { width: 320, height: 240 };
+  const PHOTO_ID = '5000000001';
+  const PHOTO_SIZE_TYPE = 'x';
+  const PHOTO_QUALITY = 0.8;
 
   seedOncePerSession();
 
@@ -75,13 +81,17 @@
       const byId = {};
       list.forEach((item, index) => {
         const id = item.id || index + 1;
+        const date = now - (item.ago || 0) * SECONDS_IN_MINUTE;
         byId[id] = {
           id,
           chatId,
-          date: now - (item.ago || 0) * SECONDS_IN_MINUTE,
+          date,
           isOutgoing: Boolean(item.out),
           senderId: item.out ? ME : (item.from || chatId),
-          content: { text: { text: item.text, entities: [] } },
+          content: {
+            text: item.text ? { text: item.text, entities: [] } : undefined,
+            photo: item.hasPhoto ? buildPhoto(date) : undefined,
+          },
           viewsCount: item.views,
           isEdited: item.editedAgo ? true : undefined,
           editDate: item.editedAgo ? now - item.editedAgo * SECONDS_IN_MINUTE : undefined,
@@ -179,6 +189,7 @@
     addChat('100106', { type: 'chatTypePrivate', title: 'Катя Дизайн' });
     addMessages('100106', [
       { ago: 180, text: 'Макет готов, посмотри в фигме' },
+      { ago: 179, hasPhoto: true, text: 'Превью главного экрана' },
       { ago: 170, out: true, text: 'Огонь 🔥 Только кнопку сделай стеклянной' },
       { ago: 160, text: 'Уже 😎' },
     ]);
@@ -285,6 +296,32 @@
           },
         },
       },
+    };
+  }
+
+  // A glassy mock-up of a chat screen as a JPEG data URI
+  function buildPhoto(date) {
+    const canvas = document.createElement('canvas');
+    canvas.width = PHOTO_SIZE.width;
+    canvas.height = PHOTO_SIZE.height;
+    const context = canvas.getContext('2d');
+    const gradient = context.createLinearGradient(0, 0, PHOTO_SIZE.width, PHOTO_SIZE.height);
+    gradient.addColorStop(0, '#B9B4F5');
+    gradient.addColorStop(1, '#5CAFFA');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, PHOTO_SIZE.width, PHOTO_SIZE.height);
+    context.fillStyle = 'rgba(255, 255, 255, 0.55)';
+    [[24, 24, 272, 36], [24, 76, 180, 28], [116, 116, 180, 28], [24, 180, 272, 36]].forEach(([x, y, w, h]) => {
+      context.fillRect(x, y, w, h);
+    });
+    const dataUri = canvas.toDataURL('image/jpeg', PHOTO_QUALITY);
+    return {
+      mediaType: 'photo',
+      id: PHOTO_ID,
+      date,
+      thumbnail: { width: PHOTO_SIZE.width, height: PHOTO_SIZE.height, dataUri },
+      sizes: [{ width: PHOTO_SIZE.width, height: PHOTO_SIZE.height, type: PHOTO_SIZE_TYPE }],
+      blobUrl: dataUri,
     };
   }
 })();

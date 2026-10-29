@@ -3,7 +3,7 @@ import XCTest
 /// Launch, query, wait and attachment helpers for the Liquidgram UI tests. Tests start the app from a clean state
 /// unless they test persistence, wait generously because a cold start of the web app in a CI simulator takes 5 to 20
 /// seconds, and attach named screenshots, which `run-ui-tests.sh` collects into the report. A failed wait also
-/// attaches the accessibility tree, so the report shows what the test could see.
+/// attaches the accessibility tree, so the report shows what the test could see; trees are kept for failed tests only.
 class LiquidgramUITestCase: XCTestCase {
   /// Long enough for a cold start of the web app in a CI simulator
   static let launchTimeout: TimeInterval = 60
@@ -46,6 +46,8 @@ class LiquidgramUITestCase: XCTestCase {
     var shouldStayOffline = false
     /// Runs `Fixtures/selftest.js` once the page is ready and shows its report as `selfTestResultIdentifier`
     var shouldRunSelfTest = false
+    /// Injects `Fixtures/ui-probe.js`, which reports the page's measurements and adds buttons that run page code
+    var shouldInstallProbe = false
     var arguments: [String] = []
   }
 
@@ -87,6 +89,10 @@ class LiquidgramUITestCase: XCTestCase {
   @MainActor
   @discardableResult
   func launchApp(_ launch: Launch = Launch()) throws -> XCUIApplication {
+    // A test that turned the simulator and failed before turning it back must not leave the next one in landscape
+    if XCUIDevice.shared.orientation != .portrait {
+      XCUIDevice.shared.orientation = .portrait
+    }
     let app = XCUIApplication()
     // The assertions look for the English texts of the web app and the native screens
     var arguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
@@ -102,6 +108,9 @@ class LiquidgramUITestCase: XCTestCase {
     }
     if launch.shouldSeedDemoAccount {
       userScripts.append(try loadFixture("demo-account"))
+    }
+    if launch.shouldInstallProbe {
+      userScripts.append(try loadFixture("ui-probe"))
     }
     app.launchEnvironment[Self.userScriptEnvironmentKey] = Self.encodeScript(
       userScripts.joined(separator: Self.scriptSeparator)
@@ -347,12 +356,13 @@ class LiquidgramUITestCase: XCTestCase {
     add(attachment)
   }
 
-  /// The accessibility tree of the app as XCUITest sees it, for writing and fixing queries
+  /// The accessibility tree of the app as XCUITest sees it, for writing and fixing queries. It is kept only when the
+  /// test fails, since the trees of passing tests make the report large without telling anything.
   @MainActor
   func attachAccessibilityTree(_ name: String) {
     let attachment = XCTAttachment(string: app.debugDescription)
     attachment.name = "ax-" + name + Self.appearanceSuffix
-    attachment.lifetime = .keepAlways
+    attachment.lifetime = .deleteOnSuccess
     add(attachment)
   }
 

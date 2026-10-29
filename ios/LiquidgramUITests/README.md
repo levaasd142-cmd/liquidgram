@@ -1,6 +1,6 @@
 # UI tests of the iPhone app
 
-XCTest UI tests that start the real app on an iPhone simulator, with the bundled production web build and the local server, and look at it the way a person does: through the screen and the accessibility tree. CI runs them on every build of the IPA; the report, with screenshots of every step, is a branch of the repository.
+XCTest UI tests that start the real app on an iPhone simulator, with the bundled production web build, and look at it the way a person does: through the screen and the accessibility tree. CI runs them on every build of the IPA; the report, with screenshots of every step and a contact sheet of all of them, is a branch of the repository.
 
 ## Running them
 
@@ -8,12 +8,12 @@ XCTest UI tests that start the real app on an iPhone simulator, with the bundled
 
 The `build` job of [`.github/workflows/ios.yml`](../../.github/workflows/ios.yml) runs [`ios/run-ui-tests.sh`](../run-ui-tests.sh) after `Build IPA` and `Upload IPA`. Then, whatever the outcome:
 
-- the report becomes the single commit of the branch `ios-test-results/<branch>`, for example `ios-test-results/liquidgram` for the default branch; GitHub shows its `README.md` with the table of results and the screenshots;
-- the run page gets a notice with the counts and an error annotation per failed test with its message, or one with the compiler errors when the tests did not build.
+- the report becomes the single commit of the branch `ios-test-results/<branch>`, for example `ios-test-results/liquidgram` for the default branch; GitHub shows its `README.md` with the table of results, the contact sheet and the screenshots;
+- the run page gets notices with the counts and the links to the report and to its contact sheet, and an error annotation per failed test with its message, or one with the compiler errors when the tests did not build.
 
 `Publish release` runs only on the default branch and only when the UI tests passed, so a failing test keeps the previous `ios-latest` release. The IPA artifact is uploaded either way.
 
-A manual run (Actions › Build iOS app › Run workflow) takes an optional `ui_tests` input with comma-separated `-only-testing` filters, such as `LiquidgramUITests/CoreTests`; such a run never publishes a release.
+A manual run (Actions › Build iOS app › Run workflow) takes an optional `ui_tests` input in the form of `UI_TESTS_ONLY` below, such as `UsabilityTests,CoreTests/testDemoAccount`; such a run never publishes a release. From the command line: `gh api -X POST repos/<owner>/<repo>/actions/workflows/ios.yml/dispatches -f ref=<branch> -f 'inputs[ui_tests]=GestureTests'`.
 
 ### On a Mac
 
@@ -22,38 +22,48 @@ Requirements: Xcode 16 or newer, Node.js and an iOS simulator runtime.
 ```bash
 bash ios/build-ipa.sh                     # the web build in ios/Liquidgram/WebApp and the Xcode project
 bash ios/run-ui-tests.sh                  # report in dist-ios/ui-tests, result bundles in dist-ios/ui-tests-work
-UI_TESTS_ONLY=LiquidgramUITests/CoreTests bash ios/run-ui-tests.sh
+UI_TESTS_ONLY=UsabilityTests,-UsabilityTests/testAppStaysPortrait bash ios/run-ui-tests.sh
 ```
 
-`UI_TESTS_ONLY` takes comma-separated `-only-testing` filters, `UI_TESTS_DEVICE` picks a simulator by name, `UI_TESTS_SKIP_DARK=1` skips the dark mode run. In Xcode, the `Liquidgram` scheme's Test action runs the same tests (Product › Test); copy `Fixtures/liquidgram-selftest-worker.js` into `ios/Liquidgram/WebApp` first, or the self-test's `worker` check fails.
+| Variable | Effect |
+| --- | --- |
+| `UI_TESTS_ONLY` | Comma-separated tests to run: a class or `Class/test`, with or without the `LiquidgramUITests/` prefix. An entry that starts with `-` is skipped instead, alone or within the selected classes. A selection that runs no test fails the script |
+| `UI_TESTS_DARK` | Comma-separated tests for the dark mode pass, in the same form, instead of `DARK_MODE_TESTS` in the script (`CoreTests/testDemoAccount` and `UsabilityTests/testStatusBarStripMatchesTheme`). The pass runs those that `UI_TESTS_ONLY` selects |
+| `UI_TESTS_SKIP_DARK` | `1` skips the dark mode pass |
+| `UI_TESTS_DEVICE` | A simulator to use by name |
+| `UI_TESTS_WORK_DIR` | Where the result bundles go |
+
+In Xcode, the `Liquidgram` scheme's Test action runs the same tests (Product › Test); copy `Fixtures/liquidgram-selftest-worker.js` into `ios/Liquidgram/WebApp` first, or the self-test's `worker` check fails.
 
 ### What the script does
 
 1. Picks an iPhone simulator on the newest installed iOS runtime from `xcrun simctl list -j`: an iPhone 17 Pro or 16 Pro if there is one, else the newest Pro, else any iPhone.
 2. Turns off the hardware keyboard of the simulator before it boots, so the software keyboard shows, boots it, and sets a fixed status bar for the screenshots.
 3. Builds the app and the tests once (`xcodebuild build-for-testing`, Debug, no signing), with `Fixtures/liquidgram-selftest-worker.js` added to the web build of this build only.
-4. Runs all tests in light mode, then `CoreTests/testDemoAccount` again in dark mode (`xcrun simctl ui <udid> appearance dark`), each with a result bundle, without parallel testing and with a time limit per test.
-5. Exports the attachments (`xcrun xcresulttool export attachments`) and the results (`xcrun xcresulttool get test-results tests`), collects the app's log from the simulator (`log show` for the subsystem `org.liquidgram.messenger`) and keeps the last 300 lines of each `xcodebuild` output.
-6. [`Tools/report.mjs`](Tools/report.mjs) writes the report and downscales the screenshots with `sips -Z 1200`.
+4. Installs the app and grants it the microphone, the camera and the photos (`xcrun simctl privacy`), so recording tests never stop at a system prompt.
+5. Runs the selected tests in light mode, then the dark mode tests again with `xcrun simctl ui <udid> appearance dark`, each pass with a result bundle, without parallel testing and with a time limit per test.
+6. Exports the attachments (`xcrun xcresulttool export attachments`) and the results (`xcrun xcresulttool get test-results tests`), collects the app's log from the simulator (`log show` for the subsystem `org.liquidgram.messenger`) and keeps the last 300 lines of each `xcodebuild` output.
+7. [`Tools/report.mjs`](Tools/report.mjs) writes the report, downscales the screenshots with `sips -Z 1200` and draws the contact sheet.
 
-The script exits with 1 when a test failed or the tests did not build.
+The script exits with 1 when a test failed, the tests did not build or no test ran.
 
 ## The report
 
 | Path | Content |
 | --- | --- |
-| `README.md` | `summary.md` followed by the screenshots of each test |
+| `README.md` | `summary.md`, the contact sheet, then the screenshots of each test |
 | `summary.md` | Status, device, a table of the tests (pass, status, duration, failure message), the self-test checks |
 | `summary.json` | The same data for scripts; the workflow's annotations come from it |
-| `screenshots/` | `<Class>-<test>-<step>.png`, steps of the dark run end with `-dark`, failed waits start with `failure-` |
-| `ax/` | The accessibility trees the tests attached (`app.debugDescription`), at chosen steps and at every failed wait |
+| `contact-sheet.png` | Every screenshot of the run in one image, in report order, with the test and the step under each one and a band above it: green for a passed test, red for a failed one, orange for the screenshot of the failure |
+| `screenshots/` | `<Class>-<test>-<step>.png`, steps of the dark run end with `-dark`, the screen at a failure starts with `failure-` |
+| `ax/` | Accessibility trees (`app.debugDescription`) of failed tests only: the one taken at the failure and those the test asked for at chosen steps |
 | `logs/` | `app.log` from the simulator, `xcodebuild-*.log` and `build-for-testing.log` tails, the self-test reports |
 
 [`known-issues.json`](known-issues.json) lists failures that are known on the current base. The report marks a failed test as a known issue when all its failed self-test checks are listed there; the test still fails, so the entry goes away with the fix.
 
 ## The tests
 
-Every test starts the app with `-LiquidgramResetState YES` unless it tests persistence, waits up to a minute for a cold start of the web app, and attaches named screenshots that stay even when it passes.
+Every test starts the app with `-LiquidgramResetState YES` unless it tests persistence, waits up to a minute for a cold start of the web app, and attaches named screenshots at its key moments that stay even when it passes. `launchApp` turns the simulator back to portrait first, in case a failed test left it turned.
 
 ### `CoreTests`: the app since its first version
 
@@ -67,7 +77,7 @@ Every test starts the app with `-LiquidgramResetState YES` unless it tests persi
 
 ### `FeatureTests`: the native features of version 2
 
-They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names. The two layout tests check bugs that the screenshots of the v1 app show: its headers sit under the status bar, and typing in a chat scrolls the header away.
+They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names.
 
 | Test | Checks |
 | --- | --- |
@@ -80,11 +90,29 @@ They follow the shared v2 contract, so on a build without these features they fa
 | `testQuickActionTogglesGhostMode` | `toggleGhostMode` shows the "Ghost mode is on/off" toast |
 | `testDeepLinkOpensSettings` | `XCUIApplication.open(liquidgram://settings)` opens the web app's settings |
 | `testLiquidgramSettingsShowIPhoneSection` | Settings › Liquidgram has a section that mentions the iPhone; screenshot after scrolling to it |
-| `testHeadersStayBelowStatusBar` | The headers of the chat list and of an opened chat start below the status bar, which the page extends under (`viewport-fit=cover`) |
-| `testChatHeaderStaysVisibleWhileTyping` | With the keyboard up in a chat, its header stays on screen instead of the whole page scrolling up |
 | `testKeyboardHasNoFormToolbar` | The keyboard of a web field comes without WebKit's toolbar with the Previous, Next and Done buttons |
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
+
+### `UsabilityTests`: what the first user of the app reported
+
+The user of v1 found the interface shifted, many buttons dead, the gestures bad. These tests check the behavior that the fixes give the app: the page below the status bar, a page that shrinks above the keyboard instead of sliding up, portrait only on iPhone. Each test checks everything it can before it fails and lists every problem it found in its failure message, with the frames involved, so one run of a broken build shows all of them. A tap on a control goes to the center of its frame like a finger, also where XCUITest itself would refuse it, such as under the status bar. The tests that measure the page inside or need page code launch with `Fixtures/ui-probe.js`.
+
+| Test | Checks |
+| --- | --- |
+| `testChatListTopRowWorks` | Open menu, the search field and Ghost mode start below the status bar; Open menu opens the main menu, which a tap outside closes; the search field takes the focus with the keyboard and Return to chat list leaves it; Ghost mode shows its toast |
+| `testChatTopRowWorks` | Back, the title and More options of a chat start below the status bar; More options opens the chat menu; the title opens the profile, whose Back returns to the chat; Back returns to the chat list |
+| `testProfileTopRowWorks` | Back and Edit of a profile start below the status bar; Edit opens the contact editor and Back returns from it; Back closes the profile |
+| `testSettingsTopRowWorks` | Go back, Search, Edit profile and More options of the settings start below the status bar; More options opens its menu (Log Out, never tapped); Search opens the settings search; Edit profile opens the profile editor; Go back returns from each and finally to the chat list |
+| `testKeyboardKeepsChatLayout` | With the keyboard up in a chat: the page ends at the top of the keyboard (its bar of predictions included), the header did not move, the composer sits at most 24 pt above the keyboard, the newest message is between the header and the composer, and the page has no scroll offset. Once the keyboard hides, every frame is back where it was; after two more keyboard cycles too, the page never scrolled (`scrollTop`, `scrollY`, `visualViewport.pageTop` and `offsetTop` stayed 0), and the root element, `--vh` and the visual viewport match the window height |
+| `testDraggingMessagesHidesKeyboard` | A drag down on the messages hides the keyboard |
+| `testAppStaysPortrait` | With the simulator turned to landscape the window and the page stay portrait; the test turns the simulator back before it fails |
+| `testStatusBarStripMatchesTheme` | The page starts below the status bar, and the strip above it has the page's theme color (`<meta name="theme-color">`) in two rows of pixels across the screen: at its top and right above the page. Runs in light and dark mode |
+| `testPageIsActiveBeforeFirstTap` | Right after the start, before any tap, the page does not treat itself as being in the background (`body.in-background`), which would stop its animations |
+| `testAttachMenuAndEmojiPanelFitOnScreen` | The attach menu opens with its items between the status bar and the home indicator, and a tap outside closes it; the tabs of the emoji panel are above the home indicator and the composer above the panel |
+| `testMediaViewerOpensAndCloses` | A tap on the photo of the demo account opens the media viewer, whose Close button starts below the status bar and closes it |
+| `testLongPressOnMessageOpensMenu` | A long press on a message opens its menu on screen, and the first tap on Reply closes the menu and starts a reply. `GestureTests` checks the other gestures |
+| `testDelayedWindowOpenShowsInAppBrowser` | A `window.open` that the page calls 1.5 s after a tap, like flows that wait for the server first, opens the in-app browser |
 
 ## The self-test
 
@@ -95,7 +123,7 @@ The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID t
 | `bridge` | `__liquidgramNative.platform` is `ios` and `bridge.js` ran (`isBridgeInstalled`) |
 | `notificationBridge` | `window.Notification` is the class of `bridge.js`, not a native one, with `requestPermission` and a valid `permission` |
 | `noServiceWorker` | No service worker controls the page and none is registered |
-| `secureContext` | `isSecureContext` is true for `http://127.0.0.1:47821` |
+| `secureContext` | `isSecureContext` is true for the app's origin |
 | `webCrypto` | `crypto.subtle` computes the SHA-256 of `abc` |
 | `localStorage`, `indexedDb` | A value can be written and read back; IndexedDB opens, puts and gets |
 | `webAssembly` | A small module compiles and its `add(2, 3)` returns 5 |
@@ -117,7 +145,8 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | --- | --- |
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
 | `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
-| `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used |
+| `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used. The chat with Катя Дизайн has a photo, drawn on a canvas and stored as its `blobUrl` like a photo the web app has just sent, so the media viewer opens it without a download |
+| `ui-probe.js` | `Launch(shouldInstallProbe: true)`: publishes the page's measurements as the accessibility label of a tiny element, `liquidgram-probe {json}` (viewport sizes, scroll offsets and their highest values since the start, safe-area insets, `--vh`, the theme color, the focused element, `body.in-background`), and adds two nearly transparent buttons at the left edge that run page code: `liquidgram-probe-blur` takes the focus from the focused field and `liquidgram-probe-open-later` calls `window.open` 1.5 s after the tap |
 | `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |
 | `liquidgram-selftest-worker.js` | Not injected: served from the web root for the `worker` check |
 
@@ -125,8 +154,10 @@ A connected session asks for the notification permission after its first tap. Th
 
 ## Writing tests
 
-- Subclass `LiquidgramUITestCase` and mark test methods `@MainActor`, as the XCUI classes are main-actor isolated.
+- Subclass `LiquidgramUITestCase` and mark test methods `@MainActor`, as the XCUI classes are main-actor isolated. Keep a test class's own constants and helpers `private`: a member of the base class with the same name as a member of a subclass does not compile.
 - Find web content through `webView` with `findElement(in:labelContaining:)`, `findStaticText(in:containing:)` and `findTextInput(in:labeled:)`; find native views by accessibility identifier with `findNativeElement(_:)`. A chat of the list is one button whose label holds the whole row.
-- Web content enters the accessibility tree before the web app shows it, and keeps screens that slid away, like the chat list under an opened chat: wait with `waitForHittable(_:_:)` before a tap or a screenshot, and with `waitForChatRow(titled:_:)` for a row of the chat list.
-- Wait with `waitFor`, `waitForHittable` and `waitForDisappearance`; on a timeout they attach a screenshot and the accessibility tree before failing.
-- Name screenshots `NN-what-is-shown`; the report orders them by time and the dark run adds `-dark`.
+- Web content enters the accessibility tree before the web app shows it, and keeps screens that slid away, like the chat list under an opened chat: wait with `waitForHittable(_:_:)` before a tap or a screenshot, and with `waitForChatRow(titled:_:)` for a row of the chat list. Several elements can have the same label, such as Back in a chat and in its profile; query them all and take the one on screen.
+- The `frame` of an element that is gone fails the test; check `exists` before reading it from an element found earlier.
+- Wait with `waitFor`, `waitForHittable` and `waitForDisappearance`; on a timeout they attach a screenshot and the accessibility tree before failing. `attachAccessibilityTree(_:)` keeps a tree only when the test fails.
+- Name screenshots `NN-what-is-shown`; the report orders them by time and the dark run adds `-dark`. Add a test to `DARK_MODE_TESTS` in `run-ui-tests.sh` when its result depends on the appearance.
+- Without a Mac, the sources type-check on Linux against stand-ins of UIKit and XCTest with the SDK's signatures and main-actor isolation; that catches wrong names and types, though not the behavior.
