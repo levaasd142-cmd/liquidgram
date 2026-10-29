@@ -48,12 +48,49 @@ targets:
         CODE_SIGNING_ALLOWED: "NO"
         DEVELOPMENT_TEAM: ""
 
+  # UI tests on the simulator; `run-ui-tests.sh` runs them and LiquidgramUITests/README.md describes them
+  LiquidgramUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "16.4"
+    sources:
+      - path: LiquidgramUITests/Sources
+      # Page scripts that the tests inject into the app
+      - path: LiquidgramUITests/Fixtures
+        buildPhase: resources
+    dependencies:
+      - target: Liquidgram
+    settings:
+      base:
+        PRODUCT_NAME: LiquidgramUITests
+        PRODUCT_BUNDLE_IDENTIFIER: org.liquidgram.messenger.uitests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TEST_TARGET_NAME: Liquidgram
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+        # The simulator runs unsigned builds, like the app
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "NO"
+        DEVELOPMENT_TEAM: ""
+
 schemes:
   Liquidgram:
     build:
       targets:
         Liquidgram: all
+        # Built only for testing, so the IPA build skips it
+        LiquidgramUITests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      # The tests attach their own screenshots; automatic screen recordings would only slow them down
+      captureScreenshotsAutomatically: false
+      targets:
+        - name: LiquidgramUITests
+          parallelizable: false
     archive:
       config: Release
