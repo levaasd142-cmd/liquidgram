@@ -26,9 +26,18 @@ enum AuthenticationResult {
 /// Face ID, Touch ID or Optic ID with the device passcode as the fallback (`LAPolicy.deviceOwnerAuthentication`).
 /// While a UI test passes `-LiquidgramFakeAuthentication`, the outcome comes from the test instead.
 enum DeviceAuthentication {
-  private static let fakeOutcomeDelay: TimeInterval = 0.3
+  /// Launch argument `-LiquidgramFakeAuthenticationDelay <seconds>`: a faked authentication that takes longer
+  /// than the launch of the app, so a UI test sees the lock screen before it opens
+  private static let fakeOutcomeDelayArgument = "LiquidgramFakeAuthenticationDelay"
+  private static let defaultFakeOutcomeDelay: TimeInterval = 0.3
   private static let fakeSuccessOutcome = "success"
   private static let fakeCancelOutcome = "cancel"
+
+  /// Read only while `TestHooks.fakeAuthenticationOutcome` is set, which only test builds allow
+  private static var fakeOutcomeDelay: TimeInterval {
+    let delay = UserDefaults.standard.double(forKey: fakeOutcomeDelayArgument)
+    return delay > 0 ? delay : defaultFakeOutcomeDelay
+  }
 
   static func currentBiometryType() -> BiometryType {
     if TestHooks.fakeAuthenticationOutcome != nil {

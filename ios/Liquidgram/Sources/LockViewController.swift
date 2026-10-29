@@ -32,8 +32,9 @@ private enum Strings {
 /// authentication again after a failed or cancelled attempt. The colors come from the launch screen and follow
 /// light and dark mode.
 final class LockViewController: UIViewController {
-  /// A deeper shade of the web app's accent color `#3390EC`, so white text on the button has a contrast of 4.5:1
-  private static let accentColor = UIColor(red: 0x1F / 255, green: 0x6F / 255, blue: 0xD0 / 255, alpha: 1)
+  /// A deeper shade of the web app's accent color `#3390EC`, so the light title of the button keeps a contrast
+  /// above 4.5:1 in light and dark mode
+  private static let accentColor = UIColor(red: 0x1A / 255, green: 0x62 / 255, blue: 0xBE / 255, alpha: 1)
   private static let titleFontSize: CGFloat = 22
   private static let spacing: CGFloat = 24
   private static let minimumTopSpacing: CGFloat = 16
@@ -134,7 +135,7 @@ final class LockViewController: UIViewController {
     }
     configuration.buttonSize = .large
     configuration.imagePadding = Self.buttonImagePadding
-    // Glass would derive a light tint for the text, which is hard to read on the blue
+    // Glass tints the title slightly; starting from white keeps it lightest on the blue
     configuration.baseForegroundColor = .white
 
     switch biometryType {
