@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-10-29T17:36:40.693Z",
+  "source": {
+    "branch": "ios-v2/fix-recording-web",
+    "commit": "c20d65b4b53bcd2d11099bdb1c162ffc3c6da780",
+    "run": "https://github.com/levaasd142-cmd/liquidgram/actions/runs/40922020454"
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "counts": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "knownIssues": 0
+  },
+  "tests": [
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 24.38846206665039,
+      "pass": "light"
+    },
+    {
+      "name": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "status": "passed",
+      "duration": 20.037801027297974,
+      "pass": "light"
+    },
+    {
+      "name": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "status": "passed",
+      "duration": 13.288062930107117,
+      "pass": "light"
+    },
+    {
+      "name": "CoreTests/testDemoAccount",
+      "status": "passed",
+      "duration": 20.34242594242096,
+      "pass": "dark"
+    }
+  ],
+  "selfTests": [],
+  "buildErrors": [],
+  "screenshots": [
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "01-chat-list",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "02-chat",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "light",
+      "name": "03-composer-with-keyboard",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "01-cancelled",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-01-cancelled.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "02-locked",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-02-locked.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testHoldRecordsVoiceAndSlidesCancelOrLock",
+      "pass": "light",
+      "name": "03-discarded",
+      "file": "screenshots/RecordingTests-testHoldRecordsVoiceAndSlidesCancelOrLock-03-discarded.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "01-voice-mode",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-01-voice-mode.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "02-video-mode",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-02-video-mode.png",
+      "isFailure": false
+    },
+    {
+      "test": "RecordingTests/testTapSwitchesBetweenVoiceAndVideo",
+      "pass": "light",
+      "name": "03-voice-mode-again",
+      "file": "screenshots/RecordingTests-testTapSwitchesBetweenVoiceAndVideo-03-voice-mode-again.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "01-chat-list-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-01-chat-list-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "02-chat-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-02-chat-dark.png",
+      "isFailure": false
+    },
+    {
+      "test": "CoreTests/testDemoAccount",
+      "pass": "dark",
+      "name": "03-composer-with-keyboard-dark",
+      "file": "screenshots/CoreTests-testDemoAccount-03-composer-with-keyboard-dark.png",
+      "isFailure": false
+    }
+  ]
+}

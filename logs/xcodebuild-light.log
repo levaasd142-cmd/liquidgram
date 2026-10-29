@@ -1,0 +1,239 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=E952A9B0-CC78-435C-BF08-06AD47FE1076 -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/light.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/RecordingTests" "-only-testing:LiquidgramUITests/CoreTests/testDemoAccount"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+2026-10-29 17:34:48.152070+0000 LiquidgramUITests-Runner[5474:21755] [Default] Running tests...
+2026-10-29 17:34:48.218584+0000 LiquidgramUITests-Runner[5474:21901] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-29 17:34:48.260718+0000 LiquidgramUITests-Runner[5474:21898] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 17:35:02.281.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 17:35:02.281.
+Test Suite 'CoreTests' started at 2026-10-29 17:35:02.281.
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' started.
+    t =     0.00s Start Test at 2026-10-29 17:35:02.282
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     8.45s         Setting up automation session
+    t =     9.28s         Wait for org.liquidgram.messenger to idle
+    t =    10.64s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    11.18s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    11.78s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.30s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.82s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    13.35s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    14.02s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    14.57s Find the Any (Element at index 0)
+    t =    14.62s Waiting 20.0s for Any (First Match) to exist
+    t =    15.65s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    15.65s         Checking existence of `Any (First Match)`
+    t =    15.87s Added attachment named '01-chat-list'
+    t =    15.87s Requesting snapshot of accessibility hierarchy for app with pid 5788
+    t =    16.08s Requesting snapshot of accessibility hierarchy for app with pid 5788
+    t =    16.12s Added attachment named 'ax-chat-list'
+    t =    16.12s Tap "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =    16.12s     Wait for org.liquidgram.messenger to idle
+    t =    16.12s     Find the "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =    16.17s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =    16.20s     Synthesize event
+    t =    16.61s     Wait for org.liquidgram.messenger to idle
+    t =    16.74s Waiting 2.0s for "Allow" Button to exist
+    t =    17.79s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    17.79s         Checking existence of `"Allow" Button`
+    t =    17.91s         Capturing element debug description
+    t =    18.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    18.75s         Checking existence of `"Allow" Button`
+    t =    18.77s         Capturing element debug description
+    t =    18.77s     Checking existence of `"Allow" Button`
+    t =    18.79s Collecting debug information to assist test failure triage
+    t =    18.79s     Requesting snapshot of accessibility hierarchy for app with pid 2755
+    t =    18.83s Waiting 20.0s for StaticText (First Match) to exist
+    t =    19.85s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    19.85s         Checking existence of `StaticText (First Match)`
+    t =    19.92s Checking existence of `Any (First Match)`
+    t =    20.02s Find the Any (First Match)
+    t =    20.26s Added attachment named '02-chat'
+    t =    20.26s Tap "Message" TextView
+    t =    20.26s     Wait for org.liquidgram.messenger to idle
+    t =    20.27s     Find the "Message" TextView
+    t =    20.35s     Check for interrupting elements affecting "Message" TextView
+    t =    20.39s     Synthesize event
+    t =    20.80s     Wait for org.liquidgram.messenger to idle
+    t =    21.27s Waiting 20.0s for Keyboard (First Match) to exist
+    t =    22.30s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    22.30s         Checking existence of `Keyboard (First Match)`
+    t =    22.31s Checking existence of `"Continue" Button`
+    t =    22.34s Type 'Typed by the UI te...' into Target Application 'org.liquidgram.messenger'
+    t =    22.34s     Wait for org.liquidgram.messenger to idle
+    t =    22.35s     Find the Target Application 'org.liquidgram.messenger'
+    t =    22.39s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    22.43s     Synthesize event
+    t =    23.02s     Wait for org.liquidgram.messenger to idle
+    t =    23.03s Find the "Message" TextView
+    t =    23.32s Added attachment named '03-composer-with-keyboard'
+    t =    23.32s Requesting snapshot of accessibility hierarchy for app with pid 5788
+    t =    23.81s Requesting snapshot of accessibility hierarchy for app with pid 5788
+    t =    23.98s Added attachment named 'ax-composer-with-keyboard'
+    t =    23.98s Find the "Message" TextView
+    t =    24.16s Find the Keyboard (First Match)
+    t =    24.19s Tear Down
+Test Case '-[LiquidgramUITests.CoreTests testDemoAccount]' passed (24.388 seconds).
+Test Suite 'CoreTests' passed at 2026-10-29 17:35:26.670.
+	 Executed 1 test, with 0 failures (0 unexpected) in 24.388 (24.389) seconds
+Test Suite 'RecordingTests' started at 2026-10-29 17:35:26.671.
+Test Case '-[LiquidgramUITests.RecordingTests testHoldRecordsVoiceAndSlidesCancelOrLock]' started.
+    t =     0.00s Start Test at 2026-10-29 17:35:26.672
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:5788
+    t =     1.56s         Setting up automation session
+    t =     2.63s         Wait for org.liquidgram.messenger to idle
+    t =     4.15s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     5.52s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     5.89s Find the Any (Element at index 0)
+    t =     6.10s Tap "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     6.10s     Wait for org.liquidgram.messenger to idle
+    t =     6.10s     Find the "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     6.15s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     6.30s     Synthesize event
+    t =     6.66s     Wait for org.liquidgram.messenger to idle
+    t =     6.70s Waiting 2.0s for "Allow" Button to exist
+    t =     7.77s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     7.77s         Checking existence of `"Allow" Button`
+    t =     7.86s         Capturing element debug description
+    t =     8.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     8.72s         Checking existence of `"Allow" Button`
+    t =     8.76s         Capturing element debug description
+    t =     8.76s     Checking existence of `"Allow" Button`
+    t =     8.79s Collecting debug information to assist test failure triage
+    t =     8.79s     Requesting snapshot of accessibility hierarchy for app with pid 2755
+    t =     8.86s Checking existence of `"Record voice message" Button`
+    t =     8.99s Find the "Record voice message" Button
+    t =     9.11s Press "Record voice message" Button[0.50, 0.50] for 1.2 seconds, then drag to "Record voice message" Button[0.50, 0.50] -> (-200.0, 0.0) with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =     9.11s     Wait for org.liquidgram.messenger to idle
+    t =     9.11s     Find the "Record voice message" Button
+    t =     9.21s     Check for interrupting elements affecting "Record voice message" Button
+    t =     9.26s     Synthesize event
+    t =     9.26s         Find the "Record voice message" Button
+    t =     9.35s         Find the "Record voice message" Button
+    t =     9.43s         Find the "Record voice message" Button
+    t =     9.52s         Find the "Record voice message" Button
+    t =     9.62s         Find the "Record voice message" Button
+    t =    11.56s     Wait for org.liquidgram.messenger to idle
+    t =    11.56s Waiting 20.0s for StaticText (First Match) to exist
+    t =    12.58s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    12.58s         Checking existence of `StaticText (First Match)`
+    t =    12.67s Checking existence of `"Record voice message" Button`
+    t =    12.78s Find the "Record voice message" Button
+    t =    12.87s Checking existence of `"Cancel voice recording" Button`
+    t =    13.10s Added attachment named '01-cancelled'
+    t =    14.10s Press "Record voice message" Button[0.50, 0.50] for 1.2 seconds, then drag to "Record voice message" Button[0.50, 0.50] -> (0.0, -200.0) with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    14.10s     Wait for org.liquidgram.messenger to idle
+    t =    14.11s     Find the "Record voice message" Button
+    t =    14.19s     Check for interrupting elements affecting "Record voice message" Button
+    t =    14.25s     Synthesize event
+    t =    14.25s         Find the "Record voice message" Button
+    t =    14.33s         Find the "Record voice message" Button
+    t =    14.43s         Find the "Record voice message" Button
+    t =    14.52s         Find the "Record voice message" Button
+    t =    14.61s         Find the "Record voice message" Button
+    t =    16.53s     Wait for org.liquidgram.messenger to idle
+    t =    16.53s Checking existence of `"Cancel voice recording" Button`
+    t =    16.65s Find the "Cancel voice recording" Button
+    t =    16.76s Waiting 20.0s for StaticText (First Match) to exist
+    t =    17.78s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    17.78s         Checking existence of `StaticText (First Match)`
+    t =    18.00s Added attachment named '02-locked'
+    t =    18.00s Tap "Cancel voice recording" Button
+    t =    18.00s     Wait for org.liquidgram.messenger to idle
+    t =    18.00s     Find the "Cancel voice recording" Button
+    t =    18.09s     Check for interrupting elements affecting "Cancel voice recording" Button
+    t =    18.14s     Synthesize event
+    t =    18.43s     Wait for org.liquidgram.messenger to idle
+    t =    18.44s Waiting 20.0s for StaticText (First Match) to exist
+    t =    19.45s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    19.45s         Checking existence of `StaticText (First Match)`
+    t =    19.52s Checking existence of `"Record voice message" Button`
+    t =    19.61s Find the "Record voice message" Button
+    t =    19.83s Added attachment named '03-discarded'
+    t =    19.83s Tear Down
+Test Case '-[LiquidgramUITests.RecordingTests testHoldRecordsVoiceAndSlidesCancelOrLock]' passed (20.038 seconds).
+Test Case '-[LiquidgramUITests.RecordingTests testTapSwitchesBetweenVoiceAndVideo]' started.
+    t =     0.00s Start Test at 2026-10-29 17:35:46.710
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.00s     Launch org.liquidgram.messenger
+    t =     0.00s         Terminate org.liquidgram.messenger:6522
+    t =     1.31s         Setting up automation session
+    t =     2.43s         Wait for org.liquidgram.messenger to idle
+    t =     3.72s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.67s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     4.91s Find the Any (Element at index 0)
+    t =     4.98s Tap "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     4.98s     Wait for org.liquidgram.messenger to idle
+    t =     4.98s     Find the "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     5.04s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 17:34Договорились! До завтра 💙1" Button
+    t =     5.10s     Synthesize event
+    t =     5.42s     Wait for org.liquidgram.messenger to idle
+    t =     5.42s Waiting 2.0s for "Allow" Button to exist
+    t =     6.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     6.44s         Checking existence of `"Allow" Button`
+    t =     6.47s         Capturing element debug description
+    t =     7.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =     7.42s         Checking existence of `"Allow" Button`
+    t =     7.46s         Capturing element debug description
+    t =     7.46s     Checking existence of `"Allow" Button`
+    t =     7.49s Collecting debug information to assist test failure triage
+    t =     7.49s     Requesting snapshot of accessibility hierarchy for app with pid 2755
+    t =     7.53s Checking existence of `"Record voice message" Button`
+    t =     7.64s Find the "Record voice message" Button
+    t =     7.89s Added attachment named '01-voice-mode'
+    t =     7.89s Tap "Record voice message" Button
+    t =     7.89s     Wait for org.liquidgram.messenger to idle
+    t =     7.89s     Find the "Record voice message" Button
+    t =     7.97s     Check for interrupting elements affecting "Record voice message" Button
+    t =     8.02s     Synthesize event
+    t =     8.32s     Wait for org.liquidgram.messenger to idle
+    t =     8.32s Checking existence of `"Record video message" Button`
+    t =     8.42s Find the "Record video message" Button
+    t =     8.52s Waiting 20.0s for Any (First Match) to exist
+    t =     9.53s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     9.53s         Checking existence of `Any (First Match)`
+    t =     9.79s Added attachment named '02-video-mode'
+    t =     9.79s Checking existence of `StaticText (First Match)`
+    t =    10.87s Tap "Record video message" Button
+    t =    10.87s     Wait for org.liquidgram.messenger to idle
+    t =    10.88s     Find the "Record video message" Button
+    t =    10.96s     Check for interrupting elements affecting "Record video message" Button
+    t =    11.01s     Synthesize event
+    t =    11.30s     Wait for org.liquidgram.messenger to idle
+    t =    11.31s Checking existence of `"Record voice message" Button`
+    t =    11.67s Find the "Record voice message" Button
+    t =    11.79s Waiting 20.0s for Any (First Match) to exist
+    t =    12.83s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    12.83s         Checking existence of `Any (First Match)`
+    t =    13.08s Added attachment named '03-voice-mode-again'
+    t =    13.08s Tear Down
+Test Case '-[LiquidgramUITests.RecordingTests testTapSwitchesBetweenVoiceAndVideo]' passed (13.288 seconds).
+Test Suite 'RecordingTests' passed at 2026-10-29 17:35:59.998.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 33.326 (33.327) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 17:35:59.999.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 57.714 (57.717) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 17:35:59.999.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 57.714 (57.718) seconds
+2026-10-29 17:36:00.898 xcodebuild[4381:18160] [MT] IDETestOperationsObserverDebug: 87.334 elapsed -- Testing started completed.
+2026-10-29 17:36:00.898 xcodebuild[4381:18160] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 17:36:00.898 xcodebuild[4381:18160] [MT] IDETestOperationsObserverDebug: 87.334 sec, +87.334 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

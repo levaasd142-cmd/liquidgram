@@ -1,0 +1,12 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-29 17:35:11.425 Df Liquidgram[5788:5a60] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 17:35:12.237 Df Liquidgram[5788:5a60] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 17:35:29.160 Df Liquidgram[6522:633c] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 17:35:29.959 Df Liquidgram[6522:633c] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 17:35:49.000 Df Liquidgram[7832:70e9] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 17:35:49.114 I  Liquidgram[7832:7152] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 17:35:49.777 Df Liquidgram[7832:70e9] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 17:36:20.342 Df Liquidgram[9258:80df] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 17:36:20.433 I  Liquidgram[9258:8105] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 17:36:21.132 Df Liquidgram[9258:80df] [org.liquidgram.messenger:SelfTest] Removed the web data
