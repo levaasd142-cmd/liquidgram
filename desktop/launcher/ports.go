@@ -21,7 +21,8 @@ const (
 )
 
 // Fixed ports below the Windows dynamic range (49152 and up), so outgoing connections never take
-// them. They sit in different thousands, so one reserved range rarely covers all of them.
+// them. They sit in different thousands, so one reserved range rarely covers all of them. The web app
+// lists the same ports in `src/util/desktopLauncher.ts`.
 var defaultPorts = []int{47819, 43819, 39819, 35819, 31819}
 
 var errHandedOff = errors.New("handed off to the running instance")

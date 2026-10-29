@@ -1,7 +1,9 @@
 import { MouseButton } from './browser/windowEnvironment';
 
-// The desktop launcher in `desktop/launcher` serves the app on this host and answers these paths
+// The desktop launcher in `desktop/launcher` serves the app on this host and one of these ports (`defaultPorts`
+// in `ports.go`) and answers the paths below. Other local servers are never pinged.
 const LAUNCHER_HOSTNAME = '127.0.0.1';
+const LAUNCHER_PORTS = new Set(['47819', '43819', '39819', '35819', '31819']);
 const LAUNCHER_PING_URL = './__liquidgram/ping';
 const LAUNCHER_OPEN_URL = './__liquidgram/open-url';
 const LAUNCHER_INSTANCE_HEADER = 'X-Liquidgram-Instance';
@@ -20,7 +22,8 @@ let openBrowserWindow: typeof window.open;
 // The launcher shows the app in a browser window with a profile of its own, so links to other sites go to
 // the default browser, where the user's sign-ins and bookmarks live
 export default async function setupDesktopLauncherLinks() {
-  if (isSetup || window.location.hostname !== LAUNCHER_HOSTNAME) return;
+  const { hostname, port } = window.location;
+  if (isSetup || hostname !== LAUNCHER_HOSTNAME || !LAUNCHER_PORTS.has(port)) return;
   isSetup = true;
 
   launcherInstanceId = await fetchLauncherInstanceId();
