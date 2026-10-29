@@ -28,6 +28,7 @@ import useAppLayout from '../../../hooks/useAppLayout';
 import useFlag from '../../../hooks/useFlag';
 import useForceUpdate from '../../../hooks/useForceUpdate';
 import useLang from '../../../hooks/useLang';
+import useOverlayThemeColor from '../../../hooks/useOverlayThemeColor';
 
 import AnimatedIcon from '../../common/AnimatedIcon';
 import Avatar from '../../common/Avatar';
@@ -60,6 +61,9 @@ const PhoneCall = ({
   const { isMobile } = useAppLayout();
 
   const isOpen = Boolean(phoneCall && phoneCall.state !== 'discarded' && !isCallPanelVisible);
+
+  // The call fills the screen on phones
+  useOverlayThemeColor(isOpen && isMobile);
 
   const exitFullscreenIfNeeded = useCallback(() => {
     if (document.fullscreenElement === containerRef.current) {

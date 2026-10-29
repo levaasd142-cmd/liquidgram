@@ -61,6 +61,7 @@ import useFlag from '../../hooks/useFlag';
 import useForceUpdate from '../../hooks/useForceUpdate';
 import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
+import useOverlayThemeColor from '../../hooks/useOverlayThemeColor';
 import { exitPictureInPictureIfNeeded, PICTURE_IN_PICTURE_SIGNAL } from '../../hooks/usePictureInPicture';
 import usePrevious from '../../hooks/usePrevious';
 import usePreviousDeprecated from '../../hooks/usePreviousDeprecated';
@@ -204,6 +205,8 @@ const MediaViewer = ({
   }
 
   const [getIsPictureInPicture] = PICTURE_IN_PICTURE_SIGNAL;
+
+  useOverlayThemeColor(isOpen && !isHidden);
 
   useEffect(() => {
     if (!isOpen || getIsPictureInPicture()) {

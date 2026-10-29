@@ -21,6 +21,7 @@ import { animateClosing, animateOpening } from './helpers/ghostAnimation';
 import useFlag from '../../hooks/useFlag';
 import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
+import useOverlayThemeColor from '../../hooks/useOverlayThemeColor';
 import usePreviousDeprecated from '../../hooks/usePreviousDeprecated';
 import { dispatchPriorityPlaybackEvent } from '../../hooks/usePriorityPlaybackCheck';
 import useSlideSizes from './hooks/useSlideSizes';
@@ -71,6 +72,8 @@ function StoryViewer({
   const prevPeerId = usePreviousDeprecated(peerId);
   const prevOrigin = usePreviousDeprecated(origin);
   const isGhostAnimation = Boolean(withAnimation && !shouldSkipHistoryAnimations);
+
+  useOverlayThemeColor(isOpen);
 
   useEffect(() => {
     if (!isOpen) {
