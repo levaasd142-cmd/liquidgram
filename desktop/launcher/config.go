@@ -69,8 +69,9 @@ func buildInstanceID(dataDir string) string {
 	return hex.EncodeToString(sum[:16])
 }
 
-// Creates the secret that a second launch presents to get a window. It stays in the data folder, which
-// other accounts on the computer cannot read, so only this user's launches can open windows here.
+// Creates the secret that a second launch reads from the data folder, which other accounts on the
+// computer cannot read, and that the app window gets in its launch URL. The file is written before the
+// server starts, so a launch that reached the server never reads it half-written.
 func createLaunchToken(dataDir string) (string, error) {
 	secret := make([]byte, tokenBytes)
 	if _, err := rand.Read(secret); err != nil {
@@ -78,7 +79,10 @@ func createLaunchToken(dataDir string) (string, error) {
 	}
 
 	token := hex.EncodeToString(secret)
-	return token, os.WriteFile(filepath.Join(dataDir, tokenFileName), []byte(token), 0o600)
+	if err := os.WriteFile(filepath.Join(dataDir, tokenFileName), []byte(token), 0o600); err != nil {
+		return "", err
+	}
+	return token, nil
 }
 
 func readLaunchToken(dataDir string) string {

@@ -16,5 +16,5 @@ func showDialog(message string, isWarning bool) {
 	if isWarning {
 		icon = windows.MB_ICONWARNING
 	}
-	windows.MessageBox(0, text, caption, windows.MB_OK|icon|windows.MB_SETFOREGROUND)
+	windows.MessageBox(0, text, caption, windows.MB_OK|icon|windows.MB_SETFOREGROUND|windows.MB_TOPMOST)
 }

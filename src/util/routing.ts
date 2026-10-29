@@ -2,6 +2,7 @@ import type { MessageListType, ThreadId } from '../types';
 import { MAIN_THREAD_ID } from '../api/types';
 
 import { DC_IDS } from '../config';
+import { claimLauncherToken } from './desktopLauncherToken';
 
 const MAX_USER_ID_LENGTH = 19;
 const MAX_USER_ID = 9223372036854775807n;
@@ -25,6 +26,8 @@ let hasInvalidWebLogin = false;
 captureInitialLocation();
 
 function captureInitialLocation() {
+  claimLauncherToken();
+
   const url = new URL(window.location.href);
   const hash = url.hash.slice(1);
   const separator = hash.indexOf('?');

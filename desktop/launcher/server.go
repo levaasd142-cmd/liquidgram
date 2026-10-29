@@ -25,11 +25,14 @@ const (
 	pingPath          = controlPathPrefix + "ping"
 	openPath          = controlPathPrefix + "open"
 	openURLPath       = controlPathPrefix + "open-url"
-	instanceHeader    = "X-Liquidgram-Instance"
 	tokenHeader       = "X-Liquidgram-Token"
 	signatureApp      = "liquidgram"
 	indexFileName     = "index.html"
 	defaultMediaType  = "application/octet-stream"
+
+	// The app window gets the launch token in its URL fragment, which never reaches any server.
+	// `src/util/desktopLauncherToken.ts` reads it under this key.
+	tokenFragmentKey = "liquidgram-launcher"
 
 	maxExternalURLLength = 8192
 
@@ -93,7 +96,7 @@ type appHandler struct {
 	allowedHosts []string
 	// Public: tells launches whether this instance uses their data folder
 	instanceID string
-	// Secret: kept in the data folder for this user's launches only
+	// Secret: only this user's launches and the app windows know it
 	launchToken string
 	openWindow  func() error
 	openURL     func(string) error
@@ -156,9 +159,7 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 // Opens another app window for a second launch, which proves it runs as the same user by presenting
 // the token from the data folder
 func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
-	token := r.Header.Get(tokenHeader)
-	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || h.launchToken == "" ||
-		subtle.ConstantTimeCompare([]byte(token), []byte(h.launchToken)) != 1 {
+	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || !h.hasLaunchToken(r) {
 		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
 		return
 	}
@@ -173,10 +174,9 @@ func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
 
 // Opens a link to another site in the default browser, which has the user's sign-ins, instead of a
 // window of the app profile. Only the app page may ask: the browser marks its requests as same-origin,
-// and the instance ID comes from the ping, which other sites cannot read.
+// and the token reaches the page through the launch URL only.
 func (h *appHandler) serveOpenURL(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet || r.Header.Get("Sec-Fetch-Site") != "same-origin" ||
-		r.Header.Get(instanceHeader) != h.instanceID {
+	if r.Method != http.MethodGet || r.Header.Get("Sec-Fetch-Site") != "same-origin" || !h.hasLaunchToken(r) {
 		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
 		return
 	}
@@ -193,6 +193,11 @@ func (h *appHandler) serveOpenURL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusNoContent)
+}
+
+func (h *appHandler) hasLaunchToken(r *http.Request) bool {
+	token := r.Header.Get(tokenHeader)
+	return h.launchToken != "" && subtle.ConstantTimeCompare([]byte(token), []byte(h.launchToken)) == 1
 }
 
 // Accepts only absolute web addresses, so the system handler can never receive a file path or a

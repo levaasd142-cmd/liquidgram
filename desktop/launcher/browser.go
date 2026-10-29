@@ -29,10 +29,11 @@ type browser struct {
 // Tracks the app windows. The first browser process becomes the main process of the dedicated
 // profile, and later launches with the same profile only ask it for another window and exit.
 type desktopApp struct {
-	url        string
-	dataDir    string
-	extraArgs  []string
-	serverOnly bool
+	url         string
+	dataDir     string
+	launchToken string
+	extraArgs   []string
+	serverOnly  bool
 
 	mu        sync.Mutex
 	browser   browser
@@ -87,8 +88,14 @@ func (a *desktopApp) openWindow() error {
 }
 
 func (a *desktopApp) startBrowserLocked(isNewProfile bool) error {
+	// The page takes the token out of the fragment before anything else reads the URL
+	appURL := a.url
+	if a.launchToken != "" {
+		appURL += "#" + tokenFragmentKey + "=" + a.launchToken
+	}
+
 	args := []string{
-		"--app=" + a.url,
+		"--app=" + appURL,
 		"--user-data-dir=" + a.getProfileDir(),
 		"--no-first-run",
 		"--no-default-browser-check",

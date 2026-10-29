@@ -1,33 +1,18 @@
 import { MouseButton } from './browser/windowEnvironment';
+import { getLauncherToken } from './desktopLauncherToken';
 
-// The desktop launcher in `desktop/launcher` serves the app on this host and one of these ports (`defaultPorts`
-// in `ports.go`) and answers the paths below. Other local servers are never pinged.
-const LAUNCHER_HOSTNAME = '127.0.0.1';
-const LAUNCHER_PORTS = new Set(['47819', '43819', '39819', '35819', '31819']);
-const LAUNCHER_PING_URL = './__liquidgram/ping';
 const LAUNCHER_OPEN_URL = './__liquidgram/open-url';
-const LAUNCHER_INSTANCE_HEADER = 'X-Liquidgram-Instance';
-const LAUNCHER_SIGNATURE = 'liquidgram';
+const LAUNCHER_TOKEN_HEADER = 'X-Liquidgram-Token';
 const RE_WEB_PROTOCOL = /^https?:$/;
 
-type LauncherPing = {
-  app?: string;
-  instance?: string;
-};
-
 let isSetup = false;
-let launcherInstanceId: string | undefined;
 let openBrowserWindow: typeof window.open;
 
-// The launcher shows the app in a browser window with a profile of its own, so links to other sites go to
-// the default browser, where the user's sign-ins and bookmarks live
-export default async function setupDesktopLauncherLinks() {
-  const { hostname, port } = window.location;
-  if (isSetup || hostname !== LAUNCHER_HOSTNAME || !LAUNCHER_PORTS.has(port)) return;
+// The desktop launcher shows the app in a browser window with a profile of its own, so links to other sites
+// go to the default browser, where the user's sign-ins and bookmarks live
+export default function setupDesktopLauncherLinks() {
+  if (isSetup || !getLauncherToken()) return;
   isSetup = true;
-
-  launcherInstanceId = await fetchLauncherInstanceId();
-  if (!launcherInstanceId) return;
 
   openBrowserWindow = window.open.bind(window);
   window.open = openWindowOrExternalUrl;
@@ -66,7 +51,7 @@ function handleLinkClick(e: MouseEvent) {
 async function openInDefaultBrowser(url: string, target?: string, features?: string) {
   try {
     const response = await fetch(`${LAUNCHER_OPEN_URL}?url=${encodeURIComponent(url)}`, {
-      headers: { [LAUNCHER_INSTANCE_HEADER]: launcherInstanceId! },
+      headers: { [LAUNCHER_TOKEN_HEADER]: getLauncherToken()! },
     });
     if (response.ok) return;
   } catch {
@@ -74,16 +59,6 @@ async function openInDefaultBrowser(url: string, target?: string, features?: str
   }
 
   openBrowserWindow(url, target, features);
-}
-
-async function fetchLauncherInstanceId() {
-  try {
-    const response = await fetch(LAUNCHER_PING_URL, { cache: 'no-store' });
-    const ping: LauncherPing = await response.json();
-    return ping.app === LAUNCHER_SIGNATURE ? ping.instance : undefined;
-  } catch {
-    return undefined;
-  }
 }
 
 function getExternalUrl(url: string | URL) {

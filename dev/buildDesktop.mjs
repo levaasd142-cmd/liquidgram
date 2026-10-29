@@ -28,6 +28,7 @@ const ZIP_LEVEL = 9;
 const MEGABYTE = 1024 * 1024;
 const WINDOWS_VERSION_PARTS = 4;
 const MAX_VERSION_PART = 65535;
+const RE_DIGITS = /^\d+$/;
 const BYTE_ORDER_MARK = String.fromCodePoint(0xFEFF);
 const GO_HINT = 'Go 1.24 or newer is required, see go.dev/dl';
 const NSIS_HINT = 'NSIS is required for the installer: install it with `apt-get install nsis`, '
@@ -125,15 +126,15 @@ function buildLauncher({
 // Windows version resources take exactly four numbers up to 65535, so pre-release and build suffixes
 // are dropped
 function toWindowsVersion(version) {
-  const parts = version.split(/[-+]/)[0].split('.').map(Number);
+  const parts = version.split(/[-+]/)[0].split('.');
   const isValid = parts.length <= WINDOWS_VERSION_PARTS
-    && parts.every((part) => Number.isInteger(part) && part >= 0 && part <= MAX_VERSION_PART);
+    && parts.every((part) => RE_DIGITS.test(part) && Number(part) <= MAX_VERSION_PART);
   if (!isValid) {
     throw new Error(`Version ${version} in package.json cannot become a Windows version`);
   }
 
-  while (parts.length < WINDOWS_VERSION_PARTS) parts.push(0);
-  return parts.join('.');
+  while (parts.length < WINDOWS_VERSION_PARTS) parts.push('0');
+  return parts.map(Number).join('.');
 }
 
 function packPortableZip(exePath, outPath) {

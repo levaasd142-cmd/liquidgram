@@ -177,7 +177,7 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 		status  int
 	}{
 		{http.MethodGet, nil, http.StatusForbidden},
-		{http.MethodGet, map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{"X-Liquidgram-Instance": testInstance}, http.StatusForbidden},
 		{http.MethodGet, map[string]string{tokenHeader: "guess"}, http.StatusForbidden},
 		{http.MethodGet, map[string]string{tokenHeader: testToken, "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
 		{http.MethodHead, map[string]string{tokenHeader: testToken}, http.StatusForbidden},
@@ -195,7 +195,7 @@ func TestOpenWindowForSecondLaunch(t *testing.T) {
 
 func TestOpenExternalURL(t *testing.T) {
 	handler, actions := newTestHandler()
-	fromApp := map[string]string{"Sec-Fetch-Site": "same-origin", instanceHeader: testInstance}
+	fromApp := map[string]string{"Sec-Fetch-Site": "same-origin", tokenHeader: testToken}
 	tests := []struct {
 		url     string
 		headers map[string]string
@@ -203,9 +203,11 @@ func TestOpenExternalURL(t *testing.T) {
 	}{
 		{"https://example.com/path?q=1#top", fromApp, http.StatusNoContent},
 		{"http://example.com", fromApp, http.StatusNoContent},
-		{"https://example.com", map[string]string{"Sec-Fetch-Site": "cross-site", instanceHeader: testInstance}, http.StatusForbidden},
-		{"https://example.com", map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
+		{"https://example.com", map[string]string{"Sec-Fetch-Site": "cross-site", tokenHeader: testToken}, http.StatusForbidden},
+		{"https://example.com", map[string]string{tokenHeader: testToken}, http.StatusForbidden},
 		{"https://example.com", map[string]string{"Sec-Fetch-Site": "same-origin"}, http.StatusForbidden},
+		{"https://example.com", map[string]string{"Sec-Fetch-Site": "same-origin", "X-Liquidgram-Instance": testInstance}, http.StatusForbidden},
+		{"https://example.com", map[string]string{"Sec-Fetch-Site": "same-origin", tokenHeader: "guess"}, http.StatusForbidden},
 		{"file:///C:/Windows/System32/calc.exe", fromApp, http.StatusBadRequest},
 		{`C:\Windows\System32\calc.exe`, fromApp, http.StatusBadRequest},
 		{`\\server\share\setup.exe`, fromApp, http.StatusBadRequest},

@@ -47,10 +47,14 @@ const (
 	messageNoDataDir = "Liquidgram не может создать папку для своих данных.\n\n" +
 		"Liquidgram could not create its data folder: %v"
 	messageSparePort = "Порт %d, к которому привязаны ваш вход, ключи и чаты в Liquidgram, сейчас занят " +
-		"другой программой, поэтому Liquidgram открылся без них.\n\n" +
+		"другой программой, поэтому Liquidgram откроется без них.\n\n" +
 		"Ничего не потеряно: закройте Liquidgram, перезагрузите компьютер и откройте Liquidgram снова.\n\n" +
-		"Port %d, which holds your Liquidgram data, is busy, so the app opened without it. " +
+		"Port %d, which holds your Liquidgram data, is busy, so the app opens without it. " +
 		"Nothing is lost: close Liquidgram, restart the computer and open it again."
+	messageAlreadyRunning = "Liquidgram уже запущен, но не открыл новое окно.\n\n" +
+		"Закройте все окна Liquidgram и запустите его снова.\n\n" +
+		"Liquidgram is already running but did not open a new window. " +
+		"Close all Liquidgram windows and start it again."
 )
 
 func main() {
@@ -81,6 +85,10 @@ func run() int {
 		log.Printf("The running instance on port %d opened a window", port)
 		return 0
 	}
+	if errors.Is(err, errAlreadyRunning) {
+		showWarning(messageAlreadyRunning)
+		return 0
+	}
 	if err != nil {
 		log.Print(err)
 		showError(messageNoPort)
@@ -96,17 +104,19 @@ func run() int {
 		log.Printf("Saved port %d is unavailable, using port %d for this run", savedPort, port)
 	}
 
-	// Without a token second launches cannot hand off, but this window still works
+	// Without a token this window still works, but second launches cannot open more windows and
+	// links open in a window of the app profile
 	launchToken, err := createLaunchToken(dataDir)
 	if err != nil {
 		log.Printf("Could not save the launch token: %v", err)
 	}
 
 	app := &desktopApp{
-		url:        "http://" + net.JoinHostPort(loopbackIP, strconv.Itoa(port)) + "/",
-		dataDir:    dataDir,
-		extraArgs:  strings.Fields(os.Getenv(envBrowserArgs)),
-		serverOnly: os.Getenv(envServerOnly) == "1",
+		url:         "http://" + net.JoinHostPort(loopbackIP, strconv.Itoa(port)) + "/",
+		dataDir:     dataDir,
+		launchToken: launchToken,
+		extraArgs:   strings.Fields(os.Getenv(envBrowserArgs)),
+		serverOnly:  os.Getenv(envServerOnly) == "1",
 	}
 
 	server := &http.Server{
@@ -150,15 +160,15 @@ func run() int {
 		saveConfig(dataDir, cfg)
 	}
 
+	// The window of the spare origin shows none of the user's data, so the user learns why first
+	if savedPort != 0 && savedPort != port {
+		showWarning(fmt.Sprintf(messageSparePort, savedPort, savedPort))
+	}
+
 	if err := app.start(browser); err != nil {
 		log.Printf("Could not start the browser: %v", err)
 		showError(fmt.Sprintf(messageStartFailed, logPath, err))
 		return 1
-	}
-
-	// The window of the spare origin opens without the user's data, so the user learns why
-	if savedPort != 0 && savedPort != port {
-		go showWarning(fmt.Sprintf(messageSparePort, savedPort, savedPort))
 	}
 
 	app.waitUntilClosed()
