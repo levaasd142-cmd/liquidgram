@@ -33,12 +33,13 @@ REPORT_TOOL="$TESTS_DIR/Tools/report.mjs"
 WEBAPP_DIR="$IOS_DIR/Liquidgram/WebApp"
 # The `worker` check of the self-test loads this echo worker from the app's origin; only the test build has it
 SELFTEST_WORKER="liquidgram-selftest-worker.js"
+DARK_MODE_TEST="LiquidgramUITests/CoreTests/testDemoAccount"
+APP_LOG_PREDICATE='subsystem == "org.liquidgram.messenger"'
+APP_LOG_WINDOW="30m"
 # Tests that also run with the simulator in dark mode: the demo account and the color of the status bar strip
-DARK_MODE_TESTS="CoreTests/testDemoAccount,UsabilityTests/testStatusBarStripMatchesTheme"
+DARK_MODE_TESTS="$DARK_MODE_TEST,UsabilityTests/testStatusBarStripMatchesTheme"
 # Recording tests would stop at the system's permission prompts; a grant that a runtime lacks only logs a warning
 PRIVACY_GRANTS=(microphone camera photos)
-APP_LOG_PREDICATE="subsystem == \"$APP_BUNDLE_ID\""
-APP_LOG_WINDOW="30m"
 # Seconds per test; XCTest rounds them up to whole minutes
 DEFAULT_TEST_TIME_ALLOWANCE=180
 MAX_TEST_TIME_ALLOWANCE=300
@@ -183,7 +184,7 @@ run_tests() {
     -test-timeouts-enabled YES \
     -default-test-execution-time-allowance "$DEFAULT_TEST_TIME_ALLOWANCE" \
     -maximum-test-execution-time-allowance "$MAX_TEST_TIME_ALLOWANCE" \
-    "$@" \
+    "$@" ${skip_testing[@]+"${skip_testing[@]}"} \
     2>&1 | tee "$WORK_DIR/$appearance.log" || status=$?
   return "$status"
 }
@@ -214,12 +215,14 @@ for entry in ${requested_tests[@]+"${requested_tests[@]}"}; do
     filter="$(normalize_test "$entry")" && only_filters+=("$filter")
   fi
 done
-test_arguments=()
+only_testing=()
 for filter in ${only_filters[@]+"${only_filters[@]}"}; do
-  test_arguments+=("-only-testing:$filter")
+  only_testing+=("-only-testing:$filter")
 done
+# `run_tests` adds these to every pass
+skip_testing=()
 for filter in ${skip_filters[@]+"${skip_filters[@]}"}; do
-  test_arguments+=("-skip-testing:$filter")
+  skip_testing+=("-skip-testing:$filter")
 done
 
 # The dark pass repeats the tests of DARK_MODE_TESTS that this run selects
@@ -236,7 +239,7 @@ fi
 
 test_status=0
 if [[ "$build_status" == 0 ]]; then
-  run_tests light ${test_arguments[@]+"${test_arguments[@]}"} || test_status=1
+  run_tests light ${only_testing[@]+"${only_testing[@]}"} || test_status=1
   export_results light
 
   if [[ "${#dark_arguments[@]}" -gt 0 ]]; then

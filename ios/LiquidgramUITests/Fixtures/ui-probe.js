@@ -1,7 +1,7 @@
 // Lets the UI tests measure the page and act inside it. XCUITest sees web content only through the accessibility
 // tree, so this script publishes measurements as the accessibility label of a tiny element and adds buttons that the
 // tests tap to run page code. The tests inject it at document start through `LIQUIDGRAM_TEST_USER_SCRIPT` when they
-// launch with `Launch(shouldInstallProbe: true)`.
+// launch with `Launch(fixtures: ["ui-probe"])`.
 //
 // The label is `liquidgram-probe ` followed by JSON:
 // - `innerWidth`, `innerHeight`, `clientHeight`, `visualHeight`: the sizes of the layout and visual viewports;

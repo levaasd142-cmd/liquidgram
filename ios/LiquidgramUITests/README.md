@@ -1,6 +1,6 @@
 # UI tests of the iPhone app
 
-XCTest UI tests that start the real app on an iPhone simulator, with the bundled production web build, and look at it the way a person does: through the screen and the accessibility tree. CI runs them on every build of the IPA; the report, with screenshots of every step and a contact sheet of all of them, is a branch of the repository.
+XCTest UI tests that start the real app on an iPhone simulator, with the bundled production web build, and look at it the way a person does: through the screen and the accessibility tree. CI runs them on every build of the IPA; the report, with screenshots of every step, is a branch of the repository.
 
 ## Running them
 
@@ -13,7 +13,7 @@ The `build` job of [`.github/workflows/ios.yml`](../../.github/workflows/ios.yml
 
 `Publish release` runs only on the default branch and only when the UI tests passed, so a failing test keeps the previous `ios-latest` release. The IPA artifact is uploaded either way.
 
-A manual run (Actions › Build iOS app › Run workflow) takes an optional `ui_tests` input in the form of `UI_TESTS_ONLY` below, such as `UsabilityTests,CoreTests/testDemoAccount`; such a run never publishes a release. From the command line: `gh api -X POST repos/<owner>/<repo>/actions/workflows/ios.yml/dispatches -f ref=<branch> -f 'inputs[ui_tests]=GestureTests'`.
+A manual run (Actions › Build iOS app › Run workflow) takes an optional `ui_tests` input with comma-separated `-only-testing` filters, such as `LiquidgramUITests/CoreTests`; such a run never publishes a release.
 
 ### On a Mac
 
@@ -27,7 +27,7 @@ UI_TESTS_ONLY=UsabilityTests,-UsabilityTests/testAppStaysPortrait bash ios/run-u
 
 | Variable | Effect |
 | --- | --- |
-| `UI_TESTS_ONLY` | Comma-separated tests to run: a class or `Class/test`, with or without the `LiquidgramUITests/` prefix. An entry that starts with `-` is skipped instead, alone or within the selected classes. A selection that runs no test fails the script |
+| `UI_TESTS_ONLY` | Comma-separated tests to run: a class or `Class/test`, with or without the `LiquidgramUITests/` prefix. An entry that starts with `-` is skipped instead, alone or within the selected classes. A selection that runs no test fails the script. The `ui_tests` input of a manual run takes the same form, also from the command line: `gh api -X POST repos/<owner>/<repo>/actions/workflows/ios.yml/dispatches -f ref=<branch> -f 'inputs[ui_tests]=UsabilityTests,-UsabilityTests/testAppStaysPortrait'` |
 | `UI_TESTS_DARK` | Comma-separated tests for the dark mode pass, in the same form, instead of `DARK_MODE_TESTS` in the script (`CoreTests/testDemoAccount` and `UsabilityTests/testStatusBarStripMatchesTheme`). The pass runs those that `UI_TESTS_ONLY` selects |
 | `UI_TESTS_SKIP_DARK` | `1` skips the dark mode pass |
 | `UI_TESTS_DEVICE` | A simulator to use by name |
@@ -75,6 +75,26 @@ Every test starts the app with `-LiquidgramResetState YES` unless it tests persi
 | `testDemoAccount` | The demo account shows its chats; a chat opens; the composer takes typed text (nothing is sent) and stays above the keyboard. Runs in light and dark mode |
 | `testDemoAccountSurvivesRestart` | After the home button and a restart without the reset and without seeding, the chats of the demo account are still there: the website data store keeps them on disk and the page keeps its origin |
 
+### `UsabilityTests`: what the first user of the app reported
+
+The user of v1 found the interface shifted, many buttons dead, the gestures bad. These tests check the behavior that the fixes give the app: the page below the status bar, a page that shrinks above the keyboard instead of sliding up, portrait only on iPhone. A control of a top row that starts below the status bar also starts at most 24 pt below the top of the page: a lower one means that the page adds a top inset of its own to the shell's. Each test checks everything it can before it fails and lists every problem it found in its failure message, with the frames involved, so one run of a broken build shows all of them. A tap on a control goes to the center of its frame like a finger, also where XCUITest itself would refuse it, such as under the status bar. The tests that measure the page inside or need page code launch with `Fixtures/ui-probe.js`.
+
+| Test | Checks |
+| --- | --- |
+| `testChatListTopRowWorks` | Open menu, the search field and Ghost mode start below the status bar; Open menu opens the main menu, which a tap outside closes; the search field takes the focus with the keyboard and Return to chat list leaves it; Ghost mode shows its toast |
+| `testChatTopRowWorks` | Back, the title and More options of a chat start below the status bar; More options opens the chat menu; the title opens the profile, whose Back returns to the chat; Back returns to the chat list |
+| `testProfileTopRowWorks` | Back and Edit of a profile start below the status bar; Edit opens the contact editor and Back returns from it; Back closes the profile |
+| `testSettingsTopRowWorks` | Go back, Search, Edit profile and More options of the settings start below the status bar; More options opens its menu (Log Out, never tapped); Search opens the settings search; Edit profile opens the profile editor; Go back returns from each and finally to the chat list |
+| `testKeyboardKeepsChatLayout` | With the keyboard up in a chat: the page ends at the top of the keyboard (its bar of predictions included), the header did not move, the composer sits at most 24 pt above the keyboard, the newest message is between the header and the composer, and the page has no scroll offset. Once the keyboard hides, every frame is back where it was; after two more keyboard cycles too, the page never scrolled (`scrollTop`, `scrollY`, `visualViewport.pageTop` and `offsetTop` stayed 0), and the root element, `--vh` and the visual viewport match the window height |
+| `testDraggingMessagesHidesKeyboard` | A drag down on the messages hides the keyboard |
+| `testAppStaysPortrait` | With the simulator turned to landscape the window and the page stay portrait; the test turns the simulator back before it fails |
+| `testStatusBarStripMatchesTheme` | The page starts below the status bar, and the strip above it has the page's theme color (`<meta name="theme-color">`) in two rows of pixels across the screen: at its top and right above the page. Runs in light and dark mode |
+| `testPageIsActiveBeforeFirstTap` | Right after the start, before any tap, the page does not treat itself as being in the background (`body.in-background`), which would stop its animations |
+| `testAttachMenuAndEmojiPanelFitOnScreen` | The attach menu opens with its items between the status bar and the home indicator, and a tap outside closes it; the tabs of the emoji panel are above the home indicator and the composer above the panel |
+| `testMediaViewerOpensAndCloses` | A tap on the photo of the demo account opens the media viewer, whose Close button starts below the status bar and closes it |
+| `testLongPressOnMessageOpensMenu` | A long press on a message opens its menu on screen, and the first tap on Reply closes the menu and starts a reply. `GestureTests` checks the other gestures |
+| `testDelayedWindowOpenShowsInAppBrowser` | A `window.open` that the page calls 1.5 s after a tap, like flows that wait for the server first, opens the in-app browser: its Close or Done button or the address shows, or, where XCUITest cannot see into Safari's view, a view covers the page while the app stays in front |
+
 ### `FeatureTests`: the native features of version 2
 
 They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names.
@@ -94,26 +114,6 @@ They follow the shared v2 contract, so on a build without these features they fa
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
 
-### `UsabilityTests`: what the first user of the app reported
-
-The user of v1 found the interface shifted, many buttons dead, the gestures bad. These tests check the behavior that the fixes give the app: the page below the status bar, a page that shrinks above the keyboard instead of sliding up, portrait only on iPhone. A control of a top row that starts below the status bar also starts at most 24 pt below the top of the page: a lower one means that the page adds a top inset of its own to the shell's. Each test checks everything it can before it fails and lists every problem it found in its failure message, with the frames involved, so one run of a broken build shows all of them. A tap on a control goes to the center of its frame like a finger, also where XCUITest itself would refuse it, such as under the status bar. The tests that measure the page inside or need page code launch with `Fixtures/ui-probe.js`.
-
-| Test | Checks |
-| --- | --- |
-| `testChatListTopRowWorks` | Open menu, the search field and Ghost mode start below the status bar; Open menu opens the main menu, which a tap outside closes; the search field takes the focus with the keyboard and Return to chat list leaves it; Ghost mode shows its toast |
-| `testChatTopRowWorks` | Back, the title and More options of a chat start below the status bar; More options opens the chat menu; the title opens the profile, whose Back returns to the chat; Back returns to the chat list |
-| `testProfileTopRowWorks` | Back and Edit of a profile start below the status bar; Edit opens the contact editor and Back returns from it; Back closes the profile |
-| `testSettingsTopRowWorks` | Go back, Search, Edit profile and More options of the settings start below the status bar; More options opens its menu (Log Out, never tapped); Search opens the settings search; Edit profile opens the profile editor; Go back returns from each and finally to the chat list |
-| `testKeyboardKeepsChatLayout` | With the keyboard up in a chat: the page ends at the top of the keyboard (its bar of predictions included), the header did not move, the composer sits at most 24 pt above the keyboard, the newest message is between the header and the composer, and the page has no scroll offset. Once the keyboard hides, every frame is back where it was; after two more keyboard cycles too, the page never scrolled (`scrollTop`, `scrollY`, `visualViewport.pageTop` and `offsetTop` stayed 0), and the root element, `--vh` and the visual viewport match the window height |
-| `testDraggingMessagesHidesKeyboard` | A drag down on the messages hides the keyboard |
-| `testAppStaysPortrait` | With the simulator turned to landscape the window and the page stay portrait; the test turns the simulator back before it fails |
-| `testStatusBarStripMatchesTheme` | The page starts below the status bar, and the strip above it has the page's theme color (`<meta name="theme-color">`) in two rows of pixels across the screen: at its top and right above the page. Runs in light and dark mode |
-| `testPageIsActiveBeforeFirstTap` | Right after the start, before any tap, the page does not treat itself as being in the background (`body.in-background`), which would stop its animations |
-| `testAttachMenuAndEmojiPanelFitOnScreen` | The attach menu opens with its items between the status bar and the home indicator, and a tap outside closes it; the tabs of the emoji panel are above the home indicator and the composer above the panel |
-| `testMediaViewerOpensAndCloses` | A tap on the photo of the demo account opens the media viewer, whose Close button starts below the status bar and closes it |
-| `testLongPressOnMessageOpensMenu` | A long press on a message opens its menu on screen, and the first tap on Reply closes the menu and starts a reply. `GestureTests` checks the other gestures |
-| `testDelayedWindowOpenShowsInAppBrowser` | A `window.open` that the page calls 1.5 s after a tap, like flows that wait for the server first, opens the in-app browser |
-
 ## The self-test
 
 `Fixtures/selftest.js` is the body of an async function that `TestHooks` runs in the page through `callAsyncJavaScript` once the web app reports `appReady`, or 5 seconds after the first load of a page that never does, like the API keys screen. Each check has a 10-second limit. The JSON report becomes the accessibility value of `liquidgram.selftest.result`, the test attaches it, and the report shows it as a table.
@@ -123,7 +123,7 @@ The user of v1 found the interface shifted, many buttons dead, the gestures bad.
 | `bridge` | `__liquidgramNative.platform` is `ios` and `bridge.js` ran (`isBridgeInstalled`) |
 | `notificationBridge` | `window.Notification` is the class of `bridge.js`, not a native one, with `requestPermission` and a valid `permission` |
 | `noServiceWorker` | No service worker controls the page and none is registered |
-| `secureContext` | `isSecureContext` is true for the app's origin |
+| `secureContext` | `isSecureContext` is true for `http://127.0.0.1:47821` |
 | `webCrypto` | `crypto.subtle` computes the SHA-256 of `abc` |
 | `localStorage`, `indexedDb` | A value can be written and read back; IndexedDB opens, puts and gets |
 | `webAssembly` | A small module compiles and its `add(2, 3)` returns 5 |
@@ -146,7 +146,7 @@ The tests pass scripts to the app through the launch environment (`TestHooks.swi
 | `page-errors.js` | Every launch: records uncaught errors from document start, for the `noPageErrors` check |
 | `offline-api.js` | `Launch(shouldSeedDemoAccount: true)` or `Launch(shouldStayOffline: true)`: replaces the GramJS worker, the only part of the web app that connects to Telegram, with one that never answers, so a stored session stays on its cached state and nothing reaches Telegram |
 | `demo-account.js` | `Launch(shouldSeedDemoAccount: true)`: writes a signed-in session to `localStorage` (`account1`, `tt-global-state` with chats and messages dated relative to now) and API keys of the valid form, which the web app needs before it shows its main screen; offline, the keys are never used. The chat with Катя Дизайн has a photo, drawn on a canvas and stored as its `blobUrl` like a photo the web app has just sent, so the media viewer opens it without a download |
-| `ui-probe.js` | `Launch(shouldInstallProbe: true)`: publishes the page's measurements as the accessibility label of a tiny element, `liquidgram-probe {json}` (viewport sizes, scroll offsets and their highest values since the start, safe-area insets, `--vh`, the theme color, the focused element, `body.in-background`), and adds two nearly transparent buttons at the left edge that run page code: `liquidgram-probe-blur` takes the focus from the focused field and `liquidgram-probe-open-later` calls `window.open` 1.5 s after the tap |
+| `ui-probe.js` | `Launch(fixtures: ["ui-probe"])`: publishes the page's measurements as the accessibility label of a tiny element, `liquidgram-probe {json}` (viewport sizes, scroll offsets and their highest values since the start, safe-area insets, `--vh`, the theme color, the focused element, `body.in-background`), and adds two nearly transparent buttons at the left edge that run page code: `liquidgram-probe-blur` takes the focus from the focused field and `liquidgram-probe-open-later` calls `window.open` 1.5 s after the tap |
 | `selftest.js` | `Launch(shouldRunSelfTest: true)`: the self-test |
 | `liquidgram-selftest-worker.js` | Not injected: served from the web root for the `worker` check |
 

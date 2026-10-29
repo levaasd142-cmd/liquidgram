@@ -67,3 +67,21 @@ public enum UIDeviceOrientation: Int {
   case faceUp = 5
   case faceDown = 6
 }
+
+public enum UIUserInterfaceIdiom: Int {
+  case unspecified = -1
+  case phone = 0
+  case pad = 1
+  case tv = 2
+  case carPlay = 3
+  case mac = 5
+  case vision = 6
+}
+
+@MainActor
+open class UIDevice: NSObject {
+  open class var current: UIDevice { UIDevice() }
+  open var userInterfaceIdiom: UIUserInterfaceIdiom { .phone }
+  open var orientation: UIDeviceOrientation { .portrait }
+  open var systemVersion: String { "" }
+}

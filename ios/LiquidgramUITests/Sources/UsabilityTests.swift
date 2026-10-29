@@ -8,7 +8,7 @@ import XCTest
 /// fails and names every problem it found, so one run of a broken build shows all of them.
 ///
 /// Measurements inside the page and actions that XCUITest cannot perform come from `Fixtures/ui-probe.js`, which the
-/// tests that need it inject with `Launch(shouldInstallProbe: true)`.
+/// tests that need it inject with `Launch(fixtures: ["ui-probe"])`.
 final class UsabilityTests: LiquidgramUITestCase {
   /// A private chat with a long history and the chat with a photo in `Fixtures/demo-account.js`
   private static let demoChatTitle = "Аня Смирнова"
@@ -56,8 +56,11 @@ final class UsabilityTests: LiquidgramUITestCase {
   private static let openLaterHost = "example.com"
   private static let openLaterHeading = "Example Domain"
   private static let safariViewServiceBundleIdentifier = "com.apple.SafariViewService"
+  /// SpringBoard shows the system's alerts, such as permission prompts
+  private static let systemAlertsBundleIdentifier = "com.apple.springboard"
 
   // `Fixtures/ui-probe.js`
+  private static let probeFixture = "ui-probe"
   private static let probeLabelPrefix = "liquidgram-probe "
   private static let probeBlurButtonLabel = "liquidgram-probe-blur"
   private static let probeOpenLaterButtonLabel = "liquidgram-probe-open-later"
@@ -353,7 +356,7 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// back where it was, also after a few more keyboard cycles, and the page itself never scrolled.
   @MainActor
   func testKeyboardKeepsChatLayout() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     let composer = openChat(titled: Self.demoChatTitle)
     let back = waitForHittable(webButtons(labeled: Self.backLabel), "the Back button of the chat")
     let newest = waitForHittable(
@@ -473,7 +476,7 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// On a turned iPhone the app stays in portrait instead of switching to the tablet layout
   @MainActor
   func testAppStaysPortrait() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     waitForChatRow(titled: Self.demoChatTitle, "the chat list")
     let portraitFrame = app.windows.firstMatch.frame
     attachScreenshot("01-portrait")
@@ -504,7 +507,7 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// showing the page under the clock
   @MainActor
   func testStatusBarStripMatchesTheme() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     waitForChatRow(titled: Self.demoChatTitle, "the chat list")
     guard let probe = waitForProbe("the theme color of the page", until: { $0.themeColor != nil }),
           let themeColorText = probe.themeColor else {
@@ -551,7 +554,7 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// as focused, not as being in the background
   @MainActor
   func testPageIsActiveBeforeFirstTap() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     waitForChatRow(titled: Self.demoChatTitle, "the chat list")
     pause(Self.animationDelay)
     guard let probe = waitForProbe("the state of the page", until: { _ in true }) else {
@@ -569,7 +572,7 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// The attach menu and the emoji panel open and are entirely on screen, above the home indicator
   @MainActor
   func testAttachMenuAndEmojiPanelFitOnScreen() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     let composer = openChat(titled: Self.demoChatTitle)
     guard let probe = waitForProbe("the safe area of the page", until: { _ in true }) else {
       return
@@ -696,13 +699,13 @@ final class UsabilityTests: LiquidgramUITestCase {
   /// A link that the page opens a while after the tap, after the server answered, still reaches the in-app browser
   @MainActor
   func testDelayedWindowOpenShowsInAppBrowser() throws {
-    try launchApp(Launch(shouldSeedDemoAccount: true, shouldInstallProbe: true))
+    try launchApp(Launch(shouldSeedDemoAccount: true, fixtures: [Self.probeFixture]))
     waitForChatRow(titled: Self.demoChatTitle, "the chat list")
     tapProbeButton(Self.probeOpenLaterButtonLabel)
     var closeButton: XCUIElement?
     let isShown = waitUntil(timeout: Self.inAppBrowserTimeout) {
       closeButton = findInAppBrowserButton()
-      return closeButton != nil || isInAppBrowserAddressShown
+      return closeButton != nil || isInAppBrowserAddressShown || isPageCoveredInForeground
     }
     attachScreenshot("01-in-app-browser")
     guard isShown else {
@@ -969,6 +972,14 @@ final class UsabilityTests: LiquidgramUITestCase {
       Self.openLaterHeading
     )
     return app.descendants(matching: .any).matching(predicate).firstMatch.exists
+  }
+
+  /// Whether a view of the app covers the page while the app stays in front, as Safari's view does where XCUITest
+  /// cannot see into it; a system alert does not count
+  @MainActor
+  private var isPageCoveredInForeground: Bool {
+    let systemAlert = XCUIApplication(bundleIdentifier: Self.systemAlertsBundleIdentifier).alerts.firstMatch
+    return app.state == .runningForeground && !webView.isHittable && !systemAlert.exists
   }
 
   /// Fails with the screen and the accessibility tree attached
