@@ -1,6 +1,7 @@
 # Builds the web app and publishes it to GitHub Pages at https://<user>.github.io/<repo>/,
 # a permanent HTTPS address for installing Liquidgram on an iPhone home screen.
 # One-time setup: Settings → Pages → Build and deployment → Source: GitHub Actions.
+# Pages on private repositories needs a paid GitHub plan, so pushes there skip the deploy.
 
 name: Deploy to GitHub Pages
 
@@ -20,8 +21,10 @@ concurrency:
 
 jobs:
   build:
-    # Pushes deploy only from the default branch, whatever its name is
-    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
+    # Pushes deploy only from the default branch of a public repository, whatever the branch name is
+    if: >-
+      github.event_name == 'workflow_dispatch'
+      || (github.ref_name == github.event.repository.default_branch && !github.event.repository.private)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
