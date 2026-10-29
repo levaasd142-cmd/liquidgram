@@ -80,6 +80,7 @@ const AttachmentModalItem = ({
               autoPlay
               muted
               loop
+              playsInline
               disablePictureInPicture
             />
           </>

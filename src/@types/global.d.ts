@@ -179,6 +179,10 @@ interface HTMLElement {
 interface Navigator {
   // PWA badging extensions https://w3c.github.io/badging/
   setAppBadge?(count: number): Promise<void>;
+  // Audio Session API https://w3c.github.io/audio-session/, in Safari and `WKWebView`
+  audioSession?: {
+    type: 'auto' | 'playback' | 'transient' | 'transient-solo' | 'ambient' | 'play-and-record';
+  };
 }
 
 type Undefined<T> = {
