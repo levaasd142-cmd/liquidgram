@@ -96,7 +96,7 @@ The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID t
 
 ### `UsabilityTests`: what the first user of the app reported
 
-The user of v1 found the interface shifted, many buttons dead, the gestures bad. These tests check the behavior that the fixes give the app: the page below the status bar, a page that shrinks above the keyboard instead of sliding up, portrait only on iPhone. Each test checks everything it can before it fails and lists every problem it found in its failure message, with the frames involved, so one run of a broken build shows all of them. A tap on a control goes to the center of its frame like a finger, also where XCUITest itself would refuse it, such as under the status bar. The tests that measure the page inside or need page code launch with `Fixtures/ui-probe.js`.
+The user of v1 found the interface shifted, many buttons dead, the gestures bad. These tests check the behavior that the fixes give the app: the page below the status bar, a page that shrinks above the keyboard instead of sliding up, portrait only on iPhone. A control of a top row that starts below the status bar also starts at most 24 pt below the top of the page: a lower one means that the page adds a top inset of its own to the shell's. Each test checks everything it can before it fails and lists every problem it found in its failure message, with the frames involved, so one run of a broken build shows all of them. A tap on a control goes to the center of its frame like a finger, also where XCUITest itself would refuse it, such as under the status bar. The tests that measure the page inside or need page code launch with `Fixtures/ui-probe.js`.
 
 | Test | Checks |
 | --- | --- |

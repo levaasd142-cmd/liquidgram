@@ -78,6 +78,8 @@ final class UsabilityTests: LiquidgramUITestCase {
   private static let frameTolerance: CGFloat = 1
   /// The status bar of an iPhone with a notch is at least this tall; used when SpringBoard does not report one
   private static let minimumStatusBarHeight: CGFloat = 44
+  /// The buttons of a header start 8 to 12 pt below the top of the page
+  private static let maxTopRowOffset: CGFloat = 24
   /// The composer sits right above the keyboard: the web app keeps a margin of 8 pt below its field
   private static let maxComposerGap: CGFloat = 24
   /// A drag on the messages that hides the keyboard, in points
@@ -121,7 +123,7 @@ final class UsabilityTests: LiquidgramUITestCase {
     let ghostButton = waitForHittable(webButtons(labeled: Self.ghostModeLabel), "the ghost mode button")
     attachScreenshot("01-chat-list")
     var problems = Problems()
-    checkBelowStatusBar(
+    checkTopRow(
       [("Open menu", menuButton), ("The search field", searchField), ("Ghost mode", ghostButton)],
       &problems
     )
@@ -181,7 +183,7 @@ final class UsabilityTests: LiquidgramUITestCase {
     let more = waitForHittable(webButtons(labeled: Self.moreOptionsLabel), "the More options button of the chat")
     attachScreenshot("01-chat")
     var problems = Problems()
-    checkBelowStatusBar([("Back", back), ("The chat title", title), ("More options", more)], &problems)
+    checkTopRow([("Back", back), ("The chat title", title), ("More options", more)], &problems)
 
     let moreFrame = more.frame
     tapCenter(of: more)
@@ -192,7 +194,12 @@ final class UsabilityTests: LiquidgramUITestCase {
       problems.add("A tap on More options at \(Self.describe(moreFrame)) did not open the menu of the chat")
     }
 
-    let currentTitle = waitForHittable(webButtons(labeled: Self.demoChatTitle), "the title of the chat")
+    let titleQuery = webButtons(labeled: Self.demoChatTitle)
+    guard let currentTitle = findHittable(in: titleQuery, timeout: Self.reactionTimeout) else {
+      problems.add("The chat title left the screen after the menu of the chat")
+      assertNoProblems(problems, "The top row of a chat")
+      return
+    }
     let titleFrame = currentTitle.frame
     tapCenter(of: currentTitle)
     if let edit = findHittable(labeled: Self.editLabel, timeout: Self.reactionTimeout) {
@@ -208,7 +215,11 @@ final class UsabilityTests: LiquidgramUITestCase {
       problems.add("A tap on the chat title at \(Self.describe(titleFrame)) did not open the profile")
     }
 
-    let chatBack = waitForHittable(webButtons(labeled: Self.backLabel), "the Back button of the chat")
+    guard let chatBack = findHittable(in: webButtons(labeled: Self.backLabel), timeout: Self.reactionTimeout) else {
+      problems.add("The chat lost its Back button after the profile")
+      assertNoProblems(problems, "The top row of a chat")
+      return
+    }
     let chatBackFrame = chatBack.frame
     tapCenter(of: chatBack)
     problems.check(
@@ -224,12 +235,20 @@ final class UsabilityTests: LiquidgramUITestCase {
   func testProfileTopRowWorks() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
     let composer = openChat(titled: Self.demoChatTitle)
-    tapCenter(of: waitForHittable(webButtons(labeled: Self.demoChatTitle), "the title of the chat"))
-    let edit = waitForHittable(webButtons(labeled: Self.editLabel), "the Edit button of the profile")
+    let title = waitForHittable(webButtons(labeled: Self.demoChatTitle), "the title of the chat")
+    let titleFrame = title.frame
+    tapCenter(of: title)
+    var problems = Problems()
+    // The title is the way to the profile, so a title that does not react leaves nothing else to check
+    guard let edit = findHittable(in: webButtons(labeled: Self.editLabel), timeout: Self.reactionTimeout) else {
+      checkTopRow([("The chat title", title)], &problems)
+      problems.add("A tap on the chat title at \(Self.describe(titleFrame)) did not open the profile")
+      assertNoProblems(problems, "The top row of a profile")
+      return
+    }
     let back = waitForHittable(webButtons(labeled: Self.backLabel), "the Back button of the profile")
     attachScreenshot("01-profile")
-    var problems = Problems()
-    checkBelowStatusBar([("Back", back), ("Edit", edit)], &problems)
+    checkTopRow([("Back", back), ("Edit", edit)], &problems)
 
     let editFrame = edit.frame
     tapCenter(of: edit)
@@ -273,7 +292,7 @@ final class UsabilityTests: LiquidgramUITestCase {
     let more = waitForHittable(webButtons(labeled: Self.moreOptionsLabel), "the More options button of the settings")
     attachScreenshot("01-settings")
     var problems = Problems()
-    checkBelowStatusBar(
+    checkTopRow(
       [("Go back", goBack), ("Search", search), ("Edit profile", editProfile), ("More options", more)],
       &problems
     )
@@ -575,7 +594,12 @@ final class UsabilityTests: LiquidgramUITestCase {
       problems.add("A tap on the attach button at \(Self.describe(attachButtonFrame)) did not open the attach menu")
     }
 
-    let emojiButton = waitForHittable(webButtons(labeled: Self.emojiButtonLabel), "the emoji button")
+    let emojiButtonQuery = webButtons(labeled: Self.emojiButtonLabel)
+    guard let emojiButton = findHittable(in: emojiButtonQuery, timeout: Self.reactionTimeout) else {
+      problems.add("The emoji button is not on screen after the attach menu")
+      assertNoProblems(problems, "The panels of the composer")
+      return
+    }
     let emojiButtonFrame = emojiButton.frame
     tapCenter(of: emojiButton)
     let tabs = Self.symbolTabLabels.compactMap { label in
@@ -618,7 +642,7 @@ final class UsabilityTests: LiquidgramUITestCase {
     pause(Self.animationDelay)
     attachScreenshot("02-media-viewer")
     var problems = Problems()
-    checkBelowStatusBar([("The Close button of the media viewer", close)], &problems)
+    checkTopRow([("The Close button of the media viewer", close)], &problems)
 
     let closeFrame = close.frame
     tapCenter(of: close)
@@ -812,14 +836,22 @@ final class UsabilityTests: LiquidgramUITestCase {
     max(statusBarFrame.maxY, Self.minimumStatusBarHeight)
   }
 
+  /// Records controls of a top row that are under the status bar, or further down the page than a header puts them,
+  /// as when the page adds a top inset of its own below the status bar
   @MainActor
-  private func checkBelowStatusBar(_ controls: [(name: String, element: XCUIElement)], _ problems: inout Problems) {
+  private func checkTopRow(_ controls: [(name: String, element: XCUIElement)], _ problems: inout Problems) {
     let limit = statusBarBottom
+    let pageTop = webView.frame.minY
     for control in controls {
       let frame = control.element.frame
       problems.check(
         frame.minY >= limit - Self.frameTolerance,
         "\(control.name) at \(Self.describe(frame)) is under the status bar, which ends at y \(Int(limit))"
+      )
+      problems.check(
+        frame.minY - pageTop <= Self.maxTopRowOffset,
+        "\(control.name) at \(Self.describe(frame)) is \(Int(frame.minY - pageTop)) pt below the top of the page at "
+          + "y \(Int(pageTop)), so the page adds a top inset of its own"
       )
     }
   }
