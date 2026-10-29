@@ -112,6 +112,8 @@ func listenOrHandOff(port int, instanceID, dataDir string) (net.Listener, error)
 			rejections++
 		case ownerSameInstance:
 			isSameFolder = true
+			// The running instance opens the window, so it gets this launch's right to bring it to the front
+			allowAnyForeground()
 			windowErr := requestWindow(port, launchToken)
 			if windowErr == nil {
 				return nil, &handoffError{build: runningBuild}
