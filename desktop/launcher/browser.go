@@ -41,26 +41,27 @@ type desktopApp struct {
 	isClosing bool
 }
 
-// Picks the override from the test hook, the browser used before if it is still installed, or the
-// first installed one in the platform order
-func findBrowser(overridePath, previousID string) (browser, error) {
+// Picks the override from the test hook, the saved browser if it is still installed, or the first
+// installed one in the platform order. Reports a saved browser that is missing, because its profile
+// holds the user's data.
+func findBrowser(overridePath, savedID string) (selected browser, isSavedMissing bool, err error) {
 	if overridePath != "" {
 		if !isFile(overridePath) {
-			return browser{}, fmt.Errorf("browser override %q does not exist", overridePath)
+			return browser{}, false, fmt.Errorf("browser override %q does not exist", overridePath)
 		}
-		return browser{id: customBrowserID, path: overridePath}, nil
+		return browser{id: customBrowserID, path: overridePath}, false, nil
 	}
 
 	browsers := discoverBrowsers()
 	if len(browsers) == 0 {
-		return browser{}, errors.New("no supported browser is installed")
+		return browser{}, false, errors.New("no supported browser is installed")
 	}
 	for _, candidate := range browsers {
-		if candidate.id == previousID {
-			return candidate, nil
+		if candidate.id == savedID {
+			return candidate, false, nil
 		}
 	}
-	return browsers[0], nil
+	return browsers[0], savedID != "", nil
 }
 
 func (a *desktopApp) start(selected browser) error {

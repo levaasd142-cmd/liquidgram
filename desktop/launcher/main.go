@@ -58,6 +58,17 @@ const (
 		"Чтобы запустить эту версию, закройте все окна Liquidgram и откройте его снова.\n\n" +
 		"Another version of Liquidgram is running and opened the window. " +
 		"Close all Liquidgram windows and open it again to start this version."
+	messageUnreadableConfig = "Liquidgram не смог прочитать файл своих настроек, поэтому сейчас откроется с настройками " +
+		"по умолчанию. Ваш вход, ключи и чаты могут не появиться.\n\n" +
+		"Ничего не удалено, старый файл лежит здесь: %s\n\n" +
+		"Liquidgram could not read its settings file, so it opens with default settings now. " +
+		"Your login, keys and chats may not appear. Nothing is deleted; the old file is here: %s"
+	messageBrowserMissing = "Браузер %[1]s, через который Liquidgram открывался раньше, не найден, поэтому сейчас " +
+		"окно откроется через %[2]s.\n\n" +
+		"Ваш вход, ключи и чаты не пропали: они остались в профиле %[1]s. Чтобы снова их увидеть, " +
+		"установите %[1]s обратно.\n\n" +
+		"%[1]s, the browser Liquidgram used before, is not installed, so the window opens through %[2]s this time. " +
+		"Your login, keys and chats are not lost: they stay in the %[1]s profile. Install %[1]s again to see them."
 	messageAlreadyRunning = "Liquidgram уже запущен, но не открыл новое окно, или его порт %d занят другой программой.\n\n" +
 		"Закройте все окна Liquidgram и запустите его снова. Если это сообщение появится опять, " +
 		"перезагрузите компьютер.\n\n" +
@@ -85,7 +96,7 @@ func run() int {
 
 	log.Printf("Liquidgram %s (build %s) started, data folder %s", version, buildID, dataDir)
 
-	cfg := loadConfig(dataDir)
+	cfg, isConfigUnreadable := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
 	listener, port, err := acquirePort(cfg.Port, instanceID, dataDir)
@@ -109,12 +120,17 @@ func run() int {
 		return 1
 	}
 
-	// The first port stays preferred for good because the app data belongs to its origin
+	// The first port stays preferred for good because the app data belongs to its origin. An unreadable
+	// config may hold the port of the user's data, so it moves aside and this run saves nothing.
 	savedPort := cfg.Port
-	if savedPort == 0 {
+	var keptConfigPath string
+	switch {
+	case isConfigUnreadable:
+		keptConfigPath = moveConfigAside(dataDir)
+	case savedPort == 0:
 		cfg.Port = port
 		saveConfig(dataDir, cfg)
-	} else if savedPort != port {
+	case savedPort != port:
 		log.Printf("Saved port %d is unavailable, using port %d for this run", savedPort, port)
 	}
 
@@ -161,7 +177,7 @@ func run() int {
 		return 0
 	}
 
-	browser, err := findBrowser(os.Getenv(envBrowser), cfg.Browser)
+	browser, isSavedBrowserMissing, err := findBrowser(os.Getenv(envBrowser), cfg.Browser)
 	if err != nil {
 		log.Print(err)
 		showError(messageNoBrowser)
@@ -169,14 +185,20 @@ func run() int {
 	}
 	log.Printf("Using %s browser at %s", browser.id, browser.path)
 
-	if cfg.Browser != browser.id {
+	if cfg.Browser == "" && !isConfigUnreadable {
 		cfg.Browser = browser.id
 		saveConfig(dataDir, cfg)
 	}
 
-	// The window of the spare origin shows none of the user's data, so the user learns why first
+	// Before a window that may show none of the user's data opens, the user learns why
+	if keptConfigPath != "" {
+		showWarning(fmt.Sprintf(messageUnreadableConfig, keptConfigPath, keptConfigPath))
+	}
 	if savedPort != 0 && savedPort != port {
 		showWarning(fmt.Sprintf(messageSparePort, savedPort, savedPort))
+	}
+	if isSavedBrowserMissing {
+		showWarning(fmt.Sprintf(messageBrowserMissing, cfg.Browser, browser.id))
 	}
 
 	if err := app.start(browser); err != nil {
