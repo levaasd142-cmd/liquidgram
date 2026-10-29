@@ -1,0 +1,76 @@
+# Scratch run for the app icons, only on the branch ios-v2-scratch/icons: builds the app from a stub web page,
+# so only Xcode runs, then pushes what the asset catalog compiler produced to ios-test-results/ios-v2-scratch/icons.
+
+name: Icons scratch
+
+on:
+  push:
+    branches: ['ios-v2-scratch/icons']
+
+permissions:
+  contents: write
+
+jobs:
+  icons:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Select the latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build with a stub web app
+        id: build
+        continue-on-error: true
+        env:
+          TMPDIR: ${{ runner.temp }}/work
+        run: |
+          set -o pipefail
+          mkdir -p "$TMPDIR" "$RUNNER_TEMP/dist"
+          echo '<!doctype html><title>Stub</title>' > "$RUNNER_TEMP/dist/index.html"
+          # The same script without the cleanup, so the built app stays for the next step
+          sed 's/^trap .*EXIT$/: keep the work folder/' ios/build-ipa.sh > "$RUNNER_TEMP/build-ipa.sh"
+          bash "$RUNNER_TEMP/build-ipa.sh" "$GITHUB_WORKSPACE" "$RUNNER_TEMP/dist" 2>&1 | tee "$RUNNER_TEMP/build.log"
+
+      - name: Collect the compiled icons
+        if: always()
+        run: |
+          results="$RUNNER_TEMP/results"
+          mkdir -p "$results/icons"
+          cp "$RUNNER_TEMP/build.log" "$results/" || true
+          xcodebuild -version > "$results/xcode-version.txt" 2>&1 || true
+          work="$(ls -d "$RUNNER_TEMP"/work/liquidgram-ios.* | head -n 1)"
+          app="$work/DerivedData/Build/Products/Release-iphoneos/Liquidgram.app"
+          ls -la "$app" > "$results/app-files.txt" 2>&1 || true
+          plutil -convert xml1 -o "$results/Info.plist.xml" "$app/Info.plist" || true
+          xcrun assetutil --info "$app/Assets.car" > "$results/assetutil.json" 2> "$results/assetutil-stderr.txt" || true
+          cp "$app"/AppIcon*.png "$results/icons/" 2> /dev/null || true
+          find "$work/DerivedData" -name 'assetcatalog_generated_info.plist' -exec cp {} "$results/" \; || true
+          grep -inE 'warning|actool|appicon|assetcatalog' "$RUNNER_TEMP/build.log" > "$results/asset-lines.txt" || true
+          grep -E '^App icons:' "$RUNNER_TEMP/build.log" | head -n 1 > "$results/summary.txt" || true
+          cd "$results"
+          git init -q
+          git checkout -q -b results
+          git add -A
+          git -c user.name=ci -c user.email=ci@localhost commit -q -m "Icon results for $GITHUB_SHA"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            HEAD:refs/heads/ios-test-results/ios-v2-scratch/icons
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Report build errors
+        if: steps.build.outcome == 'failure'
+        run: |
+          errors="$(grep -E '(^|[^a-z])(error|fatal error):|BUILD FAILED' "$RUNNER_TEMP/build.log" | head -n 80 || true)"
+          [ -n "$errors" ] || errors="$(tail -n 60 "$RUNNER_TEMP/build.log")"
+          errors="${errors//'%'/'%25'}"
+          errors="${errors//$'\n'/'%0A'}"
+          echo "::error title=IPA build failed::${errors}"
+          exit 1
