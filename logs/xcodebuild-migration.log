@@ -1,0 +1,49 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C -derivedDataPath /Users/runner/work/_temp/ui-test-work/DerivedData -resultBundlePath /Users/runner/work/_temp/ui-test-work/migration.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 300 "-only-testing:LiquidgramUITests/TransportTests/testLegacyDataMovesToAppOrigin"
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/ui-test-work/migration.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C, OS:26.2, name:iPhone 17 Pro }
+2026-10-29 18:01:38.128751+0000 LiquidgramUITests-Runner[9246:32246] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-29 18:01:42.081.
+Test Suite 'LiquidgramUITests.xctest' started at 2026-10-29 18:01:42.082.
+Test Suite 'TransportTests' started at 2026-10-29 18:01:42.082.
+Test Case '-[LiquidgramUITests.TransportTests testLegacyDataMovesToAppOrigin]' started.
+    t =     0.00s Start Test at 2026-10-29 18:01:42.083
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     9.84s         Setting up automation session
+    t =    10.84s         Wait for org.liquidgram.messenger to idle
+    t =    12.10s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.69s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    13.23s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    13.42s Find the Any (Element at index 0)
+    t =    13.71s Added attachment named '01-chats-after-migration'
+    t =    13.71s Waiting 90.0s for "liquidgram.selftest.result" Any to exist
+    t =    14.74s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.selftest.result" Any`
+    t =    14.74s         Checking existence of `"liquidgram.selftest.result" Any`
+    t =    14.75s Find the "liquidgram.selftest.result" Any
+    t =    14.76s Added attachment named 'selftest-report-migration'
+    t =    14.76s Tear Down
+Test Case '-[LiquidgramUITests.TransportTests testLegacyDataMovesToAppOrigin]' passed (14.969 seconds).
+Test Suite 'TransportTests' passed at 2026-10-29 18:01:57.052.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.969 (14.970) seconds
+Test Suite 'LiquidgramUITests.xctest' passed at 2026-10-29 18:01:57.052.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.969 (14.971) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 18:01:57.053.
+	 Executed 1 test, with 0 failures (0 unexpected) in 14.969 (14.972) seconds
+2026-10-29 18:01:57.495 xcodebuild[8252:29740] [MT] IDETestOperationsObserverDebug: 22.606 elapsed -- Testing started completed.
+2026-10-29 18:01:57.495 xcodebuild[8252:29740] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 18:01:57.495 xcodebuild[8252:29740] [MT] IDETestOperationsObserverDebug: 22.606 sec, +22.606 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/migration.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
