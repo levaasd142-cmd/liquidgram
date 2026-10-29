@@ -6,3 +6,43 @@
 
 /* Shown when the bundled web app does not load */
 "startup.error" = "Liquidgram не удалось запустить. Закройте приложение и откройте его снова.";
+
+/* Title of the screen that covers the app until the user authenticates */
+"lock.title" = "Liquidgram заблокирован";
+
+/* Button of the lock screen on devices with Face ID */
+"lock.unlock.faceID" = "Разблокировать с Face ID";
+
+/* Button of the lock screen on devices with Touch ID */
+"lock.unlock.touchID" = "Разблокировать с Touch ID";
+
+/* Button of the lock screen on devices with Optic ID */
+"lock.unlock.opticID" = "Разблокировать с Optic ID";
+
+/* Button of the lock screen when the device passcode is the only way to authenticate */
+"lock.unlock.passcode" = "Разблокировать";
+
+/* Reason in the Touch ID and passcode prompt that unlocks the app */
+"lock.reason" = "Доступ к чатам";
+
+/* Reason in the Touch ID and passcode prompt that confirms turning the app lock on or off */
+"lock.settingsReason" = "Изменение блокировки приложения";
+
+/* Siri and Shortcuts: actions, their descriptions and short titles. The keys are the English text in AppIntents.swift. */
+"Open Saved Messages" = "Открыть Избранное";
+"Opens your Saved Messages in Liquidgram." = "Открывает Избранное в Liquidgram.";
+"Saved Messages" = "Избранное";
+"Search Chats" = "Поиск по чатам";
+"Opens the chat search in Liquidgram." = "Открывает поиск по чатам в Liquidgram.";
+"Search" = "Поиск";
+"New Message" = "Новое сообщение";
+"Opens your contacts in Liquidgram to start a chat." = "Открывает контакты в Liquidgram, чтобы начать чат.";
+"Toggle Ghost Mode" = "Переключить режим призрака";
+"Turns ghost mode in Liquidgram on or off. Liquidgram shows the new state." = "Включает или выключает режим призрака в Liquidgram и показывает, какой он теперь.";
+"Ghost Mode" = "Режим призрака";
+"Open Chat" = "Открыть чат";
+"Opens a chat, a group or a channel in Liquidgram by its username." = "Открывает чат, группу или канал в Liquidgram по имени пользователя.";
+"Username" = "Имя пользователя";
+"Which username?" = "Какое имя пользователя?";
+"That is not a Telegram username. Which username?" = "Это не имя пользователя Telegram. Какое имя пользователя?";
+"Open chat with ${username}" = "Открыть чат с ${username}";

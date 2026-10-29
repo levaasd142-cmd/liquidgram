@@ -26,10 +26,27 @@ enum NotificationPermission: String {
   }
 }
 
+/// The messages that `bridge.js` posts to the `liquidgram` handler
+private enum MessageType: String {
+  case requestNotificationPermission
+  case notify
+  case closeNotification
+  case badge
+  case log
+  case haptic
+  case appReady
+  case lockNow
+  case openSystemSettings
+  case getNativeSettings
+  case setNativeSetting
+  case setAppIcon
+}
+
 /// Native side of the contract with `Resources/bridge.js`. Two user scripts run at document start in the main
-/// frame: one sets `window.__liquidgramNative` and the other is `bridge.js`, which replaces `window.Notification`.
-/// The page posts messages to the `liquidgram` handler, and the bridge answers through
-/// `window.__liquidgramNative.resolvePermission`, `notificationClicked` and `setPermission`.
+/// frame: one sets `window.__liquidgramNative` and the other is `bridge.js`, which adds the page's API to it.
+/// The page posts messages to the `liquidgram` handler, and the bridge answers through `resolvePermission`,
+/// `setPermission`, `notificationClicked`, `resolveRequest` and `dispatchAction` of `window.__liquidgramNative`.
+/// Native actions wait until the current page reports `appReady` and the app is unlocked.
 /// The app delegate creates the bridge at launch, so it can receive taps on notifications from the start.
 /// All state is used on the main queue.
 final class NativeBridge: NSObject {
@@ -38,12 +55,34 @@ final class NativeBridge: NSObject {
   private static let bridgeScriptName = "bridge"
   private static let bridgeScriptExtension = "js"
   private static let notificationOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
+  private static let maxTagLength = 256
+  private static let maxTitleLength = 1024
+  private static let maxBodyLength = 4096
+  private static let maxLogMessageLength = 8192
+  private static let maxBadgeCount = 99_999
+  private static let maxPendingActions = 8
+  /// Actions that waited longer, for example while the user signed in, are dropped
+  private static let pendingActionLifetime: Duration = .seconds(120)
 
   weak var webView: WKWebView?
+  /// Actions wait while the lock is up, and the lock confirms changes of its own setting
+  weak var appLock: AppLock? {
+    didSet {
+      requestHandler.appLock = appLock
+    }
+  }
+
   private weak var userContentController: WKUserContentController?
-  private var permission = NotificationPermission.notDetermined
+  private let requestHandler = NativeRequestHandler()
+  private let haptics = Haptics()
   private let appVersion: String
   private let bridgeScript: String?
+  private var permission = NotificationPermission.notDetermined
+  /// Counts the documents the web view committed, so a response never reaches a page that did not ask for it
+  private var pageGeneration = 0
+  private var isPageReady = false
+  private var pendingActions: [(action: NativeAction, time: ContinuousClock.Instant)] = []
+  private var hasPerformedTestAction = false
 
   override init() {
     appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
@@ -71,6 +110,46 @@ final class NativeBridge: NSObject {
     }
   }
 
+  /// A new document committed in the web view's main frame. It has no action handler yet, and responses to the
+  /// previous document's requests must not reach it.
+  func pageDidCommit() {
+    pageGeneration += 1
+    isPageReady = false
+  }
+
+  /// Sends an action to the page once the page is ready and the app is unlocked. A transient action, such as a
+  /// status bar tap, is dropped instead when it cannot be delivered right away.
+  func perform(_ action: NativeAction) {
+    if action.isTransient {
+      if canDeliverActions {
+        dispatch(action)
+      }
+      return
+    }
+    pendingActions.append((action: action, time: .now))
+    if pendingActions.count > Self.maxPendingActions {
+      pendingActions.removeFirst(pendingActions.count - Self.maxPendingActions)
+    }
+    deliverPendingActions()
+  }
+
+  /// Sends the actions that waited for the page or for the unlock
+  func deliverPendingActions() {
+    guard canDeliverActions else {
+      return
+    }
+    let now = ContinuousClock.Instant.now
+    let actions = pendingActions.filter { $0.time.duration(to: now) <= Self.pendingActionLifetime }
+    pendingActions.removeAll()
+    for pending in actions {
+      dispatch(pending.action)
+    }
+  }
+
+  private var canDeliverActions: Bool {
+    isPageReady && webView != nil && appLock?.isLocked != true
+  }
+
   private static func loadBridgeScript() -> String? {
     guard let url = Bundle.main.url(forResource: bridgeScriptName, withExtension: bridgeScriptExtension),
           let script = try? String(contentsOf: url, encoding: .utf8) else {
@@ -88,6 +167,17 @@ final class NativeBridge: NSObject {
     }
     // JSON of a one-element array: strip the brackets
     return String(arrayLiteral.dropFirst().dropLast())
+  }
+
+  /// Encodes an object as JSON, which is also a JavaScript expression
+  private static func makeJSON(_ object: [String: Any]) -> String? {
+    guard JSONSerialization.isValidJSONObject(object),
+          let data = try? JSONSerialization.data(withJSONObject: object),
+          let json = String(data: data, encoding: .utf8) else {
+      logger.error("Could not encode a message for the page")
+      return nil
+    }
+    return json
   }
 
   /// The injected state is fixed when a page starts, so the scripts are rebuilt whenever the permission
@@ -114,6 +204,105 @@ final class NativeBridge: NSObject {
     }
   }
 
+  private func handle(_ type: MessageType, body: [String: Any]) {
+    switch type {
+    case .requestNotificationPermission:
+      if let requestId = NativeRequestHandler.readInteger(body["requestId"]) {
+        requestPermission(requestId: requestId)
+      }
+    case .notify:
+      guard let tag = body["tag"] as? String, tag.count <= Self.maxTagLength else {
+        return
+      }
+      showNotification(
+        tag: tag,
+        title: String((body["title"] as? String ?? "").prefix(Self.maxTitleLength)),
+        body: String((body["body"] as? String ?? "").prefix(Self.maxBodyLength)),
+        isSilent: NativeRequestHandler.readBool(body["silent"]) ?? false
+      )
+    case .closeNotification:
+      if let tag = body["tag"] as? String, tag.count <= Self.maxTagLength {
+        closeNotification(tag: tag)
+      }
+    case .badge:
+      if let count = NativeRequestHandler.readInteger(body["count"]) {
+        setBadge(count: min(max(0, count), Self.maxBadgeCount))
+      }
+    case .log:
+      let message = String((body["message"] as? String ?? "").prefix(Self.maxLogMessageLength))
+      logPageMessage(level: body["level"] as? String, message: message)
+    case .haptic:
+      if let style = (body["style"] as? String).flatMap(HapticStyle.init(rawValue:)) {
+        haptics.play(style)
+      }
+    case .appReady:
+      handleAppReady()
+    case .lockNow:
+      appLock?.lockNow()
+    case .openSystemSettings:
+      openSystemSettings()
+    case .getNativeSettings:
+      handleRequest(.getNativeSettings, body: body)
+    case .setNativeSetting:
+      handleRequest(.setNativeSetting, body: body)
+    case .setAppIcon:
+      handleRequest(.setAppIcon, body: body)
+    }
+  }
+
+  /// The web app mounted its signed-in interface and registered its action handler. A remount announces it again.
+  private func handleAppReady() {
+    isPageReady = true
+    if let webView {
+      TestHooks.pageDidBecomeReady(in: webView)
+    }
+    if !hasPerformedTestAction, let type = TestHooks.testAction {
+      hasPerformedTestAction = true
+      if let action = NativeAction(type: type) {
+        perform(action)
+      } else {
+        logger.error("Unknown test action \(type, privacy: .public)")
+      }
+    }
+    deliverPendingActions()
+  }
+
+  private func handleRequest(_ type: NativeRequestHandler.RequestType, body: [String: Any]) {
+    guard let requestId = NativeRequestHandler.readInteger(body["requestId"]) else {
+      return
+    }
+    let generation = pageGeneration
+    requestHandler.handle(type, body: body) { [weak self] response in
+      self?.resolveRequest(requestId, response: response, generation: generation)
+    }
+  }
+
+  private func resolveRequest(_ requestId: Int, response: [String: Any], generation: Int) {
+    // A newer page may use the same request id for another request
+    guard generation == pageGeneration else {
+      logger.debug("Dropped the response to a request of a page that is gone")
+      return
+    }
+    guard let json = Self.makeJSON(response) else {
+      return
+    }
+    callPage("resolveRequest?.(\(requestId), \(json))")
+  }
+
+  private func dispatch(_ action: NativeAction) {
+    guard let json = Self.makeJSON(action.message) else {
+      return
+    }
+    callPage("dispatchAction?.(\(json))")
+  }
+
+  private func openSystemSettings() {
+    guard let url = URL(string: UIApplication.openSettingsURLString) else {
+      return
+    }
+    UIApplication.shared.open(url)
+  }
+
   private func applyPermission(_ newPermission: NotificationPermission) {
     if newPermission != permission {
       permission = newPermission
@@ -122,7 +311,7 @@ final class NativeBridge: NSObject {
     callPage("setPermission?.('\(permission.rawValue)')")
   }
 
-  private func requestPermission(requestId: Double) {
+  private func requestPermission(requestId: Int) {
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options: Self.notificationOptions) { _, error in
       if let error {
@@ -162,7 +351,7 @@ final class NativeBridge: NSObject {
   }
 
   private func setBadge(count: Int) {
-    UNUserNotificationCenter.current().setBadgeCount(max(0, count)) { error in
+    UNUserNotificationCenter.current().setBadgeCount(count) { error in
       if let error {
         logger.debug("Could not set the badge: \(error.localizedDescription, privacy: .public)")
       }
@@ -203,37 +392,18 @@ extension NativeBridge: WKScriptMessageHandler {
     guard message.frameInfo.isMainFrame,
           LocalServer.isAppOrigin(scheme: origin.protocol, host: origin.host, port: origin.port),
           let body = message.body as? [String: Any],
-          let type = body["type"] as? String else {
+          let typeName = body["type"] as? String else {
       return
     }
-
-    switch type {
-    case "requestNotificationPermission":
-      if let requestId = body["requestId"] as? Double, requestId.isFinite {
-        requestPermission(requestId: requestId)
+    guard let type = MessageType(rawValue: typeName) else {
+      // A request of an unknown type still gets its one answer, so the page does not wait for the timeout
+      if let requestId = NativeRequestHandler.readInteger(body["requestId"]) {
+        resolveRequest(requestId, response: NativeRequestHandler.makeFailure(.invalid), generation: pageGeneration)
       }
-    case "notify":
-      if let tag = body["tag"] as? String {
-        showNotification(
-          tag: tag,
-          title: body["title"] as? String ?? "",
-          body: body["body"] as? String ?? "",
-          isSilent: body["silent"] as? Bool ?? false
-        )
-      }
-    case "closeNotification":
-      if let tag = body["tag"] as? String {
-        closeNotification(tag: tag)
-      }
-    case "badge":
-      if let count = body["count"] as? Int {
-        setBadge(count: count)
-      }
-    case "log":
-      logPageMessage(level: body["level"] as? String, message: body["message"] as? String ?? "")
-    default:
-      logger.debug("Unknown message from the page: \(type, privacy: .public)")
+      logger.debug("Unknown message from the page: \(typeName, privacy: .public)")
+      return
     }
+    handle(type, body: body)
   }
 }
 

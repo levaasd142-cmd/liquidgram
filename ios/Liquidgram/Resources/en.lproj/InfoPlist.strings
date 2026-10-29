@@ -1,6 +1,13 @@
 /* Permission prompts. Info.plist holds the same English text. */
 "NSCameraUsageDescription" = "Liquidgram uses the camera to take photos and videos for your chats and for video calls.";
+"NSFaceIDUsageDescription" = "Liquidgram uses Face ID to unlock the app when the app lock is on.";
 "NSLocationWhenInUseUsageDescription" = "Liquidgram uses your location only when you share it in a chat.";
 "NSMicrophoneUsageDescription" = "Liquidgram uses the microphone to record voice messages and for calls.";
 "NSPhotoLibraryAddUsageDescription" = "Liquidgram saves the photos and videos you choose to your library.";
 "NSPhotoLibraryUsageDescription" = "Liquidgram uses your photo library to send photos and videos.";
+
+/* Home-screen quick actions. iOS looks the titles of UIApplicationShortcutItems up by their English text. */
+"Saved Messages" = "Saved Messages";
+"Search" = "Search";
+"New Message" = "New Message";
+"Ghost Mode" = "Ghost Mode";
