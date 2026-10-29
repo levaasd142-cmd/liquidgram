@@ -17,6 +17,7 @@ import { registerNativeActionHandler } from '../util/nativeApp';
 import useLastCallback from './useLastCallback';
 
 const LEFT_COLUMN_SCROLLABLE_SELECTOR = '#LeftColumn .custom-scroll';
+const RE_SETTINGS_LINK = /^tg:(\/\/)?settings\b/i;
 
 // Performs the actions of the iPhone app: home-screen quick actions, Siri shortcuts, links that open the app and
 // taps on the status bar
@@ -57,6 +58,8 @@ export default function useNativeAppActions(isMobile?: boolean) {
         if (!isTelegramLink(action.url)) break;
 
         closeViewers();
+        // Settings open in the left column, which an open chat can hide
+        if (RE_SETTINGS_LINK.test(action.url)) revealLeftColumn();
         openTelegramLink({ url: action.url });
         break;
       case 'scrollToTop':
@@ -75,16 +78,19 @@ export default function useNativeAppActions(isMobile?: boolean) {
   }
 
   function openLeftColumnScreen(contentKey: LeftColumnContent) {
-    const global = getGlobal();
     closeViewers();
-    // The mobile layout shows the left column only without an open chat, and the tablet layout can hide it
+    revealLeftColumn();
+    openLeftColumnContent({ contentKey });
+  }
+
+  // The mobile layout shows the left column only without an open chat, and the tablet layout can hide it
+  function revealLeftColumn() {
+    const global = getGlobal();
     if (isMobile && selectCurrentMessageList(global)) {
       openChat({ id: undefined, shouldReplaceHistory: true });
     } else if (!selectTabState(global).isLeftColumnShown) {
       toggleLeftColumn();
     }
-
-    openLeftColumnContent({ contentKey });
   }
 
   // Scrolls the lists of the left column, such as the chat list, to the top, as a tap on the status bar does in iOS
