@@ -27,7 +27,7 @@ The script:
 1. copies `dist` without source maps and PHP files into `ios/Liquidgram/WebApp`;
 2. generates `ios/Liquidgram.xcodeproj` from [`project.yml`](project.yml) with XcodeGen;
 3. builds the Release configuration for `generic/platform=iOS` with signing disabled, passing the version from `package.json` as `MARKETING_VERSION` and `BUILD_NUMBER` (default: the number of commits) as `CURRENT_PROJECT_VERSION`;
-4. checks that the app bundle has its executable, `Assets.car`, `bridge.js` and `WebApp/index.html`;
+4. checks that the app bundle has its executable, `Assets.car`, `bridge.js` and `WebApp/index.html`, that `Info.plist` lists the alternate icons for iPhone and iPad, and that `Assets.car` has every icon set in its default, dark and tinted appearances;
 5. packs `Payload/Liquidgram.app` into `dist-ios/Liquidgram.ipa` and prints its size and SHA-256.
 
 The web build folder, the generated project and `dist-ios` are ignored by Git.
@@ -92,6 +92,8 @@ Re-signing with the same Apple ID and bundle ID before or after the 7 days keeps
 ## Assets
 
 `AppIcon.png` is a single 1024×1024 universal icon without an alpha channel; Xcode derives the other sizes. It is `src/assets/liquidgram-logo.svg` without the rounded corners, since iOS applies its own mask, rendered with Chromium and flattened with ImageMagick (`convert icon.png -alpha remove -alpha off -define png:color-type=2 PNG24:AppIcon.png`). `LaunchLogo` is the rounded logo at 120 points (120, 240 and 360 pixels) with transparency. `LaunchBackground` is lavender `#B9B4F5`, the web manifest's background color, and `#1C1A2E` in dark mode. Regenerate them when the logo changes.
+
+The alternate icons `AppIconMidnight` (dark glass), `AppIconAurora` (aurora gradient), `AppIconGlass` (frosted white) and `AppIconClassic` (messenger blue) show the logo's drop as glass on other backgrounds, rendered in floating point from the drop's outline and dithered, so the gradients do not band. `ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES` in `project.yml` lists them, which lets the app switch to them with `setAlternateIconName`. Every icon set, `AppIcon` included, also has the two variants of the iOS 18 Home Screen: a dark one, the drop alone on a transparent background that the system puts on its dark background, and a tinted one, the drop in grayscale on black, whose brightness becomes the chosen tint. `public/ios-app-icons/` holds square 180×180 previews of the five icons for the icon picker of the web app.
 
 ## Limitations
 
