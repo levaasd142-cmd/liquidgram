@@ -28,7 +28,6 @@ final class WebViewController: UIViewController {
   private static let externalSchemes: Set<String> = ["http", "https", "mailto", "tel", "tg"]
   private static let webSchemes: Set<String> = ["http", "https"]
   private static let downloadSchemes: Set<String> = ["blob", "data"]
-  private static let blankPageURL = URL(string: "about:blank")!
   /// The status bar tap sentinel's content is this many times its height, so it always has room to scroll up
   private static let statusBarTapContentScale: CGFloat = 2
   private static let fallbackFileName = "download"
@@ -38,7 +37,6 @@ final class WebViewController: UIViewController {
   private static let downloadsDirectory = FileManager.default.temporaryDirectory
     .appendingPathComponent("Downloads", isDirectory: true)
 
-  private let server: LocalServer
   private let bridge: NativeBridge
   private let webView: WKWebView
   /// UIKit offers a status bar tap only to a scroll view that can scroll, and the page's own scroll view never
@@ -49,8 +47,6 @@ final class WebViewController: UIViewController {
   private var statusBarStyle = UIStatusBarStyle.default
   private var hasLoadedApp = false
   private var needsReloadOnActivation = false
-  /// The page to load again once the server's port is this app's own again
-  private var urlToRestore: URL?
   private var isRetryScheduled = false
   private var retryDelay = WebViewController.initialRetryDelay
   private var lastLoadError: String?
@@ -58,16 +54,12 @@ final class WebViewController: UIViewController {
   private var downloadDestinations: [WKDownload: URL] = [:]
   private var pendingShareURLs: [URL] = []
 
-  init(server: LocalServer, bridge: NativeBridge) {
+  init(bridge: NativeBridge) {
     let webView = WebViewController.makeWebView(bridge: bridge)
     bridge.webView = webView
-    self.server = server
     self.bridge = bridge
     self.webView = webView
     super.init(nibName: nil, bundle: nil)
-    server.portConflictHandler = { [weak self] in
-      self?.unloadPageForPortConflict()
-    }
     // Files shared after earlier downloads are no longer needed
     try? FileManager.default.removeItem(at: Self.downloadsDirectory)
   }
@@ -146,6 +138,8 @@ final class WebViewController: UIViewController {
     let configuration = WKWebViewConfiguration()
     configuration.userContentController = userContentController
     configuration.websiteDataStore = .default()
+    // The web build, and the videos and music that stream from the page, come from `liquidgram-web://app/`
+    configuration.setURLSchemeHandler(AppSchemeHandler(), forURLScheme: AppSchemeHandler.scheme)
     configuration.allowsInlineMediaPlayback = true
     configuration.allowsPictureInPictureMediaPlayback = true
     configuration.allowsAirPlayForMediaPlayback = true
@@ -206,42 +200,25 @@ final class WebViewController: UIViewController {
     setNeedsStatusBarAppearanceUpdate()
   }
 
+  /// Loads the app once the data of version 1 is in the app's origin
   private func loadApp() {
-    server.whenReady { [weak self] in
-      self?.webView.load(URLRequest(url: LocalServer.appURL))
-    }
+    LegacyDataMigration.runIfNeeded(
+      startApp: { [weak self] in
+        self?.webView.load(URLRequest(url: AppSchemeHandler.appURL))
+      },
+      reloadApp: { [weak self] in
+        self?.reloadApp()
+      }
+    )
   }
 
-  /// Reloads the current page of the app, keeping its route, or loads the app if it is not shown. Like the first
-  /// load, it waits until connections to the port reach this app's own server.
+  /// Reloads the current page of the app, keeping its route, or loads the app if it is not shown
   private func reloadApp() {
-    server.whenReady { [weak self] in
-      guard let self else {
-        return
-      }
-      if let url = self.urlToRestore {
-        self.urlToRestore = nil
-        self.webView.load(URLRequest(url: url))
-      } else if let url = self.webView.url, LocalServer.isAppURL(url) {
-        self.webView.reload()
-      } else {
-        self.webView.load(URLRequest(url: LocalServer.appURL))
-      }
+    if let url = webView.url, AppSchemeHandler.isAppURL(url) {
+      webView.reload()
+    } else {
+      webView.load(URLRequest(url: AppSchemeHandler.appURL))
     }
-  }
-
-  /// Another process holds the server's port, so the page's next request could load that process's script under
-  /// the app's origin. The page gives way to a blank one and comes back once the port is the app's own again.
-  private func unloadPageForPortConflict() {
-    guard let url = webView.url, LocalServer.isAppURL(url) else {
-      return
-    }
-    logger.error("Another app holds the server's port; the page waits until the app has it again")
-    urlToRestore = url
-    webView.load(URLRequest(url: Self.blankPageURL))
-    hasLoadedApp = false
-    scheduleStartupErrorCheck()
-    reloadApp()
   }
 
   private func scheduleStartupErrorCheck() {
@@ -262,7 +239,6 @@ final class WebViewController: UIViewController {
         return
       }
       self.isRetryScheduled = false
-      self.server.start()
       self.reloadApp()
     }
   }
@@ -270,32 +246,26 @@ final class WebViewController: UIViewController {
   /// Explains a failed start on screen, since the device keeps no log the user can reach. Loads that
   /// succeed later remove the message.
   private func showStartupErrorIfNeeded() {
-    guard !hasLoadedApp else {
+    guard !hasLoadedApp, startupErrorLabel == nil, let details = lastLoadError else {
       return
     }
-    server.fetchFailure { [weak self] serverFailure in
-      guard let self, !self.hasLoadedApp, self.startupErrorLabel == nil,
-            let details = serverFailure ?? self.lastLoadError else {
-        return
-      }
 
-      let label = UILabel()
-      label.translatesAutoresizingMaskIntoConstraints = false
-      label.numberOfLines = 0
-      label.textAlignment = .center
-      label.font = .preferredFont(forTextStyle: .body)
-      label.adjustsFontForContentSizeCategory = true
-      label.textColor = .label
-      label.text = Strings.startupError + "\n\n" + details
-      label.accessibilityIdentifier = "liquidgram.startupError"
-      self.view.addSubview(label)
-      NSLayoutConstraint.activate([
-        label.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
-        label.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
-        label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-      ])
-      self.startupErrorLabel = label
-    }
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.numberOfLines = 0
+    label.textAlignment = .center
+    label.font = .preferredFont(forTextStyle: .body)
+    label.adjustsFontForContentSizeCategory = true
+    label.textColor = .label
+    label.text = Strings.startupError + "\n\n" + details
+    label.accessibilityIdentifier = "liquidgram.startupError"
+    view.addSubview(label)
+    NSLayoutConstraint.activate([
+      label.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+      label.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+      label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+    ])
+    startupErrorLabel = label
   }
 
   /// Only http(s), mail, phone and Telegram links leave the app, so a page cannot launch arbitrary apps. Web
@@ -394,7 +364,7 @@ extension WebViewController: WKNavigationDelegate {
       return
     }
 
-    if LocalServer.isAppURL(url) || scheme == "about" {
+    if AppSchemeHandler.isAppURL(url) || scheme == "about" {
       decisionHandler(.allow)
     } else if Self.downloadSchemes.contains(scheme) {
       // The app itself must never be replaced by a file
@@ -426,7 +396,7 @@ extension WebViewController: WKNavigationDelegate {
 
   func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
     bridge.pageDidCommit()
-    guard let url = webView.url, LocalServer.isAppURL(url) else {
+    guard let url = webView.url, AppSchemeHandler.isAppURL(url) else {
       return
     }
     hasLoadedApp = true
@@ -437,7 +407,7 @@ extension WebViewController: WKNavigationDelegate {
   }
 
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    guard let url = webView.url, LocalServer.isAppURL(url) else {
+    guard let url = webView.url, AppSchemeHandler.isAppURL(url) else {
       return
     }
     TestHooks.pageDidFinishLoading(in: webView)
@@ -479,7 +449,7 @@ extension WebViewController: WKUIDelegate {
       webView.startDownload(using: navigationAction.request) { [weak self] download in
         download.delegate = self
       }
-    } else if !LocalServer.isAppURL(url) {
+    } else if !AppSchemeHandler.isAppURL(url) {
       openExternally(url)
     }
     return nil
@@ -495,7 +465,7 @@ extension WebViewController: WKUIDelegate {
     // The app's own page skips WebKit's prompt for every capture; iOS still asks once for the camera and
     // the microphone. Other frames, such as bot web apps, keep the prompt.
     let isApp = frame.isMainFrame
-      && LocalServer.isAppOrigin(scheme: origin.protocol, host: origin.host, port: origin.port)
+      && AppSchemeHandler.isAppOrigin(scheme: origin.protocol, host: origin.host, port: origin.port)
     decisionHandler(isApp ? .grant : .prompt)
   }
 

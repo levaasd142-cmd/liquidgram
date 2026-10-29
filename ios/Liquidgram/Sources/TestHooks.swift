@@ -24,7 +24,8 @@ enum TestHooks {
   /// own scripts. The tests use it to seed a demo account into `localStorage`.
   static let userScriptEnvironmentKey = "LIQUIDGRAM_TEST_USER_SCRIPT"
   /// Launch environment: base64 UTF-8 body of an async JavaScript function that returns a string. The app runs it
-  /// once the page is ready and shows the result as the accessibility value of `selfTestResultIdentifier`.
+  /// once the page is ready and shows the result as the accessibility value of `selfTestResultIdentifier`. The
+  /// function gets `migrationOutcome`, what `LegacyDataMigration` did at this launch, or an empty string.
   static let selfTestEnvironmentKey = "LIQUIDGRAM_TEST_SELFTEST_SCRIPT"
   static let selfTestResultIdentifier = "liquidgram.selftest.result"
 
@@ -39,6 +40,7 @@ enum TestHooks {
   private static let selfTestLabelAlpha: CGFloat = 0.02
   private static let defaultFakeAuthenticationDelay: TimeInterval = 0.3
   private static var hasRunSelfTest = false
+  private static var migrationOutcome = ""
 
   /// `success`, `failure` or `cancel` while a test fakes the authentication of the app lock, otherwise `nil`
   static var fakeAuthenticationOutcome: String? {
@@ -92,6 +94,14 @@ enum TestHooks {
     return [WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: true)]
   }
 
+  /// What the migration of version 1's data did at this launch, for the self-test
+  static func recordMigration(_ outcome: String) {
+    guard isEnabled else {
+      return
+    }
+    migrationOutcome = outcome
+  }
+
   /// The app's page finished loading. Pages that report `appReady` run the self-test earlier.
   static func pageDidFinishLoading(in webView: WKWebView) {
     guard isEnabled, !hasRunSelfTest, ProcessInfo.processInfo.environment[selfTestEnvironmentKey] != nil else {
@@ -115,7 +125,8 @@ enum TestHooks {
       return
     }
     hasRunSelfTest = true
-    webView.callAsyncJavaScript(script, arguments: [:], in: nil, in: .page) { result in
+    let arguments = ["migrationOutcome": migrationOutcome]
+    webView.callAsyncJavaScript(script, arguments: arguments, in: nil, in: .page) { result in
       let report: String
       switch result {
       case .success(let value):

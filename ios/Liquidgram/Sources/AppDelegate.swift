@@ -9,7 +9,6 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Ap
 final class AppDelegate: UIResponder, UIApplicationDelegate {
   private static let sceneConfigurationName = "Default Configuration"
 
-  let server = LocalServer()
   let bridge = NativeBridge()
 
   func application(
@@ -21,7 +20,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // Taps on notifications reach the delegate only if it is set before launching finishes
     UNUserNotificationCenter.current().delegate = bridge
     configureAudioSession()
-    server.start()
     return true
   }
 

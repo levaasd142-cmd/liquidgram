@@ -390,7 +390,7 @@ extension NativeBridge: WKScriptMessageHandler {
     // of the app's own origin is heard
     let origin = message.frameInfo.securityOrigin
     guard message.frameInfo.isMainFrame,
-          LocalServer.isAppOrigin(scheme: origin.protocol, host: origin.host, port: origin.port),
+          AppSchemeHandler.isAppOrigin(scheme: origin.protocol, host: origin.host, port: origin.port),
           let body = message.body as? [String: Any],
           let typeName = body["type"] as? String else {
       return

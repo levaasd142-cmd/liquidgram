@@ -16,7 +16,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = scene as? UIWindowScene, let appDelegate else {
       return
     }
-    let controller = WebViewController(server: appDelegate.server, bridge: appDelegate.bridge)
+    let controller = WebViewController(bridge: appDelegate.bridge)
     let window = UIWindow(windowScene: windowScene)
     window.backgroundColor = WebViewController.backgroundColor
     window.rootViewController = controller
@@ -46,19 +46,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func sceneDidEnterBackground(_ scene: UIScene) {
     appLock?.sceneDidEnterBackground()
-    appDelegate?.server.suspend()
   }
 
   func sceneWillEnterForeground(_ scene: UIScene) {
     appLock?.sceneWillEnterForeground()
-    // iOS may have reclaimed the listening socket while the app was suspended, and another app may hold the port
-    appDelegate?.server.resume()
     // The user may have changed the notification permission in Settings
     appDelegate?.bridge.refreshPermission()
   }
 
   func sceneDidBecomeActive(_ scene: UIScene) {
-    appDelegate?.server.start()
     appLock?.sceneDidBecomeActive()
     webViewController?.handleDidBecomeActive()
   }
