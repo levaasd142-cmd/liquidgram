@@ -338,6 +338,7 @@ final class LocalServer {
 
     switch outcome {
     case .reachedListener:
+      logger.info("Connections to the port reach the listener")
       isListenerVerified = true
       runReadyCallbacks()
     case .refused:

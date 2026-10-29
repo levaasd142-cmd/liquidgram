@@ -130,11 +130,11 @@ final class AppLock {
   }
 
   private func lock(shouldAuthenticateOnActivation: Bool) {
-    self.shouldAuthenticateOnActivation = shouldAuthenticateOnActivation
     guard !isLocked else {
       return
     }
     isLocked = true
+    self.shouldAuthenticateOnActivation = shouldAuthenticateOnActivation
     // The keyboard would stay above the lock screen, so the page's field gives up the focus
     mainWindow?.endEditing(true)
 
