@@ -86,6 +86,20 @@ They follow the shared v2 contract, so on a build without these features they fa
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
 
+### `GestureTests`: gestures as in Telegram for iPhone
+
+The swipes are drags of `XCUICoordinate` at a set speed, which reach the web app as touch events.
+
+| Test | Checks |
+| --- | --- |
+| `testSwipeBackFromEdgeClosesChat` | A quick swipe from 4 points off the left edge of a chat brings back the chat list (another chat and its menu button on screen) and takes the composer off screen |
+| `testSwipeBackFromMiddleClosesChat` | The same swipe from 30 percent of the width |
+| `testSlowShortSwipeSpringsBack` | A slow swipe to a quarter of the width that rests before the finger lifts leaves the chat open and the chat list off screen |
+| `testSwipeBackClosesProfile` | The title in the chat header opens the profile; a quick swipe from its left edge brings back the chat |
+| `testChatListRightSwipeKeepsChatList` | A right swipe on the chat list keeps its menu button, opens no search tabs and brings up no keyboard |
+| `testLongPressOpensMessageMenu` | A one-second press on a message opens its menu; the first tap on Reply puts the reply above the composer (its Cancel button) |
+| `testSwipeToReply` | A message dragged 140 points to the left puts the reply above the composer |
+
 ## The self-test
 
 `Fixtures/selftest.js` is the body of an async function that `TestHooks` runs in the page through `callAsyncJavaScript` once the web app reports `appReady`, or 5 seconds after the first load of a page that never does, like the API keys screen. Each check has a 10-second limit. The JSON report becomes the accessibility value of `liquidgram.selftest.result`, the test attaches it, and the report shows it as a table.
