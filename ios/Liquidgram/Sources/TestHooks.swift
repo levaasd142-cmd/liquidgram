@@ -14,6 +14,9 @@ enum TestHooks {
   /// Launch argument `-LiquidgramFakeAuthentication success|failure|cancel`: the app lock skips Face ID and gets
   /// this outcome instead
   static let fakeAuthenticationArgument = "LiquidgramFakeAuthentication"
+  /// Launch argument `-LiquidgramFakeAuthenticationDelay <seconds>`: how long a faked authentication takes. Tests
+  /// that look at the lock screen before it opens pass a delay longer than the launch of the app.
+  static let fakeAuthenticationDelayArgument = "LiquidgramFakeAuthenticationDelay"
   /// Launch argument `-LiquidgramTestAction <type>`: once the page is ready, the app performs this native action,
   /// such as `openSavedMessages`, the way a home-screen quick action does
   static let testActionArgument = "LiquidgramTestAction"
@@ -34,11 +37,19 @@ enum TestHooks {
   /// Pages that never report `appReady`, such as the login screens, run the self-test this long after loading
   private static let selfTestFallbackDelay: TimeInterval = 5
   private static let selfTestLabelAlpha: CGFloat = 0.02
+  private static let defaultFakeAuthenticationDelay: TimeInterval = 0.3
   private static var hasRunSelfTest = false
 
   /// `success`, `failure` or `cancel` while a test fakes the authentication of the app lock, otherwise `nil`
   static var fakeAuthenticationOutcome: String? {
     isEnabled ? UserDefaults.standard.string(forKey: fakeAuthenticationArgument) : nil
+  }
+
+  /// How long the app lock waits before it reports `fakeAuthenticationOutcome`: 0.3 seconds unless a test asks for
+  /// longer, because an XCUITest launch returns only after the app is idle, when a short fake has already finished
+  static var fakeAuthenticationDelay: TimeInterval {
+    let delay = UserDefaults.standard.double(forKey: fakeAuthenticationDelayArgument)
+    return isEnabled && delay > 0 ? delay : defaultFakeAuthenticationDelay
   }
 
   /// The native action a test asks for, such as `openSavedMessages`, otherwise `nil`
