@@ -97,6 +97,9 @@ final class NativeBridge: NSObject {
       return
     }
     userContentController.removeAllUserScripts()
+    for script in TestHooks.makeUserScripts() {
+      userContentController.addUserScript(script)
+    }
 
     let environmentScript = "window.__liquidgramNative = { platform: 'ios', "
       + "version: \(Self.makeJavaScriptString(appVersion)), "

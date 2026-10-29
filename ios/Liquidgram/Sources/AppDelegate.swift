@@ -16,6 +16,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    TestHooks.resetNativeSettingsIfRequested()
     // Taps on notifications reach the delegate only if it is set before launching finishes
     UNUserNotificationCenter.current().delegate = bridge
     configureAudioSession()

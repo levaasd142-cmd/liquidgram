@@ -90,8 +90,10 @@ final class WebViewController: UIViewController {
     }
 
     // The injected state needs the notification permission before the first page starts
-    bridge.refreshPermission { [weak self] in
-      self?.loadApp()
+    TestHooks.prepareForLaunch { [weak self] in
+      self?.bridge.refreshPermission {
+        self?.loadApp()
+      }
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + Self.startupTimeout) { [weak self] in
       self?.showStartupErrorIfNeeded()
@@ -120,6 +122,7 @@ final class WebViewController: UIViewController {
     configuration.applicationNameForUserAgent = applicationName
 
     let webView = WKWebView(frame: .zero, configuration: configuration)
+    webView.accessibilityIdentifier = "liquidgram.webview"
     webView.isOpaque = false
     webView.backgroundColor = backgroundColor
     webView.scrollView.backgroundColor = backgroundColor
@@ -225,6 +228,7 @@ final class WebViewController: UIViewController {
       label.adjustsFontForContentSizeCategory = true
       label.textColor = .label
       label.text = Strings.startupError + "\n\n" + details
+      label.accessibilityIdentifier = "liquidgram.startupError"
       self.view.addSubview(label)
       NSLayoutConstraint.activate([
         label.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
@@ -342,6 +346,13 @@ extension WebViewController: WKNavigationDelegate {
     retryDelay = Self.initialRetryDelay
     startupErrorLabel?.removeFromSuperview()
     startupErrorLabel = nil
+  }
+
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    guard let url = webView.url, LocalServer.isAppURL(url) else {
+      return
+    }
+    TestHooks.pageDidFinishLoading(in: webView)
   }
 
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
