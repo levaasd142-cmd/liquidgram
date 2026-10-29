@@ -3,6 +3,8 @@ package main
 import (
 	"crypto/hmac"
 	"crypto/rand"
+	"crypto/sha256"
+	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -21,15 +23,22 @@ const (
 	maxRejections    = 3
 	bindRetryDelay   = 300 * time.Millisecond
 	maxPingBodyBytes = 4096
+
+	// The first choice of each account comes from this range. It lies below the Windows dynamic ports
+	// (49152 and up), which outgoing connections take, and clear of ports that common local servers
+	// use, such as 32400 of Plex, 35729 of LiveReload and 44300-44399 of IIS Express.
+	preferredPortBase  = 36000
+	preferredPortCount = 8000
 )
 
-// Fixed ports below the Windows dynamic range (49152 and up), so outgoing connections never take
-// them. They sit in different thousands, so one reserved range rarely covers all of them.
-var defaultPorts = []int{47819, 43819, 39819, 35819, 31819}
+// Fixed ports tried after the account's own, also below the Windows dynamic range. They sit in
+// different thousands, so one reserved range rarely covers all of them.
+var fallbackPorts = []int{47819, 43819, 39819, 35819, 31819}
 
 var (
 	errAlreadyRunning = errors.New("the program on the port claims this data folder but opened no window")
 	errWindowRefused  = errors.New("the running instance refused the window request")
+	errOtherAccount   = errors.New("the port belongs to Liquidgram of another account")
 )
 
 // Reports that the instance of the same data folder already runs and opened a window for this launch
@@ -47,6 +56,8 @@ type portOwner int
 const (
 	ownerUnknown portOwner = iota
 	ownerOtherApp
+	// Liquidgram with another data folder, which means another account on the computer
+	ownerOtherAccount
 	// Claims this data folder but does not prove it knows the launch token: an instance that lost its
 	// token file or signs differently, or a program that imitates the launcher
 	ownerUnproven
@@ -58,27 +69,46 @@ var controlClient = &http.Client{
 	Transport: &http.Transport{Proxy: nil, DisableKeepAlives: true},
 }
 
-// Binds the saved port or the first available default one. Stops with a `handoffError` when the
-// instance of the same data folder already runs on one of them and opened a window instead, and with
-// `errAlreadyRunning` when the program there claims the data folder but opened no window. The port
-// returned is the one bound or the one where the launch stopped.
-func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, error) {
-	ports := slices.DeleteFunc(slices.Clone(defaultPorts), func(port int) bool { return port == savedPort })
-	if savedPort != 0 {
-		ports = slices.Insert(ports, 0, savedPort)
-	}
-
+// Binds the saved port, the account's own port or the first available fallback one. Stops with a
+// `handoffError` when the instance of the same data folder already runs on one of them and opened a
+// window instead, and with `errAlreadyRunning` when the program there claims the data folder but
+// opened no window. The port returned is the one bound or the one where the launch stopped. The flag
+// tells whether Liquidgram of another account holds the saved port.
+func acquirePort(savedPort int, instanceID, dataDir string) (net.Listener, int, bool, error) {
+	isSavedPortOfOtherAccount := false
 	var lastErr error
-	for _, port := range ports {
+	for _, port := range listPorts(savedPort, instanceID) {
 		listener, err := listenOrHandOff(port, instanceID, dataDir)
 		var handoff *handoffError
 		if err == nil || errors.As(err, &handoff) || errors.Is(err, errAlreadyRunning) {
-			return listener, port, err
+			return listener, port, isSavedPortOfOtherAccount, err
 		}
 		log.Printf("Port %d is unavailable: %v", port, err)
+		if port == savedPort && errors.Is(err, errOtherAccount) {
+			isSavedPortOfOtherAccount = true
+		}
 		lastErr = err
 	}
-	return nil, 0, fmt.Errorf("no port is available: %w", lastErr)
+	return nil, 0, isSavedPortOfOtherAccount, fmt.Errorf("no port is available: %w", lastErr)
+}
+
+// Lists the ports to try: the saved one, the account's own and the fallbacks
+func listPorts(savedPort int, instanceID string) []int {
+	var ports []int
+	for _, port := range append([]int{savedPort, getPreferredPort(instanceID)}, fallbackPorts...) {
+		if port != 0 && !slices.Contains(ports, port) {
+			ports = append(ports, port)
+		}
+	}
+	return ports
+}
+
+// Derives the first choice of the account from its data folder, so accounts that run Liquidgram at
+// the same time do not compete for one port. A data folder without a saved port always gets the same
+// one, so the derivation must stay unchanged.
+func getPreferredPort(instanceID string) int {
+	sum := sha256.Sum256([]byte(instanceID))
+	return preferredPortBase + int(binary.BigEndian.Uint32(sum[:])%preferredPortCount)
 }
 
 // A program that claims the same data folder never makes the launcher move to another port, because
@@ -106,6 +136,8 @@ func listenOrHandOff(port int, instanceID, dataDir string) (net.Listener, error)
 		switch owner {
 		case ownerOtherApp:
 			return nil, err
+		case ownerOtherAccount:
+			return nil, fmt.Errorf("%w: %w", errOtherAccount, err)
 		case ownerUnproven:
 			log.Printf("The program on port %d claims this data folder but does not prove it knows its token", port)
 			isSameFolder = true
@@ -149,8 +181,11 @@ func probePortOwner(port int, instanceID, dataDir string) (portOwner, string, st
 
 	var ping pingResponse
 	err = json.NewDecoder(io.LimitReader(response.Body, maxPingBodyBytes)).Decode(&ping)
-	if err != nil || response.StatusCode != http.StatusOK || ping.App != signatureApp || ping.Instance != instanceID {
+	if err != nil || response.StatusCode != http.StatusOK || ping.App != signatureApp {
 		return ownerOtherApp, "", ""
+	}
+	if ping.Instance != instanceID {
+		return ownerOtherAccount, "", ""
 	}
 
 	launchToken := readLaunchToken(dataDir, port)

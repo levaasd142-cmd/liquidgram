@@ -54,6 +54,13 @@ const (
 		"Ничего не потеряно: закройте Liquidgram, перезагрузите компьютер и откройте Liquidgram снова.\n\n" +
 		"Port %d, which holds your Liquidgram data, is busy, so the app opens without it. " +
 		"Nothing is lost: close Liquidgram, restart the computer and open it again."
+	messageOtherAccount = "Liquidgram сейчас открыт в другой учётной записи на этом компьютере и занимает порт %d, " +
+		"к которому привязаны ваш вход, ключи и чаты, поэтому здесь Liquidgram откроется без них.\n\n" +
+		"Ничего не потеряно: закройте Liquidgram в другой учётной записи или выйдите из неё, а потом " +
+		"откройте Liquidgram здесь снова.\n\n" +
+		"Liquidgram is open in another account on this computer and uses port %d, which holds your Liquidgram data, " +
+		"so the app opens here without it. Nothing is lost: close Liquidgram in the other account or sign out of it, " +
+		"then open Liquidgram here again."
 	messageOtherBuild = "Сейчас работает другая версия Liquidgram, и окно открыла она.\n\n" +
 		"Чтобы запустить эту версию, закройте все окна Liquidgram и откройте его снова.\n\n" +
 		"Another version of Liquidgram is running and opened the window. " +
@@ -99,7 +106,7 @@ func run() int {
 	cfg, isConfigUnreadable := loadConfig(dataDir)
 	instanceID := buildInstanceID(dataDir)
 
-	listener, port, err := acquirePort(cfg.Port, instanceID, dataDir)
+	listener, port, isSavedPortOfOtherAccount, err := acquirePort(cfg.Port, instanceID, dataDir)
 	var handoff *handoffError
 	if errors.As(err, &handoff) {
 		log.Printf("The running instance on port %d opened a window (build %s)", port, handoff.build)
@@ -195,7 +202,11 @@ func run() int {
 		showWarning(fmt.Sprintf(messageUnreadableConfig, keptConfigPath, keptConfigPath))
 	}
 	if savedPort != 0 && savedPort != port {
-		showWarning(fmt.Sprintf(messageSparePort, savedPort, savedPort))
+		message := messageSparePort
+		if isSavedPortOfOtherAccount {
+			message = messageOtherAccount
+		}
+		showWarning(fmt.Sprintf(message, savedPort, savedPort))
 	}
 	if isSavedBrowserMissing {
 		showWarning(fmt.Sprintf(messageBrowserMissing, cfg.Browser, browser.id))
