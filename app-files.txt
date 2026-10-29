@@ -1,0 +1,13 @@
+total 22624
+drwxr-xr-x  12 runner  staff       384 Oct 29 14:58 .
+drwxr-xr-x@  5 runner  staff       160 Oct 29 14:58 ..
+-rw-r--r--   1 runner  staff     15734 Oct 29 14:58 AppIcon60x60@2x.png
+-rw-r--r--   1 runner  staff     24221 Oct 29 14:58 AppIcon76x76@2x~ipad.png
+-rw-r--r--   1 runner  staff  11135672 Oct 29 14:58 Assets.car
+-rw-r--r--   1 runner  staff      9722 Oct 29 14:58 bridge.js
+drwxr-xr-x   4 runner  staff       128 Oct 29 14:58 en.lproj
+-rw-r--r--   1 runner  staff      2494 Oct 29 14:58 Info.plist
+-rwxr-xr-x   1 runner  staff    382184 Oct 29 14:58 Liquidgram
+-rw-r--r--   1 runner  staff         8 Oct 29 14:58 PkgInfo
+drwxr-xr-x   4 runner  staff       128 Oct 29 14:58 ru.lproj
+drwxr-xr-x   3 runner  staff        96 Oct 29 14:58 WebApp

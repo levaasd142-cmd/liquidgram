@@ -1,0 +1,1 @@
+App icons: AppIcon (ISAppearanceTintable, UIAppearanceAny, UIAppearanceDark), AppIconMidnight (ISAppearanceTintable, UIAppearanceAny, UIAppearanceDark), AppIconAurora (ISAppearanceTintable, UIAppearanceAny, UIAppearanceDark), AppIconGlass (ISAppearanceTintable, UIAppearanceAny, UIAppearanceDark), AppIconClassic (ISAppearanceTintable, UIAppearanceAny, UIAppearanceDark)
