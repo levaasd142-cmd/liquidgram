@@ -151,7 +151,9 @@ const MiddleHeader = ({
     onMouseUp: handleLongPressMouseUp,
     onMouseLeave: handleLongPressMouseLeave,
     onTouchStart: handleLongPressTouchStart,
+    onTouchMove: handleLongPressTouchMove,
     onTouchEnd: handleLongPressTouchEnd,
+    onTouchCancel: handleLongPressTouchCancel,
   } = useLongPress({
     onStart: handleOpenSearch,
     onClick: handleOpenChat,
@@ -303,7 +305,9 @@ const MiddleHeader = ({
           onMouseUp={handleLongPressMouseUp}
           onMouseLeave={handleLongPressMouseLeave}
           onTouchStart={handleLongPressTouchStart}
+          onTouchMove={handleLongPressTouchMove}
           onTouchEnd={handleLongPressTouchEnd}
+          onTouchCancel={handleLongPressTouchCancel}
         >
           {isUserId(displayChatId) ? (
             <PrivateChatInfo

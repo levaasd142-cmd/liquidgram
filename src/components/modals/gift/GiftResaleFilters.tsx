@@ -155,6 +155,7 @@ const GiftResaleFilters = ({
     return map;
   }, [counters]);
 
+  // The four menus open from their buttons, so a long press on the dialog opens none of them
   // Sort Menu
   const sortMenuRef = useRef<HTMLDivElement>();
   const {
@@ -163,7 +164,7 @@ const GiftResaleFilters = ({
     handleContextMenu: handleSortContextMenu,
     handleContextMenuClose: handleSortContextMenuClose,
     handleContextMenuHide: handleSortContextMenuHide,
-  } = useContextMenuHandlers(dialogRef);
+  } = useContextMenuHandlers(dialogRef, undefined, undefined, true);
   const getSortMenuElement = useLastCallback(() => sortMenuRef.current!);
 
   // Model Menu
@@ -174,7 +175,7 @@ const GiftResaleFilters = ({
     handleContextMenu: handleModelContextMenu,
     handleContextMenuClose: handleModelContextMenuClose,
     handleContextMenuHide: handleModelContextMenuHide,
-  } = useContextMenuHandlers(dialogRef);
+  } = useContextMenuHandlers(dialogRef, undefined, undefined, true);
   const getModelMenuElement = useLastCallback(
     () => modelMenuRef.current!,
   );
@@ -187,7 +188,7 @@ const GiftResaleFilters = ({
     handleContextMenu: handleBackdropContextMenu,
     handleContextMenuClose: handleBackdropContextMenuClose,
     handleContextMenuHide: handleBackdropContextMenuHide,
-  } = useContextMenuHandlers(dialogRef);
+  } = useContextMenuHandlers(dialogRef, undefined, undefined, true);
   const getBackdropMenuElement = useLastCallback(() => backdropMenuRef.current!);
 
   // Pattern Menu
@@ -198,7 +199,7 @@ const GiftResaleFilters = ({
     handleContextMenu: handlePatternContextMenu,
     handleContextMenuClose: handlePatternContextMenuClose,
     handleContextMenuHide: handlePatternContextMenuHide,
-  } = useContextMenuHandlers(dialogRef);
+  } = useContextMenuHandlers(dialogRef, undefined, undefined, true);
   const getPatternMenuElement = useLastCallback(() => patternMenuRef.current!);
 
   const SortMenuButton = useMemo(() => {

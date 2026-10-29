@@ -58,7 +58,7 @@ import {
 import { selectSharedSettings } from '../../global/selectors/sharedState';
 import { selectDraft, selectEditingId, selectThreadInfo } from '../../global/selectors/threads';
 import {
-  IS_ANDROID, IS_IOS, IS_SAFARI, IS_TRANSLATION_SUPPORTED, MASK_IMAGE_DISABLED,
+  IS_ANDROID, IS_IOS, IS_IOS_APP, IS_SAFARI, IS_TRANSLATION_SUPPORTED, MASK_IMAGE_DISABLED,
 } from '../../util/browser/windowEnvironment';
 import buildClassName from '../../util/buildClassName';
 import captureEscKeyListener from '../../util/captureEscKeyListener';
@@ -78,6 +78,8 @@ import usePrevDuringAnimation from '../../hooks/usePrevDuringAnimation';
 import usePreviousDeprecated from '../../hooks/usePreviousDeprecated';
 import { useResize } from '../../hooks/useResize';
 import useSyncEffect from '../../hooks/useSyncEffect';
+import useChatSwipeBack from './hooks/useChatSwipeBack';
+import useKeyboardDismissOnDrag from './hooks/useKeyboardDismissOnDrag';
 import usePinnedMessage from './hooks/usePinnedMessage';
 import useFluidBackgroundFilter from './message/hooks/useFluidBackgroundFilter';
 
@@ -492,6 +494,37 @@ function MiddleColumn({
     openChat({ id: chatId });
   });
 
+  const handleSwipeBack = useLastCallback(() => {
+    if (messageListType === 'thread') {
+      openChat({ id: undefined }, { forceOnHeavyAnimation: true });
+    } else {
+      openPreviousChat();
+    }
+  });
+
+  const messageListTransitionName = resolveTransitionName(
+    'slide',
+    animationLevel,
+    shouldSkipHistoryAnimations || !withInterfaceAnimations,
+  );
+
+  const shouldSlideMessageListsRef = useChatSwipeBack({
+    middleColumnRef,
+    isEnabled: Boolean(
+      isMobile && chatId && isReady && !isRightColumnShown && !isSelectModeActive && !hasActiveMiddleSearch
+      && !isRichInputExpanded,
+    ),
+    isRtl: lang.isRtl,
+    hasPreviousMessageList: currentTransitionKey > 0,
+    canAnimateMessageLists: messageListTransitionName !== 'none',
+    onBack: handleSwipeBack,
+  });
+
+  // A swipe back slides the message lists with the finger, which goes to the left in RTL as they slide forward
+  const messageListTransitionDirection = shouldSlideMessageListsRef.current && lang.isRtl ? 1 : undefined;
+
+  useKeyboardDismissOnDrag(middleColumnRef);
+
   const className = buildClassName(
     MASK_IMAGE_DISABLED ? 'mask-image-disabled' : 'mask-image-enabled',
     isUiReady && 'ui-ready',
@@ -617,15 +650,13 @@ function MiddleColumn({
               onFocusPinnedMessage={handleFocusPinnedMessage}
             />
             <Transition
-              name={resolveTransitionName(
-                'slide',
-                animationLevel,
-                shouldSkipHistoryAnimations || !withInterfaceAnimations,
-              )}
+              name={shouldSlideMessageListsRef.current ? 'slide' : messageListTransitionName}
+              direction={messageListTransitionDirection}
               activeKey={currentTransitionKey}
               shouldCleanup
               cleanupExceptionKey={cleanupExceptionKey}
               isBlockingAnimation
+              withSwipeControl={IS_IOS_APP && isMobile}
               onStop={handleSlideTransitionStop}
             >
               <MessageList

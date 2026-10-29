@@ -136,6 +136,8 @@ type OwnProps = {
   onCopyLink?: NoneToVoidFunction;
   onCopyMessages?: (request: MessageCopyRequest, textFormat?: ClipboardTextFormat) => void;
   onCopyNumber?: NoneToVoidFunction;
+  // Opens the link that the menu was opened on, for apps without a link menu of their own
+  onOpenLink?: NoneToVoidFunction;
   onDownload?: NoneToVoidFunction;
   onSaveGif?: NoneToVoidFunction;
   onToggleMusicInProfile?: NoneToVoidFunction;
@@ -242,6 +244,7 @@ const MessageContextMenu = ({
   onCloseAnimationEnd,
   onCopyLink,
   onCopyNumber,
+  onOpenLink,
   onDownload,
   onSaveGif,
   onToggleMusicInProfile,
@@ -543,6 +546,9 @@ const MessageContextMenu = ({
         )}
         {canSelectLanguage && (
           <MenuItem icon="web" onClick={onSelectLanguage}>{lang('Language')}</MenuItem>
+        )}
+        {onOpenLink && (
+          <MenuItem icon="open-in-new-tab" onClick={onOpenLink}>{lang('OpenUrlTitle')}</MenuItem>
         )}
         {copyOptions.map((option) => (
           isAltKeyPressed && option.canCopyWithFormat ? (

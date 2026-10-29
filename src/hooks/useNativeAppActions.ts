@@ -9,6 +9,7 @@ import { requestMeasure, requestMutation } from '../lib/fasterdom/fasterdom';
 import {
   selectCurrentMessageList,
   selectIsMediaViewerOpen,
+  selectIsRightColumnShown,
   selectIsStoryViewerOpen,
   selectTabState,
 } from '../global/selectors';
@@ -17,6 +18,8 @@ import { registerNativeActionHandler } from '../util/nativeApp';
 import useLastCallback from './useLastCallback';
 
 const LEFT_COLUMN_SCROLLABLE_SELECTOR = '#LeftColumn .custom-scroll';
+const RIGHT_COLUMN_SCROLLABLE_SELECTOR = '#RightColumn .custom-scroll';
+const MESSAGE_LIST_SELECTOR = '.messages-layout .Transition_slide-active > .MessageList';
 const RE_SETTINGS_LINK = /^tg:(\/\/)?settings\b/i;
 
 // Performs the actions of the iPhone app: home-screen quick actions, Siri shortcuts, links that open the app and
@@ -63,7 +66,7 @@ export default function useNativeAppActions(isMobile?: boolean) {
         openTelegramLink({ url: action.url });
         break;
       case 'scrollToTop':
-        scrollLeftColumnToTop();
+        scrollVisibleListToTop();
         break;
     }
   });
@@ -93,12 +96,15 @@ export default function useNativeAppActions(isMobile?: boolean) {
     }
   }
 
-  // Scrolls the lists of the left column, such as the chat list, to the top, as a tap on the status bar does in iOS
-  function scrollLeftColumnToTop() {
-    if (isMobile && selectCurrentMessageList(getGlobal())) return;
+  // Scrolls the list on screen to the top, as a tap on the status bar does in iOS: on a phone, the profile or the
+  // messages of an open chat, otherwise the lists of the left column, such as the chat list
+  function scrollVisibleListToTop() {
+    const global = getGlobal();
+    const selector = !isMobile || !selectCurrentMessageList(global) ? LEFT_COLUMN_SCROLLABLE_SELECTOR
+      : selectIsRightColumnShown(global, isMobile) ? RIGHT_COLUMN_SCROLLABLE_SELECTOR : MESSAGE_LIST_SELECTOR;
 
     requestMeasure(() => {
-      const scrolledElements = Array.from(document.querySelectorAll<HTMLElement>(LEFT_COLUMN_SCROLLABLE_SELECTOR))
+      const scrolledElements = Array.from(document.querySelectorAll<HTMLElement>(selector))
         .filter((element) => element.scrollTop > 0 && element.getClientRects().length > 0);
 
       requestMutation(() => {

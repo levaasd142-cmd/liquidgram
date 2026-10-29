@@ -1,4 +1,3 @@
-import type { FC } from '@teact';
 import { memo, useEffect, useLayoutEffect, useRef, useState } from '@teact';
 import { getActions, withGlobal } from '../../global';
 
@@ -22,11 +21,13 @@ import { resolveTransitionName } from '../../util/resolveTransitionName.ts';
 import useCurrentOrPrev from '../../hooks/useCurrentOrPrev';
 import useFlag from '../../hooks/useFlag';
 import useHistoryBack from '../../hooks/useHistoryBack';
+import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
 import useLayoutEffectWithPrevDeps from '../../hooks/useLayoutEffectWithPrevDeps';
 import useScrollNotch from '../../hooks/useScrollNotch.ts';
 import useSyncEffect from '../../hooks/useSyncEffect';
 import useWindowSize from '../../hooks/window/useWindowSize';
+import useProfileSwipeBack from './hooks/useProfileSwipeBack';
 
 import Transition from '../ui/Transition';
 import AddChatMembers from './AddChatMembers';
@@ -66,7 +67,7 @@ type StateProps = {
 const MAIN_SCREENS_COUNT = Object.keys(RightColumnContent).length / 2;
 const MANAGEMENT_SCREENS_COUNT = Object.keys(ManagementScreens).length / 2;
 
-const RightColumn: FC<OwnProps & StateProps> = ({
+const RightColumn = ({
   contentKey,
   chatId,
   threadId,
@@ -80,7 +81,7 @@ const RightColumn: FC<OwnProps & StateProps> = ({
   isSavedDialog,
   isOwnProfile,
   hasProfileBackground,
-}) => {
+}: OwnProps & StateProps) => {
   const {
     toggleChatInfo,
     toggleManagement,
@@ -99,6 +100,8 @@ const RightColumn: FC<OwnProps & StateProps> = ({
     setShouldCloseRightColumn,
     closeMonetizationStatistics,
   } = getActions();
+
+  const lang = useLang();
 
   const containerRef = useRef<HTMLDivElement>();
 
@@ -309,6 +312,12 @@ const RightColumn: FC<OwnProps & StateProps> = ({
       setManagementScreen(ManagementScreens.Initial);
     }
   }, [chatId, threadId, isSavedDialog, isSavedMessages]);
+
+  useProfileSwipeBack({
+    isEnabled: Boolean(isMobile && isProfile),
+    isRtl: lang.isRtl,
+    onBack: () => close(false),
+  });
 
   useHistoryBack({
     isActive: isChatSelected && (

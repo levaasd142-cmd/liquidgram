@@ -40,8 +40,31 @@
     --hover-color-reaction-chosen: #4096ec;
   }
 
-  &.is-swiped {
-    transform: translateX(-2.5rem) !important;
+  // Swipe to reply moves the message with inline styles, and the reply arrow comes in at its right
+  .message-reply-swipe {
+    pointer-events: none;
+
+    position: absolute;
+    top: 50%;
+    right: -2.75rem;
+    transform: scale(0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    border-radius: 50%;
+
+    font-size: 1.25rem;
+    color: var(--color-white);
+
+    opacity: 0;
+    background-color: var(--action-message-bg);
+
+    transition: opacity 150ms ease-out, transform 150ms ease-out;
   }
 
   &.is-protected {

@@ -12,6 +12,7 @@ import buildClassName from '../../util/buildClassName';
 import {
   captureEvents,
   IOS_SCREEN_EDGE_THRESHOLD,
+  SHOULD_LEAVE_SCREEN_EDGES,
   SWIPE_DIRECTION_THRESHOLD,
   SWIPE_DIRECTION_TOLERANCE,
 } from '../../util/captureEvents';
@@ -455,7 +456,7 @@ const MediaViewerSlides = ({
       }, cancelDrag) => {
         if (isReleasedRef.current || checkIfControlTarget(event)) return;
         // Avoid conflicts with swipe-to-back gestures
-        if (IS_IOS && captureEvent.type === 'touchstart') {
+        if (SHOULD_LEAVE_SCREEN_EDGES && captureEvent.type === 'touchstart') {
           const { pageX } = (captureEvent as RealTouchEvent).touches[0];
           if (pageX <= IOS_SCREEN_EDGE_THRESHOLD || pageX >= windowWidth - IOS_SCREEN_EDGE_THRESHOLD) {
             return;

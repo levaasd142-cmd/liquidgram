@@ -14,12 +14,12 @@ import {
   selectPeer,
   selectTabState,
 } from '../../global/selectors';
-import { IS_IOS } from '../../util/browser/windowEnvironment';
 import buildClassName from '../../util/buildClassName';
 import buildStyle from '../../util/buildStyle';
 import {
   captureEvents,
   IOS_SCREEN_EDGE_THRESHOLD,
+  SHOULD_LEAVE_SCREEN_EDGES,
   SWIPE_DIRECTION_THRESHOLD,
   SWIPE_DIRECTION_TOLERANCE,
 } from '../../util/captureEvents';
@@ -273,7 +273,7 @@ function StorySlides({
       }) => {
         if (isReleasedRef.current) return;
         // Avoid conflicts with swipe-to-back gestures
-        if (IS_IOS && captureEvent.type === 'touchstart') {
+        if (SHOULD_LEAVE_SCREEN_EDGES && captureEvent.type === 'touchstart') {
           const { pageX } = (captureEvent as RealTouchEvent).touches[0];
           if (pageX <= IOS_SCREEN_EDGE_THRESHOLD || pageX >= windowWidth - IOS_SCREEN_EDGE_THRESHOLD) {
             return;

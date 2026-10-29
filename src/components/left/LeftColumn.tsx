@@ -28,7 +28,6 @@ import { isComposerHasSelection } from '../middle/composer/helpers/selection';
 import useFoldersReducer from '../../hooks/reducers/useFoldersReducer';
 import { useHotkeys } from '../../hooks/useHotkeys';
 import useLastCallback from '../../hooks/useLastCallback';
-import usePrevious from '../../hooks/usePrevious';
 import { useStateRef } from '../../hooks/useStateRef';
 import useSyncEffect from '../../hooks/useSyncEffect';
 import useSyncEffectWithPrevDeps from '../../hooks/useSyncEffectWithPrevDeps';
@@ -513,7 +512,10 @@ function LeftColumn({
     }
   }, [foldersDispatch, nextFoldersAction]);
 
-  const prevSettingsScreenRef = useStateRef(usePrevious(contentType === ContentType.Settings ? settingsScreen : -1));
+  const contentKeyRef = useStateRef(contentKey);
+  const settingsScreenRef = useStateRef(settingsScreen);
+  // The screen to return to when a swipe back is cancelled
+  const swipeStartScreenRef = useRef<{ contentKey: LeftColumnContent; settingsScreen: SettingsScreens }>();
 
   useEffect(() => {
     if (!IS_TOUCH_ENV) {
@@ -523,13 +525,22 @@ function LeftColumn({
     return captureControlledSwipe(ref.current!, {
       excludedClosestSelector: '.ProfileInfo, .color-picker, .hue-picker, .TabList',
       selectorToPreventScroll: '#Settings .custom-scroll',
-      onSwipeRightStart: handleReset,
+      // The chat list has nothing to go back to: `handleReset` would open the global search there, which is the
+      // shortcut of Esc, and the chat folders take the swipe instead
+      getCanSwipeRight: () => contentKeyRef.current !== LeftColumnContent.ChatList,
+      onSwipeRightStart: () => {
+        swipeStartScreenRef.current = { contentKey: contentKeyRef.current, settingsScreen: settingsScreenRef.current };
+        handleReset();
+      },
       onCancel: () => {
-        openLeftColumnContent({ contentKey: LeftColumnContent.Settings });
-        openSettingsScreen({ screen: prevSettingsScreenRef.current! });
+        const startScreen = swipeStartScreenRef.current!;
+        openLeftColumnContent({ contentKey: startScreen.contentKey });
+        if (startScreen.contentKey === LeftColumnContent.Settings) {
+          openSettingsScreen({ screen: startScreen.settingsScreen });
+        }
       },
     });
-  }, [prevSettingsScreenRef, ref]);
+  }, [contentKeyRef, ref, settingsScreenRef]);
 
   function renderContent(isActive: boolean) {
     switch (contentType) {

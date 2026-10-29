@@ -788,14 +788,13 @@ const Profile = ({
 
     return captureEvents(transitionRef.current, {
       selectorToPreventScroll: '.Profile',
+      // A swipe past the first or the last tab is left to other handlers, such as the swipe back to the chat
       onSwipe: (e, direction) => {
-        if (direction === SwipeDirection.Left) {
-          const nextIndex = Math.min(activeTabIndex + 1, tabs.length - 1);
-          setActiveTab(tabs[nextIndex].type);
+        if (direction === SwipeDirection.Left && activeTabIndex < tabs.length - 1) {
+          setActiveTab(tabs[activeTabIndex + 1].type);
           return true;
-        } else if (direction === SwipeDirection.Right) {
-          const nextIndex = Math.max(0, activeTabIndex - 1);
-          setActiveTab(tabs[nextIndex].type);
+        } else if (direction === SwipeDirection.Right && activeTabIndex > 0) {
+          setActiveTab(tabs[activeTabIndex - 1].type);
           return true;
         }
 

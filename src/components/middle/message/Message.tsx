@@ -134,7 +134,7 @@ import {
 import { selectLiquidSettings, selectSharedSettings } from '../../../global/selectors/sharedState';
 import { selectThreadInfo, selectThreadReadState } from '../../../global/selectors/threads';
 import { IS_TAURI } from '../../../util/browser/globalEnvironment';
-import { IS_ANDROID, IS_TRANSLATION_SUPPORTED } from '../../../util/browser/windowEnvironment';
+import { IS_ANDROID, IS_IOS_APP, IS_TRANSLATION_SUPPORTED } from '../../../util/browser/windowEnvironment';
 import buildClassName from '../../../util/buildClassName';
 import buildStyle from '../../../util/buildStyle';
 import { isUserId } from '../../../util/entities/ids';
@@ -550,7 +550,8 @@ const Message = ({
   } = useContextMenuHandlers(
     ref,
     (isTouchScreen && isInSelectMode) || isAccountFrozen,
-    !IS_TAURI,
+    // Browsers show their own menu for links. The iOS app has none, so links get the message menu with their items.
+    !IS_TAURI && !IS_IOS_APP,
     IS_ANDROID,
     getIsMessageListReady,
   );
@@ -560,6 +561,14 @@ const Message = ({
       disableContextMenuHint();
     }
   }, [isContextMenuOpen, disableContextMenuHint]);
+
+  // A touch can start on text or an emoji inside the link
+  const contextMenuLink = contextMenuTarget?.closest<HTMLAnchorElement>('a[href]:not([href="#"])');
+
+  // The link opens as when it is tapped, with its checks of the address
+  const handleOpenContextMenuLink = useLastCallback(() => {
+    contextMenuLink?.click();
+  });
 
   const noAppearanceAnimation = appearanceOrder <= 0 || message.shouldSkipTypingAnimation;
   const [isShown, markShown] = useFlag(noAppearanceAnimation);
@@ -847,7 +856,6 @@ const Message = ({
     isInSelectMode && 'is-in-selection-mode',
     isThreadTop && !withAvatar && 'is-thread-top',
     Boolean(message.inlineButtons) && 'has-inline-buttons',
-    isSwiped && 'is-swiped',
     isJustAdded && 'is-just-added',
     (hasActiveReactions || shouldPlayEffect) && 'has-active-effect',
     isStoryMention && 'is-story-mention',
@@ -1979,6 +1987,11 @@ const Message = ({
         data-is-pinned={isPinned || undefined}
         data-should-update-views={message.viewsCount !== undefined}
       />
+      {isSwiped && (
+        <div className="message-reply-swipe" aria-hidden>
+          <Icon name="reply" />
+        </div>
+      )}
       {!isInDocumentGroup && (
         <div className="message-select-control no-selection">
           {isSelected && <Icon name="check" className="message-select-control-icon" />}
@@ -2109,7 +2122,7 @@ const Message = ({
         <ContextMenuContainer
           isOpen={isContextMenuOpen}
           anchor={contextMenuAnchor}
-          targetHref={contextMenuTarget?.matches('a[href]') ? (contextMenuTarget as HTMLAnchorElement).href : undefined}
+          targetHref={contextMenuLink?.href}
           isAltKeyPressed={isContextMenuAltKeyPressed}
           message={message}
           album={album}
@@ -2117,6 +2130,7 @@ const Message = ({
           threadId={threadId}
           onClose={handleContextMenuClose}
           onCloseAnimationEnd={handleContextMenuHide}
+          onOpenLink={IS_IOS_APP && contextMenuLink ? handleOpenContextMenuLink : undefined}
           repliesThreadInfo={repliesThreadInfo}
           noReplies={noReplies}
           detectedLanguage={detectedLanguage}
