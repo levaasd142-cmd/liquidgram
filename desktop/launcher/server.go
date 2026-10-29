@@ -9,6 +9,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"net/url"
 	"path"
 	"regexp"
 	"strconv"
@@ -22,10 +23,13 @@ const (
 	controlPathPrefix = "/__liquidgram/"
 	pingPath          = controlPathPrefix + "ping"
 	openPath          = controlPathPrefix + "open"
+	openURLPath       = controlPathPrefix + "open-url"
 	instanceHeader    = "X-Liquidgram-Instance"
 	signatureApp      = "liquidgram"
 	indexFileName     = "index.html"
 	defaultMediaType  = "application/octet-stream"
+
+	maxExternalURLLength = 8192
 
 	immutableCacheControl  = "public, max-age=31536000, immutable"
 	revalidateCacheControl = "no-cache"
@@ -80,22 +84,27 @@ type pingResponse struct {
 	Instance string `json:"instance"`
 }
 
-// Serves the embedded web build and the control endpoints that let a second launch hand off
+// Serves the embedded web build and the control endpoints: the handoff of a second launch and links
+// that the app sends to the default browser
 type appHandler struct {
 	files        fs.FS
 	allowedHosts []string
 	instanceID   string
 	openWindow   func() error
+	openURL      func(string) error
 	etags        sync.Map
 }
 
-func newAppHandler(files fs.FS, port int, instanceID string, openWindow func() error) *appHandler {
+func newAppHandler(
+	files fs.FS, port int, instanceID string, openWindow func() error, openURL func(string) error,
+) *appHandler {
 	portText := strconv.Itoa(port)
 	return &appHandler{
 		files:        files,
 		allowedHosts: []string{net.JoinHostPort(loopbackIP, portText), net.JoinHostPort("localhost", portText)},
 		instanceID:   instanceID,
 		openWindow:   openWindow,
+		openURL:      openURL,
 	}
 }
 
@@ -139,21 +148,66 @@ func (h *appHandler) serveControl(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", contentTypes[".json"])
 		json.NewEncoder(w).Encode(pingResponse{App: signatureApp, Version: version, Instance: h.instanceID})
 	case openPath:
-		// Browsers cannot send the custom header cross-origin without a preflight, which is refused,
-		// and the instance ID keeps launches of other users on this computer out
-		if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || r.Header.Get(instanceHeader) != h.instanceID {
-			http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
-			return
-		}
-		if err := h.openWindow(); err != nil {
-			log.Printf("Could not open a window on request: %v", err)
-			http.Error(w, http.StatusText(http.StatusServiceUnavailable), http.StatusServiceUnavailable)
-			return
-		}
-		w.WriteHeader(http.StatusNoContent)
+		h.serveOpenWindow(w, r)
+	case openURLPath:
+		h.serveOpenURL(w, r)
 	default:
 		http.NotFound(w, r)
 	}
+}
+
+// Opens another app window for a second launch. Browsers cannot send the custom header cross-origin
+// without a preflight, which is refused, and the instance ID keeps launches of other users out.
+func (h *appHandler) serveOpenWindow(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet || r.Header.Get("Origin") != "" || r.Header.Get(instanceHeader) != h.instanceID {
+		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+		return
+	}
+
+	if err := h.openWindow(); err != nil {
+		log.Printf("Could not open a window on request: %v", err)
+		http.Error(w, http.StatusText(http.StatusServiceUnavailable), http.StatusServiceUnavailable)
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
+// Opens a link to another site in the default browser, which has the user's sign-ins, instead of a
+// window of the app profile. Only the app page may ask: the browser marks its requests as same-origin,
+// and the instance ID comes from the ping, which other sites cannot read.
+func (h *appHandler) serveOpenURL(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet || r.Header.Get("Sec-Fetch-Site") != "same-origin" ||
+		r.Header.Get(instanceHeader) != h.instanceID {
+		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+		return
+	}
+
+	target, ok := parseExternalURL(r.URL.Query().Get("url"))
+	if !ok {
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		return
+	}
+
+	if err := h.openURL(target); err != nil {
+		log.Printf("Could not open a link in the default browser: %v", err)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
+// Accepts only absolute web addresses, so the system handler can never receive a file path or a
+// custom protocol
+func parseExternalURL(rawURL string) (string, bool) {
+	if len(rawURL) > maxExternalURLLength {
+		return "", false
+	}
+
+	parsedURL, err := url.Parse(rawURL)
+	if err != nil || (parsedURL.Scheme != "http" && parsedURL.Scheme != "https") || parsedURL.Host == "" {
+		return "", false
+	}
+	return parsedURL.String(), true
 }
 
 func (h *appHandler) serveFile(w http.ResponseWriter, r *http.Request) {

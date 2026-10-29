@@ -5,13 +5,18 @@ import (
 	"io/fs"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"path"
+	"slices"
 	"strings"
 	"testing"
 	"testing/fstest"
 )
 
-const testPort = 47819
+const (
+	testPort     = 47819
+	testInstance = "instance"
+)
 
 var testFiles = fstest.MapFS{
 	"index.html":                    {Data: []byte("<!doctype html>")},
@@ -43,8 +48,25 @@ func TestEveryEmbeddedFileHasExplicitContentType(t *testing.T) {
 	}
 }
 
+type testActions struct {
+	windows int
+	urls    []string
+}
+
+func newTestHandler() (*appHandler, *testActions) {
+	actions := &testActions{}
+	handler := newAppHandler(testFiles, testPort, testInstance, func() error {
+		actions.windows++
+		return nil
+	}, func(target string) error {
+		actions.urls = append(actions.urls, target)
+		return nil
+	})
+	return handler, actions
+}
+
 func TestServeFiles(t *testing.T) {
-	handler := newAppHandler(testFiles, testPort, "test", func() error { return nil })
+	handler, _ := newTestHandler()
 	tests := []struct {
 		target       string
 		status       int
@@ -92,7 +114,7 @@ func TestServeFiles(t *testing.T) {
 }
 
 func TestRevalidateWithETag(t *testing.T) {
-	handler := newAppHandler(testFiles, testPort, "test", func() error { return nil })
+	handler, _ := newTestHandler()
 	etag := serve(handler, http.MethodGet, "/", nil).Header().Get("ETag")
 	if etag == "" {
 		t.Fatal("no ETag")
@@ -105,7 +127,7 @@ func TestRevalidateWithETag(t *testing.T) {
 }
 
 func TestRejectForeignHostsAndMethods(t *testing.T) {
-	handler := newAppHandler(testFiles, testPort, "test", func() error { return nil })
+	handler, _ := newTestHandler()
 	tests := []struct {
 		method string
 		host   string
@@ -129,38 +151,72 @@ func TestRejectForeignHostsAndMethods(t *testing.T) {
 	}
 }
 
-func TestControlEndpoints(t *testing.T) {
-	windowRequests := 0
-	handler := newAppHandler(testFiles, testPort, "instance", func() error {
-		windowRequests++
-		return nil
-	})
+func TestOpenWindowForSecondLaunch(t *testing.T) {
+	handler, actions := newTestHandler()
 
 	response := serve(handler, http.MethodGet, pingPath, nil)
 	var ping pingResponse
 	if err := json.NewDecoder(response.Body).Decode(&ping); err != nil {
 		t.Fatal(err)
 	}
-	if ping.App != signatureApp || ping.Instance != "instance" {
+	if ping.App != signatureApp || ping.Instance != testInstance {
 		t.Errorf("ping %+v", ping)
 	}
 
 	tests := []struct {
+		method  string
 		headers map[string]string
 		status  int
 	}{
-		{nil, http.StatusForbidden},
-		{map[string]string{instanceHeader: "other"}, http.StatusForbidden},
-		{map[string]string{instanceHeader: "instance", "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
-		{map[string]string{instanceHeader: "instance"}, http.StatusNoContent},
+		{http.MethodGet, nil, http.StatusForbidden},
+		{http.MethodGet, map[string]string{instanceHeader: "other"}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{instanceHeader: testInstance, "Origin": "http://127.0.0.1:47819"}, http.StatusForbidden},
+		{http.MethodHead, map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
+		{http.MethodGet, map[string]string{instanceHeader: testInstance}, http.StatusNoContent},
 	}
 	for _, test := range tests {
-		if response := serve(handler, http.MethodGet, openPath, test.headers); response.Code != test.status {
-			t.Errorf("open with %v: status %d, want %d", test.headers, response.Code, test.status)
+		if response := serve(handler, test.method, openPath, test.headers); response.Code != test.status {
+			t.Errorf("%s open with %v: status %d, want %d", test.method, test.headers, response.Code, test.status)
 		}
 	}
-	if windowRequests != 1 {
-		t.Errorf("%d window requests, want 1", windowRequests)
+	if actions.windows != 1 {
+		t.Errorf("%d window requests, want 1", actions.windows)
+	}
+}
+
+func TestOpenExternalURL(t *testing.T) {
+	handler, actions := newTestHandler()
+	fromApp := map[string]string{"Sec-Fetch-Site": "same-origin", instanceHeader: testInstance}
+	tests := []struct {
+		url     string
+		headers map[string]string
+		status  int
+	}{
+		{"https://example.com/path?q=1#top", fromApp, http.StatusNoContent},
+		{"http://example.com", fromApp, http.StatusNoContent},
+		{"https://example.com", map[string]string{"Sec-Fetch-Site": "cross-site", instanceHeader: testInstance}, http.StatusForbidden},
+		{"https://example.com", map[string]string{instanceHeader: testInstance}, http.StatusForbidden},
+		{"https://example.com", map[string]string{"Sec-Fetch-Site": "same-origin"}, http.StatusForbidden},
+		{"file:///C:/Windows/System32/calc.exe", fromApp, http.StatusBadRequest},
+		{`C:\Windows\System32\calc.exe`, fromApp, http.StatusBadRequest},
+		{`\\server\share\setup.exe`, fromApp, http.StatusBadRequest},
+		{"javascript:alert(1)", fromApp, http.StatusBadRequest},
+		{"ms-settings:privacy", fromApp, http.StatusBadRequest},
+		{"https:///no-host", fromApp, http.StatusBadRequest},
+		{"/relative/path", fromApp, http.StatusBadRequest},
+		{"https://example.com/" + strings.Repeat("a", maxExternalURLLength), fromApp, http.StatusBadRequest},
+	}
+
+	for _, test := range tests {
+		target := openURLPath + "?url=" + url.QueryEscape(test.url)
+		if response := serve(handler, http.MethodGet, target, test.headers); response.Code != test.status {
+			t.Errorf("open-url %.60q with %v: status %d, want %d", test.url, test.headers, response.Code, test.status)
+		}
+	}
+
+	want := []string{"https://example.com/path?q=1#top", "http://example.com"}
+	if !slices.Equal(actions.urls, want) {
+		t.Errorf("opened %q, want %q", actions.urls, want)
 	}
 }
 

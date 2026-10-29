@@ -34,6 +34,7 @@ The code lives in `desktop/launcher`; platform files use the `_windows`, `_linux
   - macOS: the same browsers in `/Applications` and `~/Applications`.
   - Linux: `google-chrome`, `chromium`, `microsoft-edge`, `brave-browser`, `yandex-browser` and `vivaldi` on `PATH`.
 - **Exit.** The launcher stays alive while a browser process it started runs or while the profile is locked: `lockfile` on Windows, `SingletonLock` elsewhere. The lock check covers a browser that outlived a killed launcher. After three idle checks one second apart, the server stops and the launcher exits.
+- **Links.** The app window uses its own browser profile, so links to other sites go to the default browser, where the user is signed in. `src/util/desktopLauncher.ts` runs only on the `127.0.0.1` origin and only once the ping confirms the launcher. It sends such links from `window.open` and from clicks on `target="_blank"` anchors to `GET /__liquidgram/open-url?url=…`. The launcher accepts the request only with `Sec-Fetch-Site: same-origin` and the instance ID from the ping, which other sites cannot read. It passes only absolute `http` and `https` addresses to `rundll32 url.dll,FileProtocolHandler` on Windows, `open` on macOS or `xdg-open` on Linux. If that fails, the link opens in a browser window as before.
 - **Errors.** If no browser is found or no port is free, the launcher shows a Russian and English message: a message box on Windows, `osascript` on macOS, and `zenity` or stderr on Linux.
 
 Data folder: `%LOCALAPPDATA%\Liquidgram` on Windows, `~/Library/Application Support/Liquidgram` on macOS, and `$XDG_DATA_HOME/liquidgram` (default `~/.local/share/liquidgram`) on Linux. It holds `config.json`, `launcher.log` (truncated once it passes 1 MB) and the browser profiles. The uninstaller keeps it.
@@ -67,5 +68,4 @@ LIQUIDGRAM_SERVER_ONLY=1 go run .    # then open http://127.0.0.1:47819/
 
 - The executables are not code-signed, so SmartScreen warns on first launch.
 - The app runs only while its window is open. There is no tray icon, autostart or push notifications when it is closed.
-- Links to other sites open in a browser window that uses the Liquidgram profile.
 - A window pinned to the taskbar starts the browser directly, without the launcher. Pin the Start menu shortcut instead.

@@ -98,7 +98,7 @@ func run() int {
 	}
 
 	server := &http.Server{
-		Handler:           newAppHandler(webappFiles(), port, instanceID, app.openWindow),
+		Handler:           newAppHandler(webappFiles(), port, instanceID, app.openWindow, openExternalURL),
 		ReadHeaderTimeout: 10 * time.Second,
 		IdleTimeout:       2 * time.Minute,
 		ErrorLog:          log.Default(),

@@ -13,7 +13,7 @@ import Link from '../ui/Link';
 const API_DEVELOPMENT_URL = 'https://my.telegram.org/apps';
 
 const AuthApiCredentials = () => {
-  const { initApi, openUrl } = getActions();
+  const { initApi } = getActions();
 
   const lang = useLang();
 
@@ -31,8 +31,9 @@ const AuthApiCredentials = () => {
     setHasError(false);
   });
 
+  // The `openUrl` action loads only with the main screen, after sign-in
   const handleOpenApiDevelopment = useLastCallback(() => {
-    openUrl({ url: API_DEVELOPMENT_URL, shouldSkipModal: true });
+    window.open(API_DEVELOPMENT_URL, '_blank', 'noopener');
   });
 
   const handleSubmit = useLastCallback((e: React.FormEvent<HTMLFormElement>) => {
