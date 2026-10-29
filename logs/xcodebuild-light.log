@@ -1,0 +1,299 @@
+    t =     9.01s     Wait for org.liquidgram.messenger to idle
+    t =     9.02s     Find the Target Application 'org.liquidgram.messenger'
+    t =     9.04s     Check for interrupting elements affecting "Liquidgram" Application
+    t =     9.08s     Synthesize event
+    t =     9.09s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.12s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.15s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.17s         Find the Target Application 'org.liquidgram.messenger'
+    t =     9.22s         Find the Target Application 'org.liquidgram.messenger'
+    t =    12.12s     Wait for org.liquidgram.messenger to idle
+    t =    12.68s Waiting 10.0s for "liquidgram.privacyShield" Any to exist
+    t =    13.72s     Checking `Expect predicate `existsNoRetry == 1` for object "liquidgram.privacyShield" Any`
+    t =    13.72s         Checking existence of `"liquidgram.privacyShield" Any`
+    t =    14.51s Added attachment named '01-shield-under-notification-center'
+    t =    14.51s Press Target Application 'org.liquidgram.messenger'[0.50, 1.00] for 0.1 seconds, then drag to Target Application 'org.liquidgram.messenger'[0.50, 0.40] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    14.51s     Wait for org.liquidgram.messenger to idle
+    t =    14.53s     Find the Target Application 'org.liquidgram.messenger'
+    t =    14.61s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    14.70s     Synthesize event
+    t =    14.70s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.77s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.83s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.85s         Find the Target Application 'org.liquidgram.messenger'
+    t =    14.88s         Find the Target Application 'org.liquidgram.messenger'
+    t =    16.34s     Wait for org.liquidgram.messenger to idle
+    t =    16.36s Open org.liquidgram.messenger
+    t =    16.36s     Activate org.liquidgram.messenger
+    t =    17.22s         Wait for org.liquidgram.messenger to idle
+    t =    17.48s Checking existence of `"liquidgram.privacyShield" Any`
+    t =    18.22s Added attachment named '02-shield-removed'
+    t =    18.22s Press Target Application 'org.liquidgram.messenger'[0.50, 1.00] for 0.1 seconds, then drag to Target Application 'org.liquidgram.messenger'[0.50, 0.60] with velocity of 250.00 pixels per second, and then hold for 1.0 seconds 
+    t =    18.22s     Wait for org.liquidgram.messenger to idle
+    t =    18.22s     Find the Target Application 'org.liquidgram.messenger'
+    t =    18.27s     Check for interrupting elements affecting "Liquidgram" Application
+    t =    18.33s     Synthesize event
+    t =    18.34s         Find the Target Application 'org.liquidgram.messenger'
+    t =    18.40s         Find the Target Application 'org.liquidgram.messenger'
+    t =    18.43s         Find the Target Application 'org.liquidgram.messenger'
+    t =    18.49s         Find the Target Application 'org.liquidgram.messenger'
+    t =    18.52s         Find the Target Application 'org.liquidgram.messenger'
+    t =    21.32s     Wait for org.liquidgram.messenger to idle
+    t =    22.13s Added attachment named '03-app-switcher'
+    t =    22.14s Open org.liquidgram.messenger
+    t =    22.14s     Activate org.liquidgram.messenger
+    t =    22.51s         Wait for org.liquidgram.messenger to idle
+    t =    22.60s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testPrivacyShieldCoversAppWhileInactive]' passed (22.842 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionFocusesSearch]' started.
+    t =     0.03s Start Test at 2026-10-29 19:19:07.581
+    t =     0.03s Set Up
+    t =     0.07s Open org.liquidgram.messenger
+    t =     0.07s     Launch org.liquidgram.messenger
+    t =     0.07s         Terminate org.liquidgram.messenger:27305
+    t =     2.36s         Setting up automation session
+    t =     5.39s         Wait for org.liquidgram.messenger to idle
+    t =     7.22s Waiting 40.0s for Keyboard (First Match) to exist
+    t =     8.27s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     8.27s         Checking existence of `Keyboard (First Match)`
+    t =     8.79s         Capturing element debug description
+    t =     9.23s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =     9.24s         Checking existence of `Keyboard (First Match)`
+    t =     9.40s         Capturing element debug description
+    t =    10.26s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    10.27s         Checking existence of `Keyboard (First Match)`
+    t =    10.62s         Capturing element debug description
+    t =    11.24s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    11.24s         Checking existence of `Keyboard (First Match)`
+    t =    12.19s         Capturing element debug description
+    t =    12.29s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    12.29s         Checking existence of `Keyboard (First Match)`
+    t =    13.23s Waiting 20.0s for Any (First Match) to exist
+    t =    14.24s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    14.24s         Checking existence of `Any (First Match)`
+    t =    14.58s Added attachment named '01-search-focused'
+    t =    14.58s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionFocusesSearch]' passed (14.784 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensNewMessage]' started.
+    t =     0.00s Start Test at 2026-10-29 19:19:22.339
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:27841
+    t =     1.55s         Setting up automation session
+    t =     3.41s         Wait for org.liquidgram.messenger to idle
+    t =     4.89s Waiting 40.0s for Any (First Match) to exist
+    t =     5.90s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     5.90s         Checking existence of `Any (First Match)`
+    t =     8.07s         Capturing element debug description
+    t =     8.90s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     8.91s         Checking existence of `Any (First Match)`
+    t =    10.07s         Capturing element debug description
+    t =    10.94s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    10.95s         Checking existence of `Any (First Match)`
+    t =    13.97s Added attachment named '01-new-message'
+    t =    13.97s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensNewMessage]' passed (14.173 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensSavedMessages]' started.
+    t =     0.00s Start Test at 2026-10-29 19:19:36.512
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:28089
+    t =     2.09s         Setting up automation session
+    t =     3.42s         Wait for org.liquidgram.messenger to idle
+    t =     4.84s Waiting 40.0s for Any (First Match) to exist
+    t =     5.90s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     5.91s         Checking existence of `Any (First Match)`
+    t =     6.40s         Capturing element debug description
+    t =     6.91s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     6.91s         Checking existence of `Any (First Match)`
+    t =     7.23s         Capturing element debug description
+    t =     7.90s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     7.90s         Checking existence of `Any (First Match)`
+    t =     8.64s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Идеи для Liquidgram"'
+    t =     8.73s Find the StaticText (Element at index 0)
+    t =     8.94s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Saved Messages"'
+    t =     9.03s Find the Any (Element at index 0)
+    t =     9.36s Added attachment named '01-saved-messages'
+    t =     9.36s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionOpensSavedMessages]' passed (9.567 seconds).
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionTogglesGhostMode]' started.
+    t =     0.00s Start Test at 2026-10-29 19:19:46.080
+    t =     0.00s Set Up
+    t =     0.00s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:28348
+    t =     1.51s         Setting up automation session
+    t =     3.56s         Wait for org.liquidgram.messenger to idle
+    t =     5.33s Waiting 40.0s for Any (First Match) to exist
+    t =     6.44s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     6.44s         Checking existence of `Any (First Match)`
+    t =     7.10s         Capturing element debug description
+    t =     7.42s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     7.42s         Checking existence of `Any (First Match)`
+    t =     8.54s Added attachment named '01-ghost-mode-toast'
+    t =     8.55s Tear Down
+Test Case '-[LiquidgramUITests.FeatureTests testQuickActionTogglesGhostMode]' passed (8.748 seconds).
+Test Suite 'FeatureTests' failed at 2026-10-29 19:19:54.831.
+	 Executed 12 tests, with 1 failure (0 unexpected) in 243.189 (243.205) seconds
+Test Suite 'ShellTests' started at 2026-10-29 19:19:54.832.
+Test Case '-[LiquidgramUITests.ShellTests testIPhoneStaysInPortrait]' started.
+    t =     0.00s Start Test at 2026-10-29 19:19:54.833
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:28675
+    t =     5.54s         Setting up automation session
+    t =     7.50s         Wait for org.liquidgram.messenger to idle
+    t =     9.19s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.62s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.66s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    12.79s Find the Any (Element at index 0)
+    t =    12.90s Setting device orientation to Landscape Left
+    t =    12.92s     Device orientation changed to Landscape Left
+    t =    13.02s     Wait for org.liquidgram.messenger to idle
+    t =    15.03s Find the Window (First Match)
+    t =    15.29s Added attachment named '01-turned-sideways'
+    t =    15.29s Setting device orientation to Portrait
+    t =    15.30s     Device orientation changed to Portrait
+    t =    15.32s     Wait for org.liquidgram.messenger to idle
+    t =    15.33s Tear Down
+Test Case '-[LiquidgramUITests.ShellTests testIPhoneStaysInPortrait]' passed (15.541 seconds).
+Test Case '-[LiquidgramUITests.ShellTests testKeyboardResizesPageAndRestoresIt]' started.
+    t =     0.00s Start Test at 2026-10-29 19:20:10.376
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:28790
+    t =     3.69s         Setting up automation session
+    t =     5.10s         Wait for org.liquidgram.messenger to idle
+    t =     6.49s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     7.23s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.09s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     9.09s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.25s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.52s Find the Any (Element at index 0)
+    t =    10.64s Waiting 20.0s for "Open menu" Button to exist
+    t =    11.65s     Checking `Expect predicate `existsNoRetry == 1` for object "Open menu" Button`
+    t =    11.66s         Checking existence of `"Open menu" Button`
+    t =    11.74s Checking existence of `StatusBar (First Match)`
+    t =    11.74s     Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    11.84s Find the StatusBar (First Match)
+    t =    11.84s     Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    11.89s Find the WebView (First Match)
+    t =    11.92s Find the "Open menu" Button
+    t =    12.03s Find the WebView (First Match)
+    t =    12.34s Added attachment named '01-chat-list'
+    t =    12.35s Tap "Аня СмирноваАня Смирнова 19:19Договорились! До завтра 💙1" Button
+    t =    12.35s     Wait for org.liquidgram.messenger to idle
+    t =    12.36s     Find the "Аня СмирноваАня Смирнова 19:19Договорились! До завтра 💙1" Button
+    t =    12.45s     Check for interrupting elements affecting "Аня СмирноваАня Смирнова 19:19Договорились! До завтра 💙1" Button
+    t =    12.51s     Synthesize event
+    t =    12.97s     Wait for org.liquidgram.messenger to idle
+    t =    12.99s Waiting 2.0s for "Allow" Button to exist
+    t =    14.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    14.02s         Checking existence of `"Allow" Button`
+    t =    14.02s             Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    14.12s             Find: Descendants matching type Alert
+    t =    14.14s         Capturing element debug description
+    t =    14.99s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    14.99s         Checking existence of `"Allow" Button`
+    t =    14.99s             Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    15.05s             Find: Descendants matching type Alert
+    t =    15.05s         Capturing element debug description
+    t =    15.05s     Checking existence of `"Allow" Button`
+    t =    15.05s         Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    15.09s         Find: Descendants matching type Alert
+    t =    15.09s Collecting debug information to assist test failure triage
+    t =    15.09s     Requesting snapshot of accessibility hierarchy for app with pid 5088
+    t =    15.16s Checking existence of `Any (First Match)`
+    t =    15.34s Find the Any (First Match)
+    t =    15.55s Get all elements bound by index for: Elements matching predicate 'label == "Аня Смирнова"'
+    t =    15.64s Find the Button (Element at index 0)
+    t =    15.75s Find the WebView (First Match)
+    t =    15.78s Find the "Аня Смирнова" Button
+    t =    15.89s Find the "Message" TextView
+    t =    16.23s Added attachment named '02-chat'
+    t =    16.23s Tap "Message" TextView
+    t =    16.23s     Wait for org.liquidgram.messenger to idle
+    t =    16.23s     Find the "Message" TextView
+    t =    16.39s     Check for interrupting elements affecting "Message" TextView
+    t =    16.46s     Synthesize event
+    t =    16.76s     Wait for org.liquidgram.messenger to idle
+    t =    19.06s Waiting 20.0s for Keyboard (First Match) to exist
+    t =    20.13s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    20.14s         Checking existence of `Keyboard (First Match)`
+    t =    20.29s Checking existence of `"Continue" Button`
+    t =    20.50s Find the "Message" TextView
+    t =    21.10s Find the Keyboard (First Match)
+    t =    21.26s Find the Keyboard at {{0.0, 583.0}, {402.0, 233.0}}
+    t =    21.61s Added attachment named '03-keyboard-up'
+    t =    21.62s Find the "Аня Смирнова" Button
+    t =    21.87s Find the "Аня Смирнова" Button
+    t =    22.01s Find the WebView (First Match)
+    t =    22.04s Find the "Message" TextView
+    t =    22.39s Find the "Message" TextView
+    t =    22.70s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Договорились" OR label CONTAINS "Во сколько завтра" OR label CONTAINS "Давай в 19:00" OR label CONTAINS "Ахахах ладно"'
+    t =    22.88s Find the StaticText (Element at index 0)
+    t =    23.08s Tap "Ахахах ладно, ты победил" StaticText
+    t =    23.08s     Wait for org.liquidgram.messenger to idle
+    t =    23.09s     Find the "Ахахах ладно, ты победил" StaticText
+    t =    23.27s     Check for interrupting elements affecting "Ахахах ладно, ты победил" StaticText
+    t =    23.51s     Synthesize event
+    t =    23.82s     Wait for org.liquidgram.messenger to idle
+    t =    24.42s Checking existence of `Keyboard at {{0.0, 583.0}, {402.0, 233.0}}`
+    t =    24.59s Find the "Message" TextView
+    t =    25.24s Added attachment named '04-keyboard-hidden'
+    t =    25.25s Find the WebView (First Match)
+    t =    25.27s Find the "Аня Смирнова" Button
+    t =    25.39s Find the "Message" TextView
+    t =    25.60s Tear Down
+Test Case '-[LiquidgramUITests.ShellTests testKeyboardResizesPageAndRestoresIt]' passed (25.816 seconds).
+Test Case '-[LiquidgramUITests.ShellTests testWindowOpenedLateShowsInAppBrowser]' started.
+    t =     0.00s Start Test at 2026-10-29 19:20:36.195
+    t =     0.00s Set Up
+    t =     0.01s Open org.liquidgram.messenger
+    t =     0.01s     Launch org.liquidgram.messenger
+    t =     0.01s         Terminate org.liquidgram.messenger:29776
+    t =     2.16s         Setting up automation session
+    t =     5.07s         Wait for org.liquidgram.messenger to idle
+    t =     6.92s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     8.35s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =     9.73s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.80s Get all elements bound by index for: Elements matching predicate 'label CONTAINS "Аня Смирнова"'
+    t =    10.92s Find the Any (Element at index 0)
+    t =    11.06s Checking existence of `"Open a page later" Button`
+    t =    11.11s Find the "Open a page later" Button
+    t =    11.17s Tap "Open a page later" Button
+    t =    11.17s     Wait for org.liquidgram.messenger to idle
+    t =    11.17s     Find the "Open a page later" Button
+    t =    11.21s     Check for interrupting elements affecting "Open a page later" Button
+    t =    11.29s     Synthesize event
+    t =    11.60s     Wait for org.liquidgram.messenger to idle
+    t =    11.60s Find the "Open a page later" Button
+    t =    12.19s Find the "Open a page later" Button
+    t =    12.79s Find the "Open a page later" Button
+    t =    13.81s Find the "Open a page later" Button
+    t =    14.51s Find the "Open a page later" Button
+    t =    15.66s     Find the "Open a page later" Button (retry 1)
+    t =    17.36s     Find the "Open a page later" Button (retry 2)
+    t =    20.09s Added attachment named '01-in-app-browser'
+    t =    20.10s Tear Down
+Test Case '-[LiquidgramUITests.ShellTests testWindowOpenedLateShowsInAppBrowser]' passed (20.315 seconds).
+Test Suite 'ShellTests' passed at 2026-10-29 19:20:56.512.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 61.673 (61.679) seconds
+Test Suite 'LiquidgramUITests.xctest' failed at 2026-10-29 19:20:56.515.
+	 Executed 20 tests, with 1 failure (0 unexpected) in 445.179 (445.214) seconds
+Test Suite 'All tests' failed at 2026-10-29 19:20:56.518.
+	 Executed 20 tests, with 1 failure (0 unexpected) in 445.179 (445.220) seconds
+2026-10-29 19:22:13.034 xcodebuild[8069:27929] [MT] IDETestOperationsObserverDebug: 796.637 elapsed -- Testing started completed.
+2026-10-29 19:22:13.034 xcodebuild[8069:27929] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-29 19:22:13.035 xcodebuild[8069:27929] [MT] IDETestOperationsObserverDebug: 796.637 sec, +796.637 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/ui-test-work/light.xcresult
+
+** TEST EXECUTE FAILED **
+
+Testing started

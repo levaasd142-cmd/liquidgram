@@ -1,0 +1,217 @@
+Attributes: Application, 0x103f4f320, pid: 37696, label: 'Liquidgram'
+Element subtree:
+ →Application, 0x103f4f320, pid: 37696, label: 'Liquidgram'
+    Window (Main), 0x103f4eee0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x103f75b10, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x103f75c30, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x103f75d50, {{0.0, 0.0}, {402.0, 874.0}}
+            WebView, 0x103f762b0, {{0.0, 62.0}, {402.0, 477.0}}, identifier: 'liquidgram.webview'
+              WebView, 0x103f763d0, {{0.0, 62.0}, {402.0, 477.0}}
+                WebView, 0x103f764f0, {{0.0, 62.0}, {402.0, 477.0}}
+                  Other, 0x103f694b0, {{0.0, 0.0}, {402.0, 477.0}}
+                    Other, 0x103f695d0, {{0.0, 0.0}, {402.0, 477.0}}
+                      Other, 0x103f696f0, {{0.0, 62.0}, {402.0, 477.0}}
+                        Other, 0x103f69810, {{0.0, 62.0}, {402.0, 477.0}}, label: 'Аня Смирнова'
+                          Button, 0x103f69930, {{0.0, 74.0}, {40.0, 40.0}}, label: 'Open menu'
+                          Other, 0x103f69a50, {{0.0, 72.0}, {680.0, 10.0}}
+                            Button, 0x103e51850, {{0.0, 72.0}, {680.0, 10.0}}, label: 'Open Story List'
+                          TextField, 0x103e57770, {{0.0, 74.0}, {201.0, 40.0}}, placeholderValue: 'Search', value: Search
+                          Other, 0x103e5b050, {{0.0, 72.0}, {680.0, 10.0}}
+                          Button, 0x103e5ac30, {{0.0, 74.0}, {40.0, 40.0}}, label: 'Ghost mode'
+                          StaticText, 0x103d55610, {{0.0, 145.0}, {19.0, 20.0}}, label: 'All', value: All
+                          StaticText, 0x103e5a810, {{0.0, 147.0}, {8.0, 15.0}}, label: '2', value: 2
+                          StaticText, 0x103e5a3f0, {{0.0, 145.0}, {59.0, 20.0}}, label: 'Личное', value: Личное
+                          StaticText, 0x103d4e400, {{0.0, 145.0}, {58.0, 20.0}}, label: 'Группы', value: Группы
+                          StaticText, 0x103e58b20, {{0.0, 147.0}, {7.0, 15.0}}, label: '1', value: 1
+                          StaticText, 0x103e58c40, {{0.0, 145.0}, {60.0, 20.0}}, label: 'Каналы', value: Каналы
+                          StaticText, 0x103e58d60, {{0.0, 147.0}, {7.0, 15.0}}, label: '1', value: 1
+                          Other, 0x103e5b470, {{0.0, 188.0}, {402.0, 576.0}}
+                            Other, 0x103e5b590, {{0.0, 188.0}, {402.0, 10.0}}
+                            Button, 0x103e5b6b0, {{0.0, 188.0}, {402.0, 72.0}}, label: 'Аня СмирноваАня Смирнова 19:22Договорились! До завтра 💙'
+                            Button, 0x103e5b7d0, {{0.0, 260.0}, {402.0, 72.0}}, label: 'Бразы 🔥Бразы 🔥 19:17Лёха : Кто сегодня в чат-рум после 22?4'
+                            Button, 0x103e5b8f0, {{0.0, 332.0}, {402.0, 72.0}}, label: 'iOS 26 DesigniOS 26 Design 19:03Собрали 15 приложений, которые уже обновили дизайн под iOS 26 👇2'
+                            Button, 0x103e5ba10, {{0.0, 404.0}, {402.0, 72.0}}, label: 'Катя ДизайнКатя Дизайн 16:43Уже 😎'
+                            Button, 0x103e5bb30, {{0.0, 476.0}, {402.0, 72.0}}, label: 'МамаМама 15:23Позвони вечером ❤️'
+                            Button, 0x103e5bc50, {{0.0, 548.0}, {402.0, 72.0}}, label: 'Макс ОрловМакс Орлов WedЛови, там 40 слайдов'
+                            Button, 0x103e5bd70, {{0.0, 620.0}, {402.0, 72.0}}, label: 'Дима КодДима Код WedПоправил, перезапусти'
+                            Button, 0x103e5be90, {{0.0, 692.0}, {402.0, 72.0}}, label: 'БроSaved Messages TueИдеи для Liquidgram: стекло, призрак, антиудаление ✅'
+                          Button, 0x103d54bf0, {{0.0, 475.0}, {48.0, 48.0}}, label: 'New Message'
+                          Other, 0x103d552a0, {{0.0, 475.0}, {450.0, 10.0}}
+                          Button, 0x103d54f40, {{16.0, 74.0}, {40.0, 40.0}}, label: 'Back'
+                          Other, 0x103d53000, {{44.0, 74.0}, {20.0, 16.0}}
+                            StaticText, 0x103d57240, {{50.0, 74.0}, {8.0, 15.0}}, label: '6', value: 6
+                          Other, 0x103d55980, {{64.0, 74.0}, {40.0, 40.0}}, label: 'Аня Смирнова'
+                            StaticText, 0x103d57930, {{71.0, 83.0}, {26.0, 22.0}}, label: 'АС', value: АС
+                          Button, 0x103d57cd0, {{114.0, 73.0}, {121.0, 24.0}}, label: 'Аня Смирнова'
+                          StaticText, 0x103d58070, {{114.0, 97.0}, {39.0, 18.0}}, label: 'online', value: online
+                          Button, 0x103d58ab0, {{346.0, 74.0}, {40.0, 40.0}}, label: 'More options'
+                          Other, 0x103d583f0, {{8.0, -212.0}, {386.0, 24.0}}
+                            StaticText, 0x103d591b0, {{164.0, -210.0}, {74.0, 20.0}}, label: 'Yesterday', value: Yesterday
+                          StaticText, 0x103f69b70, {{21.0, -586.0}, {203.0, 22.0}}, label: 'Скинь фотки с выходных', value: Скинь фотки с выхо...
+                          Image, 0x103f69c90, {{223.0, -586.0}, {22.0, 23.0}}, label: '📸'
+                          StaticText, 0x103f69db0, {{256.0, -577.0}, {33.0, 16.0}}, label: '18:23', value: 18:23
+                          StaticText, 0x103f69ed0, {{57.0, -545.0}, {273.0, 22.0}}, label: 'Щас, только с телефона перекину', value: Щас, только с теле...
+                          StaticText, 0x103f69ff0, {{331.0, -514.0}, {32.0, 16.0}}, label: '18:28', value: 18:28
+                          Other, 0x103d59500, {{364.0, -515.0}, {19.0, 19.0}}
+                          StaticText, 0x103d58e30, {{21.0, -483.0}, {75.0, 22.0}}, label: 'Жду-жду', value: Жду-жду
+                          StaticText, 0x103d59f60, {{106.0, -474.0}, {33.0, 16.0}}, label: '18:33', value: 18:33
+                          StaticText, 0x103f6a110, {{57.0, -442.0}, {303.0, 66.0}}, label: 'Кстати, ты пробовала новый Liquid Glass в iOS 26? Всё будто из жидкого стекла', value: Кстати, ты пробова...
+                          Image, 0x103f6a230, {{114.0, -398.0}, {22.0, 23.0}}, label: '💧'
+                          StaticText, 0x103f6a350, {{330.0, -389.0}, {33.0, 16.0}}, label: '18:43', value: 18:43
+                          Other, 0x103f6a470, {{364.0, -390.0}, {19.0, 19.0}}
+                          StaticText, 0x103f6a590, {{21.0, -357.0}, {299.0, 44.0}}, label: 'Да! Особенно таббар внизу, он прям переливается', value: Да! Особенно табба...
+                          StaticText, 0x103f6a6b0, {{313.0, -326.0}, {32.0, 16.0}}, label: '18:53', value: 18:53
+                          StaticText, 0x103f6a7d0, {{85.0, -294.0}, {235.0, 22.0}}, label: 'Хочу такое на компе в телеге', value: Хочу такое на комп...
+                          StaticText, 0x103f6a8f0, {{330.0, -285.0}, {33.0, 16.0}}, label: '18:58', value: 18:58
+                          Other, 0x103f6aa10, {{364.0, -286.0}, {19.0, 19.0}}
+                          StaticText, 0x103f6ab30, {{21.0, -253.0}, {212.0, 22.0}}, label: 'Сделай сам, ты же умный', value: Сделай сам, ты же ...
+                          Image, 0x103f6ac50, {{232.0, -253.0}, {22.0, 23.0}}, label: '😄'
+                          StaticText, 0x103e5bfb0, {{265.0, -244.0}, {33.0, 16.0}}, label: '19:03', value: 19:03
+                          StaticText, 0x103e5c0d0, {{185.0, -212.0}, {115.0, 22.0}}, label: 'Вызов принят', value: Вызов принят 
+                          Image, 0x103f6af90, {{299.0, -212.0}, {23.0, 23.0}}, label: '😎'
+                          StaticText, 0x103f6b0b0, {{333.0, -203.0}, {30.0, 16.0}}, label: '19:13', value: 19:13
+                          Other, 0x103f6b1d0, {{364.0, -204.0}, {19.0, 19.0}}
+                          Other, 0x103f6b2f0, {{8.0, 134.0}, {386.0, 24.0}}
+                            StaticText, 0x103f6b410, {{178.0, 136.0}, {46.0, 20.0}}, label: 'Today', value: Today
+                          StaticText, 0x103f6b530, {{21.0, -127.0}, {250.0, 22.0}}, label: 'Привет! Ты видел новый айос?', value: Привет! Ты видел н...
+                          Image, 0x103f6b650, {{270.0, -127.0}, {23.0, 23.0}}, label: '😍'
+                          StaticText, 0x103e5c1f0, {{303.0, -118.0}, {31.0, 16.0}}, label: '18:31', value: 18:31
+                          StaticText, 0x103e5c310, {{57.0, -86.0}, {277.0, 22.0}}, label: 'Да, этот Liquid Glass просто бомба', value: Да, этот Liquid Gl...
+                          StaticText, 0x103f6b770, {{331.0, -55.0}, {32.0, 16.0}}, label: '18:32', value: 18:32
+                          Other, 0x103f6b890, {{364.0, -56.0}, {19.0, 19.0}}
+                          StaticText, 0x103f6b9b0, {{21.0, -24.0}, {185.0, 22.0}}, label: 'Хочу такое же в телеге', value: Хочу такое же в те...
+                          StaticText, 0x103f6bad0, {{216.0, -15.0}, {36.0, 16.0}}, label: 'edited', value: edited
+                          StaticText, 0x103f6bbf0, {{255.0, -15.0}, {33.0, 16.0}}, label: '18:33', value: 18:33
+                          StaticText, 0x103f6bd10, {{57.0, 17.0}, {172.0, 22.0}}, label: 'Смотри что я собрал', value: Смотри что я собрал 
+                          Image, 0x103f6be30, {{228.0, 17.0}, {23.0, 23.0}}, label: '👀'
+                          StaticText, 0x103f6bf50, {{251.0, 17.0}, {5.0, 22.0}}, value:  
+                          StaticText, 0x103f6c070, {{57.0, 17.0}, {308.0, 66.0}}, label: 'Liquidgram — свой клиент со стеклом и режимом призрака', value: Liquidgram — свой ...
+                          StaticText, 0x103f6c190, {{331.0, 70.0}, {32.0, 16.0}}, label: '18:35', value: 18:35
+                          Other, 0x103f6c2b0, {{364.0, 69.0}, {19.0, 19.0}}
+                          StaticText, 0x103e5c430, {{21.0, 102.0}, {231.0, 22.0}}, label: 'Чё серьёзно?? Скинь ссылку', value: Чё серьёзно?? Скин...
+                          StaticText, 0x103e5c550, {{263.0, 111.0}, {32.0, 16.0}}, label: '18:36', value: 18:36
+                          StaticText, 0x103e5c670, {{21.0, 140.0}, {220.0, 22.0}}, label: 'Ой, это я не тебе написала', value: Ой, это я не тебе ...
+                          Image, 0x103e5c790, {{240.0, 140.0}, {22.0, 23.0}}, label: '🙈'
+                          StaticText, 0x103e5c8b0, {{264.0, 171.0}, {44.0, 16.0}}, label: 'deleted', value: deleted
+                          StaticText, 0x103e5c9d0, {{313.0, 171.0}, {32.0, 16.0}}, label: '18:37', value: 18:37
+                          StaticText, 0x103e5caf0, {{57.0, 202.0}, {166.0, 22.0}}, label: 'Поздно, я всё видел', value: Поздно, я всё видел 
+                          Image, 0x103e5cf80, {{222.0, 202.0}, {22.0, 23.0}}, label: '😏'
+                          StaticText, 0x103e5d0a0, {{244.0, 202.0}, {5.0, 22.0}}, value:  
+                          StaticText, 0x103e5d1c0, {{57.0, 202.0}, {309.0, 44.0}}, label: 'антиудаление работает', value: антиудаление работ...
+                          StaticText, 0x103e5d2e0, {{331.0, 233.0}, {32.0, 16.0}}, label: '18:39', value: 18:39
+                          Other, 0x103e5d400, {{364.0, 232.0}, {19.0, 19.0}}
+                          StaticText, 0x103e5d520, {{21.0, 265.0}, {209.0, 22.0}}, label: 'Ахахах ладно, ты победил', value: Ахахах ладно, ты п...
+                          StaticText, 0x103e5d640, {{240.0, 274.0}, {29.0, 16.0}}, label: '19:11', value: 19:11
+                          StaticText, 0x103e5d760, {{21.0, 303.0}, {262.0, 22.0}}, label: 'Во сколько завтра встречаемся?', value: Во сколько завтра ...
+                          StaticText, 0x103e5d880, {{293.0, 312.0}, {30.0, 16.0}}, label: '19:12', value: 19:12
+                          StaticText, 0x103e5d9a0, {{57.0, 344.0}, {305.0, 22.0}}, label: 'Давай в 19:00 у кофейни на Патриках', value: Давай в 19:00 у ко...
+                          Image, 0x103e5dac0, {{57.0, 366.0}, {22.0, 23.0}}, label: '☕️'
+                          StaticText, 0x103e5dbe0, {{331.0, 375.0}, {32.0, 16.0}}, label: '19:20', value: 19:20
+                          Other, 0x103e5dd00, {{364.0, 374.0}, {19.0, 19.0}}
+                          Other, 0x103e5de20, {{8.0, 403.0}, {386.0, 24.0}}
+                            StaticText, 0x103e5df40, {{134.0, 405.0}, {134.0, 20.0}}, label: 'Unread Messages', value: Unread Messages
+                          StaticText, 0x103e5e060, {{21.0, 440.0}, {208.0, 22.0}}, label: 'Договорились! До завтра', value: Договорились! До з...
+                          Image, 0x103e5e180, {{228.0, 440.0}, {22.0, 23.0}}, label: '💙'
+                          StaticText, 0x103e5e2a0, {{261.0, 449.0}, {32.0, 16.0}}, label: '19:22', value: 19:22
+                          Button, 0x103e5e3c0, {{348.0, 427.0}, {46.0, 46.0}}, label: 'Go to next unread poll vote'
+                          Button, 0x103e5e4e0, {{348.0, 433.0}, {46.0, 46.0}}, label: 'Go to next unread reactions'
+                          Button, 0x103e5e600, {{348.0, 439.0}, {46.0, 46.0}}, label: 'Go to next mention'
+                          Button, 0x103e5e720, {{348.0, 501.0}, {46.0, 46.0}}, label: 'Go to bottom'
+                          Other, 0x103e5e840, {{12.0, 487.0}, {40.0, 40.0}}, label: 'Add attachment'
+                          Other, 0x103e5e960, {{12.0, 487.0}, {40.0, 10.0}}, label: 'Add attachment'
+                          Button, 0x103e5ea80, {{350.0, 487.0}, {40.0, 40.0}}, label: 'Open full editor'
+                          TextView, 0x103d58740, {{56.0, 487.0}, {234.0, 40.0}}, label: 'Message', value: Typed by the UI test, Keyboard Focused, Focused
+                            Other, 0x103d575b0, {{56.0, 495.0}, {234.0, 23.0}}, Focused
+                              StaticText, 0x103d5a2c0, {{56.0, 495.0}, {154.0, 23.0}}, label: 'Typed by the UI test', value: Typed by the UI test, Focused
+                            StaticText, 0x103d59bf0, {{56.0, 495.0}, {154.0, 23.0}}, label: 'Typed by the UI test', value: Typed by the UI test, Focused
+                          StaticText, 0x103d5a970, {{72.0, 495.0}, {69.0, 23.0}}, label: 'Message', value: Message
+                          Button, 0x103d59860, {{298.0, 487.0}, {40.0, 40.0}}, label: 'Choose emoji, sticker or GIF'
+                          Button, 0x103d52c80, {{350.0, 487.0}, {40.0, 40.0}}, label: 'Send Message'
+                          StaticText, 0x103d4f1d0, {{122.0, 505.0}, {158.0, 20.0}}, label: '0 messages selected', value: 0 messages selected
+                          TextField, 0x103d525d0, {{0.0, 489.0}, {216.0, 34.0}}
+                Other, 0x103d5b010, {{369.0, 62.0}, {30.0, 477.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x103d52270, {{396.0, 65.0}, {3.0, 276.7}}
+                Other, 0x103d5acc0, {{0.0, 506.0}, {402.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x103d5a600, {{3.0, 533.0}, {393.0, 3.0}}
+                Other, 0x103d5bda0, {{369.0, 62.0}, {30.0, 477.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x103d5b360, {{396.0, 65.0}, {3.0, 276.7}}
+                Other, 0x103d5b6c0, {{0.0, 506.0}, {402.0, 30.0}}, label: 'Horizontal scroll bar, 1 page', value: 0%
+                  Other, 0x103d5ba20, {{3.0, 533.0}, {393.0, 3.0}}
+    Window, 0x103d5c130, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x103d5cb80, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x103d51820, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x103d4ee70, {{0.0, 539.0}, {402.0, 335.0}}
+          Other, 0x103d54870, {{0.0, 539.0}, {402.0, 335.0}}, identifier: 'inputView'
+    Window, 0x103d56ed0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x103d53d70, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x103d56b50, {{0.0, 539.0}, {402.0, 335.0}}
+          Other, 0x103d56040, {{0.0, 539.0}, {402.0, 44.0}}, identifier: 'SystemInputAssistantView'
+            Other, 0x103d536c0, {{0.0, 539.0}, {402.0, 44.0}}
+              Other, 0x103f6ad70, {{0.0, 539.0}, {402.0, 44.0}}, identifier: 'CenterPageView'
+                Other, 0x103d53360, {{0.0, -61.0}, {402.0, 1244.0}}
+                  ScrollView, 0x103d52930, {{0.0, 539.0}, {402.0, 44.0}}
+                Other, 0x103d55ce0, {{0.0, 539.0}, {402.0, 44.0}}
+                  Other, 0x103d6c670, {{0.0, 539.0}, {402.0, 44.0}}, label: 'Typing Predictions'
+                    Other, 0x103d6d790, {{0.0, 539.0}, {402.0, 44.0}}
+                      Other, 0x103d6de50, {{0.0, 539.0}, {402.0, 44.0}}
+                        Other, 0x103f6c3d0, {{0.0, 539.0}, {134.0, 44.0}}, label: '“T”'
+                        Other, 0x103f6c4f0, {{134.0, 539.0}, {134.0, 44.0}}, label: 'The'
+                        Other, 0x103f6c610, {{268.0, 539.0}, {134.0, 44.0}}, label: 'This'
+          Other, 0x103f6c730, {{0.0, 539.0}, {402.0, 335.0}}
+            Other, 0x103f6c850, {{0.0, 539.0}, {402.0, 335.0}}
+              Other, 0x103f6c970, {{0.0, 539.0}, {402.0, 335.0}}
+          Other, 0x103e5eba0, {{0.0, 583.0}, {402.0, 233.0}}
+            Keyboard, 0x103e5ecc0, {{0.0, 583.0}, {402.0, 233.0}}
+              Other, 0x103e5ede0, {{0.0, 583.0}, {402.0, 233.0}}
+                Other, 0x103e5ef00, {{0.0, 583.0}, {402.0, 233.0}}, identifier: 'UIKeyboardLayoutStar Preview'
+                  Key, 0x103e5f020, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Left'
+                  Key, 0x103e5f140, {{4.7, 590.0}, {39.3, 54.0}}, label: 'Q'
+                  Key, 0x103e5f260, {{44.0, 590.0}, {39.7, 54.0}}, label: 'W'
+                  Key, 0x103e5f380, {{83.7, 590.0}, {39.3, 54.0}}, label: 'E'
+                  Key, 0x103e5f4a0, {{123.0, 590.0}, {39.7, 54.0}}, label: 'R'
+                  Key, 0x103e5f5c0, {{162.7, 590.0}, {39.3, 54.0}}, label: 'T'
+                  Key, 0x103e5f6e0, {{202.0, 590.0}, {39.7, 54.0}}, label: 'Y'
+                  Key, 0x103e54030, {{241.7, 590.0}, {39.3, 54.0}}, label: 'U'
+                  Key, 0x103e54150, {{281.0, 590.0}, {39.7, 54.0}}, label: 'I'
+                  Key, 0x103e54270, {{320.7, 590.0}, {39.3, 54.0}}, label: 'O'
+                  Key, 0x103e54390, {{360.0, 590.0}, {39.7, 54.0}}, label: 'P'
+                  Key, 0x103e5ff30, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Right'
+                  Key, 0x103e60050, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Left'
+                  Key, 0x103e60170, {{24.3, 644.0}, {39.3, 54.0}}, label: 'A'
+                  Key, 0x103e60290, {{63.7, 644.0}, {39.7, 54.0}}, label: 'S'
+                  Key, 0x103f6ca90, {{103.3, 644.0}, {39.3, 54.0}}, label: 'D'
+                  Key, 0x103f6cbb0, {{142.7, 644.0}, {39.7, 54.0}}, label: 'F'
+                  Key, 0x103f6ccd0, {{182.3, 644.0}, {39.3, 54.0}}, label: 'G'
+                  Key, 0x103f6cdf0, {{221.7, 644.0}, {39.7, 54.0}}, label: 'H'
+                  Key, 0x103f6cf10, {{261.3, 644.0}, {39.3, 54.0}}, label: 'J'
+                  Key, 0x103f6d030, {{300.7, 644.0}, {39.7, 54.0}}, label: 'K'
+                  Key, 0x103f6d150, {{340.3, 644.0}, {39.3, 54.0}}, label: 'L'
+                  Key, 0x103f6d270, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Right'
+                  Button, 0x103f6d390, {{4.7, 698.0}, {51.3, 54.0}}, identifier: 'shift', label: 'shift', Selected
+                  Key, 0x103f6d4b0, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Left'
+                  Key, 0x103f6d5d0, {{63.7, 698.0}, {39.7, 54.0}}, label: 'Z'
+                  Key, 0x103f6d6f0, {{103.3, 698.0}, {39.3, 54.0}}, label: 'X'
+                  Key, 0x103f6d960, {{142.7, 698.0}, {39.7, 54.0}}, label: 'C'
+                  Key, 0x103f6da80, {{182.3, 698.0}, {39.3, 54.0}}, label: 'V'
+                  Key, 0x103f6dba0, {{221.7, 698.0}, {39.7, 54.0}}, label: 'B'
+                  Key, 0x103f6dcc0, {{261.3, 698.0}, {39.3, 54.0}}, label: 'N'
+                  Key, 0x103f6dde0, {{300.7, 698.0}, {39.7, 54.0}}, label: 'M'
+                  Key, 0x103f6df00, {{0.0, 583.0}, {0.0, 0.0}}, label: 'Padding-Right'
+                  Key, 0x103f6e020, {{348.0, 698.0}, {51.7, 54.0}}, identifier: 'delete', label: 'delete'
+                  Key, 0x103f6e140, {{4.7, 752.0}, {98.7, 54.0}}, identifier: 'more', label: 'numbers'
+                  Key, 0x103f6e260, {{103.3, 752.0}, {197.3, 54.0}}, identifier: 'space', label: ' '
+                  Button, 0x103f6e380, {{300.7, 752.0}, {99.0, 54.0}}, identifier: 'Return', label: 'return'
+          Other, 0x103f6e6a0, {{0.0, 583.0}, {402.0, 291.0}}
+            Button, 0x103f6e7c0, {{8.5, 805.7}, {68.1, 68.7}}, label: 'Emoji'
+              StaticText, 0x103f6e8e0, {{8.5, 805.7}, {0.0, 0.0}}
+            Button, 0x103f6ea00, {{325.4, 805.4}, {68.1, 68.7}}, identifier: 'dictation', label: 'Dictate'
+              StaticText, 0x103f6eb20, {{325.4, 805.4}, {0.0, 0.0}}
+            Button, 0x103d6e1b0, {{325.4, 805.4}, {68.1, 68.7}}, identifier: 'dictation', label: 'Dictate'
+              StaticText, 0x103d654a0, {{325.4, 805.4}, {0.0, 0.0}}
+Path to element:
+ →Application, 0x103f4f320, pid: 37696, label: 'Liquidgram'
+Query chain:
+ →Find: Target Application 'org.liquidgram.messenger'
+  Output: {
+    Application, 0x103e53090, pid: 37696, label: 'Liquidgram'
+  }
