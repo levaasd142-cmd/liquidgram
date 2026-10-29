@@ -18,8 +18,9 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Mi
 ///
 /// The launch waits for the migration at most 2 seconds. When it takes longer, the web app starts meanwhile and
 /// reloads once the data has arrived. A failed migration keeps the old data and runs again at the next launch, at most
-/// three times. Once the data is in the app's origin, the old origin's data is removed in the background; a launch
-/// that ends first leaves the removal to the next one. Everything runs on the main queue.
+/// three times. Once the data is in the app's origin, the old origin's data is removed in the background, 10 seconds
+/// after the web app started, so the removal does not slow its start down; a launch that ends first leaves the
+/// removal to the next one. Everything runs on the main queue.
 final class LegacyDataMigration: NSObject {
   static let legacyOriginURL = URL(string: "http://127.0.0.1:47821/")!
 
@@ -31,6 +32,10 @@ final class LegacyDataMigration: NSObject {
   private static let removalPendingKey = "LiquidgramLegacyDataRemovalPending"
   private static let maxAttempts = 3
   private static let launchWaitTime: TimeInterval = 2
+  private static let removalDelay: TimeInterval = 10
+  /// Data on disk; the memory cache would involve every web process, and the old origin has none left
+  private static let persistentDataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
+    .subtracting([WKWebsiteDataTypeMemoryCache])
   private static let stepTimeout: TimeInterval = 20
   private static let scriptName = "legacy-data"
   private static let scriptExtension = "js"
@@ -81,17 +86,19 @@ final class LegacyDataMigration: NSObject {
 
   /// Removes the old origin's data in the background once it has moved
   private static func removeLegacyDataIfPending() {
-    guard current == nil, UserDefaults.standard.bool(forKey: removalPendingKey) else {
+    guard UserDefaults.standard.bool(forKey: removalPendingKey) else {
       return
     }
-    let dataStore = WKWebsiteDataStore.default()
-    let dataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
-    let startTime = Date()
-    dataStore.fetchDataRecords(ofTypes: dataTypes) { records in
-      let legacyRecords = records.filter { $0.displayName == legacyRecordName }
-      dataStore.removeData(ofTypes: dataTypes, for: legacyRecords) {
-        UserDefaults.standard.removeObject(forKey: removalPendingKey)
-        logger.notice("Removed the data of version 1 in \(milliseconds(since: startTime)) ms")
+    DispatchQueue.main.asyncAfter(deadline: .now() + removalDelay) {
+      let dataStore = WKWebsiteDataStore.default()
+      let startTime = Date()
+      dataStore.fetchDataRecords(ofTypes: persistentDataTypes) { records in
+        let legacyRecords = records.filter { $0.displayName == legacyRecordName }
+        dataStore.removeData(ofTypes: persistentDataTypes, for: legacyRecords) {
+          UserDefaults.standard.removeObject(forKey: removalPendingKey)
+          logger.notice("Removed the data of version 1 in \(milliseconds(since: startTime)) ms")
+          TestHooks.recordLegacyDataRemoval()
+        }
       }
     }
   }
@@ -105,7 +112,7 @@ final class LegacyDataMigration: NSObject {
       self?.startAppWhileRunning()
     }
     startStepTimeout()
-    dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { [weak self] records in
+    dataStore.fetchDataRecords(ofTypes: Self.persistentDataTypes) { [weak self] records in
       guard let self, self.isRunning else {
         return
       }

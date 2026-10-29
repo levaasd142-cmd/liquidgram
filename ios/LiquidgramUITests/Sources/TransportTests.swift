@@ -6,6 +6,9 @@ final class TransportTests: LiquidgramUITestCase {
   /// The stream check plays media with delays that stand for the network
   private static let streamCheckTimeout: TimeInterval = 180
   private static let migrationCheckTimeout: TimeInterval = 90
+  /// The app removes the old origin's data 10 seconds after its start
+  private static let legacyDataRemovalTimeout: TimeInterval = 40
+  private static let legacyDataRemovedIdentifier = "liquidgram.migration.legacyDataRemoved"
   /// `run-ui-tests.sh` sets `TEST_RUNNER_LIQUIDGRAM_LEGACY_SEEDED=1` once the loopback version ran with the demo account
   private static let legacySeededEnvironmentKey = "LIQUIDGRAM_LEGACY_SEEDED"
   private static let scriptSeparator = "\n;\n"
@@ -31,7 +34,8 @@ final class TransportTests: LiquidgramUITestCase {
   }
 
   /// After the loopback version of the app ran with the demo account and `Fixtures/legacy-seed.js`, this version
-  /// starts over its data: the session, the API keys, the cached chats and the seeded values are in the app's origin
+  /// starts over its data: the session, the API keys, the cached chats and the seeded values are in the app's origin,
+  /// and the old origin's data is removed afterwards
   @MainActor
   func testLegacyDataMovesToAppOrigin() throws {
     guard ProcessInfo.processInfo.environment[Self.legacySeededEnvironmentKey] == "1" else {
@@ -46,6 +50,11 @@ final class TransportTests: LiquidgramUITestCase {
       "the report of the migration check"
     )
     try assertChecksPassed(result, reportName: "selftest-report-migration")
+    waitFor(
+      findNativeElement(Self.legacyDataRemovedIdentifier),
+      timeout: Self.legacyDataRemovalTimeout,
+      "the removal of the loopback version's data"
+    )
   }
 
   /// Launches the app with fixtures as document-start scripts and another self-test than `selftest.js`

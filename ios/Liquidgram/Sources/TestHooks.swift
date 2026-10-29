@@ -29,6 +29,8 @@ enum TestHooks {
   /// data of version 1 moves, the self-test waits for it.
   static let selfTestEnvironmentKey = "LIQUIDGRAM_TEST_SELFTEST_SCRIPT"
   static let selfTestResultIdentifier = "liquidgram.selftest.result"
+  /// A label with this identifier appears once the data of version 1 is removed from its old origin
+  static let legacyDataRemovedIdentifier = "liquidgram.migration.legacyDataRemoved"
 
   #if DEBUG
   static let isEnabled = true
@@ -111,6 +113,17 @@ enum TestHooks {
     }
   }
 
+  /// The data of version 1 left its old origin after the migration moved it
+  static func recordLegacyDataRemoval() {
+    guard isEnabled else {
+      return
+    }
+    let window = UIApplication.shared.connectedScenes
+      .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+      .first
+    showLabel(legacyDataRemovedIdentifier, value: "removed", in: window)
+  }
+
   /// The app's page finished loading. Pages that report `appReady` run the self-test earlier.
   static func pageDidFinishLoading(in webView: WKWebView) {
     guard isEnabled, !hasRunSelfTest, ProcessInfo.processInfo.environment[selfTestEnvironmentKey] != nil else {
@@ -149,22 +162,22 @@ enum TestHooks {
         report = makeErrorReport(error)
       }
       logger.notice("Self-test result: \(report, privacy: .public)")
-      showSelfTestResult(report, in: webView.window)
+      showLabel(selfTestResultIdentifier, value: report, in: webView.window)
     }
   }
 
-  /// Puts the report where an XCUITest can read it: the accessibility value of a nearly transparent label
-  private static func showSelfTestResult(_ report: String, in window: UIWindow?) {
+  /// Puts a value where an XCUITest can read it: the accessibility value of a nearly transparent label
+  private static func showLabel(_ identifier: String, value: String, in window: UIWindow?) {
     guard let window else {
-      logger.error("No window to show the self-test result in")
+      logger.error("No window to show \(identifier, privacy: .public) in")
       return
     }
     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
-    label.text = selfTestResultIdentifier
+    label.text = identifier
     label.alpha = selfTestLabelAlpha
     label.isAccessibilityElement = true
-    label.accessibilityIdentifier = selfTestResultIdentifier
-    label.accessibilityValue = report
+    label.accessibilityIdentifier = identifier
+    label.accessibilityValue = value
     window.addSubview(label)
   }
 

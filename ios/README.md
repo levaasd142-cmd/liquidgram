@@ -88,7 +88,7 @@ Version 1 served the web app from `http://127.0.0.1:47821`, so its users' sessio
 
 1. When `UserDefaults` does not record the move yet and the data store has a record named `127.0.0.1`, two hidden web views open an empty document each, at once, so their web processes start together: `loadHTMLString(_:baseURL:)` with `http://127.0.0.1:47821/` and with `liquidgram-web://app/` gives each document that origin without any request, so no server or port is involved. In the first, `Resources/legacy-data.js` reads every `localStorage` item and IndexedDB record; values that JSON cannot hold, such as Blobs, ArrayBuffers, typed arrays, Dates, BigInts, Maps and Sets, travel as tagged objects. A record that cannot be copied, such as a `CryptoKey`, is left out and logged.
 2. The second receives the data: the databases first, with their versions, stores and indexes, then `localStorage`, so the session never exists without the rest. An origin that has a session already keeps its own data. Caches, which the web app fills again, are not moved.
-3. When every record arrived, the web app starts, and the old origin's data is removed in the background. A launch that ends before the removal finished leaves it to the next launch.
+3. When every record arrived, the web app starts. 10 seconds later, so that it does not slow the start down, the old origin's data is removed in the background; a launch that ends before the removal finished leaves it to the next launch.
 
 The launch waits at most 2 seconds; a move that takes longer goes on while the web app starts, and the page reloads once the data is in. A move that fails keeps the old data and runs again at the next launch, at most three times. Fresh installs skip it after one look at the data store. The log (category `Migration`) says what happened and how long each step took.
 
@@ -161,7 +161,7 @@ Both sides follow this contract; `bridge.js` implements the page side, and the p
 - `LIQUIDGRAM_TEST_SELFTEST_SCRIPT` is the base64 body of an async function that returns a string. It runs after `appReady`, or 5 seconds after the page first finished loading, with `migrationOutcome`, what the move of version 1's data did at this launch, as an argument; while the data moves, the self-test waits for it. Its result becomes the accessibility value of `liquidgram.selftest.result` and is logged in the `SelfTest` category.
 - `-LiquidgramFakeAuthentication success|failure|cancel` skips LocalAuthentication: the lock gets this outcome after 0.3 seconds, or after the seconds of `-LiquidgramFakeAuthenticationDelay`, and the biometry reads as Face ID.
 - `-LiquidgramTestAction <type>` performs that action after the first `appReady`, like a quick action.
-- Accessibility identifiers: `liquidgram.webview`, `liquidgram.lock`, `liquidgram.lock.unlock`, `liquidgram.privacyShield`, `liquidgram.startupError` and `liquidgram.selftest.result`.
+- Accessibility identifiers: `liquidgram.webview`, `liquidgram.lock`, `liquidgram.lock.unlock`, `liquidgram.privacyShield`, `liquidgram.startupError`, `liquidgram.selftest.result` and `liquidgram.migration.legacyDataRemoved`, a label that appears once the data of version 1 is removed from its old origin.
 
 ## Free Apple ID
 
