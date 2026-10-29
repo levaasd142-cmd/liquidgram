@@ -7,6 +7,12 @@ private let logger = Logger(subsystem: "org.liquidgram.messenger", category: "Lo
 /// Serves the bundled web build on `http://127.0.0.1:47821/`. All user data lives in storage owned by this
 /// origin, so the address never changes. The listener is bound to the loopback address, so only processes on
 /// the device can connect, and every request runs on one serial queue.
+///
+/// Another app on the device could bind the same port while this app's listener is gone, for example after iOS
+/// reclaimed it during a suspension, and answer the web view's requests with its own script under this origin.
+/// So the listener never shares the port, the web view loads a page only once connections are known to reach
+/// this app's listener, and `portConflictHandler` makes the web view drop its page when another process holds
+/// the port.
 final class LocalServer {
   static let host = "127.0.0.1"
   static let port: NWEndpoint.Port = 47821
@@ -15,14 +21,28 @@ final class LocalServer {
 
   private static let initialRestartDelay: TimeInterval = 0.5
   private static let maxRestartDelay: TimeInterval = 8
-  private static let requestTimeout: TimeInterval = 30
+  /// Time after which a cancelled listener counts as closed even if it never reported it
+  private static let listenerCloseTimeout: TimeInterval = 2
+  private static let connectionTimeout: TimeInterval = 30
+  private static let probeTimeout: TimeInterval = 3
   private static let receiveLength = 64 * 1024
   private static let maxRequestHeadLength = 32 * 1024
   private static let requestHeadTerminator = Data("\r\n\r\n".utf8)
+  private static let probePathPrefix = "/__liquidgram/probe/"
+
+  /// Called on the main queue when another process holds the port, so a page of this origin could load that
+  /// process's responses. Set it on the main queue.
+  var portConflictHandler: (() -> Void)?
 
   private let queue = DispatchQueue(label: "org.liquidgram.messenger.local-server")
   private let responder: FileResponder
   private var listener: NWListener?
+  /// A cancelled listener that may still hold the port; the next listener binds once it has closed
+  private var closingListener: NWListener?
+  /// Whether connections to the port are known to reach `listener`: from its bind until the app is suspended,
+  /// or after a probe request reached it
+  private var isListenerVerified = false
+  private var probe: Probe?
   private var lastError: String?
   private var readyCallbacks: [() -> Void] = []
   private var restartDelay = LocalServer.initialRestartDelay
@@ -45,36 +65,63 @@ final class LocalServer {
     isAppOrigin(scheme: url.scheme, host: url.host, port: url.port)
   }
 
-  /// Starts listening unless a listener is starting or running, so it is safe to call at any time. iOS may
-  /// reclaim the listening socket while the app is suspended (TN2277); calling this when the app becomes
-  /// active again replaces a listener that failed or was cancelled with a new one on the same port.
+  /// Starts listening unless a listener is starting or running, so it is safe to call at any time
   func start() {
     queue.async {
       self.startIfNeeded()
     }
   }
 
-  /// Calls `callback` on the main queue once the server accepts connections, starting it if needed
+  /// Calls `callback` on the main queue once connections to the port reach this app's listener. Starts the
+  /// listener if needed, and probes it first if the app was suspended since its bind.
   func whenReady(_ callback: @escaping () -> Void) {
     queue.async {
-      if self.listener?.state == .ready {
-        DispatchQueue.main.async {
-          callback()
-        }
-        return
-      }
       self.readyCallbacks.append(callback)
-      self.startIfNeeded()
+      self.checkListener()
+    }
+  }
+
+  /// The app is going to the background. iOS may reclaim the listening socket while the app is suspended
+  /// (TN2277), so the listener counts as unverified until a probe reaches it again.
+  func suspend() {
+    queue.async {
+      self.isListenerVerified = false
+      if let probe = self.probe {
+        self.probe = nil
+        probe.connection.cancel()
+      }
+    }
+  }
+
+  /// The app returns to the foreground: replaces a listener that failed and probes one that still reports ready,
+  /// so a page that keeps running learns at once if another process took the port
+  func resume() {
+    queue.async {
+      self.checkListener()
     }
   }
 
   /// Calls `completion` on the main queue with the last error while the server is not ready, else `nil`
   func fetchFailure(_ completion: @escaping (String?) -> Void) {
     queue.async {
-      let failure = self.listener?.state == .ready ? nil : self.lastError
+      let isReady = self.listener?.state == .ready && self.isListenerVerified
+      let failure = isReady ? nil : self.lastError
       DispatchQueue.main.async {
         completion(failure)
       }
+    }
+  }
+
+  /// Runs the ready callbacks once connections are known to reach the listener, starting or probing it first
+  private func checkListener() {
+    guard let listener, listener.state == .ready else {
+      startIfNeeded()
+      return
+    }
+    if isListenerVerified {
+      runReadyCallbacks()
+    } else {
+      startProbe()
     }
   }
 
@@ -83,21 +130,23 @@ final class LocalServer {
       switch listener.state {
       case .failed, .cancelled:
         // The state handler has not run yet, so the listener is replaced here
-        self.listener = nil
-        listener.cancel()
+        retire(listener)
       default:
         return
       }
+    }
+    // The port is free only once the previous listener has closed; its cancellation starts the next one
+    guard closingListener == nil else {
+      return
     }
     startListener()
   }
 
   private func startListener() {
     let parameters = NWParameters.tcp
-    // Binding to 127.0.0.1 keeps the server off every other interface
+    // Binding to 127.0.0.1 keeps the server off every other interface. `allowLocalEndpointReuse` stays off: with
+    // SO_REUSEPORT another app could bind the same address and port and receive the web view's requests.
     parameters.requiredLocalEndpoint = .hostPort(host: .ipv4(.loopback), port: Self.port)
-    // A new listener can take the port while sockets of closed connections are still in TIME_WAIT
-    parameters.allowLocalEndpointReuse = true
 
     let listener: NWListener
     do {
@@ -120,12 +169,23 @@ final class LocalServer {
       }
       self.serve(connection)
     }
+    isListenerVerified = false
     self.listener = listener
     listener.start(queue: queue)
   }
 
   private func handle(_ state: NWListener.State, of listener: NWListener) {
-    // A replaced listener may still report its own cancellation
+    if listener === closingListener {
+      if case .cancelled = state {
+        closingListener = nil
+        // A scheduled restart keeps its delay, so a port that stays taken is retried with a growing delay
+        if !isRestartScheduled {
+          startIfNeeded()
+        }
+      }
+      return
+    }
+    // A replaced listener may still report its own state
     guard listener === self.listener else {
       return
     }
@@ -135,17 +195,19 @@ final class LocalServer {
       logger.info("Serving the web app at \(Self.appURL.absoluteString, privacy: .public)")
       lastError = nil
       restartDelay = Self.initialRestartDelay
-      let callbacks = readyCallbacks
-      readyCallbacks.removeAll()
-      for callback in callbacks {
-        DispatchQueue.main.async {
-          callback()
-        }
-      }
+      // The listener never shares the port, so after a successful bind every connection to the port reaches it
+      isListenerVerified = true
+      runReadyCallbacks()
     case .waiting(let error), .failed(let error):
       // An address in use is reported as `waiting`; both states need a new listener
-      self.listener = nil
-      listener.cancel()
+      retire(listener)
+      if case .posix(.EADDRINUSE) = error {
+        reportPortConflict()
+      } else {
+        // The listener stopped, for example because iOS reclaimed its socket: find out at once whether another
+        // process took the port, rather than when the restart fails
+        startProbe()
+      }
       recordFailure(String(describing: error))
     case .cancelled:
       self.listener = nil
@@ -156,10 +218,46 @@ final class LocalServer {
     }
   }
 
+  /// Cancels a listener and keeps it until it has closed its socket, so the next bind does not find the port
+  /// still in use by this app
+  private func retire(_ listener: NWListener) {
+    if self.listener === listener {
+      self.listener = nil
+    }
+    isListenerVerified = false
+    closingListener = listener
+    listener.cancel()
+
+    queue.asyncAfter(deadline: .now() + Self.listenerCloseTimeout) { [weak self, weak listener] in
+      guard let self, let listener, listener === self.closingListener else {
+        return
+      }
+      self.closingListener = nil
+      if !self.isRestartScheduled {
+        self.startIfNeeded()
+      }
+    }
+  }
+
+  private func runReadyCallbacks() {
+    let callbacks = readyCallbacks
+    readyCallbacks.removeAll()
+    for callback in callbacks {
+      DispatchQueue.main.async(execute: callback)
+    }
+  }
+
   private func recordFailure(_ description: String) {
     logger.error("The local server stopped: \(description, privacy: .public)")
     lastError = description
     scheduleRestart()
+  }
+
+  private func reportPortConflict() {
+    logger.error("Another process holds port \(Self.port.rawValue, privacy: .public)")
+    DispatchQueue.main.async {
+      self.portConflictHandler?()
+    }
   }
 
   private func scheduleRestart() {
@@ -178,76 +276,190 @@ final class LocalServer {
     }
   }
 
+  /// Sends a request for a random path to the port and watches whether the listener receives it. Connections
+  /// are refused when nothing listens; a connection that is accepted but never reaches the listener belongs to
+  /// another process.
+  private func startProbe() {
+    guard probe == nil else {
+      return
+    }
+    let connection = NWConnection(host: .ipv4(.loopback), port: Self.port, using: .tcp)
+    let probe = Probe(connection: connection)
+    self.probe = probe
+
+    connection.stateUpdateHandler = { [weak self, weak probe] state in
+      guard let self, let probe else {
+        return
+      }
+      switch state {
+      case .ready:
+        probe.isConnected = true
+      case .waiting, .failed:
+        self.finish(probe, outcome: probe.isConnected ? .answeredElsewhere : .refused)
+      default:
+        break
+      }
+    }
+    connection.start(queue: queue)
+
+    let request = "GET \(Self.probePathPrefix)\(probe.nonce) HTTP/1.1\r\n"
+      + "Host: \(Self.host):\(Self.port.rawValue)\r\nConnection: close\r\n\r\n"
+    connection.send(
+      content: Data(request.utf8),
+      contentContext: .defaultStream,
+      isComplete: false,
+      completion: .contentProcessed { _ in }
+    )
+    // The listener settles the probe as soon as it reads the request, so an answer or the end of the connection
+    // that arrives first comes from somewhere else
+    connection.receive(minimumIncompleteLength: 1, maximumLength: Self.receiveLength) {
+      [weak self, weak probe] content, _, _, _ in
+      guard let self, let probe else {
+        return
+      }
+      let isAnswered = content?.isEmpty == false || probe.isConnected
+      self.finish(probe, outcome: isAnswered ? .answeredElsewhere : .refused)
+    }
+    queue.asyncAfter(deadline: .now() + Self.probeTimeout) { [weak self, weak probe] in
+      guard let self, let probe else {
+        return
+      }
+      self.finish(probe, outcome: probe.isConnected ? .answeredElsewhere : .refused)
+    }
+  }
+
+  private func finish(_ probe: Probe, outcome: ProbeOutcome) {
+    guard probe === self.probe else {
+      return
+    }
+    self.probe = nil
+    // The client closes first, so the listener's side of the connection never waits in `TIME_WAIT`
+    probe.connection.cancel()
+
+    switch outcome {
+    case .reachedListener:
+      isListenerVerified = true
+      runReadyCallbacks()
+    case .refused:
+      logger.error("Connections to the port are refused; replacing the listener")
+      replaceListener()
+    case .answeredElsewhere:
+      reportPortConflict()
+      replaceListener()
+    }
+  }
+
+  /// Replaces a listener that no longer receives the port's connections. The new listener binds once the old one
+  /// has closed; if another process holds the port, the bind fails and is retried with a growing delay.
+  private func replaceListener() {
+    if let listener {
+      retire(listener)
+    } else {
+      startIfNeeded()
+    }
+  }
+
   private func serve(_ connection: NWConnection) {
-    let request = PendingRequest()
     connection.stateUpdateHandler = { [weak connection] state in
       if case .failed = state {
         connection?.cancel()
       }
     }
     connection.start(queue: queue)
-    receiveRequestHead(on: connection, into: request)
+    receiveRequestHead(on: connection, received: Data())
 
-    // A client that never completes its request must not hold the connection open
-    queue.asyncAfter(deadline: .now() + Self.requestTimeout) { [weak connection] in
-      if !request.isComplete {
-        connection?.cancel()
-      }
+    // Every connection ends within the timeout, whatever its state, so a client that never sends a whole
+    // request or never closes the connection cannot hold it open
+    queue.asyncAfter(deadline: .now() + Self.connectionTimeout) { [weak connection] in
+      connection?.cancel()
     }
   }
 
-  private func receiveRequestHead(on connection: NWConnection, into request: PendingRequest) {
+  private func receiveRequestHead(on connection: NWConnection, received: Data) {
     connection.receive(minimumIncompleteLength: 1, maximumLength: Self.receiveLength) {
       [weak self] content, _, isComplete, error in
       guard let self else {
         connection.cancel()
         return
       }
+      var buffer = received
       if let content {
-        request.buffer.append(content)
+        buffer.append(content)
       }
 
-      if let headEnd = request.buffer.range(of: Self.requestHeadTerminator) {
-        let head = request.buffer.subdata(in: request.buffer.startIndex..<headEnd.lowerBound)
-        request.complete()
-        self.send(self.responder.makeResponse(forRequestHead: head), on: connection)
-      } else if request.buffer.count > Self.maxRequestHeadLength {
-        request.complete()
+      if let headEnd = buffer.range(of: Self.requestHeadTerminator) {
+        self.respond(toRequestHead: buffer.subdata(in: buffer.startIndex..<headEnd.lowerBound), on: connection)
+      } else if buffer.count > Self.maxRequestHeadLength {
         self.send(.error(.requestHeaderFieldsTooLarge), on: connection)
       } else if error != nil || isComplete {
         connection.cancel()
       } else {
-        self.receiveRequestHead(on: connection, into: request)
+        self.receiveRequestHead(on: connection, received: buffer)
       }
     }
   }
 
-  /// Sends the response as the final message, which closes the write side as `Connection: close` announces
+  private func respond(toRequestHead head: Data, on connection: NWConnection) {
+    if let probe, HTTPRequestHead(head)?.target == Self.probePathPrefix + probe.nonce {
+      finish(probe, outcome: .reachedListener)
+      send(.noContent(), on: connection)
+      return
+    }
+    send(responder.makeResponse(forRequestHead: head), on: connection)
+  }
+
+  /// Sends the response without closing the connection. `Connection: close` with `Content-Length` makes the
+  /// client close it once the response is read, so the `TIME_WAIT` state stays with the client's port, and a new
+  /// listener can take the server's port at once without address reuse. The connection is read until the
+  /// client closes it.
   private func send(_ response: HTTPResponse, on connection: NWConnection) {
     connection.send(
       content: response.serialize(),
-      contentContext: .finalMessage,
-      isComplete: true,
+      contentContext: .defaultStream,
+      isComplete: false,
       completion: .contentProcessed { error in
         if let error {
           logger.debug("Could not send a response: \(String(describing: error), privacy: .public)")
+          connection.cancel()
+          return
         }
-        connection.cancel()
+        Self.drain(connection)
       }
     )
   }
+
+  /// Reads and discards what the client still sends until it closes its side, then closes the connection
+  private static func drain(_ connection: NWConnection) {
+    connection.receive(minimumIncompleteLength: 1, maximumLength: receiveLength) { _, _, isComplete, error in
+      if isComplete || error != nil {
+        connection.cancel()
+      } else {
+        Self.drain(connection)
+      }
+    }
+  }
 }
 
-/// The part of a request read so far. Reads and the timeout run on the server queue.
-private final class PendingRequest {
-  var buffer = Data()
-  private(set) var isComplete = false
+/// A request to the server's own port that shows which process receives its connections. Used on the server
+/// queue.
+private final class Probe {
+  let nonce = UUID().uuidString
+  let connection: NWConnection
+  /// Whether some process accepted the connection
+  var isConnected = false
 
-  /// Marks the head as read and frees the buffer, since the timeout keeps this object for a while
-  func complete() {
-    isComplete = true
-    buffer = Data()
+  init(connection: NWConnection) {
+    self.connection = connection
   }
+}
+
+private enum ProbeOutcome {
+  /// The server's listener read the probe request
+  case reachedListener
+  /// Nothing accepts connections on the port
+  case refused
+  /// Another process accepted the connection
+  case answeredElsewhere
 }
 
 /// Answers requests with files of the web build
@@ -487,6 +699,7 @@ private enum ByteRange {
 
 private enum HTTPStatus: Int {
   case ok = 200
+  case noContent = 204
   case partialContent = 206
   case badRequest = 400
   case notFound = 404
@@ -499,6 +712,8 @@ private enum HTTPStatus: Int {
     switch self {
     case .ok:
       return "OK"
+    case .noContent:
+      return "No Content"
     case .partialContent:
       return "Partial Content"
     case .badRequest:
@@ -535,10 +750,16 @@ private struct HTTPResponse {
     )
   }
 
+  /// The answer to the server's own probe request
+  static func noContent() -> HTTPResponse {
+    HTTPResponse(status: .noContent, headers: [(name: "Cache-Control", value: "no-store")], body: Data())
+  }
+
   func serialize() -> Data {
     var head = "HTTP/1.1 \(status.rawValue) \(status.reasonPhrase)\r\n"
-    let allHeaders = headers + [
-      (name: "Content-Length", value: String(body.count)),
+    // A 204 response has neither a body nor a `Content-Length`
+    let lengthHeaders = status == .noContent ? [] : [(name: "Content-Length", value: String(body.count))]
+    let allHeaders = headers + lengthHeaders + [
       (name: "X-Content-Type-Options", value: "nosniff"),
       (name: "Connection", value: "close"),
     ]

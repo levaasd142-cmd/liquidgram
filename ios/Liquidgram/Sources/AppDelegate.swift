@@ -17,6 +17,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     TestHooks.resetNativeSettingsIfRequested()
+    NativeSettings.registerDefaults()
     // Taps on notifications reach the delegate only if it is set before launching finishes
     UNUserNotificationCenter.current().delegate = bridge
     configureAudioSession()
@@ -37,7 +38,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     return configuration
   }
 
-  /// Voice messages and videos play even when the Ring/Silent switch is set to silent
+  /// Voice messages and videos play even when the Ring/Silent switch is set to silent. With the `audio` background
+  /// mode, playback also goes on while the phone is locked or another app is in front, and videos can continue in
+  /// Picture in Picture.
   private func configureAudioSession() {
     do {
       try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])

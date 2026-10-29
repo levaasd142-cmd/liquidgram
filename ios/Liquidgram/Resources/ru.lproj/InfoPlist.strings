@@ -1,6 +1,13 @@
 /* Permission prompts */
 "NSCameraUsageDescription" = "Liquidgram использует камеру, чтобы снимать фото и видео для чатов и для видеозвонков.";
+"NSFaceIDUsageDescription" = "Liquidgram использует Face ID, чтобы разблокировать приложение, когда включена блокировка.";
 "NSLocationWhenInUseUsageDescription" = "Liquidgram использует геопозицию, только когда вы отправляете её в чат.";
 "NSMicrophoneUsageDescription" = "Liquidgram использует микрофон, чтобы записывать голосовые сообщения и для звонков.";
 "NSPhotoLibraryAddUsageDescription" = "Liquidgram сохраняет в медиатеку фото и видео, которые вы выберете.";
 "NSPhotoLibraryUsageDescription" = "Liquidgram использует медиатеку, чтобы отправлять фото и видео.";
+
+/* Home-screen quick actions, looked up by the English titles in Info.plist */
+"Saved Messages" = "Избранное";
+"Search" = "Поиск";
+"New Message" = "Новое сообщение";
+"Ghost Mode" = "Режим призрака";
