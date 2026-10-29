@@ -1,0 +1,2606 @@
+{
+  "ios-17": {
+    "runner": {
+      "runtimePrefix": "17.0",
+      "runId": "40904323740",
+      "firstOrigin": "custom",
+      "phases": {
+        "main": {
+          "status": "done",
+          "seconds": 232,
+          "pid": 3766
+        },
+        "verify": {
+          "status": "done",
+          "seconds": 14,
+          "pid": 17720
+        }
+      },
+      "runtime": "iOS 17.0",
+      "runtimeVersion": "17.0.1",
+      "runtimeBuild": "21A342",
+      "deviceType": "iPhone 15",
+      "udid": "20039D96-BA32-43DD-966F-260C16287753",
+      "crashReports": [],
+      "seconds": 290
+    },
+    "checks": {
+      "features/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-17.0"
+        }
+      },
+      "features/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "features/origin": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-17.0\",\"protocol\":\"liquidgram-web:\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-17.0\",\"protocol\":\"http:\"}"
+        }
+      },
+      "features/injected-scripts": {
+        "custom": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        },
+        "http": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        }
+      },
+      "features/secure-context": {
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "features/crypto-subtle": {
+        "custom": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        },
+        "http": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        }
+      },
+      "features/crypto-random-uuid": {
+        "custom": {
+          "ok": true,
+          "detail": "b58d1669-1b44-45a3-b6aa-b11166a20640"
+        },
+        "http": {
+          "ok": true,
+          "detail": "65e238a2-f7a7-4428-8a59-74c2f8654914"
+        }
+      },
+      "features/getusermedia-exists": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        }
+      },
+      "features/local-storage-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0"
+        }
+      },
+      "features/indexeddb-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0"
+        }
+      },
+      "features/cache-storage-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0 under https://liquidgram.invalid/probe-marker"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-17.0 under https://liquidgram.invalid/probe-marker"
+        }
+      },
+      "features/storage-persist": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":114}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":114}"
+        }
+      },
+      "features/web-locks": {
+        "custom": {
+          "ok": true,
+          "detail": "lock granted"
+        },
+        "http": {
+          "ok": true,
+          "detail": "lock granted"
+        }
+      },
+      "features/classic-script": {
+        "custom": {
+          "ok": true,
+          "detail": "classic-ok"
+        },
+        "http": {
+          "ok": true,
+          "detail": "classic-ok"
+        }
+      },
+      "features/module-script": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.js"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.js"
+        }
+      },
+      "features/dynamic-import": {
+        "custom": {
+          "ok": true,
+          "detail": "dyn-ok"
+        },
+        "http": {
+          "ok": true,
+          "detail": "dyn-ok"
+        }
+      },
+      "features/fetch-json": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        }
+      },
+      "features/fetch-head": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        }
+      },
+      "features/fetch-404": {
+        "custom": {
+          "ok": true,
+          "detail": "status 404"
+        },
+        "http": {
+          "ok": true,
+          "detail": "status 404"
+        }
+      },
+      "features/fetch-range": {
+        "custom": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        },
+        "http": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        }
+      },
+      "features/fetch-traversal": {
+        "custom": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        }
+      },
+      "features/fetch-abort": {
+        "custom": {
+          "ok": true,
+          "detail": "aborted after 262144 bytes; aborted after 262144 bytes; aborted after 524288 bytes; aborted after 262144 bytes; aborted after 262144 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        },
+        "http": {
+          "ok": true,
+          "detail": "aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        }
+      },
+      "features/xhr": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        }
+      },
+      "features/wasm-streaming": {
+        "custom": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        }
+      },
+      "features/wasm-instantiate": {
+        "custom": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        },
+        "http": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        }
+      },
+      "features/image-load": {
+        "custom": {
+          "ok": true,
+          "detail": "192x192"
+        },
+        "http": {
+          "ok": true,
+          "detail": "192x192"
+        }
+      },
+      "features/font-load": {
+        "custom": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        }
+      },
+      "features/worker-classic": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-module": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-websocket": {
+        "custom": {
+          "ok": true,
+          "detail": "opened in 494 ms, protocol \"binary\", closed with 1000"
+        },
+        "http": {
+          "ok": true,
+          "detail": "opened in 464 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/sharedworker-load": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        }
+      },
+      "features/sharedworker-module-load": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        }
+      },
+      "features/info-sharedworker-importscripts": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: NetworkError: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "importScripts: helper-ok"
+        }
+      },
+      "features/info-sharedworker-fetch": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "fetch: 200 data-ok"
+        }
+      },
+      "features/info-sharedworker-subtle": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: undefined is not an object (evaluating 'crypto.subtle.digest')"
+        },
+        "http": {
+          "ok": true,
+          "detail": "subtle: SHA-256 ok"
+        }
+      },
+      "features/info-sharedworker-module-import": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: shared worker error: Importing a module script failed."
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: dep-ok"
+        }
+      },
+      "features/broadcast-channel": {
+        "custom": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        },
+        "http": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        }
+      },
+      "features/compression-streams": {
+        "custom": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        },
+        "http": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        }
+      },
+      "features/blob-url": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:liquidgram-web://app/54b33c22-e033-4a6b-8b2a-a19290874edc\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:http://127.0.0.1:47821/ca4f7ae5-13cc-4a61-b2f6-5ccd11bd43f1\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        }
+      },
+      "features/blob-download": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        }
+      },
+      "features/audio-bundle": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        }
+      },
+      "features/audio-seek": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":53,\"seekedTo\":12,\"playedTo\":12.34}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":45,\"seekedTo\":12,\"playedTo\":12.34}"
+        }
+      },
+      "features/video-seek": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":49,\"seekedTo\":12.02,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":48,\"seekedTo\":12.01,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        }
+      },
+      "features/video-bundle": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        }
+      },
+      "features/video-blob": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":55,\"seekedTo\":12.02,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":53,\"seekedTo\":12.01,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        }
+      },
+      "features/websocket-telegram": {
+        "custom": {
+          "ok": true,
+          "detail": "opened in 463 ms, protocol \"binary\", closed with 1000"
+        },
+        "http": {
+          "ok": true,
+          "detail": "opened in 462 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/history-api": {
+        "custom": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        },
+        "http": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        }
+      },
+      "features/info-cross-origin-fetch": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://other/index.html rejected: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://localhost:47821/index.html rejected: Load failed"
+        }
+      },
+      "features/info-request-headers": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"liquidgram-web://app\",\"referer\":\"(none)\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"http://127.0.0.1:47821\",\"referer\":\"http://127.0.0.1:47821/\"}"
+        }
+      },
+      "features/info-cookie": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"cookie\":\"\",\"cookieEnabled\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"cookie\":\"probe=1\",\"cookieEnabled\":true}"
+        }
+      },
+      "features/info-apis": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        }
+      },
+      "realapp/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        }
+      },
+      "realapp/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "realapp/realapp-api-keys-screen": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        }
+      },
+      "realapp/realapp-gramjs-worker": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/worker-Bg7dM0Z1.js answered the ping in 131 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/worker-Bg7dM0Z1.js answered the ping in 146 ms"
+        }
+      },
+      "realapp/realapp-sharedstate-worker": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/sharedState.worker-C6yEYs3Y.js answered"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js answered"
+        }
+      },
+      "realapp/realapp-voice-decoder": {
+        "custom": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        },
+        "http": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        }
+      },
+      "realapp/info-realapp-environment": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":0}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":54}"
+        }
+      },
+      "realapp/realapp-reload": {
+        "custom": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.0579999685287476 s"
+        },
+        "http": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.048887014389038 s"
+        }
+      },
+      "realapp/realapp-no-uncaught-errors": {
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        },
+        "http": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-console-errors": {
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        },
+        "http": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-workers": {
+        "custom": {
+          "ok": true,
+          "detail": "worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create Worker liquidgram-web"
+        },
+        "http": {
+          "ok": true,
+          "detail": "worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create Worker http://1"
+        }
+      },
+      "embed/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/embed.html?phase=main&origin=custom&run=40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/embed.html?phase=main&origin=http&run=40904323740-17.0"
+        }
+      },
+      "embed/info-iframe-referer": {
+        "custom": {
+          "ok": false,
+          "detail": "(none)"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        }
+      },
+      "embed/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "media/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/media.html?phase=main&origin=custom&run=40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/media.html?phase=main&origin=http&run=40904323740-17.0"
+        }
+      },
+      "media/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "media/video-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 54 ms; #2 seeked in 54 ms; #3 seeked in 53 ms; #4 seeked in 58 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 56 ms; #2 seeked in 48 ms; #3 seeked in 55 ms; #4 seeked in 75 ms"
+        }
+      },
+      "media/video-faststart-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 50 ms; #2 seeked in 50 ms; #3 seeked in 53 ms; #4 seeked in 53 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 48 ms; #2 seeked in 51 ms; #3 seeked in 50 ms; #4 seeked in 54 ms"
+        }
+      },
+      "media/video-paused-seek-repeat": {
+        "custom": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        },
+        "http": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        }
+      },
+      "media/audio-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 44 ms; #2 seeked in 46 ms; #3 seeked in 42 ms; #4 seeked in 52 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 43 ms; #2 seeked in 42 ms; #3 seeked in 46 ms; #4 seeked in 45 ms"
+        }
+      },
+      "verify/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-17.0"
+        }
+      },
+      "verify/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "verify/origin": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-17.0\",\"protocol\":\"liquidgram-web:\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-17.0\",\"protocol\":\"http:\"}"
+        }
+      },
+      "verify/secure-context": {
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "verify/persist-local-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        }
+      },
+      "verify/persist-indexeddb": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        }
+      },
+      "verify/persist-cache-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-17.0"
+        }
+      },
+      "verify/info-storage-persisted": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        }
+      },
+      "cleared/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=cleared&origin=custom&run=40904323740-17.0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=cleared&origin=http&run=40904323740-17.0"
+        }
+      },
+      "cleared/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "cleared/clean-start-local-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-indexeddb": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-cache-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      }
+    }
+  },
+  "ios-18": {
+    "runner": {
+      "runtimePrefix": "18.",
+      "runId": "40904323740",
+      "firstOrigin": "http",
+      "phases": {
+        "main": {
+          "status": "done",
+          "seconds": 232,
+          "pid": 19238
+        },
+        "verify": {
+          "status": "done",
+          "seconds": 13,
+          "pid": 33044
+        }
+      },
+      "runtime": "iOS 18.6",
+      "runtimeVersion": "18.6",
+      "runtimeBuild": "22G86",
+      "deviceType": "iPhone 16",
+      "udid": "A438C0D0-184C-4AFF-9B00-605084DC1BF5",
+      "crashReports": [],
+      "seconds": 296
+    },
+    "checks": {
+      "features/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-18."
+        }
+      },
+      "features/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "features/origin": {
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-18.\",\"protocol\":\"http:\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-18.\",\"protocol\":\"liquidgram-web:\"}"
+        }
+      },
+      "features/injected-scripts": {
+        "http": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        }
+      },
+      "features/secure-context": {
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "features/crypto-subtle": {
+        "http": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        }
+      },
+      "features/crypto-random-uuid": {
+        "http": {
+          "ok": true,
+          "detail": "6ea81324-075e-4509-aa9f-9d12d8389f7e"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "656eedac-47f6-44b5-99b7-dc64c6d86cac"
+        }
+      },
+      "features/getusermedia-exists": {
+        "http": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        }
+      },
+      "features/local-storage-write": {
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-18."
+        }
+      },
+      "features/indexeddb-write": {
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-18."
+        }
+      },
+      "features/cache-storage-write": {
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-18. under https://liquidgram.invalid/probe-marker"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-18. under https://liquidgram.invalid/probe-marker"
+        }
+      },
+      "features/storage-persist": {
+        "http": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":112}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":112}"
+        }
+      },
+      "features/web-locks": {
+        "http": {
+          "ok": true,
+          "detail": "lock granted"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "lock granted"
+        }
+      },
+      "features/classic-script": {
+        "http": {
+          "ok": true,
+          "detail": "classic-ok"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "classic-ok"
+        }
+      },
+      "features/module-script": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.js"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.js"
+        }
+      },
+      "features/dynamic-import": {
+        "http": {
+          "ok": true,
+          "detail": "dyn-ok"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "dyn-ok"
+        }
+      },
+      "features/fetch-json": {
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        }
+      },
+      "features/fetch-head": {
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        }
+      },
+      "features/fetch-404": {
+        "http": {
+          "ok": true,
+          "detail": "status 404"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "status 404"
+        }
+      },
+      "features/fetch-range": {
+        "http": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        }
+      },
+      "features/fetch-traversal": {
+        "http": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        }
+      },
+      "features/fetch-abort": {
+        "http": {
+          "ok": true,
+          "detail": "aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "aborted after 262144 bytes; aborted after 262144 bytes; aborted after 262144 bytes; aborted after 262144 bytes; aborted after 262144 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        }
+      },
+      "features/xhr": {
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        }
+      },
+      "features/wasm-streaming": {
+        "http": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        }
+      },
+      "features/wasm-instantiate": {
+        "http": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        }
+      },
+      "features/image-load": {
+        "http": {
+          "ok": true,
+          "detail": "192x192"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "192x192"
+        }
+      },
+      "features/font-load": {
+        "http": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        }
+      },
+      "features/worker-classic": {
+        "http": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-module": {
+        "http": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-websocket": {
+        "http": {
+          "ok": true,
+          "detail": "opened in 519 ms, protocol \"binary\", closed with 1000"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "opened in 536 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/sharedworker-load": {
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        }
+      },
+      "features/sharedworker-module-load": {
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        }
+      },
+      "features/info-sharedworker-importscripts": {
+        "http": {
+          "ok": true,
+          "detail": "importScripts: helper-ok"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: NetworkError: Load failed"
+        }
+      },
+      "features/info-sharedworker-fetch": {
+        "http": {
+          "ok": true,
+          "detail": "fetch: 200 data-ok"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: Load failed"
+        }
+      },
+      "features/info-sharedworker-subtle": {
+        "http": {
+          "ok": true,
+          "detail": "subtle: SHA-256 ok"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: undefined is not an object (evaluating 'crypto.subtle.digest')"
+        }
+      },
+      "features/info-sharedworker-module-import": {
+        "http": {
+          "ok": true,
+          "detail": "ping: dep-ok"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "Error: shared worker error: the script did not load"
+        }
+      },
+      "features/broadcast-channel": {
+        "http": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        }
+      },
+      "features/compression-streams": {
+        "http": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        }
+      },
+      "features/blob-url": {
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:http://127.0.0.1:47821/ca3f04ed-0e32-4b23-b89c-ffd78c96b78a\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:liquidgram-web://app/77bee480-5540-44ec-ab10-8e971ae910da\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        }
+      },
+      "features/blob-download": {
+        "http": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        }
+      },
+      "features/audio-bundle": {
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        }
+      },
+      "features/audio-seek": {
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":52,\"seekedTo\":12,\"playedTo\":12.35}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":57,\"seekedTo\":12,\"playedTo\":12.35}"
+        }
+      },
+      "features/video-seek": {
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":68,\"seekedTo\":12.04,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":152,\"seekedTo\":12.03,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        }
+      },
+      "features/video-bundle": {
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        }
+      },
+      "features/video-blob": {
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":70,\"seekedTo\":12.03,\"playedTo\":12.37,\"size\":\"320x240\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":119,\"seekedTo\":12.08,\"playedTo\":12.46,\"size\":\"320x240\"}"
+        }
+      },
+      "features/websocket-telegram": {
+        "http": {
+          "ok": true,
+          "detail": "opened in 567 ms, protocol \"binary\", closed with 1000"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "opened in 521 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/history-api": {
+        "http": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        }
+      },
+      "features/info-cross-origin-fetch": {
+        "http": {
+          "ok": true,
+          "detail": "http://localhost:47821/index.html rejected: Load failed"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://other/index.html rejected: Load failed"
+        }
+      },
+      "features/info-request-headers": {
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"http://127.0.0.1:47821\",\"referer\":\"http://127.0.0.1:47821/\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"liquidgram-web://app\",\"referer\":\"(none)\"}"
+        }
+      },
+      "features/info-cookie": {
+        "http": {
+          "ok": true,
+          "detail": "{\"cookie\":\"probe=1\",\"cookieEnabled\":true}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"cookie\":\"\",\"cookieEnabled\":true}"
+        }
+      },
+      "features/info-apis": {
+        "http": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        }
+      },
+      "realapp/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/"
+        }
+      },
+      "realapp/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "realapp/realapp-api-keys-screen": {
+        "http": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        }
+      },
+      "realapp/realapp-gramjs-worker": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/worker-Bg7dM0Z1.js answered the ping in 453 ms"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/worker-Bg7dM0Z1.js answered the ping in 134 ms"
+        }
+      },
+      "realapp/realapp-sharedstate-worker": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js answered"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/sharedState.worker-C6yEYs3Y.js answered"
+        }
+      },
+      "realapp/realapp-voice-decoder": {
+        "http": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        }
+      },
+      "realapp/info-realapp-environment": {
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":54}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":0}"
+        }
+      },
+      "realapp/realapp-reload": {
+        "http": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.0646910667419434 s"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.0639070272445679 s"
+        }
+      },
+      "realapp/realapp-no-uncaught-errors": {
+        "http": {
+          "ok": true,
+          "detail": "none"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-console-errors": {
+        "http": {
+          "ok": true,
+          "detail": "none"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-workers": {
+        "http": {
+          "ok": true,
+          "detail": "worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create Worker http://1"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create Worker liquidgram-web"
+        }
+      },
+      "embed/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/embed.html?phase=main&origin=http&run=40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/embed.html?phase=main&origin=custom&run=40904323740-18."
+        }
+      },
+      "embed/info-iframe-referer": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "(none)"
+        }
+      },
+      "embed/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "media/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/media.html?phase=main&origin=http&run=40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/media.html?phase=main&origin=custom&run=40904323740-18."
+        }
+      },
+      "media/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "media/video-seek-repeat": {
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 70 ms; #2 seeked in 83 ms; #3 seeked in 73 ms; #4 seeked in 79 ms"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 184 ms; #2 seeked in 165 ms; #3 seeked in 163 ms; #4 seeked in 219 ms"
+        }
+      },
+      "media/video-faststart-seek-repeat": {
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 74 ms; #2 seeked in 77 ms; #3 seeked in 72 ms; #4 seeked in 83 ms"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 157 ms; #2 seeked in 166 ms; #3 seeked in 173 ms; #4 seeked in 168 ms"
+        }
+      },
+      "media/video-paused-seek-repeat": {
+        "http": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        },
+        "custom": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        }
+      },
+      "media/audio-seek-repeat": {
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 49 ms; #2 seeked in 60 ms; #3 seeked in 49 ms; #4 seeked in 52 ms"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 52 ms; #2 seeked in 52 ms; #3 seeked in 44 ms; #4 seeked in 45 ms"
+        }
+      },
+      "verify/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-18."
+        }
+      },
+      "verify/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "verify/origin": {
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-18.\",\"protocol\":\"http:\"}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-18.\",\"protocol\":\"liquidgram-web:\"}"
+        }
+      },
+      "verify/secure-context": {
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "verify/persist-local-storage": {
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        }
+      },
+      "verify/persist-indexeddb": {
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        }
+      },
+      "verify/persist-cache-storage": {
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-18."
+        }
+      },
+      "verify/info-storage-persisted": {
+        "http": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        }
+      },
+      "cleared/native-is-app-url": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=cleared&origin=http&run=40904323740-18."
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=cleared&origin=custom&run=40904323740-18."
+        }
+      },
+      "cleared/native-message-origin": {
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        }
+      },
+      "cleared/clean-start-local-storage": {
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-indexeddb": {
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-cache-storage": {
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        }
+      }
+    }
+  },
+  "ios-26": {
+    "runner": {
+      "runtimePrefix": "26.2",
+      "runId": "40904323740",
+      "firstOrigin": "custom",
+      "phases": {
+        "main": {
+          "status": "done",
+          "seconds": 232,
+          "pid": 3238
+        },
+        "verify": {
+          "status": "done",
+          "seconds": 13,
+          "pid": 17313
+        }
+      },
+      "runtime": "iOS 26.2",
+      "runtimeVersion": "26.2",
+      "runtimeBuild": "23C54",
+      "deviceType": "iPhone 16",
+      "udid": "F77CE663-00DA-4D08-A61E-3E29432B99F8",
+      "crashReports": [],
+      "seconds": 312
+    },
+    "checks": {
+      "features/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-26.2"
+        }
+      },
+      "features/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "features/origin": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=main&origin=custom&run=40904323740-26.2\",\"protocol\":\"liquidgram-web:\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=main&origin=http&run=40904323740-26.2\",\"protocol\":\"http:\"}"
+        }
+      },
+      "features/injected-scripts": {
+        "custom": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        },
+        "http": {
+          "ok": true,
+          "detail": "user scripts ran at document start"
+        }
+      },
+      "features/secure-context": {
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "features/crypto-subtle": {
+        "custom": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        },
+        "http": {
+          "ok": true,
+          "detail": "SHA-1, SHA-256, AES-GCM, HMAC and PBKDF2 work"
+        }
+      },
+      "features/crypto-random-uuid": {
+        "custom": {
+          "ok": true,
+          "detail": "7c866fc1-ace2-4704-b659-e310887c41c6"
+        },
+        "http": {
+          "ok": true,
+          "detail": "827a77e3-6cfa-4a42-8f66-2c4a827d65cb"
+        }
+      },
+      "features/getusermedia-exists": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"getUserMedia\":\"function\",\"devices\":\"audioinput,videoinput\",\"MediaRecorder\":\"function\",\"AudioContext\":\"function\",\"RTCPeerConnection\":\"function\"}"
+        }
+      },
+      "features/local-storage-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2"
+        }
+      },
+      "features/indexeddb-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2"
+        }
+      },
+      "features/cache-storage-write": {
+        "custom": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2 under https://liquidgram.invalid/probe-marker"
+        },
+        "http": {
+          "ok": true,
+          "detail": "stored 40904323740-26.2 under https://liquidgram.invalid/probe-marker"
+        }
+      },
+      "features/storage-persist": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":114}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"persist\":false,\"persisted\":false,\"quota\":10307921511,\"usage\":114}"
+        }
+      },
+      "features/web-locks": {
+        "custom": {
+          "ok": true,
+          "detail": "lock granted"
+        },
+        "http": {
+          "ok": true,
+          "detail": "lock granted"
+        }
+      },
+      "features/classic-script": {
+        "custom": {
+          "ok": true,
+          "detail": "classic-ok"
+        },
+        "http": {
+          "ok": true,
+          "detail": "classic-ok"
+        }
+      },
+      "features/module-script": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.js"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.js"
+        }
+      },
+      "features/dynamic-import": {
+        "custom": {
+          "ok": true,
+          "detail": "dyn-ok"
+        },
+        "http": {
+          "ok": true,
+          "detail": "dyn-ok"
+        }
+      },
+      "features/fetch-json": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"type\":\"application/json\",\"cacheControl\":\"no-cache\",\"length\":\"58\"}"
+        }
+      },
+      "features/fetch-head": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"length\":6327,\"type\":\"text/html; charset=utf-8\"}"
+        }
+      },
+      "features/fetch-404": {
+        "custom": {
+          "ok": true,
+          "detail": "status 404"
+        },
+        "http": {
+          "ok": true,
+          "detail": "status 404"
+        }
+      },
+      "features/fetch-range": {
+        "custom": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        },
+        "http": {
+          "ok": true,
+          "detail": "bytes=100-199 -> 206 100 [bytes 100-199/743192]; bytes=0-1 -> 206 2 [bytes 0-1/743192]; bytes=-100 -> 206 100 [bytes 743092-743191/743192]; bytes=743182- -> 206 10 [bytes 743182-743191/743192]; bytes=743192- -> 416 21 [bytes */743192]"
+        }
+      },
+      "features/fetch-traversal": {
+        "custom": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/..%2FInfo.plist -> 400; /assets%2F..%2F..%2FInfo.plist -> 400; /__probe/..%2F..%2FInfo.plist -> 400; /%2e%2e/Info.plist -> 404; /%5c..%5cInfo.plist -> 400; /index.html%00.png -> 400"
+        }
+      },
+      "features/fetch-abort": {
+        "custom": {
+          "ok": true,
+          "detail": "aborted after 262144 bytes; aborted after 524288 bytes; aborted after 262144 bytes; aborted after 262144 bytes; aborted after 262144 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        },
+        "http": {
+          "ok": true,
+          "detail": "aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; aborted after 33554432 bytes; AbortError; AbortError; AbortError; AbortError; AbortError"
+        }
+      },
+      "features/xhr": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"/assets/decoderWorker.min.wasm\",\"bytes\":137424,\"type\":\"application/wasm\"}"
+        }
+      },
+      "features/wasm-streaming": {
+        "custom": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/assets/tlottie-kfyd4UOK.wasm: 16 exports, 0 imports"
+        }
+      },
+      "features/wasm-instantiate": {
+        "custom": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        },
+        "http": {
+          "ok": true,
+          "detail": "add(2, 3) = 5"
+        }
+      },
+      "features/image-load": {
+        "custom": {
+          "ok": true,
+          "detail": "192x192"
+        },
+        "http": {
+          "ok": true,
+          "detail": "192x192"
+        }
+      },
+      "features/font-load": {
+        "custom": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        },
+        "http": {
+          "ok": true,
+          "detail": "/assets/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP-O0pJf89g.woff2 loaded"
+        }
+      },
+      "features/worker-classic": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"importScripts\":\"helper-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-module": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"dynamicImport\":\"dyn-ok\",\"fetch\":\"200 data-ok\",\"subtle\":\"SHA-256 ok\",\"wasm\":\"16 exports\",\"staticImport\":\"dep-ok\",\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true}"
+        }
+      },
+      "features/worker-websocket": {
+        "custom": {
+          "ok": true,
+          "detail": "opened in 556 ms, protocol \"binary\", closed with 1000"
+        },
+        "http": {
+          "ok": true,
+          "detail": "opened in 525 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/sharedworker-load": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        }
+      },
+      "features/sharedworker-module-load": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: runs in null, secure context false"
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: pong"
+        }
+      },
+      "features/info-sharedworker-importscripts": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: NetworkError: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "importScripts: helper-ok"
+        }
+      },
+      "features/info-sharedworker-fetch": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "fetch: 200 data-ok"
+        }
+      },
+      "features/info-sharedworker-subtle": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: TypeError: undefined is not an object (evaluating 'crypto.subtle.digest')"
+        },
+        "http": {
+          "ok": true,
+          "detail": "subtle: SHA-256 ok"
+        }
+      },
+      "features/info-sharedworker-module-import": {
+        "custom": {
+          "ok": false,
+          "detail": "Error: shared worker error: the script did not load"
+        },
+        "http": {
+          "ok": true,
+          "detail": "ping: dep-ok"
+        }
+      },
+      "features/broadcast-channel": {
+        "custom": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        },
+        "http": {
+          "ok": true,
+          "detail": "page to page and worker to page delivered"
+        }
+      },
+      "features/compression-streams": {
+        "custom": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        },
+        "http": {
+          "ok": true,
+          "detail": "gzip 3300 -> 56; deflate 3300 -> 44; deflate-raw 3300 -> 38"
+        }
+      },
+      "features/blob-url": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:liquidgram-web://app/b773e907-5a3d-45f1-9335-7370a283b784\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"url\":\"blob:http://127.0.0.1:47821/852223d0-3775-4a9c-aab3-90c9a1761d53\",\"image\":\"192x192\",\"canvasBlob\":174}"
+        }
+      },
+      "features/blob-download": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"name\":\"probe-download.txt\",\"size\":25}"
+        }
+      },
+      "features/audio-bundle": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3.55}"
+        }
+      },
+      "features/audio-seek": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":44,\"seekedTo\":12,\"playedTo\":12.34}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":19.98,\"seekMs\":43,\"seekedTo\":12,\"playedTo\":12.34}"
+        }
+      },
+      "features/video-seek": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":149,\"seekedTo\":12.03,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":62,\"seekedTo\":12.03,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        }
+      },
+      "features/video-bundle": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":3,\"size\":\"256x256\"}"
+        }
+      },
+      "features/video-blob": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":70,\"seekedTo\":12.04,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"duration\":20,\"seekMs\":66,\"seekedTo\":12.03,\"playedTo\":12.36,\"size\":\"320x240\"}"
+        }
+      },
+      "features/websocket-telegram": {
+        "custom": {
+          "ok": true,
+          "detail": "opened in 1254 ms, protocol \"binary\", closed with 1000"
+        },
+        "http": {
+          "ok": true,
+          "detail": "opened in 503 ms, protocol \"binary\", closed with 1000"
+        }
+      },
+      "features/history-api": {
+        "custom": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        },
+        "http": {
+          "ok": true,
+          "detail": "pushState and replaceState work"
+        }
+      },
+      "features/info-cross-origin-fetch": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://other/index.html rejected: Load failed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://localhost:47821/index.html rejected: Load failed"
+        }
+      },
+      "features/info-request-headers": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"liquidgram-web://app\",\"referer\":\"(none)\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"status\":200,\"origin\":\"http://127.0.0.1:47821\",\"referer\":\"http://127.0.0.1:47821/\"}"
+        }
+      },
+      "features/info-cookie": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"cookie\":\"\",\"cookieEnabled\":true}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"cookie\":\"probe=1\",\"cookieEnabled\":true}"
+        }
+      },
+      "features/info-apis": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"serviceWorker\":false,\"sharedWorker\":\"function\",\"notification\":\"function\",\"clipboard\":\"function\",\"share\":\"function\",\"wakeLock\":\"object\",\"offscreenCanvas\":\"function\",\"userAgent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Liquidgram\"}"
+        }
+      },
+      "realapp/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        }
+      },
+      "realapp/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "realapp/realapp-api-keys-screen": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"heading\":\"Liquidgram\",\"text\":\"Liquidgram Liquidgram is an unofficial client, so it needs your own API keys. Get them for free at my.telegram.org \u2192 API development tools. API ID API hash CONT\"}"
+        }
+      },
+      "realapp/realapp-gramjs-worker": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/worker-Bg7dM0Z1.js answered the ping in 113 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/worker-Bg7dM0Z1.js answered the ping in 230 ms"
+        }
+      },
+      "realapp/realapp-sharedstate-worker": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/sharedState.worker-C6yEYs3Y.js answered"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js answered"
+        }
+      },
+      "realapp/realapp-voice-decoder": {
+        "custom": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        },
+        "http": {
+          "ok": true,
+          "detail": "11379 bytes of OGG Opus became 196652 bytes of WAV lasting 2.05 s"
+        }
+      },
+      "realapp/info-realapp-environment": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":0}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"isSecureContext\":true,\"title\":\"Liquidgram\",\"isIosApp\":true,\"hasServiceWorkerController\":false,\"resources\":54}"
+        }
+      },
+      "realapp/realapp-reload": {
+        "custom": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.053313970565796 s"
+        },
+        "http": {
+          "ok": true,
+          "detail": "the API keys screen rendered again after 1.026324987411499 s"
+        }
+      },
+      "realapp/realapp-no-uncaught-errors": {
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        },
+        "http": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-console-errors": {
+        "custom": {
+          "ok": true,
+          "detail": "none"
+        },
+        "http": {
+          "ok": true,
+          "detail": "none"
+        }
+      },
+      "realapp/info-realapp-workers": {
+        "custom": {
+          "ok": true,
+          "detail": "worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker liquidgram-web://app/sharedState.worker-C6yEYs3Y.js module | worker-create Worker liquidgram-web"
+        },
+        "http": {
+          "ok": true,
+          "detail": "worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-message SharedWorker http://127.0.0.1:47821/sharedState.worker-C6yEYs3Y.js module | worker-create Worker http://1"
+        }
+      },
+      "embed/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/embed.html?phase=main&origin=custom&run=40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/embed.html?phase=main&origin=http&run=40904323740-26.2"
+        }
+      },
+      "embed/info-iframe-referer": {
+        "custom": {
+          "ok": false,
+          "detail": "(none)"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/"
+        }
+      },
+      "embed/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "media/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/media.html?phase=main&origin=custom&run=40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/media.html?phase=main&origin=http&run=40904323740-26.2"
+        }
+      },
+      "media/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "media/video-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 136 ms; #2 seeked in 402 ms; #3 seeked in 162 ms; #4 seeked in 151 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 81 ms; #2 seeked in 83 ms; #3 seeked in 64 ms; #4 seeked in 73 ms"
+        }
+      },
+      "media/video-faststart-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 146 ms; #2 seeked in 143 ms; #3 seeked in 369 ms; #4 seeked in 160 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 65 ms; #2 seeked in 69 ms; #3 seeked in 71 ms; #4 seeked in 73 ms"
+        }
+      },
+      "media/video-paused-seek-repeat": {
+        "custom": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        },
+        "http": {
+          "ok": false,
+          "detail": "0/4: #1 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #2 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #3 FAILED no seeked (readyState 1, networkState 1); events: loadedmetadata@0.0 seeking@12.0; #4 FAILED no see"
+        }
+      },
+      "media/audio-seek-repeat": {
+        "custom": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 50 ms; #2 seeked in 48 ms; #3 seeked in 52 ms; #4 seeked in 52 ms"
+        },
+        "http": {
+          "ok": true,
+          "detail": "4/4: #1 seeked in 46 ms; #2 seeked in 47 ms; #3 seeked in 48 ms; #4 seeked in 42 ms"
+        }
+      },
+      "verify/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-26.2"
+        }
+      },
+      "verify/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "verify/origin": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"origin\":\"liquidgram-web://app\",\"selfOrigin\":\"liquidgram-web://app\",\"href\":\"liquidgram-web://app/__probe/features.html?phase=verify&origin=custom&run=40904323740-26.2\",\"protocol\":\"liquidgram-web:\"}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"origin\":\"http://127.0.0.1:47821\",\"selfOrigin\":\"http://127.0.0.1:47821\",\"href\":\"http://127.0.0.1:47821/__probe/features.html?phase=verify&origin=http&run=40904323740-26.2\",\"protocol\":\"http:\"}"
+        }
+      },
+      "verify/secure-context": {
+        "custom": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        },
+        "http": {
+          "ok": true,
+          "detail": "isSecureContext is true"
+        }
+      },
+      "verify/persist-local-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        }
+      },
+      "verify/persist-indexeddb": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        }
+      },
+      "verify/persist-cache-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "found 40904323740-26.2"
+        }
+      },
+      "verify/info-storage-persisted": {
+        "custom": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        },
+        "http": {
+          "ok": true,
+          "detail": "{\"persisted\":false}"
+        }
+      },
+      "cleared/native-is-app-url": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app/__probe/features.html?phase=cleared&origin=custom&run=40904323740-26.2"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1:47821/__probe/features.html?phase=cleared&origin=http&run=40904323740-26.2"
+        }
+      },
+      "cleared/native-message-origin": {
+        "custom": {
+          "ok": true,
+          "detail": "liquidgram-web://app port 0"
+        },
+        "http": {
+          "ok": true,
+          "detail": "http://127.0.0.1 port 47821"
+        }
+      },
+      "cleared/clean-start-local-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-indexeddb": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      },
+      "cleared/clean-start-cache-storage": {
+        "custom": {
+          "ok": true,
+          "detail": "removed"
+        },
+        "http": {
+          "ok": true,
+          "detail": "removed"
+        }
+      }
+    }
+  }
+}

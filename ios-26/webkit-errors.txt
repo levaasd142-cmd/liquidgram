@@ -1,0 +1,1218 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-29 15:46:23.543 E  LiquidgramProbe[3238:3efb] [com.apple.network:] nw_listener_socket_inbox_create_socket setsockopt SO_NECP_LISTENUUID failed [2: No such file or directory]
+2026-10-29 15:46:23.573 E  LiquidgramProbe[3238:3efd] [com.apple.extensionkit:default] Failed to resolve host network app id to config: bundleID: com.apple.WebKit.Networking instance ID: Optional([_EXExtensionInstanceIdentifier: 65FF1C03-1280-4460-8FD2-6316A5EBA48F])
+2026-10-29 15:46:24.127 E  com.apple.WebKit.GPU[3251:3f48] [com.apple.browserEngineKit:RenderingExtension] sandbox_enable_local_state_flag failed: errno = 22
+2026-10-29 15:46:24.626 E  com.apple.WebKit.GPU[3251:3f75] (libCoreFSCache.dylib) fopen failed for data file: errno = 2 (No such file or directory)
+2026-10-29 15:46:24.626 E  com.apple.WebKit.GPU[3251:3f75] (libCoreFSCache.dylib) Errors found! Invalidating cache...
+2026-10-29 15:46:24.744 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request storage access quirks from WebPrivacy.
+2026-10-29 15:46:24.744 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request query parameters from WebPrivacy.
+2026-10-29 15:46:24.744 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request storage access user agent string quirks from WebPrivacy.
+2026-10-29 15:46:24.745 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request known fingerprinting scripts from WebPrivacy: Error Domain=WebPrivacyErrorDomain Code=1001 "List data not found" UserInfo={NSLocalizedDescription=List data not found}
+2026-10-29 15:46:24.831 E  com.apple.WebKit.GPU[3251:3f75] (libCoreFSCache.dylib) fopen failed for data file: errno = 2 (No such file or directory)
+2026-10-29 15:46:24.831 E  com.apple.WebKit.GPU[3251:3f75] (libCoreFSCache.dylib) Errors found! Invalidating cache...
+2026-10-29 15:46:24.953 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request restricted opener domains from WebPrivacy
+2026-10-29 15:46:24.953 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to filter tracking query parameters (missing data)
+2026-10-29 15:46:25.434 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.WebKit:PrivateClickMeasurement] 0x10f124100 - DatabaseUtilities::setBusyTimeout failed, error message: not an error
+2026-10-29 15:46:25.469 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.WebKit:PrivateClickMeasurement] 0x10f124100 - DatabaseUtilities::migrateDataToNewTablesIfNecessary failed to rename table, error message: not an error
+2026-10-29 15:46:25.469 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.WebKit:PrivateClickMeasurement] 0x10f124100 - DatabaseUtilities::enableForeignKeys failed, error message: not an error
+2026-10-29 15:46:27.295 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:27.298 E  LiquidgramProbe[3238:3ef6] [com.apple.WebKit:ResourceLoadStatistics] Failed to request allowed query parameters from WebPrivacy.
+2026-10-29 15:46:27.462 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:IndexedDB] 0x10f05c840 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:46:27.569 F  com.apple.WebKit.GPU[3251:3f48] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:27.588 F  com.apple.WebKit.GPU[3251:3f4b] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:28.314 F  com.apple.WebKit.GPU[3251:3f70] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:28.417 F  com.apple.WebKit.GPU[3251:3f71] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:28.999 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_flow_add_write_request [C1 IPv4#58c99ca1:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:46:28.999 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_write_request_report [C1] Send failed with error "Socket is not connected"
+2026-10-29 15:46:29.291 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.CFNetwork:Default] Task <AF100CCD-C36C-4307-8B67-9091F196174C>.<2> finished with error [-1002] Error Domain=NSURLErrorDomain Code=-1002 UserInfo={NSLocalizedDescription=<private>, NSErrorFailingURLStringKey=<private>, NSErrorFailingURLKey=<private>, _NSURLErrorRelatedURLSessionTaskErrorKey=<private>, _NSURLErrorFailingURLSessionTaskErrorKey=<private>, NSUnderlyingError=0x600000c06370 {Error Domain=kCFErrorDomainCFNetwork Code=-1002}}
+2026-10-29 15:46:29.291 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] 0x1111a0000 - [pageProxyID=19, webPageID=20, frameID=21474836483, resourceID=30, isMainResource=0, destination=15, isSynchronous=0] NetworkResourceLoader::didFailLoading: (wasServiceWorkerLoad=0, isTimeout=0, isCancellation=0, isAccessControl=0, errorCode=-1002)
+2026-10-29 15:46:29.305 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::postErrorToWorkerObject: sharedWorkerIdentifier=28, sharedWorker=0x10f254d20
+2026-10-29 15:46:29.305 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] 0x10f1100c0 - [webProcessIdentifier=2] WebSharedWorkerServerConnection::postErrorToWorkerObject: sharedWorkerObjectIdentifier=2-462
+2026-10-29 15:46:29.305 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:SharedWorker] WebContent[3248] 0x110569320 - SharedWorkerObjectConnection::postErrorToWorkerObject: sharedWorkerObjectIdentifier=2-462, worker=0x1103292e0
+2026-10-29 15:46:29.689 E  com.apple.WebKit.GPU[3251:3f70] [com.apple.CFBundle:plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0x6000002455a0> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+2026-10-29 15:46:29.733 E  com.apple.WebKit.GPU[3251:3f3d] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:46:29.919 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1755  ReadPListFile: unable to open stream for LoudnessManager plist
+2026-10-29 15:46:29.919 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1261  GetHardwarePlatformKey: cannot get acoustic ID
+2026-10-29 15:46:29.919 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:29.919 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:29.923 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:29.924 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:29.927 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:29.960 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.342 E  com.apple.WebKit.GPU[3251:3f77] [com.apple.WebKit:Process] IPC::Signal::signal Could not send mach message, error 10000003
+2026-10-29 15:46:30.374 E  com.apple.WebKit.GPU[3251:4406] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.376 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.376 E  com.apple.WebKit.GPU[3251:440c] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:46:30.387 E  com.apple.WebKit.GPU[3251:440c] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:46:30.387 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.463 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:30.463 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:30.466 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:30.466 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:30.468 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.468 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:30.470 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.504 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.878 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:30.930 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:31.356 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:31.358 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:31.358 E  com.apple.WebKit.GPU[3251:440b] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:46:31.368 E  com.apple.WebKit.GPU[3251:440b] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:46:31.369 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:46:31.415 F  com.apple.WebKit.GPU[3251:3f71] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:31.417 F  com.apple.WebKit.GPU[3251:3f71] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:31.434 F  com.apple.WebKit.GPU[3251:3f49] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.586 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:31.604 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:31.604 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:31.607 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:31.608 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:31.616 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:31.616 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:31.617 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.700 F  com.apple.WebKit.GPU[3251:3f49] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:32.784 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.784 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.784 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.785 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.785 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.785 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:32.790 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:32.790 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:32.790 E  com.apple.WebKit.GPU[3251:4407] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.208 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:IPC] 0x10f028b60 - [webProcessIdentifier=2] NetworkConnectionToWebProcess::getRawCookies: Rejecting cookie access due to invalid sameSiteInfo
+2026-10-29 15:46:33.233 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.234 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.234 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.239 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.239 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.242 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.242 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.244 E  com.apple.WebKit.GPU[3251:43fe] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.252 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.252 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.255 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.255 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.257 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.260 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.261 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:33.261 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:33.261 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.265 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:46:33.265 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:46:33.271 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.271 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.273 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.273 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.276 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:33.277 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:33.277 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.448 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:33.448 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:33.449 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:33.650 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:46:33.666 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.666 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.669 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.669 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.672 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:33.672 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:33.672 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.675 E  com.apple.WebKit.GPU[3251:3f49] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:46:33.675 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.675 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:33.675 E  com.apple.WebKit.GPU[3251:471e] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-17383 at <>:2741
+2026-10-29 15:46:33.676 E  com.apple.WebKit.GPU[3251:471e] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-17383 at <>:4045
+2026-10-29 15:46:33.685 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.685 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.688 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.688 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:46:33.690 E  com.apple.WebKit.GPU[3251:4409] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:35.420 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_flow_add_write_request [C2 IPv4#58c99ca1:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:46:35.420 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_write_request_report [C2] Send failed with error "Socket is not connected"
+2026-10-29 15:46:35.420 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:35.421 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:35.421 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:35.478 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C3.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:35.491 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C3.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:35.808 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:37.265 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.WebKit:IndexedDB] 0x10f05cc00 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:46:37.290 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:IndexedDB] 0x10f05d5c0 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:46:39.456 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:39.456 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:39.456 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:39.456 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:43.032 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:IPC] 0x10f028b60 - [webProcessIdentifier=2] NetworkConnectionToWebProcess::getRawCookies: Rejecting cookie access due to invalid sameSiteInfo
+2026-10-29 15:46:43.062 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:43.062 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=57
+2026-10-29 15:46:43.113 E  com.apple.WebKit.GPU[3251:4bb8] [com.apple.coremedia:] <<<< FDCP_Limited >>>> signalled err=-12540 at <>:447
+2026-10-29 15:46:49.336 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.338 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.339 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.340 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.341 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.454 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.540 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.544 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.557 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.560 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:49.561 F  com.apple.WebKit.GPU[3251:44ba] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:49.578 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.608 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.739 E  com.apple.WebKit.Networking[3252:4267] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:49.743 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.754 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C6.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.755 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C6.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.759 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.765 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C5.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.772 E  com.apple.WebKit.Networking[3252:4267] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:49.788 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.792 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C6.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.795 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.848 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.862 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C5.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.871 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.917 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C8.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.927 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C7.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.965 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_socket_set_connection_idle [C8.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:49.984 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:49.994 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.067 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C9.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.076 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C7.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.084 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C9.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.110 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.297 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.WebKit:IndexedDB] 0x10f39c0c0 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:46:50.298 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.299 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C7.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.309 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.364 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C7.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.543 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C10.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.547 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C10.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.595 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.597 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.629 F  com.apple.WebKit.GPU[3251:4d77] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:50.632 F  com.apple.WebKit.GPU[3251:4d77] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:50.634 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.635 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.635 F  com.apple.WebKit.GPU[3251:4d2a] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:46:50.655 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.656 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3248] Unable to hide query parameters from script (missing data)
+2026-10-29 15:46:50.673 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.676 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.737 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.742 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.755 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:50.781 E  com.apple.WebKit.Networking[3252:3f54] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:51.032 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_socket_set_connection_idle [C11.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:51.106 E  com.apple.WebKit.Networking[3252:3f52] [com.apple.network:connection] nw_socket_set_connection_idle [C11.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:51.390 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_protocol_metadata_internal_block_invoke [C13] Client called nw_connection_copy_protocol_metadata_internal on unconnected nw_connection
+2026-10-29 15:46:51.390 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_protocol_metadata_internal_block_invoke [C13] Client called nw_connection_copy_protocol_metadata_internal on unconnected nw_connection
+2026-10-29 15:46:51.390 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C13] Client called nw_connection_copy_connected_local_endpoint on unconnected nw_connection
+2026-10-29 15:46:51.390 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_remote_endpoint_block_invoke [C13] Client called nw_connection_copy_connected_remote_endpoint on unconnected nw_connection
+2026-10-29 15:46:51.391 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_protocol_metadata_internal_block_invoke [C15] Client called nw_connection_copy_protocol_metadata_internal on unconnected nw_connection
+2026-10-29 15:46:51.391 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_protocol_metadata_internal_block_invoke [C15] Client called nw_connection_copy_protocol_metadata_internal on unconnected nw_connection
+2026-10-29 15:46:51.391 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C15] Client called nw_connection_copy_connected_local_endpoint on unconnected nw_connection
+2026-10-29 15:46:51.391 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_remote_endpoint_block_invoke [C15] Client called nw_connection_copy_connected_remote_endpoint on unconnected nw_connection
+2026-10-29 15:46:51.393 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C12] Connection has no local endpoint
+2026-10-29 15:46:51.393 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C12] Connection has no local endpoint
+2026-10-29 15:46:53.431 E  com.apple.WebKit.Networking[3252:3f51] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:53.461 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C4.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:46:54.559 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.560 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.560 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.564 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.564 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.564 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.564 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:54.564 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:46:59.438 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:46:59.439 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:46:59.439 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:46:59.439 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:59.442 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:59.442 E  com.apple.WebKit.GPU[3251:3f75] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:46:59.442 E  com.apple.WebKit.GPU[3251:519a] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-17383 at <>:2741
+2026-10-29 15:46:59.442 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:46:59.442 E  com.apple.WebKit.GPU[3251:519a] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-17383 at <>:4045
+2026-10-29 15:46:59.445 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:01.416 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C16:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:01.420 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C16:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:01.423 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C16:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:01.719 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C16:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:01.719 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C16:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:01.722 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:01.760 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[3248] 0x110060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:47:01.763 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=7
+2026-10-29 15:47:01.763 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=23
+2026-10-29 15:47:01.763 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=12
+2026-10-29 15:47:01.764 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=2
+2026-10-29 15:47:01.765 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=28
+2026-10-29 15:47:01.766 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=18
+2026-10-29 15:47:01.785 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[3630] 0x10d060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:47:01.786 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:01.801 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:01.817 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:01.833 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.WebKit:IndexedDB] 0x10f244900 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:47:02.134 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] nw_protocol_socket_reset_linger [C27:1] setsockopt SO_LINGER failed [22: Invalid argument]
+2026-10-29 15:47:02.134 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] [C27 IPv4#99cd20db:49883 tcp, local: 127.0.0.1:47821, definite, attribution: developer, server, prohibit joining protocols] is already cancelled, ignoring cancel
+2026-10-29 15:47:02.226 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] nw_write_request_report [C30] Send failed with error "Broken pipe"
+2026-10-29 15:47:02.226 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] nw_socket_handle_socket_event [C30:1] Socket SO_ERROR [54: Connection reset by peer]
+2026-10-29 15:47:02.226 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] nw_protocol_socket_reset_linger [C30:1] setsockopt SO_LINGER failed [22: Invalid argument]
+2026-10-29 15:47:02.228 E  LiquidgramProbe[3238:526e] [com.apple.network:connection] [C30 IPv4#99cd20db:49888 tcp, local: 127.0.0.1:47821, definite, attribution: developer, server, prohibit joining protocols] is already cancelled, ignoring cancel
+2026-10-29 15:47:02.922 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_flow_add_write_request [C67 IPv4#58c99ca1:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:47:02.922 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_write_request_report [C67] Send failed with error "Socket is not connected"
+2026-10-29 15:47:03.399 E  com.apple.WebKit.GPU[3251:3f3d] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:47:03.430 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.430 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.432 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.432 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:03.435 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.464 E  com.apple.WebKit.GPU[3251:5196] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.880 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.884 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.884 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.886 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.886 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:03.887 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.891 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.892 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.892 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:03.896 E  com.apple.WebKit.GPU[3251:52c3] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:03.933 E  com.apple.WebKit.GPU[3251:52c4] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.306 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.359 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.785 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.787 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.795 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:04.797 F  com.apple.WebKit.GPU[3251:3f48] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:04.799 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:47:04.803 F  com.apple.WebKit.GPU[3251:5191] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:04.840 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.840 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.843 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.843 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.845 E  com.apple.WebKit.GPU[3251:5193] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:04.848 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:04.848 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:04.849 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:04.849 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:04.850 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:04.850 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:04.853 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:04.855 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:04.860 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.860 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.863 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.863 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:04.865 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:04.866 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:04.866 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.751 E  com.apple.WebKit.GPU[3251:527b] [com.apple.WebKit:Process] IPC::Signal::signal Could not send mach message, error 10000003
+2026-10-29 15:47:05.767 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:05.796 E  com.apple.WebKit.GPU[3251:52e6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.800 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.800 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.801 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.802 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:05.802 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:05.802 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:05.806 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:05.806 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:05.807 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:05.807 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:05.807 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.234 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:06.235 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:06.250 F  com.apple.WebKit.GPU[3251:3f48] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:06.264 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.264 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.267 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.267 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.269 E  com.apple.WebKit.GPU[3251:52c5] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.274 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.274 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.276 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.277 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:06.277 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:06.277 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:06.281 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:06.282 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:06.288 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.288 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.291 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.291 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:06.294 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:06.294 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:06.294 E  com.apple.WebKit.GPU[3251:5192] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:07.399 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:07.679 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_flow_add_write_request [C90 IPv4#58c99ca1:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:47:07.679 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_write_request_report [C90] Send failed with error "Socket is not connected"
+2026-10-29 15:47:07.679 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:07.680 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:07.680 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:07.683 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_handle_socket_event [C91.1.1:2] Socket SO_ERROR [61: Connection refused]
+2026-10-29 15:47:07.684 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_endpoint_flow_failed_with_error [C91.1.1 IPv6#e8473b14.47821 in_progress socket-flow (satisfied (Path is satisfied), interface: lo0)] already failing, returning
+2026-10-29 15:47:07.686 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] 0x1111a0000 - [pageProxyID=11, webPageID=46, frameID=4294967298, resourceID=615, isMainResource=0, destination=0, isSynchronous=0] NetworkResourceLoader::didReceiveResponse: NetworkLoadChecker::validateResponse returned an error (error.domain=, error.code=0)
+2026-10-29 15:47:07.687 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] 0x1111a0000 - [pageProxyID=11, webPageID=46, frameID=4294967298, resourceID=615, isMainResource=0, destination=0, isSynchronous=0] NetworkResourceLoader::didFailLoading: (wasServiceWorkerLoad=0, isTimeout=0, isCancellation=0, isAccessControl=1, errorCode=0)
+2026-10-29 15:47:07.741 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C92.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.755 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C92.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.803 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C93:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.805 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C93:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.805 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C93:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.806 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C93:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.807 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C93:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:07.818 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:08.184 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:IndexedDB] 0x10f244840 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:47:08.184 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.WebKit:IndexedDB] 0x10f240780 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:47:08.240 F  com.apple.WebKit.GPU[3251:52fa] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:12.681 E  com.apple.WebKit.Networking[3252:4267] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:12.681 E  com.apple.WebKit.Networking[3252:4267] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:14.241 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:14.242 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:14.250 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.250 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.252 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.253 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.256 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:14.256 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:14.257 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.261 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.261 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.271 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:14.275 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.276 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.279 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.279 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.284 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.284 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=403
+2026-10-29 15:47:14.843 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:14.844 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:14.851 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.851 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.855 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.855 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.858 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:14.858 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:14.859 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.861 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.862 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.870 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.870 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.873 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.873 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:14.876 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.952 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:14.953 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:14.954 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:14.954 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:14.955 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.958 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.958 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.961 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:14.970 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[3630] 0x10d060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:47:14.971 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[3248] 0x110060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:47:15.134 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=83
+2026-10-29 15:47:15.292 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:47:15.293 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:15.299 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:15.299 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:15.301 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:15.301 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:15.305 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:15.305 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:15.305 E  com.apple.WebKit.GPU[3251:5831] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:15.308 E  com.apple.WebKit.GPU[3251:5845] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:15.312 E  com.apple.WebKit.GPU[3251:5845] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:20.622 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C157:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.624 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C157:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.624 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C157:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.625 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C157:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.626 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C157:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.640 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:47:20.642 E  LiquidgramProbe[3238:526d] [com.apple.runningboard:assertion] Error acquiring assertion: <Error Domain=RBSServiceErrorDomain Code=1 "((target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.rendering AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.networking AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.webcontent))" UserInfo={NSLocalizedFailureReason=((target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.rendering AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.networking AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.webcontent))}>
+2026-10-29 15:47:20.642 E  LiquidgramProbe[3238:526d] [com.apple.WebKit:ProcessSuspension] 0x114160300 - ProcessAssertion::acquireSync Failed to acquire RBS assertion 'XPCConnectionTerminationWatchdog' for process with PID=3248, error: (null)
+2026-10-29 15:47:20.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:47:20.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:47:20.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURLHandle: (0x10f0ac380) Rejecting unregistering blob URL handle with incorrect top origin
+2026-10-29 15:47:20.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURLHandle: (0x10f0ac380) Rejecting unregistering blob URL handle with incorrect top origin
+2026-10-29 15:47:20.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURLHandle: (0x10f0ac380) Rejecting unregistering blob URL handle with incorrect top origin
+2026-10-29 15:47:20.653 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.654 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.657 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.659 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.710 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.791 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.793 F  com.apple.WebKit.GPU[3251:3f4b] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:20.797 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.801 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:20.828 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.893 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C161.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.919 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.920 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C161.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.927 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.928 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C160.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:20.978 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:20.979 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.028 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C160.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.035 E  com.apple.WebKit.Networking[3252:4d33] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.044 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.046 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C163.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.108 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C163.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.110 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.117 E  com.apple.WebKit.Networking[3252:5284] [com.apple.network:connection] nw_socket_set_connection_idle [C164.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.123 E  com.apple.WebKit.Networking[3252:5284] [com.apple.network:connection] nw_socket_set_connection_idle [C164.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.153 E  com.apple.WebKit.Networking[3252:5284] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.160 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C161.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.219 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.277 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.282 E  com.apple.WebKit.Networking[3252:5284] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.282 E  com.apple.WebKit.Networking[3252:526f] [com.apple.WebKit:IndexedDB] 0x10f2b4180 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:47:21.300 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.323 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C161.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.342 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.345 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.398 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C161.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.409 E  com.apple.WebKit.Networking[3252:5284] [com.apple.network:connection] nw_socket_set_connection_idle [C162.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.571 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C165.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.642 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C165.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.682 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.683 F  com.apple.WebKit.GPU[3251:52bf] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.692 F  com.apple.WebKit.GPU[3251:52bf] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.729 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C166.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.745 F  com.apple.WebKit.GPU[3251:52bf] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.746 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C166.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.778 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.780 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.787 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.789 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.808 F  com.apple.WebKit.GPU[3251:52bf] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.810 F  com.apple.WebKit.GPU[3251:52bf] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.812 F  com.apple.WebKit.GPU[3251:3f75] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.817 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.821 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.829 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.830 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:21.918 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.921 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.938 F  com.apple.WebKit.GPU[3251:3f4b] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:21.940 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:21.944 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:22.000 E  com.apple.WebKit.Networking[3252:4267] [com.apple.network:connection] nw_socket_set_connection_idle [C167.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:22.015 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C167.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:22.044 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C168] Connection has no local endpoint
+2026-10-29 15:47:22.044 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C168] Connection has no local endpoint
+2026-10-29 15:47:24.096 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:24.148 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.network:connection] nw_socket_set_connection_idle [C159.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:47:25.793 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:25.793 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:25.793 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:25.793 E  com.apple.WebKit.Networking[3252:4d32] [com.apple.WebKit:ResourceLoadStatistics] 0x10f124100 - [sessionID=1, error=101, message=no more rows available] - ResourceLoadStatisticsStore::domainID: failed to step statement
+2026-10-29 15:47:32.821 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4901] Unable to hide query parameters from script (missing data)
+2026-10-29 15:47:32.847 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[4900] 0x10e060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:47:32.865 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=261
+2026-10-29 15:47:32.865 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=255
+2026-10-29 15:47:32.865 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=268
+2026-10-29 15:47:32.865 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=275
+2026-10-29 15:47:32.866 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=249
+2026-10-29 15:47:32.866 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=281
+2026-10-29 15:47:32.876 E  com.apple.WebKit.GPU[3251:3f3d] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:47:32.902 F  com.apple.WebKit.GPU[3251:64fe] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:33.058 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.058 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.058 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.059 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.059 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.059 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:33.068 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:33.068 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:33.071 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:33.071 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:33.075 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:33.076 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:33.076 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.151 F  com.apple.WebKit.GPU[3251:64f8] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:34.296 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.296 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.297 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.297 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.298 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.298 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.310 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.310 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.312 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.312 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.316 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:34.316 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:34.316 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.797 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:34.808 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.808 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.817 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.817 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.821 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:34.821 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:34.822 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.827 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.827 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:34.828 E  com.apple.WebKit.GPU[3251:656e] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-12871 at <>:2741
+2026-10-29 15:47:34.828 E  com.apple.WebKit.GPU[3251:656e] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-12871 at <>:4045
+2026-10-29 15:47:34.830 E  com.apple.WebKit.GPU[3251:64fe] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:34.838 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.839 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.842 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.842 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:34.844 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.652 F  com.apple.WebKit.GPU[3251:64f8] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:35.925 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.925 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.926 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.927 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.927 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.927 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:35.942 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:35.942 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:35.945 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:35.945 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:35.948 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:35.949 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:35.949 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:36.213 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:36.226 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.226 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.229 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.229 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.232 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:36.232 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:36.232 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:36.234 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:36.234 E  com.apple.WebKit.GPU[3251:64ff] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:36.235 E  com.apple.WebKit.GPU[3251:6590] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-17383 at <>:2741
+2026-10-29 15:47:36.235 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:36.235 E  com.apple.WebKit.GPU[3251:6590] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-17383 at <>:4045
+2026-10-29 15:47:36.243 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.243 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.246 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.246 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:36.248 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.051 F  com.apple.WebKit.GPU[3251:5e68] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:37.223 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.224 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.224 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.225 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.225 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.225 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.237 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.238 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.241 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.241 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.245 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:37.245 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:37.245 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.367 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:37.380 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.380 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.384 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.384 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.389 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:37.390 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:37.390 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.395 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.395 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:37.396 E  com.apple.WebKit.GPU[3251:65c9] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-12871 at <>:2741
+2026-10-29 15:47:37.396 E  com.apple.WebKit.GPU[3251:5e68] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:37.396 E  com.apple.WebKit.GPU[3251:65c9] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-12871 at <>:4045
+2026-10-29 15:47:37.406 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.406 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.409 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.409 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:37.413 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.435 F  com.apple.WebKit.GPU[3251:64ff] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:38.632 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.633 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.633 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.634 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.635 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.635 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.648 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:38.649 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:38.652 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:38.653 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:38.658 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:38.659 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:38.659 E  com.apple.WebKit.GPU[3251:650a] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:38.987 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:39.000 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.000 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.002 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.002 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.006 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:39.006 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:39.006 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.010 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.010 E  com.apple.WebKit.GPU[3251:3f4b] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:39.011 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.011 E  com.apple.WebKit.GPU[3251:65f6] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-12871 at <>:2741
+2026-10-29 15:47:39.011 E  com.apple.WebKit.GPU[3251:65f6] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-12871 at <>:4045
+2026-10-29 15:47:39.019 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.019 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.023 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.023 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.026 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.889 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.890 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.890 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.891 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.891 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.891 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:39.902 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.903 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.905 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.905 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:39.909 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:39.909 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:39.909 E  com.apple.WebKit.GPU[3251:6576] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:40.227 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:40.237 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:40.237 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:40.239 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:40.239 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:40.242 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:40.242 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:40.242 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:40.244 E  com.apple.WebKit.GPU[3251:650f] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:40.246 E  com.apple.WebKit.GPU[3251:661f] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-12871 at <>:2741
+2026-10-29 15:47:40.246 E  com.apple.WebKit.GPU[3251:661f] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-12871 at <>:4045
+2026-10-29 15:47:40.246 E  com.apple.WebKit.GPU[3251:650d] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:40.249 E  com.apple.WebKit.GPU[3251:650d] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:41.167 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.167 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.167 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.168 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.168 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.168 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.179 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.179 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.181 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.181 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.185 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:41.186 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:41.186 E  com.apple.WebKit.GPU[3251:650b] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.585 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:41.603 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.603 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.606 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.606 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.609 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:41.609 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:41.609 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.611 E  com.apple.WebKit.GPU[3251:6503] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:41.612 E  com.apple.WebKit.GPU[3251:6790] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-17383 at <>:2741
+2026-10-29 15:47:41.612 E  com.apple.WebKit.GPU[3251:6790] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-17383 at <>:4045
+2026-10-29 15:47:41.612 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.612 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:41.620 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.620 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.622 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.622 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:41.624 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.483 F  com.apple.WebKit.GPU[3251:6503] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:42.633 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.633 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.633 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.634 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.635 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.635 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.645 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.645 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.647 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.647 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.653 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:42.654 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:42.654 E  com.apple.WebKit.GPU[3251:6501] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.924 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:42.936 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.936 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.938 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.938 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.942 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:42.942 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:42.943 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.948 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.949 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:42.949 E  com.apple.WebKit.GPU[3251:694d] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-12871 at <>:2741
+2026-10-29 15:47:42.949 E  com.apple.WebKit.GPU[3251:694d] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-12871 at <>:4045
+2026-10-29 15:47:42.951 E  com.apple.WebKit.GPU[3251:64f8] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:42.958 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.959 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.961 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.961 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:42.963 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:43.755 E  com.apple.WebKit.GPU[3251:64fd] [com.apple.coremedia:] <<<< FDCP_Limited >>>> signalled err=-12540 at <>:447
+2026-10-29 15:47:43.767 F  com.apple.WebKit.GPU[3251:64ff] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:47:43.996 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:47:44.013 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:44.013 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:44.016 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:44.016 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:47:44.019 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:47:44.019 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:47:44.019 E  com.apple.WebKit.GPU[3251:650c] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:47:44.021 E  com.apple.WebKit.GPU[3251:6503] [com.apple.coremedia:] <<<< FigCustomURLHandling >>>> signalled err=-17383 at <>:3756
+2026-10-29 15:47:44.021 E  com.apple.WebKit.GPU[3251:6b00] [com.apple.coremedia:] <<<< SampleGen >>>> signalled err=-17383 at <>:2741
+2026-10-29 15:47:44.021 E  com.apple.WebKit.GPU[3251:6b00] [com.apple.coremedia:] <<<< VideoMentor >>>> signalled err=-17383 at <>:4045
+2026-10-29 15:47:44.022 E  com.apple.WebKit.GPU[3251:650e] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:44.024 E  com.apple.WebKit.GPU[3251:650e] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:47:49.545 E  LiquidgramProbe[3238:3ef6] [com.apple.browserEngineKit:general] Failed to terminate process: Error Domain=com.apple.extensionKit.errorDomain Code=18 "(null)" UserInfo={NSUnderlyingError=0x600000c7dda0 {Error Domain=RBSRequestErrorDomain Code=3 "No such process found" UserInfo={NSLocalizedFailureReason=No such process found}}}
+2026-10-29 15:47:50.641 E  LiquidgramProbe[3238:3ef6] [com.apple.browserEngineKit:general] Failed to terminate process: Error Domain=com.apple.extensionKit.errorDomain Code=18 "(null)" UserInfo={NSUnderlyingError=0x600000c76ee0 {Error Domain=RBSRequestErrorDomain Code=3 "No such process found" UserInfo={NSLocalizedFailureReason=No such process found}}}
+2026-10-29 15:47:58.929 E  com.apple.WebKit.GPU[3251:789a] [com.apple.coremedia:] <<<< FDCP_Limited >>>> signalled err=-12540 at <>:447
+2026-10-29 15:47:58.934 F  com.apple.WebKit.GPU[3251:78a3] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:07.967 E  com.apple.WebKit.GPU[3251:43c5] [com.apple.coreaudio:AMCP]          HALC_ProxyIOContext.cpp:1623  HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+2026-10-29 15:48:14.098 E  com.apple.WebKit.GPU[3251:8173] [com.apple.coremedia:] <<<< FDCP_Limited >>>> signalled err=-12540 at <>:447
+2026-10-29 15:48:14.101 F  com.apple.WebKit.GPU[3251:8174] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:29.274 E  com.apple.WebKit.GPU[3251:8992] [com.apple.coremedia:] <<<< FDCP_Limited >>>> signalled err=-12540 at <>:447
+2026-10-29 15:48:29.284 F  com.apple.WebKit.GPU[3251:899c] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:44.615 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:44.615 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:44.617 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:44.617 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:44.620 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:44.620 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:44.621 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:44.664 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.034 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.087 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.524 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.527 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.537 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.657 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:45.657 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:45.660 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:45.660 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:45.664 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.664 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:45.665 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:45.696 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.077 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.132 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.569 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.571 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.582 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.689 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:46.689 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:46.692 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:46.692 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:46.694 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.694 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:46.696 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:46.730 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.108 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.171 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.604 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.605 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.617 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.684 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:47.684 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:47.686 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:47.686 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:47.688 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.688 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:47.689 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:47.722 E  com.apple.WebKit.GPU[3251:9902] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.101 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.160 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.558 F  com.apple.WebKit.GPU[3251:98fd] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:48.585 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.586 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.598 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:48:48.616 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C170:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:48:48.617 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C170:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:48:48.617 E  com.apple.WebKit.Networking[3252:526f] [com.apple.network:connection] nw_socket_set_connection_idle [C170:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.637 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.638 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.638 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.638 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.638 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.638 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.639 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.640 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.641 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.642 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.643 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.643 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.643 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:48:48.645 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=466
+2026-10-29 15:48:48.646 E  com.apple.WebKit.Networking[3252:9a95] [com.apple.network:connection] nw_socket_set_connection_idle [C170:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:48:48.647 E  com.apple.WebKit.Networking[3252:9a95] [com.apple.network:connection] nw_socket_set_connection_idle [C170:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:48:48.653 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ResourceLoadStatistics] WebContent[4900] Unable to hide query parameters from script (missing data)
+2026-10-29 15:48:48.667 E  LiquidgramProbe[3238:3f56] [com.apple.WebKit:ProcessSuspension] WebContent[4901] 0x10d064150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:48:48.732 F  com.apple.WebKit.GPU[3251:8995] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:48.751 F  com.apple.WebKit.GPU[3251:98fd] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:48.822 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.822 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.826 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.826 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.830 E  com.apple.WebKit.GPU[3251:9900] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:48.834 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:48.834 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:48.837 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:48.840 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:48.840 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:48.840 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:48.845 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:48.845 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:48.852 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.852 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.856 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.856 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:48.859 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:48.859 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:48.860 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.785 F  com.apple.WebKit.GPU[3251:8995] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:49.824 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.824 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.827 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.827 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.830 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.834 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.834 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.836 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.837 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:49.837 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:49.837 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.841 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:49.841 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:49.848 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.848 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.853 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.853 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.858 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:49.859 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:49.859 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:49.895 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:49.895 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:49.912 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.912 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.914 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.914 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:49.917 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:49.918 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:49.918 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.809 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:50.811 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:50.828 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.828 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.833 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.833 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.839 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:50.840 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:50.840 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.848 E  com.apple.WebKit.GPU[3251:98fb] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:50.853 E  com.apple.WebKit.GPU[3251:98ff] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.853 E  com.apple.WebKit.GPU[3251:98ff] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.856 E  com.apple.WebKit.GPU[3251:98ff] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.856 E  com.apple.WebKit.GPU[3251:98ff] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.860 E  com.apple.WebKit.GPU[3251:98fb] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:50.861 E  com.apple.WebKit.GPU[3251:98ff] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.864 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.864 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.864 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.865 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:50.866 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:50.866 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:50.869 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:50.870 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:50.876 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.877 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.881 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.881 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:50.887 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:50.888 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:50.888 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.488 E  com.apple.WebKit.Networking[3252:9a94] [com.apple.network:connection] nw_connection_copy_connected_local_endpoint_block_invoke [C12] Connection has no local endpoint
+2026-10-29 15:48:51.819 E  com.apple.WebKit.GPU[3251:98fc] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:51.825 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.825 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.825 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.832 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.832 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.835 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.835 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.839 E  com.apple.WebKit.GPU[3251:98fb] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:51.839 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.847 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.848 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.850 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.850 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.852 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.854 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.855 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:51.855 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:51.855 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:51.858 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:51.859 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:51.864 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.865 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.867 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.867 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:51.870 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:51.870 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:51.870 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.802 E  com.apple.WebKit.GPU[3251:98f5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.802 E  com.apple.WebKit.GPU[3251:98f5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.805 E  com.apple.WebKit.GPU[3251:98f5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.805 E  com.apple.WebKit.GPU[3251:98f5] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.808 E  com.apple.WebKit.GPU[3251:98f5] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.813 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.813 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.815 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.816 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:52.816 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:52.816 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.820 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:52.822 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:52.827 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.828 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.830 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.830 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.833 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:52.833 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:52.833 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:52.838 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:52.838 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:52.850 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.850 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.853 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.853 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:52.863 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:52.864 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:52.864 E  com.apple.WebKit.GPU[3251:9b1e] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.759 E  com.apple.WebKit.GPU[3251:9bbe] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:53.761 E  com.apple.WebKit.GPU[3251:9bbe] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:53.773 E  com.apple.WebKit.GPU[3251:98ef] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.773 E  com.apple.WebKit.GPU[3251:98ef] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.776 E  com.apple.WebKit.GPU[3251:98ef] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.776 E  com.apple.WebKit.GPU[3251:98ef] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.779 E  com.apple.WebKit.GPU[3251:98fb] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:53.780 E  com.apple.WebKit.GPU[3251:98ef] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.782 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.783 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.785 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.787 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:53.787 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:53.787 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:53.790 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:53.791 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:53.796 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.796 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.798 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.798 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:53.801 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:53.801 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:53.802 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.731 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.731 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.733 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.733 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.736 E  com.apple.WebKit.GPU[3251:98f6] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.739 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.740 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.741 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.741 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:54.742 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:54.742 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.745 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:54.745 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:54.752 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.752 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.755 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.755 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.758 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:54.758 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:54.759 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.766 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:54.767 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:54.784 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.784 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.788 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.788 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:54.794 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:54.795 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:54.795 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:54.806 E  com.apple.WebKit.GPU[3251:9908] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:54.810 E  com.apple.WebKit.GPU[3251:9908] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:55.697 E  com.apple.WebKit.GPU[3251:9baf] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.697 E  com.apple.WebKit.GPU[3251:9baf] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.700 E  com.apple.WebKit.GPU[3251:9baf] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.700 E  com.apple.WebKit.GPU[3251:9baf] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.703 E  com.apple.WebKit.GPU[3251:9baf] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.705 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.706 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.706 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.707 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:55.708 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:55.708 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.711 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:55.711 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:55.717 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.717 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.720 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.720 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.723 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:55.724 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:55.724 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.730 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:55.731 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:55.751 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.751 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.753 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.754 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:55.759 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:55.759 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:55.759 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:55.775 E  com.apple.WebKit.GPU[3251:9bbe] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:55.778 E  com.apple.WebKit.GPU[3251:9bbe] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:56.650 F  com.apple.WebKit.GPU[3251:9b1f] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:48:56.665 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2548
+2026-10-29 15:48:56.666 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2236
+2026-10-29 15:48:56.678 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:56.679 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:56.682 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:56.682 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:48:56.686 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-12900 at <>:1233
+2026-10-29 15:48:56.687 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] <<<< VRP >>>> signalled err=-12852 at <>:2326
+2026-10-29 15:48:56.687 E  com.apple.WebKit.GPU[3251:98f9] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:48:56.692 E  com.apple.WebKit.GPU[3251:98fc] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:48:56.697 E  com.apple.WebKit.GPU[3251:98fc] [com.apple.coremedia:] (Fig) signalled err=-12785 at <>:1469
+2026-10-29 15:49:11.702 F  com.apple.WebKit.GPU[3251:aeaa] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:49:26.734 F  com.apple.WebKit.GPU[3251:b701] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:49:41.801 F  com.apple.WebKit.GPU[3251:b701] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:49:56.869 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:56.869 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:56.871 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:56.871 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:56.873 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:56.873 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:49:56.874 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:56.906 E  com.apple.WebKit.GPU[3251:cc5b] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.281 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.335 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.769 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.772 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.785 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:57.785 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:57.788 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:57.788 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:57.790 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.791 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.791 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:49:57.792 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:57.824 E  com.apple.WebKit.GPU[3251:cc65] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.204 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.262 E  com.apple.WebKit.GPU[3251:cc63] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.701 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:58.701 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:58.704 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:58.704 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:58.704 E  com.apple.WebKit.GPU[3251:cc65] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.709 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.719 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.719 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:49:58.721 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.722 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:58.751 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.134 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.190 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.625 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.631 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.633 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:59.633 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:59.636 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:59.636 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coreaudio:AQ]        LoudnessManager.mm:1215  IsHardwareSupported: no plist loaded, returning false
+2026-10-29 15:49:59.650 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.650 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.650 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coremedia:] (Fig) signalled err=-16020 at <>:96
+2026-10-29 15:49:59.652 E  com.apple.WebKit.GPU[3251:ccf1] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:49:59.690 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:00.066 E  com.apple.WebKit.GPU[3251:cc57] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:00.117 E  com.apple.WebKit.GPU[3251:cc5a] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:00.517 F  com.apple.WebKit.GPU[3251:b701] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:00.553 E  com.apple.WebKit.GPU[3251:cc65] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:00.556 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:00.566 E  com.apple.WebKit.GPU[3251:cc5f] [com.apple.coremedia:player] <<<< FigFilePlayer >>>> signalled err=-12864 at <>:10029
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:06.409 E  com.apple.WebKit.Networking[3252:3f46] [com.apple.WebKit:Network] BlobRegistryImpl::unregisterBlobURL: (0x10f0ac380) Rejecting unregistering blob URL with incorrect top origin.
+2026-10-29 15:50:12.355 E  LiquidgramProbe[17313:d9b8] [com.apple.app_launch_measurement:General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-29 15:50:12.366 E  LiquidgramProbe[17313:d9b1] [com.apple.network:] nw_listener_socket_inbox_create_socket setsockopt SO_NECP_LISTENUUID failed [2: No such file or directory]
+2026-10-29 15:50:12.404 E  LiquidgramProbe[17313:d9b6] [com.apple.extensionkit:default] Failed to resolve host network app id to config: bundleID: com.apple.WebKit.Networking instance ID: Optional([_EXExtensionInstanceIdentifier: 445CCEA3-C32C-4E3C-ABD7-08993BF15289])
+2026-10-29 15:50:12.445 E  LiquidgramProbe[17313:d9b9] [com.apple.app_launch_measurement:General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+2026-10-29 15:50:12.714 E  com.apple.WebKit.GPU[17341:da00] [com.apple.browserEngineKit:RenderingExtension] sandbox_enable_local_state_flag failed: errno = 22
+2026-10-29 15:50:12.860 E  com.apple.WebKit.Networking[17347:da15] [com.apple.WebKit:PrivateClickMeasurement] 0x110104100 - DatabaseUtilities::setBusyTimeout failed, error message: not an error
+2026-10-29 15:50:12.860 E  com.apple.WebKit.Networking[17347:da15] [com.apple.WebKit:PrivateClickMeasurement] 0x110104100 - DatabaseUtilities::migrateDataToNewTablesIfNecessary failed to rename table, error message: not an error
+2026-10-29 15:50:12.860 E  com.apple.WebKit.Networking[17347:da15] [com.apple.WebKit:PrivateClickMeasurement] 0x110104100 - DatabaseUtilities::enableForeignKeys failed, error message: not an error
+2026-10-29 15:50:12.941 E  LiquidgramProbe[17313:da1a] [com.apple.WebKit:ResourceLoadStatistics] WebContent[17340] Unable to hide query parameters from script (missing data)
+2026-10-29 15:50:13.568 F  com.apple.WebKit.GPU[17341:da00] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:13.583 E  com.apple.WebKit.Networking[17347:da15] [com.apple.network:connection] nw_socket_set_connection_idle [C1:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:13.583 E  com.apple.WebKit.Networking[17347:da15] [com.apple.network:connection] nw_socket_set_connection_idle [C1:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:13.584 E  com.apple.WebKit.Networking[17347:da15] [com.apple.network:connection] nw_socket_set_connection_idle [C1:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:13.877 E  com.apple.WebKit.Networking[17347:da17] [com.apple.network:connection] nw_socket_set_connection_idle [C1:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:13.877 E  com.apple.WebKit.Networking[17347:da17] [com.apple.network:connection] nw_socket_set_connection_idle [C1:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:13.897 E  LiquidgramProbe[17313:da1a] [com.apple.WebKit:ProcessSuspension] WebContent[17340] 0x10e060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:50:13.934 F  com.apple.WebKit.GPU[17341:da00] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:13.952 F  com.apple.WebKit.GPU[17341:da01] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:13.967 F  com.apple.WebKit.GPU[17341:da01] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:14.035 E  LiquidgramProbe[17313:d9b6] [com.apple.runningboard:assertion] Error acquiring assertion: <Error Domain=RBSServiceErrorDomain Code=1 "((target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.rendering AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.networking AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.webcontent))" UserInfo={NSLocalizedFailureReason=((target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.rendering AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.networking AND target is not running or doesn't have entitlement com.apple.developer.web-browser-engine.webcontent))}>
+2026-10-29 15:50:14.035 E  LiquidgramProbe[17313:d9b6] [com.apple.WebKit:ProcessSuspension] 0x11415c540 - ProcessAssertion::acquireSync Failed to acquire RBS assertion 'XPCConnectionTerminationWatchdog' for process with PID=17340, error: (null)
+2026-10-29 15:50:14.050 F  LiquidgramProbe[17313:d9b9] (ScreenTime) Failed to delete history during <_NSConcreteDateInterval: 0x60000026b8c0> (Start Date) 0001-01-01 00:00:00 +0000 + (Duration) 63929058614.184525 seconds = (End Date) 2026-10-29 15:50:14 +0000 with error: Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service named com.apple.coreduetd.knowledge was invalidated: Connection init failed at lookup with error 3 - No such process." UserInfo={NSDebugDescription=The connection to service named com.apple.coreduetd.knowledge was invalidated: Connection init failed at lookup with error 3 - No such process.}
+2026-10-29 15:50:14.194 E  LiquidgramProbe[17313:da1a] [com.apple.WebKit:ProcessSuspension] WebContent[17413] 0x10c060150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:50:14.212 E  com.apple.WebKit.Networking[17347:da18] [com.apple.WebKit:IndexedDB] 0x1102806c0 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:50:14.235 F  com.apple.WebKit.GPU[17341:da00] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:14.280 E  com.apple.WebKit.Networking[17347:da18] [com.apple.network:connection] nw_socket_set_connection_idle [C8:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:14.281 E  com.apple.WebKit.Networking[17347:da18] [com.apple.network:connection] nw_socket_set_connection_idle [C8:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:14.281 E  com.apple.WebKit.Networking[17347:da18] [com.apple.network:connection] nw_socket_set_connection_idle [C8:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:14.295 E  com.apple.WebKit.Networking[17347:da17] [com.apple.network:connection] nw_socket_set_connection_idle [C8:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:14.297 E  com.apple.WebKit.Networking[17347:da17] [com.apple.network:connection] nw_socket_set_connection_idle [C8:2] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+2026-10-29 15:50:14.317 E  LiquidgramProbe[17313:da1a] [com.apple.WebKit:ProcessSuspension] WebContent[17435] 0x111064150 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:50:14.350 F  com.apple.WebKit.GPU[17341:da2d] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:14.363 E  com.apple.WebKit.Networking[17347:da18] [com.apple.WebKit:IndexedDB] 0x1101f49c0 - UniqueIDBDatabaseTransaction::shouldAbortDueToUnhandledRequestError: finished request count (1) is bigger than total request count 0
+2026-10-29 15:50:14.367 F  com.apple.WebKit.GPU[17341:da00] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-10-29 15:50:14.384 F  com.apple.WebKit.GPU[17341:da2d] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel

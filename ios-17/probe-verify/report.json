@@ -1,0 +1,383 @@
+{
+  "dataRecords" : [
+    {
+      "dataTypes" : [
+        "WKWebsiteDataTypeFetchCache",
+        "WKWebsiteDataTypeIndexedDBDatabases",
+        "WKWebsiteDataTypeMemoryCache"
+      ],
+      "displayName" : "127.0.0.1"
+    }
+  ],
+  "finishedAt" : "2026-10-29T16:00:25Z",
+  "isSchemeHandledByWebKit" : false,
+  "model" : "iPhone",
+  "phase" : "verify",
+  "runId" : "40904323740-17.0",
+  "scenarios" : [
+    {
+      "checks" : [
+        {
+          "detail" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=verify&origin=custom&run=40904323740-17.0",
+          "name" : "native-is-app-url",
+          "ok" : true
+        },
+        {
+          "detail" : "liquidgram-web:\/\/app port 0",
+          "name" : "native-message-origin",
+          "ok" : true
+        },
+        {
+          "detail" : "{\"origin\":\"liquidgram-web:\/\/app\",\"selfOrigin\":\"liquidgram-web:\/\/app\",\"href\":\"liquidgram-web:\/\/app\/__probe\/features.html?phase=verify&origin=custom&run=40904323740-17.0\",\"protocol\":\"liquidgram-web:\"}",
+          "name" : "origin",
+          "ok" : true
+        },
+        {
+          "detail" : "isSecureContext is true",
+          "name" : "secure-context",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-local-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-indexeddb",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-cache-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "{\"persisted\":false}",
+          "name" : "info-storage-persisted",
+          "ok" : true
+        }
+      ],
+      "events" : [
+
+      ],
+      "finishedAt" : 1.3861759901046753,
+      "hasMessageOrigin" : true,
+      "name" : "verify",
+      "origin" : "custom",
+      "snapshot" : "verify-custom.png",
+      "startedAt" : 0.16458797454833984,
+      "status" : "done",
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=verify&origin=custom&run=40904323740-17.0"
+    },
+    {
+      "checks" : [
+        {
+          "detail" : "http:\/\/127.0.0.1:47821\/__probe\/features.html?phase=verify&origin=http&run=40904323740-17.0",
+          "name" : "native-is-app-url",
+          "ok" : true
+        },
+        {
+          "detail" : "http:\/\/127.0.0.1 port 47821",
+          "name" : "native-message-origin",
+          "ok" : true
+        },
+        {
+          "detail" : "{\"origin\":\"http:\/\/127.0.0.1:47821\",\"selfOrigin\":\"http:\/\/127.0.0.1:47821\",\"href\":\"http:\/\/127.0.0.1:47821\/__probe\/features.html?phase=verify&origin=http&run=40904323740-17.0\",\"protocol\":\"http:\"}",
+          "name" : "origin",
+          "ok" : true
+        },
+        {
+          "detail" : "isSecureContext is true",
+          "name" : "secure-context",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-local-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-indexeddb",
+          "ok" : true
+        },
+        {
+          "detail" : "found 40904323740-17.0",
+          "name" : "persist-cache-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "{\"persisted\":false}",
+          "name" : "info-storage-persisted",
+          "ok" : true
+        }
+      ],
+      "events" : [
+
+      ],
+      "finishedAt" : 1.6524540185928345,
+      "hasMessageOrigin" : true,
+      "name" : "verify",
+      "origin" : "http",
+      "snapshot" : "verify-http.png",
+      "startedAt" : 1.3862639665603638,
+      "status" : "done",
+      "url" : "http:\/\/127.0.0.1:47821\/__probe\/features.html?phase=verify&origin=http&run=40904323740-17.0"
+    },
+    {
+      "checks" : [
+        {
+          "detail" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=cleared&origin=custom&run=40904323740-17.0",
+          "name" : "native-is-app-url",
+          "ok" : true
+        },
+        {
+          "detail" : "liquidgram-web:\/\/app port 0",
+          "name" : "native-message-origin",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-local-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-indexeddb",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-cache-storage",
+          "ok" : true
+        }
+      ],
+      "events" : [
+
+      ],
+      "finishedAt" : 1.8626439571380615,
+      "hasMessageOrigin" : true,
+      "name" : "cleared",
+      "origin" : "custom",
+      "snapshot" : "cleared-custom.png",
+      "startedAt" : 1.7504310607910156,
+      "status" : "done",
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=cleared&origin=custom&run=40904323740-17.0"
+    },
+    {
+      "checks" : [
+        {
+          "detail" : "http:\/\/127.0.0.1:47821\/__probe\/features.html?phase=cleared&origin=http&run=40904323740-17.0",
+          "name" : "native-is-app-url",
+          "ok" : true
+        },
+        {
+          "detail" : "http:\/\/127.0.0.1 port 47821",
+          "name" : "native-message-origin",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-local-storage",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-indexeddb",
+          "ok" : true
+        },
+        {
+          "detail" : "removed",
+          "name" : "clean-start-cache-storage",
+          "ok" : true
+        }
+      ],
+      "events" : [
+
+      ],
+      "finishedAt" : 1.9785449504852295,
+      "hasMessageOrigin" : true,
+      "name" : "cleared",
+      "origin" : "http",
+      "snapshot" : "cleared-http.png",
+      "startedAt" : 1.862705945968628,
+      "status" : "done",
+      "url" : "http:\/\/127.0.0.1:47821\/__probe\/features.html?phase=cleared&origin=http&run=40904323740-17.0"
+    }
+  ],
+  "schemeRequests" : [
+    {
+      "contentLength" : "846",
+      "contentType" : "text\/html; charset=utf-8",
+      "finishedAt" : 0.4993959665298462,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 846,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.49575698375701904,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=verify&origin=custom&run=40904323740-17.0"
+    },
+    {
+      "contentLength" : "112",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 0.5074950456619263,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 112,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5056120157241821,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/classic.js"
+    },
+    {
+      "contentLength" : "1955",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 0.5079900026321411,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 1955,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5056689977645874,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/worker-common.js"
+    },
+    {
+      "contentLength" : "33089",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 0.5084010362625122,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 33089,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5056999921798706,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.js"
+    },
+    {
+      "contentLength" : "4133",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 0.5184619426727295,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 4133,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5176830291748047,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/media-common.js"
+    },
+    {
+      "contentLength" : "103",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 0.5185790061950684,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 103,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5177390575408936,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/module-dep.js"
+    },
+    {
+      "contentLength" : "1291",
+      "contentType" : "application\/json",
+      "finishedAt" : 0.5266239643096924,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 1291,
+      "scenario" : "verify-custom",
+      "startedAt" : 0.5251950025558472,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/build-info.json"
+    },
+    {
+      "contentLength" : "846",
+      "contentType" : "text\/html; charset=utf-8",
+      "finishedAt" : 1.7729140520095825,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 846,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.771662950515747,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.html?phase=cleared&origin=custom&run=40904323740-17.0"
+    },
+    {
+      "contentLength" : "112",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 1.7829469442367554,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 112,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.7811640501022339,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/classic.js"
+    },
+    {
+      "contentLength" : "1955",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 1.7829630374908447,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 1955,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.7812039852142334,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/worker-common.js"
+    },
+    {
+      "contentLength" : "33089",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 1.7829890251159668,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 33089,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.7812310457229614,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/features.js"
+    },
+    {
+      "contentLength" : "4133",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 1.789376974105835,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 4133,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.788087010383606,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/media-common.js"
+    },
+    {
+      "contentLength" : "103",
+      "contentType" : "text\/javascript; charset=utf-8",
+      "finishedAt" : 1.7893999814987183,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 103,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.7881289720535278,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/module-dep.js"
+    },
+    {
+      "contentLength" : "1291",
+      "contentType" : "application\/json",
+      "finishedAt" : 1.8023309707641602,
+      "method" : "GET",
+      "outcome" : "finished",
+      "receivedBytes" : 1291,
+      "scenario" : "cleared-custom",
+      "startedAt" : 1.8018920421600342,
+      "status" : 200,
+      "url" : "liquidgram-web:\/\/app\/__probe\/build-info.json"
+    }
+  ],
+  "startedAt" : "2026-10-29T16:00:20Z",
+  "systemName" : "iOS",
+  "systemVersion" : "17.0.1",
+  "userAgent" : "Mozilla\/5.0 (iPhone; CPU iPhone OS 17_0_1 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Liquidgram"
+}

@@ -1,0 +1,18 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-29 15:51:18.531 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Probe main of run 40904323740-18. started
+2026-10-29 15:51:18.556 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario features over http
+2026-10-29 15:51:29.938 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario realapp over http
+2026-10-29 15:51:44.086 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario embed over http
+2026-10-29 15:51:56.292 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario features over custom
+2026-10-29 15:52:03.070 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario realapp over custom
+2026-10-29 15:52:16.219 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario embed over custom
+2026-10-29 15:52:28.296 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario media over http
+2026-10-29 15:53:40.609 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Scenario media over custom
+2026-10-29 15:54:59.884 Df LiquidgramProbe[19238:f6b4] [org.liquidgram.messenger:Probe] Probe main finished
+2026-10-29 15:55:06.582 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Probe verify of run 40904323740-18. started
+2026-10-29 15:55:06.593 I  LiquidgramProbe[33044:179bb] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 15:55:06.594 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Scenario verify over http
+2026-10-29 15:55:07.732 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Scenario verify over custom
+2026-10-29 15:55:08.153 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Scenario cleared over http
+2026-10-29 15:55:08.366 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Scenario cleared over custom
+2026-10-29 15:55:11.679 Df LiquidgramProbe[33044:17963] [org.liquidgram.messenger:Probe] Probe verify finished

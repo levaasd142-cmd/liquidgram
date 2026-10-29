@@ -1,0 +1,108 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-29 15:56:28.523 E  LiquidgramProbe[3766:0] [com.apple.os_debug_log:] assertion failed: 23J631 21A342: libxpc.dylib + 70680 [9890E957-84A4-3AF5-8028-CC758799FDF9]: 0x7d
+2026-10-29 15:56:28.809 E  LiquidgramProbe[3766:43e6] [com.apple.network:] nw_listener_socket_inbox_create_socket setsockopt SO_NECP_LISTENUUID failed [2: No such file or directory]
+2026-10-29 15:56:28.946 E  com.apple.WebKit.Networking[3776:4409] [com.apple.WebKit:Network] 0x10f0a9000 - ResourceLoadStatisticsDatabaseStore::turnOnIncrementalAutoVacuum failed, error message: not an error
+2026-10-29 15:56:29.273 E  LiquidgramProbe[3766:43cb] [com.apple.WebKit:ResourceLoadStatistics] Failed to request query parameters from WebPrivacy.
+2026-10-29 15:56:29.672 E  com.apple.WebKit.GPU[3784:445b] (libCoreFSCache.dylib) fopen failed for data file: errno = 2 (No such file or directory)
+2026-10-29 15:56:29.672 E  com.apple.WebKit.GPU[3784:445b] (libCoreFSCache.dylib) Errors found! Invalidating cache...
+2026-10-29 15:56:29.719 E  com.apple.WebKit.GPU[3784:445b] (libCoreFSCache.dylib) fopen failed for data file: errno = 2 (No such file or directory)
+2026-10-29 15:56:29.719 E  com.apple.WebKit.GPU[3784:445b] (libCoreFSCache.dylib) Errors found! Invalidating cache...
+2026-10-29 15:56:29.762 E  LiquidgramProbe[3766:43cb] [com.apple.WebKit:ResourceLoadStatistics] Failed to request allowed query parameters from WebPrivacy.
+2026-10-29 15:56:30.483 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to filter tracking query parameters (missing data)
+2026-10-29 15:56:30.484 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:37.535 E  com.apple.WebKit.Networking[3776:440d] (CFNetwork) Task <FEA5A319-F372-4356-9A00-F8802923DCEB>.<2> finished with error [-1002] <private>
+2026-10-29 15:56:37.536 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:Network] 0x132120a00 - [pageProxyID=15, webPageID=16, frameID=5, resourceID=35, isMainResource=0, destination=13, isSynchronous=0] NetworkResourceLoader::didFailLoading: (wasServiceWorkerLoad=0, isTimeout=0, isCancellation=0, isAccessControl=0, errorCode=-1002)
+2026-10-29 15:56:37.575 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::postExceptionToWorkerObject: sharedWorkerIdentifier=8, sharedWorker=0x10f042860
+2026-10-29 15:56:37.575 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] 0x10f014500 - [webProcessIdentifier=6] WebSharedWorkerServerConnection::postExceptionToWorkerObject: sharedWorkerObjectIdentifier=6-37
+2026-10-29 15:56:37.600 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebContent[3774]: 0x10b1950e0 - SharedWorkerObjectConnection::postExceptionToWorkerObject: sharedWorkerObjectIdentifier=6-37, worker=0x131017b50
+2026-10-29 15:56:38.001 E  com.apple.WebKit.GPU[3784:499b] [com.apple.CFBundle:plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0x1067b22e0> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+2026-10-29 15:56:38.037 E  com.apple.WebKit.GPU[3784:444c] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:56:43.731 E  com.apple.WebKit.Networking[3776:4bd9] (CFNetwork) Connection 2: received failure notification
+2026-10-29 15:56:43.731 E  com.apple.WebKit.Networking[3776:4bd9] [com.apple.network:connection] nw_flow_add_write_request [C2 IPv4#32c58db6:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:56:43.731 E  com.apple.WebKit.Networking[3776:4bd9] [com.apple.network:connection] nw_write_request_report [C2] Send failed with error "Socket is not connected"
+2026-10-29 15:56:48.987 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:48.987 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:48.987 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:48.994 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:50.101 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=159
+2026-10-29 15:56:50.534 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.134 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.135 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.136 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.137 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.138 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.144 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.145 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:57.147 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.280 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.282 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.283 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.284 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.285 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:56:58.287 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[3774]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:08.781 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=4
+2026-10-29 15:57:08.784 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=3
+2026-10-29 15:57:08.784 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=6
+2026-10-29 15:57:08.784 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=8
+2026-10-29 15:57:08.784 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=2
+2026-10-29 15:57:08.785 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=7
+2026-10-29 15:57:09.040 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[3774]: 0x10b0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:57:09.132 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:09.778 E  LiquidgramProbe[3766:5d99] [com.apple.network:connection] nw_socket_handle_socket_event [C30:1] Socket SO_ERROR [54: Connection reset by peer]
+2026-10-29 15:57:09.779 E  LiquidgramProbe[3766:5d99] [com.apple.network:connection] nw_protocol_socket_reset_linger [C30:1] setsockopt SO_LINGER failed [22: Invalid argument]
+2026-10-29 15:57:09.780 E  LiquidgramProbe[3766:5d99] [com.apple.network:connection] [C30 127.0.0.1:49528 tcp, local: 127.0.0.1:47821, definite, attribution: developer, server, prohibit joining] is already cancelled, ignoring cancel
+2026-10-29 15:57:10.272 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[3804]: 0x10d0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:57:10.453 E  com.apple.WebKit.Networking[3776:5e78] [com.apple.network:connection] nw_flow_add_write_request [C66 IPv4#32c58db6:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:57:10.453 E  com.apple.WebKit.Networking[3776:5e78] [com.apple.network:connection] nw_write_request_report [C66] Send failed with error "Socket is not connected"
+2026-10-29 15:57:10.955 E  com.apple.WebKit.GPU[3784:444c] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:57:15.592 E  com.apple.WebKit.Networking[3776:5e77] [com.apple.network:connection] nw_flow_add_write_request [C89 IPv4#32c58db6:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] cannot accept write requests
+2026-10-29 15:57:15.592 E  com.apple.WebKit.Networking[3776:5e77] [com.apple.network:connection] nw_write_request_report [C89] Send failed with error "Socket is not connected"
+2026-10-29 15:57:15.597 E  com.apple.WebKit.Networking[3776:5472] [com.apple.network:connection] nw_socket_handle_socket_event [C90.1.1:2] Socket SO_ERROR [61: Connection refused]
+2026-10-29 15:57:15.601 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:Network] 0x132120a00 - [pageProxyID=7, webPageID=19, frameID=1, resourceID=1755, isMainResource=0, destination=0, isSynchronous=0] NetworkResourceLoader::didReceiveResponse: NetworkLoadChecker::validateResponse returned an error (error.domain=, error.code=0)
+2026-10-29 15:57:15.601 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:Network] 0x132120a00 - [pageProxyID=7, webPageID=19, frameID=1, resourceID=1755, isMainResource=0, destination=0, isSynchronous=0] NetworkResourceLoader::didFailLoading: (wasServiceWorkerLoad=0, isTimeout=0, isCancellation=0, isAccessControl=1, errorCode=0)
+2026-10-29 15:57:15.615 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:15.615 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:15.615 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:16.972 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:17.050 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=171
+2026-10-29 15:57:17.056 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[3804]: 0x10d0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:57:17.225 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[3774]: 0x10b0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:57:21.964 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=488
+2026-10-29 15:57:24.160 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.676 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.677 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.677 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.678 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.679 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.684 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.685 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.687 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:28.859 E  com.apple.WebKit.Networking[3776:606e] [com.apple.network:connection] nw_connection_add_timestamp_locked_on_nw_queue [C158] Hit maximum timestamp count, will start dropping events
+2026-10-29 15:57:30.340 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:30.341 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:30.341 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:30.342 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:30.343 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:30.344 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:40.574 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=270
+2026-10-29 15:57:40.840 E  com.apple.WebKit.GPU[3784:444c] [com.apple.WebKit:WebRTC] Failed to get attribution bundleID from audit token with error: The operation couldn’t be completed. (OSStatus error -9499.).
+2026-10-29 15:57:40.851 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6272]: Unable to allow query parameters (missing data)
+2026-10-29 15:57:43.643 E  LiquidgramProbe[3766:43cb] [com.apple.WebKit:Process] 0x113040680 - [PID=7916] WebProcessProxy::didBecomeUnresponsive:
+2026-10-29 15:57:55.479 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=282
+2026-10-29 15:57:55.479 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=277
+2026-10-29 15:57:55.479 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=272
+2026-10-29 15:57:55.479 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=280
+2026-10-29 15:57:55.479 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=274
+2026-10-29 15:57:55.488 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[6271]: 0x10d0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 15:58:55.788 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:SharedWorker] WebSharedWorkerServer::sharedWorkerTerminated: sharedWorkerIdentifier=525
+2026-10-29 15:58:56.808 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ResourceLoadStatistics] WebContent[6271]: Unable to allow query parameters (missing data)
+2026-10-29 15:58:56.827 E  com.apple.WebKit.Networking[3776:4406] [com.apple.WebKit:ProcessSuspension] WebContent[6272]: 0x10b0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 16:00:14.697 E  com.apple.WebKit.GPU[3784:bab0] [com.apple.WebKit:IPC] XPCServiceEventHandler: Received unexpected XPC event type: error
+2026-10-29 16:00:14.697 F  com.apple.WebKit.GPU[3784:bab0] [com.apple.WebKit:IPC] Exiting: Received XPC event type: XPC_ERROR_CONNECTION_INVALID
+2026-10-29 16:00:20.670 E  LiquidgramProbe[17720:0] [com.apple.os_debug_log:] assertion failed: 23J631 21A342: libxpc.dylib + 70680 [9890E957-84A4-3AF5-8028-CC758799FDF9]: 0x7d
+2026-10-29 16:00:20.894 E  LiquidgramProbe[17720:ccee] [com.apple.network:] nw_listener_socket_inbox_create_socket setsockopt SO_NECP_LISTENUUID failed [2: No such file or directory]
+2026-10-29 16:00:21.098 E  com.apple.WebKit.Networking[17726:cd3f] [com.apple.WebKit:Network] 0x10f0b8100 - ResourceLoadStatisticsDatabaseStore::turnOnIncrementalAutoVacuum failed, error message: not an error
+2026-10-29 16:00:21.329 E  com.apple.WebKit.Networking[17726:cd2c] [com.apple.WebKit:ResourceLoadStatistics] WebContent[17725]: Unable to allow query parameters (missing data)
+2026-10-29 16:00:22.338 E  com.apple.WebKit.Networking[17726:cd2c] [com.apple.WebKit:ProcessSuspension] WebContent[17725]: 0x10f0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 16:00:22.545 E  com.apple.WebKit.Networking[17726:cd2c] [com.apple.WebKit:ProcessSuspension] WebContent[17796]: 0x10f0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1
+2026-10-29 16:00:22.665 E  com.apple.WebKit.Networking[17726:cd2c] [com.apple.WebKit:ProcessSuspension] WebContent[17805]: 0x10d0444f0 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=0, error=-1

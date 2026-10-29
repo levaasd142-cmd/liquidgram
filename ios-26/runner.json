@@ -1,0 +1,24 @@
+{
+  "runtimePrefix": "26.2",
+  "runId": "40904323740",
+  "firstOrigin": "custom",
+  "phases": {
+    "main": {
+      "status": "done",
+      "seconds": 232,
+      "pid": 3238
+    },
+    "verify": {
+      "status": "done",
+      "seconds": 13,
+      "pid": 17313
+    }
+  },
+  "runtime": "iOS 26.2",
+  "runtimeVersion": "26.2",
+  "runtimeBuild": "23C54",
+  "deviceType": "iPhone 16",
+  "udid": "F77CE663-00DA-4D08-A61E-3E29432B99F8",
+  "crashReports": [],
+  "seconds": 312
+}

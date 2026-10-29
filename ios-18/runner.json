@@ -1,0 +1,24 @@
+{
+  "runtimePrefix": "18.",
+  "runId": "40904323740",
+  "firstOrigin": "http",
+  "phases": {
+    "main": {
+      "status": "done",
+      "seconds": 232,
+      "pid": 19238
+    },
+    "verify": {
+      "status": "done",
+      "seconds": 13,
+      "pid": 33044
+    }
+  },
+  "runtime": "iOS 18.6",
+  "runtimeVersion": "18.6",
+  "runtimeBuild": "22G86",
+  "deviceType": "iPhone 16",
+  "udid": "A438C0D0-184C-4AFF-9B00-605084DC1BF5",
+  "crashReports": [],
+  "seconds": 296
+}

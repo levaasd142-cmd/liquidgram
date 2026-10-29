@@ -1,0 +1,24 @@
+{
+  "runtimePrefix": "17.0",
+  "runId": "40904323740",
+  "firstOrigin": "custom",
+  "phases": {
+    "main": {
+      "status": "done",
+      "seconds": 232,
+      "pid": 3766
+    },
+    "verify": {
+      "status": "done",
+      "seconds": 14,
+      "pid": 17720
+    }
+  },
+  "runtime": "iOS 17.0",
+  "runtimeVersion": "17.0.1",
+  "runtimeBuild": "21A342",
+  "deviceType": "iPhone 15",
+  "udid": "20039D96-BA32-43DD-966F-260C16287753",
+  "crashReports": [],
+  "seconds": 290
+}
