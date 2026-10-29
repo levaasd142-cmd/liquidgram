@@ -1,6 +1,7 @@
 import { memo } from '../../lib/teact/teact';
 
 import buildClassName from '../../util/buildClassName';
+import { triggerHaptic } from '../../util/nativeApp';
 
 import useLastCallback from '../../hooks/useLastCallback';
 
@@ -30,6 +31,7 @@ const Switcher = ({
   onCheck,
 }: OwnProps) => {
   const handleChange = useLastCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    triggerHaptic('selection');
     onCheck?.(e.currentTarget.checked);
   });
 

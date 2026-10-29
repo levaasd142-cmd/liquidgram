@@ -11,6 +11,7 @@ import type { IconName } from '../../types/icons';
 import type { IRadioOption } from './CheckboxGroup';
 
 import buildClassName from '../../util/buildClassName';
+import { triggerHaptic } from '../../util/nativeApp';
 import { REM } from '../common/helpers/mediaDimensions';
 import renderText from '../common/helpers/renderText';
 
@@ -99,6 +100,8 @@ const Checkbox: FC<OwnProps> = ({
     if (disabled) {
       return;
     }
+
+    triggerHaptic('selection');
 
     if (onChange) {
       const isOwnInput = event.target === inputRef.current;

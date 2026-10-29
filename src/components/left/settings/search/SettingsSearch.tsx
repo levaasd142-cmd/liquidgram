@@ -6,7 +6,7 @@ import type { MenuItemContextAction } from '../../../ui/ListItem';
 import type { SettingsSearchItem } from './searchSettings';
 
 import { selectSettingsSearchFlags } from '../../../../global/selectors';
-import { IS_MOBILE } from '../../../../util/browser/windowEnvironment';
+import { IS_IOS_APP, IS_MOBILE } from '../../../../util/browser/windowEnvironment';
 import buildClassName from '../../../../util/buildClassName';
 import { copyTextToClipboard } from '../../../../util/clipboard';
 import { buildSettingsSearchIndex, searchSettings } from './searchSettings';
@@ -64,6 +64,7 @@ const SettingsSearch = ({
     ...stateFlags,
     isDesktopLayout: !isMobile,
     canSendWithKeyboard: !isMobile || !IS_MOBILE,
+    isIosApp: IS_IOS_APP,
   }), [lang, isMobile, stateFlags]);
 
   const hasQuery = Boolean(query.trim());

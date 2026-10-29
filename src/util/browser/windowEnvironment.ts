@@ -1,3 +1,5 @@
+import type { NativeAppAction, NativeHapticStyle } from '../nativeApp';
+
 import {
   IS_TEST, PRODUCTION_HOSTNAME, SVG_NAMESPACE, VIDEO_RECORDING_MIME_TYPE,
 } from '../../config';
@@ -6,11 +8,24 @@ import { IS_TAURI } from './globalEnvironment';
 
 declare global {
   interface Window {
-    // The iOS app in `ios/` sets it before any page script, and its `bridge.js` adds the native callbacks
+    // The iOS app in `ios/` sets it before any page script, and its `bridge.js` adds the functions and the native
+    // callbacks. The page treats each function as optional, see `util/nativeApp.ts`.
     __liquidgramNative?: {
       platform: 'ios';
       version: string;
       notificationPermission: NotificationPermission;
+      isBridgeInstalled?: boolean;
+      // Resolves with the answer of the app, rejects when it does not answer in 30 seconds
+      request?: (type: string, payload?: AnyLiteral) => Promise<AnyLiteral>;
+      haptic?: (style: NativeHapticStyle) => void;
+      postMessage?: (message: { type: string } & AnyLiteral) => void;
+      setActionHandler?: (handler: (action: NativeAppAction) => void) => void;
+      // Called by the app
+      resolvePermission?: (requestId: number, state: NotificationPermission) => void;
+      setPermission?: (state: NotificationPermission) => void;
+      notificationClicked?: (tag: string) => void;
+      resolveRequest?: (requestId: number, response: AnyLiteral) => void;
+      dispatchAction?: (action: NativeAppAction) => void;
     };
   }
 }
