@@ -25,16 +25,21 @@ on:
   workflow_dispatch:
     inputs:
       ui_tests:
-        description: Run only these UI tests (comma-separated, such as LiquidgramUITests/CoreTests); no release then
+        description: >-
+          Run only these UI tests, comma-separated classes or class/test, such as
+          `UsabilityTests,CoreTests/testDemoAccount`; `-X` skips X; no release then
         required: false
         default: ''
 
 permissions:
   contents: write
 
-# A newer push to the same branch replaces a build in progress
+# A newer build of the same branch replaces one in progress. A push to a branch other than the default one builds
+# nothing, so it gets a group of its own instead of cancelling a manual run of that branch.
 concurrency:
-  group: ios-${{ github.ref }}
+  group: >-
+    ios-${{ github.ref }}-${{ (github.event_name == 'workflow_dispatch'
+    || github.ref_name == github.event.repository.default_branch) && 'build' || github.run_id }}
   cancel-in-progress: true
 
 env:
@@ -162,6 +167,9 @@ jobs:
           git push --force --quiet "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
             "HEAD:refs/heads/$RESULTS_BRANCH"
           echo "::notice title=UI test report::$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$RESULTS_BRANCH"
+          if [ -f contact-sheet.png ]; then
+            echo "::notice title=UI test screenshots::$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$RESULTS_BRANCH/contact-sheet.png"
+          fi
 
       # Manual runs on other branches only upload the artifact, so the release keeps the default branch's build.
       # Like every step without a status check, it runs only when the build and the UI tests succeeded, and only when

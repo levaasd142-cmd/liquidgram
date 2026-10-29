@@ -40,7 +40,6 @@ final class CoreTests: LiquidgramUITestCase {
       "the description of the API keys screen"
     )
     attachScreenshot("01-api-keys-screen")
-    attachAccessibilityTree("api-keys-screen")
 
     XCTAssertTrue(
       findNativeElement(Self.webViewIdentifier).exists,
@@ -96,7 +95,6 @@ final class CoreTests: LiquidgramUITestCase {
       (apiIdField.value as? String)?.contains(Self.typedApiId) == true
     }
     attachScreenshot("01-keyboard-up")
-    attachAccessibilityTree("keyboard-up")
 
     XCTAssertTrue(isTyped, "The API ID field shows \(String(describing: apiIdField.value)) instead of the typed digits")
     XCTAssertGreaterThan(keyboard.frame.height, 0, "The keyboard has no height")
@@ -114,7 +112,6 @@ final class CoreTests: LiquidgramUITestCase {
     let chat = waitForChatRow(titled: Self.demoChatTitle, "the chat list of the demo account")
     waitFor(findElement(in: webView, labelContaining: Self.demoGroupTitle), "the group chat of the demo account")
     attachScreenshot("01-chat-list")
-    attachAccessibilityTree("chat-list")
 
     chat.tap()
     allowNotificationsIfAsked()
@@ -130,7 +127,6 @@ final class CoreTests: LiquidgramUITestCase {
       (composer.value as? String)?.contains(Self.typedMessage) == true
     }
     attachScreenshot("03-composer-with-keyboard")
-    attachAccessibilityTree("composer-with-keyboard")
 
     XCTAssertTrue(isTyped, "The composer shows \(String(describing: composer.value)) instead of the typed text")
     XCTAssertLessThanOrEqual(
@@ -155,7 +151,6 @@ final class CoreTests: LiquidgramUITestCase {
     try launchApp(Launch(shouldResetState: false, shouldStayOffline: true))
     waitForChatRow(titled: Self.demoChatTitle, "the chat list after the restart")
     attachScreenshot("02-chat-list-after-restart")
-    attachAccessibilityTree("chat-list-after-restart")
   }
 }
 
