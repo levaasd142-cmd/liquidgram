@@ -50,6 +50,7 @@ import useAppLayout from '../../hooks/useAppLayout';
 import useForceUpdate from '../../hooks/useForceUpdate';
 import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
+import useNativeAppActions from '../../hooks/useNativeAppActions';
 import usePreventPinchZoomGesture from '../../hooks/usePreventPinchZoomGesture';
 import useShowTransition from '../../hooks/useShowTransition';
 import useSyncEffect from '../../hooks/useSyncEffect';
@@ -467,6 +468,8 @@ const Main = ({
       }
     }
   });
+
+  useNativeAppActions(isMobile);
 
   useEffect(() => {
     const parsedLocationHash = parseLocationHash(currentUserId);

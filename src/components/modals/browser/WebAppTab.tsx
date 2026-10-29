@@ -9,9 +9,11 @@ import type { RegularLangKey } from '../../../types/language';
 import type {
   PopupOptions,
   WebApp,
+  WebAppHapticFeedback,
   WebAppInboundEvent,
   WebAppOutboundEvent,
 } from '../../../types/webapp';
+import type { NativeHapticStyle } from '../../../util/nativeApp';
 
 import { TME_LINK_PREFIX, VERIFY_AGE_MIN_DEFAULT } from '../../../config';
 import { requestMeasure } from '../../../lib/fasterdom/fasterdom';
@@ -30,6 +32,7 @@ import buildClassName from '../../../util/buildClassName';
 import buildStyle from '../../../util/buildStyle.ts';
 import download from '../../../util/download';
 import { isLiteralObject } from '../../../util/iteratees';
+import { triggerHaptic } from '../../../util/nativeApp';
 import { extractCurrentThemeParams, FALLBACK_THEME_PARAMS, validateHexColor } from '../../../util/themeStyle';
 import { callApi } from '../../../api/gramjs';
 import { REM } from '../../common/helpers/mediaDimensions';
@@ -112,6 +115,8 @@ const DEFAULT_BUTTON_TEXT: Record<string, RegularLangKey> = {
 };
 
 const NBSP = '\u00A0';
+const WEB_APP_IMPACT_STYLES = new Set<NativeHapticStyle>(['light', 'medium', 'heavy', 'rigid', 'soft']);
+const WEB_APP_NOTIFICATION_STYLES = new Set<NativeHapticStyle>(['error', 'success', 'warning']);
 
 const WebAppTab = ({
   modal,
@@ -674,6 +679,11 @@ const WebAppTab = ({
 
     if (eventType === 'web_app_exit_fullscreen') {
       exitIfFullscreenCallback();
+    }
+
+    if (eventType === 'web_app_trigger_haptic_feedback') {
+      const style = isActive ? getHapticStyle(eventData) : undefined;
+      if (style) triggerHaptic(style);
     }
 
     if (eventType === 'web_app_open_tg_link') {
@@ -1425,6 +1435,23 @@ function validatePopupParameters(value: unknown): value is PopupOptions {
     buttonIds.add(id);
     return true;
   });
+}
+
+// Mini apps can send any data, so only the styles of the Bot API reach the iPhone app
+function getHapticStyle(feedback: WebAppHapticFeedback): NativeHapticStyle | undefined {
+  if (!isLiteralObject(feedback)) return undefined;
+
+  const { type, impact_style: impactStyle, notification_type: notificationType } = feedback;
+  switch (type) {
+    case 'impact':
+      return impactStyle && WEB_APP_IMPACT_STYLES.has(impactStyle) ? impactStyle : undefined;
+    case 'notification':
+      return notificationType && WEB_APP_NOTIFICATION_STYLES.has(notificationType) ? notificationType : undefined;
+    case 'selection_change':
+      return 'selection';
+    default:
+      return undefined;
+  }
 }
 
 export default memo(withGlobal<OwnProps>(

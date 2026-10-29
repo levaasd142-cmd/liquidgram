@@ -3424,6 +3424,35 @@ export interface LangPair {
   'LiquidPeerId': undefined;
   'LiquidIdCopied': undefined;
   'LiquidLinkOpenedInBrowser': undefined;
+  'LiquidSectionIphone': undefined;
+  'LiquidAppLock': undefined;
+  'LiquidAppLockKeywords': undefined;
+  'LiquidAppLockFaceId': undefined;
+  'LiquidAppLockTouchId': undefined;
+  'LiquidAppLockOpticId': undefined;
+  'LiquidAppLockPasscode': undefined;
+  'LiquidAppLockInfo': undefined;
+  'LiquidAppLockUnavailable': undefined;
+  'LiquidAppLockNow': undefined;
+  'LiquidAppLockImmediately': undefined;
+  'LiquidAppLockDelayInfo': undefined;
+  'LiquidPrivacyShield': undefined;
+  'LiquidPrivacyShieldInfo': undefined;
+  'LiquidPrivacyShieldWithLock': undefined;
+  'LiquidHaptics': undefined;
+  'LiquidHapticsInfo': undefined;
+  'LiquidInAppBrowser': undefined;
+  'LiquidInAppBrowserInfo': undefined;
+  'LiquidIosNotifications': undefined;
+  'LiquidAppIcon': undefined;
+  'LiquidAppIconDefault': undefined;
+  'LiquidAppIconMidnight': undefined;
+  'LiquidAppIconAurora': undefined;
+  'LiquidAppIconGlass': undefined;
+  'LiquidAppIconClassic': undefined;
+  'LiquidAppIconFailed': undefined;
+  'LiquidAuthFailed': undefined;
+  'LiquidAuthCancelled': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {
