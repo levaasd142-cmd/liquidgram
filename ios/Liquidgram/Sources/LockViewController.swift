@@ -59,6 +59,11 @@ final class LockViewController: UIViewController {
     fatalError("init(coder:) is not supported")
   }
 
+  /// The lock window is above the app's window, so it decides the orientation while it is shown
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    WebViewController.supportedOrientations
+  }
+
   override func loadView() {
     let containerView = UIView()
     containerView.backgroundColor = WebViewController.backgroundColor

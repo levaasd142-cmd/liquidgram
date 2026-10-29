@@ -7,6 +7,18 @@
 /* Shown when the bundled web app does not load */
 "startup.error" = "Liquidgram could not start. Close the app and open it again.";
 
+/* Shown when the user taps a link of a kind that no installed app opens, such as a TON wallet link */
+"link.noApp" = "No app on this device can open this link.";
+
+/* Title of the question before a site inside the app, such as a bot web app, gets the location; %@ is its host */
+"location.request" = "Allow “%@” to use your location?";
+
+/* Button that grants a site's request */
+"alert.allow" = "Allow";
+
+/* Button that refuses a site's request */
+"alert.dontAllow" = "Don’t Allow";
+
 /* Title of the screen that covers the app until the user authenticates */
 "lock.title" = "Liquidgram is locked";
 

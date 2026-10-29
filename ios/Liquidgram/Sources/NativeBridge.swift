@@ -65,6 +65,8 @@ final class NativeBridge: NSObject {
   private static let pendingActionLifetime: Duration = .seconds(120)
 
   weak var webView: WKWebView?
+  /// Called on the main queue right before an action reaches the page, so the web view can prepare for it
+  var willDispatchAction: ((NativeAction) -> Void)?
   /// Actions wait while the lock is up, and the lock confirms changes of its own setting
   weak var appLock: AppLock? {
     didSet {
@@ -293,6 +295,7 @@ final class NativeBridge: NSObject {
     guard let json = Self.makeJSON(action.message) else {
       return
     }
+    willDispatchAction?(action)
     callPage("dispatchAction?.(\(json))")
   }
 

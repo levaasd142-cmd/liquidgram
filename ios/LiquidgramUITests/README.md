@@ -86,6 +86,13 @@ They follow the shared v2 contract, so on a build without these features they fa
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
 
+### `ShellTests`: the native shell around the page
+
+| Test | Checks |
+| --- | --- |
+| `testKeyboardResizesPageAndRestoresIt` | The web view starts below the status bar. In a chat, the keyboard leaves the header where it was, the web view ends at the top of the keyboard and the composer rests on it; after a tap on a message closes the keyboard, the web view, the header and the composer are back where they were. Screenshots of the chat list, the chat, the keyboard up and the keyboard hidden |
+| `testIPhoneStaysInPortrait` | With the simulator turned to landscape, the app's window stays in portrait |
+
 ## The self-test
 
 `Fixtures/selftest.js` is the body of an async function that `TestHooks` runs in the page through `callAsyncJavaScript` once the web app reports `appReady`, or 5 seconds after the first load of a page that never does, like the API keys screen. Each check has a 10-second limit. The JSON report becomes the accessibility value of `liquidgram.selftest.result`, the test attaches it, and the report shows it as a table.
