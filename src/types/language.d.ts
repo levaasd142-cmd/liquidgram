@@ -3453,6 +3453,7 @@ export interface LangPair {
   'LiquidAppIconFailed': undefined;
   'LiquidAuthFailed': undefined;
   'LiquidAuthCancelled': undefined;
+  'LiquidWatchOnYoutube': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {

@@ -83,5 +83,6 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidAppIconFailed: 'Не удалось сменить иконку',
     LiquidAuthFailed: 'Не удалось подтвердить, что это ты',
     LiquidAuthCancelled: 'Проверка отменена',
+    LiquidWatchOnYoutube: 'Смотреть на YouTube',
   },
 };

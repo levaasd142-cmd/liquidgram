@@ -3,9 +3,14 @@ import { memo, useEffect, useMemo, useRef, useState } from '../../lib/teact/teac
 import type { ApiPageBlockEmbed } from '../../api/types';
 
 import { EMBED_ALLOW_ATTRIBUTES, IFRAME_SANDBOX_ATTRIBUTES, isMessageFromIframe } from '../../util/browser/iframe';
+import { IS_IOS_APP } from '../../util/browser/windowEnvironment';
 import buildStyle from '../../util/buildStyle';
-import { extractInstantViewEmbedUrl } from '../../util/instantViewEmbed';
+import { extractInstantViewEmbedUrl, getYoutubeWatchUrl } from '../../util/instantViewEmbed';
 import { isLiteralObject } from '../../util/iteratees';
+
+import useLang from '../../hooks/useLang';
+
+import Icon from '../common/icons/Icon';
 
 import styles from './RichContent.module.scss';
 
@@ -23,13 +28,21 @@ type EmbedFrameResizeEvent = {
 
 type EmbedFrameEvent = EmbedFrameResizeEvent;
 
+// The iOS app serves its pages from a custom scheme, so their frames get no `Referer`, which YouTube's player needs
+const SHOULD_OPEN_YOUTUBE_EMBEDS = IS_IOS_APP && !window.location.protocol.startsWith('http');
+
 const EmbedFrame = ({ block, title }: OwnProps) => {
+  const lang = useLang();
   const frameRef = useRef<HTMLIFrameElement>();
   const [frameHeight, setFrameHeight] = useState<number>();
 
   const embedUrl = useMemo(() => {
     return block.url || extractInstantViewEmbedUrl(block.html!);
   }, [block.html, block.url]);
+
+  const youtubeWatchUrl = useMemo(() => {
+    return SHOULD_OPEN_YOUTUBE_EMBEDS && embedUrl ? getYoutubeWatchUrl(embedUrl) : undefined;
+  }, [embedUrl]);
 
   useEffect(() => {
     function handleMessage(event: MessageEvent<string>) {
@@ -70,6 +83,16 @@ const EmbedFrame = ({ block, title }: OwnProps) => {
     block.width !== undefined && `width: ${block.width}px`,
     height !== undefined && `height: ${height}px`,
   );
+
+  // The link opens the video in the YouTube app or in the in-app browser
+  if (youtubeWatchUrl) {
+    return (
+      <a className={styles.embedLink} href={youtubeWatchUrl} target="_blank" rel="noopener noreferrer" style={style}>
+        <Icon name="play" className={styles.embedLinkIcon} />
+        {lang('LiquidWatchOnYoutube')}
+      </a>
+    );
+  }
 
   return (
     <iframe
