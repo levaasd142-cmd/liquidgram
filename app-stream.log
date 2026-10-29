@@ -1,0 +1,40 @@
+getpwuid_r did not find a match for uid 501
+Filtering the log data using "subsystem == "org.liquidgram.messenger""
+Timestamp               Ty Process[PID:TID]
+2026-10-29 16:21:44.532 Df Liquidgram[5291:53a7] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:21:44.671 I  Liquidgram[5291:53f5] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:21:45.271 Df Liquidgram[5291:53a7] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:21:54.504 Df Liquidgram[5677:5800] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:21:54.577 I  Liquidgram[5677:5837] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:21:55.123 Df Liquidgram[5677:5800] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:04.072 Df Liquidgram[6259:5eb2] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:04.169 I  Liquidgram[6259:5ecd] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:04.730 Df Liquidgram[6259:5eb2] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:11.419 Df Liquidgram[6310:608e] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:11.496 I  Liquidgram[6310:60aa] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:12.081 Df Liquidgram[6310:608e] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:22.813 Df Liquidgram[7029:67aa] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:22.912 I  Liquidgram[7029:6822] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:23.614 Df Liquidgram[7029:67aa] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:30.534 Df Liquidgram[7449:6d08] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:30.622 I  Liquidgram[7449:6d8e] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:31.186 Df Liquidgram[7449:6d08] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:39.419 Df Liquidgram[8271:7537] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:39.517 I  Liquidgram[8271:754c] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:39.639 I  Liquidgram[8271:7537] [org.liquidgram.messenger:AppLock] Locked the app
+2026-10-29 16:22:40.211 Df Liquidgram[8271:7537] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:46.062 I  Liquidgram[8271:7537] [org.liquidgram.messenger:AppLock] Unlocked the app
+2026-10-29 16:22:49.671 I  Liquidgram[8271:7537] [org.liquidgram.messenger:AppLock] Locked the app
+2026-10-29 16:22:49.685 I  Liquidgram[8271:7568] [org.liquidgram.messenger:LocalServer] Connections to the port reach the listener
+2026-10-29 16:22:56.222 I  Liquidgram[8271:7537] [org.liquidgram.messenger:AppLock] Unlocked the app
+2026-10-29 16:22:59.084 Df Liquidgram[8909:7c87] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:59.151 I  Liquidgram[8909:7dd1] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:22:59.685 Df Liquidgram[8909:7c87] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:25:06.810 I  Liquidgram[8909:e258] [org.liquidgram.messenger:LocalServer] Connections to the port reach the listener
+2026-10-29 16:25:10.994 Df Liquidgram[18319:e2e5] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:25:11.070 I  Liquidgram[18319:e2f7] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:25:11.770 Df Liquidgram[18319:e2e5] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:25:19.502 Df Liquidgram[18983:e99f] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:25:19.632 I  Liquidgram[18983:e9b0] [org.liquidgram.messenger:LocalServer] Serving the web app at http://127.0.0.1:47821/
+2026-10-29 16:25:20.335 Df Liquidgram[18983:e99f] [org.liquidgram.messenger:SelfTest] Removed the web data
+Child process terminated with signal 15: Terminated

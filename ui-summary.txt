@@ -1,0 +1,10 @@
+Test Case '-[SmokeUITests.SmokeUITests testFocusWithoutActionKeepsKeyboardHidden]' passed (11.109 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testKeyboardHasNoFormToolbar]' passed (8.517 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testLinksBecomeOpenLinkActions]' passed (36.409 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testLockWaitsForSlowAuthenticationAndLocksAgain]' passed (19.666 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testQuickActionFromHomeScreen]' passed (131.649 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testSearchActionBringsUpKeyboard]' passed (8.514 seconds).
+Test Case '-[SmokeUITests.SmokeUITests testStatusBarTapScrollsToTop]' passed (6.494 seconds).
+	 Executed 7 tests, with 0 failures (0 unexpected) in 222.359 (222.362) seconds
+	 Executed 7 tests, with 0 failures (0 unexpected) in 222.359 (222.362) seconds
+	 Executed 7 tests, with 0 failures (0 unexpected) in 222.359 (222.363) seconds

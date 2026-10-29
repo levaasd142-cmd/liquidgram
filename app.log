@@ -1,0 +1,22 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-29 16:21:44.484 Df Liquidgram[5291:53a7] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:21:45.222 Df Liquidgram[5291:53a7] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:21:54.450 Df Liquidgram[5677:5800] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:21:55.069 Df Liquidgram[5677:5800] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:04.014 Df Liquidgram[6259:5eb2] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:04.672 Df Liquidgram[6259:5eb2] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:11.357 Df Liquidgram[6310:608e] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:12.019 Df Liquidgram[6310:608e] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:22.746 Df Liquidgram[7029:67aa] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:23.546 Df Liquidgram[7029:67aa] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:30.463 Df Liquidgram[7449:6d08] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:31.115 Df Liquidgram[7449:6d08] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:39.343 Df Liquidgram[8271:7537] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:40.135 Df Liquidgram[8271:7537] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:22:58.999 Df Liquidgram[8909:7c87] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:22:59.599 Df Liquidgram[8909:7c87] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:25:10.843 Df Liquidgram[18319:e2e5] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:25:11.619 Df Liquidgram[18319:e2e5] [org.liquidgram.messenger:SelfTest] Removed the web data
+2026-10-29 16:25:19.347 Df Liquidgram[18983:e99f] [org.liquidgram.messenger:SelfTest] Removed the native settings
+2026-10-29 16:25:20.179 Df Liquidgram[18983:e99f] [org.liquidgram.messenger:SelfTest] Removed the web data

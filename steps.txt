@@ -1,0 +1,11 @@
+== Release device build
+device build exit: 0
+== Simulator E952A9B0-CC78-435C-BF08-06AD47FE1076
+    iPhone 17 Pro (E952A9B0-CC78-435C-BF08-06AD47FE1076) (Shutdown) 
+== Debug build for testing
+simulator build exit: 0
+install exit: 0
+== UI tests
+ui tests exit: 0
+== App log
+== done

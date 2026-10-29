@@ -1,0 +1,152 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "9E2F2B7E-1CC0-4A8F-ADF1-6F771C7B7C4E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "f-focus-without-action_0_BEBB7BF9-3A40-48D7-B4B6-029759A70B34.png",
+        "timestamp" : 1793290912.252
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testFocusWithoutActionKeepsKeyboardHidden()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testFocusWithoutActionKeepsKeyboardHidden"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "53B775F7-F85F-4FD1-BF07-C588C25FB7E7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "k-keyboard_0_9D6A3BFB-B5C5-4661-B944-B05EAFA69FC8.png",
+        "timestamp" : 1793290920.702
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testKeyboardHasNoFormToolbar()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testKeyboardHasNoFormToolbar"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "42D1C5EE-C43F-46C7-B515-AEA04AFCC512.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "l-link-2_0_FB6E47B4-508D-4E14-8FFB-9D6EE39CFE69.png",
+        "timestamp" : 1793290957.178
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "1CE5D229-B94E-4D44-904B-E66D9CE77F64.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "l-link-1_0_C90B4827-C501-4681-98D6-32538C31668C.png",
+        "timestamp" : 1793290949.418
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "DDF6BB97-3B5B-4F1B-8489-484DC357FF2F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "l-link-0_0_6E39BB9B-7964-4788-AD8F-C57E20BB38CB.png",
+        "timestamp" : 1793290941.291
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testLinksBecomeOpenLinkActions()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testLinksBecomeOpenLinkActions"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "AA673D20-B91B-4EDF-9636-6AA875FFA146.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "a-locked-again_0_31D74F48-609F-4994-A087-A8C87F4E0B03.png",
+        "timestamp" : 1793290970.801
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "06FEBC13-C72D-4852-841C-951831AA3310.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "a-unlocked_0_F3064295-7190-4B7E-BB89-1C5B1649203A.png",
+        "timestamp" : 1793290967.15
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "1B6CDAD0-1CAE-4A2C-B56A-2793733064C5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "a-locked-at-launch_0_BCAF9259-1CE1-47DA-9633-7E07A082C39B.png",
+        "timestamp" : 1793290961.922
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testLockWaitsForSlowAuthenticationAndLocksAgain()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testLockWaitsForSlowAuthenticationAndLocksAgain"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "CF4C68BB-1C41-4812-9950-4DEDECAE10A3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "q-new-message_0_02C6A571-E506-4BB8-A369-05D269A9C598.png",
+        "timestamp" : 1793291108.492
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "C0F67FE0-B534-4E12-B5E1-20246621ADEF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "q-quick-actions_0_FFC062AE-10B7-42B7-9292-99A67792BD56.png",
+        "timestamp" : 1793291045.953
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testQuickActionFromHomeScreen()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testQuickActionFromHomeScreen"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "CED1B67B-BFAB-4898-94EA-188C1842A881.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "f-search-keyboard_0_5D690D1C-B849-4FD3-B3E8-9983AAAF50FA.png",
+        "timestamp" : 1793291117.002
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testSearchActionBringsUpKeyboard()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testSearchActionBringsUpKeyboard"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E952A9B0-CC78-435C-BF08-06AD47FE1076",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "EF98DD86-0FED-406A-981E-9508A1B8699C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "s-status-bar-tap_0_7B645508-4168-4EAC-852E-F6554586D260.png",
+        "timestamp" : 1793291123.504
+      }
+    ],
+    "testIdentifier" : "SmokeUITests/testStatusBarTapScrollsToTop()",
+    "testIdentifierURL" : "test://com.apple.xcode/Liquidgram/SmokeUITests/SmokeUITests/testStatusBarTapScrollsToTop"
+  }
+]

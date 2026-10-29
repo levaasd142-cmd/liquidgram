@@ -1,0 +1,765 @@
+Command line invocation:
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/xcodebuild build-for-testing -project ios/Liquidgram.xcodeproj -scheme Liquidgram -configuration Debug -destination id=E952A9B0-CC78-435C-BF08-06AD47FE1076 -derivedDataPath /Users/runner/work/_temp/sim CODE_SIGNING_ALLOWED=NO
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:E952A9B0-CC78-435C-BF08-06AD47FE1076, OS:26.2, name:iPhone 17 Pro }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'SmokeUITests' in project 'Liquidgram'
+        ➜ Explicit dependency on target 'Liquidgram' in project 'Liquidgram'
+    Target 'Liquidgram' in project 'Liquidgram' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 2f0547dc240e0720cb2857b00a268ea7
+Build description path: /Users/runner/work/_temp/sim/Build/Intermediates.noindex/XCBuildData/2f0547dc240e0720cb2857b00a268ea7.xcbuilddata
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Products
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Products
+
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Intermediates.noindex
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Intermediates.noindex
+
+ClangStatCache /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -o /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache
+
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator
+
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/ExplicitPrecompiledModules
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram-ae27ce11c57234551845ea8e18fbc5ff-VFS-iphonesimulator/all-product-headers.yaml
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram-ae27ce11c57234551845ea8e18fbc5ff-VFS-iphonesimulator/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+    cd /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/empty-SmokeUITests.plist (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/empty-SmokeUITests.plist
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyStaticMetadataFileList (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyMetadataFileList (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-project-headers.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-own-target-headers.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-generated-files.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-target-headers.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-non-framework-target-headers.hmap (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/ProductTypeInfoPlistAdditions.plist (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/ProductTypeInfoPlistAdditions.plist
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_const_extract_protocols.json (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftConstValuesFileList (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.LinkFileList (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-OutputFileMap.json (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_const_extract_protocols.json (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftConstValuesFileList (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.LinkFileList (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-OutputFileMap.json (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyStaticMetadataFileList (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyMetadataFileList (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-project-headers.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-own-target-headers.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-generated-files.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-target-headers.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-non-framework-target-headers.hmap (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibPath-normal-arm64.txt (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibInstallName-normal-arm64.txt (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    write-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibInstallName-normal-arm64.txt
+
+MkDir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /bin/mkdir -p /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest
+
+MkDir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /bin/mkdir -p /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app
+
+Ld /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/__preview.dylib normal (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.4-simulator -dynamiclib -isysroot /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -O0 -L/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -install_name @rpath/Liquidgram.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_dependency_info.dat -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/__preview.dylib
+
+MkDir /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/unthinned (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /bin/mkdir -p /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/unthinned
+
+MkDir /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /bin/mkdir -p /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/actool /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets --compile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist --app-icon AppIcon --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.4 --platform iphonesimulator --bundle-identifier org.liquidgram.messenger --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CpResource /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/bridge.js /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/bridge.js (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/bridge.js /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app
+
+CpResource /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/WebApp /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/WebApp (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/WebApp /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app
+
+CopyStringsFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj/Localizable.strings /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/Localizable.strings (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyStrings --validate --outputencoding binary --outfilename Localizable.strings --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj -- /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/Localizable.strings
+/Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'Liquidgram' from project 'Liquidgram')
+
+CopyStringsFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj/InfoPlist.strings /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/InfoPlist.strings (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyStrings --validate --outputencoding binary --outfilename InfoPlist.strings --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj -- /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/InfoPlist.strings
+/Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/InfoPlist.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'Liquidgram' from project 'Liquidgram')
+
+CopyStringsFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj/AppShortcuts.strings /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/AppShortcuts.strings (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyStrings --validate --outputencoding binary --outfilename AppShortcuts.strings --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj -- /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/AppShortcuts.strings
+/Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/AppShortcuts.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'Liquidgram' from project 'Liquidgram')
+
+CopyStringsFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj/Localizable.strings /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/Localizable.strings (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyStrings --validate --outputencoding binary --outfilename Localizable.strings --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj -- /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/Localizable.strings
+/Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'Liquidgram' from project 'Liquidgram')
+
+CopyStringsFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj/InfoPlist.strings /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/InfoPlist.strings (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyStrings --validate --outputencoding binary --outfilename InfoPlist.strings --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj -- /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/InfoPlist.strings
+/Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/en.lproj/InfoPlist.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'Liquidgram' from project 'Liquidgram')
+
+CompileAssetCatalogVariant thinned /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/usr/bin/actool /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets --compile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone18,1 --filter-for-device-os-version 26.2 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.4 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist_thinned
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver Liquidgram normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-SwiftDriver -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Liquidgram -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_AvailabilityInternal-J6G3A20MA4QL3RXYX70EU0YA.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/ptrauth-5OX9RHBJB91M2U0P1TNHQB8V.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_stdbool-6B48LU0B30V3N30I7CI9F7M78.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_stddef-CS9F7SPOQ4J6L80TR0633VK8S.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/SwiftShims-AW0Y70RCQM91MWLFWWVWBSP67.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_float-3MY59V5VY06WVJ16RJR072AP5.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_stdarg-7MMQWK8I86BIZAJDKF6S6KOCZ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_SwiftConcurrencyShims-BWZWB1M9QKYYVIHNZT26RZR0H.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/DeveloperToolsSupport-D3MTSAU7MG5MJM425MBCGVVI.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/ptrcheck-1S1JM6I0HQL6ZM8OS1WQMH653.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_DarwinFoundation1-F46PSA90S3095OGDAL29JPNWD.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_limits-5GJIFPVUDEBZGSSNJBUOGLW5R.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/ExtensionFoundation-3RB36I2H4AHZS25F9ECBNOCK7.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_DarwinFoundation2-9YYV8J1GBV0F8COY7X0HK7QYS.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_tgmath-A1W3ZGHBREDVM4TBNXKQ2EPS3.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_stdint-4P0ELICUF598S1ACYIMG9OFEQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/sys_types-5OK9WERRY379F9S48WP6DASNQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_stdatomic-6V3MUHLLTB2C0AZ3PL2370PEY.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_intrinsics-4AREZE2WYS8RHUQWQ91TEWJ38.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_DarwinFoundation3-CYO3GZ4T5YGVADEWSMU79ESFZ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_Builtin_inttypes-7Y1ZYZ6L0JK2BQLKPULLPLRG5.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Darwin-2FC7AZN82UYHS1CZEOJRQDH9I.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/simd-8GIWF49Q0H8ZX29R416YO4SKO.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/MachO-4CV2WWJI9PFD94NEAMTM01SE9.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/ObjectiveC-EAY5RR3LEDX2W0PMMXTB5992D.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/os_object-6KY8G6AOQW8I7P9IMJK9TT8ER.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/os_workgroup-D6EMPLQMQVERCZH25R452TMD7.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Dispatch-77IRNBK07G6WT6CEND9EB43BW.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Spatial-DQLOR46TMUGPSZ7HFDBH7U8IF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/XPC-CJEGRN5Q5XL1XWWHQDXZSVFKX.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreFoundation-IUE1CSMAT1MU8P1CMVGSIWIK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/dnssd-B6NATPQJDXVZ6RS3M3192NRHF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/os-8MNHKI2PKH6VI7118DBGLBG36.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreGraphics-6ID04V8NKWR1QH287828TDG6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreAudioTypes-1GM6LDK4F9PTC3WGZCXTF7XE3.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CFNetwork-9966V48U1WN5O8R3JCZ745DJ8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Security-T8KEHCVNCDMBE91HEX7B9JED.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreAudio-2J0Q1K2UPY7KV7Y5VW2PKMWK6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreText-64QL26P3JACQY9TT9ZKXM32DA.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/ImageIO-4FJ33V39B5JWOVHS4LZUU11D9.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Foundation-Y6ADC7PT12SN02HWF7IKW5Z0.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/UserNotifications-DOTY6V30R82C59IXK3O97W5CL.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/RelevanceKit-9NFC4EL471CB8PWXU2E5JV7ER.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/UniformTypeIdentifiers-2HIL1LD4CY3NNFANNECNF0WM2.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/IOSurface-ERKMQU4TT26WV4MQK1H7C1JRN.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AppIntents-9NHLOO29LK3DA7V3HUDBTNTNL.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreMIDI-SSJSEXWZ1QF332P1CLBEO4C8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreData-CLZ3QKS67Y2TWL4299IAD2JVE.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Metal-ACDJ0Q86RHKNGG0KGOEMHKJ28.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreSpotlight-9HC198ZEKBSN96BFI9Z60DMM0.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/UIUtilities-CI0NO9H16YUYGMB4L13Q9REO2.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AudioToolbox-F3T9NJJ21BT779W5P6VQWYJFD.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/LocalAuthentication-DIISLQ3G8LIXY6WE2113F5PZI.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/DataDetection-E72MTCVV6MSPNPLC1M26G7ZQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/FileProvider-6LA7Z9R8DOMEAOVIPLPBGTAB7.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/_LocationEssentials-10M65SVX23CA3HUUPLOZTQBPG.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/OpenGLES-D0BPDJ6CJWHOG3SXG30WE2HJH.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/OSLog-AOIF4EMKE9EU53P3SYXVRZD87.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Symbols-5VXH3H3127CQ6G5LJ04441HJ8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreLocation-S9XC1PQQINL0RY4CJCR3A5J9.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreTransferable-7BT5J55J7R9A5PEQ8PWB7SZK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Network-4HRAMTU7NJ9N3KAIHKQXWB0FP.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/Accessibility-CG48F476HMO4C8V55RPOGBRCU.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreVideo-8TM0QWNYV03TZMSTV24FO0H6N.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AVRouting-CY0QBG4CDSR9HGWOZ7W2ZE38J.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/QuartzCore-1LW9YJR7ACS9HI49228MCWJZJ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreMedia-B3C4KZ50L5XR6VPV9HMYU88FC.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/CoreImage-76FGMIV18EGPD6ZIT4BCU02KX.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/SwiftUICore-B7PGRDBK9DUQNBYILNJL3EUDT.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/MediaToolbox-3U2QLCSWU3UNO491GS2HGA7SK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AVFAudio-9EFC7HP0Z5JFP034GIX2IXRKK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/UIKit-EUKZS3MEMYKBNXXTWTLQ7T2HJ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AVFoundation-CNQQRLI896STNYQ9ZUMJX2OR4.pcm
+
+LinkAssetCatalog /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/Assets.xcassets (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-linkAssetCatalog --thinned /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/thinned --thinned-dependencies /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist_unthinned --output /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app --plist-output /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/AppIcon76x76@2x~ipad.png (in target 'Liquidgram' from project 'Liquidgram')
+note: Emplaced /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Assets.car (in target 'Liquidgram' from project 'Liquidgram')
+note: Emplaced /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/AppIcon60x60@2x.png (in target 'Liquidgram' from project 'Liquidgram')
+
+ProcessInfoPlistFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Info.plist /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Info.plist (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-infoPlistUtility /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/assetcatalog_generated_info.plist -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Info.plist
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/AuthenticationServices-ES6XRRTUQBRAD0BJJIOSBM0MZ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/SwiftUI-6T7N6NY6VWTPFEGLP3C1J8NBN.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/WebKit-5Y995C0BTN8D9JT54EXABZP2A.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/ModuleCache.noindex/SafariServices-EB3JMEGY9LYHVAYEC9F2VITUW.pcm
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Liquidgram (in target 'Liquidgram' from project 'Liquidgram')
+
+EmitSwiftModule normal arm64 (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ TestHooks.swift,\ WebViewController.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/TestHooks.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/WebViewController.swift /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Liquidgram' from project 'Liquidgram')
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/TestHooks.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/WebViewController.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ AppDelegate.swift,\ AppIntents.swift,\ AppLock.swift,\ DeviceAuthentication.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppDelegate.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppIntents.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppLock.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/DeviceAuthentication.swift (in target 'Liquidgram' from project 'Liquidgram')
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppDelegate.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppIntents.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/AppLock.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/DeviceAuthentication.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ Haptics.swift,\ KeyboardFocusPolicy.swift,\ LocalServer.swift,\ LockViewController.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/Haptics.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/KeyboardFocusPolicy.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/LocalServer.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/LockViewController.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/Haptics.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/KeyboardFocusPolicy.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/LocalServer.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/LockViewController.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ NativeActions.swift,\ NativeBridge.swift,\ NativeRequests.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeActions.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeBridge.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeRequests.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeActions.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeBridge.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeRequests.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ NativeSettings.swift,\ PrivacyShield.swift,\ SceneDelegate.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeSettings.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/PrivacyShield.swift /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/SceneDelegate.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/NativeSettings.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/PrivacyShield.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Sources/SceneDelegate.swift (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Liquidgram (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftDriver\ Compilation\ Requirements Liquidgram normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Liquidgram -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling NativeSettings.swift, PrivacyShield.swift, SceneDelegate.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftMergeGeneratedHeaders /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/Liquidgram-Swift.h /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-Swift.h (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-Swift.h -o /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/Liquidgram-Swift.h
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftdoc (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftdoc /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.abi.json (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.abi.json /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftsourceinfo (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftsourceinfo /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+SwiftDriver SmokeUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-SwiftDriver -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SmokeUITests -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling Haptics.swift, KeyboardFocusPolicy.swift, LocalServer.swift, LockViewController.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftDriverJobDiscovery normal arm64 Compiling NativeActions.swift, NativeBridge.swift, NativeRequests.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-6VSLK7U36NQMLCNT7N63PDQGF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-DHA2QFH5FMZBARHILJ6TSD717.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-27IZG9DEYK63E.swiftmodule
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-198I6A6SU24KE.swiftmodule
+
+SwiftDriverJobDiscovery normal arm64 Compiling TestHooks.swift, WebViewController.swift, GeneratedAssetSymbols.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppDelegate.swift, AppIntents.swift, AppLock.swift, DeviceAuthentication.swift (in target 'Liquidgram' from project 'Liquidgram')
+
+SwiftDriver\ Compilation Liquidgram normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-Swift-Compilation -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Liquidgram -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram.debug.dylib normal (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.4-simulator -dynamiclib -isysroot /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -O0 -L/Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F/Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -filelist /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.LinkFileList -install_name @rpath/Liquidgram.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.swiftmodule @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram.debug.dylib
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ SmokeUITests (in target 'SmokeUITests' from project 'Liquidgram')
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/SmokeUITests/SmokeUITests.swift (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftCompile normal arm64 Compiling\ SmokeUITests.swift /Users/runner/work/liquidgram/liquidgram/ios/SmokeUITests/SmokeUITests.swift (in target 'SmokeUITests' from project 'Liquidgram')
+
+SwiftCompile normal arm64 /Users/runner/work/liquidgram/liquidgram/ios/SmokeUITests/SmokeUITests.swift (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for SmokeUITests (in target 'SmokeUITests' from project 'Liquidgram')
+
+SwiftDriver\ Compilation\ Requirements SmokeUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SmokeUITests -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftdoc (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftdoc /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+SwiftMergeGeneratedHeaders /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources/SmokeUITests-Swift.h /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-Swift.h (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-Swift.h -o /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources/SmokeUITests-Swift.h
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.abi.json (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.abi.json /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftsourceinfo (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftsourceinfo /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling SmokeUITests.swift (in target 'SmokeUITests' from project 'Liquidgram')
+
+SwiftDriver\ Compilation SmokeUITests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-Swift-Compilation -- /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SmokeUITests -Onone -enforce-exclusivity\=checked @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios16.4-simulator -g -module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/_temp/sim/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j5 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/sim/SDKStatCaches.noindex/iphonesimulator26.2-23C57-dc75598d0054f22ec865fa860f139d72e244bd9a5feaf902f95f61bf06266e52.sdkstatcache -output-file-map /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -sdk-module-cache-path /Users/runner/work/_temp/sim/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/sim/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-generated-files.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests-project-headers.hmap -Xcc -I/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-Swift.h -working-directory /Users/runner/work/liquidgram/liquidgram/ios -experimental-emit-module-separately -disable-cmo
+
+ConstructStubExecutorLinkFileList /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-ExecutorLinkFileList-normal-arm64.txt (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    construct-stub-executor-link-file-list /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram.debug.dylib /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'Liquidgram' from project 'Liquidgram')
+
+Ld /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram normal (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.4-simulator -isysroot /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -O0 -L/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -F/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram-ExecutorLinkFileList-normal-arm64.txt /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram.debug.dylib -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram
+
+ExtractAppIntentsMetadata (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.3.7003.10.P2K97U/Metal.xctoolchain --module-name Liquidgram --sdk-root /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk --xcode-version 17C529 --platform-family iOS --deployment-target 16.4 --bundle-identifier org.liquidgram.messenger --output /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app --target-triple arm64-apple-ios16.4-simulator --binary-file /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram --dependency-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram_dependency_info.dat --stringsdata-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftFileList --metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyMetadataFileList --static-metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Objects-normal/arm64/Liquidgram.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents
+2026-10-29 16:21:15.730 appintentsmetadataprocessor[3759:16761] Starting appintentsmetadataprocessor export
+2026-10-29 16:21:15.875 appintentsmetadataprocessor[3759:16761] Writing Metadata.appintents
+2026-10-29 16:21:15.875 appintentsmetadataprocessor[3759:16761] Metadata root: /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Metadata.appintents
+
+CopySwiftLibs /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Liquidgram.debug.dylib --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Frameworks --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/PlugIns --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/SystemExtensions --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.3.7003.10.P2K97U/Metal.xctoolchain --toolchain /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ValidateAppShortcutStringsMetadata (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appshortcutstringsprocessor --source-file /Users/runner/work/liquidgram/liquidgram/ios/Liquidgram/Resources/ru.lproj/AppShortcuts.strings --input-data-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Metadata.appintents --platform-family iOS --deployment-target 16.4 --validate-assistant-intents --metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyMetadataFileList
+
+AppIntentsSSUTraining (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Info.plist --temp-dir-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/ssu --bundle-id org.liquidgram.messenger --product-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app --extracted-metadata-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Metadata.appintents --metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/Liquidgram.DependencyMetadataFileList --archive-ssu-assets
+2026-10-29 16:21:15.953 appintentsnltrainingprocessor[3845:17016] Parsing options for appintentsnltrainingprocessor
+2026-10-29 16:21:15.954 appintentsnltrainingprocessor[3845:17016] Starting AppIntents SSU YAML Generation
+2026-10-29 16:21:15.976 appintentsnltrainingprocessor[3845:17016] Training 'Open Saved Messages in ${+applicationName}|Show my ${+applicationName} Saved Messages' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Открой Избранное в ${+applicationName}|Избранное в ${+applicationName}' for ru
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Search in ${+applicationName}|Find a chat in ${+applicationName}' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Поиск в ${+applicationName}|Найди чат в ${+applicationName}' for ru
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'New message in ${+applicationName}|Write a message in ${+applicationName}' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Новое сообщение в ${+applicationName}|Напиши сообщение в ${+applicationName}' for ru
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Toggle ghost mode in ${+applicationName}|${+applicationName} ghost mode' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Переключи режим призрака в ${+applicationName}|Режим призрака в ${+applicationName}' for ru
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Open a chat in ${+applicationName}|Open a ${+applicationName} chat' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training 'Открой чат в ${+applicationName}|Открыть чат в ${+applicationName}' for ru
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training Negative Phrases '' for en
+2026-10-29 16:21:15.979 appintentsnltrainingprocessor[3845:17016] Training Negative Phrases '' for ru
+2026-10-29 16:21:15.980 appintentsnltrainingprocessor[3845:17016] Application name 'Liquidgram' for en
+2026-10-29 16:21:15.980 appintentsnltrainingprocessor[3845:17016] Application name 'Liquidgram' for ru
+2026-10-29 16:21:15.995 appintentsnltrainingprocessor[3845:17016] Generated AppIntents SSU YAML files in file:///Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/Liquidgram.build/ssu/
+2026-10-29 16:21:15.995 appintentsnltrainingprocessor[3845:17016] Copied AppIntents SSU YAML files to file:///Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/Metadata.appintents/
+Archiving all locales.
+[------------------------------------------------------------] 0% archiving en[🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢------------------------------] 50% archived en[🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢------------------------------] 50% archiving ru[🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢] 100% archived ru[🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢🁢] 100% archived 2 locales/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj/nlu.appintents
+/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/en.lproj/nlu.appintents/07898aecead4721e6fc32b1094360d85.version
+/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj/nlu.appintents
+/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app/ru.lproj/nlu.appintents/f10f911c2a115744ad0482af6e238e77.version
+
+
+RegisterExecutionPolicyException /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-RegisterExecutionPolicyException /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app
+
+Validate /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-validationUtility /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app -shallow-bundle -infoplist-subpath Info.plist
+
+Touch /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app (in target 'Liquidgram' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /usr/bin/touch -c /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/Liquidgram.app
+
+Ld /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/SmokeUITests normal (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.4-simulator -bundle -isysroot /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -O0 -L/Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -L/Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/runner/work/_temp/sim/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -filelist /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.swiftmodule @/Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests-linker-args.resp -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/SmokeUITests
+
+ProcessInfoPlistFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Info.plist /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/empty-SmokeUITests.plist (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-infoPlistUtility /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/empty-SmokeUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/ProductTypeInfoPlistAdditions.plist -o /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Info.plist
+
+CopySwiftLibs /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/SmokeUITests --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Frameworks --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/PlugIns --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/SystemExtensions --scan-folder /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.3.7003.10.P2K97U/Metal.xctoolchain --toolchain /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.3.7003.10.P2K97U/Metal.xctoolchain --module-name SmokeUITests --sdk-root /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk --xcode-version 17C529 --platform-family iOS --deployment-target 16.4 --bundle-identifier org.liquidgram.messenger.smokeuitests --output /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest --target-triple arm64-apple-ios16.4-simulator --binary-file /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/SmokeUITests --dependency-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests_dependency_info.dat --stringsdata-file /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftFileList --metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyMetadataFileList --static-metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/Objects-normal/arm64/SmokeUITests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-10-29 16:21:16.634 appintentsmetadataprocessor[4043:17478] Starting appintentsmetadataprocessor export
+2026-10-29 16:21:16.636 appintentsmetadataprocessor[4043:17478] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+AppIntentsSSUTraining (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Info.plist --temp-dir-path /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/ssu --bundle-id org.liquidgram.messenger.smokeuitests --product-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest --extracted-metadata-path /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Metadata.appintents --metadata-file-list /Users/runner/work/_temp/sim/Build/Intermediates.noindex/Liquidgram.build/Debug-iphonesimulator/SmokeUITests.build/SmokeUITests.DependencyMetadataFileList --archive-ssu-assets
+2026-10-29 16:21:16.652 appintentsnltrainingprocessor[4048:17489] Parsing options for appintentsnltrainingprocessor
+2026-10-29 16:21:16.652 appintentsnltrainingprocessor[4048:17489] No AppShortcuts found - Skipping.
+
+MkDir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /bin/mkdir -p /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app
+
+CopyPlistFile /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Info.plist /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copyPlist --validate --convert xml1 --macro-expansion WRAPPEDPRODUCTNAME SmokeUITests-Runner --macro-expansion WRAPPEDPRODUCTBUNDLEIDENTIFIER org.liquidgram.messenger.smokeuitests.xctrunner --macro-expansion TESTPRODUCTNAME SmokeUITests --macro-expansion TESTPRODUCTBUNDLEIDENTIFIER org.liquidgram.messenger.smokeuitests --copy-value UIDeviceFamily /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest/Info.plist --outdir /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app -- /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PkgInfo /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app
+
+CopyAndPreserveArchs /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/SmokeUITests-Runner (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /Applications/Xcode_26.3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/XCTRunner -output /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/SmokeUITests-Runner -extract arm64
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/libXCTestSwiftSupport.dylib /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCUnit.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCUIAutomation.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCTestSupport.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCTestCore.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCTest.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/XCTAutomationSupport.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+Copy /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks/Testing.framework /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_26.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/Frameworks
+
+RegisterExecutionPolicyException /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    builtin-RegisterExecutionPolicyException /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest
+
+Touch /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest (in target 'SmokeUITests' from project 'Liquidgram')
+    cd /Users/runner/work/liquidgram/liquidgram/ios
+    /usr/bin/touch -c /Users/runner/work/_temp/sim/Build/Products/Debug-iphonesimulator/SmokeUITests-Runner.app/PlugIns/SmokeUITests.xctest
+
+** TEST BUILD SUCCEEDED **
+
