@@ -114,4 +114,15 @@
   &.withMaskedPattern .gradientCanvas[data-ready] {
     opacity: var(--pattern-intensity, 0.5);
   }
+
+  // Liquid Glass on phones: the chat list covers the whole wallpaper without blurring it, so the doodles fade out
+  // behind it and only the gradient tints the glass
+  @media (max-width: 600px) {
+    :global(html.liquid-glass #Main.left-column-open:not(.left-column-animating)) > & {
+      &.withPattern::after,
+      &.withMaskedPattern .gradientCanvas[data-ready] {
+        opacity: 0;
+      }
+    }
+  }
 }

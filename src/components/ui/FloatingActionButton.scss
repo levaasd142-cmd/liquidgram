@@ -26,4 +26,10 @@
     right: auto;
     left: 1rem;
   }
+
+  // Phones keep the button above the home indicator, and it still hides fully below the screen
+  @media (max-width: 600px) {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    transform: translateY(calc(5rem + env(safe-area-inset-bottom)));
+  }
 }
