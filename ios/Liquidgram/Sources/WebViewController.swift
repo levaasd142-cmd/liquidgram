@@ -271,9 +271,11 @@ final class WebViewController: UIViewController {
 
   /// Makes the page the first responder. WebKit reports `document.hasFocus()` only then, and the web app pauses its
   /// animations and videos while the page has no focus, as in a background tab. Safari does this for its pages; a
-  /// web view otherwise waits for the first tap. No keyboard appears while no field of the page is focused.
+  /// web view otherwise waits for the first tap. No keyboard appears while no field of the page is focused. Under the
+  /// lock screen the page stays out of focus, so keys of a hardware keyboard do not reach it; the unlock calls this.
   func focusPage() {
-    guard hasLoadedApp, presentedViewController == nil, webView.window != nil else {
+    guard hasLoadedApp, presentedViewController == nil, webView.window != nil,
+          bridge.appLock?.isLocked != true else {
       return
     }
     webView.becomeFirstResponder()
