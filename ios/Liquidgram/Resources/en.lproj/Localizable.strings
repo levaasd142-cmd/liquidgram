@@ -6,3 +6,43 @@
 
 /* Shown when the bundled web app does not load */
 "startup.error" = "Liquidgram could not start. Close the app and open it again.";
+
+/* Title of the screen that covers the app until the user authenticates */
+"lock.title" = "Liquidgram is locked";
+
+/* Button of the lock screen on devices with Face ID */
+"lock.unlock.faceID" = "Unlock with Face ID";
+
+/* Button of the lock screen on devices with Touch ID */
+"lock.unlock.touchID" = "Unlock with Touch ID";
+
+/* Button of the lock screen on devices with Optic ID */
+"lock.unlock.opticID" = "Unlock with Optic ID";
+
+/* Button of the lock screen when the device passcode is the only way to authenticate */
+"lock.unlock.passcode" = "Unlock";
+
+/* Reason in the Touch ID and passcode prompt that unlocks the app */
+"lock.reason" = "Unlock your chats";
+
+/* Reason in the Touch ID and passcode prompt that confirms turning the app lock on or off */
+"lock.settingsReason" = "Change the app lock";
+
+/* Siri and Shortcuts: actions, their descriptions and short titles. The keys are the English text in AppIntents.swift. */
+"Open Saved Messages" = "Open Saved Messages";
+"Opens your Saved Messages in Liquidgram." = "Opens your Saved Messages in Liquidgram.";
+"Saved Messages" = "Saved Messages";
+"Search Chats" = "Search Chats";
+"Opens the chat search in Liquidgram." = "Opens the chat search in Liquidgram.";
+"Search" = "Search";
+"New Message" = "New Message";
+"Opens your contacts in Liquidgram to start a chat." = "Opens your contacts in Liquidgram to start a chat.";
+"Toggle Ghost Mode" = "Toggle Ghost Mode";
+"Turns ghost mode in Liquidgram on or off. Liquidgram shows the new state." = "Turns ghost mode in Liquidgram on or off. Liquidgram shows the new state.";
+"Ghost Mode" = "Ghost Mode";
+"Open Chat" = "Open Chat";
+"Opens a chat, a group or a channel in Liquidgram by its username." = "Opens a chat, a group or a channel in Liquidgram by its username.";
+"Username" = "Username";
+"Which username?" = "Which username?";
+"That is not a Telegram username. Which username?" = "That is not a Telegram username. Which username?";
+"Open chat with ${username}" = "Open chat with ${username}";

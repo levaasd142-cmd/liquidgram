@@ -1,0 +1,11 @@
+/* Siri phrases of the App Shortcuts in AppIntents.swift. The keys are the English phrases, each with one ${applicationName}. */
+"Open Saved Messages in ${applicationName}" = "Открой Избранное в ${applicationName}";
+"Show my ${applicationName} Saved Messages" = "Избранное в ${applicationName}";
+"Search in ${applicationName}" = "Поиск в ${applicationName}";
+"Find a chat in ${applicationName}" = "Найди чат в ${applicationName}";
+"New message in ${applicationName}" = "Новое сообщение в ${applicationName}";
+"Write a message in ${applicationName}" = "Напиши сообщение в ${applicationName}";
+"Toggle ghost mode in ${applicationName}" = "Переключи режим призрака в ${applicationName}";
+"${applicationName} ghost mode" = "Режим призрака в ${applicationName}";
+"Open a chat in ${applicationName}" = "Открой чат в ${applicationName}";
+"Open a ${applicationName} chat" = "Открыть чат в ${applicationName}";
