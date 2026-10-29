@@ -53,7 +53,7 @@ final class CoreTests: LiquidgramUITestCase {
     XCTAssertFalse(findNativeElement(Self.startupErrorIdentifier).exists, "The app shows its startup error")
   }
 
-  /// `Fixtures/selftest.js` checks the bridge, storage, crypto, workers, the local server and the user agent from
+  /// `Fixtures/selftest.js` checks the bridge, storage, crypto, workers, the app's scheme and the user agent from
   /// inside the page
   @MainActor
   func testWebAppSelfTest() throws {
@@ -141,7 +141,7 @@ final class CoreTests: LiquidgramUITestCase {
   }
 
   /// The session and its cached chats survive a restart of the app: the website data store keeps them on disk, and the
-  /// local server gives the page the same origin every time
+  /// app's scheme gives the page the same origin every time
   @MainActor
   func testDemoAccountSurvivesRestart() throws {
     try launchApp(Launch(shouldSeedDemoAccount: true))
