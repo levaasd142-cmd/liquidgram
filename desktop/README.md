@@ -69,3 +69,4 @@ LIQUIDGRAM_SERVER_ONLY=1 go run .    # then open http://127.0.0.1:47819/
 - The executables are not code-signed, so SmartScreen warns on first launch.
 - The app runs only while its window is open. There is no tray icon, autostart or push notifications when it is closed.
 - A window pinned to the taskbar starts the browser directly, without the launcher. Pin the Start menu shortcut instead.
+- The macOS code compiles (`GOOS=darwin go vet ./...`), but the build script makes no macOS package and nothing runs it on a Mac.

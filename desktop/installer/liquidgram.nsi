@@ -38,6 +38,7 @@ BrandingText "${APP_NAME} ${VERSION}"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "${__FILEDIR__}\welcome.bmp"
 !define MUI_ABORTWARNING
 
+!define MUI_WELCOMEPAGE_TEXT "$(WelcomeText)"
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\${APP_EXE}"
@@ -50,6 +51,8 @@ BrandingText "${APP_NAME} ${VERSION}"
 !insertmacro MUI_LANGUAGE "Russian"
 !insertmacro MUI_LANGUAGE "English"
 
+LangString WelcomeText ${LANG_RUSSIAN} "Программа установит Liquidgram, неофициальный клиент Telegram с дизайном Liquid Glass.$\r$\n$\r$\nОкно приложения открывается через Microsoft Edge или Google Chrome. Ваш обычный браузер, его вкладки и настройки при этом не меняются.$\r$\n$\r$\nНажмите «Установить», чтобы продолжить."
+LangString WelcomeText ${LANG_ENGLISH} "Setup will install Liquidgram, an unofficial Telegram client with the Liquid Glass design.$\r$\n$\r$\nThe app window opens through Microsoft Edge or Google Chrome. Your regular browser, its tabs and settings stay as they are.$\r$\n$\r$\nClick Install to continue."
 LangString Need64Bit ${LANG_RUSSIAN} "Liquidgram работает только на 64-битной Windows 10 или 11."
 LangString Need64Bit ${LANG_ENGLISH} "Liquidgram requires 64-bit Windows 10 or 11."
 LangString CloseApp ${LANG_RUSSIAN} "Закройте все окна Liquidgram и нажмите «Повтор»."
