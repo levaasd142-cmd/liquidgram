@@ -10,7 +10,7 @@
 # Usage: ios/run-ui-tests.sh [output-dir]
 #   output-dir  defaults to <repo-root>/dist-ios/ui-tests
 # Environment:
-#   UI_TESTS_ONLY       an -only-testing filter, such as LiquidgramUITests/CoreTests
+#   UI_TESTS_ONLY       comma-separated -only-testing filters, such as LiquidgramUITests/CoreTests
 #   UI_TESTS_DEVICE     a simulator name to use instead of an iPhone 17 Pro or 16 Pro
 #   UI_TESTS_SKIP_DARK  1 skips the second run of the demo account test in dark mode
 #   UI_TESTS_WORK_DIR   where the result bundles go, <repo-root>/dist-ios/ui-tests-work by default
@@ -156,14 +156,25 @@ export_results() {
     || echo "warning: could not read the test summary of the $pass run"
 }
 
+# The dark run repeats the demo account test when the filters include it
+only_testing=()
+runs_dark_mode_test=1
+if [[ -n "${UI_TESTS_ONLY:-}" ]]; then
+  runs_dark_mode_test=0
+  IFS=',' read -r -a filters <<< "$UI_TESTS_ONLY"
+  for filter in "${filters[@]}"; do
+    only_testing+=("-only-testing:$filter")
+    [[ "$DARK_MODE_TEST" == "$filter"* ]] && runs_dark_mode_test=1
+  done
+fi
+[[ "${UI_TESTS_SKIP_DARK:-}" == 1 ]] && runs_dark_mode_test=0
+
 test_status=0
 if [[ "$build_status" == 0 ]]; then
-  only_testing=()
-  [[ -n "${UI_TESTS_ONLY:-}" ]] && only_testing=("-only-testing:$UI_TESTS_ONLY")
   run_tests light ${only_testing[@]+"${only_testing[@]}"} || test_status=1
   export_results light
 
-  if [[ "${UI_TESTS_SKIP_DARK:-}" != 1 ]] && [[ -z "${UI_TESTS_ONLY:-}" || "$DARK_MODE_TEST" == "$UI_TESTS_ONLY"* ]]; then
+  if [[ "$runs_dark_mode_test" == 1 ]]; then
     run_tests dark "-only-testing:$DARK_MODE_TEST" || test_status=1
     export_results dark
     xcrun simctl ui "$UDID" appearance light

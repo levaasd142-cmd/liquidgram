@@ -21,6 +21,10 @@ const SCREENSHOT_MAX_SIZE = 1200;
 const SCREENSHOT_DISPLAY_WIDTH = 260;
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_BUILD_ERRORS = 40;
+// GitHub shows at most 10 error annotations per step
+const MAX_ERROR_ANNOTATIONS = 10;
+// Accessibility trees the tests attach; XCTest adds its own query descriptions, which only repeat the failures
+const ACCESSIBILITY_TREE_PREFIX = 'ax-';
 const PREFERRED_SIMULATORS = ['iPhone 17 Pro', 'iPhone 16 Pro'];
 const IOS_RUNTIME_PATTERN = /SimRuntime\.iOS-(\d+)-(\d+)(?:-(\d+))?$/;
 const PRO_IPHONE_PATTERN = /^iPhone (\d+) Pro$/;
@@ -305,7 +309,7 @@ function exportAttachments(passDir, pass, outDir) {
         fs.copyFileSync(source, path.join(outDir, file));
         const report = readJson(source);
         if (report) result.selfTests.push({ test, pass, file, ...report });
-      } else if (['.txt', '.text', ''].includes(extension) || name.startsWith('ax-')) {
+      } else if (name.startsWith(ACCESSIBILITY_TREE_PREFIX)) {
         fs.copyFileSync(source, path.join(outDir, 'ax', `${baseName}.txt`));
       }
     });
@@ -477,11 +481,20 @@ function annotate(summaryFile) {
   if (summary.buildErrors && summary.buildErrors.length) {
     process.stdout.write(`::error title=UI tests did not build::${escapeData(summary.buildErrors.join('\n'))}\n`);
   }
-  (summary.tests || []).filter((test) => test.status === 'failed').forEach((test) => {
+  const failedTests = (summary.tests || []).filter((test) => test.status === 'failed');
+  const annotatedTests = failedTests.length > MAX_ERROR_ANNOTATIONS
+    ? failedTests.slice(0, MAX_ERROR_ANNOTATIONS - 1)
+    : failedTests;
+  annotatedTests.forEach((test) => {
     const known = test.knownIssue ? ` (known issue: ${test.knownIssue})` : '';
     const title = `${test.name} (${test.pass})`;
     process.stdout.write(`::error title=${escapeProperty(title)}::${escapeData(`${test.message || 'Failed'}${known}`)}\n`);
   });
+  const hiddenTests = failedTests.slice(annotatedTests.length);
+  if (hiddenTests.length) {
+    const names = hiddenTests.map((test) => `${test.name} (${test.pass})`).join(', ');
+    process.stdout.write(`::error title=${hiddenTests.length} more failed tests::${escapeData(`${names}; see the report`)}\n`);
+  }
 }
 
 function formatStatus(status) {

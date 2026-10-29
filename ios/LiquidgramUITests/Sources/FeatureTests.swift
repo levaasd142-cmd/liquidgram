@@ -2,7 +2,8 @@ import XCTest
 
 /// The native features of version 2: app lock, privacy shield, quick actions, deep links, the iPhone section of the
 /// Liquidgram settings and the keyboard without the form toolbar. They follow the shared contract of the v2 branches,
-/// so they fail on a build without these features.
+/// so they fail on a build without these features. The layout tests check bugs of the v1 app: headers under the
+/// status bar and a chat header that scrolls away while typing.
 final class FeatureTests: LiquidgramUITestCase {
   /// The faked Face ID takes this long, so the test sees the lock screen before it opens
   private static let slowAuthenticationDelay = "6"
@@ -33,6 +34,10 @@ final class FeatureTests: LiquidgramUITestCase {
   private static let openURLButtonLabel = "Open"
   private static let apiIdLabel = "API ID"
   private static let formToolbarButtonLabels = ["Done", "Previous", "Next"]
+  private static let menuButtonLabel = "Open menu"
+  private static let typedMessage = "Typed by the UI test"
+  /// Frames of web content come from another process and may be off by rounding
+  private static let frameTolerance: CGFloat = 1
   /// Notification Center opens with a drag from the top left corner of the screen
   private static let notificationCenterDragStart = CGVector(dx: 0.2, dy: 0.001)
   private static let notificationCenterDragEnd = CGVector(dx: 0.2, dy: 0.6)
@@ -222,6 +227,62 @@ final class FeatureTests: LiquidgramUITestCase {
     scrollToElement(section)
     attachScreenshot("02-iphone-section")
     attachAccessibilityTree("iphone-section")
+  }
+
+  // MARK: - Layout
+
+  /// The page extends under the status bar (`viewport-fit=cover`), so the web app keeps its headers below it
+  @MainActor
+  func testHeadersStayBelowStatusBar() throws {
+    try launchApp(Launch(seedsDemoAccount: true))
+    let menuButton = waitFor(
+      webView.buttons[Self.menuButtonLabel],
+      timeout: Self.launchTimeout,
+      "the menu button of the chat list"
+    )
+    let statusBarBottom = statusBarFrame.maxY
+    attachScreenshot("01-chat-list-header")
+    var problems: [String] = []
+    if menuButton.frame.minY < statusBarBottom - Self.frameTolerance {
+      problems.append("the chat list header starts at y \(menuButton.frame.minY)")
+    }
+
+    element(in: webView, labelContaining: Self.demoChatTitle).tap()
+    let chatTitle = waitForHittable(chatHeaderTitle, "the header of the opened chat")
+    attachScreenshot("02-chat-header")
+    if chatTitle.frame.minY < statusBarBottom - Self.frameTolerance {
+      problems.append("the chat header starts at y \(chatTitle.frame.minY)")
+    }
+    XCTAssertTrue(
+      problems.isEmpty,
+      "Under the status bar, which ends at y \(statusBarBottom): " + problems.joined(separator: "; ")
+    )
+  }
+
+  /// The opened chat keeps its header on screen while the keyboard is up, rather than the whole page scrolling up
+  @MainActor
+  func testChatHeaderStaysVisibleWhileTyping() throws {
+    try launchApp(Launch(seedsDemoAccount: true))
+    waitFor(element(in: webView, labelContaining: Self.demoChatTitle), timeout: Self.launchTimeout, "the chat list")
+      .tap()
+    allowNotificationsIfAsked()
+    waitFor(textInput(in: webView, labeled: Self.composerLabel), "the composer").tap()
+    waitFor(keyboard, "the software keyboard")
+    dismissKeyboardIntroductionIfShown()
+    app.typeText(Self.typedMessage)
+    let statusBarBottom = statusBarFrame.maxY
+    let title = chatHeaderTitle.firstMatch
+    attachScreenshot("01-typing")
+    XCTAssertTrue(
+      title.isHittable && title.frame.minY >= statusBarBottom - Self.frameTolerance,
+      "The chat header \(title.frame) left the screen while typing; the status bar ends at y \(statusBarBottom)"
+    )
+  }
+
+  /// The title in the header of the demo chat; the chat list row has a longer label
+  @MainActor
+  private var chatHeaderTitle: XCUIElementQuery {
+    webView.buttons.matching(NSPredicate(format: "label == %@", Self.demoChatTitle))
   }
 
   // MARK: - Keyboard

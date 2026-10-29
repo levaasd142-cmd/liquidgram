@@ -11,8 +11,8 @@ class LiquidgramUITestCase: XCTestCase {
   /// Native actions run once the web app reports that it is ready, after its cold start
   static let actionTimeout: TimeInterval = 40
   static let pollInterval: TimeInterval = 0.5
-  /// The web app asks for the notification permission after the first tap of a signed-in session
-  static let notificationPromptTimeout: TimeInterval = 4
+  /// A prompt for the notification permission shows right after the tap that triggers it
+  static let notificationPromptTimeout: TimeInterval = 2
 
   static let userScriptEnvironmentKey = "LIQUIDGRAM_TEST_USER_SCRIPT"
   static let selfTestEnvironmentKey = "LIQUIDGRAM_TEST_SELFTEST_SCRIPT"
@@ -261,8 +261,9 @@ class LiquidgramUITestCase: XCTestCase {
 
   // MARK: - System UI
 
-  /// The web app asks for the notification permission after the first tap of a signed-in session, and iOS shows the
-  /// prompt above the app until it is answered. The prompt appears once per simulator, so later tests skip it.
+  /// A connected session of the web app asks for the notification permission after its first tap, and iOS shows the
+  /// prompt above the app until it is answered. The offline demo account does not get that far, but a prompt would
+  /// block every later step, so tests answer it after their first tap. It appears once per simulator.
   @MainActor
   func allowNotificationsIfAsked(timeout: TimeInterval = LiquidgramUITestCase.notificationPromptTimeout) {
     let springboard = XCUIApplication(bundleIdentifier: Self.springboardBundleIdentifier)
@@ -272,6 +273,13 @@ class LiquidgramUITestCase: XCTestCase {
     }
     attachScreenshot("notification-permission-prompt")
     allowButton.tap()
+  }
+
+  /// The status bar, which SpringBoard draws over the app; an empty frame while it is hidden
+  @MainActor
+  var statusBarFrame: CGRect {
+    let statusBar = XCUIApplication(bundleIdentifier: Self.springboardBundleIdentifier).statusBars.firstMatch
+    return statusBar.exists ? statusBar.frame : .zero
   }
 
   /// A new simulator explains swipe typing the first time the letter keyboard opens

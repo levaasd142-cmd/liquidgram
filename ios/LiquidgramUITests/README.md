@@ -13,6 +13,8 @@ The `build` job of [`.github/workflows/ios.yml`](../../.github/workflows/ios.yml
 
 `Publish release` runs only on the default branch and only when the UI tests passed, so a failing test keeps the previous `ios-latest` release. The IPA artifact is uploaded either way.
 
+A manual run (Actions › Build iOS app › Run workflow) takes an optional `ui_tests` input with comma-separated `-only-testing` filters, such as `LiquidgramUITests/CoreTests`; such a run never publishes a release.
+
 ### On a Mac
 
 Requirements: Xcode 16 or newer, Node.js and an iOS simulator runtime.
@@ -23,7 +25,7 @@ bash ios/run-ui-tests.sh                  # report in dist-ios/ui-tests, result 
 UI_TESTS_ONLY=LiquidgramUITests/CoreTests bash ios/run-ui-tests.sh
 ```
 
-`UI_TESTS_DEVICE` picks a simulator by name, `UI_TESTS_SKIP_DARK=1` skips the dark mode run. In Xcode, the `Liquidgram` scheme's Test action runs the same tests (Product › Test); copy `Fixtures/liquidgram-selftest-worker.js` into `ios/Liquidgram/WebApp` first, or the self-test's `worker` check fails.
+`UI_TESTS_ONLY` takes comma-separated `-only-testing` filters, `UI_TESTS_DEVICE` picks a simulator by name, `UI_TESTS_SKIP_DARK=1` skips the dark mode run. In Xcode, the `Liquidgram` scheme's Test action runs the same tests (Product › Test); copy `Fixtures/liquidgram-selftest-worker.js` into `ios/Liquidgram/WebApp` first, or the self-test's `worker` check fails.
 
 ### What the script does
 
@@ -64,7 +66,7 @@ Every test starts the app with `-LiquidgramResetState YES` unless it tests persi
 
 ### `FeatureTests`: the native features of version 2
 
-They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names.
+They follow the shared v2 contract, so on a build without these features they fail at the first missing element, which their failure message names. The two layout tests check bugs that the screenshots of the v1 app show: its headers sit under the status bar, and typing in a chat scrolls the header away.
 
 | Test | Checks |
 | --- | --- |
@@ -77,6 +79,8 @@ They follow the shared v2 contract, so on a build without these features they fa
 | `testQuickActionTogglesGhostMode` | `toggleGhostMode` shows the "Ghost mode is on/off" toast |
 | `testDeepLinkOpensSettings` | `XCUIApplication.open(liquidgram://settings)` opens the web app's settings |
 | `testLiquidgramSettingsShowIPhoneSection` | Settings › Liquidgram has a section that mentions the iPhone; screenshot after scrolling to it |
+| `testHeadersStayBelowStatusBar` | The headers of the chat list and of an opened chat start below the status bar, which the page extends under (`viewport-fit=cover`) |
+| `testChatHeaderStaysVisibleWhileTyping` | With the keyboard up in a chat, its header stays on screen instead of the whole page scrolling up |
 | `testKeyboardHasNoFormToolbar` | The keyboard of a web field comes without WebKit's toolbar with the Previous, Next and Done buttons |
 
 The lock tests pass `-LiquidgramFakeAuthenticationDelay`, so the faked Face ID takes seconds instead of 0.3: an XCUITest launch returns only once the app is idle, when a short fake would already have opened the lock. The app lock reads the delay from `TestHooks.fakeAuthenticationDelay`.
