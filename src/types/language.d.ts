@@ -3453,6 +3453,11 @@ export interface LangPair {
   'LiquidAppIconFailed': undefined;
   'LiquidAuthFailed': undefined;
   'LiquidAuthCancelled': undefined;
+  'LiquidRecordHoldVoice': undefined;
+  'LiquidRecordHoldVideo': undefined;
+  'LiquidRecordHoldVoiceOnly': undefined;
+  'LiquidRecordHoldVideoOnly': undefined;
+  'LiquidRecordSlideToCancel': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {

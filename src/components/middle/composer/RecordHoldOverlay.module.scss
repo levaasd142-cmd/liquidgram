@@ -1,0 +1,121 @@
+// A point at the center of the record button; `--hold-*` come from the gesture, see `RecordHoldOverlay.tsx`
+.root {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: calc(var(--z-round-video-recorder) + 1);
+
+  width: 0;
+  height: 0;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform:
+    translate(-50%, -50%)
+    translate(var(--hold-x, 0px), var(--hold-y, 0px))
+    scale(calc(1 - var(--hold-cancel, 0) * 0.5));
+
+  width: 6rem;
+  height: 6rem;
+}
+
+.level {
+  position: absolute;
+  inset: 0;
+  transform: scale(calc(1 + var(--hold-level, 0) * 0.45));
+
+  border-radius: 50%;
+
+  background-color: color-mix(in srgb, var(--color-primary) 22%, transparent);
+
+  transition: transform 100ms ease-out;
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 2.25rem;
+  color: var(--color-white);
+
+  background: var(--lg-accent-material, var(--color-primary));
+  box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+  animation: appear 200ms ease-out;
+}
+
+.lock {
+  position: absolute;
+  bottom: 5.375rem;
+  left: 0;
+  transform: translate(-50%, var(--hold-y, 0px));
+}
+
+.lockBadge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 4.5rem;
+  border-radius: 1.25rem;
+
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+
+  background: var(--lg-material, var(--color-background));
+  -webkit-backdrop-filter: var(--lg-backdrop, none);
+  backdrop-filter: var(--lg-backdrop, none);
+  box-shadow: var(--lg-shadow, 0 0.25rem 1rem rgba(0, 0, 0, 0.15));
+
+  animation: appear 200ms ease-out;
+}
+
+.lockIcons {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.unlockIcon,
+.lockIcon {
+  position: absolute;
+  inset: 0;
+}
+
+.unlockIcon {
+  opacity: calc(1 - var(--hold-lock, 0));
+}
+
+.lockIcon {
+  opacity: var(--hold-lock, 0);
+}
+
+.lockArrow {
+  transform: translateY(calc(var(--hold-lock, 0) * -0.75rem));
+  font-size: 1rem;
+  opacity: calc(1 - var(--hold-lock, 0) * 1.6);
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

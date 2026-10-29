@@ -44,9 +44,10 @@ const useVideoRecording = () => {
     }
   });
 
+  // Resolves with whether a recording started
   const startRecordingVideo = useLastCallback(async () => {
     if (isStartingRef.current || activeRecordingRef.current || resultPromiseRef.current) {
-      return;
+      return false;
     }
 
     isStartingRef.current = true;
@@ -73,7 +74,7 @@ const useVideoRecording = () => {
 
       if (startTokenRef.current !== token) {
         recording.cancel();
-        return;
+        return false;
       }
 
       activeRecordingRef.current = recording;
@@ -92,9 +93,10 @@ const useVideoRecording = () => {
         console.error(err);
         clearRecordingState();
       });
+      return true;
     } catch (err) {
       if (startTokenRef.current !== token) {
-        return;
+        return false;
       }
 
       const isPermissionDenied = err instanceof DOMException && err.name === 'NotAllowedError';
@@ -103,6 +105,7 @@ const useVideoRecording = () => {
       });
       // eslint-disable-next-line no-console
       console.error(err);
+      return false;
     } finally {
       if (startTokenRef.current === token) {
         isStartingRef.current = false;

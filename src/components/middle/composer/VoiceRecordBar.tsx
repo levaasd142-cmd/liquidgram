@@ -1,6 +1,9 @@
 import type { ElementRef } from '../../../lib/teact/teact';
 import { memo, useEffect, useRef, useState } from '../../../lib/teact/teact';
 
+import type { Signal } from '../../../util/signals';
+import type { RecordHoldOffset } from './hooks/useRecordButtonGesture';
+
 import { requestMutation } from '../../../lib/fasterdom/fasterdom';
 import buildClassName from '../../../util/buildClassName';
 import captureKeyboardListeners from '../../../util/captureKeyboardListeners';
@@ -14,6 +17,7 @@ import useFlag from '../../../hooks/useFlag';
 import useLang from '../../../hooks/useLang';
 import useLastCallback from '../../../hooks/useLastCallback';
 import useResizeObserver from '../../../hooks/useResizeObserver';
+import { useSignalEffect } from '../../../hooks/useSignalEffect';
 
 import Icon from '../../common/icons/Icon';
 import Button from '../../ui/Button';
@@ -34,8 +38,11 @@ type OwnProps = {
   recording: BarRecording;
   isPaused: boolean;
   isVideo?: boolean;
+  // While the finger holds the record button, the bar only shows the time and how to cancel
+  isHolding?: boolean;
   canSendOneTimeMedia?: boolean;
   isViewOnceEnabled?: boolean;
+  getHoldOffset?: Signal<RecordHoldOffset | undefined>;
   onPause: NoneToVoidFunction;
   onResume: NoneToVoidFunction;
   onCancel: NoneToVoidFunction;
@@ -51,8 +58,10 @@ const VoiceRecordBar = ({
   recording,
   isPaused,
   isVideo,
+  isHolding,
   canSendOneTimeMedia,
   isViewOnceEnabled,
+  getHoldOffset,
   onPause,
   onResume,
   onCancel,
@@ -61,6 +70,7 @@ const VoiceRecordBar = ({
 }: OwnProps) => {
   const canvasRef = useRef<HTMLCanvasElement>();
   const timerRef = useRef<HTMLSpanElement>();
+  const slideHintRef = useRef<HTMLSpanElement>();
   const rendererRef = useRef<LiveWaveformRenderer>();
   const audioRef = useRef<HTMLMediaElement>();
   const audioPromiseRef = useRef<Promise<HTMLMediaElement>>();
@@ -236,6 +246,18 @@ const VoiceRecordBar = ({
     return captureKeyboardListeners({ onSpace: handleSpaceKey });
   }, [handleSpaceKey]);
 
+  // The hint to slide left follows the finger and fades out on the way to cancelling
+  useSignalEffect(() => {
+    const offset = getHoldOffset?.();
+    const slideHint = slideHintRef.current;
+    if (!offset || !slideHint) return;
+
+    requestMutation(() => {
+      slideHint.style.transform = `translateX(${offset.x}px)`;
+      slideHint.style.opacity = String(1 - offset.cancelProgress);
+    });
+  }, [getHoldOffset]);
+
   useResizeObserver(canvasRef, (entry) => {
     const renderer = rendererRef.current;
     if (!renderer) return;
@@ -321,7 +343,12 @@ const VoiceRecordBar = ({
   }
 
   return (
-    <div ref={ref} className={buildClassName(styles.root, isMounted && styles.mounted, 'voice-record-bar')}>
+    <div
+      ref={ref}
+      className={buildClassName(
+        styles.root, isMounted && styles.mounted, isHolding && styles.holding, 'voice-record-bar',
+      )}
+    >
       <Button
         className={styles.sideButton}
         round
@@ -334,6 +361,12 @@ const VoiceRecordBar = ({
       <div className={styles.pill}>
         {renderControl()}
         <canvas ref={canvasRef} className={styles.waveform} />
+        {isHolding && (
+          <span ref={slideHintRef} className={styles.slideHint}>
+            <Icon name="previous" className={styles.slideHintArrow} />
+            {lang('LiquidRecordSlideToCancel')}
+          </span>
+        )}
         <span ref={timerRef} className={styles.timer} />
       </div>
       {canSendOneTimeMedia && (

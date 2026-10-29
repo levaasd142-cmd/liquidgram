@@ -1,4 +1,5 @@
 import type { NativeAppAction, NativeHapticStyle } from '../nativeApp';
+import type { NativeRoundVideoFile } from '../nativeRoundVideo';
 
 import {
   IS_TEST, PRODUCTION_HOSTNAME, SVG_NAMESPACE, VIDEO_RECORDING_MIME_TYPE,
@@ -20,12 +21,18 @@ declare global {
       haptic?: (style: NativeHapticStyle) => void;
       postMessage?: (message: { type: string } & AnyLiteral) => void;
       setActionHandler?: (handler: (action: NativeAppAction) => void) => void;
+      // Shows the app's camera screen for a round video and resolves with the recording, or with `null` when the
+      // user cancels it, it fails or the camera screen is already shown
+      recordRoundVideo?: (options: { canSendOneTimeMedia: boolean }) => Promise<NativeRoundVideoFile | null>;
+      // Tells the app that the page no longer needs a file it served under `/__liquidgram/media/`
+      releaseMedia?: (url: string) => void;
       // Called by the app
       resolvePermission?: (requestId: number, state: NotificationPermission) => void;
       setPermission?: (state: NotificationPermission) => void;
       notificationClicked?: (tag: string) => void;
       resolveRequest?: (requestId: number, response: AnyLiteral) => void;
       dispatchAction?: (action: NativeAppAction) => void;
+      resolveRoundVideo?: (requestId: number, result: NativeRoundVideoFile | null) => void;
     };
   }
 }
@@ -101,7 +108,9 @@ export const IS_VOICE_RECORDING_SUPPORTED = Boolean(
     window.AudioContext || (window as any).webkitAudioContext
   ),
 );
-export const IS_VIDEO_RECORDING_SUPPORTED = Boolean(
+// The iOS app records round videos with the camera itself and hands the file to the page, see `util/nativeRoundVideo.ts`
+export const IS_NATIVE_ROUND_VIDEO_SUPPORTED = typeof window.__liquidgramNative?.recordRoundVideo === 'function';
+export const IS_VIDEO_RECORDING_SUPPORTED = IS_NATIVE_ROUND_VIDEO_SUPPORTED || Boolean(
   window.navigator.mediaDevices && 'getUserMedia' in window.navigator.mediaDevices
   && typeof MediaRecorder !== 'undefined'
   && 'captureStream' in HTMLCanvasElement.prototype

@@ -1,0 +1,30 @@
+// Above the composer, pointing at the record button at its right end
+.root {
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: calc(100% + 0.5rem);
+
+  max-width: min(17.5rem, calc(100vw - 2rem));
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-white);
+
+  background-color: rgba(0, 0, 0, 0.85);
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 100%;
+    right: calc(var(--composer-pill-padding, 0.25rem) + var(--composer-main-button-width, 2.5rem) / 2 - 0.375rem);
+
+    border: 0.375rem solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.85);
+  }
+}

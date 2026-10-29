@@ -83,5 +83,10 @@ export const LIQUID_STRINGS: Record<string, Partial<Record<LangKey, string>>> = 
     LiquidAppIconFailed: 'Не удалось сменить иконку',
     LiquidAuthFailed: 'Не удалось подтвердить, что это ты',
     LiquidAuthCancelled: 'Проверка отменена',
+    LiquidRecordHoldVoice: 'Удерживай, чтобы записать голосовое. Нажми, чтобы переключиться на кружок.',
+    LiquidRecordHoldVideo: 'Удерживай, чтобы записать кружок. Нажми, чтобы переключиться на голосовое.',
+    LiquidRecordHoldVoiceOnly: 'Удерживай, чтобы записать голосовое.',
+    LiquidRecordHoldVideoOnly: 'Удерживай, чтобы записать кружок.',
+    LiquidRecordSlideToCancel: 'Влево — отмена',
   },
 };
