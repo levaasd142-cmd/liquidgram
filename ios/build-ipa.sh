@@ -16,6 +16,11 @@ WEBAPP_DIR="$IOS_DIR/Liquidgram/WebApp"
 OUT_DIR="$ROOT/dist-ios"
 IPA="$OUT_DIR/Liquidgram.ipa"
 APP_NAME="Liquidgram"
+# The alternate icons of project.yml, which the app's settings offer
+ALTERNATE_ICONS=(AppIconMidnight AppIconAurora AppIconGlass AppIconClassic)
+# Each icon set has the default, dark and tinted appearances of the iOS 18 Home Screen, which Xcode 26 stores as
+# UIAppearanceAny, UIAppearanceDark and ISAppearanceTintable
+ICON_APPEARANCES_COUNT=3
 BYTES_IN_MEGABYTE=1048576
 
 fail() {
@@ -25,6 +30,25 @@ fail() {
 
 require_tool() {
   command -v "$1" > /dev/null || fail "$1 is required. $2"
+}
+
+# Prints the appearances of the named icon sets in the JSON of `assetutil --info`, such as
+# `AppIcon (UIAppearanceAny, UIAppearanceDark, ...)`, and fails when a set has fewer than the given count
+describe_icon_sets() {
+  node -e '
+    const [file, count, ...names] = process.argv.slice(1);
+    const renditions = JSON.parse(require("fs").readFileSync(file, "utf8"));
+    let isComplete = true;
+    const descriptions = names.map((name) => {
+      const appearances = new Set(renditions
+        .filter((rendition) => rendition.Name === name)
+        .map((rendition) => rendition.Appearance || "UIAppearanceAny"));
+      isComplete = isComplete && appearances.size >= Number(count);
+      return name + " (" + ([...appearances].sort().join(", ") || "missing") + ")";
+    });
+    console.log(descriptions.join(", "));
+    process.exitCode = isComplete ? 0 : 1;
+  ' "$@"
 }
 
 require_tool xcodebuild "Install Xcode 16 or newer."
@@ -73,6 +97,25 @@ APP="$WORK_DIR/DerivedData/Build/Products/Release-iphoneos/$APP_NAME.app"
 for required in Info.plist "$APP_NAME" Assets.car bridge.js WebApp/index.html; do
   [[ -e "$APP/$required" ]] || fail "The app bundle lacks $required"
 done
+
+# The app switches to an alternate icon by name, which works only if Info.plist lists the icon for iPhone and
+# iPad and Assets.car holds its images
+for icon in "${ALTERNATE_ICONS[@]}"; do
+  for icons_key in CFBundleIcons 'CFBundleIcons~ipad'; do
+    icon_name="$(/usr/libexec/PlistBuddy -c "Print :$icons_key:CFBundleAlternateIcons:$icon:CFBundleIconName" \
+      "$APP/Info.plist" 2> /dev/null || true)"
+    [[ "$icon_name" == "$icon" ]] || fail "Info.plist lacks the alternate icon $icon in $icons_key"
+  done
+done
+ASSET_INFO="$WORK_DIR/assets.json"
+xcrun assetutil --info "$APP/Assets.car" > "$ASSET_INFO"
+ICON_SETS="$(describe_icon_sets "$ASSET_INFO" "$ICON_APPEARANCES_COUNT" AppIcon "${ALTERNATE_ICONS[@]}")" \
+  || fail "Assets.car lacks app icon appearances: $ICON_SETS"
+ICONS_SUMMARY="Info.plist lists ${ALTERNATE_ICONS[*]} for iPhone and iPad; Assets.car has $ICON_SETS"
+echo "App icons: $ICONS_SUMMARY"
+if [[ "${GITHUB_ACTIONS:-}" == true ]]; then
+  echo "::notice title=App icons::$ICONS_SUMMARY"
+fi
 
 echo "Packing $IPA"
 mkdir -p "$WORK_DIR/Payload" "$OUT_DIR"
