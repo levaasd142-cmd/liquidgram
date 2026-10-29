@@ -133,6 +133,8 @@ export const IS_CANVAS_FILTER_SUPPORTED = (
   !IS_TEST && 'filter' in (document.createElement('canvas').getContext('2d') || {})
 );
 export const IS_REQUEST_FULLSCREEN_SUPPORTED = 'requestFullscreen' in document.createElement('div');
+// Safari has it since 17.0
+export const IS_POPOVER_SUPPORTED = 'showPopover' in HTMLElement.prototype;
 export const ARE_CALLS_SUPPORTED = true;
 
 export const IS_WAVE_TRANSFORM_SUPPORTED = !IS_MOBILE
@@ -175,8 +177,10 @@ export const IS_TRANSLATION_SUPPORTED = !IS_TEST;
 export const IS_TRANSLATION_DETECTOR_SUPPORTED = 'LanguageDetector' in window;
 export const IS_VIEW_TRANSITION_SUPPORTED = CSS.supports('view-transition-class: test')
   && !IS_FIREFOX; // https://bugzilla.mozilla.org/show_bug.cgi?id=1994547
+// Passkeys belong to Telegram's domains, which the iOS app's page is not served from, and an app's `WKWebView` needs
+// an associated domain for WebAuthn
 export const IS_WEBAUTHN_SUPPORTED = navigator.credentials && window.PublicKeyCredential
-  && 'parseCreationOptionsFromJSON' in PublicKeyCredential;
+  && 'parseCreationOptionsFromJSON' in PublicKeyCredential && !IS_IOS_APP;
 export const IS_WEBAUTHN_SIGNAL_API_SUPPORTED = IS_WEBAUTHN_SUPPORTED
   && 'signalUnknownCredential' in PublicKeyCredential;
 

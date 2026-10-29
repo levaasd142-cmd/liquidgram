@@ -6,12 +6,13 @@ import { ApiMediaFormat } from '../../../api/types';
 import { getStoryMediaHash } from '../../../global/helpers';
 import { selectPeerStories } from '../../../global/selectors';
 import unloadVideo from '../../../util/browser/unloadVideo';
+import { IS_PROGRESSIVE_SUPPORTED } from '../../../util/browser/windowEnvironment';
 import { preloadImage } from '../../../util/files';
 import * as mediaLoader from '../../../util/mediaLoader';
 import { getProgressiveUrl } from '../../../util/mediaLoader';
 import { makeProgressiveLoader } from '../../../util/progressiveLoader';
 import { pause } from '../../../util/schedulers';
-import { PRIMARY_VIDEO_MIME } from '../helpers/videoFormats';
+import { CAN_PLAY_PRIMARY_VIDEO, PRIMARY_VIDEO_MIME } from '../helpers/videoFormats';
 
 import { checkIfStreamingSupported } from '../../../hooks/useStreaming';
 
@@ -92,16 +93,20 @@ function getPreloadMediaHashes(peerId: string, storyId: number) {
     }
 
     const isVideo = Boolean(story.content.video);
+    const isStream = isVideo && checkIfStreamingSupported(PRIMARY_VIDEO_MIME);
+    // Without a service worker a progressive video downloads in full, so the alternative one is preloaded only where
+    // the story plays it, as in `useStoryProps`
+    const shouldPreloadAltVideo = IS_PROGRESSIVE_SUPPORTED || (!isStream && !CAN_PLAY_PRIMARY_VIDEO);
 
     // Media
     mediaHashes.push({
       hash: getStoryMediaHash(story, 'full'),
       format: isVideo ? ApiMediaFormat.Progressive : ApiMediaFormat.BlobUrl,
-      isStream: isVideo && checkIfStreamingSupported(PRIMARY_VIDEO_MIME),
+      isStream,
     });
     // Thumbnail
     mediaHashes.push({ hash: getStoryMediaHash(story), format: ApiMediaFormat.BlobUrl });
-    if (story.content.video?.altVideos) {
+    if (story.content.video?.altVideos && shouldPreloadAltVideo) {
       mediaHashes.push({
         hash: getStoryMediaHash(story, 'full', true)!,
         format: ApiMediaFormat.Progressive,

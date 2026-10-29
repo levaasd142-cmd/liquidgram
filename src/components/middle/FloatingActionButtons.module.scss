@@ -76,3 +76,30 @@
 .unread {
   pointer-events: none;
 }
+
+// Liquid Glass gives only the buttons on screen their material: a backdrop layer under `opacity: 0` is still
+// composited, and it makes the hidden wrapper a backdrop root
+:global(html.liquid-glass) .revealed {
+  &:not(.hide-scroll-down) .unread,
+  .unreadCountButton:not(.hidden) {
+    > :global(.Button) {
+      background: var(--lg-material);
+      -webkit-backdrop-filter: var(--lg-backdrop);
+      backdrop-filter: var(--lg-backdrop);
+      box-shadow: var(--lg-shadow);
+
+      &:active {
+        filter: var(--lg-pressed-filter);
+      }
+    }
+  }
+}
+
+:global(html.liquid-glass.liquid-refraction) .revealed {
+  &:not(.hide-scroll-down) .unread,
+  .unreadCountButton:not(.hidden) {
+    > :global(.Button) {
+      backdrop-filter: var(--lg-backdrop) url("#lg-refract-round");
+    }
+  }
+}

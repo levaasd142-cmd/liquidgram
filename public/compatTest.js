@@ -45,6 +45,13 @@ function compatTest() {
   // Hardcoded page because server forbids iframe embedding
   document.title = 'Unsupported Browser';
   document.body.setAttribute('style', 'height: 100%; margin: 0; font-family: Arial, Helvetica, sans-serif;');
+
+  // The iOS app always runs a WebKit that has everything above, unless Lockdown Mode turned some of it off
+  if (window.__liquidgramNative && (!hasWebLocks || typeof window.indexedDB === 'undefined')) {
+    showLockdownModePage();
+    return;
+  }
+
   document.body.innerHTML = '<table style="width:100%;height:100%;border-collapse:collapse"><tr><td style="vertical-align:middle;text-align:center"><div style="display:inline-block"><img src=./unsupported.png><h3>Your browser is not supported</h3><p>Please, update it or use our <a href="http://telegram.org/dl" target="_blank">native clients</a>.</p><a id="ignore" href="#">I\'m Feeling Lucky</a></div></table>';
 
   if (!window.ignore) return;
@@ -57,6 +64,22 @@ function compatTest() {
     window.localStorage.setItem('tt-ignore-compat', '1');
     window.location.reload();
   });
+}
+
+function showLockdownModePage() {
+  var isRussian = /^ru\b/i.test(navigator.language || '');
+  var title = isRussian ? 'Включён режим блокировки' : 'Lockdown Mode is on';
+  var text = isRussian
+    ? 'Он отключает функции веб-страниц, без которых Liquidgram не работает. Чтобы исключить Liquidgram, откройте '
+      + 'Настройки → Конфиденциальность и безопасность → Режим блокировки → Настроить веб-просмотр и выключите '
+      + 'Liquidgram. Затем откройте приложение снова.'
+    : 'It turns off website features that Liquidgram needs. To exclude Liquidgram, open Settings → Privacy & '
+      + 'Security → Lockdown Mode → Configure Web Browsing and turn off Liquidgram. Then open the app again.';
+
+  document.title = title;
+  document.body.innerHTML = '<table style="width:100%;height:100%;border-collapse:collapse"><tr><td style="vertical-align:middle;text-align:center;padding:0 2rem"><h3></h3><p style="line-height:1.4"></p></table>';
+  document.body.querySelector('h3').textContent = title;
+  document.body.querySelector('p').textContent = text;
 }
 
 compatTest();

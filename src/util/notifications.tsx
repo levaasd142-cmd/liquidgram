@@ -34,8 +34,9 @@ import {
   selectTopicFromMessage,
 } from '../global/selectors';
 import { callApi } from '../api/gramjs';
+import { isCurrentElementPlaying } from './audioPlayback/playbackController';
 import { IS_TAURI } from './browser/globalEnvironment';
-import { IS_SERVICE_WORKER_SUPPORTED, IS_TOUCH_ENV } from './browser/windowEnvironment';
+import { IS_IOS_APP, IS_SERVICE_WORKER_SUPPORTED, IS_TOUCH_ENV } from './browser/windowEnvironment';
 import jsxToHtml from './element/jsxToHtml';
 import { buildCollectionByKey } from './iteratees';
 import { getTranslationFn } from './localization';
@@ -113,6 +114,10 @@ const soundPlayedDelay = 3 * 1000;
 const soundPlayedIds = new Set<string>();
 const notificationSound = new Audio('./notification.mp3');
 notificationSound.setAttribute('mozaudiochannel', 'notification');
+if (IS_IOS_APP) {
+  notificationSound.addEventListener('ended', restoreAudioSession);
+  notificationSound.addEventListener('pause', restoreAudioSession);
+}
 
 export async function playNotifySound(id?: string, volume?: number) {
   if (id !== undefined && soundPlayedIds.has(id)) return;
@@ -131,13 +136,36 @@ export async function playNotifySound(id?: string, volume?: number) {
   }
 
   try {
+    prepareAudioSession();
     await notificationSound.play();
   } catch (error) {
+    restoreAudioSession();
     if (DEBUG) {
       // eslint-disable-next-line no-console
       console.warn('[PUSH] Unable to play notification sound');
     }
   }
+}
+
+// In the iOS app a message sound plays as ambient audio, which mixes with the music of other apps and follows the
+// Silent switch, instead of pausing that music. Media of the app itself keeps the default session.
+function prepareAudioSession() {
+  const { audioSession } = navigator;
+  if (!IS_IOS_APP || !audioSession || checkIsMediaPlaying()) return;
+
+  audioSession.type = 'ambient';
+}
+
+function restoreAudioSession() {
+  const { audioSession } = navigator;
+  if (audioSession?.type !== 'ambient') return;
+
+  audioSession.type = 'auto';
+}
+
+function checkIsMediaPlaying() {
+  return isCurrentElementPlaying() || Array.from(document.querySelectorAll<HTMLMediaElement>('audio, video'))
+    .some((element) => !element.paused && !element.muted);
 }
 
 export const playNotifySoundDebounced = debounce(playNotifySound, 1000, true, false);

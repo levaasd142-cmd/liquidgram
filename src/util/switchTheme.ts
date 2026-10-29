@@ -5,6 +5,7 @@ import { requestMutation } from '../lib/fasterdom/fasterdom';
 import themeColors from '../styles/themes.json';
 import { animate } from './animation';
 import { convertSrgbChannel } from './colors.ts';
+import { setThemeColor } from './themeColor';
 
 let isInitialized = false;
 
@@ -48,7 +49,6 @@ const switchTheme = (theme: ThemeKey, withAnimation: boolean) => {
   const startIndex = isDarkTheme ? 0 : 1;
   const endIndex = isDarkTheme ? 1 : 0;
   const startAt = Date.now();
-  const themeColorTag = document.querySelector('meta[name="theme-color"]');
 
   requestMutation(() => {
     document.documentElement.classList.remove(`theme-${isDarkTheme ? 'light' : 'dark'}`);
@@ -58,9 +58,7 @@ const switchTheme = (theme: ThemeKey, withAnimation: boolean) => {
       document.documentElement.classList.add('no-animations');
     }
     document.documentElement.classList.add(themeClassName);
-    if (themeColorTag) {
-      themeColorTag.setAttribute('content', isDarkTheme ? '#212121' : '#fff');
-    }
+    setThemeColor(isDarkTheme ? '#212121' : '#fff');
 
     setTimeout(() => {
       requestMutation(() => {

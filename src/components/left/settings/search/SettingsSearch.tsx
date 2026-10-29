@@ -9,6 +9,7 @@ import { selectSettingsSearchFlags } from '../../../../global/selectors';
 import { IS_IOS_APP, IS_MOBILE } from '../../../../util/browser/windowEnvironment';
 import buildClassName from '../../../../util/buildClassName';
 import { copyTextToClipboard } from '../../../../util/clipboard';
+import { IS_STREAMER_MODE_SUPPORTED } from '../../../../util/liquidGlass';
 import { buildSettingsSearchIndex, searchSettings } from './searchSettings';
 
 import { useShallowSelector } from '../../../../hooks/data/useSelector';
@@ -65,6 +66,7 @@ const SettingsSearch = ({
     isDesktopLayout: !isMobile,
     canSendWithKeyboard: !isMobile || !IS_MOBILE,
     isIosApp: IS_IOS_APP,
+    isStreamerModeSupported: IS_STREAMER_MODE_SUPPORTED,
   }), [lang, isMobile, stateFlags]);
 
   const hasQuery = Boolean(query.trim());

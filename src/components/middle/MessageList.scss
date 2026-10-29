@@ -89,10 +89,6 @@
     body.keyboard-visible.no-page-transitions & {
       transition: none !important;
     }
-
-    @media (max-width: 600px) {
-      bottom: calc(0px - env(safe-area-inset-bottom));
-    }
   }
 
   &.no-avatars .Message > .Avatar {

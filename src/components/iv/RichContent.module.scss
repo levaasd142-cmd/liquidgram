@@ -308,6 +308,34 @@
   border-radius: 0.5rem;
 }
 
+.embedLink {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 12rem;
+  border-radius: 0.5rem;
+
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  text-decoration: none;
+
+  background: #000;
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.embedLinkIcon {
+  font-size: 1.5rem;
+}
+
 .tableWrapper {
   overflow-x: auto;
   margin-bottom: 0.5rem;

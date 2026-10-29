@@ -6,7 +6,7 @@ import type { RegularLangKey } from '../../../types/language';
 
 import { selectGhostModeSettings, selectLiquidSettings } from '../../../global/selectors/sharedState';
 import { IS_IOS_APP } from '../../../util/browser/windowEnvironment';
-import { IS_GLASS_REFRACTION_SUPPORTED } from '../../../util/liquidGlass';
+import { IS_GLASS_REFRACTION_SUPPORTED, IS_STREAMER_MODE_SUPPORTED } from '../../../util/liquidGlass';
 
 import useHistoryBack from '../../../hooks/useHistoryBack';
 import useLang from '../../../hooks/useLang';
@@ -145,12 +145,14 @@ const SettingsLiquidgram = ({
 
       <IslandTitle dir={lang.isRtl ? 'rtl' : undefined}>{lang('LiquidSectionInterface')}</IslandTitle>
       <Island>
-        <Checkbox
-          label={lang('LiquidStreamerMode')}
-          subLabel={lang('LiquidStreamerModeInfo')}
-          checked={liquid.isStreamerModeEnabled}
-          onCheck={(isStreamerModeEnabled) => setLiquidSettingOption({ isStreamerModeEnabled })}
-        />
+        {IS_STREAMER_MODE_SUPPORTED && (
+          <Checkbox
+            label={lang('LiquidStreamerMode')}
+            subLabel={lang('LiquidStreamerModeInfo')}
+            checked={liquid.isStreamerModeEnabled}
+            onCheck={(isStreamerModeEnabled) => setLiquidSettingOption({ isStreamerModeEnabled })}
+          />
+        )}
         <Checkbox
           label={lang('LiquidShowIds')}
           subLabel={lang('LiquidShowIdsInfo')}

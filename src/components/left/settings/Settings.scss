@@ -133,6 +133,11 @@
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
   }
+
+  // The last rows scroll above the home indicator
+  @media (max-width: 600px) {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
 }
 
 .settings-content-header {

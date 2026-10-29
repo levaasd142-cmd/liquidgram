@@ -1,6 +1,8 @@
 import { useEffect } from '../lib/teact/teact';
 
-import { IS_IOS, IS_PWA, IS_TOUCH_ENV } from '../util/browser/windowEnvironment';
+import {
+  IS_IOS, IS_IOS_APP, IS_PWA, IS_TOUCH_ENV,
+} from '../util/browser/windowEnvironment';
 
 const metaViewport = document.querySelector('meta[name="viewport"]');
 const defaultViewportContent = metaViewport?.getAttribute('content') || '';
@@ -8,7 +10,9 @@ const allowedZoomViewportContent = 'width=device-width, initial-scale=1, shrink-
 
 export default function usePreventPinchZoomGesture(isDisabled = false) {
   useEffect(() => {
-    if (!IS_TOUCH_ENV) {
+    // `WKWebView` honors `user-scalable=no`, unlike Safari, so the iOS app keeps its page at scale 1 and the media
+    // viewer zooms with its own gestures
+    if (!IS_TOUCH_ENV || IS_IOS_APP) {
       return undefined;
     }
 
@@ -29,7 +33,7 @@ export default function usePreventPinchZoomGesture(isDisabled = false) {
     }
 
     return () => {
-      metaViewport?.setAttribute('content', 'width=device-width, initial-scale=1, shrink-to-fit=no');
+      metaViewport?.setAttribute('content', defaultViewportContent);
       if (IS_IOS && !IS_PWA) {
         document.removeEventListener('gesturestart', preventEvent);
       }

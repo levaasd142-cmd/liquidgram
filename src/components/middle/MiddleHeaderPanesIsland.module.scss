@@ -59,3 +59,12 @@
     width: calc(100% - var(--middle-panel-inline-padding) * 2 - var(--safe-insets));
   }
 }
+
+// Liquid Glass gives the island its material only while it is shown: a backdrop layer under `opacity: 0` is still
+// composited
+:global(html.liquid-glass) .root:not(.rootHidden) {
+  background: var(--lg-material);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}

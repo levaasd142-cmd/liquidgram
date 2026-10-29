@@ -78,9 +78,9 @@ function OptimizedVideo({
 
   useVideoCleanup(ref, mergedOtherBufferingHandlers);
 
+  // Without `playsInline`, an iPhone `WKWebView` plays an autoplaying video in the system fullscreen player
   return (
-
-    <video ref={ref} autoPlay {...restProps} {...mergedOtherBufferingHandlers} onPlaying={handlePlaying}>
+    <video ref={ref} autoPlay playsInline {...restProps} {...mergedOtherBufferingHandlers} onPlaying={handlePlaying}>
       {children}
     </video>
   );

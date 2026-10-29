@@ -17,10 +17,19 @@
   backdrop-filter: var(--lg-backdrop);
   box-shadow: var(--lg-shadow);
 
+  transition: opacity 0.2s ease;
+
   /* Floating buttons sit on the left in right-to-left languages */
   &[dir="rtl"] {
     right: 1rem;
     left: 5rem;
+  }
+
+  /* The bar belongs to the chat list, so it waits until the list has slid back over a closing chat */
+  :global(#Main.left-column-animating) &,
+  :global(#Main:not(.left-column-open)) & {
+    pointer-events: none;
+    opacity: 0;
   }
 }
 
@@ -45,6 +54,11 @@
   outline: none;
 
   transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:active {
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    transition: none;
+  }
 }
 
 .active {

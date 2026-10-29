@@ -1,11 +1,15 @@
 import type { LiquidSettings } from '../global/types';
 
 import { SVG_NAMESPACE } from '../config';
-import { IS_BACKDROP_BLUR_SUPPORTED, IS_CHROMIUM, IS_IOS } from './browser/windowEnvironment';
+import {
+  IS_BACKDROP_BLUR_SUPPORTED, IS_CHROMIUM, IS_IOS, IS_TOUCH_ENV,
+} from './browser/windowEnvironment';
 import { addSvgDefinition } from './svgController';
 
 // Only Chromium renders SVG filters referenced from `backdrop-filter`
 export const IS_GLASS_REFRACTION_SUPPORTED = IS_CHROMIUM && !IS_IOS && IS_BACKDROP_BLUR_SUPPORTED;
+// Streamer mode reveals blurred data on hover, which touch screens cannot do
+export const IS_STREAMER_MODE_SUPPORTED = !IS_TOUCH_ENV;
 
 const NEUTRAL_DISPLACEMENT_COLOR = 'rgb(128,128,0)';
 const BEZEL_BLUR_RATIO = 2.5;
@@ -36,7 +40,7 @@ export function applyLiquidSettings(settings: LiquidSettings) {
 
   root.classList.toggle('liquid-glass', settings.isGlassEnabled);
   root.classList.toggle('liquid-refraction', isRefractionEnabled);
-  root.classList.toggle('liquid-streamer', settings.isStreamerModeEnabled);
+  root.classList.toggle('liquid-streamer', settings.isStreamerModeEnabled && IS_STREAMER_MODE_SUPPORTED);
   root.style.setProperty('--lg-intensity', String(settings.glassIntensity / 100));
 }
 

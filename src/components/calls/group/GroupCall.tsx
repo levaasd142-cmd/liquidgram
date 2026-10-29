@@ -26,6 +26,7 @@ import useFlag from '../../../hooks/useFlag';
 import { useIntersectionObserver, useIsIntersecting } from '../../../hooks/useIntersectionObserver';
 import useLang from '../../../hooks/useLang';
 import useLastCallback from '../../../hooks/useLastCallback';
+import useOverlayThemeColor from '../../../hooks/useOverlayThemeColor';
 import { useFullscreenStatus } from '../../../hooks/window/useFullscreen';
 import useGroupCallVideoLayout from './hooks/useGroupCallVideoLayout';
 
@@ -40,6 +41,8 @@ import MicrophoneButton from './MicrophoneButton';
 import styles from './GroupCall.module.scss';
 
 const INTERSECTION_THROTTLE = 200;
+// `--group-call-panel-color` of `GroupCall.module.scss`
+const GROUP_CALL_PANEL_COLOR = '#212121';
 
 export type OwnProps = {
   groupCallId: string;
@@ -98,6 +101,9 @@ const GroupCall = ({
   const hasScrolled = !useIsIntersecting(panelScrollTriggerRef, isOpen ? observe : undefined);
 
   const { isMobile, isLandscape } = useAppLayout();
+
+  // The call fills the screen on phones, with the participant panel at the top
+  useOverlayThemeColor(isOpen && isMobile, GROUP_CALL_PANEL_COLOR);
 
   const [isFullscreen, openFullscreen, closeFullscreen] = useFlag();
   const [isSidebarOpen, openSidebar, closeSidebar] = useFlag(true);
