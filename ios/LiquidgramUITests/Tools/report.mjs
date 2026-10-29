@@ -4,14 +4,15 @@
 //       Reads `xcrun simctl list -j devices available` and prints `<udid>\t<name>\t<runtime>` of an iPhone on the
 //       newest iOS runtime: the preferred name, else an iPhone 17 Pro or 16 Pro, else the newest Pro, else any iPhone.
 //   node report.mjs summarize --work <dir> --out <dir> [--device <name>] [--runtime <name>] [--build-failed]
-//       Turns the result bundles' exports in the work folder into README.md, summary.md, summary.json, screenshots/,
-//       ax/ and logs/ in the output folder.
+//       Turns the result bundles' exports in the work folder into README.md, summary.md, summary.json,
+//       contact-sheet.png, screenshots/, ax/ and logs/ in the output folder.
 //   node report.mjs annotate <summary.json>
 //       Prints GitHub Actions annotations: a notice with the counts and an error per failed test.
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import zlib from 'node:zlib';
 
 const TOOLS_DIR = path.dirname(fileURLToPath(import.meta.url));
 const KNOWN_ISSUES_FILE = path.join(TOOLS_DIR, '..', 'known-issues.json');
@@ -39,6 +40,45 @@ const DURATION_PART_PATTERN = /(\d+(?:\.\d+)?)\s*(ms|h|m|s)\b/g;
 const SECONDS_IN_UNIT = {
   ms: 0.001, s: 1, m: 60, h: 3600,
 };
+// All screenshots on one image, in the order of the report, with the test and the step under each one
+const CONTACT_SHEET_FILE = 'contact-sheet.png';
+const SHEET_COLUMNS = 7;
+// The screen of an iPhone 17 Pro, 402x874 pt, scaled down
+const THUMB_WIDTH = 180;
+const THUMB_HEIGHT = 392;
+const SHEET_MARGIN = 12;
+const TILE_GAP = 10;
+// A band above each screenshot: green for a passed test, red for a failed one, orange for the failure's screenshot
+const BAND_HEIGHT = 5;
+const CAPTION_LINES = 2;
+const CAPTION_LINE_HEIGHT = 10;
+const CAPTION_PADDING = 4;
+const TITLE_SCALE = 2;
+const SHEET_COLORS = {
+  background: [255, 255, 255],
+  text: [34, 34, 34],
+  passed: [46, 160, 67],
+  failed: [218, 54, 51],
+  failureScreenshot: [255, 153, 0],
+  frame: [208, 215, 222],
+  missing: [235, 235, 235],
+};
+// A 5x7 pixel font: each glyph of FONT_CHARS is 7 rows in FONT_CODES, each row a base-32 digit whose 5 bits are its
+// pixels from left to right. Other characters are drawn as a box.
+const FONT_CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz -_.,:/()[]#\'+=?!%><*';
+const FONT_CODES = 'ehjlphe4c4444eeh1248vv2421he26aiv22vgu11he68guhhev124888ehhehheehhf12cehhvhhhuhhuhhuehggghesihhhisvgguggvvggugggehgnhhfhhhvhhhe44444e72222ichikokihggggggvhrllhhhhhpljhhehhhhheuhhugggehhhliduhhukihfgge11uv444444hhhhhhehhhhha4hhhlllahha4ahhhha4444v1248gv00e1fhfggmphhu00egghe11djhhf00ehvge698s8880fhhf1eggmphhh40c444e20622icggikokic44444e00qllhh00mphhh00ehhhe00uhugg00djf1100mpggg00ege1u88s889600hhhjd00hhha400hhlla00ha4ah00hhf1e00v248v0000000000v000000000v00000cc0000c480cc0cc001248g024888428422248e88888ee22222eaavavaac480000044v44000v0v00eh124044444404op248j38421248248g84204lel40';
+const GLYPH_WIDTH = 5;
+const GLYPH_HEIGHT = 7;
+const GLYPH_ADVANCE = 6;
+const MISSING_GLYPH = 'vhhhhhv';
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+// Channels of the PNG color types: gray, RGB, palette, gray with alpha, RGBA
+const PNG_CHANNELS = {
+  0: 1, 2: 3, 3: 1, 4: 2, 6: 4,
+};
+const PNG_COLOR_TYPE_RGB = 2;
+const PNG_FILTER_SUB = 1;
+const CRC_TABLE = makeCrcTable();
 
 const [command, ...args] = process.argv.slice(2);
 
@@ -158,6 +198,7 @@ function summarize(options) {
     screenshots,
   };
 
+  summary.contactSheet = writeContactSheet(summary, outDir);
   fs.writeFileSync(path.join(outDir, 'summary.json'), `${JSON.stringify(summary, undefined, 2)}\n`);
   const markdown = renderSummary(summary);
   fs.writeFileSync(path.join(outDir, 'summary.md'), markdown);
@@ -452,7 +493,7 @@ function renderSummary(summary) {
   });
 
   lines.push(
-    'Folders: [`screenshots/`](screenshots), [`ax/`](ax) (accessibility trees the tests attached), [`logs/`](logs) '
+    'Folders: [`screenshots/`](screenshots), [`ax/`](ax) (accessibility trees of failed tests), [`logs/`](logs) '
       + '(app log, xcodebuild output, self-test reports).',
     '',
   );
@@ -463,6 +504,15 @@ function renderScreenshots(summary) {
   if (!summary.screenshots.length) return '';
 
   const lines = ['', '## Screenshots', ''];
+  if (summary.contactSheet) {
+    lines.push(
+      'All screenshots at a glance, with a band for the test\'s result: green passed, red failed, orange the moment of '
+        + 'the failure.',
+      '',
+      `<img src="${summary.contactSheet}" alt="Contact sheet of all screenshots">`,
+      '',
+    );
+  }
   const groups = new Map();
   summary.screenshots.forEach((screenshot) => {
     const key = `${screenshot.test} (${screenshot.pass})`;
@@ -477,6 +527,295 @@ function renderScreenshots(summary) {
     lines.push('', list.map((item) => `[${item.name}](${item.file})`).join(' · '), '');
   });
   return `${lines.join('\n')}\n`;
+}
+
+// Draws every screenshot of the report on one PNG and returns its file name, or undefined without screenshots
+function writeContactSheet(summary, outDir) {
+  const { screenshots } = summary;
+  if (!screenshots.length) return undefined;
+
+  const statuses = new Map(summary.tests.map((test) => [`${test.name} ${test.pass}`, test.status]));
+  const tileWidth = THUMB_WIDTH + 2;
+  const tileHeight = BAND_HEIGHT + THUMB_HEIGHT + 2 + CAPTION_PADDING + CAPTION_LINES * CAPTION_LINE_HEIGHT;
+  const titleHeight = GLYPH_HEIGHT * TITLE_SCALE + SHEET_MARGIN;
+  const columns = Math.min(SHEET_COLUMNS, screenshots.length);
+  const rows = Math.ceil(screenshots.length / SHEET_COLUMNS);
+  const width = SHEET_MARGIN * 2 + columns * tileWidth + (columns - 1) * TILE_GAP;
+  const height = SHEET_MARGIN * 2 + titleHeight + rows * tileHeight + (rows - 1) * TILE_GAP;
+  const canvas = createCanvas(width, height, SHEET_COLORS.background);
+  drawText(canvas, SHEET_MARGIN, SHEET_MARGIN, `Liquidgram UI tests: ${describeCounts(summary.counts)}`,
+    SHEET_COLORS.text, TITLE_SCALE);
+
+  const captionChars = Math.floor(tileWidth / GLYPH_ADVANCE);
+  screenshots.forEach((screenshot, index) => {
+    const x = SHEET_MARGIN + (index % SHEET_COLUMNS) * (tileWidth + TILE_GAP);
+    const y = SHEET_MARGIN + titleHeight + Math.floor(index / SHEET_COLUMNS) * (tileHeight + TILE_GAP);
+    const status = statuses.get(`${screenshot.test} ${screenshot.pass}`);
+    const bandColor = screenshot.isFailure || screenshot.name.startsWith('failure-')
+      ? SHEET_COLORS.failureScreenshot
+      : (status === 'failed' ? SHEET_COLORS.failed : SHEET_COLORS.passed);
+    fillRect(canvas, x, y, tileWidth, BAND_HEIGHT, bandColor);
+    const frameY = y + BAND_HEIGHT;
+    fillRect(canvas, x, frameY, tileWidth, THUMB_HEIGHT + 2, SHEET_COLORS.frame);
+    const image = readPng(path.join(outDir, screenshot.file));
+    if (image) {
+      drawImageFitted(canvas, image, x + 1, frameY + 1, THUMB_WIDTH, THUMB_HEIGHT);
+    } else {
+      fillRect(canvas, x + 1, frameY + 1, THUMB_WIDTH, THUMB_HEIGHT, SHEET_COLORS.missing);
+    }
+    const captionY = frameY + THUMB_HEIGHT + 2 + CAPTION_PADDING;
+    const [testClass, testName] = screenshot.test.split('/');
+    const testCaption = `${testClass}/${testName}`.length <= captionChars ? `${testClass}/${testName}` : testName;
+    drawText(canvas, x, captionY, truncateText(testCaption || screenshot.test, captionChars), SHEET_COLORS.text);
+    drawText(canvas, x, captionY + CAPTION_LINE_HEIGHT, truncateText(screenshot.name, captionChars),
+      SHEET_COLORS.text);
+  });
+
+  writePng(path.join(outDir, CONTACT_SHEET_FILE), canvas);
+  return CONTACT_SHEET_FILE;
+}
+
+function truncateText(text, maxLength) {
+  return text.length > maxLength ? `${text.slice(0, maxLength - 2)}..` : text;
+}
+
+function createCanvas(width, height, color) {
+  const pixels = Buffer.alloc(width * height * 3);
+  for (let i = 0; i < pixels.length; i += 3) {
+    [pixels[i], pixels[i + 1], pixels[i + 2]] = color;
+  }
+  return { width, height, pixels };
+}
+
+function fillRect(canvas, left, top, width, height, color) {
+  for (let y = Math.max(0, top); y < Math.min(canvas.height, top + height); y++) {
+    for (let x = Math.max(0, left); x < Math.min(canvas.width, left + width); x++) {
+      const offset = (y * canvas.width + x) * 3;
+      [canvas.pixels[offset], canvas.pixels[offset + 1], canvas.pixels[offset + 2]] = color;
+    }
+  }
+}
+
+function drawText(canvas, left, top, text, color, scale = 1) {
+  Array.from(text).forEach((char, index) => {
+    const glyphIndex = FONT_CHARS.indexOf(char);
+    const rows = glyphIndex === -1
+      ? MISSING_GLYPH
+      : FONT_CODES.slice(glyphIndex * GLYPH_HEIGHT, (glyphIndex + 1) * GLYPH_HEIGHT);
+    Array.from(rows).forEach((digit, row) => {
+      const bits = parseInt(digit, 32);
+      for (let column = 0; column < GLYPH_WIDTH; column++) {
+        if (bits & (1 << (GLYPH_WIDTH - 1 - column))) {
+          fillRect(canvas, left + (index * GLYPH_ADVANCE + column) * scale, top + row * scale, scale, scale, color);
+        }
+      }
+    });
+  });
+}
+
+// Scales the image down into the box with an area average, keeping its aspect ratio, centered on white
+function drawImageFitted(canvas, image, left, top, boxWidth, boxHeight) {
+  const scale = Math.min(boxWidth / image.width, boxHeight / image.height, 1);
+  const width = Math.max(1, Math.round(image.width * scale));
+  const height = Math.max(1, Math.round(image.height * scale));
+  const offsetX = left + Math.floor((boxWidth - width) / 2);
+  const offsetY = top + Math.floor((boxHeight - height) / 2);
+  fillRect(canvas, left, top, boxWidth, boxHeight, SHEET_COLORS.background);
+  for (let y = 0; y < height; y++) {
+    const sourceTop = Math.floor((y * image.height) / height);
+    const sourceBottom = Math.max(sourceTop + 1, Math.floor(((y + 1) * image.height) / height));
+    for (let x = 0; x < width; x++) {
+      const sourceLeft = Math.floor((x * image.width) / width);
+      const sourceRight = Math.max(sourceLeft + 1, Math.floor(((x + 1) * image.width) / width));
+      const sum = [0, 0, 0];
+      let count = 0;
+      for (let sourceY = sourceTop; sourceY < sourceBottom; sourceY++) {
+        for (let sourceX = sourceLeft; sourceX < sourceRight; sourceX++) {
+          const offset = (sourceY * image.width + sourceX) * 4;
+          const alpha = image.pixels[offset + 3] / 255;
+          for (let channel = 0; channel < 3; channel++) {
+            sum[channel] += image.pixels[offset + channel] * alpha + 255 * (1 - alpha);
+          }
+          count++;
+        }
+      }
+      const offset = ((offsetY + y) * canvas.width + offsetX + x) * 3;
+      for (let channel = 0; channel < 3; channel++) {
+        canvas.pixels[offset + channel] = Math.round(sum[channel] / count);
+      }
+    }
+  }
+}
+
+// Decodes a non-interlaced PNG with 8 or 16 bits per channel into RGBA; undefined for anything else
+function readPng(file) {
+  let data;
+  try {
+    data = fs.readFileSync(file);
+  } catch (err) {
+    return undefined;
+  }
+  if (data.length < PNG_SIGNATURE.length || !data.subarray(0, PNG_SIGNATURE.length).equals(PNG_SIGNATURE)) {
+    return undefined;
+  }
+
+  let header;
+  let palette;
+  let paletteAlpha;
+  const parts = [];
+  for (let offset = PNG_SIGNATURE.length; offset + 8 <= data.length;) {
+    const length = data.readUInt32BE(offset);
+    const type = data.toString('latin1', offset + 4, offset + 8);
+    const body = data.subarray(offset + 8, offset + 8 + length);
+    if (type === 'IHDR') {
+      header = {
+        width: body.readUInt32BE(0),
+        height: body.readUInt32BE(4),
+        bitDepth: body[8],
+        colorType: body[9],
+        interlace: body[12],
+      };
+    } else if (type === 'PLTE') {
+      palette = body;
+    } else if (type === 'tRNS') {
+      paletteAlpha = body;
+    } else if (type === 'IDAT') {
+      parts.push(body);
+    } else if (type === 'IEND') {
+      break;
+    }
+    offset += 12 + length;
+  }
+  const channels = header && PNG_CHANNELS[header.colorType];
+  if (!channels || header.interlace || ![8, 16].includes(header.bitDepth)
+    || (header.colorType === 3 && (!palette || header.bitDepth !== 8))) {
+    return undefined;
+  }
+
+  let raw;
+  try {
+    raw = zlib.inflateSync(Buffer.concat(parts));
+  } catch (err) {
+    return undefined;
+  }
+  const bytesPerSample = header.bitDepth / 8;
+  const bytesPerPixel = channels * bytesPerSample;
+  const stride = header.width * bytesPerPixel;
+  if (raw.length < (stride + 1) * header.height) return undefined;
+
+  const pixels = Buffer.alloc(header.width * header.height * 4);
+  let previous = Buffer.alloc(stride);
+  for (let y = 0; y < header.height; y++) {
+    const start = y * (stride + 1);
+    const line = Buffer.from(raw.subarray(start + 1, start + 1 + stride));
+    unfilterLine(raw[start], line, previous, bytesPerPixel);
+    for (let x = 0; x < header.width; x++) {
+      const samples = [];
+      for (let channel = 0; channel < channels; channel++) {
+        samples.push(line[x * bytesPerPixel + channel * bytesPerSample]);
+      }
+      const rgba = toRgba(header.colorType, samples, palette, paletteAlpha);
+      rgba.forEach((value, channel) => {
+        pixels[(y * header.width + x) * 4 + channel] = value;
+      });
+    }
+    previous = line;
+  }
+  return { width: header.width, height: header.height, pixels };
+}
+
+function unfilterLine(filter, line, previous, bytesPerPixel) {
+  for (let i = 0; i < line.length; i++) {
+    const left = i >= bytesPerPixel ? line[i - bytesPerPixel] : 0;
+    const up = previous[i];
+    const upLeft = i >= bytesPerPixel ? previous[i - bytesPerPixel] : 0;
+    let predictor = 0;
+    if (filter === 1) {
+      predictor = left;
+    } else if (filter === 2) {
+      predictor = up;
+    } else if (filter === 3) {
+      predictor = Math.floor((left + up) / 2);
+    } else if (filter === 4) {
+      const estimate = left + up - upLeft;
+      const distances = [Math.abs(estimate - left), Math.abs(estimate - up), Math.abs(estimate - upLeft)];
+      predictor = distances[0] <= distances[1] && distances[0] <= distances[2]
+        ? left
+        : (distances[1] <= distances[2] ? up : upLeft);
+    }
+    line[i] = (line[i] + predictor) & 0xff;
+  }
+}
+
+function toRgba(colorType, samples, palette, paletteAlpha) {
+  switch (colorType) {
+    case 0:
+      return [samples[0], samples[0], samples[0], 255];
+    case 2:
+      return [samples[0], samples[1], samples[2], 255];
+    case 3: {
+      const index = samples[0];
+      const alpha = paletteAlpha && index < paletteAlpha.length ? paletteAlpha[index] : 255;
+      return [palette[index * 3], palette[index * 3 + 1], palette[index * 3 + 2], alpha];
+    }
+    case 4:
+      return [samples[0], samples[0], samples[0], samples[1]];
+    default:
+      return [samples[0], samples[1], samples[2], samples[3]];
+  }
+}
+
+// Encodes the canvas as an 8-bit RGB PNG, every line with the Sub filter
+function writePng(file, canvas) {
+  const stride = canvas.width * 3;
+  const raw = Buffer.alloc((stride + 1) * canvas.height);
+  for (let y = 0; y < canvas.height; y++) {
+    const start = y * (stride + 1);
+    raw[start] = PNG_FILTER_SUB;
+    for (let i = 0; i < stride; i++) {
+      const value = canvas.pixels[y * stride + i];
+      const left = i >= 3 ? canvas.pixels[y * stride + i - 3] : 0;
+      raw[start + 1 + i] = (value - left) & 0xff;
+    }
+  }
+  const header = Buffer.alloc(13);
+  header.writeUInt32BE(canvas.width, 0);
+  header.writeUInt32BE(canvas.height, 4);
+  header[8] = 8;
+  header[9] = PNG_COLOR_TYPE_RGB;
+  fs.writeFileSync(file, Buffer.concat([
+    PNG_SIGNATURE,
+    makePngChunk('IHDR', header),
+    makePngChunk('IDAT', zlib.deflateSync(raw)),
+    makePngChunk('IEND', Buffer.alloc(0)),
+  ]));
+}
+
+function makePngChunk(type, body) {
+  const length = Buffer.alloc(4);
+  length.writeUInt32BE(body.length);
+  const typeAndBody = Buffer.concat([Buffer.from(type, 'latin1'), body]);
+  const crc = Buffer.alloc(4);
+  crc.writeUInt32BE(computeCrc(typeAndBody));
+  return Buffer.concat([length, typeAndBody, crc]);
+}
+
+function computeCrc(bytes) {
+  let crc = 0xffffffff;
+  for (const byte of bytes) {
+    crc = CRC_TABLE[(crc ^ byte) & 0xff] ^ (crc >>> 8);
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function makeCrcTable() {
+  return Array.from({ length: 256 }, (_, index) => {
+    let value = index;
+    for (let bit = 0; bit < 8; bit++) {
+      value = value & 1 ? 0xedb88320 ^ (value >>> 1) : value >>> 1;
+    }
+    return value >>> 0;
+  });
 }
 
 function annotate(summaryFile) {
